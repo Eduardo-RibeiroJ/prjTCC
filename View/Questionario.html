@@ -21,7 +21,7 @@
 
     #b{
         height: 120px;
-        padding: 100px 100px 100px 30px;
+        padding: 80px 100px 80px 30px;
     }
 
     </style>
@@ -63,27 +63,26 @@
 
         <div id="b" class="row">
             <!---Título-->
-            <h2>Questionário</h2>
+            <h2><strong>Questionário</strong></h2>
         </div>
 
         <div class="row">
-          
-          <form action="/action_page.php" target="_blank">
-            <div class="card-body">
-                    <form>
-                    <div class="form-group row">
-                        <label class="col-sm-6 col-form-label">Nome do questionário</label>
-                        <div class="col-sm-5">
-                        <input class="form-control" type="text" id = "NomeQuestionario" placeholder="inserir aqui">
-                        </div>
-                    </div>
-                    </form>
-            </div>
 
             <div class="card" style="width: 136rem;">
-                <div class="card-body">
+                <form action="/action_page.php" target="_blank">
+                  <div class="card-body">
+                          <form>
+                          <div class="form-group row">
+                              <label class="col-sm-3 col-form-label">Nome do questionário</label>
+                              <div class="col-sm-5">
+                              <input class="form-control" type="text" id = "NomeQuestionario" placeholder="inserir aqui">
+                              </div>
+                          </div>
+                          </form>
+                          <br>
+              
                   <h3 class="card-title">Questão</h3>
-                  <div class="input-group input-group-lg">
+                  <div class="input-group input-group-md">
                         <div class="input-group-prepend">
                           <span class="input-group-text">Adicionar pergunta</span>
                         </div>
@@ -136,8 +135,8 @@
                       </div></li>
                 </ul>
                 <div class="card-body">
-                    <button type="submit" class="btnLimpar">Limpar</button>
-                    <button type="submit" class="btnAdicionar">Adicionar</button>
+                    <button type="submit" class="btn btn-primary">Limpar</button>
+                    <button type="submit" class="btn btn-primary">Adicionar</button>
                 </div>
             </div>
         </div> 
