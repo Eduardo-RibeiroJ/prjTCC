@@ -1,3 +1,29 @@
+<?php
+
+/*include_once "Model/Conexao.php";
+include_once "Model/TesteOnline.php";
+include_once "Controller/TestePergunta.php";*/
+$nomeQuestionario = $_POST['NomeQuestionario'];
+#
+
+  //echo "$_GET['NomeQuestionario']";
+  /*$cn = new Conexao();
+  $cp = new Produto();
+
+  $cp->inserirProduto(
+    $_POST['txtNomeProduto'],
+    $_POST['ckbPersonalizado'] = (isset($_POST['ckbPersonalizado'])) ? 1 : 0,
+    $_POST['cbbCor'],
+    $_POST['txtObs'],
+    $_POST['txtQuantidadeTotal']
+  );
+
+  $pc = new ProdutoController($cn);
+  $pc->Inserir($cp);
+  echo "<script> alert('Produto cadastrado!'); window.location.replace('produto_listar.php'); </script>";*/
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
@@ -71,76 +97,70 @@
             <div class="card" style="width: 136rem;">
                 <form action="/action_page.php" target="_blank">
                   <div class="card-body">
-                          <form>
                           <div class="form-group row">
-                              <label class="col-sm-3 col-form-label">Nome do questionário</label>
-                              <div class="col-sm-5">
-                              <input class="form-control" type="text" id = "NomeQuestionario" placeholder="inserir aqui">
-                              </div>
+                              <label class="col-sm-3 col-form-label">Nome do questionário: <?= $nomeQuestionario ?> </label>
                           </div>
-                          </form>
                           <br>
-              
-                  <h3 class="card-title">Questão</h3>
-                  <div class="input-group input-group-md">
-                        <div class="input-group-prepend">
-                          <span class="input-group-text">Adicionar pergunta</span>
-                        </div>
-                        <div class="form-group">
-                        <textarea class="form-control" id="Pergunta" rows="3"></textarea>
-                    </div>
-                  </div>
-                  <br>
-                  <div class="form-group col-md-2">
-                        <label for="inputTempo">Tempo de resposta</label>
-                        <input type="number" class="form-control" id="Tempo" value="30">
-                  </div>
-
-                  <div class="form-group col-md-2">
-                        <label for="TipoResposta">Tipo de resposta</label>
-                        <select id="TipoResposta" class="form-control">
-                          <option value="A" selected>Alternativa</option>
-                          <option value="D">Dissertativa</option>
-                        </select>
+                    <h3 class="card-title">Questão</h3>
+                    <div class="input-group input-group-md">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text">Adicionar pergunta</span>
+                          </div>
+                          <div class="form-group">
+                          <textarea class="form-control" id="Pergunta" rows="3"></textarea>
                       </div>
-                  
-                      <div class="form-group col-md-2">
-                          <label for="inputResposta">Resposta</label>
-                          <select id="Resposta" class="form-control" placeholder="rsrs" tabindex="1">
-                          <option value="A" selected>A</option>
-                          <option value="B">B</option>
-                          <option value="C">C</option>
-                          <option value="D">D</option>
-                        </select>
-                     </div>
+                    </div>
+                    <br>
+                    <div class="form-group col-md-2">
+                          <label for="inputTempo">Tempo de resposta</label>
+                          <input type="number" class="form-control" id="Tempo" value="30">
+                    </div>
 
-                </div>
+                    <div class="form-group col-md-2">
+                          <label for="TipoResposta">Tipo de resposta</label>
+                          <select id="TipoResposta" class="form-control">
+                            <option value="A" selected>Alternativa</option>
+                            <option value="D">Dissertativa</option>
+                          </select>
+                        </div>
+                    
+                        <div class="form-group col-md-2">
+                            <label for="inputResposta">Resposta</label>
+                            <select id="Resposta" class="form-control" placeholder="rsrs" tabindex="1">
+                            <option value="A" selected>A</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+                            <option value="D">D</option>
+                          </select>
+                       </div>
 
-                <ul class="list-group list-group-flush">
-                  <li class="list-group-item"> <div class="input-group">
-                        <span class="input-group-addon">A)</span>
-                        <input id="A" type="text" class="form-control" name="msg" placeholder="Adicionar questão">
-                      </div></li>
-                  <li class="list-group-item"> <div class="input-group">
-                        <span class="input-group-addon">B)</span>
-                        <input id="B" type="text" class="form-control" name="msg" placeholder="Adicionar questão">
-                      </div></li>
-                  <li class="list-group-item"> <div class="input-group">
-                        <span class="input-group-addon">C)</span>
-                        <input id="C" type="text" class="form-control" name="msg" placeholder="Adicionar questão">
-                      </div></li>
-                  <li class="list-group-item"> <div class="input-group">
-                        <span class="input-group-addon">D)</span>
-                        <input id="D" type="text" class="form-control" name="msg" placeholder="Adicionar questão">
-                      </div></li>
-                </ul>
-                <div class="card-body">
-                    <button type="submit" class="btn btn-primary">Limpar</button>
-                    <button type="submit" class="btn btn-primary">Adicionar</button>
-                </div>
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item"> <div class="input-group">
+                          <span class="input-group-addon">A)</span>
+                          <input id="A" type="text" class="form-control" name="msg" placeholder="Adicionar questão">
+                        </div></li>
+                    <li class="list-group-item"> <div class="input-group">
+                          <span class="input-group-addon">B)</span>
+                          <input id="B" type="text" class="form-control" name="msg" placeholder="Adicionar questão">
+                        </div></li>
+                    <li class="list-group-item"> <div class="input-group">
+                          <span class="input-group-addon">C)</span>
+                          <input id="C" type="text" class="form-control" name="msg" placeholder="Adicionar questão">
+                        </div></li>
+                    <li class="list-group-item"> <div class="input-group">
+                          <span class="input-group-addon">D)</span>
+                          <input id="D" type="text" class="form-control" name="msg" placeholder="Adicionar questão">
+                        </div></li>
+                  </ul>
+                  <div class="card-body">
+                      <button type="submit" class="btn btn-primary">Limpar</button>
+                      <button type="submit" class="btn btn-primary">Adicionar</button>
+                  </div>
+                <div>
+              </form>
             </div>
         </div> 
-      </form>
+
 
 </div> 
 
