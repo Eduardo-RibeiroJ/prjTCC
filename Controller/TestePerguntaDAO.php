@@ -1,11 +1,9 @@
 <?php
 
-include_once "Model/Conexao.php";
+include_once "../Model/Conexao.php";
 
 class TestePerguntaDAO
-{
-
-    
+{    
     public function __construct(Conexao $db)
     {
         $this->db = $db;

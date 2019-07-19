@@ -73,6 +73,7 @@
                   <div class="card-body">
                       <label class="col-sm-3 col-form-label">Nome do questionário</label>
                       <div class="col-sm-5">
+                        <input name="NumeroQuestionario" type="hidden" value="55"/>
                         <input class="form-control" type="text" name="NomeQuestionario" id="NomeQuestionario" placeholder="inserir aqui">
                       </div>
                   </div>
