@@ -7,9 +7,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 </head>
 
@@ -21,7 +19,7 @@
 
     #b{
         height: 120px;
-        padding: 80px 100px 80px 30px;
+        padding: 50px 100px 80px 30px;
     }
 
     </style>
@@ -30,34 +28,49 @@
 
         <!-- Navbar -->
         <!-- Navbar (sit on top) -->
-        <div class="w3-top">
-                <div class="w3-bar w3-white w3-card" id="myNavbar">
-                <a href="#home" class="w3-bar-item w3-button w3-wide">LOGO</a>
-                <!-- Right-sided navbar links -->
-                <div class="w3-right w3-hide-small">
-                    <a href="#Nos" class="w3-bar-item w3-button">Sobre Nós</a>
-                    <a href="#Servicos" class="w3-bar-item w3-button"> Serviços</a>
-                    <a href="#Contato" class="w3-bar-item w3-button">Contato</a>
-                    <a href="#TrabConsosco" class="w3-bar-item w3-button">Trabalhe conosco</a>
-                    <a href="#Login" class="w3-bar-item w3-button">Login</a>
-                </div>
-
-                <!-- Hide right-floated links on small screens and replace them with a menu icon -->
-                <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="w3_open()">
-                    <i class="fa fa-bars"></i>
+        <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #0F91CF;">
+          <a class="navbar-brand" href="#"> 
+            <img src="Imagens/Logo(2).jpg" width="50" height="50" class="d-inline-block align-top" alt="">
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+        
+          <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="#">Home <span class="sr-only">(página atual)</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Sobre Nós</a>
+              </li>
+              <!-- DropBox -->
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Serviços
                 </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="#">Soluções de Software</a>
+                  <a class="dropdown-item" href="#">Suporte</a>
+                  <a class="dropdown-item" href="#">Análise de processos</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#">Veja mais</a>
                 </div>
-            </div>
-            
-            <!-- Sidebar on small screens when clicking the menu icon -->
-            <nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left w3-hide-medium w3-hide-large" style="display:none" id="mySidebar">
-                <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16">Close ×</a>
-                <a href="#Nos" onclick="w3_close()" class="w3-bar-item w3-button">Sobre Nós</a>
-                <a href="#Servicos" onclick="w3_close()" class="w3-bar-item w3-button">Serviços</a>
-                <a href="#Contato" onclick="w3_close()" class="w3-bar-item w3-button">Contato</a>
-                <a href="#TrabConsosco" onclick="w3_close()" class="w3-bar-item w3-button">Trabalhe conosco</a>
-                <a href="#Login" onclick="w3_close()" class="w3-bar-item w3-button">Login</a>
-            </nav>
+              </li>
+              <li class="nav-item">
+                      <a class="nav-link" href="#">Trabalhe conosoco</a>
+              </li>
+              <li class="nav-item">
+                      <a class="nav-link" href="#">Contatos</a>
+              </li>      
+           <!-- Pesquisa -->
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+              <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" aria-label="Pesquisar">
+              <button class="btn btn-outline-Secondary my-2 my-sm-0" type="submit">Pesquisar</button>
+            </form>
+          </div>
+  </nav>
 
     <div class="container-fluid">
 
