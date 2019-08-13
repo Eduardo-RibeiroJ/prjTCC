@@ -82,7 +82,7 @@
         <div class="row">
 
             <div class="card" style="width: 136rem;">
-                <form method="POST" action="AdicionarPergunta.php">
+                <form method="POST" action="AdicionarQuestao.php">
                   <div class="card-body">
                       <label class="col-sm-3 col-form-label">Nome do questionário</label>
                       <div class="col-sm-5">

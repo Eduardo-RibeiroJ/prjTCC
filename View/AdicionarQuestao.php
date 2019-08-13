@@ -2,7 +2,7 @@
 
 include_once "../Model/Conexao.php";
 include_once "../Model/TesteOnline.php";
-include_once "../Model/TestePergunta.php";
+include_once "../Model/Questao.php";
 include_once "../Controller/TestePerguntaDAO.php";
 include_once "../Controller/TestePerguntaDAO.php";
 
