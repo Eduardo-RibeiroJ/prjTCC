@@ -153,38 +153,30 @@ if (isset($_POST['Finalizar'])) {
                     <div class="card-body">
                             <div class="form-group row">
                                 <label class="col-sm-3 col-form-label"><?= $numQuestionario ?> - Questionário: <?= $nomeQuestionario ?> </label>
-                                <input name="NomeQuestionario" type="hidden" value="<?= $nomeQuestionario ?>"/>
-                                <input name="NumeroQuestionario" type="hidden" value="<?= $numQuestionario ?>"/>
+                                <input name="nomeQuestionario" id="nomeQuestionario" type="hidden" value="<?= $nomeQuestionario ?>"/>
+                                <input name="numeroQuestionario" id="numeroQuestionario" type="hidden" value="<?= $numQuestionario ?>"/>
                             </div>
                             <br>
                       <h3 class="card-title">Questão <?= $numQuestao ?></h3>
-                      <input name="NumeroQuestao" type="hidden" value="<?= $numQuestao ?>"/>
+                      <input name="NumeroQuestao" id="numeroQuestao" type="hidden" value="<?= $numQuestao ?>"/>
                       <div class="input-group-md">
                             <div class="input-group-prepend">
-                              <span class="input-group-text">Adicionar pergunta</span>
+                              <span class="input-group-text">Adicionar questão</span>
                             </div>
                             <div class="form-group">
-                            <textarea name="Questao" class="form-control" id="Questao" rows="3"></textarea>
+                            <textarea name="questao" id="questao" class="form-control" rows="3"></textarea>
                         </div>
                       </div>
                       <br>
                       <div class="form-row">
                   <div class="form-group col-md-2">
                         <label for="inputTempo">Tempo de resposta</label>
-                        <input type="number" class="form-control" id="Tempo" value="30">
+                        <input type="number" class="form-control" id="tempo" name="tempo" value="30">
                   </div>
-
-                  <div class="form-group col-md-2">
-                        <label for="TipoResposta">Tipo de resposta</label>
-                        <select id="TipoResposta" class="form-control">
-                          <option value="A" selected>Alternativa</option>
-                          <option value="D">Dissertativa</option>
-                        </select>
-                      </div>
                   
                       <div class="form-group col-md-2">
                           <label for="inputResposta">Resposta</label>
-                          <select id="Resposta" class="form-control" placeholder="rsrs" tabindex="1">
+                          <select id="resposta" name="resposta" class="form-control" placeholder="rsrs" tabindex="1">
                           <option value="A" selected>A</option>
                           <option value="B">B</option>
                           <option value="C">C</option>
@@ -198,29 +190,29 @@ if (isset($_POST['Finalizar'])) {
                   <li class="list-group-item">
                       <div class="input-group-prepend">
                           <span class="input-group-text" id="inputGroupPrepend1">A)</span>
-                          <input id="A" type="text" class="form-control" name="msg" placeholder="Adicionar questão">
+                          <input id="a" type="text" class="form-control" name="a" placeholder="Adicionar questão">
                         </div>        
                       </li>
                     <li class="list-group-item">
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="inputGroupPrepend2">B)</span>
-                        <input id="B" type="text" class="form-control" name="msg" placeholder="Adicionar questão">
+                        <input id="b" type="text" class="form-control" name="b" placeholder="Adicionar questão">
                       </li>
                     <li class="list-group-item">
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="inputGroupPrepend3">C)</span>
-                        <input id="C" type="text" class="form-control" name="msg" placeholder="Adicionar questão">
+                        <input id="c" type="text" class="form-control" name="c" placeholder="Adicionar questão">
                       </li>
                     <li class="list-group-item">
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="inputGroupPrepend4">D)</span>
-                        <input id="D" type="text" class="form-control" name="msg" placeholder="Adicionar questão">
+                        <input id="d" type="text" class="form-control" name="d" placeholder="Adicionar questão">
                       </li> 
                 </ul>
 
                     <div class="card-body">
                         <button name="Limpar" type="submit" class="btn btn-primary">Limpar</button>
-                        <button name="Inserir" type="submit" class="btn btn-primary">Adicionar</button>
+                        <button id="btnAdicionar" class="btn btn-primary">Adicionar</button>
                         <button name="Finalizar" type="submit" class="btn btn-primary">Finalizar</button>
                     </div>
                 </div>

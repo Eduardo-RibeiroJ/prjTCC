@@ -1,10 +1,10 @@
 <?php
   
-class TestePergunta {
+class Questao {
   	
   	private $idTesteOnline;
-    private $idPergunta;
-    private $pergunta;
+    private $idQuestao;
+    private $questao;
     private $altA;
     private $altB;
     private $altC;
@@ -13,10 +13,10 @@ class TestePergunta {
     private $tempo;
   
 
-    public function inserirPergunta ($idTesteOnline, $idPergunta, $pergunta, $altA, $altB, $altC, $altD, $resposta, $tempo) {
+    public function inserirQuestao ($idTesteOnline, $idQuestao, $questao, $altA, $altB, $altC, $altD, $resposta, $tempo) {
         $this->idTesteOnline = $idTesteOnline;
-        $this->idPergunta = $idPergunta;
-        $this->pergunta = $pergunta;
+        $this->idQuestao = $idQuestao;
+        $this->questao = $questao;
         $this->altA = $altA;
         $this->altB = $altB;
         $this->altC = $altC;
@@ -32,18 +32,18 @@ class TestePergunta {
         $this->idTesteOnline = $idTesteOnline;
     }
 
-    public function getIdPergunta() {
-        return $this->idPergunta;
+    public function getIdQuestao() {
+        return $this->idQuestao;
     }
-    public function setIdPergunta($idPergunta) {
-        $this->idPergunta = $idPergunta;
+    public function setIdQuestao($idQuestao) {
+        $this->idQuestao = $idQuestao;
     }
     
-    public function getPergunta() {
-        return $this->pergunta;
+    public function getQuestao() {
+        return $this->questao;
     }
-    public function setPergunta($pergunta) {
-        $this->pergunta = $pergunta;
+    public function setQuestao($questao) {
+        $this->questao = $questao;
     }
     
     public function getAltA() {

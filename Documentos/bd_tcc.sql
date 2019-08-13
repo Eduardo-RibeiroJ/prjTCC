@@ -9,15 +9,15 @@ create table tbTesteOnline (
 	CONSTRAINT PK_IDTESTEONLINE PRIMARY KEY (idTesteOnline)
 );
 
-create table tbPergunta (
+create table tbQuestao (
 	idTesteOnline int NOT NULL,
-	idPergunta int NOT NULL,
-	pergunta varchar (250) NOT NULL,
+	idQuestao int NOT NULL,
+	questao varchar (250) NOT NULL,
 	altA varchar (150) NOT NULL,
 	altB varchar (150) NOT NULL,
 	altC varchar (150) NOT NULL,
 	altD varchar (150) NOT NULL,
 	resposta varchar (1) NOT NULL,
 	tempo int NOT NULL,
-	CONSTRAINT PK_TESTE_PERGUNTA PRIMARY KEY (idTesteOnline, idPergunta)
+	CONSTRAINT PK_TESTE_QUESTAO PRIMARY KEY (idTesteOnline, idQuestao)
 );
