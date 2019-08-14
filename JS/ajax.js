@@ -9,6 +9,7 @@ $(function(){
         // Pega os valores dos inputs e coloca nas variáveis
 
         var numeroQuestionario = $('#numQuestionario').val();
+        var nomeQuestionario = $('#nomeQuestionario').val();
         var numeroQuestao = $('#numeroQuestao').val();
         var questao = $('#questao').val();
         var tempo = $('#tempo').val();
@@ -21,8 +22,7 @@ $(function(){
         // Método post do Jquery
         $.post("../Model/salvar.php", {
 
-
-            /*nomeQuestionario:nomeQuestionario,
+        	nomeQuestionario:nomeQuestionario,
             numeroQuestao:numeroQuestao,
             questao:questao,
             tempo:tempo,
@@ -30,20 +30,30 @@ $(function(){
             a:a,
             b:b,
             c:c,
-            d:d*/
+            d:d
 
-            nomeQuestionario:"dsdsds",
-            numeroQuestao:43,
-            questao:"ffsfsf",
-            tempo:46,
-            resposta:"B",
-            a:"B",
-            b:"B",
-            c:"B",
-            d:"B"
+            /*nomeQuestionario: "dsdsds",
+            numeroQuestao: "43",
+            questao: "ffsfsf",
+            tempo: "46",
+            resposta: "B",
+            a: "B",
+            b: "B",
+            c: "B",
+            d: "B"*/
             
-        });
+        }, function(resposta){
+            // Valida a resposta
+            if(resposta == "B"){
+                // Limpa os inputs
+                $('input, textarea').val('');
+                alert('Mensagem enviada com sucesso.');
+            }else {
+                alert('Mensagem nao enviada com sucesso.');
+                alert(nomeQuestionario);
+                alert(resposta);
+            }
 
-        
+        });        
     });
 });
