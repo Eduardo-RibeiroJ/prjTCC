@@ -1,14 +1,14 @@
 $(function(){
     // Executa assim que o botão de salvar for clicado
-    $('#btnSalvar').click(function(e){
+    $('#btnAdicionar').click(function(e){
         
         // Cancela o envio do formulário
         e.preventDefault();
+        alert('rsdfsd');
 
         // Pega os valores dos inputs e coloca nas variáveis
 
-
-        var nomeQuestionario = $('#nomeQuestionario').val();
+        var numeroQuestionario = $('#numQuestionario').val();
         var numeroQuestao = $('#numeroQuestao').val();
         var questao = $('#questao').val();
         var tempo = $('#tempo').val();
@@ -19,9 +19,10 @@ $(function(){
         var d = $('#d').val();
 
         // Método post do Jquery
-        $.post('salvar.php', {
+        $.post("../Model/salvar.php", {
 
-            nomeQuestionario:nomeQuestionario,
+
+            /*nomeQuestionario:nomeQuestionario,
             numeroQuestao:numeroQuestao,
             questao:questao,
             tempo:tempo,
@@ -29,17 +30,20 @@ $(function(){
             a:a,
             b:b,
             c:c,
-            d:d
-        }, function(resposta){
-            // Valida a resposta
-            if(resposta == 1){
-                // Limpa os inputs
-                $('input, textarea').val('');
-                alert('Mensagem enviada com sucesso.');
-            }else {
-                alert(resposta);
-            }
+            d:d*/
+
+            nomeQuestionario:"dsdsds",
+            numeroQuestao:43,
+            questao:"ffsfsf",
+            tempo:46,
+            resposta:"B",
+            a:"B",
+            b:"B",
+            c:"B",
+            d:"B"
+            
         });
+
         
     });
 });

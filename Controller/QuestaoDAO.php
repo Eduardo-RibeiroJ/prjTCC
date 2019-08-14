@@ -2,24 +2,24 @@
 
 include_once "../Model/Conexao.php";
 
-class TestePerguntaDAO
+class QuestaoDAO
 {    
     public function __construct(Conexao $db)
     {
         $this->db = $db;
     }
 
-    public function Inserir(TestePergunta $testePergunta) 
+    public function Inserir(Questao $questao) 
     {
-        $idTesteOnline = $testePergunta->getIdTesteOnline();
-        $idPergunta = $testePergunta->getIdPergunta();
-        $pergunta = $testePergunta->getPergunta();
-        $altA = $testePergunta->getAltC();
-        $altB = $testePergunta->getAltB();
-        $altC = $testePergunta->getAltC();
-        $altD = $testePergunta->getAltD();
-        $resposta = $testePergunta->getResposta();
-        $tempo = $testePergunta->getTempo();
+        $idTesteOnline = $questao->getIdTesteOnline();
+        $idPergunta = $questao->getIdPergunta();
+        $pergunta = $questao->getPergunta();
+        $altA = $questao->getAltC();
+        $altB = $questao->getAltB();
+        $altC = $questao->getAltC();
+        $altD = $questao->getAltD();
+        $resposta = $questao->getResposta();
+        $tempo = $questao->getTempo();
 
         $query = "INSERT INTO tbPergunta (idTesteOnline, idPergunta, pergunta, altA, altB, altC, altD, resposta, tempo) VALUES (?,?,?,?,?,?,?,?,?);";
         $stmt = mysqli_prepare($this->db->getConection(), $query);
@@ -34,17 +34,17 @@ class TestePerguntaDAO
 
     }
 
-    public function Atualizar(TestePergunta $testePergunta) 
+    public function Atualizar(Questao $questao) 
     { 
-        $idTesteOnline = $testePergunta->getIdTesteOnline();
-        $idPergunta = $testePergunta->getIdPergunta();
-        $pergunta = $testePergunta->getPergunta();
-        $altA = $testePergunta->getAltC();
-        $altB = $testePergunta->getAltB();
-        $altC = $testePergunta->getAltC();
-        $altD = $testePergunta->getAltD();
-        $resposta = $testePergunta->getResposta();
-        $tempo = $testePergunta->getTempo();
+        $idTesteOnline = $questao->getIdTesteOnline();
+        $idPergunta = $questao->getIdPergunta();
+        $pergunta = $questao->getPergunta();
+        $altA = $questao->getAltC();
+        $altB = $questao->getAltB();
+        $altC = $questao->getAltC();
+        $altD = $questao->getAltD();
+        $resposta = $questao->getResposta();
+        $tempo = $questao->getTempo();
 
         $query = "UPDATE tbProduto SET pergunta=?, altA=?, altB=?, altC=?, altD=?, resposta=?, tempo=?  WHERE idTesteOnline = ? AND idPergunta = ?";
  
@@ -60,11 +60,11 @@ class TestePerguntaDAO
 
     }
 
-    public function Apagar(TestePergunta $testePergunta) {
+    public function Apagar(Questao $questao) {
 
         $SQL = $this->db->getConection()->prepare("DELETE FROM tbPergunta WHERE idTesteOnline = ? AND idPergunta = ?");
-        $idTesteOnline = $testePergunta->getIdTesteOnline();
-        $idPergunta = $testePergunta->getIdPergunta();
+        $idTesteOnline = $questao->getIdTesteOnline();
+        $idPergunta = $questao->getIdPergunta();
 
         $SQL->bind_param("ii", $idTesteOnline, $idPergunta);
         $SQL->execute();

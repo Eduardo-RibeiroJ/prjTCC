@@ -3,68 +3,13 @@
 include_once "../Model/Conexao.php";
 include_once "../Model/TesteOnline.php";
 include_once "../Model/Questao.php";
-include_once "../Controller/TestePerguntaDAO.php";
-include_once "../Controller/TestePerguntaDAO.php";
+include_once "../Controller/TesteOnlineDAO.php";
+include_once "../Controller/QuestaoDAO.php";
 
-if (isset($_POST['Adicionar'])) { //Dados que vem da pagina anterior (Só vai entrar aqui pela primeira vez)
-  $numQuestao = 1; //Inicia com 1
-}
-
-$nomeQuestionario = $_POST['NomeQuestionario']; //Para sempre atualizar com o mesmo nome do questionario que foi pego na pagina anterior
-$numQuestionario = $_POST['NumeroQuestionario'];
-
-if (isset($_POST['Inserir'])) {
-
-  $con = new Conexao();
-  $classeTestePergunta = new TestePergunta();
-  $classeTesteOnline = new TesteOnline();
-
-  $classeTestePergunta->inserirPergunta(
-    $_POST['NumeroQuestionario'],
-    $_POST['NumeroQuestao'],
-    $_POST['Questao'],
-    $_POST['A'],
-    $_POST['B'],
-    $_POST['C'],
-    $_POST['D'],
-    $_POST['Resposta'],
-    $_POST['TempoQuestao']
-  );
-
-  $classeTesteOnline->addQuestao($classeTestePergunta);
-
-
-  $numQuestao = $_POST['NumeroQuestao'] + 1;
-
-  /*$testePerguntaDAO = new TestePerguntaDAO($con);
-  $testePerguntaDAO->Inserir($classeTestePergunta);*/
-  echo "<script> alert('Questão cadastrada!'); </script>";
-}
-
-if (isset($_POST['Finalizar'])) {
-
-  echo "<script> alert('Entrou2222'); </script>";
-
-}
-
-#
-
-  //echo "$_GET['NomeQuestionario']";
-  /*$cn = new Conexao();
-  $cp = new Produto();
-
-  $cp->inserirProduto(
-    $_POST['txtNomeProduto'],
-    $_POST['ckbPersonalizado'] = (isset($_POST['ckbPersonalizado'])) ? 1 : 0,
-    $_POST['cbbCor'],
-    $_POST['txtObs'],
-    $_POST['txtQuantidadeTotal']
-  );
-
-  $pc = new ProdutoController($cn);
-  $pc->Inserir($cp);
-  echo "<script> alert('Produto cadastrado!'); window.location.replace('produto_listar.php'); </script>";*/
-
+//Dados que vem da pagina anterior (Só vai entrar aqui pela primeira vez)
+$numQuestionario = $_POST['NumeroQuestionario']; //Inicia com 1
+$nomeQuestionario = $_POST['NomeQuestionario'];
+$numQuestao = 2;
 ?>
 
 <!DOCTYPE html>
@@ -149,16 +94,16 @@ if (isset($_POST['Finalizar'])) {
         <div class="row">
 
             <div class="card" style="width: 136rem;">
-                  <form method="POST" action="AdicionarPergunta.php">
+                  <form method="post" action="../Model/salvar.php">
                     <div class="card-body">
                             <div class="form-group row">
                                 <label class="col-sm-3 col-form-label"><?= $numQuestionario ?> - Questionário: <?= $nomeQuestionario ?> </label>
                                 <input name="nomeQuestionario" id="nomeQuestionario" type="hidden" value="<?= $nomeQuestionario ?>"/>
-                                <input name="numeroQuestionario" id="numeroQuestionario" type="hidden" value="<?= $numQuestionario ?>"/>
+                                <input name="numQuestionario" id="numQuestionario" type="hidden" value="<?= $numQuestionario ?>"/>
                             </div>
                             <br>
                       <h3 class="card-title">Questão <?= $numQuestao ?></h3>
-                      <input name="NumeroQuestao" id="numeroQuestao" type="hidden" value="<?= $numQuestao ?>"/>
+                      <input name="numeroQuestao" id="numeroQuestao" type="hidden" value="<?= $numQuestao ?>"/>
                       <div class="input-group-md">
                             <div class="input-group-prepend">
                               <span class="input-group-text">Adicionar questão</span>
@@ -224,10 +169,11 @@ if (isset($_POST['Finalizar'])) {
 
     <!-- JavaScript (Opcional) -->
     <!-- jQuery primeiro, depois Popper.js, depois Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <script src="../JS/script.js"></script>
+    <script src="../JS/ajax.js"></script>
 
 </body>
 </html>
