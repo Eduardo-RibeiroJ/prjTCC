@@ -7,22 +7,8 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
 </head>
-
-    <style type="text/css">
-
-    .w3-bar .w3-button {
-    padding: 16px;
-    }
-
-    #b{
-        height: 120px;
-        padding: 50px 100px 80px 30px;
-    }
-
-    </style>
 
     <body>
 
@@ -74,7 +60,7 @@
 
     <div class="container-fluid">
 
-        <div id="b" class="row">
+        <div id="titulo" class="row">
             <!---Título-->
             <h2><strong>Questionário</strong></h2>
         </div>

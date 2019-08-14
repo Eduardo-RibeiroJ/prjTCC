@@ -25,19 +25,6 @@ $numQuestao = 2;
 
 </head>
 
-    <style type="text/css">
-
-    .w3-bar .w3-button {
-    padding: 16px;
-    }
-
-    #b{
-        height: 120px;
-        padding: 80px 100px 80px 30px;
-    }
-
-    </style>
-
     <body>
 
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #0F91CF;">
@@ -86,7 +73,7 @@ $numQuestao = 2;
 
     <div class="container-fluid">
 
-        <div id="b" class="row">
+        <div id="titulo" class="row">
             <!---Título-->
             <h2><strong>Questionário</strong></h2>
         </div>
