@@ -1,10 +1,6 @@
-$(function(){
+$(function($){
     // Executa assim que o botão de salvar for clicado
-    $('#btnAdicionar').click(function(e){
-        
-        // Cancela o envio do formulário
-        e.preventDefault();
-        alert('rsdfsd');
+    $("#formulario").submit(function() {
 
         // Pega os valores dos inputs e coloca nas variáveis
 
@@ -22,7 +18,7 @@ $(function(){
         // Método post do Jquery
         $.post("../Model/salvar.php", {
 
-        	nomeQuestionario:nomeQuestionario,
+        	numeroQuestionario:numeroQuestionario,
             numeroQuestao:numeroQuestao,
             questao:questao,
             tempo:tempo,
@@ -42,17 +38,6 @@ $(function(){
             c: "B",
             d: "B"*/
             
-        }, function(resposta){
-            // Valida a resposta
-            if(resposta == "B"){
-                // Limpa os inputs
-                $('input, textarea').val('');
-                alert('Mensagem enviada com sucesso.');
-            }else {
-                alert('Mensagem nao enviada com sucesso.');
-                alert(nomeQuestionario);
-                alert(resposta);
-            }
 
         });        
     });

@@ -22,6 +22,9 @@ $numQuestao = 2;
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="css/design.css">
+    <script type="text/javascript" language="javascript" src="../JS/jquery-3.2.1.js"></script>
+    <script src="../JS/script.js"></script>
+    <script src="../JS/ajax.js"></script>
 
 </head>
 
@@ -81,7 +84,7 @@ $numQuestao = 2;
         <div class="row">
 
             <div class="card" style="width: 136rem;">
-                  <form method="post" action="../Model/salvar.php">
+                  <form method="post" id="formulario" action="javascript:func()" >
                     <div class="card-body">
                             <div class="form-group row">
                                 <label class="col-sm-3 col-form-label"><?= $numQuestionario ?> - Questionário: <?= $nomeQuestionario ?> </label>
@@ -144,7 +147,7 @@ $numQuestao = 2;
 
                     <div class="card-body">
                         <button name="Limpar" type="submit" class="btn btn-primary">Limpar</button>
-                        <button id="btnAdicionar" class="btn btn-primary">Adicionar</button>
+                        <input class="btn btn-primary" type="submit" value="Adicionar" />
                         <button name="Finalizar" type="submit" class="btn btn-primary">Finalizar</button>
                     </div>
                 </div>
@@ -156,11 +159,8 @@ $numQuestao = 2;
 
     <!-- JavaScript (Opcional) -->
     <!-- jQuery primeiro, depois Popper.js, depois Bootstrap JS -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-    <script src="../JS/script.js"></script>
-    <script src="../JS/ajax.js"></script>
 
 </body>
 </html>

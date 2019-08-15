@@ -9,19 +9,19 @@ $conn = new Conexao();
 $questao = new Questao();
 $questaoDAO = new QuestaoDAO($conn);
 
-$fff = $_post['NumeroQuestao'];
+$fff = $_POST['NumeroQuestao'];
 echo "<script>alert($fff)</script>";
 
 $questao->inserirQuestao (
-    $_post['NumeroQuestionario'],
-    $_post['NumeroQuestao'],
-    $_post['Questao'],
-    $_post['A'],
-    $_post['B'],
-    $_post['C'],
-    $_post['D'],
-    $_post['Resposta'],
-    $_post['TempoQuestao']
+    $_POST['NumeroQuestionario'],
+    $_POST['NumeroQuestao'],
+    $_POST['Questao'],
+    $_POST['A'],
+    $_POST['B'],
+    $_POST['C'],
+    $_POST['D'],
+    $_POST['Resposta'],
+    $_POST['TempoQuestao']
 );
 
 $questaoDAO->Inserir($questao);
