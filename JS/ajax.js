@@ -1,5 +1,7 @@
 $(function(){
     // Executa assim que o botão de salvar for clicado
+    var totalClicks = 1; //contador
+
     $('#btnAdicionar').click(function(e){
 
         // Cancela o envio do formulário
@@ -21,11 +23,12 @@ $(function(){
             // Valida a resposta
         if(sucesso == true){
             // Limpa os inputs
-            $('input, textarea').val('');
-            var cont = $('#numQuestao').val() + 1;
-            $('#numQuestao').val(cont);
             alert('Mensagem enviada com sucesso.');
-
+            totalClicks++;
+            $("#teste").html("Questão " + totalClicks);
+            $('#numQuestao').val(totalClicks);
+            $('input, textarea').val('');
+            
         }else {
             alert('Erro: ' + sucesso);
         }

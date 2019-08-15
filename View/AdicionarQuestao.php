@@ -3,7 +3,7 @@
 //Dados que vem da pagina anterior (Só vai entrar aqui pela primeira vez)
 $numQuestionario = 484; //Inicia com 1
 $nomeQuestionario = "carai";
-$numQuestao = 5;
+$numQuestao = 1;
 ?>
 
 <!DOCTYPE html>
@@ -70,6 +70,8 @@ $numQuestao = 5;
       </nav>
     </header>
 
+    <!------------------------------------ Conteudo--------------------------------------------------------------->
+
     <div class="container-fluid">
 
         <div id="titulo" class="row">
@@ -87,7 +89,7 @@ $numQuestao = 5;
                                 <input name="numQuestionario" id="numQuestionario" type="hidden" value="<?= $numQuestionario ?>"/>
                             </div>
                             <br>
-                      <h3 class="card-title">Questão <?= $numQuestao ?></h3>
+                      <h3 class="card-title" id="teste">Questão <?= $numQuestao ?></h3>
                       <input name="numQuestao" id="numQuestao" type="hidden" value="<?= $numQuestao ?>"/>
                       <div class="input-group-md">
                             <div class="input-group-prepend">
