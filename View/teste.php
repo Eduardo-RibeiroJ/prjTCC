@@ -13,7 +13,7 @@
         <input type="number" name="numQuestionario" id="numQuestionario">
 
         <label for="numQuestao">Número da Questão:</label>
-        <input type="number" name="numQuestao" id="numQuestao">
+        <input type="number" name="numQuestao" id="numQuestao" value="1" disabled>
 
         <label for="questao">Questão:</label>
         <input type="text" name="questao" id="questao">
