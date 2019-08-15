@@ -11,24 +11,24 @@ class QuestaoDAO
 
     public function Inserir(Questao $questao) 
     {
-        $idTesteOnline = $questao->getIdTesteOnline();
-        $idPergunta = $questao->getIdPergunta();
-        $pergunta = $questao->getPergunta();
-        $altA = $questao->getAltC();
+        $altA = $questao->getAltA();
         $altB = $questao->getAltB();
         $altC = $questao->getAltC();
         $altD = $questao->getAltD();
-        $resposta = $questao->getResposta();
         $tempo = $questao->getTempo();
+        $resposta = $questao->getResposta();
+        $idTesteOnline = $questao->getIdTesteOnline();
+        $idQuestao = $questao->getIdQuestao();
+        $questao = $questao->getQuestao();
 
-        $query = "INSERT INTO tbPergunta (idTesteOnline, idPergunta, pergunta, altA, altB, altC, altD, resposta, tempo) VALUES (?,?,?,?,?,?,?,?,?);";
+        $query = "INSERT INTO tbQuestao (idTesteOnline, idQuestao, questao, altA, altB, altC, altD, resposta, tempo) VALUES (?,?,?,?,?,?,?,?,?);";
         $stmt = mysqli_prepare($this->db->getConection(), $query);
 
         if($stmt === FALSE){
             die(mysqli_error($this->db->getConection()));
         }
 
-        mysqli_stmt_bind_param($stmt, 'iissssssi', $idTesteOnline, $idPergunta, $pergunta, $altA, $altB, $altC, $altD, $resposta, $tempo);
+        mysqli_stmt_bind_param($stmt, 'iissssssi', $idTesteOnline, $idQuestao, $questao, $altA, $altB, $altC, $altD, $resposta, $tempo);
         mysqli_stmt_execute($stmt);
         mysqli_stmt_close($stmt);
 
@@ -37,16 +37,16 @@ class QuestaoDAO
     public function Atualizar(Questao $questao) 
     { 
         $idTesteOnline = $questao->getIdTesteOnline();
-        $idPergunta = $questao->getIdPergunta();
-        $pergunta = $questao->getPergunta();
-        $altA = $questao->getAltC();
+        $idQuestao = $questao->getIdQuestao();
+        $questao = $questao->getQuestao();
+        $altA = $questao->getAltA();
         $altB = $questao->getAltB();
         $altC = $questao->getAltC();
         $altD = $questao->getAltD();
         $resposta = $questao->getResposta();
         $tempo = $questao->getTempo();
 
-        $query = "UPDATE tbProduto SET pergunta=?, altA=?, altB=?, altC=?, altD=?, resposta=?, tempo=?  WHERE idTesteOnline = ? AND idPergunta = ?";
+        $query = "UPDATE tbQuestao SET questao=?, altA=?, altB=?, altC=?, altD=?, resposta=?, tempo=?  WHERE idTesteOnline = ? AND idQuestao = ?";
  
         $stmt = mysqli_prepare($this->db->getConection(), $query);
 
@@ -54,7 +54,7 @@ class QuestaoDAO
             die(mysqli_error($this->db->getConection()));
         } 
         
-        mysqli_stmt_bind_param($stmt, 'ssssssiii', $pergunta, $altA, $altB, $altC, $altD, $resposta, $tempo, $idTesteOnline, $idPergunta);
+        mysqli_stmt_bind_param($stmt, 'ssssssii', $questao, $altA, $altB, $altC, $altD, $resposta, $tempo, $idQuestao);
         mysqli_stmt_execute($stmt);
         mysqli_stmt_close($stmt);
 
@@ -62,11 +62,11 @@ class QuestaoDAO
 
     public function Apagar(Questao $questao) {
 
-        $SQL = $this->db->getConection()->prepare("DELETE FROM tbPergunta WHERE idTesteOnline = ? AND idPergunta = ?");
+        $SQL = $this->db->getConection()->prepare("DELETE FROM tbQuestao WHERE idTesteOnline = ? AND idQuestao = ?");
         $idTesteOnline = $questao->getIdTesteOnline();
-        $idPergunta = $questao->getIdPergunta();
+        $idQuestao = $questao->getIdQuestao();
 
-        $SQL->bind_param("ii", $idTesteOnline, $idPergunta);
+        $SQL->bind_param("ii", $idTesteOnline, $idQuestao);
         $SQL->execute();
         
         return true;

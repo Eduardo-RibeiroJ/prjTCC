@@ -1,15 +1,9 @@
 <?php
 
-include_once "../Model/Conexao.php";
-include_once "../Model/TesteOnline.php";
-include_once "../Model/Questao.php";
-include_once "../Controller/TesteOnlineDAO.php";
-include_once "../Controller/QuestaoDAO.php";
-
 //Dados que vem da pagina anterior (Só vai entrar aqui pela primeira vez)
-$numQuestionario = $_POST['NumeroQuestionario']; //Inicia com 1
-$nomeQuestionario = $_POST['NomeQuestionario'];
-$numQuestao = 2;
+$numQuestionario = 484; //Inicia com 1
+$nomeQuestionario = "carai";
+$numQuestao = 5;
 ?>
 
 <!DOCTYPE html>
@@ -30,49 +24,51 @@ $numQuestao = 2;
 
     <body>
 
-    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #0F91CF;">
-          <a class="navbar-brand" href="#"> 
-            <img src="Imagens/Logo(2).jpg" width="50" height="50" class="d-inline-block align-top" alt="">
-          </a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
-                  <span class="navbar-toggler-icon"></span>
-                </button>
-        
-          <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
-            <ul class="navbar-nav mr-auto">
-              <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(página atual)</span></a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Sobre Nós</a>
-              </li>
-              <!-- DropBox -->
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Serviços
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="#">Soluções de Software</a>
-                  <a class="dropdown-item" href="#">Suporte</a>
-                  <a class="dropdown-item" href="#">Análise de processos</a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="#">Veja mais</a>
-                </div>
-              </li>
-              <li class="nav-item">
-                      <a class="nav-link" href="#">Trabalhe conosoco</a>
-              </li>
-              <li class="nav-item">
-                      <a class="nav-link" href="#">Contatos</a>
-              </li>      
-           <!-- Pesquisa -->
-            </ul>
-            <form class="form-inline my-2 my-lg-0">
-              <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" aria-label="Pesquisar">
-              <button class="btn btn-outline-Secondary my-2 my-sm-0" type="submit">Pesquisar</button>
-            </form>
-          </div>
-  </nav>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #0F91CF;">
+            <a class="navbar-brand" href="#"> 
+              <img src="Imagens/Logo(2).jpg" width="50" height="50" class="d-inline-block align-top" alt="">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+          
+            <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                  <a class="nav-link" href="#">Home <span class="sr-only">(página atual)</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Sobre Nós</a>
+                </li>
+                <!-- DropBox -->
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Serviços
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#">Soluções de Software</a>
+                    <a class="dropdown-item" href="#">Suporte</a>
+                    <a class="dropdown-item" href="#">Análise de processos</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Veja mais</a>
+                  </div>
+                </li>
+                <li class="nav-item">
+                        <a class="nav-link" href="#">Trabalhe conosoco</a>
+                </li>
+                <li class="nav-item">
+                        <a class="nav-link" href="#">Contatos</a>
+                </li>      
+             <!-- Pesquisa -->
+              </ul>
+              <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" aria-label="Pesquisar">
+                <button class="btn btn-outline-Secondary my-2 my-sm-0" type="submit">Pesquisar</button>
+              </form>
+            </div>
+      </nav>
+    </header>
 
     <div class="container-fluid">
 
@@ -84,28 +80,27 @@ $numQuestao = 2;
         <div class="row">
 
             <div class="card" style="width: 136rem;">
-                  <form method="post" id="formulario" action="javascript:func()" >
+                  <form>
                     <div class="card-body">
                             <div class="form-group row">
                                 <label class="col-sm-3 col-form-label"><?= $numQuestionario ?> - Questionário: <?= $nomeQuestionario ?> </label>
-                                <input name="nomeQuestionario" id="nomeQuestionario" type="hidden" value="<?= $nomeQuestionario ?>"/>
                                 <input name="numQuestionario" id="numQuestionario" type="hidden" value="<?= $numQuestionario ?>"/>
                             </div>
                             <br>
                       <h3 class="card-title">Questão <?= $numQuestao ?></h3>
-                      <input name="numeroQuestao" id="numeroQuestao" type="hidden" value="<?= $numQuestao ?>"/>
+                      <input name="numQuestao" id="numQuestao" type="hidden" value="<?= $numQuestao ?>"/>
                       <div class="input-group-md">
                             <div class="input-group-prepend">
                               <span class="input-group-text">Adicionar questão</span>
                             </div>
                             <div class="form-group">
-                            <textarea name="questao" id="questao" class="form-control" rows="3"></textarea>
-                        </div>
+                              <textarea name="questao" id="questao" class="form-control" rows="3"></textarea>
+                            </div>
                       </div>
                       <br>
                       <div class="form-row">
                   <div class="form-group col-md-2">
-                        <label for="inputTempo">Tempo de resposta</label>
+                        <label for="tempo">Tempo de resposta</label>
                         <input type="number" class="form-control" id="tempo" name="tempo" value="30">
                   </div>
                   
@@ -146,21 +141,12 @@ $numQuestao = 2;
                 </ul>
 
                     <div class="card-body">
-                        <button name="Limpar" type="submit" class="btn btn-primary">Limpar</button>
-                        <input class="btn btn-primary" type="submit" value="Adicionar" />
-                        <button name="Finalizar" type="submit" class="btn btn-primary">Finalizar</button>
+                        <button id="btnAdicionar">Adicionar</button>
                     </div>
                 </div>
            </div> 
       </form>
 
   </div>
-
-
-    <!-- JavaScript (Opcional) -->
-    <!-- jQuery primeiro, depois Popper.js, depois Bootstrap JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-
 </body>
 </html>

@@ -1,44 +1,44 @@
-$(function($){
+$(function(){
     // Executa assim que o botão de salvar for clicado
-    $("#formulario").submit(function() {
+    $('#btnAdicionar').click(function(e){
+
+        // Cancela o envio do formulário
+        e.preventDefault();
 
         // Pega os valores dos inputs e coloca nas variáveis
-
-        var numeroQuestionario = $('#numQuestionario').val();
-        var nomeQuestionario = $('#nomeQuestionario').val();
-        var numeroQuestao = $('#numeroQuestao').val();
+        var numQuestionario = $('#numQuestionario').val();
+        var numQuestao = $('#numQuestao').val();
         var questao = $('#questao').val();
-        var tempo = $('#tempo').val();
-        var resposta = $('#resposta').val();
         var a = $('#a').val();
         var b = $('#b').val();
         var c = $('#c').val();
         var d = $('#d').val();
+        var resposta = $('#resposta').val();
+        var tempo = $('#tempo').val();
 
         // Método post do Jquery
-        $.post("../Model/salvar.php", {
-
-        	numeroQuestionario:numeroQuestionario,
-            numeroQuestao:numeroQuestao,
+        $.post('../Model/salvar.php', {
+            numQuestionario:numQuestionario,
+            numQuestao:numQuestao,
             questao:questao,
-            tempo:tempo,
-            resposta:resposta,
             a:a,
             b:b,
             c:c,
-            d:d
+            d:d,
+            resposta:resposta,
+            tempo:tempo
 
-            /*nomeQuestionario: "dsdsds",
-            numeroQuestao: "43",
-            questao: "ffsfsf",
-            tempo: "46",
-            resposta: "B",
-            a: "B",
-            b: "B",
-            c: "B",
-            d: "B"*/
-            
+        }, function(sucesso){
+            // Valida a resposta
+        if(sucesso == true){
+            // Limpa os inputs
+            $('input, textarea').val('');
+            alert('Mensagem enviada com sucesso.');
+        }else {
+            alert('Erro: ' + sucesso);
+        }
 
-        });        
+        });
+        
     });
 });

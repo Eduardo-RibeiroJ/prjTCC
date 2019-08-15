@@ -38,14 +38,14 @@ class Questao {
     public function setIdQuestao($idQuestao) {
         $this->idQuestao = $idQuestao;
     }
-    
+
     public function getQuestao() {
         return $this->questao;
     }
     public function setQuestao($questao) {
         $this->questao = $questao;
     }
-    
+
     public function getAltA() {
         return $this->altA;
     }
@@ -86,8 +86,7 @@ class Questao {
     }
     public function setTempo($tempo) {
         $this->tempo = $tempo;
-    }  
-
+    }
 }
 
 ?>
