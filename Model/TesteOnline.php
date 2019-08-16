@@ -1,4 +1,5 @@
 <?php
+include_once "../Controller/TesteOnlineDAO.php";
   
 class TesteOnline {
   	
@@ -15,6 +16,11 @@ class TesteOnline {
     }
     public function getNomeTesteOnline() {
         return $this->nomeTesteOnline;
+    }
+
+    public function getUltimoRegistro() {
+
+        return TesteOnlineDAO::UltimoRegistro() + 1;
     }
 }
 

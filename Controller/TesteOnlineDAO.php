@@ -27,6 +27,16 @@ class TesteOnlineDAO
         mysqli_stmt_close($stmt);
 
     }
+
+    public function UltimoRegistro() 
+    {
+        $db = new Conexao();
+        $dados = mysqli_query($db->getConection(), "SELECT MAX(idTesteOnline) as idTesteOnline FROM tbTesteOnline;");
+        $linha = $dados->fetch_array(MYSQLI_ASSOC);
+        
+        return $linha["idTesteOnline"];
+    }
+
 }
 
 ?>

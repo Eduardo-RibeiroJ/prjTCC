@@ -1,3 +1,5 @@
+<?php include_once "../Model/TesteOnline.php"; ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
@@ -77,7 +79,9 @@
                   <form>
                     <div class="card-body">
                             <div class="form-group row">
-                                <h3 id="numTeste"><?= $_POST['numTeste'];?></h3>
+
+                                <?php $numTeste = TesteOnline::getUltimoRegistro(); ?>
+                                <h3 id="numTeste"><?= $numTeste;?></h3>
 
                                 <h3><pre> - Nome do Teste Online: </pre></h3>
                                 <h3 id="nomeTeste"><?= $_POST['nomeTeste']; ?> </h3>
