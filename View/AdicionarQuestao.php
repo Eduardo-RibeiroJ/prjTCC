@@ -1,11 +1,3 @@
-<?php
-
-//Dados que vem da pagina anterior (Só vai entrar aqui pela primeira vez)
-$numQuestionario = 484; //Inicia com 1
-$nomeQuestionario = "carai";
-$numQuestao = 1;
-?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
@@ -76,7 +68,7 @@ $numQuestao = 1;
 
         <div id="titulo" class="row">
             <!---Título-->
-            <h2><strong>Questionário</strong></h2>
+            <h2><strong>Teste Online</strong></h2>
         </div>
 
         <div class="row">
@@ -85,12 +77,13 @@ $numQuestao = 1;
                   <form>
                     <div class="card-body">
                             <div class="form-group row">
-                                <label class="col-sm-3 col-form-label"><?= $numQuestionario ?> - Questionário: <?= $nomeQuestionario ?> </label>
-                                <input name="numQuestionario" id="numQuestionario" type="hidden" value="<?= $numQuestionario ?>"/>
+                                <h3 id="numTeste"><?= $_POST['numTeste'];?></h3>
+
+                                <h3><pre> - Nome do Teste Online: </pre></h3>
+                                <h3 id="nomeTeste"><?= $_POST['nomeTeste']; ?> </h3>
                             </div>
                             <br>
-                      <h3 class="card-title" id="teste">Questão <?= $numQuestao ?></h3>
-                      <input name="numQuestao" id="numQuestao" type="hidden" value="<?= $numQuestao ?>"/>
+                      <h3 class="card-title" id="numQuestao">Questão 1</h3>
                       <div class="input-group-md">
                             <div class="input-group-prepend">
                               <span class="input-group-text">Adicionar questão</span>

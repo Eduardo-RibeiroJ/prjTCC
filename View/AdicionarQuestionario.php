@@ -62,7 +62,7 @@
 
         <div id="titulo" class="row">
             <!---Título-->
-            <h2><strong>Questionário</strong></h2>
+            <h2><strong>Teste Online</strong></h2>
         </div>
 
         <div class="row">
@@ -70,10 +70,10 @@
             <div class="card" style="width: 136rem;">
                 <form method="POST" action="AdicionarQuestao.php">
                   <div class="card-body">
-                      <label class="col-sm-3 col-form-label">Nome do questionário</label>
+                      <label class="col-sm-3 col-form-label">Nome do Teste Online</label>
                       <div class="col-sm-5">
-                        <input name="NumeroQuestionario" type="hidden" value="55"/>
-                        <input class="form-control" type="text" name="NomeQuestionario" id="NomeQuestionario" placeholder="inserir aqui">
+                        <input class="form-control" type="text" name="nomeTeste" id="nomeTeste" placeholder="inserir aqui">
+                        <input name="numTeste" type="hidden" value="1"/>
                       </div>
                   </div>
                   <div class="card-body">

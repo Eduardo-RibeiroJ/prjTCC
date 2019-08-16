@@ -27,7 +27,6 @@ class TesteOnlineDAO
         mysqli_stmt_close($stmt);
 
     }
-
 }
 
 ?>
