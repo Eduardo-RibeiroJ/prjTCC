@@ -70,7 +70,12 @@
 
         <div id="titulo" class="row">
             <!---Título-->
-            <h2><strong>Teste Online</strong></h2>
+            <div class="col-6">
+              <h2><strong>Teste Online</strong></h2>
+            </div>
+            <div clss="col-2">
+              <a href="testeOnline.php" class="btn btn-primary btn-lg">Concluir</a>
+            </div>
         </div>
 
         <div class="row">

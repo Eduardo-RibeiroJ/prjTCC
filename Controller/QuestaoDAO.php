@@ -72,20 +72,40 @@ class QuestaoDAO
         return true;
      }
 
-    /*public function Listar(Produto $produto) {
+     public function Listar(Questao $questao) {
+        
+        if ($questao->getIdQuestao() == NULL) {
 
-        if ($produto->getIdProduto() == NULL) {
+            $query = $this->db->getConection()->query("SELECT * FROM tbQuestao WHERE idTesteOnline ='".$questao->getIdTesteOnline()."' ORDER BY idQuestao;");
+            $arrayQuery = array();
 
-           $SQL = $this->db->getConection()->query("SELECT * FROM tbProduto");
-           return $SQL;
+            while($reg = $query->fetch_array()) {
+
+                $questao = new Questao();
+                $questao->inserirQuestao(
+                    
+                    $reg['idTesteOnline'],
+                    $reg['idQuestao'],
+                    $reg['questao'],
+                    $reg['altA'],
+                    $reg['altB'],
+                    $reg['altC'],
+                    $reg['altD'],
+                    $reg['resposta'],
+                    $reg['tempo']
+                );
+
+                $arrayQuery[] = $questao;
+            }
+
+            return $arrayQuery;
 
         } else {
 
-           $SQL = $this->db->getConection()->query("SELECT * FROM tbProduto WHERE idProduto ='".$produto->getIdProduto()."'");
-           return $SQL;
-
+            $query = $this->db->getConection()->query("SELECT * FROM tbQuestao WHERE idTesteOnline ='".$questao->getIdTesteOnline()."' AND idQuestao ='".$questao->getIdQuestao()."';");
+            return $query;
         }
-     }     */
+     }
 }
 
 ?>

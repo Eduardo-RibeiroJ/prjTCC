@@ -1,15 +1,26 @@
 <?php
 include_once "../Model/Conexao.php";
-include_once "../Model/TesteOnline.php";
-include_once "../Controller/TesteOnlineDAO.php";
+include_once "../Model/Questao.php";
+include_once "../Controller/QuestaoDAO.php";
 
 $conn = new Conexao();
-$testeOnline = new TesteOnline();
-$testeOnlineDAO = new TesteOnlineDAO($conn);
-$arrayTestesOnline = $testeOnlineDAO->Listar($testeOnline);
+$questao = new Questao();
+$questaoDAO = new QuestaoDAO($conn);
+$questao->setIdTesteOnline($_GET['idTesteOnline']);
+
+if(isset($_GET['excluir']) && isset($_GET['idQuestao']) && isset($_GET['idTesteOnline'])) {
+
+  $questao->setIdTesteOnline($_GET["idTesteOnline"]);
+  $questao->setIdQuestao($_GET["idQuestao"]);
+  $questaoDAO = new QuestaoDAO($conn);
+  $questaoDAO->Apagar($questao);
+
+  echo "<script> alert('Questão excluída!');</script>";
+}
+
+$arrayQuestao = $questaoDAO->Listar($questao);
 
 ?>
-
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -75,51 +86,28 @@ $arrayTestesOnline = $testeOnlineDAO->Listar($testeOnline);
 
         <div id="titulo" class="row">
             <!---Título-->
-            <h2><strong>Teste Online</strong></h2>
+            <h2><strong>Teste Online <?= $_GET['nomeTesteOnline']; ?></strong></h2>
         </div>
 
+        <h2>Questões</h2>
         <div class="row">
-
-            <div class="card" style="width: 136rem;">
-                <form method="POST" action="AdicionarQuestao.php">
-                  <div class="card-body">
-                      <label class="col-sm-3 col-form-label">Nome do Teste Online</label>
-                      <div class="col-sm-5">
-                        <input class="form-control" type="text" name="nomeTeste" id="nomeTeste" placeholder="inserir aqui">
-                        <input name="numTeste" type="hidden" value="1"/>
-                      </div>
-                  </div>
-                  <div class="card-body">
-                      <input type="submit" name="Adicionar" id="Adicionar" class="btn btn-primary" value="Adicionar" />
-                  </div>
-                </form>
-
-            </div>
-        </div>
-
-        <h2>Testes Online Disponíveis</h2>
-        <div class="row">
-          <div class="col-8">
+          <div class="col-10">
             <table class="table table-striped">
               <tr>
-                <th>ID do Teste Online</th>
-                <th>Nome do Teste Online</th>
-                <th>Quantidade de Questões</th>
-                <th></th>
+                <th>Questão Nº</th>
+                <th>Questão</th>
                 <th></th>
                 <th></th>
               </tr>
 
-              <?php foreach($arrayTestesOnline as $reg): ?>
+              <?php foreach($arrayQuestao as $reg): ?>
 
-              <tr>
-                <td><?= $reg->getIdTesteOnline(); ?></td>
-                <td><?= $reg->getNomeTesteOnline(); ?></td>
-                <td><?= $reg->getQuantidadeQuestoes(); ?></td>
-                <td> <a href="questoes_listar.php?idTesteOnline=<?= $reg->getIdTesteOnline(); ?>">Visualizar Questões</a> </td>
-                <td> <a href="testeonline_alterar.php?idTesteOnline=<?= $reg->getIdTesteOnline(); ?>">Alterar</a> </td>
-                <td> <a href="testeonline_excluir.php?idTesteOnline=<?= $reg->getIdTesteOnline(); ?>">Excluir</a> </td>
-              </tr>
+                <tr>
+                  <td><?= $reg->getIdQuestao(); ?></td>
+                  <td><?= $reg->getQuestao(); ?></td>
+                  <td> <a href="testeOnline_questao_alterar.php?idTesteOnline=<?= $reg->getIdTesteOnline(); ?>&idQuestao=<?= $reg->getIdQuestao(); ?>">Alterar</a></td>
+                  <td> <a href="testeOnline_questao_listar.php?idTesteOnline=<?= $reg->getIdTesteOnline(); ?>&idQuestao=<?= $reg->getIdQuestao(); ?>&nomeTesteOnline=<?= $_GET['nomeTesteOnline']; ?>&excluir=1">Excluir</a> </td>
+                </tr>
 
               <?php endforeach; ?>
 

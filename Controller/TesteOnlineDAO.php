@@ -41,7 +41,11 @@ class TesteOnlineDAO
             while($reg = $query->fetch_array()) {
 
                 $testeOnline = new TesteOnline();
-                $testeOnline->inserirTesteOnline($reg['idTesteOnline'], $reg['nomeTesteOnline']);
+                $testeOnline->inserirTesteOnline(
+                    $reg['idTesteOnline'],
+                    $reg['nomeTesteOnline']
+                );
+
                 $arrayQuery[] = $testeOnline;
             }
 
@@ -53,10 +57,6 @@ class TesteOnlineDAO
            
             return $query;
         }
-
-        $arrayObjetos[] = $pessoa;
-
-
      }
 
 

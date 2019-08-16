@@ -14,6 +14,11 @@ class TesteOnline {
     public function getIdTesteOnline() {
         return $this->idTesteOnline;
     }
+
+    public function setidTesteOnline($idTesteOnline) {
+        $this->idTesteOnline = $idTesteOnline;
+    }
+
     public function getNomeTesteOnline() {
         return $this->nomeTesteOnline;
     }
