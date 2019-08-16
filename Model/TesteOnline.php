@@ -22,6 +22,11 @@ class TesteOnline {
 
         return TesteOnlineDAO::UltimoRegistro() + 1;
     }
+
+    public function getQuantidadeQuestoes() {
+
+        return TesteOnlineDAO::QuantidadeQuestoes($this);
+    }
 }
 
 ?>

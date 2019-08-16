@@ -1,3 +1,16 @@
+<?php
+include_once "../Model/Conexao.php";
+include_once "../Model/TesteOnline.php";
+include_once "../Controller/TesteOnlineDAO.php";
+
+$conn = new Conexao();
+$testeOnline = new TesteOnline();
+$testeOnlineDAO = new TesteOnlineDAO($conn);
+$arrayTestesOnline = $testeOnlineDAO->Listar($testeOnline);
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
@@ -82,7 +95,38 @@
                 </form>
 
             </div>
-        </div> 
+        </div>
+
+        <h2>Testes Online Disponíveis</h2>
+        <div class="row">
+          <div class="col-8">
+            <table class="table table-striped">
+              <tr>
+                <th>ID do Teste Online</th>
+                <th>Nome do Teste Online</th>
+                <th>Quantidade de Questões</th>
+                <th></th>
+                <th></th>
+                <th></th>
+              </tr>
+
+              <?php foreach($arrayTestesOnline as $reg): ?>
+
+              <tr>
+                <td><?= $reg->getIdTesteOnline(); ?></td>
+                <td><?= $reg->getNomeTesteOnline(); ?></td>
+                <td><?= $reg->getQuantidadeQuestoes(); ?></td>
+                <td> <a href="questoes_listar.php?idTesteOnline=<?= $reg->getIdTesteOnline(); ?>">Visualizar Questões</a> </td>
+                <td> <a href="testeonline_alterar.php?idTesteOnline=<?= $reg->getIdTesteOnline(); ?>">Alterar</a> </td>
+                <td> <a href="testeonline_excluir.php?idTesteOnline=<?= $reg->getIdTesteOnline(); ?>">Excluir</a> </td>
+              </tr>
+
+              <?php endforeach; ?>
+
+            </table>
+
+          </div>
+        </div>
 
 </div> 
 
