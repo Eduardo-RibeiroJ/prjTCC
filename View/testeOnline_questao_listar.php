@@ -101,7 +101,6 @@ $arrayQuestao = $questaoDAO->Listar($questao);
               </thead>
 
               </tbody>
-                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
                 <?php foreach($arrayQuestao as $reg): ?>
 
@@ -122,9 +121,5 @@ $arrayQuestao = $questaoDAO->Listar($questao);
 
 </div> 
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
 </body>
 </html>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
