@@ -126,7 +126,7 @@ if(isset($_GET['excluir']) && isset($_GET['idTesteOnline'])) {
                   <td><?= $reg->getQuantidadeQuestoes(); ?></td>
                   <td> <a href="testeOnline_questao_listar.php?idTesteOnline=<?= $reg->getIdTesteOnline(); ?>&nomeTesteOnline=<?= $reg->getNomeTesteOnline(); ?>">Visualizar Questões</a> </td>
                   <td> <a href="testeOnline_alterar.php?idTesteOnline=<?= $reg->getIdTesteOnline(); ?>">Alterar</a> </td>
-                  <td> <a href="testeOnline.php?idTesteOnline=<?= $reg->getIdTesteOnline(); ?>&excluir=1">Excluir</a> </td>
+                  <td> <a href="testeOnline.php?idTesteOnline=<?= $reg->getIdTesteOnline(); ?>&excluir">Excluir</a> </td>
                 </tr>
 
               <?php endforeach; ?>

@@ -46,7 +46,7 @@ class QuestaoDAO
         $resposta = $questao->getResposta();
         $tempo = $questao->getTempo();
 
-        $query = "UPDATE tbQuestao SET questao=?, altA=?, altB=?, altC=?, altD=?, resposta=?, tempo=?  WHERE idTesteOnline = ? AND idQuestao = ?";
+        $query = "UPDATE tbQuestao SET questao=?, altA=?, altB=?, altC=?, altD=?, resposta=?, tempo=?  WHERE idTesteOnline = ? AND idQuestao = ?;";
  
         $stmt = mysqli_prepare($this->db->getConection(), $query);
 
@@ -62,7 +62,7 @@ class QuestaoDAO
 
     public function Apagar(Questao $questao) {
 
-        $SQL = $this->db->getConection()->prepare("DELETE FROM tbQuestao WHERE idTesteOnline = ? AND idQuestao = ?");
+        $SQL = $this->db->getConection()->prepare("DELETE FROM tbQuestao WHERE idTesteOnline = ? AND idQuestao = ?;");
         $idTesteOnline = $questao->getIdTesteOnline();
         $idQuestao = $questao->getIdQuestao();
 
@@ -70,9 +70,9 @@ class QuestaoDAO
         $SQL->execute();
         
         return true;
-     }
+    }
 
-     public function Listar(Questao $questao) {
+    public function Listar(Questao $questao) {
         
         if ($questao->getIdQuestao() == NULL) {
 
@@ -105,7 +105,7 @@ class QuestaoDAO
             $query = $this->db->getConection()->query("SELECT * FROM tbQuestao WHERE idTesteOnline ='".$questao->getIdTesteOnline()."' AND idQuestao ='".$questao->getIdQuestao()."';");
             return $query;
         }
-     }
+    }
 }
 
 ?>

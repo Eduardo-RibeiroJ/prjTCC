@@ -34,8 +34,6 @@ $(function(){
             // Valida a resposta
         if(sucesso == true){
 
-            alert('Mensagem enviada com sucesso.');
-
             numQuestao ++;
 
             $('#numQuestao').html('Questão ' + numQuestao);
@@ -43,11 +41,33 @@ $(function(){
             $('input[type=number]').val(30);
             $('select').val("A");
             
-        }else {
+        } else {
             alert('Erro: ' + sucesso);
         }
 
         });
         
     });
+
+    $('.table tbody').on('click', '.btnExcluir', function(e) {
+        // Método post do Jquery
+        $.post('../Model/excluir.php', {
+            acao: "excluirQuestao",
+            idTesteOnline: $('#idTesteOnline').html(),
+            idQuestao: $(this).val()
+
+        }, function(sucesso) {
+
+        if(sucesso == true) {
+
+            $(this).find('tr').remove();
+            
+        } else {
+            alert('Erro: ' + sucesso);
+        }
+        });
+        
+    });
+
+
 });

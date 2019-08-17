@@ -59,6 +59,23 @@ class TesteOnlineDAO
         }
      }
 
+    public function Apagar(TesteOnline $testeOnline) {
+
+        $idTesteOnline = $testeOnline->getIdTesteOnline();
+
+        $SQL = $this->db->getConection()->prepare("DELETE FROM tbTesteOnline WHERE idTesteOnline = ?;");
+
+        $SQL->bind_param("i", $idTesteOnline);
+        $SQL->execute();
+
+        $SQL = $this->db->getConection()->prepare("DELETE FROM tbQuestao WHERE idTesteOnline = ?;");
+
+        $SQL->bind_param("i", $idTesteOnline);
+        $SQL->execute();
+        
+        return true;
+    }
+
 
     public function UltimoRegistro() 
     {

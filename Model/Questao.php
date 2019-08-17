@@ -87,6 +87,8 @@ class Questao {
     public function setTempo($tempo) {
         $this->tempo = $tempo;
     }
+
+    
 }
 
 ?>

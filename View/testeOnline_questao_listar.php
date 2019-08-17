@@ -7,17 +7,6 @@ $conn = new Conexao();
 $questao = new Questao();
 $questaoDAO = new QuestaoDAO($conn);
 $questao->setIdTesteOnline($_GET['idTesteOnline']);
-
-if(isset($_GET['excluir']) && isset($_GET['idQuestao']) && isset($_GET['idTesteOnline'])) {
-
-  $questao->setIdTesteOnline($_GET["idTesteOnline"]);
-  $questao->setIdQuestao($_GET["idQuestao"]);
-  $questaoDAO = new QuestaoDAO($conn);
-  $questaoDAO->Apagar($questao);
-
-  echo "<script> alert('Questão excluída!');</script>";
-}
-
 $arrayQuestao = $questaoDAO->Listar($questao);
 
 ?>
@@ -31,6 +20,9 @@ $arrayQuestao = $questaoDAO->Listar($questao);
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script type="text/javascript" language="javascript" src="../JS/jquery-3.2.1.js"></script>
+    <script src="../JS/script.js"></script>
+    <script src="../JS/ajax.js"></script>
 
 </head>
 
@@ -86,31 +78,43 @@ $arrayQuestao = $questaoDAO->Listar($questao);
 
         <div id="titulo" class="row">
             <!---Título-->
-            <h2><strong>Teste Online <?= $_GET['nomeTesteOnline']; ?></strong></h2>
+              <h2 id="idTesteOnline"><?= $_GET['idTesteOnline']; ?></h2>
+              <h2><pre> - Teste Online <?= $_GET['nomeTesteOnline']; ?></pre></h2>
         </div>
 
-        <h2>Questões</h2>
         <div class="row">
+          </div class="col-8">
+            <h2>Questões</h2>
+            <a href="testeOnline.php" class="btn-primary btn-lg">Voltar</a>
+          </div>
+
+
           <div class="col-10">
-            <table class="table table-striped">
-              <tr>
-                <th>Questão Nº</th>
-                <th>Questão</th>
-                <th></th>
-                <th></th>
-              </tr>
-
-              <?php foreach($arrayQuestao as $reg): ?>
-
+            <table class="table">
+              <thead>
                 <tr>
-                  <td><?= $reg->getIdQuestao(); ?></td>
-                  <td><?= $reg->getQuestao(); ?></td>
-                  <td> <a href="testeOnline_questao_alterar.php?idTesteOnline=<?= $reg->getIdTesteOnline(); ?>&idQuestao=<?= $reg->getIdQuestao(); ?>">Alterar</a></td>
-                  <td> <a href="testeOnline_questao_listar.php?idTesteOnline=<?= $reg->getIdTesteOnline(); ?>&idQuestao=<?= $reg->getIdQuestao(); ?>&nomeTesteOnline=<?= $_GET['nomeTesteOnline']; ?>&excluir=1">Excluir</a> </td>
+                  <th>Questão Nº</th>
+                  <th>Questão</th>
+                  <th></th>
+                  <th></th>
                 </tr>
+              </thead>
 
-              <?php endforeach; ?>
+              </tbody>
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
+                <?php foreach($arrayQuestao as $reg): ?>
+
+                  <tr>
+                    <td><?= $reg->getIdQuestao(); ?></td>
+                    <td><?= $reg->getQuestao(); ?></td>
+                    <td><button class="btnExcluir" value="<?= $reg->getIdQuestao(); ?>">Excluir</button></td>
+                    <td> <a href="testeOnline_questao_alterar.php?idTesteOnline=<?= $reg->getIdTesteOnline(); ?>&idQuestao=<?= $reg->getIdQuestao(); ?>">Alterar</a></td>
+                  </tr>
+
+                <?php endforeach; ?>
+
+              </tbody>  
             </table>
 
           </div>
@@ -118,12 +122,9 @@ $arrayQuestao = $questaoDAO->Listar($questao);
 
 </div> 
 
-    <!-- JavaScript (Opcional) -->
-    <!-- jQuery primeiro, depois Popper.js, depois Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-    <script src="../JS/script.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 </body>
 </html>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
