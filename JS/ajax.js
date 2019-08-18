@@ -3,7 +3,7 @@ $(function(){
 
     var numQuestao = 1;
 
-    $('#btnAdicionar').click(function(e) {
+    $('#formInserirQuestao').on('click', '#btnAdicionar', function(e) {
 
         // Cancela o envio do formulário
         e.preventDefault();
@@ -49,8 +49,33 @@ $(function(){
         
     });
 
-    $('.table tbody').on('click', '.btnExcluir', function(e) {
-        // Método post do Jquery
+    $('#tabelaTesteOnline').on('click', '.btnExcluir', function(e) {
+
+        var $linhaAlvo = $(this).closest('tr');
+
+        $.post('../Model/excluir.php', {
+            acao: "excluirTesteOnline",
+            idTesteOnline: $(this).val()
+
+        }, function(sucesso) {
+
+        if(sucesso == true) {
+
+            $linhaAlvo.fadeOut(500,function(){ 
+                $linhaAlvo.remove();                 
+            }); 
+            
+        } else {
+            alert('Erro: ' + sucesso);
+        }
+        });
+        
+    });
+
+    $('#tabelaQuestao').on('click', '.btnExcluir', function(e) {
+
+        var $linhaAlvo = $(this).closest('tr');
+
         $.post('../Model/excluir.php', {
             acao: "excluirQuestao",
             idTesteOnline: $('#idTesteOnline').html(),
@@ -60,7 +85,9 @@ $(function(){
 
         if(sucesso == true) {
 
-            $(this).find('tr').remove();
+            $linhaAlvo.fadeOut(500,function(){ 
+                $linhaAlvo.remove();                 
+            }); 
             
         } else {
             alert('Erro: ' + sucesso);
@@ -68,6 +95,5 @@ $(function(){
         });
         
     });
-
 
 });

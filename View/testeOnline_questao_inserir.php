@@ -81,7 +81,7 @@
         <div class="row">
 
             <div class="card" style="width: 136rem;">
-                  <form>
+                  <form id="formInserirQuestao">
                     <div class="card-body">
                             <div class="form-group row">
 
@@ -145,7 +145,8 @@
                 </ul>
 
                     <div class="card-body">
-                        <button id="btnAdicionar">Adicionar</button>
+                        <button id="btnAdicionar" class="btn btn-primary">Adicionar</button>
+                        <button id="btnLimpar" class="btn btn-primary" type="reset">Limpar</button>
                     </div>
                 </div>
            </div> 

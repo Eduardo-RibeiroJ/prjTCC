@@ -8,15 +8,6 @@ $testeOnline = new TesteOnline();
 $testeOnlineDAO = new TesteOnlineDAO($conn);
 $arrayTestesOnline = $testeOnlineDAO->Listar($testeOnline);
 
-if(isset($_GET['excluir']) && isset($_GET['idTesteOnline'])) {
-
-  $testeOnline->setIdTesteOnline($_GET["idTesteOnline"]);
-  $testeOnlineDAO = new TesteOnlineDAO($conn);
-  $testeOnlineDAO->Apagar($testeOnline);
-
-  echo "<script> alert('Teste Online excluído!');</script>";
-}
-
 ?>
 
 <!DOCTYPE html>
@@ -28,6 +19,9 @@ if(isset($_GET['excluir']) && isset($_GET['idTesteOnline'])) {
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script type="text/javascript" language="javascript" src="../JS/jquery-3.2.1.js"></script>
+    <script src="../JS/script.js"></script>
+    <script src="../JS/ajax.js"></script>
 
 </head>
 
@@ -93,7 +87,7 @@ if(isset($_GET['excluir']) && isset($_GET['idTesteOnline'])) {
                   <div class="card-body">
                       <label class="col-sm-3 col-form-label">Nome do Teste Online</label>
                       <div class="col-sm-5">
-                        <input class="form-control" type="text" name="nomeTeste" id="nomeTeste" placeholder="inserir aqui">
+                        <input class="form-control" type="text" name="nomeTeste" id="nomeTeste" placeholder="inserir aqui" required>
                         <input name="numTeste" type="hidden" value="1"/>
                       </div>
                   </div>
@@ -108,7 +102,7 @@ if(isset($_GET['excluir']) && isset($_GET['idTesteOnline'])) {
         <h2>Testes Online Disponíveis</h2>
         <div class="row">
           <div class="col-8">
-            <table class="table table-striped">
+            <table id="tabelaTesteOnline" class="table table-striped">
               <tr>
                 <th>ID do Teste Online</th>
                 <th>Nome do Teste Online</th>
@@ -124,9 +118,9 @@ if(isset($_GET['excluir']) && isset($_GET['idTesteOnline'])) {
                   <td><?= $reg->getIdTesteOnline(); ?></td>
                   <td><?= $reg->getNomeTesteOnline(); ?></td>
                   <td><?= $reg->getQuantidadeQuestoes(); ?></td>
-                  <td> <a href="testeOnline_questao_listar.php?idTesteOnline=<?= $reg->getIdTesteOnline(); ?>&nomeTesteOnline=<?= $reg->getNomeTesteOnline(); ?>">Visualizar Questões</a> </td>
+                  <td><button class="btnExcluir btn btn-primary" type="button" value="<?= $reg->getIdTesteOnline(); ?>">Excluir</button></td>
+                  <td> <a class="btn btn-primary" href="testeOnline_questao_listar.php?idTesteOnline=<?= $reg->getIdTesteOnline(); ?>&nomeTesteOnline=<?= $reg->getNomeTesteOnline(); ?>">Visualizar Questões</a> </td>
                   <td> <a href="testeOnline_alterar.php?idTesteOnline=<?= $reg->getIdTesteOnline(); ?>">Alterar</a> </td>
-                  <td> <a href="testeOnline.php?idTesteOnline=<?= $reg->getIdTesteOnline(); ?>&excluir">Excluir</a> </td>
                 </tr>
 
               <?php endforeach; ?>
@@ -136,14 +130,7 @@ if(isset($_GET['excluir']) && isset($_GET['idTesteOnline'])) {
           </div>
         </div>
 
-</div> 
-
-    <!-- JavaScript (Opcional) -->
-    <!-- jQuery primeiro, depois Popper.js, depois Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-    <script src="../JS/script.js"></script>
+</div>
 
 </body>
 </html>

@@ -85,35 +85,30 @@ $arrayQuestao = $questaoDAO->Listar($questao);
         <div class="row">
           </div class="col-8">
             <h2>Questões</h2>
-            <a href="testeOnline.php" class="btn-primary btn-lg">Voltar</a>
+            <a href="testeOnline.php" class="btn btn-primary btn-lg">Voltar</a>
           </div>
 
 
-          <div class="col-10">
-            <table class="table">
-              <thead>
+          <div class="col-12">
+            <table id="tabelaQuestao" class="table table-striped">
                 <tr>
                   <th>Questão Nº</th>
                   <th>Questão</th>
                   <th></th>
                   <th></th>
                 </tr>
-              </thead>
-
-              </tbody>
 
                 <?php foreach($arrayQuestao as $reg): ?>
 
                   <tr>
                     <td><?= $reg->getIdQuestao(); ?></td>
                     <td><?= $reg->getQuestao(); ?></td>
-                    <td><button class="btnExcluir" value="<?= $reg->getIdQuestao(); ?>">Excluir</button></td>
+                    <td><button class="btnExcluir btn btn-primary" type="button" value="<?= $reg->getIdQuestao(); ?>">Excluir</button></td>
                     <td> <a href="testeOnline_questao_alterar.php?idTesteOnline=<?= $reg->getIdTesteOnline(); ?>&idQuestao=<?= $reg->getIdQuestao(); ?>">Alterar</a></td>
                   </tr>
 
                 <?php endforeach; ?>
 
-              </tbody>  
             </table>
 
           </div>
