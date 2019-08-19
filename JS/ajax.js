@@ -49,6 +49,39 @@ $(function(){
         
     });
 
+    $('#formAlterarQuestao').on('click', '#btnSalvar', function(e) {
+
+        var numTesteOnline = $('#numTeste').html();
+        // Cancela o envio do formulário
+        e.preventDefault();
+
+        // Método post do Jquery
+        $.post('../Model/alterar.php', {
+            acao: "alterarQuestao",
+            numTeste: numTesteOnline, //<numTeste(variavel que vai enviar) || numTeste>(variavel daqui)
+            numQuestao: numQuestao,
+            questao: $('#questao').val(),
+            a: $('#a').val(),
+            b: $('#b').val(),
+            c: $('#c').val(),
+            d: $('#d').val(),
+            resposta: $('#resposta').val(),
+            tempo: $('#tempo').val()
+
+        }, function(sucesso) { //RETORNO DO SALVAR
+            // Valida a resposta
+        if(sucesso == true) {
+
+            window.location.replace('TesteOnline_questao_listar.php?idTesteOnline=' + numTesteOnline);
+            
+        } else {
+            alert('Erro: ' + sucesso);
+        }
+
+        });
+        
+    });
+
     $('#tabelaTesteOnline').on('click', '.btnExcluir', function(e) {
 
         var $linhaAlvo = $(this).closest('tr');

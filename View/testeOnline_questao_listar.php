@@ -1,12 +1,22 @@
 <?php
 include_once "../Model/Conexao.php";
 include_once "../Model/Questao.php";
+include_once "../Model/TesteOnline.php";
+include_once "../Controller/TesteOnlineDAO.php";
 include_once "../Controller/QuestaoDAO.php";
 
 $conn = new Conexao();
+
+$testeOnline = new TesteOnline();
 $questao = new Questao();
+
+$testeOnlineDAO = new TesteOnlineDAO($conn);
 $questaoDAO = new QuestaoDAO($conn);
+
+$testeOnline->setIdTesteOnline($_GET['idTesteOnline']);
 $questao->setIdTesteOnline($_GET['idTesteOnline']);
+
+$testeOnlineDAO->Listar($testeOnline);
 $arrayQuestao = $questaoDAO->Listar($questao);
 
 ?>
@@ -78,8 +88,8 @@ $arrayQuestao = $questaoDAO->Listar($questao);
 
         <div id="titulo" class="row">
             <!---Título-->
-              <h2 id="idTesteOnline"><?= $_GET['idTesteOnline']; ?></h2>
-              <h2><pre> - Teste Online <?= $_GET['nomeTesteOnline']; ?></pre></h2>
+              <h2 id="idTesteOnline"><?= $testeOnline->getIdTesteOnline(); ?></h2>
+              <h2><pre> - Teste Online <?= $testeOnline->getNomeTesteOnline(); ?></pre></h2>
         </div>
 
         <div class="row">
@@ -104,7 +114,7 @@ $arrayQuestao = $questaoDAO->Listar($questao);
                     <td><?= $reg->getIdQuestao(); ?></td>
                     <td><?= $reg->getQuestao(); ?></td>
                     <td><button class="btnExcluir btn btn-primary" type="button" value="<?= $reg->getIdQuestao(); ?>">Excluir</button></td>
-                    <td> <a href="testeOnline_questao_alterar.php?idTesteOnline=<?= $reg->getIdTesteOnline(); ?>&idQuestao=<?= $reg->getIdQuestao(); ?>">Alterar</a></td>
+                    <td> <a class="btn btn-primary" href="testeOnline_questao_alterar.php?idTesteOnline=<?= $reg->getIdTesteOnline(); ?>&idQuestao=<?= $reg->getIdQuestao(); ?>">Alterar</a></td>
                   </tr>
 
                 <?php endforeach; ?>

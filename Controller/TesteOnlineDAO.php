@@ -32,7 +32,6 @@ class TesteOnlineDAO
 
     public function Listar(TesteOnline $testeOnline) {
 
-        
         if ($testeOnline->getIdTesteOnline() == NULL) {
 
             $query = $this->db->getConection()->query("SELECT * FROM tbTesteOnline ORDER BY idTesteOnline;");
@@ -55,7 +54,11 @@ class TesteOnlineDAO
 
             $query = $this->db->getConection()->query("SELECT * FROM tbTesteOnline WHERE idTesteOnline ='".$testeOnline->getIdTesteOnline()."';");
            
-            return $query;
+            $reg = $query->fetch_array();
+            $testeOnline->inserirTesteOnline(
+                    $reg['idTesteOnline'],
+                    $reg['nomeTesteOnline']
+            );
         }
      }
 

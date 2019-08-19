@@ -87,7 +87,7 @@ $arrayTestesOnline = $testeOnlineDAO->Listar($testeOnline);
                   <div class="card-body">
                       <label class="col-sm-3 col-form-label">Nome do Teste Online</label>
                       <div class="col-sm-5">
-                        <input class="form-control" type="text" name="nomeTeste" id="nomeTeste" placeholder="inserir aqui" required>
+                        <input class="form-control" type="text" name="nomeTeste" id="nomeTeste" placeholder="Digite o nome do teste..." required autofocus>
                         <input name="numTeste" type="hidden" value="1"/>
                       </div>
                   </div>
@@ -120,7 +120,6 @@ $arrayTestesOnline = $testeOnlineDAO->Listar($testeOnline);
                   <td><?= $reg->getQuantidadeQuestoes(); ?></td>
                   <td><button class="btnExcluir btn btn-primary" type="button" value="<?= $reg->getIdTesteOnline(); ?>">Excluir</button></td>
                   <td> <a class="btn btn-primary" href="testeOnline_questao_listar.php?idTesteOnline=<?= $reg->getIdTesteOnline(); ?>&nomeTesteOnline=<?= $reg->getNomeTesteOnline(); ?>">Visualizar Questões</a> </td>
-                  <td> <a href="testeOnline_alterar.php?idTesteOnline=<?= $reg->getIdTesteOnline(); ?>">Alterar</a> </td>
                 </tr>
 
               <?php endforeach; ?>
