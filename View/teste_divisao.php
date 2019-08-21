@@ -7,6 +7,18 @@
 
 					<!-- Banner -->
 
+<?php
+include_once "../Model/Conexao.php";
+include_once "../Model/TesteOnline.php";
+include_once "../Controller/TesteOnlineDAO.php";
+
+$conn = new Conexao();
+$testeOnline = new TesteOnline();
+$testeOnlineDAO = new TesteOnlineDAO($conn);
+$arrayTestesOnline = $testeOnlineDAO->Listar($testeOnline);
+
+?>
+
         <section>                
             <div class="container-fluid">
                 <div class="row">
