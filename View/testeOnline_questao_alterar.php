@@ -31,22 +31,21 @@ $questaoDAO->Listar($questao);
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="css/design.css">
-    <script type="text/javascript" language="javascript" src="../JS/jquery-3.2.1.js"></script>
-    <script src="../JS/script.js"></script>
-    <script src="../JS/ajax.js"></script>
 
 </head>
 
-    <body>
+  <body>
 
     <header>
+          <!-- Navbar -->
+          <!-- Navbar (sit on top) -->
       <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #0F91CF;">
-            <a class="navbar-brand" href="#"> 
-              <img src="Imagens/Logo(2).jpg" width="50" height="50" class="d-inline-block align-top" alt="">
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
-                    <span class="navbar-toggler-icon"></span>
-                  </button>
+        <a class="navbar-brand" href="#"> 
+            <img src="Imagens/Screenshot_1.png" width="150" height="50" class="d-inline-block align-top" alt="">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
+          <span class="navbar-toggler-icon"></span>
+        </button>
           
             <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
               <ul class="navbar-nav mr-auto">
@@ -70,20 +69,15 @@ $questaoDAO->Listar($questao);
                   </div>
                 </li>
                 <li class="nav-item">
-                        <a class="nav-link" href="#">Trabalhe conosoco</a>
+                  <a class="nav-link" href="#">Trabalhe conosoco</a>
                 </li>
                 <li class="nav-item">
-                        <a class="nav-link" href="#">Contatos</a>
-                </li>      
-             <!-- Pesquisa -->
+                  <a class="nav-link" href="#">Contatos</a>
+                </li>
               </ul>
-              <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" aria-label="Pesquisar">
-                <button class="btn btn-outline-Secondary my-2 my-sm-0" type="submit">Pesquisar</button>
-              </form>
-            </div>
-      </nav>
-    </header>
+            </div>      
+        </nav>
+      </header>
 
     <!------------------------------------ Conteudo--------------------------------------------------------------->
 
@@ -123,12 +117,12 @@ $questaoDAO->Listar($questao);
                       </div>
                       <br>
                       <div class="form-row">
-                  <div class="form-group col-md-2">
+                  <div class="form-group col-md-2.5">
                         <label for="tempo">Tempo de resposta</label>
                         <input type="number" class="form-control" id="tempo" name="tempo" value="<?= $questao->getTempo(); ?>">
                   </div>
                   
-                      <div class="form-group col-md-2">
+                      <div class="form-group col-md-3">
                           <label for="resposta">Resposta</label>
                           <select id="resposta" name="resposta" class="form-control" tabindex="1">
 
@@ -185,5 +179,13 @@ $questaoDAO->Listar($questao);
       </form>
 
   </div>
+
+  <script type="text/javascript" language="javascript" src="../JS/jquery-3.2.1.js"></script>
+    <!-- Script para o menu-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    
+    <script src="../JS/script.js"></script>
+    <script src="../JS/ajax.js"></script>
 </body>
 </html>
