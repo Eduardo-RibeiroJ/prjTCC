@@ -9,7 +9,7 @@
 					
 					<!-- Rodapé da barra lateral -->
 					<footer id="footer">
-						<p class="copyright">&copy; Parque Tecnológico de Sorocaba.</p>
+						<p>Testando rodapé</p>
 					</footer>
 					
 					<!-- Scripts -->
