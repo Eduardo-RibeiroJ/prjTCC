@@ -14,7 +14,6 @@
 
 <!-- Início da página  -->
 <body>
-<main>
 
 				<!-- Cabeçalho na parte superior de todas as páginas -->
                 <!-- Navbar -->

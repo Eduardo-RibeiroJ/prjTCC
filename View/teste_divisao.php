@@ -1,8 +1,3 @@
-<?php include_once 'header.php'; ?>
-<!-- html-->
-	<!-- body -->
-			<!-- main -->
-
 <?php
 include_once "../Model/Conexao.php";
 include_once "../Model/TesteOnline.php";
@@ -14,11 +9,14 @@ $testeOnlineDAO = new TesteOnlineDAO($conn);
 $arrayTestesOnline = $testeOnlineDAO->Listar($testeOnline);
 
 ?>
+
+<?php include_once 'header.php'; ?>
+
     <div class="container-fluid">
         <section>                
                 <div class="row">
                     <div id="titulo">
-                        <!---Título-->
+                        
                         <h2><strong>Teste Online</strong></h2>
                     </div>
 
@@ -73,9 +71,4 @@ $arrayTestesOnline = $testeOnlineDAO->Listar($testeOnline);
         </section>
      </div>
 
-				<!-- inner -->
-			<!-- main -->
-		<!-- wrapper -->
-	<!-- body -->
-<!-- html-->
 <?php include 'footer.php'; ?>
