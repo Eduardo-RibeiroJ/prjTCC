@@ -20,7 +20,7 @@
 
                                  <?php $numTeste = TesteOnline::getUltimoRegistro(); ?>
                                 <h3 id="numTeste"><?= $numTeste;?></h3>
-                                <h3>&nbsp;- Nome do Teste Online:&nbsp;</h3> <!--  &nbsp dá espaço -->
+                                <h3>&nbsp;- Nome:&nbsp;</h3> <!--  &nbsp dá espaço -->
                                 <h3 id="nomeTeste"><?= $_POST['nomeTeste']; ?> </h3>
 
                             </div>
