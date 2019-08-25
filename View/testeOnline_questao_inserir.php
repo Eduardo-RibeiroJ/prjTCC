@@ -8,13 +8,7 @@
     <div class="container-fluid">
 
         <div id="titulo" class="row">
-            <!---Título-->
-            <div class="col-6">
               <h2><strong>Teste Online</strong></h2>
-            </div>
-            <div clss="col-2">
-              <a href="testeOnline.php" class="btn btn-primary btn-lg">Concluir</a>
-            </div>
         </div>
 
         <div class="row">
@@ -84,8 +78,9 @@
                 </ul>
 
                     <div class="card-body">
-                        <button id="btnAdicionar" class="btn btn-primary">Adicionar</button>
-                        <button id="btnLimpar" class="btn btn-primary" type="reset">Limpar</button>
+                        <button id="btnAdicionar" class="btn btn-secondary">Adicionar</button>
+                        <button id="btnLimpar" class="btn btn-secondary" type="reset">Limpar</button>
+                            <a href="testeOnline.php" class="btn btn-primary">Concluir</a>
                     </div>
                 </div>
            </div> 
