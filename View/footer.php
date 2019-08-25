@@ -5,12 +5,10 @@
 				<!-- inner -->
 
                 <footer>
-                    <div class="row">
+                   
                         <div class="col-12 text-center">
                             Biro Biro
                         </div>
-
-                    </div>
                 </footer>
 
 					<!-- Scripts -->
