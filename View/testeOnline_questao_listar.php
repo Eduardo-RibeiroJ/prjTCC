@@ -26,19 +26,11 @@ $arrayQuestao = $questaoDAO->Listar($questao);
     <div class="container-fluid">
 
         <div id="titulo" class="row">
-            <!---Título-->
+            <!---Título-->  
               <h2 id="idTesteOnline"><?= $testeOnline->getIdTesteOnline(); ?></h2>
-              <h2><pre> - Teste Online <?= $testeOnline->getNomeTesteOnline(); ?></pre></h2>
+              <h2>&nbsp;- <?= $testeOnline->getNomeTesteOnline(); ?></h2>
         </div>
 
-        <div class="row">
-          </div class="col-8">
-            <h2>Questões</h2>
-            <a href="testeOnline.php" class="btn btn-primary btn-lg">Voltar</a>
-          </div>
-
-
-          <div class="col-12">
             <table id="tabelaQuestao" class="table table-striped">
                 <tr>
                   <th>Questão Nº</th>
@@ -52,8 +44,8 @@ $arrayQuestao = $questaoDAO->Listar($questao);
                   <tr>
                     <td><?= $reg->getIdQuestao(); ?></td>
                     <td><?= $reg->getQuestao(); ?></td>
-                    <td><button class="btnExcluir btn btn-primary" type="button" value="<?= $reg->getIdQuestao(); ?>">Excluir</button></td>
-                    <td> <a class="btn btn-primary" href="testeOnline_questao_alterar.php?idTesteOnline=<?= $reg->getIdTesteOnline(); ?>&idQuestao=<?= $reg->getIdQuestao(); ?>">Alterar</a></td>
+                    <td><button class="btn btn-primary" type="button" value="<?= $reg->getIdQuestao(); ?>">Excluir</button>
+                        <a class="btn btn-primary" href="testeOnline_questao_alterar.php?idTesteOnline=<?= $reg->getIdTesteOnline(); ?>&idQuestao=<?= $reg->getIdQuestao(); ?>" role="button">Alterar</a></td>
                   </tr>
 
                 <?php endforeach; ?>
@@ -61,8 +53,6 @@ $arrayQuestao = $questaoDAO->Listar($questao);
             </table>
 
           </div>
-        </div>
-
-</div> 
+      </div> 
 
 <?php include 'footer.php'; ?>

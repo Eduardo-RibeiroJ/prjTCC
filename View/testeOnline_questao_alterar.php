@@ -27,25 +27,23 @@ $questaoDAO->Listar($questao);
     <div class="container-fluid">
 
         <div id="titulo" class="row">
-            <!---Título-->
-            <div class="col-6">
               <h2><strong>Teste Online</strong></h2>
-            </div>
-            <div clss="col-2">
-              <a href="testeOnline_questao_listar.php?idTesteOnline=<?= $testeOnline->getIdTesteOnline(); ?>" class="btn btn-primary btn-lg">Voltar</a>
-            </div>
+              <div class="col-sm-6">
+              <a href="testeOnline_questao_listar.php?idTesteOnline=<?= $testeOnline->getIdTesteOnline(); ?>" class="btn btn-primary btn-lg">Voltar</a> 
+              </div>    
         </div>
+
+        <br>
 
         <div class="row">
 
             <div class="card" style="width: 136rem;">
                   <form id="formAlterarQuestao">
                     <div class="card-body">
+                    <br>
                             <div class="form-group row">
-
                                 <h3 id="numTeste"><?= $testeOnline->getIdTesteOnline(); ?></h3>
-
-                                <h3><pre> - Nome do Teste Online: </pre></h3>
+                                <h3>&nbsp;- Teste Online:&nbsp;</h3>
                                 <h3 id="nomeTeste"><?= $testeOnline->getNomeTesteOnline(); ?> </h3>
                             </div>
                             <br>

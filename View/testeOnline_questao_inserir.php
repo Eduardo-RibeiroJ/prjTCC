@@ -17,12 +17,10 @@
                   <form id="formInserirQuestao">
                     <div class="card-body">
                             <div class="form-group row">
-
                                  <?php $numTeste = TesteOnline::getUltimoRegistro(); ?>
                                 <h3 id="numTeste"><?= $numTeste;?></h3>
                                 <h3>&nbsp;- Nome:&nbsp;</h3> <!--  &nbsp dá espaço -->
                                 <h3 id="nomeTeste"><?= $_POST['nomeTeste']; ?> </h3>
-
                             </div>
                             <br>
                       <h3 class="card-title" id="numQuestao">Questão 1</h3>
