@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 27-Ago-2019 às 20:02
--- Versão do servidor: 10.4.6-MariaDB
--- versão do PHP: 7.3.8
+-- Tempo de geração: 28-Ago-2019 às 01:49
+-- Versão do servidor: 10.3.16-MariaDB
+-- versão do PHP: 7.1.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -230,6 +230,17 @@ CREATE TABLE `tbprocessocompetencia` (
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `tbprocessopergunta`
+--
+
+CREATE TABLE `tbprocessopergunta` (
+  `idProcesso` int(11) NOT NULL,
+  `idPergunta` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `tbprocessoseletivo`
 --
 
@@ -381,6 +392,13 @@ ALTER TABLE `tbprocessocompetencia`
   ADD KEY `FK_COMPETENCIA` (`idCompetencia`);
 
 --
+-- Índices para tabela `tbprocessopergunta`
+--
+ALTER TABLE `tbprocessopergunta`
+  ADD PRIMARY KEY (`idProcesso`,`idPergunta`),
+  ADD KEY `FK_IDPERGUNTA` (`idPergunta`);
+
+--
 -- Índices para tabela `tbprocessoseletivo`
 --
 ALTER TABLE `tbprocessoseletivo`
@@ -505,6 +523,13 @@ ALTER TABLE `tbprocessocandteste`
 ALTER TABLE `tbprocessocompetencia`
   ADD CONSTRAINT `FK_COMPETENCIA` FOREIGN KEY (`idCompetencia`) REFERENCES `tbcompetencia` (`idCompetencia`),
   ADD CONSTRAINT `FK_PROCESSO` FOREIGN KEY (`idProcesso`) REFERENCES `tbprocessoseletivo` (`idProcesso`);
+
+--
+-- Limitadores para a tabela `tbprocessopergunta`
+--
+ALTER TABLE `tbprocessopergunta`
+  ADD CONSTRAINT `FK_IDPERGUNTA` FOREIGN KEY (`idPergunta`) REFERENCES `tbpergunta` (`idPergunta`),
+  ADD CONSTRAINT `FK_IDPROCESSO` FOREIGN KEY (`idProcesso`) REFERENCES `tbprocessoseletivo` (`idProcesso`);
 
 --
 -- Limitadores para a tabela `tbprocessoseletivo`
