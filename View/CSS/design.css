@@ -17,3 +17,10 @@
         padding: 10px 0;
         background-color: rgba(48, 95, 141, 0.24);
     }
+
+    .limitador {
+        white-space: normal;
+        height: 10.2em;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
