@@ -10,7 +10,7 @@ $(function(){
 
 
         if($('#numQuestao').html() == "Questão 1") { //Salvará o questionário apenas na primeira inclusão de questão
-            $.post('../Model/salvar.php', {
+            $.post('../PostAjax/salvar.php', {
             acao: "salvarTesteOnline",
             numTeste: $('#numTeste').html(),
             nomeTeste: $('#nomeTeste').html()
@@ -18,7 +18,7 @@ $(function(){
         }
 
         // Método post do Jquery
-        $.post('../Model/salvar.php', {
+        $.post('../PostAjax/salvar.php', {
             acao: "salvarQuestao",
             numTeste: $('#numTeste').html(), //<numTeste(variavel que vai enviar) || numTeste>(variavel daqui)
             numQuestao: numQuestao,
@@ -56,7 +56,7 @@ $(function(){
         e.preventDefault();
 
         // Método post do Jquery
-        $.post('../Model/alterar.php', {
+        $.post('../PostAjax/alterar.php', {
             acao: "alterarQuestao",
             numTeste: numTesteOnline, //<numTeste(variavel que vai enviar) || numTeste>(variavel daqui)
             numQuestao: numQuestao,
@@ -86,7 +86,7 @@ $(function(){
 
         var $linhaAlvo = $(this).closest('tr');
 
-        $.post('../Model/excluir.php', {
+        $.post('../PostAjax/excluir.php', {
             acao: "excluirTesteOnline",
             idTesteOnline: $(this).val()
 
@@ -109,7 +109,7 @@ $(function(){
 
         var $linhaAlvo = $(this).closest('tr');
 
-        $.post('../Model/excluir.php', {
+        $.post('../PostAjax/excluir.php', {
             acao: "excluirQuestao",
             idTesteOnline: $('#idTesteOnline').html(),
             idQuestao: $(this).val()
