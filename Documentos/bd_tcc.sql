@@ -276,11 +276,11 @@ CREATE TABLE `tbprocessoteste` (
 CREATE TABLE `tbquestao` (
   `idTesteOnline` int(11) NOT NULL,
   `idQuestao` int(11) NOT NULL,
-  `questao` varchar(250) NOT NULL,
-  `altA` varchar(150) NOT NULL,
-  `altB` varchar(150) NOT NULL,
-  `altC` varchar(150) NOT NULL,
-  `altD` varchar(150) NOT NULL,
+  `questao` varchar(1000) NOT NULL,
+  `altA` varchar(500) NOT NULL,
+  `altB` varchar(500) NOT NULL,
+  `altC` varchar(500) NOT NULL,
+  `altD` varchar(500) NOT NULL,
   `resposta` varchar(1) NOT NULL,
   `tempo` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
