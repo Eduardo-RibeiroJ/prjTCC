@@ -1,7 +1,7 @@
 <?php
 include_once "../Model/Conexao.php";
-include_once "../Model/Questao.php";
-include_once "../Model/TesteOnline.php";
+include_once "../PostAjax/Questao.php";
+include_once "../PostAjax/TesteOnline.php";
 include_once "../Controller/TesteOnlineDAO.php";
 include_once "../Controller/QuestaoDAO.php";
 
@@ -29,11 +29,17 @@ $arrayQuestao = $questaoDAO->Listar($questao);
             <!---Título-->  
               <h2 id="idTesteOnline"><?= $testeOnline->getIdTesteOnline(); ?></h2>
               <h2>&nbsp;- <?= $testeOnline->getNomeTesteOnline(); ?></h2>
-        </div>
 
-            <table id="tabelaQuestao" class="table table-striped">
+              <div class="col-lg-2" style="text-align: right;">
+               <a href="testeOnline.php?idTesteOnline=<?= $testeOnline->getIdTesteOnline(); ?>" class="btn btn-primary">Voltar</a> 
+               <button class="btn btn-primary" type="button" value="">Adicionar</button>
+               </div>
+        </div><br>
+
+            <table class="table" id="tabelaQuestao">
+              <thead class="thead-dark">
                 <tr>
-                  <th>Questão Nº</th>
+                  <th>Nº</th>
                   <th>Questão</th>
                   <th></th>
                   <th></th>
@@ -43,16 +49,16 @@ $arrayQuestao = $questaoDAO->Listar($questao);
 
                   <tr>
                     <td><?= $reg->getIdQuestao(); ?></td>
-                    <td><?= $reg->getQuestao(); ?></td>
-                    <td><button class="btn btn-primary" type="button" value="<?= $reg->getIdQuestao(); ?>">Excluir</button>
-                        <a class="btn btn-primary" href="testeOnline_questao_alterar.php?idTesteOnline=<?= $reg->getIdTesteOnline(); ?>&idQuestao=<?= $reg->getIdQuestao(); ?>" role="button">Alterar</a></td>
-                  </tr>
+                    <td>
+                      <label class = "limitador text-justify"><?= $reg->getQuestao(); ?></label>
+                      <button class="btn btn-primary" type="button" value="<?= $reg->getIdQuestao(); ?>">Excluir</button>
+                      <a class="btn btn-primary" href="testeOnline_questao_alterar.php?idTesteOnline=<?= $reg->getIdTesteOnline(); ?>&idQuestao=<?= $reg->getIdQuestao(); ?>" role="button">Alterar</a>
+                     </td>
+                   </tr>
 
                 <?php endforeach; ?>
-
-            </table>
-
-          </div>
+               </thead>
+             </table>
       </div> 
 
 <?php include 'footer.php'; ?>
