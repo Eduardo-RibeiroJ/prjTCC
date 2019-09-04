@@ -4,7 +4,7 @@
 			<!-- main -->
 				<!-- inner -->
 
-                    <footer class="footer">
+                    <footer class="footer bg-light">
                         <div class="container">
                             <div class="row">
                                 <div class="col-lg-6 h-50 text-center text-lg-left my-auto">

@@ -12,13 +12,10 @@ $arrayTestesOnline = $testeOnlineDAO->Listar($testeOnline);
 
 <?php include_once 'header.php'; ?>
 
-      <div class="container-fluid">
+    <section class="page-section">
+      <div class="container">
           <div class="row">
-            <div id="titulo">
-                <!---Título-->
-                <h2><strong>Teste Online</strong></h2>
-            </div>
-
+              <h2><strong>Teste Online</strong></h2>
             <div class="card" style="width: 136rem;">
                  <form method="POST" action="testeOnline_questao_inserir.php">
                   <div class="card-body">
@@ -34,36 +31,36 @@ $arrayTestesOnline = $testeOnlineDAO->Listar($testeOnline);
                  </form>  
             </div>
       </div>
+    </section>
 
-        <h2>Testes Online Disponíveis</h2>
-        <div class="row">
-          <div class="col-8">
-            <table id="tabelaTesteOnline" class="table table-striped">
-              <tr>
-                <th>ID do Teste Online</th>
-                <th>Nome do Teste Online</th>
-                <th>Quantidade de Questões</th>
-                <th></th>
-                <th></th>
-                <th></th>
-              </tr>
+       <div class="container">
+         <div class="row">
+              <h2>Testes Online Disponíveis</h2>
+              
+                  <table id="tabelaTesteOnline" class="table table-striped">
+                    <tr>
+                      <th>ID do Teste Online</th>
+                      <th>Nome do Teste Online</th>
+                      <th>Quantidade de Questões</th>
+                      <th>Ações</th>
+                      <th></th>
+                      <th></th>
+                    </tr>
 
-              <?php foreach($arrayTestesOnline as $reg): ?>
+                    <?php foreach($arrayTestesOnline as $reg): ?>
 
-                <tr>
-                  <td><?= $reg->getIdTesteOnline(); ?></td>
-                  <td><?= $reg->getNomeTesteOnline(); ?></td>
-                  <td><?= $reg->getQuantidadeQuestoes(); ?></td>
-                  <td><button class="btnExcluir btn btn-primary" type="button" value="<?= $reg->getIdTesteOnline(); ?>">Excluir</button></td>
-                  <td> <a class="btn btn-primary" href="testeOnline_questao_listar.php?idTesteOnline=<?= $reg->getIdTesteOnline(); ?>&nomeTesteOnline=<?= $reg->getNomeTesteOnline(); ?>">Visualizar Questões</a> </td>
-                </tr>
+                      <tr>
+                        <td><?= $reg->getIdTesteOnline(); ?></td>
+                        <td><?= $reg->getNomeTesteOnline(); ?></td>
+                        <td><?= $reg->getQuantidadeQuestoes(); ?></td>
+                        <td><button class="btnExcluir btn btn-primary" type="button" value="<?= $reg->getIdTesteOnline(); ?>">Excluir</button></td>
+                        <td> <a class="btn btn-primary" href="testeOnline_questao_listar.php?idTesteOnline=<?= $reg->getIdTesteOnline(); ?>&nomeTesteOnline=<?= $reg->getNomeTesteOnline(); ?>">Visualizar Questões</a> </td>
+                      </tr>
 
-              <?php endforeach; ?>
-
-            </table>
-
-          </div>
-        </div>
-      </div>
+                    <?php endforeach; ?>
+                  </table>
+                
+              </div>
+            </div>
 
 <?php include 'footer.php'; ?>

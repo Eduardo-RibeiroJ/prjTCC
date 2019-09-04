@@ -87,13 +87,13 @@
           <section class="page-section text-center">
             <div class="container">
               <div class="row">
+
                 <div class="col-lg-4">
                   <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
                     <div class="features-icons-icon">
-
                       <img src="imagem/icon1.png" alt="..." width="100" height="100">
-       
                     </div>
+
                     <h3>Totalmente Responsivo</h3>
                     <p class="lead mb-0">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed the
                       eiusmod
@@ -103,11 +103,13 @@
                       pariatur.</p>
                   </div>
                 </div>
+
                 <div class="col-lg-4">
                   <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
                     <div class="features-icons-icon">
                       <img src="imagem/icon2.png" alt="..." width="100" height="100">
                     </div>
+
                     <h3>Filtro inteligente</h3>
                     <p class="lead mb-0">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed the
                       eiusmod
@@ -115,8 +117,10 @@
                       necessário
                       exercitar-se por qualquer outro meio, por exemplo. velit esse cillum dolore eu fugi nulla
                       pariatur.</p>
+
                   </div>
                 </div>
+
                 <div class="col-lg-4">
                   <div class="features-icons-item mx-auto mb-0 mb-lg-3">
                     <div class="features-icons-icon">
@@ -131,6 +135,7 @@
                       pariatur.</p>
                   </div>
                 </div>
+
               </div>
             </div>
           </section>
@@ -138,8 +143,7 @@
 
           <section class="page-section" style="background: url(imagem/fundo3.jpg); background-size: cover;">
               <div class="row">
-                <div class="jumbotron"
-                  style="background-image: linear-gradient(to right, rgba(0, 0, 0, 0.616), rgba(23,166,255,1));">
+                <div class="jumbotron" style="background-image: linear-gradient(to right, rgba(0, 0, 0, 0.616), rgba(23,166,255,1));">
                   <div class="col-sm-8 mx-auto">
                     <h1>Entre agora mesmo!</h1>
                     <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
