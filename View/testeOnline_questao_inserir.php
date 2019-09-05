@@ -7,13 +7,16 @@
 
     <div class="container-fluid">
 
-        <div id="titulo" class="row">
-              <h2><strong>Teste Online</strong></h2>
-        </div>
+        <section class="page-section-small">
+          <h2 id="titulo"><strong>Teste Online</strong></h2>
 
-        <div class="row">
+          <div style="padding: 0px 0px 0px 50px">
+              <button id="btnVoltar" class="btn btn-primary">Voltar</button>
+              <a id="btnConcluir" href="testeOnline.php" class="btn btn-primary">Concluir</a>
+           </div>
+          </section>
 
-            <div class="card" style="width: 136rem;">
+            <div class="card" class="row" id="teste">
                   <form id="formInserirQuestao">
                     <div class="card-body">
                             <div class="form-group row">
@@ -23,6 +26,7 @@
                                 <h3 id="nomeTeste"><?= $_POST['nomeTeste']; ?> </h3>
                             </div>
                             <br>
+
                       <h3 class="card-title" id="numQuestao">Questão 1</h3>
                       <div class="input-group-md">
                             <div class="input-group-prepend">
@@ -33,23 +37,24 @@
                             </div>
                       </div>
                       <br>
+
                       <div class="form-row">
-                  <div class="form-group col-md-2.5">
-                        <label for="tempo">Tempo para responder (segundos)</label>
-                        <input type="number" class="form-control" id="tempo" name="tempo" value="30">
-                  </div>
+                          <div class="form-group col-md-2.5">
+                                <label for="tempo">Tempo para responder (segundos)</label>
+                                <input type="number" class="form-control" id="tempo" name="tempo" value="30">
+                          </div>
                   
-                      <div class="form-group col-md-1.5">
-                          <label for="inputResposta">Alternativa correta</label>
-                          <select id="resposta" name="resposta" class="form-control" tabindex="1">
-                          <option value="A" selected>A</option>
-                          <option value="B">B</option>
-                          <option value="C">C</option>
-                          <option value="D">D</option>
-                        </select>
+                            <div class="form-group col-md-1.5">
+                                <label for="inputResposta">Alternativa correta</label>
+                                <select id="resposta" name="resposta" class="form-control" tabindex="1">
+                                <option value="A" selected>A</option>
+                                <option value="B">B</option>
+                                <option value="C">C</option>
+                                <option value="D">D</option>
+                              </select>
+                          </div>
+                       </div>
                      </div>
-                  </div>
-                </div>
 
                 <ul class="list-group list-group-flush">
                   <li class="list-group-item">
@@ -76,15 +81,13 @@
                 </ul>
 
                     <div class="card-body">
-                        <button id="btnAdicionar" class="btn btn-secondary">Adicionar</button>
-                        <button id="btnLimpar" class="btn btn-secondary" type="reset">Limpar</button>
-                            <a href="testeOnline.php" class="btn btn-primary">Concluir</a>
+                        <button id="btnAdicionar" class="btn btn-secondary" href="#teste">Adicionar</button>
+                        <button id="btnLimpar" class="btn btn-secondary" type="reset" href="#teste">Limpar</button>
                     </div>
-                </div>
-           </div> 
-      </form>
 
-  </div>
+             </div>
+      </form>
+   </div>
 
 
 <?php include 'footer.php'; ?>

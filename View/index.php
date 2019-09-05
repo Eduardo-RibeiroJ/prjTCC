@@ -2,26 +2,27 @@
 <?php include_once 'header.php'; ?>
 
   <!-- Masthead -->
-          <header class="masthead text-white text-left">
+          <header class="masthead text-white text-left" id="home">
             <div class="overlay"></div>
             <div class="container">
               <div class="row">
                
                 <div class="col-7">
-                   <div class="espacamento">
-                  <h1 class="mb-2" style="color:#1d2731">Seja bem-vindo a Connection, o site que conecta as empresas com os melhores candidatos!</h1>
-                  </div>
-                </div>
+                  <div class="espacamento">
+                    <h1 class="mb-2" style="color:#1d2731">Seja bem-vindo a Connection, o site que conecta as empresas com os melhores candidatos!</h1>
+                    </div>
+                 </div>
 
                   <div class="col-6">
                       <button type="submit" class="btn btn-block btn-lg" style="background-color:#f9cf00">Saiba Mais</button>
-
+                   </div>
               </div>
+            </div>
           </header>
 
           <!-- Sobre nosso software -->
 
-          <section class="page-section" style="background: url(imagem/fundo2.jpg); background-size: cover;">
+          <section class="page-section" style="background: url(imagem/90463.jpg); background-size: cover;" id="sobre">
             <div class="container">
               <div class="row">
 
@@ -84,7 +85,7 @@
           </section>
 
           <!-- Icones -->
-          <section class="page-section text-center">
+          <section class="page-section text-center" id="funcionalidades">
             <div class="container">
               <div class="row">
 
@@ -141,8 +142,8 @@
           </section>
 
 
-          <section class="page-section" style="background: url(imagem/fundo3.jpg); background-size: cover;">
-              <div class="row">
+          <section class="page-section" style="background: url(imagem/17209.jpg); background-size: cover;" id="cadastro">
+              <div class="row container">
                 <div class="jumbotron" style="background-image: linear-gradient(to right, rgba(0, 0, 0, 0.616), rgba(23,166,255,1));">
                   <div class="col-sm-8 mx-auto">
                     <h1>Entre agora mesmo!</h1>
