@@ -158,10 +158,10 @@ CREATE TABLE `tbcompetencia` (
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `tbempresa`
+-- Estrutura da tabela `tbrecrutador`
 --
 
-CREATE TABLE `tbempresa` (
+CREATE TABLE `tbrecrutador` (
   `cnpj` varchar(20) NOT NULL,
   `nomeEmpresa` varchar(50) NOT NULL,
   `email` varchar(30) NOT NULL,
