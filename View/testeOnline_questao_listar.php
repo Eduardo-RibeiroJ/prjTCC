@@ -1,7 +1,7 @@
 <?php
 include_once "../Model/Conexao.php";
-include_once "../PostAjax/Questao.php";
-include_once "../PostAjax/TesteOnline.php";
+include_once "../Model/Questao.php";
+include_once "../Model/TesteOnline.php";
 include_once "../Controller/TesteOnlineDAO.php";
 include_once "../Controller/QuestaoDAO.php";
 
@@ -51,7 +51,7 @@ $arrayQuestao = $questaoDAO->Listar($questao);
                     <td><?= $reg->getIdQuestao(); ?></td>
                     <td>
                       <label class = "limitador text-justify"><?= $reg->getQuestao(); ?></label>
-                      <button class="btn btn-primary" type="button" value="<?= $reg->getIdQuestao(); ?>">Excluir</button>
+                      <button class="btn btn-primary" id="btnExcluir" type="button" value="<?= $reg->getIdQuestao(); ?>">Excluir</button>
                       <a class="btn btn-primary" href="testeOnline_questao_alterar.php?idTesteOnline=<?= $reg->getIdTesteOnline(); ?>&idQuestao=<?= $reg->getIdQuestao(); ?>" role="button">Alterar</a>
                      </td>
                    </tr>
