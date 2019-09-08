@@ -105,7 +105,7 @@ $(function(){
         
     });
 
-    $('#tabelaQuestao').on('click', '.btnExcluir', function(e) {
+    $('#tabelaQuestao').on('click', '#btnExcluir', function(e) {
 
         var $linhaAlvo = $(this).closest('tr');
 
