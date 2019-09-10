@@ -1,112 +1,30 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="../JS/ajax.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <meta charset="UTF-8">
     <title>Adicionar Questao</title>
 </head>
 <body>
-    <table>
-        <tr>
-            <th>rssr</th>
-            <th>ss</th>
-            <th>ss</th>
-            <th>ss</th>   
-        </tr>
 
-        <tr>
-            <td>rsr1</td>
-            <td>rs1</td>
-            <td>rs1</td>
-            <td><button class="btnExcluir1">Excluir</button></td>
-        </tr>
-        <tr>
-            <td>rsr2</td>
-            <td>rs2</td>
-            <td>rs2</td>
-            <td><button class="btnExcluir1">Excluir</button></td>
-        </tr>
-        <tr>
-            <td>rsr3</td>
-            <td>rs3</td>
-            <td>rs3</td>
-            <td><button class="btnExcluir1">Excluir</button></td>
-        </tr>
-        <tr>
-            <td>rsr4</td>
-            <td>rs4</td>
-            <td>rs4</td>
-            <td><button class="btnExcluir1">Excluir</button></td>
-        </tr>
-        <tr>
-            <td>rsr5</td>
-            <td>rs5</td>
-            <td>rs5</td>
-            <td><button class="btnExcluir1">Excluir</button></td>
-        </tr>
-        <tr>
-            <td>rsr6</td>
-            <td>rs6</td>
-            <td>rs6</td>
-            <td><button class="btnExcluir1">Excluir</button></td>
-        </tr>
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col" style="background-color: red">
+                rswwwe
+            </div>
+            <div class="col" style="background-color: yellow">
+                rsss
+            </div>
+            <div class="col" style="background-color: blue">
+                rssdsds
+            </div>
+        </div>
+    </div>
 
-
-
-    </table>
-
-<style>
-body {
-    font-family: Arial, sans-serif;
-}
-form {
-    width: 100%;
-    margin-top: 40px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-form fieldset {
-    width: 100%;
-    max-width: 500px;
-    border: 1px solid #CCC;
-    padding: 10px 20px 20px 20px;
-}
-form fieldset legend {
-    font-weight: bold;
-}
-form fieldset label {
-    width: 100%;
-}
-form fieldset input {
-    width: calc(100% - 22px);
-    height: 40px;
-    font-size: 12px;
-    background-color: #FFF;
-    border: 1px solid #CCC;
-    margin-bottom: 10px;
-    padding: 0 10px;
-}
-form fieldset textarea {
-    width: calc(100% - 22px);
-    height: 120px;
-    font-size: 12px;
-    background-color: #FFF;
-    border: 1px solid #CCC;
-    padding: 10px;
-}
-form button {
-    height: 40px;
-    background-color: green;
-    color: #FFF;
-    font-size: 14px;
-    margin-top: 10px;
-    padding: 0 20px;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-}
-</style>
+</section>
 </body>
 </html>
