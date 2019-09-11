@@ -12,55 +12,90 @@ $arrayTestesOnline = $testeOnlineDAO->Listar($testeOnline);
 
 <?php include_once 'header.php'; ?>
 
-    <section class="page-section">
       <div class="container">
+        <section class="page-section">
           <div class="row">
-              <h2><strong>Teste Online</strong></h2>
-            <div class="card" style="width: 136rem;">
-                 <form method="POST" action="testeOnline_questao_inserir.php">
-                  <div class="card-body">
-                      <label class="col-sm-3 col-form-label">Nome do Teste Online</label>
-                      <div class="col-sm-5">
-                        <input class="form-control" type="text" name="nomeTeste" id="nomeTeste" placeholder="Digite o nome do teste..." required autofocus>
-                        <input name="numTeste" type="hidden" value="1"/>
-                      </div>
-                   </div>
-                    <div class="card-body">
-                        <input type="submit" name="Adicionar" id="Adicionar" class="btn btn-primary" value="Adicionar" />
-                    </div>
-                 </form>  
+            <div class="col">
+              <h2>Teste Online</h2>
             </div>
-      </div>
-    </section>
+          </div>
 
-       <div class="container">
-         <div class="row">
-              <h2>Testes Online Disponíveis</h2>
-              
-                  <table id="tabelaTesteOnline" class="table table-striped">
-                    <tr>
-                      <th>ID do Teste Online</th>
-                      <th>Nome do Teste Online</th>
-                      <th>Quantidade de Questões</th>
-                      <th>Ações</th>
-                      <th></th>
-                      <th></th>
-                    </tr>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="card">
+                      <div class="card-header">
+                        Inserir Teste Online
+                      </div>
+                      <div class="card-body">
+                        <div class="card-text">
 
-                    <?php foreach($arrayTestesOnline as $reg): ?>
+                          <form method="POST" action="testeOnline_questao_inserir.php">
+                            <div class="row">
+                              <div class="col">
+                                <label class="col-form-label">Nome do Teste Online</label>
+                              </div>
+                            </div>
 
-                      <tr>
-                        <td><?= $reg->getIdTesteOnline(); ?></td>
-                        <td><?= $reg->getNomeTesteOnline(); ?></td>
-                        <td><?= $reg->getQuantidadeQuestoes(); ?></td>
-                        <td><button class="btnExcluir btn btn-primary" type="button" value="<?= $reg->getIdTesteOnline(); ?>">Excluir</button></td>
-                        <td> <a class="btn btn-primary" href="testeOnline_questao_listar.php?idTesteOnline=<?= $reg->getIdTesteOnline(); ?>&nomeTesteOnline=<?= $reg->getNomeTesteOnline(); ?>">Visualizar Questões</a> </td>
-                      </tr>
+                            <div class="row">
+                            
+                              <div class="col-md-9">
+                                  
+                                  <input class="form-control" type="text" name="nomeTeste" id="nomeTeste" placeholder="Digite o nome do teste..." required autofocus>
+                                  <input name="numTeste" type="hidden" value="1"/>
 
-                    <?php endforeach; ?>
-                  </table>
-                
+                              </div>
+
+                              <div class="col-md-3 text-right">
+                                <input type="submit" name="Adicionar" id="Adicionar" class="btn btn-primary" value="Adicionar"/>
+                              </div>
+                            </div>
+                        </form>
+                      </div>
+                    </div>
+                          
               </div>
             </div>
+          </div>
+        </section>
+
+        <section>
+            <div class="row">
+                <div class="col">
+                  <h2>Testes Online Disponíveis</h2>
+                </div>
+            </div>
+              
+              <div class="row">
+                <div class="col">
+                  <table id="tabelaTesteOnline" class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nome do Teste</th>
+                        <th scope="col">Quantidade de Questões</th>
+                        <th scope="col" colspan="2">Ações</th>
+                      </tr>
+                    </thead>
+
+                    <tbody>
+
+                      <?php foreach($arrayTestesOnline as $reg): ?>
+                        <tr>
+                          <td><?= $reg->getIdTesteOnline(); ?></td>
+                          <td><?= $reg->getNomeTesteOnline(); ?></td>
+                          <td><?= $reg->getQuantidadeQuestoes(); ?></td>
+                          <td><button class="btnExcluir btn btn-primary" type="button" value="<?= $reg->getIdTesteOnline(); ?>">Excluir</button></td>
+                          <td> <a class="btn btn-primary" href="testeOnline_questao_listar.php?idTesteOnline=<?= $reg->getIdTesteOnline(); ?>&nomeTesteOnline=<?= $reg->getNomeTesteOnline(); ?>">Visualizar Questões</a> </td>
+                        </tr>
+                      <?php endforeach; ?>
+                    </tbody>
+
+                    
+                  </table>
+                </div>
+              </div>
+
+        </section>
+      </div>
 
 <?php include 'footer.php'; ?>

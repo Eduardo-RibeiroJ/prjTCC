@@ -30,12 +30,12 @@ $candidatoDAO = new CandidatoDAO($conn);
                       <div class="card-text">
 
                           <div class="form-row">
-                            <div class="form-group col-6">
+                            <div class="form-group col-md-6">
                               <label for="txtNome">Nome</label>
                               <input type="text" class="form-control" id="txtNome" name="txtNome" placeholder="Digite seu nome..." required>
                             </div>
 
-                            <div class="form-group col-6">
+                            <div class="form-group col-md-6">
                               <label for="txtSobrenome">Nome</label>
                               <input type="text" class="form-control" id="txtSobrenome" name="txtSobrenome" placeholder="Digite seu sobrenome..." required>
                             </div>
@@ -43,12 +43,12 @@ $candidatoDAO = new CandidatoDAO($conn);
 
 
                           <div class="form-row">
-                            <div class="form-group col-4">
+                            <div class="form-group col-md-4">
                               <label for="txtDataNasc">Data Nascimento</label>
                               <input type="date" class="form-control" id="txtDataNasc" name="txtDataNasc" placeholder="Digite sua data de nascimento..." required>
                             </div>
 
-                            <div class="form-group col-4">
+                            <div class="form-group col-md-4">
                               <label for="cbbEstadoCivil">Estado Civil</label>
                               <select class="custom-select" id="cbbEstadoCivil" name="cbbEstadoCivil" required>
                                 <option value="" selected>Selecione seu estado civil</option>
@@ -59,7 +59,7 @@ $candidatoDAO = new CandidatoDAO($conn);
                               </select>
                             </div>
 
-                            <div class="form-group col-4">
+                            <div class="form-group col-md-4">
                               <label for="cbbSexo">Sexo</label>
                               <select class="custom-select" id="cbbSexo" name="cbbSexo" required>
                                 <option value="" selected>Selecione seu sexo</option>
@@ -84,12 +84,12 @@ $candidatoDAO = new CandidatoDAO($conn);
                       <div class="card-text">
 
                           <div class="form-row">
-                            <div class="form-group col-6">
+                            <div class="form-group col-md-6">
                               <label for="txtCEP">CEP</label>
                               <input type="text" class="form-control" id="txtCEP" name="txtCEP" placeholder="Digite seu CEP..." required>
                             </div>
 
-                            <div class="form-group col-6">
+                            <div class="form-group col-md-6">
                               <label for="txtEndereco">Endereço</label>
                               <input type="text" class="form-control" id="txtEndereco" name="txtEndereco" placeholder="Digite seu endereço (rua e número)..." required>
                             </div>
@@ -97,17 +97,17 @@ $candidatoDAO = new CandidatoDAO($conn);
 
                           <div class="form-row">
 
-                            <div class="form-group col-4">
+                            <div class="form-group col-md-4">
                               <label for="txtBairro">Bairro</label>
                               <input type="text" class="form-control" id="txtBairro" name="txtBairro" placeholder="Digite seu bairro..." required>
                             </div>
 
-                            <div class="form-group col-4">
+                            <div class="form-group col-md-4">
                               <label for="txtCidade">Cidade</label>
                               <input type="text" class="form-control" id="txtCidade" name="txtCidade" placeholder="Digite sua cidadee..." required>
                             </div>
 
-                            <div class="form-group col-4">
+                            <div class="form-group col-md-4">
                               <label for="txtUF">Estado</label>
                               <input type="text" class="form-control" id="txtUF" name="txtUF" placeholder="Digite seu estado..." required>
                             </div>
@@ -129,12 +129,12 @@ $candidatoDAO = new CandidatoDAO($conn);
                       <div class="card-text">
 
                           <div class="form-row">
-                            <div class="form-group col-6">
+                            <div class="form-group col-md-6">
                               <label for="txtTelefone">Telefone</label>
                               <input type="text" class="form-control" id="txtTelefone" name="txtTelefone" placeholder="Digite seu telefone..." required>
                             </div>
 
-                            <div class="form-group col-6">
+                            <div class="form-group col-md-6">
                               <label for="txtTelefone2">Telefone 2</label>
                               <input type="text" class="form-control" id="txtTelefone2" name="txtTelefone2" placeholder="Digite outro telefone..." required>
                             </div>
