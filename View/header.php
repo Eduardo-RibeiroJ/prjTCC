@@ -14,7 +14,7 @@
 
     <!-- Navbar -->
     <header id="header">
-     <nav class="navbar fixed-top navbar-expand-lg navbar-light" style="background-color: #BDC3C7;">
+     <nav class="navbar fixed-top navbar-expand-lg navbar-dark" style="background-image: linear-gradient(to right, rgba(10, 100, 180, 1), rgba(23,166,255,1));">
             <div class="container">
               <a class="navbar-brand h1 mb-0" href="#"> Connection</a>
 

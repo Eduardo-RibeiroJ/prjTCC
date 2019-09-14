@@ -38,7 +38,7 @@ $arrayTestesOnline = $testeOnlineDAO->Listar($testeOnline);
 
                             <div class="row">
                             
-                              <div class="col-md-9">
+                              <div class="col-md-9" style="padding-bottom:1rem">
                                   
                                   <input class="form-control" type="text" name="nomeTeste" id="nomeTeste" placeholder="Digite o nome do teste..." required autofocus>
                                   <input name="numTeste" type="hidden" value="1"/>
@@ -70,10 +70,10 @@ $arrayTestesOnline = $testeOnlineDAO->Listar($testeOnline);
                   <table id="tabelaTesteOnline" class="table table-striped">
                     <thead>
                       <tr>
-                        <th scope="col">ID</th>
-                        <th scope="col">Nome do Teste</th>
-                        <th scope="col">Quantidade de Questões</th>
-                        <th scope="col" colspan="2">Ações</th>
+                        <th scope="col" colspan="1">ID</th>
+                        <th scope="col" >Teste</th>
+                        <th scope="col" colspan="1" class="text-center">Questões</th>
+                        <th scope="col" >Ações</th>
                       </tr>
                     </thead>
 
@@ -83,10 +83,10 @@ $arrayTestesOnline = $testeOnlineDAO->Listar($testeOnline);
                         <tr>
                           <td><?= $reg->getIdTesteOnline(); ?></td>
                           <td><?= $reg->getNomeTesteOnline(); ?></td>
-                          <td><?= $reg->getQuantidadeQuestoes(); ?></td>
-                          <td><button class="btnExcluir btn btn-primary" type="button" value="<?= $reg->getIdTesteOnline(); ?>">Excluir</button></td>
-                          <td> <a class="btn btn-primary" href="testeOnline_questao_listar.php?idTesteOnline=<?= $reg->getIdTesteOnline(); ?>&nomeTesteOnline=<?= $reg->getNomeTesteOnline(); ?>">Visualizar Questões</a> </td>
-                        </tr>
+                          <td class="text-center"><?= $reg->getQuantidadeQuestoes(); ?></td>
+                          <td><button class="btnExcluir btn btn-primary" type="button" value="<?= $reg->getIdTesteOnline(); ?>">Excluir</button>
+                          <a class="btn btn-primary" href="testeOnline_questao_listar.php?idTesteOnline=<?= $reg->getIdTesteOnline(); ?>&nomeTesteOnline=<?= $reg->getNomeTesteOnline(); ?>">Visualizar</a></td>
+                          </tr>
                       <?php endforeach; ?>
                     </tbody>
 
