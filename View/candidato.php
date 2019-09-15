@@ -19,10 +19,8 @@
                         </form>  
                     </div>
 
-                <div class="page-section"></div>
-
-                 </div>
              </div>
+         </div>
      </header>
 
 <?php include 'footer.php'; ?>
