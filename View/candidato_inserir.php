@@ -7,6 +7,10 @@ $conn = new Conexao();
 $candidato = new Candidato();
 $candidatoDAO = new CandidatoDAO($conn);
 
+if (isset($_POST['Adicionar'])) {
+  echo "<script> alert('caiu');</script>";
+}
+
 ?>
 
 <?php include_once 'header.php'; ?>
@@ -19,7 +23,7 @@ $candidatoDAO = new CandidatoDAO($conn);
             </div>
 
             <div class="col-12">
-              <form method="POST" action="inserirCandidato">
+              <form method="POST" action="candidato_inserir.php">
                 <div class="card">
 
                   <div class="card-header">
@@ -32,12 +36,12 @@ $candidatoDAO = new CandidatoDAO($conn);
                           <div class="form-row">
                             <div class="form-group col-md-6">
                               <label for="txtNome">Nome</label>
-                              <input type="text" class="form-control" id="txtNome" name="txtNome" placeholder="Digite seu nome..." required>
+                              <input type="text" class="form-control" id="txtNome" name="txtNome" placeholder="" required autofocus>
                             </div>
 
                             <div class="form-group col-md-6">
-                              <label for="txtSobrenome">Nome</label>
-                              <input type="text" class="form-control" id="txtSobrenome" name="txtSobrenome" placeholder="Digite seu sobrenome..." required>
+                              <label for="txtSobrenome">Sobrenome</label>
+                              <input type="text" class="form-control" id="txtSobrenome" name="txtSobrenome" placeholder="" required>
                             </div>
                           </div>
 
@@ -45,13 +49,13 @@ $candidatoDAO = new CandidatoDAO($conn);
                           <div class="form-row">
                             <div class="form-group col-md-4">
                               <label for="txtDataNasc">Data Nascimento</label>
-                              <input type="date" class="form-control" id="txtDataNasc" name="txtDataNasc" placeholder="Digite sua data de nascimento..." required>
+                              <input type="date" class="form-control" id="txtDataNasc" name="txtDataNasc" placeholder="" required>
                             </div>
 
                             <div class="form-group col-md-4">
                               <label for="cbbEstadoCivil">Estado Civil</label>
                               <select class="custom-select" id="cbbEstadoCivil" name="cbbEstadoCivil" required>
-                                <option value="" selected>Selecione seu estado civil</option>
+                                <option value="" selected>Selecione</option>
                                 <option value="S">Solteiro(a)</option>
                                 <option value="C">Casado(a)</option>
                                 <option value="D">Divorciado(a)</option>
@@ -62,7 +66,7 @@ $candidatoDAO = new CandidatoDAO($conn);
                             <div class="form-group col-md-4">
                               <label for="cbbSexo">Sexo</label>
                               <select class="custom-select" id="cbbSexo" name="cbbSexo" required>
-                                <option value="" selected>Selecione seu sexo</option>
+                                <option value="" selected>Selecione</option>
                                 <option value="M">Masculino</option>
                                 <option value="F">Feminino</option>
                               </select>
@@ -84,32 +88,32 @@ $candidatoDAO = new CandidatoDAO($conn);
                       <div class="card-text">
 
                           <div class="form-row">
-                            <div class="form-group col-md-6">
+                            <div class="form-group col-lg-6">
                               <label for="txtCEP">CEP</label>
-                              <input type="text" class="form-control" id="txtCEP" name="txtCEP" placeholder="Digite seu CEP..." required>
+                              <input type="text" class="form-control" id="txtCEP" name="txtCEP" placeholder="" required>
                             </div>
 
-                            <div class="form-group col-md-6">
+                            <div class="form-group col-lg-6">
                               <label for="txtEndereco">Endereço</label>
-                              <input type="text" class="form-control" id="txtEndereco" name="txtEndereco" placeholder="Digite seu endereço (rua e número)..." required>
+                              <input type="text" class="form-control" id="txtEndereco" name="txtEndereco" placeholder="Rua e número" required>
                             </div>
                           </div>
 
                           <div class="form-row">
 
-                            <div class="form-group col-md-4">
+                            <div class="form-group col-md-5">
                               <label for="txtBairro">Bairro</label>
-                              <input type="text" class="form-control" id="txtBairro" name="txtBairro" placeholder="Digite seu bairro..." required>
+                              <input type="text" class="form-control" id="txtBairro" name="txtBairro" placeholder="" required>
                             </div>
 
-                            <div class="form-group col-md-4">
+                            <div class="form-group col-md-5">
                               <label for="txtCidade">Cidade</label>
-                              <input type="text" class="form-control" id="txtCidade" name="txtCidade" placeholder="Digite sua cidadee..." required>
+                              <input type="text" class="form-control" id="txtCidade" name="txtCidade" placeholder="" required>
                             </div>
 
-                            <div class="form-group col-md-4">
+                            <div class="form-group col-md-2">
                               <label for="txtUF">Estado</label>
-                              <input type="text" class="form-control" id="txtUF" name="txtUF" placeholder="Digite seu estado..." required>
+                              <input type="text" class="form-control" id="txtUF" name="txtUF" placeholder="" required>
                             </div>
 
                           </div> 
@@ -131,12 +135,12 @@ $candidatoDAO = new CandidatoDAO($conn);
                           <div class="form-row">
                             <div class="form-group col-md-6">
                               <label for="txtTelefone">Telefone</label>
-                              <input type="text" class="form-control" id="txtTelefone" name="txtTelefone" placeholder="Digite seu telefone..." required>
+                              <input type="text" class="form-control" id="txtTelefone" name="txtTelefone" placeholder="" required>
                             </div>
 
                             <div class="form-group col-md-6">
                               <label for="txtTelefone2">Telefone 2</label>
-                              <input type="text" class="form-control" id="txtTelefone2" name="txtTelefone2" placeholder="Digite outro telefone..." required>
+                              <input type="text" class="form-control" id="txtTelefone2" name="txtTelefone2" placeholder="">
                             </div>
 
                           </div>
@@ -144,21 +148,21 @@ $candidatoDAO = new CandidatoDAO($conn);
                           <div class="form-row">
                             <div class="form-group col">
                               <label for="txtlinkedin">LinkedIn</label>
-                              <input type="text" class="form-control" id="txtlinkedin" name="txtlinkedin" placeholder="Insira seu LinkedIn...">
+                              <input type="text" class="form-control" id="txtlinkedin" name="txtlinkedin" placeholder="">
                             </div>
                           </div>
 
                           <div class="form-row">
                             <div class="form-group col">
                               <label for="txtFacebook">Facebook</label>
-                              <input type="text" class="form-control" id="txtFacebook" name="txtFacebook" placeholder="Insira seu Facebook...">
+                              <input type="text" class="form-control" id="txtFacebook" name="txtFacebook" placeholder="">
                             </div>
                           </div>
 
                           <div class="form-row">
                             <div class="form-group col">
                               <label for="txtSitePessoal">Site Pessoal</label>
-                              <input type="text" class="form-control" id="txtSitePessoal" name="txtSitePessoal" placeholder="Insira seu site pessoal...">
+                              <input type="text" class="form-control" id="txtSitePessoal" name="txtSitePessoal" placeholder="">
                             </div>
                           </div>
 
@@ -172,7 +176,7 @@ $candidatoDAO = new CandidatoDAO($conn);
 
                 <div class="form-row">
                   <div class="form-group col-12">
-                    <input type="submit" name="Adicionar" id="Adicionar" class="btn btn-primary" value="Adicionar" />
+                    <input type="submit" name="Adicionar" id="Adicionar" class="btn btn-primary"/>
                   </div>
                 </div>
 
