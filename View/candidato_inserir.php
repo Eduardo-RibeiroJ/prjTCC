@@ -169,8 +169,7 @@ $candidatoDAO = new CandidatoDAO($conn);
 
                 </div>
 
-
-                <div class="form-row">
+                <div class="form-row" style="padding-top:1rem">
                   <div class="form-group col-12">
                     <input type="submit" name="Adicionar" id="Adicionar" class="btn btn-primary" value="Adicionar" />
                   </div>
