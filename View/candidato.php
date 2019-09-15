@@ -11,10 +11,12 @@
                         <form class="form-signin">
                             <h1 class="h3 mb-3 font-weight-normal text-center">Pesquisa de vagas</h1>
                             <div class="input-group mb-2 mr-sm-2">
-                                <div class="input-group-prepend">
-                                <div class="input-group-text" style="background:url(imagem/lupa.png) no-repeat center center">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</div>
-                                </div>
-                                <input type="text" class="form-control form-control-lg" id="inlineFormInputGroupUsername2" placeholder="pesquisa...">
+                                <div class="input-group">
+                                     <input class="form-control form-control-lg" type="text" placeholder="Digite aqui..."/>
+                                        <div class="input-group-btn">
+                                            <button class="btn btn-warning btn-lg" type="submit">Buscar</button>
+                                         </div>
+                                 </div>
                             </div>
                         </form>  
                     </div>
@@ -24,4 +26,3 @@
      </header>
 
 <?php include 'footer.php'; ?>
-
