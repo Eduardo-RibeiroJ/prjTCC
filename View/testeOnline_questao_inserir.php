@@ -7,25 +7,34 @@
 
     <div class="container-fluid">
 
-        <section class="page-section-small">
-          <h2 id="titulo"><strong>Teste Online</strong></h2>
+      <section class="page-section-small">
+        <div id="titulo" class="row">
+          <div class="col-sm-auto">
+              <h2><strong>Teste Online</strong></h2>
+            </div>
 
-          <div style="padding: 0px 0px 0px 50px">
+            <div class="col-sm-auto">
               <button id="btnVoltar" class="btn btn-primary">Voltar</button>
               <a id="btnConcluir" href="testeOnline.php" class="btn btn-primary">Concluir</a>
            </div>
+          </div>
           </section>
 
             <div class="card" class="row" id="teste">
                   <form id="formInserirQuestao">
                     <div class="card-body">
-                            <div class="form-group row">
-                                 <?php $numTeste = TesteOnline::getUltimoRegistro(); ?>
-                                <h3 id="numTeste"><?= $numTeste;?></h3>
-                                <h3>&nbsp;- Nome:&nbsp;</h3> <!--  &nbsp dá espaço -->
-                                <h3 id="nomeTeste"><?= $_POST['nomeTeste']; ?> </h3>
-                            </div>
-                            <br>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                              <div class="row">
+                                  <?php $numTeste = TesteOnline::getUltimoRegistro(); ?>
+                                  <h3 id="numTeste"><?= $numTeste;?></h3>
+                                  <h3>&nbsp;- Nome:&nbsp;</h3> <!-- &nbsp dá espaço -->
+                                  <h3 id="nomeTeste"><?= $_POST['nomeTeste']; ?> </h3>
+                                </div>
+                             </li>
+                           </ul>
+                            
+                            <br><br>
 
                       <h3 class="card-title" id="numQuestao">Questão 1</h3>
                       <div class="input-group-md">
