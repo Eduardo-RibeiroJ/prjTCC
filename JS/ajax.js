@@ -8,6 +8,8 @@ $(function(){
         // Cancela o envio do formulário
         e.preventDefault();
 
+        console.log($('#numQuestao').html());
+
 
         if($('#numQuestao').html() == "Questão 1") { //Salvará o questionário apenas na primeira inclusão de questão
             $.post('../PostAjax/salvar.php', {
@@ -82,9 +84,11 @@ $(function(){
         
     });
 
-    $('#tabelaTesteOnline').on('click', '.btnExcluir', function(e) {
+    $('#accordionTesteOnline').on('click', '#btnExcluir', function(e) {
 
-        var $linhaAlvo = $(this).closest('tr');
+        console.log("rsrsrs");
+
+        var $cardAlvo = $(this).closest('.card');
 
         $.post('../PostAjax/excluir.php', {
             acao: "excluirTesteOnline",
@@ -94,8 +98,8 @@ $(function(){
 
         if(sucesso == true) {
 
-            $linhaAlvo.fadeOut(500,function(){ 
-                $linhaAlvo.remove();                 
+            $cardAlvo.fadeOut(500,function(){ 
+                $cardAlvo.remove();
             }); 
             
         } else {
@@ -105,9 +109,9 @@ $(function(){
         
     });
 
-    $('#tabelaQuestao').on('click', '#btnExcluir', function(e) {
+    $('#accordionQuestao').on('click', '#btnExcluir', function(e) {
 
-        var $linhaAlvo = $(this).closest('tr');
+        var $cardAlvo = $(this).closest('.card');
 
         $.post('../PostAjax/excluir.php', {
             acao: "excluirQuestao",
@@ -118,8 +122,8 @@ $(function(){
 
         if(sucesso == true) {
 
-            $linhaAlvo.fadeOut(500,function(){ 
-                $linhaAlvo.remove();                 
+            $cardAlvo.fadeOut(500,function(){ 
+                $cardAlvo.remove();                 
             }); 
             
         } else {

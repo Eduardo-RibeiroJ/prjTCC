@@ -23,44 +23,65 @@ $arrayQuestao = $questaoDAO->Listar($questao);
 
 <?php include_once 'header.php'; ?>
 
-    <div class="container-fluid">
-      <section class="page-section">
+    <div class="container">
 
-        <div id="titulo" class="row">
-            <!---Título-->  
-              <h2 id="idTesteOnline"><?= $testeOnline->getIdTesteOnline(); ?></h2>
-              <h2>&nbsp;- <?= $testeOnline->getNomeTesteOnline(); ?></h2>
+      <section>
 
-              <div class="col-lg-2" style="text-align: right;">
-               <a href="testeOnline.php?idTesteOnline=<?= $testeOnline->getIdTesteOnline(); ?>" class="btn btn-primary">Voltar</a> 
-               <button class="btn btn-primary" type="button" value="">Adicionar</button>
-               </div>
-        </div><br>
+        <div class="row">
+            <div class="col-lg-9">
+              <h3 class="d-inline" id="idTesteOnline"><?= $testeOnline->getIdTesteOnline(); ?></h3>
+              <h3 class="d-inline" >&nbsp;- <?= $testeOnline->getNomeTesteOnline(); ?></h3>
+            </div>
 
-            <table class="table" id="tabelaQuestao">
-              <thead class="thead-dark">
-                <tr>
-                  <th>Nº</th>
-                  <th>Questão</th>
-                  <th></th>
-                  <th></th>
-                </tr>
+            <div class="col-lg-3">
+              <a href="testeOnline.php?idTesteOnline=<?= $testeOnline->getIdTesteOnline(); ?>" class="btn btn-primary">Voltar</a> 
+              <button class="btn btn-primary" type="button" value="">Adicionar Questão</button>
+            </div>
+        </div>
 
-                <?php foreach($arrayQuestao as $reg): ?>
+          <div class="row">
+            <div class="col">
+              <h4>Questões</h4>
+            </div>
+          </div>
 
-                  <tr>
-                    <td><?= $reg->getIdQuestao(); ?></td>
-                    <td>
-                      <label class = "limitador text-justify"><?= $reg->getQuestao(); ?></label>
-                      <button class="btn btn-primary" id="btnExcluir" type="button" value="<?= $reg->getIdQuestao(); ?>">Excluir</button>
-                      <a class="btn btn-primary" href="testeOnline_questao_alterar.php?idTesteOnline=<?= $reg->getIdTesteOnline(); ?>&idQuestao=<?= $reg->getIdQuestao(); ?>" role="button">Alterar</a>
-                     </td>
-                   </tr>
+          <div class="accordion" id="accordionQuestao">
+              
+              <?php foreach($arrayQuestao as $reg): ?>
 
-                <?php endforeach; ?>
-               </thead>
-             </table>
-        </section> 
-      </div> 
+              <div class="card" id=cardQuestao>
+                <div class="card-header" id="questao<?= $reg->getIdQuestao(); ?>">
+                  <h5 class="mb-0">
+                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse<?= $reg->getIdQuestao(); ?>" aria-expanded="true" aria-controls="collapse<?= $reg->getIdQuestao(); ?>">
+                      Questão <?= $reg->getIdQuestao(); ?>
+                    </button>
+                  </h5>
+                </div>
+
+                <div id="collapse<?= $reg->getIdQuestao(); ?>" class="collapse" aria-labelledby="questao<?= $reg->getIdQuestao(); ?>" data-parent="#accordionQuestao">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-lg-7">
+                        <h5 class="card-title"><?= $reg->getIdQuestao(); ?> - <?= $reg->getQuestao(); ?></h5>
+                        <p>Alternativa correta: <?= $reg->getResposta(); ?></p>
+                      </div>
+                      <div class="col-lg-5 text-center">
+                        <a class="btn btn-primary" href="testeOnline_questao_alterar.php?idTesteOnline=<?= $reg->getIdTesteOnline(); ?>&idQuestao=<?= $reg->getIdQuestao(); ?>" role="button">Alterar</a>
+                        <button class="btn btn-primary" id="btnExcluir" type="button" value="<?= $reg->getIdQuestao(); ?>">Excluir</button>
+                      </div>
+                    </div>
+                    
+                    
+                  </div>
+                </div>
+              </div>
+
+              <?php endforeach; ?>
+              
+            </div>
+
+        </section>
+      
+    </div>
 
 <?php include 'footer.php'; ?>

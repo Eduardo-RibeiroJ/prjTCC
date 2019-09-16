@@ -19,7 +19,7 @@ if (isset($_POST['Adicionar'])) {
       <div class="container">
           <div class="row d-flex justify-content-center">
             <div class=col-12>
-              <h2>Candidato</h2>
+              <h2>Crie seu perfil!</h2>
             </div>
 
             <div class="col-12">

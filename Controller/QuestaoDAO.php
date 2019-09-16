@@ -72,10 +72,10 @@ class QuestaoDAO
         $SQL->execute();
 
         //Realocar os números das questões para não ficar "buraco"
-        $SQL = $this->db->getConection()->prepare("UPDATE tbQuestao SET idQuestao = (idQuestao - 1) WHERE idQuestao > ? AND idTesteOnline = ?;");
+        /*$SQL = $this->db->getConection()->prepare("UPDATE tbQuestao SET idQuestao = (idQuestao - 1) WHERE idQuestao > ? AND idTesteOnline = ?;");
 
         $SQL->bind_param("ii", $idQuestao, $idTesteOnline);
-        $SQL->execute();
+        $SQL->execute();*/
    
         return true;
     }
