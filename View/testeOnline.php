@@ -81,7 +81,8 @@ $arrayTestesOnline = $testeOnlineDAO->Listar($testeOnline);
                   <div class="card-body">
                     <div class="row">
                       <div class="col-lg-7">
-                        <p>Teste online <?= $reg->getNomeTesteOnline(); ?>, contém <?= $reg->getQuantidadeQuestoes(); ?> questões.</p>
+                        <h5 class="card-title">Teste online <?= $reg->getNomeTesteOnline(); ?></h5>
+                        <p>Contém <?= $reg->getQuantidadeQuestoes(); ?> questões.</p>
                       </div>
                       <div class="col-lg-5 text-center">
                         <a class="btn btn-primary" href="testeOnline_questao_listar.php?idTesteOnline=<?= $reg->getIdTesteOnline(); ?>&nomeTesteOnline=<?= $reg->getNomeTesteOnline(); ?>">Visualizar Questões</a>

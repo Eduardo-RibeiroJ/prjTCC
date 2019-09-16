@@ -18,8 +18,8 @@
           </div>
 
           <div class="col-md-3">
-            <a href="testeOnline.php" id="btnVoltar" class="btn btn-primary">Voltar</button>
-            <a id="btnConcluir" href="testeOnline.php" class="btn btn-primary">Concluir</a>
+            <a href="testeOnline.php" id="btnVoltar" class="btn btn-primary">Voltar</a>
+            <a href="testeOnline.php" id="btnConcluir" class="btn btn-primary">Concluir</a>
           </div>
         </div>
 
