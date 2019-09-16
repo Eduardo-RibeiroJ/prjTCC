@@ -24,6 +24,7 @@ $arrayQuestao = $questaoDAO->Listar($questao);
 <?php include_once 'header.php'; ?>
 
     <div class="container-fluid">
+      <section class="page-section">
 
         <div id="titulo" class="row">
             <!---Título-->  
@@ -59,6 +60,7 @@ $arrayQuestao = $questaoDAO->Listar($questao);
                 <?php endforeach; ?>
                </thead>
              </table>
+        </section> 
       </div> 
 
 <?php include 'footer.php'; ?>
