@@ -24,7 +24,7 @@ $questaoDAO->Listar($questao);
 <?php include_once 'header.php'; ?>
 
 
-    <div class="container-fluid">
+    <div class="container">
 
         <div id="titulo" class="row">
               <h2><strong>Teste Online</strong></h2>
@@ -47,7 +47,8 @@ $questaoDAO->Listar($questao);
                                 <h3 id="nomeTeste"><?= $testeOnline->getNomeTesteOnline(); ?> </h3>
                             </div>
                             <br>
-                      <h3 class="card-title" id="numQuestao">Questão <?= $questao->getIdQuestao(); ?></h3>
+                      <h3 class="card-title d-inline">Questão </h3>
+                      <h3 class="card-title d-inline" id="numQuestao"><?= $questao->getIdQuestao(); ?></h3>
                       <div class="input-group-md">
                             <div class="input-group-prepend">
                               <span class="input-group-text">Alterar questão</span>

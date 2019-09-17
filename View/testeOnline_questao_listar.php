@@ -39,12 +39,6 @@ $arrayQuestao = $questaoDAO->Listar($questao);
             </div>
         </div>
 
-          <div class="row">
-            <div class="col">
-              <h4>Questões</h4>
-            </div>
-          </div>
-
           <div class="accordion" id="accordionQuestao">
               
               <?php foreach($arrayQuestao as $reg): ?>

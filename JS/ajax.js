@@ -54,6 +54,7 @@ $(function(){
     $('#formAlterarQuestao').on('click', '#btnSalvar', function(e) {
 
         var numTesteOnline = $('#numTeste').html();
+
         // Cancela o envio do formulário
         e.preventDefault();
 
@@ -61,7 +62,7 @@ $(function(){
         $.post('../PostAjax/alterar.php', {
             acao: "alterarQuestao",
             numTeste: numTesteOnline, //<numTeste(variavel que vai enviar) || numTeste>(variavel daqui)
-            numQuestao: numQuestao,
+            numQuestao: $('#numQuestao').html(),
             questao: $('#questao').val(),
             a: $('#a').val(),
             b: $('#b').val(),
