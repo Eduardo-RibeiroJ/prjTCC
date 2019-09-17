@@ -15,7 +15,7 @@ class TesteOnline {
         return $this->idTesteOnline;
     }
 
-    public function setidTesteOnline($idTesteOnline) {
+    public function setIdTesteOnline($idTesteOnline) {
         $this->idTesteOnline = $idTesteOnline;
     }
 
@@ -31,6 +31,11 @@ class TesteOnline {
     public function getQuantidadeQuestoes() {
 
         return TesteOnlineDAO::QuantidadeQuestoes($this);
+    }
+
+    public function getUltimoRegistroQuestao() {
+
+        return TesteOnlineDAO::UltimoRegistroQuestao($this) + 1;
     }
 }
 

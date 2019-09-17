@@ -28,15 +28,11 @@ $arrayQuestao = $questaoDAO->Listar($questao);
       <section>
 
         <div class="row">
-            <div class="col-lg-9">
+            <div class="col">
               <h3 class="d-inline" id="idTesteOnline"><?= $testeOnline->getIdTesteOnline(); ?></h3>
               <h3 class="d-inline" >&nbsp;- <?= $testeOnline->getNomeTesteOnline(); ?></h3>
             </div>
 
-            <div class="col-lg-3">
-              <a href="testeOnline.php?idTesteOnline=<?= $testeOnline->getIdTesteOnline(); ?>" class="btn btn-primary">Voltar</a> 
-              <button class="btn btn-primary" type="button" value="">Adicionar Questão</button>
-            </div>
         </div>
 
           <div class="accordion" id="accordionQuestao">
@@ -44,9 +40,9 @@ $arrayQuestao = $questaoDAO->Listar($questao);
               <?php foreach($arrayQuestao as $reg): ?>
 
               <div class="card" id=cardQuestao>
-                <div class="card-header" id="questao<?= $reg->getIdQuestao(); ?>">
+                <div class="card-header" id="questao<?= $reg->getIdQuestao(); ?>" data-toggle="collapse" data-target="#collapse<?= $reg->getIdQuestao(); ?>" aria-expanded="true" aria-controls="collapse<?= $reg->getIdQuestao(); ?>">
                   <h5 class="mb-0">
-                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse<?= $reg->getIdQuestao(); ?>" aria-expanded="true" aria-controls="collapse<?= $reg->getIdQuestao(); ?>">
+                    <button class="btn btn-link">
                       Questão <?= $reg->getIdQuestao(); ?>
                     </button>
                   </h5>
@@ -56,12 +52,13 @@ $arrayQuestao = $questaoDAO->Listar($questao);
                   <div class="card-body">
                     <div class="row">
                       <div class="col-lg-7">
-                        <h5 class="card-title"><?= $reg->getIdQuestao(); ?> - <?= $reg->getQuestao(); ?></h5>
-                        <p>Alternativa correta: <?= $reg->getResposta(); ?></p>
+                        <h5 class="card-title"><?= $reg->getQuestao(); ?></h5>
+                        <p>Alternativa correta: <?= $reg->getRespostaCorreta(); ?></p>
+                        <p>Responder em <?= $reg->getTempo(); ?> segundos</p>
                       </div>
                       <div class="col-lg-5 text-center">
-                        <a class="btn btn-primary" href="testeOnline_questao_alterar.php?idTesteOnline=<?= $reg->getIdTesteOnline(); ?>&idQuestao=<?= $reg->getIdQuestao(); ?>" role="button">Alterar</a>
-                        <button class="btn btn-primary" id="btnExcluir" type="button" value="<?= $reg->getIdQuestao(); ?>">Excluir</button>
+                        <a class="btn btn-primary btn-lg" href="testeOnline_questao_alterar.php?idTesteOnline=<?= $reg->getIdTesteOnline(); ?>&idQuestao=<?= $reg->getIdQuestao(); ?>" role="button">Alterar</a>
+                        <button class="btn btn-secondary" id="btnExcluir" type="button" value="<?= $reg->getIdQuestao(); ?>">Excluir</button>
                       </div>
                     </div>
                     
@@ -72,6 +69,13 @@ $arrayQuestao = $questaoDAO->Listar($questao);
 
               <?php endforeach; ?>
               
+            </div>
+
+            <div class="row">
+              <div class="col text-center">
+                <a href="testeOnline_questao_inserir.php?idTeste=<?= $testeOnline->getIdTesteOnline(); ?>&nomeTeste=<?= $testeOnline->getNomeTesteOnline(); ?>" class="btn btn-primary btn-lg">Adicionar Questões</a>
+                <a href="testeOnline.php" class="btn btn-secondary">Voltar</a>
+              </div>
             </div>
 
         </section>

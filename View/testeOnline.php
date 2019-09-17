@@ -14,14 +14,9 @@ $arrayTestesOnline = $testeOnlineDAO->Listar($testeOnline);
 
       <div class="container">
         <section>
-          <div class="row">
-            <div class="col">
-              <h3>Testes Online</h3>
-            </div>
-          </div>
 
           <div class="row">
-            <div class="col-md-6">
+            <div class="col-lg-8">
               <div class="card">
                       <div class="card-header">
                         Crie um teste online personalizado!
@@ -29,7 +24,7 @@ $arrayTestesOnline = $testeOnlineDAO->Listar($testeOnline);
                       <div class="card-body">
                         <div class="card-text">
 
-                          <form method="POST" action="testeOnline_questao_inserir.php">
+                          <form method="GET" action="testeOnline_questao_inserir.php">
                             <div class="row">
                               <div class="col">
                                 <label class="col-form-label">Nome do Teste Online</label>
@@ -37,15 +32,14 @@ $arrayTestesOnline = $testeOnlineDAO->Listar($testeOnline);
                             </div>
 
                             <div class="row">
-                              <div class="col-md-9">
+                              <div class="col-lg-10">
                                   
                                   <input class="form-control" type="text" name="nomeTeste" id="nomeTeste" placeholder="" required autofocus>
-                                  <input name="numTeste" type="hidden" value="1"/>
 
                               </div>
 
-                              <div class="col-md-3 text-center">
-                                <input type="submit" name="Criar" id="Criar" class="btn btn-primary" value="Criar"/>
+                              <div class="col-lg-2 text-center">
+                                <input type="submit" name="btnCriar" id="btnCriar" class="btn btn-primary btn-lg" value="Criar"/>
                               </div>
                             </div>
                         </form>
@@ -60,7 +54,7 @@ $arrayTestesOnline = $testeOnlineDAO->Listar($testeOnline);
         <section>
           <div class="row">
             <div class="col">
-              <h3>Testes Online Disponíveis</h3>
+              <h4>Testes Online Disponíveis</h4>
             </div>
           </div>
 
@@ -69,9 +63,9 @@ $arrayTestesOnline = $testeOnlineDAO->Listar($testeOnline);
               <?php foreach($arrayTestesOnline as $reg): ?>
 
               <div class="card" id=cardTesteOnline>
-                <div class="card-header" id="teste<?= $reg->getIdTesteOnline(); ?>">
+                <div class="card-header" id="teste<?= $reg->getIdTesteOnline(); ?>" data-toggle="collapse" data-target="#collapse<?= $reg->getIdTesteOnline(); ?>" aria-expanded="true" aria-controls="collapse<?= $reg->getIdTesteOnline(); ?>">
                   <h5 class="mb-0">
-                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse<?= $reg->getIdTesteOnline(); ?>" aria-expanded="true" aria-controls="collapse<?= $reg->getIdTesteOnline(); ?>">
+                    <button class="btn btn-link" type="button">
                       <?= $reg->getIdTesteOnline(); ?> - <?= $reg->getNomeTesteOnline(); ?>
                     </button>
                   </h5>
@@ -85,8 +79,8 @@ $arrayTestesOnline = $testeOnlineDAO->Listar($testeOnline);
                         <p>Contém <?= $reg->getQuantidadeQuestoes(); ?> questões.</p>
                       </div>
                       <div class="col-lg-5 text-center">
-                        <a class="btn btn-primary" href="testeOnline_questao_listar.php?idTesteOnline=<?= $reg->getIdTesteOnline(); ?>&nomeTesteOnline=<?= $reg->getNomeTesteOnline(); ?>">Visualizar Questões</a>
-                        <button class="btn btn-primary" id="btnExcluir" type="button" value="<?= $reg->getIdTesteOnline(); ?>">Excluir Teste Online</button>
+                        <a class="btn btn-primary btn-lg" href="testeOnline_questao_listar.php?idTesteOnline=<?= $reg->getIdTesteOnline(); ?>&nomeTesteOnline=<?= $reg->getNomeTesteOnline(); ?>">Visualizar Questões</a>
+                        <button class="btn btn-secondary" id="btnExcluir" type="button" value="<?= $reg->getIdTesteOnline(); ?>">Excluir Teste Online</button>
                       </div>
                     </div>
                     

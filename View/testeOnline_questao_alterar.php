@@ -23,103 +23,122 @@ $questaoDAO->Listar($questao);
 
 <?php include_once 'header.php'; ?>
 
-
+    
     <div class="container">
 
-        <div id="titulo" class="row">
-              <h2><strong>Teste Online</strong></h2>
-              <div class="col-sm-6">
-              <a href="testeOnline_questao_listar.php?idTesteOnline=<?= $testeOnline->getIdTesteOnline(); ?>" class="btn btn-primary btn-lg">Voltar</a> 
-              </div>    
+      <section>
+        <div class="row">
+          <div class="col-md">
+            <h4 class="d-inline" id="numTeste"><?= $testeOnline->getIdTesteOnline(); ?></h4>
+            <h4 class="d-inline">&nbsp;- Nome:&nbsp;</h4> <!-- &nbsp dá espaço -->
+            <h4 class="d-inline" id="nomeTeste"><?= $testeOnline->getNomeTesteOnline(); ?></h4>
+          </div>
+
         </div>
 
-        <br>
+          <div class="row">
+            <div class="col">
 
-        <div class="row">
+              <div class="card">
+                <div class="card-header">Questão <?= $questao->getIdQuestao(); ?></div>
+                <input type="hidden" id="numQuestao" name="numQuestao" value="<?= $questao->getIdQuestao(); ?>">
 
-            <div class="card" style="width: 136rem;">
-                  <form id="formAlterarQuestao">
-                    <div class="card-body">
-                    <br>
-                            <div class="form-group row">
-                                <h3 id="numTeste"><?= $testeOnline->getIdTesteOnline(); ?></h3>
-                                <h3>&nbsp;- Teste Online:&nbsp;</h3>
-                                <h3 id="nomeTeste"><?= $testeOnline->getNomeTesteOnline(); ?> </h3>
+                    <form id="formAlterarQuestao">
+                      <div class="card-body">
+
+                          <div class="card-text">
+                            <div class="form-row">
+                              <div class="form-group col">
+
+                                <label for="questao">Questão</label>
+                                <textarea name="questao" id="questao" class="form-control" rows="3" placeholder="" autofocus><?= $questao->getQuestao(); ?></textarea>
+                              
+                              </div>
                             </div>
-                            <br>
-                      <h3 class="card-title d-inline">Questão </h3>
-                      <h3 class="card-title d-inline" id="numQuestao"><?= $questao->getIdQuestao(); ?></h3>
-                      <div class="input-group-md">
-                            <div class="input-group-prepend">
-                              <span class="input-group-text">Alterar questão</span>
+
+                            <div class="form-row">
+                              <div class="form-group col">
+
+                                <label for="a">Alternativa A</label>
+                                <input id="a" type="text" class="form-control" name="a" value="<?= $questao->getAltA(); ?>">
+
+                              </div>
                             </div>
-                            <div class="form-group">
-                              <textarea name="questao" id="questao" class="form-control" rows="3"><?= $questao->getQuestao(); ?></textarea>
+
+                            <div class="form-row">
+                              <div class="form-group col">
+
+                                <label for="b">Alternativa B</label>
+                                <input id="b" type="text" class="form-control" name="b" value="<?= $questao->getAltB(); ?>">
+
+                              </div>
                             </div>
+
+                            <div class="form-row">
+                              <div class="form-group col">
+
+                                <label for="c">Alternativa C</label>
+                                <input id="c" type="text" class="form-control" name="c" value="<?= $questao->getAltC(); ?>">
+
+                              </div>
+                            </div>
+
+                            <div class="form-row">
+                              <div class="form-group col">
+
+                                <label for="d">Alternativa D</label>
+                                <input id="d" type="text" class="form-control" name="d" value="<?= $questao->getAltD(); ?>">
+
+                              </div>
+                            </div>
+
+
+                            <div class="form-row">
+                              <div class="form-group col-md-6">
+                                    <label for="tempo">Tempo para responder (segundos)</label>
+                                    <input type="number" class="form-control" id="tempo" name="tempo" value="<?= $questao->getTempo(); ?>">
+                              </div>
+                    
+                              <div class="form-group col-md-6">
+                                  <label for="inputResposta">Alternativa correta</label>
+                                  <select id="resposta" name="resposta" class="form-control" tabindex="1">
+                                  
+                                  <?php
+
+                                  $alternativas = ['A','B','C','D'];
+
+                                    foreach ($alternativas as $value) {
+
+                                      if($value == $questao->getResposta()) 
+                                        $selected = 'selected';
+                                      else
+                                        $selected = '';
+
+                                      echo '<option value="'.$value.'" '.$selected.'>'.$value.'</option>';
+                                    }
+                                    
+                                    ?>
+                                </select>
+                              </div>
+                            </div>
+
+                            <div class="form-row">
+                              <div class="form-group col text-center">
+                                <button class="btn btn-primary btn-lg" id="btnSalvar">Salvar</button>
+                                <a href="testeOnline_questao_listar.php?idTesteOnline=<?= $testeOnline->getIdTesteOnline(); ?>" class="btn btn-secondary">Voltar</a>
+                              </div>
+
+                            </div>
+                          </div> 
+                        </div>
                       </div>
-                      <br>
-                      <div class="form-row">
-                  <div class="form-group col-md-2.5">
-                        <label for="tempo">Tempo de resposta</label>
-                        <input type="number" class="form-control" id="tempo" name="tempo" value="<?= $questao->getTempo(); ?>">
-                  </div>
-                  
-                      <div class="form-group col-md-3">
-                          <label for="resposta">Resposta</label>
-                          <select id="resposta" name="resposta" class="form-control" tabindex="1">
+                    </form>
+              </div>
+            </div>
+          </div>
+                   
+      </section>
+    </div>
 
-                          <?php
-
-                          $alternativas = ['A','B','C','D'];
-
-                            foreach ($alternativas as $value) {
-
-                              if($value == $questao->getResposta()) 
-                                $selected = 'selected';
-                              else
-                                $selected = '';
-
-                              echo '<option value="'.$value.'" '.$selected.'>'.$value.'</option>';
-                            }
-                            
-                            ?>
-                          </select>
-                      </div>
-                  </div>
-                </div>
-
-                <ul class="list-group list-group-flush">
-                  <li class="list-group-item">
-                      <div class="input-group-prepend">
-                          <span class="input-group-text" id="inputGroupPrepend1">A)</span>
-                          <input id="a" type="text" class="form-control" name="a" placeholder="Adicionar questão" value="<?= $questao->getAltA(); ?>">
-                        </div>        
-                      </li>
-                    <li class="list-group-item">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="inputGroupPrepend2">B)</span>
-                        <input id="b" type="text" class="form-control" name="b" placeholder="Adicionar questão" value="<?= $questao->getAltB(); ?>">
-                      </li>
-                    <li class="list-group-item">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="inputGroupPrepend3">C)</span>
-                        <input id="c" type="text" class="form-control" name="c" placeholder="Adicionar questão" value="<?= $questao->getAltC(); ?>">
-                      </li>
-                    <li class="list-group-item">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="inputGroupPrepend4">D)</span>
-                        <input id="d" type="text" class="form-control" name="d" placeholder="Adicionar questão" value="<?= $questao->getAltD(); ?>">
-                      </li> 
-                </ul>
-
-                    <div class="card-body">
-                        <button id="btnSalvar" class="btn btn-primary">Salvar</button>
-                        <button id="btnLimpar" class="btn btn-primary" type="reset">Limpar</button>
-                    </div>
-                </div>
-           </div> 
-      </form>
-
-  </div>
 
   <?php include 'footer.php'; ?>

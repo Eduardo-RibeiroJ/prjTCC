@@ -1,33 +1,55 @@
-<?php include_once "../Model/TesteOnline.php"; ?>
+<?php
 
-<?php $numTeste = TesteOnline::getUltimoRegistro(); ?>
+include_once "../Model/Conexao.php";
+include_once "../Model/TesteOnline.php";
+include_once "../Controller/TesteOnlineDAO.php";
+
+$conn = new Conexao();
+$testeOnline = new TesteOnline();
+$testeOnlineDAO = new TesteOnlineDAO($conn);
+
+
+if(isset($_GET['btnCriar'])) {
+
+  $testeOnline->inserirTesteOnline(
+    TesteOnline::getUltimoRegistro(),
+    $_GET['nomeTeste']
+  );
+
+} else {
+
+  $testeOnline->inserirTesteOnline(
+    $_GET['idTeste'],
+    $_GET['nomeTeste']
+  );
+
+}
+
+?>
 
 <?php include_once 'header.php'; ?>
       
 
     <!------------------------------------ Conteudo--------------------------------------------------------------->
 
-    <div class="container">
+    <div class="container" id="containerPrincipal">
 
       <section>
         <div class="row">
-          <div class="col-md-9">
-            <h4 class="d-inline" id="numTeste"><?= $numTeste;?></h4>
+          <div class="col">
+            <h4 class="d-inline" id="numTeste"><?= $testeOnline->getIdTesteOnline();?></h4>
             <h4 class="d-inline">&nbsp;- Nome:&nbsp;</h4> <!-- &nbsp dá espaço -->
-            <h4 class="d-inline" id="nomeTeste"><?= $_POST['nomeTeste']; ?> </h4>
+            <h4 class="d-inline" id="nomeTeste"><?= $testeOnline->getNomeTesteOnline(); ?> </h4>
           </div>
 
-          <div class="col-md-3">
-            <a href="testeOnline.php" id="btnVoltar" class="btn btn-primary">Voltar</a>
-            <a href="testeOnline.php" id="btnConcluir" class="btn btn-primary">Concluir</a>
-          </div>
         </div>
 
           <div class="row">
             <div class="col">
 
               <div class="card">
-                <div class="card-header" id="numQuestao">Questão 1</div>
+                <div class="card-header" id="numQuestaoCard-Header">Questão <?= $testeOnline->getUltimoRegistroQuestao() ?></div>
+                <input type="hidden" id="numQuestao" name="numQuestao" value="<?= $testeOnline->getUltimoRegistroQuestao() ?>">
 
                     <form id="formInserirQuestao">
                       <div class="card-body">
@@ -93,16 +115,15 @@
                                   <option value="C">C</option>
                                   <option value="D">D</option>
                                 </select>
+                              </div>
                             </div>
 
-                            <div class="form-row text-center">
-                              <div class="form-group col-6">
-                                <button id="btnAdicionar" class="btn btn-secondary" href="#teste">Adicionar</button>
+                            <div class="form-row">
+                              <div class="form-group col-lg text-center">
+                                <button id="btnAdicionar" class="btn btn-primary btn-lg">Adicionar</button>
+                                <a href="testeOnline.php" id="btnVoltar" class="btn btn-secondary">Voltar</a>
                               </div>
 
-                              <div class="form-group col-6">
-                                <button id="btnLimpar" class="btn btn-secondary" type="reset" href="#teste">Limpar</button>
-                              </div>
                             </div>
                           </div> 
                         </div>

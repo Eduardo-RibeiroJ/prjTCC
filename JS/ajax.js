@@ -1,17 +1,19 @@
 $(function(){
     // Executa assim que o botão de salvar for clicado
 
-    var numQuestao = 1;
+    
 
     $('#formInserirQuestao').on('click', '#btnAdicionar', function(e) {
 
+        var numQuestao = $('#numQuestao').val();
         // Cancela o envio do formulário
         e.preventDefault();
 
-        console.log($('#numQuestao').html());
+        console.log($('#numQuestao').val());
 
 
-        if($('#numQuestao').html() == "Questão 1") { //Salvará o questionário apenas na primeira inclusão de questão
+        if($('#numQuestao').val() == "1") { //Salvará o questionário apenas na primeira inclusão de questão
+            
             $.post('../PostAjax/salvar.php', {
             acao: "salvarTesteOnline",
             numTeste: $('#numTeste').html(),
@@ -37,11 +39,14 @@ $(function(){
         if(sucesso == true){
 
             numQuestao ++;
+            $('#numQuestao').val(numQuestao);
 
-            $('#numQuestao').html('Questão ' + numQuestao);
+            $('#numQuestaoCard-Header').html('Questão ' + numQuestao);
             $('input[type=text], textarea').val('');
             $('input[type=number]').val(30);
             $('select').val("A");
+
+            window.location.href = '#containerPrincipal';
             
         } else {
             alert('Erro: ' + sucesso);
@@ -62,7 +67,7 @@ $(function(){
         $.post('../PostAjax/alterar.php', {
             acao: "alterarQuestao",
             numTeste: numTesteOnline, //<numTeste(variavel que vai enviar) || numTeste>(variavel daqui)
-            numQuestao: $('#numQuestao').html(),
+            numQuestao: $('#numQuestao').val(),
             questao: $('#questao').val(),
             a: $('#a').val(),
             b: $('#b').val(),

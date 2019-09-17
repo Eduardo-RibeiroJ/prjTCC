@@ -89,14 +89,20 @@ class TesteOnlineDAO
         return $linha["idTesteOnline"];
     }
 
+    public function UltimoRegistroQuestao(TesteOnline $testeOnline) 
+    {
+        $db = new Conexao();
+        $dados = mysqli_query($db->getConection(), "SELECT * FROM tbQuestao WHERE idTesteOnline = '".$testeOnline->getIdTesteOnline()."';");
+        
+        return mysqli_num_rows($dados);
+    }
+
     public function QuantidadeQuestoes(TesteOnline $testeOnline)
     {
         $db = new Conexao();
         $dados = mysqli_query($db->getConection(), "SELECT * FROM tbQuestao WHERE idTesteOnline = '".$testeOnline->getIdTesteOnline()."';");
         
-        mysqli_num_rows($dados);
-        
-        return mysqli_num_rows ($dados);
+        return mysqli_num_rows($dados);
     }
 }
 

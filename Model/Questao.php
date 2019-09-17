@@ -88,6 +88,17 @@ class Questao {
         $this->tempo = $tempo;
     }
 
+    public function getRespostaCorreta() {
+        if($this->resposta == "A")
+            return $this->altA;
+        else if ($this->resposta == "B")
+            return $this->altB;
+        else if ($this->resposta == "C")
+            return $this->altC;
+        else if ($this->resposta == "D")
+            return $this->altD;
+    }
+
     
 }
 
