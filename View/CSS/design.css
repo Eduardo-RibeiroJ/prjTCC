@@ -85,6 +85,15 @@
         margin-bottom: 0.5em;
     }
 
+    .card-header {
+        font-weight: 600;
+    }
+
+    .accordion .card-header:hover {
+        cursor:pointer;
+        background-color: rgba(0,0,0,0.08);
+    }
+
 
 
 

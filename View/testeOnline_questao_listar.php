@@ -29,23 +29,21 @@ $arrayQuestao = $questaoDAO->Listar($questao);
 
         <div class="row">
             <div class="col">
-              <h3 class="d-inline" id="idTesteOnline"><?= $testeOnline->getIdTesteOnline(); ?></h3>
-              <h3 class="d-inline" >&nbsp;- <?= $testeOnline->getNomeTesteOnline(); ?></h3>
+              <h4 class="d-inline" id="idTesteOnline"><?= $testeOnline->getIdTesteOnline(); ?></h4>
+              <h4 class="d-inline" >&nbsp;- <?= $testeOnline->getNomeTesteOnline(); ?></h4>
             </div>
-
         </div>
 
-          <div class="accordion" id="accordionQuestao">
-              
+        <div class="row">
+          <div class="col">
+
+            <div class="accordion" id="accordionQuestao">
+                
               <?php foreach($arrayQuestao as $reg): ?>
 
               <div class="card" id=cardQuestao>
                 <div class="card-header" id="questao<?= $reg->getIdQuestao(); ?>" data-toggle="collapse" data-target="#collapse<?= $reg->getIdQuestao(); ?>" aria-expanded="true" aria-controls="collapse<?= $reg->getIdQuestao(); ?>">
-                  <h5 class="mb-0">
-                    <button class="btn btn-link">
-                      Questão <?= $reg->getIdQuestao(); ?>
-                    </button>
-                  </h5>
+                  Questão <?= $reg->getIdQuestao(); ?>
                 </div>
 
                 <div id="collapse<?= $reg->getIdQuestao(); ?>" class="collapse" aria-labelledby="questao<?= $reg->getIdQuestao(); ?>" data-parent="#accordionQuestao">
@@ -62,13 +60,12 @@ $arrayQuestao = $questaoDAO->Listar($questao);
                       </div>
                     </div>
                     
-                    
                   </div>
                 </div>
               </div>
 
               <?php endforeach; ?>
-              
+                
             </div>
 
             <div class="row">
@@ -77,8 +74,10 @@ $arrayQuestao = $questaoDAO->Listar($questao);
                 <a href="testeOnline.php" class="btn btn-secondary">Voltar</a>
               </div>
             </div>
+          </div>
+        </div>
 
-        </section>
+      </section>
       
     </div>
 

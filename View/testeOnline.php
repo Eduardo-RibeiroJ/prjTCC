@@ -64,11 +64,7 @@ $arrayTestesOnline = $testeOnlineDAO->Listar($testeOnline);
 
               <div class="card" id=cardTesteOnline>
                 <div class="card-header" id="teste<?= $reg->getIdTesteOnline(); ?>" data-toggle="collapse" data-target="#collapse<?= $reg->getIdTesteOnline(); ?>" aria-expanded="true" aria-controls="collapse<?= $reg->getIdTesteOnline(); ?>">
-                  <h5 class="mb-0">
-                    <button class="btn btn-link" type="button">
-                      <?= $reg->getIdTesteOnline(); ?> - <?= $reg->getNomeTesteOnline(); ?>
-                    </button>
-                  </h5>
+                  <?= $reg->getIdTesteOnline(); ?> - <?= $reg->getNomeTesteOnline(); ?>
                 </div>
 
                 <div id="collapse<?= $reg->getIdTesteOnline(); ?>" class="collapse" aria-labelledby="teste<?= $reg->getIdTesteOnline(); ?>" data-parent="#accordionTesteOnline">
