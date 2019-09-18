@@ -34,14 +34,16 @@ if(isset($_GET['btnCriar'])) {
 
     <div class="container" id="containerPrincipal">
 
-      <section>
-        <div class="row">
-          <div class="col">
-            <h4 class="d-inline" id="numTeste"><?= $testeOnline->getIdTesteOnline();?></h4>
-            <h4 class="d-inline">&nbsp;- Nome:&nbsp;</h4> <!-- &nbsp dá espaço -->
-            <h4 class="d-inline" id="nomeTeste"><?= $testeOnline->getNomeTesteOnline(); ?> </h4>
-          </div>
+      <section> 
 
+        <div class="container-small">
+          <div class="row">
+            <div class="col">
+              <h4 class="d-inline" id="numTeste"><?= $testeOnline->getIdTesteOnline();?></h4>
+              <h4 class="d-inline">&nbsp;- Nome:&nbsp;</h4> <!-- &nbsp dá espaço -->
+              <h4 class="d-inline" id="nomeTeste"><?= $testeOnline->getNomeTesteOnline(); ?> </h4>
+            </div>
+          </div>
         </div>
 
           <div class="row">
@@ -53,50 +55,40 @@ if(isset($_GET['btnCriar'])) {
 
                     <form id="formInserirQuestao">
                       <div class="card-body">
-
                           <div class="card-text">
+
                             <div class="form-row">
                               <div class="form-group col">
-
                                 <label for="questao">Questão</label>
                                 <textarea name="questao" id="questao" class="form-control" rows="3" placeholder="" autofocus></textarea>
-                              
                               </div>
                             </div>
 
                             <div class="form-row">
                               <div class="form-group col">
-
                                 <label for="a">Alternativa A</label>
                                 <input id="a" type="text" class="form-control" name="a" placeholder="">
-
                               </div>
                             </div>
 
                             <div class="form-row">
                               <div class="form-group col">
-
                                 <label for="b">Alternativa B</label>
                                 <input id="b" type="text" class="form-control" name="b" placeholder="">
-
                               </div>
                             </div>
 
                             <div class="form-row">
                               <div class="form-group col">
-
                                 <label for="c">Alternativa C</label>
                                 <input id="c" type="text" class="form-control" name="c" placeholder="">
-
                               </div>
                             </div>
 
                             <div class="form-row">
                               <div class="form-group col">
-
                                 <label for="d">Alternativa D</label>
                                 <input id="d" type="text" class="form-control" name="d" placeholder="">
-
                               </div>
                             </div>
 
@@ -118,17 +110,22 @@ if(isset($_GET['btnCriar'])) {
                               </div>
                             </div>
 
-                            <div class="form-row">
-                              <div class="form-group col-lg text-center">
-                                <button id="btnAdicionar" class="btn btn-primary btn-lg">Adicionar</button>
-                                <a href="testeOnline.php" id="btnVoltar" class="btn btn-secondary">Voltar</a>
-                              </div>
 
-                            </div>
-                          </div> 
+                            <ul class="list-group list-group-flush" style="padding-top: 2rem">
+                              <li class="list-group-item">
+                                <div class="form-row">
+                                  <div class="form-group col-lg text-center">
+                                    <button id="btnAdicionar" class="btn btn-primary btn-mg">Adicionar</button>
+                                    <a href="testeOnline.php" id="btnVoltar" class="btn btn-outline-dark">Voltar</a>
+                                  </div>
+                                </div>
+                               </li>
+                            </ul>  
+
+                           </div> 
                         </div>
-                      </div>
                     </form>
+
               </div>
             </div>
           </div>

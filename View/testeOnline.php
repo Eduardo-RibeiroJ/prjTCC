@@ -13,38 +13,41 @@ $arrayTestesOnline = $testeOnlineDAO->Listar($testeOnline);
 <?php include_once 'header.php'; ?>
 
       <div class="container">
-        <section>
 
+        <section>
           <div class="row">
             <div class="col-lg-8">
               <div class="card">
+
                       <div class="card-header">
                         Crie um teste online personalizado!
                       </div>
+
                       <div class="card-body">
                         <div class="card-text">
 
-                          <form method="GET" action="testeOnline_questao_inserir.php">
-                            <div class="row">
-                              <div class="col">
-                                <label class="col-form-label">Nome do Teste Online</label>
-                              </div>
-                            </div>
+                            <form method="GET" action="testeOnline_questao_inserir.php">
 
-                            <div class="row">
-                              <div class="col-lg-10">
-                                  
-                                  <input class="form-control" type="text" name="nomeTeste" id="nomeTeste" placeholder="" required autofocus>
-
+                              <div class="row">
+                                <div class="col">
+                                  <label class="col-form-label">Nome do Teste Online</label>
+                                </div>
                               </div>
 
-                              <div class="col-lg-2 text-center">
-                                <input type="submit" name="btnCriar" id="btnCriar" class="btn btn-primary btn-lg" value="Criar"/>
+                              <div class="row">
+                                <div class="col-lg-10" style="padding-bottom:1rem">
+                                    <input class="form-control" type="text" name="nomeTeste" id="nomeTeste" placeholder="" required autofocus>
+                                </div>
+
+                                <div class="col-lg-2 text-center">
+                                  <input type="submit" name="btnCriar" id="btnCriar" class="btn btn-primary btn-mg" value="Criar"/>
+                                </div>
                               </div>
-                            </div>
-                        </form>
-                      </div>
-                    </div>
+
+                             </form>
+
+                         </div>
+                       </div>
                           
               </div>
             </div>
@@ -70,13 +73,15 @@ $arrayTestesOnline = $testeOnlineDAO->Listar($testeOnline);
                 <div id="collapse<?= $reg->getIdTesteOnline(); ?>" class="collapse" aria-labelledby="teste<?= $reg->getIdTesteOnline(); ?>" data-parent="#accordionTesteOnline">
                   <div class="card-body">
                     <div class="row">
+
                       <div class="col-lg-7">
                         <h5 class="card-title">Teste online <?= $reg->getNomeTesteOnline(); ?></h5>
                         <p>Contém <?= $reg->getQuantidadeQuestoes(); ?> questões.</p>
                       </div>
+
                       <div class="col-lg-5 text-center">
-                        <a class="btn btn-primary btn-lg" href="testeOnline_questao_listar.php?idTesteOnline=<?= $reg->getIdTesteOnline(); ?>&nomeTesteOnline=<?= $reg->getNomeTesteOnline(); ?>">Visualizar Questões</a>
-                        <button class="btn btn-secondary" id="btnExcluir" type="button" value="<?= $reg->getIdTesteOnline(); ?>">Excluir Teste Online</button>
+                        <a class="btn btn-outline-dark btn-mg" href="testeOnline_questao_listar.php?idTesteOnline=<?= $reg->getIdTesteOnline(); ?>&nomeTesteOnline=<?= $reg->getNomeTesteOnline(); ?>">Visualizar Questões</a>
+                        <button class="btn btn-danger" id="btnExcluir" type="button" value="<?= $reg->getIdTesteOnline(); ?>">Excluir Teste Online</button>
                       </div>
                     </div>
                     
