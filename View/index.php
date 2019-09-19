@@ -4,20 +4,19 @@
   <!-- Masthead -->
           <header class="masthead text-white text-left" id="home">
             <div class="overlay"></div>
-            <div class="container">
-              <div class="row">
-               
-                <div class="col-7">
-                  <div class="espacamento">
-                    <h1 class="mb-2" style="color:#1d2731">Seja bem-vindo a Connection, o site que conecta as empresas com os melhores candidatos!</h1>
-                    </div>
-                 </div>
+               <div class="container">
+                   <div class="row">
+                
+                      <div class="col-7">
+                          <h1 class="mb-2" style="color:#1d2731">Seja bem-vindo a Connection, o site que conecta as empresas com os melhores candidatos!</h1>
+                      </div>
 
-                  <div class="col-6">
-                      <button type="submit" class="btn btn-block btn-lg" style="background-color:#f9cf00">Saiba Mais</button>
+                      <div class="col-6">
+                          <button type="submit" class="btn btn-block btn-lg" style="background-color:#f9cf00">Saiba Mais</button>
+                      </div>
+                      
                    </div>
-              </div>
-            </div>
+               </div>
           </header>
 
           <!-- Sobre nosso software -->

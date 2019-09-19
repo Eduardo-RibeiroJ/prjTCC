@@ -13,7 +13,7 @@ if (isset($_POST['Adicionar'])) {
 
 ?>
 
-<?php include_once 'header.php'; ?>
+<?php include_once 'headerCand.php'; ?>
 
 <div class="container">
 
@@ -21,11 +21,13 @@ if (isset($_POST['Adicionar'])) {
 
   <section>
 
-    <div class="row">
-      <div class=col>
-        <h4>Crie seu perfil!</h4>
+    <div class="container-small">
+      <div class="row">
+        <div class=col>
+          <h4>Crie seu perfil!</h4>
+        </div>
       </div>
-    </div>
+     </div>
 
 
     <div class="row">
@@ -92,7 +94,7 @@ if (isset($_POST['Adicionar'])) {
               </div>
 
               <div class="form-row">
-                <div class="form-group col text-center">
+                <div class="form-group col text-center" style="padding-top:1rem">
                   <button name="btnSalvar" id="btnSalvar" class="btn btn-primary">Salvar</button>
                 </div>
               </div>
@@ -199,6 +201,81 @@ if (isset($_POST['Adicionar'])) {
 
               </div>
             </div>
+
+            <div class="card">
+
+              <div class="card-header" id="candidatoInstituicao" data-toggle="collapse" data-target="#collapsecandidInstituicao" aria-expanded="true" aria-controls="collapsecandidInstituicao">
+                Instituição de ensino
+              </div>
+
+              <div id="collapsecandidInstituicao" class="collapse" aria-labelledby="candidatoInstituicao" data-parent="#accordionCandidatoDadosPessoais">
+
+                <div class="card-body">
+                  <div class="card-text">
+
+                      <div class="form-row">
+                        <div class="form-group col-md-4">
+                          <label for="txtTelefone">Nome do curso</label>
+                          <input type="text" class="form-control" id="txtTelefone" name="txtTelefone" placeholder="" required>
+                        </div>
+
+                        <div class="form-group col-md-4">
+                          <label for="txtTelefone2">Nome da instituição</label>
+                          <input type="text" class="form-control" id="txtTelefone2" name="txtTelefone2" placeholder="">
+                        </div>
+
+                        <div class="form-group col-md-4">
+                          <label for="txtTipoCurso">Tipo do curso</label>
+                          <select class="custom-select" id="tipoCurso" name="tipoCurso" required>
+                            <option value="" selected>Selecione</option>
+                            <option value="F12">Formação escolar fundamental (1°Grau) e média (2°Grau)</option>
+                            <option value="EMP">Ensino Médio profisisonalizante</option>
+                            <option value="GR">Graduação</option>
+                            <option value="GRE">Graduação - especialização</option>
+                            <option value="GRMB">Graduação - MBA</option>
+                            <option value="GRME">Graduação - Mestrado</option>
+                            <option value="GRD">Graduação - Doutorado</option>
+                          </select>
+                        </div>
+
+                      </div>
+
+                       <div class="form-row">
+
+                        <div class="form-group col-md-3">
+                          <label for="txtDataNasc">Data início</label>
+                          <input type="date" class="form-control" id="txtDataNasc" name="txtDataNasc" placeholder="" required>
+                        </div>
+                        <div class="form-group col-md-3">
+                          <label for="txtDataNasc">Data término</label>
+                          <input type="date" class="form-control" id="txtDataNasc" name="txtDataNasc" placeholder="" required>
+                        </div>
+
+                       </div>
+
+                       <div class="form-row">
+
+                        <div class="form-group col-md-6">
+                          <label for="txtSituacao">Tipo do curso</label>
+                          <select class="custom-select" id="situacao" name="situacao" required>
+                            <option value="" selected>Selecione</option>
+                            <option value="IM">Interrrompido</option>
+                            <option value="EM">Em andamento</option>
+                            <option value="FI">Finalizado</option>
+                          </select>
+                        </div>
+                       </div>
+
+
+
+                      </div> 
+                      
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
 
           </form>
 

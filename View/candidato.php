@@ -7,7 +7,7 @@
             <div class="container">
               <div class="row">
                
-                    <div class="col-12" style="padding:5rem">
+                    <div class="col-12" style="padding:1rem">
                         <form class="form-signin">
                             <h1 class="h3 mb-3 font-weight-normal text-center">Pesquisa de vagas</h1>
                             <div class="input-group mb-2 mr-sm-2">

@@ -117,7 +117,7 @@ $questaoDAO->Listar($questao);
                   </div>
                 </div>
 
-                <ul class="list-group list-group-flush">
+                 <ul class="list-group list-group-flush">
                   <li class="list-group-item">
                     <div class="form-row">
                       <div class="form-group col text-center">
@@ -126,7 +126,7 @@ $questaoDAO->Listar($questao);
                       </div>
                     </div>
                   </li>
-                </ul>   
+                 </ul>   
                   
               </div>
             </div>
