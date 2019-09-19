@@ -2,12 +2,14 @@
 class Candidato {
     private $cpf;
     private $nome;
+    private $sobrenome;
     private $sexo;
     private $dataNasc;
     private $email;
     private $senha;
     private $estadoCivil;
     private $cep;
+    private $estado;
     private $cidade;
     private $endereco;
     private $bairro;
@@ -16,6 +18,15 @@ class Candidato {
     private $linkedin;
     private $facebook;
     private $sitePessoal;
+
+    function inserirCandidatoDadosPessoais($cpf, $nome, $sobrenome, $dataNasc, $estadoCivil, $sexo) {
+        $this->cpf = $cpf;
+        $this->nome = $nome;
+        $this->sobrenome = $sobrenome;
+        $this->dataNasc = $dataNasc;
+        $this->estadoCivil = $estadoCivil;
+        $this->sexo = $sexo;
+    }
     
     function getCpf() {
         return $this->cpf;
@@ -23,6 +34,10 @@ class Candidato {
 
     function getNome() {
         return $this->nome;
+    }
+
+    function getSobrenome() {
+        return $this->sobrenome;
     }
 
     function getSexo() {
@@ -47,6 +62,10 @@ class Candidato {
 
     function getCep() {
         return $this->cep;
+    }
+
+    function getEstado() {
+        return $this->estado;
     }
 
     function getCidade() {
@@ -89,6 +108,10 @@ class Candidato {
         $this->nome = $nome;
     }
 
+    function setSobrenome($sobrenome) {
+        $this->sobrenome = $sobrenome;
+    }
+
     function setSexo($sexo) {
         $this->sexo = $sexo;
     }
@@ -111,6 +134,10 @@ class Candidato {
 
     function setCep($cep) {
         $this->cep = $cep;
+    }
+
+    function setEstado($estado) {
+        $this->estado = $estado;
     }
 
     function setCidade($cidade) {

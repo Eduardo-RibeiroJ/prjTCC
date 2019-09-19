@@ -42,6 +42,26 @@ if($_POST['acao'] == "salvarTesteOnline") {
 	$testeOnlineDAO->Inserir($testeOnline);
 }
 
+if($_POST['acao'] == "salvarCandidatoDadosPessoais") {
+
+	include_once "../Model/Candidato.php";
+	include_once "../Controller/CandidatoDAO.php";
+
+	$candidato = new Candidato();
+	$candidatoDAO = new CandidatoDAO($conn);
+
+	$candidato->inserirCandidatoDadosPessoais (
+		$_POST['cpf'],
+		$_POST['nome'],
+		$_POST['sobrenome'],
+		$_POST['dataNasc'],
+		$_POST['estadoCivil'],
+		$_POST['sexo']
+	);
+
+	$candidatoDAO->Inserir($candidato);
+}
+
 echo true;
 
 ?>

@@ -139,4 +139,28 @@ $(function(){
         
     });
 
+    $('#accordionCandidatoDadosPessoais').on('click', '#btnSalvar', function(e) {
+
+        $.post('../PostAjax/salvar.php', {
+            acao: "salvarCandidatoDadosPessoais",
+            cpf: $('#cpf').val(),
+            nome: $('#txtNome').val(),
+            sobrenome: $('#txtSobrenome').val(),
+            dataNasc: $('#txtDataNasc').val(),
+            estadoCivil: $('#cbbEstadoCivil').val(),
+            sexo: $('#cbbSexo').val()
+
+        }, function(sucesso) {
+
+        if(sucesso == true) {
+
+            $("#candidatoDadosPessoais").trigger('click');
+            
+        } else {
+            alert('Erro: ' + sucesso);
+        }
+        });
+        
+    });
+
 });

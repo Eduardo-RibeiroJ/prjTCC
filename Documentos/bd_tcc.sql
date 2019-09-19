@@ -31,6 +31,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `tbcandidato` (
   `cpf` varchar(15) NOT NULL,
   `nome` varchar(50) NOT NULL,
+  `sobrenome` varchar(50) NOT NULL,
   `sexo` varchar(1) NOT NULL,
   `dataNasc` date NOT NULL,
   `email` varchar(50) NOT NULL,

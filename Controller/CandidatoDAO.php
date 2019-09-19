@@ -12,6 +12,7 @@ class CandidatoDAO
     public function Inserir(Candidato $candidato) {
         $cpf = $candidato->getCpf();
         $nome = $candidato->getNome();
+        $sobrenome = $candidato->getSobrenome();
         $sexo = $candidato->getSexo();
         $dataNasc = $candidato->getDataNasc();
         $email = $candidato->getEmail();
@@ -28,11 +29,11 @@ class CandidatoDAO
         $facebook = $candidato->getFacebook();
         $sitePessoal = $candidato->getSitePessoal();
 
-        $query = "INSERT INTO tbCandidato (cpf, nome, sexo, dataNasc, 
+        $query = "INSERT INTO tbCandidato (cpf, nome, sobrenome, sexo, dataNasc, 
                                             email, senha, estadoCivil,
                                             cep, estado, cidade, endereco,
                                             bairro, tel1, tel2, linkedin,
-                                            facebook, sitePessoal) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
+                                            facebook, sitePessoal) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
         
         $stmt = mysqli_prepare($this->db->getConection(), $query);
 
@@ -40,7 +41,7 @@ class CandidatoDAO
             die(mysqli_error($this->db->getConection()));
         }
 
-        mysqli_stmt_bind_param($stmt, 'sssssssssssssssss', $cpf, $nome, $sexo, $dataNasc,
+        mysqli_stmt_bind_param($stmt, 'ssssssssssssssssss', $cpf, $nome, $sobrenome, $sexo, $dataNasc,
                                                             $email, $senha, $estadoCivil,
                                                             $cep, $estado, $cidade, $endereco,
                                                             $bairro, $tel1, $tel2, $linkedin,
