@@ -31,18 +31,16 @@ $candidatoDAO->Listar($candidato);
 
 
     <div class="row">
-
       <div class="col">
 
         <div class="accordion" id="accordionCandidatoDadosPessoais">
-        <?php var_dump($candidato);?>
+            <?php var_dump($candidato);?>
 
           <form method="POST" action="candidato_inserir.php">
 
             <div class="card">
 
-              <div class="card-header" id="candidatoDadosPessoais">
-                Dados Pessoais
+              <div class="card-header" id="candidatoDadosPessoais">Dados Pessoais
                 <button name="btnAlterarSalvarDadosPessoais" id="btnAlterarSalvarDadosPessoais" class="btn btn-primary float-right" data-toggle="collapse" data-target="#collapsecandidatoDadosPessoais" aria-expanded="true" aria-controls="collapsecandidatoDadosPessoais">Alterar</button>
               </div>
 
@@ -135,13 +133,11 @@ $candidatoDAO->Listar($candidato);
                           <label for="txtUF">Estado</label>
                           <input type="text" class="form-control" id="txtUF" name="txtUF" placeholder="" required>
                         </div>
-
                       </div> 
-                      
+                  
                   </div>
                 </div>
               </div>
-
             </div>
 
             <div class="card">
@@ -188,12 +184,9 @@ $candidatoDAO->Listar($candidato);
                           <input type="text" class="form-control" id="txtSitePessoal" name="txtSitePessoal" placeholder="">
                         </div>
                       </div>
-
-                      </div> 
                       
                   </div>
                 </div>
-
               </div>
             </div>
 
@@ -232,7 +225,6 @@ $candidatoDAO->Listar($candidato);
                             <option value="GRD">Graduação - Doutorado</option>
                           </select>
                         </div>
-
                       </div>
 
                        <div class="form-row">
@@ -248,29 +240,22 @@ $candidatoDAO->Listar($candidato);
 
                        </div>
 
-                       <div class="form-row">
-
-                        <div class="form-group col-md-6">
-                          <label for="txtSituacao">Tipo do curso</label>
-                          <select class="custom-select" id="situacao" name="situacao" required>
-                            <option value="" selected>Selecione</option>
-                            <option value="IM">Interrrompido</option>
-                            <option value="EM">Em andamento</option>
-                            <option value="FI">Finalizado</option>
-                          </select>
-                        </div>
-                       </div>
-
-
-
-                      </div> 
+                         <div class="form-row">
+                          <div class="form-group col-md-6">
+                              <label for="txtSituacao">Tipo do curso</label>
+                              <select class="custom-select" id="situacao" name="situacao" required>
+                                <option value="" selected>Selecione</option>
+                                <option value="IM">Interrrompido</option>
+                                <option value="EM">Em andamento</option>
+                                <option value="FI">Finalizado</option>
+                              </select>
+                             </div>
+                         </div>
                       
                   </div>
                 </div>
-
               </div>
             </div>
-
 
           </form>
 
@@ -279,6 +264,8 @@ $candidatoDAO->Listar($candidato);
     </div>
 
   </section>
+
+    <button name="btnContinuar" id="btnContinuar" class="btn btn-primary float-right" data-toggle="collapse">Continuar</button>
 
 </div>
 
