@@ -101,7 +101,7 @@ class CandidatoDAO
     }
 
     public function Listar(Candidato $candidato) {
-        $query = $this->db->getConection()->query("SELECT * FROM tbCandidato WHERE cpf ='".$cpf->getCpf()."';");
+        $query = $this->db->getConection()->query("SELECT * FROM tbCandidato WHERE cpf ='".$candidato->getCpf()."';");
            
         $reg = $query->fetch_array();
         $candidato->inserirCandidato(

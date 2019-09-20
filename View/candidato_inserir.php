@@ -7,9 +7,9 @@ $conn = new Conexao();
 $candidato = new Candidato();
 $candidatoDAO = new CandidatoDAO($conn);
 
-if (isset($_POST['Adicionar'])) {
-  echo "<script> alert('caiu');</script>";
-}
+$candidato->setCpf("545454");
+
+$candidatoDAO->Listar($candidato);
 
 ?>
 
@@ -35,16 +35,18 @@ if (isset($_POST['Adicionar'])) {
       <div class="col">
 
         <div class="accordion" id="accordionCandidatoDadosPessoais">
+        <?php var_dump($candidato);?>
 
           <form method="POST" action="candidato_inserir.php">
 
             <div class="card">
 
-              <div class="card-header" id="candidatoDadosPessoais" data-toggle="collapse" data-target="#collapsecandidatoDadosPessoais" aria-expanded="true" aria-controls="collapsecandidatoDadosPessoais">
+              <div class="card-header" id="candidatoDadosPessoais">
                 Dados Pessoais
+                <button name="btnAlterarSalvarDadosPessoais" id="btnAlterarSalvarDadosPessoais" class="btn btn-primary float-right" data-toggle="collapse" data-target="#collapsecandidatoDadosPessoais" aria-expanded="true" aria-controls="collapsecandidatoDadosPessoais">Alterar</button>
               </div>
 
-              <div id="collapsecandidatoDadosPessoais" class="collapse show" aria-labelledby="candidatoDadosPessoais" data-parent="#accordionCandidatoDadosPessoais">
+              <div id="collapsecandidatoDadosPessoais" class="collapse" aria-labelledby="candidatoDadosPessoais" data-parent="#accordionCandidatoDadosPessoais">
 
                 <div class="card-body">
                   <div class="card-text">
@@ -52,12 +54,12 @@ if (isset($_POST['Adicionar'])) {
                     <div class="form-row">
                       <div class="form-group col-md-6">
                         <label for="txtNome">Nome</label>
-                        <input type="text" class="form-control" id="txtNome" name="txtNome" placeholder="" required autofocus>
+                        <input type="text" class="form-control" id="txtNome" name="txtNome" value="<?= $candidato->getNome(); ?>" required autofocus>
                       </div>
 
                       <div class="form-group col-md-6">
                         <label for="txtSobrenome">Sobrenome</label>
-                        <input type="text" class="form-control" id="txtSobrenome" name="txtSobrenome" placeholder="" required>
+                        <input type="text" class="form-control" id="txtSobrenome" name="txtSobrenome" value="<?= $candidato->getSobrenome(); ?>" required>
                       </div>
                     </div>
 
@@ -65,7 +67,7 @@ if (isset($_POST['Adicionar'])) {
                     <div class="form-row">
                       <div class="form-group col-md-4">
                         <label for="txtDataNasc">Data Nascimento</label>
-                        <input type="date" class="form-control" id="txtDataNasc" name="txtDataNasc" placeholder="" required>
+                        <input type="date" class="form-control" id="txtDataNasc" name="txtDataNasc" value="" required>
                       </div>
 
                       <div class="form-group col-md-4">
@@ -92,13 +94,6 @@ if (isset($_POST['Adicionar'])) {
                   </div>
                 </div>
               </div>
-
-              <div class="form-row">
-                <div class="form-group col text-center" style="padding-top:1rem">
-                  <button name="btnSalvar" id="btnSalvar" class="btn btn-primary">Salvar</button>
-                </div>
-              </div>
-
             </div>
 
             <div class="card">

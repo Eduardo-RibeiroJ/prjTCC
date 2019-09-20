@@ -27,6 +27,24 @@ class Candidato {
         $this->estadoCivil = $estadoCivil;
         $this->sexo = $sexo;
     }
+
+    function inserirCandidato($cpf, $nome, $sobrenome, $sexo, $dataNasc, $email, $senha, $estadoCivil, $endereco, $bairro, $tel1, $tel2, $linkedin, $facebook, $sitePessoal) {
+        $this->cpf = $cpf;
+        $this->nome = $nome;
+        $this->sobrenome = $sobrenome;
+        $this->sexo = $sexo;
+        $this->dataNasc = $dataNasc;
+        $this->email = $email;
+        $this->senha = $senha;
+        $this->estadoCivil = $estadoCivil;
+        $this->endereco = $endereco;
+        $this->bairro = $bairro;
+        $this->tel1 = $tel1;
+        $this->tel2 = $tel2;
+        $this->linkedin = $linkedin;
+        $this->facebook = $facebook;
+        $this->sitePessoal = $sitePessoal;
+    }
     
     function getCpf() {
         return $this->cpf;

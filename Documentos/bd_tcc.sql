@@ -30,23 +30,23 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `tbcandidato` (
   `cpf` varchar(15) NOT NULL,
-  `nome` varchar(50) NOT NULL,
-  `sobrenome` varchar(50) NOT NULL,
-  `sexo` varchar(1) NOT NULL,
-  `dataNasc` date NOT NULL,
-  `email` varchar(50) NOT NULL,
-  `senha` varchar(15) NOT NULL,
-  `estadoCivil` varchar(15) NOT NULL,
-  `cep` varchar(10) NOT NULL,
-  `estado` varchar(20) NOT NULL,
-  `cidade` varchar(30) NOT NULL,
-  `endereco` varchar(30) NOT NULL,
-  `bairro` varchar(20) NOT NULL,
-  `tel1` varchar(16) NOT NULL,
-  `tel2` varchar(16) NOT NULL,
-  `linkedin` varchar(50) NOT NULL,
-  `facebook` varchar(50) NOT NULL,
-  `sitePessoal` varchar(50) NOT NULL
+  `nome` varchar(50),
+  `sobrenome` varchar(50),
+  `sexo` varchar(1),
+  `dataNasc` date,
+  `email` varchar(50),
+  `senha` varchar(15),
+  `estadoCivil` varchar(15),
+  `cep` varchar(10),
+  `estado` varchar(20),
+  `cidade` varchar(30),
+  `endereco` varchar(30),
+  `bairro` varchar(20),
+  `tel1` varchar(16),
+  `tel2` varchar(16),
+  `linkedin` varchar(50),
+  `facebook` varchar(50),
+  `sitePessoal` varchar(50)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
