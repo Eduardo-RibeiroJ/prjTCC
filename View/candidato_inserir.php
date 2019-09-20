@@ -98,6 +98,7 @@ $candidatoDAO->Listar($candidato);
 
               <div class="card-header" id="candidatoEndereco" data-toggle="collapse" data-target="#collapsecandidatoEndereco" aria-expanded="true" aria-controls="collapsecandidatoEndereco">
                 Endereço
+                <button name="btnAlterarSalvarEndereco" id="btnAlterarSalvarEndereco" class="btn btn-primary float-right" data-toggle="collapse" data-target="#collapsecandidatoEndereco" aria-expanded="true" aria-controls="collapsecandidatoEndereco">Alterar</button>
               </div>
 
               <div id="collapsecandidatoEndereco" class="collapse" aria-labelledby="candidatoEndereco" data-parent="#accordionCandidatoDadosPessoais">
@@ -144,6 +145,7 @@ $candidatoDAO->Listar($candidato);
 
               <div class="card-header" id="candidatoContato" data-toggle="collapse" data-target="#collapsecandidatoContato" aria-expanded="true" aria-controls="collapsecandidatoContato">
                 Contato
+                <button name="btnAlterarSalvarContato" id="btnAlterarSalvarContato" class="btn btn-primary float-right" data-toggle="collapse" data-target="#collapsecandidatoContato" aria-expanded="true" aria-controls="collapsecandidatoContato">Alterar</button>
               </div>
 
               <div id="collapsecandidatoContato" class="collapse" aria-labelledby="candidatoContato" data-parent="#accordionCandidatoDadosPessoais">

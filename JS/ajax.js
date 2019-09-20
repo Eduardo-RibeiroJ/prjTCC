@@ -170,4 +170,126 @@ $(function(){
         }
     });
 
+    $('#accordionCandidatoDadosPessoais').on('click', '#btnAlterarSalvarEndereco', function (e) {
+
+        e.preventDefault();
+
+        if ($("#btnAlterarSalvarEndereco").html() == "Alterar") {
+
+            $("#btnAlterarSalvarEndereco").html("Salvar");
+
+        } else {
+
+            $.post('../PostAjax/salvar.php', {
+                acao: "salvarCandidatoEndereco",
+                cep: $('#txtCEP').val(),
+                endereco: $('#txtEndereco').val(),
+                bairro: $('#txtBairro').val(),
+                cidade: $('#txtCidade').val(),
+                estado: $('#txtUF').val(),
+
+            }, function (sucesso) {
+
+                if (sucesso == true) {
+                    $("#btnAlterarSalvarEndereco").html("Alterar");
+                } else {
+                    alert('Erro: ' + sucesso);
+                }
+            });
+
+        }
+    });
+
+    $('#accordionCandidatoDadosPessoais').on('click', '#btnAlterarSalvarContato', function (e) {
+
+        e.preventDefault();
+
+        if ($("#btnAlterarSalvarContato").html() == "Alterar") {
+
+            $("#btnAlterarSalvarContato").html("Salvar");
+
+        } else {
+
+            $.post('../PostAjax/salvar.php', {
+                acao: "salvarCandidatoContato",
+                telefone: $('#txtTelefone').val(),
+                telefone2: $('#txtTelefone2').val(),
+                linkedin: $('#txtlinkedin').val(),
+                facebook: $('#txtFacebook').val(),
+                sitePessoal: $('#txtSitePessoal').val(),
+
+            }, function (sucesso) {
+
+                if (sucesso == true) {
+                    $("#btnAlterarSalvarContato").html("Alterar");
+                } else {
+                    alert('Erro: ' + sucesso);
+                }
+            });
+
+        }
+    });
+
+    $('#accordionCandidatoCursosDiversos').on('click', '#btnAlterarSalvarInstituicao', function (e) {
+
+        e.preventDefault();
+
+        if ($("#btnAlterarSalvarInstituicao").html() == "Alterar") {
+
+            $("#btnAlterarSalvarInstituicao").html("Salvar");
+
+        } else {
+
+            $.post('../PostAjax/salvar.php', {
+                acao: "salvarCandidatoCursoInsti",
+                curso: $('#txtNomeCurso').val(),
+                instituicao: $('#txNomeInsti').val(),
+                tipo: $('#cbbTipoCurso').val(),
+                dtaInicio: $('#dtaInicioInsti').val(),
+                dtaTerm: $('#dtaTermInsti').val(),
+                situacao: $('#cbbSituacaoInsti').val()
+
+            }, function (sucesso) {
+
+                if (sucesso == true) {
+                    $("#btnAlterarSalvarInstituicao").html("Alterar");
+                } else {
+                    alert('Erro: ' + sucesso);
+                }
+            });
+
+        }
+    });
+
+    $('#accordionCandidatoCursosDiversos').on('click', '#btnAlterarSalvarCursoProfiss', function (e) {
+
+        e.preventDefault();
+
+        if ($("#btnAlterarSalvarCursoProfiss").html() == "Alterar") {
+
+            $("#btnAlterarSalvarCursoProfiss").html("Salvar");
+
+        } else {
+
+            $.post('../PostAjax/salvar.php', {
+                acao: "salvarCandidatoCursoProfiss",
+                    cursoP: $('#txtNomeCursoP').val(),
+                    instituicaoP: $('#txNomeInstiP').val(),
+                    situacaoP: $('#cbbSituacaoInsti').val(),
+                    conclusao: $('#dtaconclusao').val(),
+                    CargaHora: $('#cargaHora').val(),
+
+            }, function (sucesso) {
+
+                if (sucesso == true) {
+                    $("#btnAlterarSalvarCursoProfiss").html("Alterar");
+                } else {
+                    alert('Erro: ' + sucesso);
+                }
+            });
+
+        }
+    });
+
+
 });

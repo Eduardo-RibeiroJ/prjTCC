@@ -29,34 +29,35 @@ $candidatoDAO->Listar($candidato);
 
     <div class="row">
       <div class="col">
-        <div class="accordion" id="accordionCandidatoDadosPessoais">
+        <div class="accordion" id="accordionCandidatoCursosDiversos">
           <form method="POST" action="candidato_inserir.php">
 
             <div class="card">
 
               <div class="card-header" id="candidatoInstituicao" data-toggle="collapse" data-target="#collapsecandidInstituicao" aria-expanded="true" aria-controls="collapsecandidInstituicao">
                 Instituição de ensino
+                <button name="btnAlterarSalvarInstituicao" id="btnAlterarSalvarInstituicao" class="btn btn-primary float-right" data-toggle="collapse" data-target="#collapsecandidInstituicao" aria-expanded="true" aria-controls="collapsecandidInstituicao">Alterar</button>
               </div>
 
-              <div id="collapsecandidInstituicao" class="collapse" aria-labelledby="candidatoInstituicao" data-parent="#accordionCandidatoDadosPessoais">
+              <div id="collapsecandidInstituicao" class="collapse" aria-labelledby="candidatoInstituicao" data-parent="#accordionCandidatoCursosDiversos">
 
                 <div class="card-body">
                   <div class="card-text">
 
                       <div class="form-row">
                         <div class="form-group col-md-4">
-                          <label for="txtTelefone">Nome do curso</label>
+                          <label for="txtNomeCurso">Nome do curso</label>
                           <input type="text" class="form-control" id="txtTelefone" name="txtTelefone" placeholder="" required>
                         </div>
 
                         <div class="form-group col-md-4">
-                          <label for="txtTelefone2">Nome da instituição</label>
+                          <label for="txNomeInsti">Nome da instituição</label>
                           <input type="text" class="form-control" id="txtTelefone2" name="txtTelefone2" placeholder="">
                         </div>
 
                         <div class="form-group col-md-4">
-                          <label for="txtTipoCurso">Tipo do curso</label>
-                          <select class="custom-select" id="tipoCurso" name="tipoCurso" required>
+                          <label for="tipoCurso">Tipo do curso</label>
+                          <select class="custom-select" id="cbbTipoCurso" name="cbbTipoCurso" required>
                             <option value="" selected>Selecione</option>
                             <option value="F12">Formação escolar fundamental (1°Grau) e média (2°Grau)</option>
                             <option value="EMP">Ensino Médio profisisonalizante</option>
@@ -72,20 +73,20 @@ $candidatoDAO->Listar($candidato);
                        <div class="form-row">
 
                         <div class="form-group col-md-3">
-                          <label for="DataInicioInsti">Data início</label>
-                          <input type="date" class="form-control" id="DataInicioInsti" name="DataInicioInsti" placeholder="" required>
+                          <label for="dtaInicioInsti">Data início</label>
+                          <input type="date" class="form-control" id="dtaInicioInsti" name="dtaInicioInsti" placeholder="" required>
                         </div>
                         <div class="form-group col-md-3">
-                          <label for="DataTermInsti">Data término (previsão)</label>
-                          <input type="date" class="form-control" id="DataTermInsti" name="DataTermInsti" placeholder="" required>
+                          <label for="dtaTermInsti">Data término (previsão)</label>
+                          <input type="date" class="form-control" id="dtaTermInsti" name="dtaTermInsti" placeholder="" required>
                         </div>
 
                        </div>
 
                          <div class="form-row">
                           <div class="form-group col-md-6">
-                              <label for="cmbSituacaoInsti">Tipo do curso</label>
-                              <select class="custom-select" id="cmbSituacaoInsti" name="cmbSituacaoInsti" required>
+                              <label for="cbbSituacaoInsti">Tipo do curso</label>
+                              <select class="custom-select" id="cbbSituacaoInsti" name="cmbSituacaoInsti" required>
                                 <option value="" selected>Selecione</option>
                                 <option value="IM">Interrrompido</option>
                                 <option value="EM">Em andamento</option>
@@ -101,23 +102,24 @@ $candidatoDAO->Listar($candidato);
 
             <div class="card">
 
-              <div class="card-header" id="candidatoInstituicao" data-toggle="collapse" data-target="#collapsecandidInstituicao" aria-expanded="true" aria-controls="collapsecandidInstituicao">
+              <div class="card-header" id="candidatoCurso" data-toggle="collapse" data-target="#collapsecandidCurso" aria-expanded="true" aria-controls="collapsecandidCurso">
                 Cursos profissionalizantes
+                <button name="btnAlterarSalvarCursoProfiss" id="btnAlterarSalvarCursoProfiss" class="btn btn-primary float-right" data-toggle="collapse" data-target="#collapsecandidCurso" aria-expanded="true" aria-controls="collapsecandidCurso">Alterar</button>
               </div>
 
-              <div id="collapsecandidInstituicao" class="collapse" aria-labelledby="candidatoInstituicao" data-parent="#accordionCandidatoDadosPessoais">
+              <div id="collapsecandidCurso" class="collapse" aria-labelledby="candidatoCurso" data-parent="#accordionCandidatoCursosDiversos">
 
                 <div class="card-body">
                   <div class="card-text">
 
                       <div class="form-row">
                         <div class="form-group col-md-6">
-                          <label for="txtTelefone">Nome do curso</label>
+                          <label for="txtNomeCursoP">Nome do curso</label>
                           <input type="text" class="form-control" id="txtTelefone" name="txtTelefone" placeholder="" required>
                         </div>
 
                         <div class="form-group col-md-6">
-                          <label for="txtTelefone2">Nome da instituição</label>
+                          <label for="txNomeInstiP">Nome da instituição</label>
                           <input type="text" class="form-control" id="txtTelefone2" name="txtTelefone2" placeholder="">
                         </div>
                       </div>
@@ -125,8 +127,8 @@ $candidatoDAO->Listar($candidato);
                        <div class="form-row">
 
                          <div class="form-group col-md-4">
-                            <label for="cmbSituacaoCurso">Situação</label>
-                            <select class="custom-select" id="cmbSituacaoCurso" name="cmbSituacaoCurso" required>
+                            <label for="cbbSituacaoCursoP">Situação</label>
+                            <select class="custom-select" id="cbbSituacaoCurso" name="cbbSituacaoCurso" required>
                                 <option value="" selected>Selecione</option>
                                 <option value="IM">Interrrompido</option>
                                 <option value="EM">Em andamento</option>
@@ -135,8 +137,8 @@ $candidatoDAO->Listar($candidato);
                             </div>
 
                           <div class="form-group col-md-4">
-                            <label for="DataTermCurso">Data término (previsão)</label>
-                            <input type="date" class="form-control" id="DataTermCurso" name="DataTermCurso" placeholder="" required>
+                            <label for="dtaconclusao">Conclusão</label>
+                            <input type="date" class="form-control" id="dtaTermCurso" name="dtaTermCurso" placeholder="" required>
                           </div>
 
                           <div class="form-group col-md-4">

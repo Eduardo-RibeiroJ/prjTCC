@@ -11,16 +11,9 @@ $('nav a').click(function(e) {
   
 });
 
-var select = document.getElementById('cmbSituacaoInsti');
-var DataTermInsti = document.querySelector('input[type="date"][name="DataTermInsti"]');
+var select = document.getElementById('cbbSituacaoInsti');
+var DtaTermInsti = document.querySelector('input[type="date"][name="DtaTermInsti"]');
 select.addEventListener('change', function () {
-  DataTermInsti.disabled = this.value == 'IM';
-
-});
-
-var select = document.getElementById('cmbSituacaoCurso');
-var DataTermCurso = document.querySelector('input[type="date"][name="DataTermCurso"]');
-select.addEventListener('change', function () {
-  DataTermCurso.disabled = this.value != 'FI' && this.value != 'EM';
+  DtaTermInsti.disabled = this.value == 'IM';
 
 });
