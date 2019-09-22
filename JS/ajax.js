@@ -1,7 +1,4 @@
 $(function(){
-    // Executa assim que o botão de salvar for clicado
-
-    
 
     $('#formInserirQuestao').on('click', '#btnAdicionar', function(e) {
 
@@ -94,7 +91,7 @@ $(function(){
 
         console.log("rsrsrs");
 
-        var $cardAlvo = $(this).closest('.card');
+        var cardAlvo = $(this).closest('.card');
 
         $.post('../PostAjax/excluir.php', {
             acao: "excluirTesteOnline",
@@ -104,8 +101,8 @@ $(function(){
 
         if(sucesso == true) {
 
-            $cardAlvo.fadeOut(500,function(){ 
-                $cardAlvo.remove();
+            cardAlvo.fadeOut(500,function(){ 
+                cardAlvo.remove();
             }); 
             
         } else {
@@ -117,7 +114,7 @@ $(function(){
 
     $('#accordionQuestao').on('click', '#btnExcluir', function(e) {
 
-        var $cardAlvo = $(this).closest('.card');
+        var cardAlvo = $(this).closest('.card');
 
         $.post('../PostAjax/excluir.php', {
             acao: "excluirQuestao",
@@ -128,8 +125,8 @@ $(function(){
 
         if(sucesso == true) {
 
-            $cardAlvo.fadeOut(500,function(){ 
-                $cardAlvo.remove();                 
+            cardAlvo.fadeOut(500,function(){ 
+                cardAlvo.remove();                 
             }); 
             
         } else {
@@ -187,7 +184,7 @@ $(function(){
                 endereco: $('#txtEndereco').val(),
                 bairro: $('#txtBairro').val(),
                 cidade: $('#txtCidade').val(),
-                estado: $('#txtUF').val(),
+                estado: $('#txtUF').val()
 
             }, function (sucesso) {
 
@@ -218,7 +215,7 @@ $(function(){
                 tel2: $('#txtTelefone2').val(),
                 linkedin: $('#txtlinkedin').val(),
                 facebook: $('#txtFacebook').val(),
-                sitePessoal: $('#txtSitePessoal').val(),
+                sitePessoal: $('#txtSitePessoal').val()
 
             }, function (sucesso) {
 
@@ -282,7 +279,7 @@ $(function(){
                     instituicaoP: $('#txNomeInstiP').val(),
                     situacaoP: $('#cbbSituacaoInsti').val(),
                     conclusao: $('#dtaconclusao').val(),
-                    CargaHora: $('#cargaHora').val(),
+                    CargaHora: $('#cargaHora').val()
 
             }, function (sucesso) {
 
@@ -299,12 +296,14 @@ $(function(){
     //TESTEEEEEEEEEEEEEEEE
     $('#accordionCandidatoFormacao').on('click', '#btnAddCard', function (e) {
 
+        var ultimoRegistro = $('#txtUltimoRegistro').val();
+
         $('#accordionCandidatoFormacao').append(`<div class="card">
-                                                    <div class="card-header" id="candidatoFormacao">
+                                                    <div class="card-header" id="candidatoFormacao` + ultimoRegistro + `">
                                                         Formação
-                                                        <button name="btnAlterarSalvar" id="btnAlterarSalvar" class="btn btn-primary float-right" data-toggle="collapse" data-target="#collapseCandidatoFormacao" aria-expanded="true" aria-controls="collapseCandidatoFormacao">Salvar</button>
+                                                        <button value="` + ultimoRegistro + `" name="btnAlterarSalvar" id="btnAlterarSalvar" class="btn btn-primary float-right" data-toggle="collapse" data-target="#collapseCandidatoFormacao` + ultimoRegistro + `" aria-expanded="true" aria-controls="collapseCandidatoFormacao` + ultimoRegistro + `">Salvar</button>
                                                     </div>
-                                                    <div id="collapseCandidatoFormacao" class="collapse show" aria-labelledby="candidatoFormacao" data-parent="#accordionCandidatoFormacao">
+                                                    <div id="collapseCandidatoFormacao` + ultimoRegistro + `" class="collapse show" aria-labelledby="candidatoFormacao` + ultimoRegistro + `" data-parent="#accordionCandidatoFormacao">
                                                         <div class="card-body">
                                                             <div class="card-text">
                                                                 <p>MIMmimimIMIM</p>
@@ -315,6 +314,42 @@ $(function(){
         );
 
         $('#btnAddCard').attr("disabled", true);
+
+        ultimoRegistro = parseInt(ultimoRegistro);
+        $('#txtUltimoRegistro').val(ultimoRegistro + 1);
+        
+    });
+
+    $('#accordionCandidatoFormacao').on('click', '#btnAlterarSalvar', function (e) {
+
+        e.preventDefault();
+
+        if ($("#btnAlterarSalvarContato").html() == "Alterar") {
+
+            $("#btnAlterarSalvarContato").html("Salvar");
+
+        } else {
+
+            $.post('../PostAjax/alterar.php', {
+                acao: "alterarCandidatoFormacao",
+                curso: $('#txtNomeCurso').val(),
+                instituicao: $('#txNomeInsti').val(),
+                tipo: $('#cbbTipoCurso').val(),
+                dtaInicio: $('#dtaInicioInsti').val(),
+                dtaTerm: $('#dtaTermInsti').val(),
+                situacao: $('#cbbSituacaoInsti').val()
+
+            }, function (sucesso) {
+
+                if (sucesso == true) {
+                    $("#btnAlterarSalvarContato").html("Alterar");
+                    $('#btnAddCard').attr("disabled", false);
+                } else {
+                    alert('Erro: ' + sucesso);
+                }
+            });
+
+        }
         
     });
 

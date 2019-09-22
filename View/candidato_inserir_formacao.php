@@ -7,6 +7,8 @@
 
 <div class="container">
 
+    <input type="hidden" id="txtUltimoRegistro" name="txtUltimoRegistro" value="5">
+
   <section>
 
 
@@ -19,7 +21,7 @@
                     <button name="btnAddCard" id="btnAddCard" class="btn btn-primary">Add Card</button>
                 </div>
             </div>
-            
+
         </div>
       </div>
     </div>
