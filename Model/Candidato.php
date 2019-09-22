@@ -19,31 +19,38 @@ class Candidato {
     private $facebook;
     private $sitePessoal;
 
-    function inserirCandidatoDadosPessoais($cpf, $nome, $sobrenome, $dataNasc, $estadoCivil, $sexo) {
+    function inserirUsuarioCandidato($cpf, $email, $senha) {
         $this->cpf = $cpf;
-        $this->nome = $nome;
-        $this->sobrenome = $sobrenome;
-        $this->dataNasc = $dataNasc;
-        $this->estadoCivil = $estadoCivil;
-        $this->sexo = $sexo;
-    }
-
-    function inserirCandidato($cpf, $nome, $sobrenome, $sexo, $dataNasc, $email, $senha, $estadoCivil, $endereco, $bairro, $tel1, $tel2, $linkedin, $facebook, $sitePessoal) {
-        $this->cpf = $cpf;
-        $this->nome = $nome;
-        $this->sobrenome = $sobrenome;
-        $this->sexo = $sexo;
-        $this->dataNasc = $dataNasc;
         $this->email = $email;
         $this->senha = $senha;
+    }
+
+    function inserirCandidato($cpf, $nome, $sobrenome, $sexo, $dataNasc, $estadoCivil, $cep, $endereco, $bairro, $cidade, $estado, $tel1, $tel2, $linkedin, $facebook, $sitePessoal) {
+        $this->cpf = $cpf;
+        $this->nome = $nome;
+        $this->sobrenome = $sobrenome;
+        $this->sexo = $sexo;
+        $this->dataNasc = $dataNasc;
         $this->estadoCivil = $estadoCivil;
+        $this->cep = $cep;
         $this->endereco = $endereco;
         $this->bairro = $bairro;
+        $this->cidade = $cidade;
+        $this->estado = $estado;
         $this->tel1 = $tel1;
         $this->tel2 = $tel2;
         $this->linkedin = $linkedin;
         $this->facebook = $facebook;
         $this->sitePessoal = $sitePessoal;
+    }
+
+    function alterarCandidatoDadosPessoais($cpf, $nome, $sobrenome, $dataNasc, $estadoCivil, $sexo) {
+        $this->cpf = $cpf;
+        $this->nome = $nome;
+        $this->sobrenome = $sobrenome;
+        $this->dataNasc = $dataNasc;
+        $this->estadoCivil = $estadoCivil;
+        $this->sexo = $sexo;
     }
     
     function getCpf() {

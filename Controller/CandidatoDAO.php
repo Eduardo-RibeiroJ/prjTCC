@@ -53,6 +53,7 @@ class CandidatoDAO
     public function Alterar(Candidato $candidato) { 
         $cpf = $candidato->getCpf();
         $nome = $candidato->getNome();
+        $sobrenome = $candidato->getSobrenome();
         $sexo = $candidato->getSexo();
         $dataNasc = $candidato->getDataNasc();
         $email = $candidato->getEmail();
@@ -69,7 +70,7 @@ class CandidatoDAO
         $facebook = $candidato->getFacebook();
         $sitePessoal = $candidato->getSitePessoal();
 
-        $query = "UPDATE tbCandidato SET nome = ?, sexo = ?, dataNasc = ?, email = ?, 
+        $query = "UPDATE tbCandidato SET nome = ?, sobrenome = ?, sexo = ?, dataNasc = ?, email = ?, 
                                          senha = ?, estadoCivil = ?, cep = ?, estado = ?,
                                          cidade = ?, endereco = ?, bairro = ?, tel1 = ?,
                                          tel2 = ?, linkedin = ?, facebook = ?, sitePessoal = ? WHERE cpf = ?;";
@@ -80,11 +81,11 @@ class CandidatoDAO
             die(mysqli_error($this->db->getConection()));
         }
         
-        mysqli_stmt_bind_param($stmt, 'sssssssssssssssss', $cpf, $nome, $sexo, $dataNasc,
+        mysqli_stmt_bind_param($stmt, 'ssssssssssssssssss', $nome, $sobrenome, $sexo, $dataNasc,
                                                             $email, $senha, $estadoCivil,
                                                             $cep, $estado, $cidade, $endereco,
                                                             $bairro, $tel1, $tel2, $linkedin,
-                                                            $facebook, $sitePessoal);
+                                                            $facebook, $sitePessoal, $cpf);
         mysqli_stmt_execute($stmt);
         mysqli_stmt_close($stmt);
     }
