@@ -15,6 +15,8 @@ if (isset($_POST['btnSalvar'])) {
     $_POST['txtSobrenome'],
     $_POST['cbbSexo'],
     $_POST['txtDataNasc'],
+    $_POST['email'],
+    $_POST['senha'],
     $_POST['cbbEstadoCivil'],
     $_POST['txtCEP'],
     $_POST['txtEndereco'],
@@ -57,6 +59,8 @@ if (isset($_POST['btnSalvar'])) {
 
           <!-- Input hidden só pare teste, o verdadeiro vai ficar em uma variavel session -->
           <input type="hidden" id="cpf" name="cpf" value="415">
+          <input type="hidden" id="email" name="email" value="edu@edu">
+          <input type="hidden" id="senha" name="senha" value="12345">
 
             <div class="card">
               <div class="card-header">

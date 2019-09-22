@@ -25,12 +25,14 @@ class Candidato {
         $this->senha = $senha;
     }
 
-    function inserirCandidato($cpf, $nome, $sobrenome, $sexo, $dataNasc, $estadoCivil, $cep, $endereco, $bairro, $cidade, $estado, $tel1, $tel2, $linkedin, $facebook, $sitePessoal) {
+    function inserirCandidato($cpf, $nome, $sobrenome, $sexo, $dataNasc, $email, $senha, $estadoCivil, $cep, $endereco, $bairro, $cidade, $estado, $tel1, $tel2, $linkedin, $facebook, $sitePessoal) {
         $this->cpf = $cpf;
         $this->nome = $nome;
         $this->sobrenome = $sobrenome;
         $this->sexo = $sexo;
         $this->dataNasc = $dataNasc;
+        $this->email = $email;
+        $this->senha = $senha;
         $this->estadoCivil = $estadoCivil;
         $this->cep = $cep;
         $this->endereco = $endereco;
@@ -51,6 +53,24 @@ class Candidato {
         $this->dataNasc = $dataNasc;
         $this->estadoCivil = $estadoCivil;
         $this->sexo = $sexo;
+    }
+
+    function alterarCandidatoEndereco($cpf, $cep, $endereco, $bairro, $cidade, $estado) {
+        $this->cpf = $cpf;
+        $this->cep = $cep;
+        $this->endereco = $endereco;
+        $this->bairro = $bairro;
+        $this->cidade = $cidade;
+        $this->estado = $estado;
+    }
+
+    function alterarCandidatoContato($cpf, $tel1, $tel2, $linkedin, $facebook, $sitePessoal) {
+        $this->cpf = $cpf;
+        $this->tel1 = $tel1;
+        $this->tel2 = $tel2;
+        $this->linkedin = $linkedin;
+        $this->facebook = $facebook;
+        $this->sitePessoal = $sitePessoal;
     }
     
     function getCpf() {

@@ -149,8 +149,8 @@ $(function(){
 
         } else {
         
-            $.post('../PostAjax/salvar.php', {
-                acao: "salvarCandidatoDadosPessoais",
+            $.post('../PostAjax/alterar.php', {
+                acao: "alterarCandidatoDadosPessoais",
                 cpf: $('#cpf').val(),
                 nome: $('#txtNome').val(),
                 sobrenome: $('#txtSobrenome').val(),
@@ -180,8 +180,9 @@ $(function(){
 
         } else {
 
-            $.post('../PostAjax/salvar.php', {
-                acao: "salvarCandidatoEndereco",
+            $.post('../PostAjax/alterar.php', {
+                acao: "alterarCandidatoEndereco",
+                cpf: $('#cpf').val(),
                 cep: $('#txtCEP').val(),
                 endereco: $('#txtEndereco').val(),
                 bairro: $('#txtBairro').val(),
@@ -210,10 +211,11 @@ $(function(){
 
         } else {
 
-            $.post('../PostAjax/salvar.php', {
-                acao: "salvarCandidatoContato",
-                telefone: $('#txtTelefone').val(),
-                telefone2: $('#txtTelefone2').val(),
+            $.post('../PostAjax/alterar.php', {
+                acao: "alterarCandidatoContato",
+                cpf: $('#cpf').val(),
+                tel1: $('#txtTelefone').val(),
+                tel2: $('#txtTelefone2').val(),
                 linkedin: $('#txtlinkedin').val(),
                 facebook: $('#txtFacebook').val(),
                 sitePessoal: $('#txtSitePessoal').val(),
@@ -229,6 +231,9 @@ $(function(){
 
         }
     });
+
+
+
 
     $('#accordionCandidatoCursosDiversos').on('click', '#btnAlterarSalvarInstituicao', function (e) {
 
@@ -289,6 +294,28 @@ $(function(){
             });
 
         }
+    });
+
+    //TESTEEEEEEEEEEEEEEEE
+    $('#accordionCandidatoFormacao').on('click', '#btnAddCard', function (e) {
+
+        $('#accordionCandidatoFormacao').append(`<div class="card">
+                                                    <div class="card-header" id="candidatoFormacao">
+                                                        Formação
+                                                        <button name="btnAlterarSalvar" id="btnAlterarSalvar" class="btn btn-primary float-right" data-toggle="collapse" data-target="#collapseCandidatoFormacao" aria-expanded="true" aria-controls="collapseCandidatoFormacao">Salvar</button>
+                                                    </div>
+                                                    <div id="collapseCandidatoFormacao" class="collapse show" aria-labelledby="candidatoFormacao" data-parent="#accordionCandidatoFormacao">
+                                                        <div class="card-body">
+                                                            <div class="card-text">
+                                                                <p>MIMmimimIMIM</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>`
+        );
+
+        $('#btnAddCard').attr("disabled", true);
+        
     });
 
 
