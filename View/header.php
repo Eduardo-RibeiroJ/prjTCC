@@ -43,11 +43,54 @@
                     </li>
                   </ul>
 
-                  <button type="button" class="btn btn-outline-dark">Sou candidato</button>
+                  <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#candidato">Sou candidato</button>
                   <button type="button" class="btn btn-outline-dark">Sou empresa</button>
-
 
       </nav>
     </header>
 		
+
+    <div class="modal fade" id="candidato" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="TituloModalCentralizado"></h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form class="form-signin">
+              <h1 class="h3 mb-3 font-weight-normal text-center">Faça login</h1>
+
+               <div class="form-row">
+               <div class="form-group col-12">
+                  <label class="text-left"><h6>CPF</h6></label>
+                  <input type="email" id="inputEmail" class="form-control" placeholder="Seu cpf" required="" autofocus="">
+               </div>
+                <div class="form-group col-12">
+                  <label class="text-left"><h6>Endereço de email</h6></label>
+                  <input type="email" id="inputEmail" class="form-control" placeholder="Seu email" required="" autofocus="">
+               </div>
+                <div class="form-group col-12">
+                  <label class="text-left"><h6>Senha</h6></label>
+                  <input type="password" id="inputPassword" class="form-control" placeholder="Senha" required="">
+                </div>
+              </div>
+
+              <div class="checkbox mb-3">
+                <label>
+                  <input type="checkbox" value="remember-me"> Lembrar de mim
+                </label>
+              </div>
+              <button class="btn btn-lg btn-outline-primary btn-block" type="submit">Login</button>
+            </form>
+          </div>
+          <div class="modal-footer">
+              <p class="text-left">É novo no site? cadastre-se aqui.</p>
+              <a href="Candidato_precadastro.php" type="button" class="btn btn-primary">Cadastrar</a>
+          </div>
+        </div>
+      </div>
+    </div>
 				<!-- Fim do Cabeçalho que irá em todas as páginas  -->
