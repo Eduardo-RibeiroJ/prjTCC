@@ -229,70 +229,6 @@ $(function(){
         }
     });
 
-
-
-
-    $('#accordionCandidatoCursosDiversos').on('click', '#btnAlterarSalvarInstituicao', function (e) {
-
-        e.preventDefault();
-
-        if ($("#btnAlterarSalvarInstituicao").html() == "Alterar") {
-
-            $("#btnAlterarSalvarInstituicao").html("Salvar");
-
-        } else {
-
-            $.post('../PostAjax/salvar.php', {
-                acao: "salvarCandidatoCursoInsti",
-                curso: $('#txtNomeCurso').val(),
-                instituicao: $('#txNomeInsti').val(),
-                tipo: $('#cbbTipoCurso').val(),
-                dtaInicio: $('#dtaInicioInsti').val(),
-                dtaTerm: $('#dtaTermInsti').val(),
-                situacao: $('#cbbSituacaoInsti').val()
-
-            }, function (sucesso) {
-
-                if (sucesso == true) {
-                    $("#btnAlterarSalvarInstituicao").html("Alterar");
-                } else {
-                    alert('Erro: ' + sucesso);
-                }
-            });
-
-        }
-    });
-
-    $('#accordionCandidatoCursosDiversos').on('click', '#btnAlterarSalvarCursoProfiss', function (e) {
-
-        e.preventDefault();
-
-        if ($("#btnAlterarSalvarCursoProfiss").html() == "Alterar") {
-
-            $("#btnAlterarSalvarCursoProfiss").html("Salvar");
-
-        } else {
-
-            $.post('../PostAjax/salvar.php', {
-                acao: "salvarCandidatoCursoProfiss",
-                    cursoP: $('#txtNomeCursoP').val(),
-                    instituicaoP: $('#txNomeInstiP').val(),
-                    situacaoP: $('#cbbSituacaoInsti').val(),
-                    conclusao: $('#dtaconclusao').val(),
-                    CargaHora: $('#cargaHora').val()
-
-            }, function (sucesso) {
-
-                if (sucesso == true) {
-                    $("#btnAlterarSalvarCursoProfiss").html("Alterar");
-                } else {
-                    alert('Erro: ' + sucesso);
-                }
-            });
-
-        }
-    });
-
     //TESTEEEEEEEEEEEEEEEE
     $('#accordionCandidatoFormacao').on('click', '#btnAddCardFormacao', function (e) {
 
@@ -404,19 +340,51 @@ $(function(){
     });
 
 
+    $('#accordionCandidatoCurso').on('click', '#btnAlterarSalvarCursoProfiss', function (e) {
 
-//// To fazendo, calma ai
-    $('#accordionCandidatoCursos').on('click', '#btnAddCardCursos', function (e) {
+        e.preventDefault();
 
-        var ultimoRegistro = $('#txtUltimoRegistro').val();
+        if ($("#btnAlterarSalvarCursoProfiss").html() == "Alterar") {
 
-        $('#accordionCandidatoCursos').append(`<div class="card">
-                                                    <div class="card-header" id="candidatoCurso" data-toggle="collapse" data-target="#collapsecandidCurso" aria-expanded="true" aria-controls="collapsecandidCurso">
-                                                        Cursos profissionalizantes
-                                                        <button name="btnAlterarSalvarCursoProfiss" id="btnAlterarSalvarCursoProfiss" class="btn btn-primary float-right" data-toggle="collapse" data-target="#collapsecandidCurso" aria-expanded="true" aria-controls="collapsecandidCurso">Alterar</button>
-                                                    </div>
+            $("#btnAlterarSalvarCursoProfiss").html("Salvar");
 
-                                                    <div id="collapsecandidCurso" class="collapse" aria-labelledby="candidatoCurso" data-parent="#accordionCandidatoCursosDiversos">
+        } else {
+
+            $.post('../PostAjax/salvar.php', {
+                acao: "salvarCandidatoCursoProfiss",
+                cursoP: $('#txtNomeCursoP').val(),
+                instituicaoP: $('#txNomeInstiP').val(),
+                situacaoP: $('#cbbSituacaoCurso').val(),
+                conclusao: $('#dtaconclusao').val(),
+                CargaHora: $('#cargaHora').val()
+
+            }, function (sucesso) {
+
+                if (sucesso == true) {
+                    $("#btnSalvarCurso").html("Alterar");
+                    $('#btnSalvarCurso').prop('id', 'btnAlterarSalvarCursoProfiss');
+                    $('#btnSalvarCurso').prop('name', 'btnAlterarSalvarCursoProfiss');
+                    $('#btnAddCardCurso').removeAttr('disabled');
+                    $('#tituloHeader' + idCurso).html('Kasino Aee!!');
+                } else {
+                    alert('Erro: ' + sucesso);
+                }
+            });
+
+        }
+    });
+
+    $('#accordionCandidatoCurso').on('click', '#btnAddCardCurso', function (e) {
+
+        var ultimoRegistroCurso = $('#txtUltimoRegistroCurso').val();
+
+        $('#accordionCandidatoCurso').append(`<div class="card">
+                                                    <div class="card-header" id="candidatoCurso` + ultimoRegistroCurso + `">
+                                                        <p id="tituloHeader` + ultimoRegistroCurso + `" class="d-inline">Curso Profissionalizante</p>
+                                                        <button value="` + ultimoRegistroCurso + `" name="btnSalvarCurso" id="btnSalvarCurso" class="btn btn-primary float-right d-inline" data-toggle="collapse" data-target="#collapsecandidatoCurso` + ultimoRegistro + `" aria-expanded="true" aria-controls="collapsecandidatoCurso` + ultimoRegistroCurso + `">Salvar</button>
+                                                    </div >
+
+                                                    <div id="collapsecandidatoCurso" class="collapse" aria-labelledby="candidatoCurso" data-parent="#accordionCandidatoCurso">
 
                                                         <div class="card-body">
                                                         <div class="card-text">
@@ -436,7 +404,7 @@ $(function(){
                                                             <div class="form-row">
 
                                                                 <div class="form-group col-md-4">
-                                                                    <label for="cbbSituacaoCursoP">Situação</label>
+                                                                    <label for="cbbSituacaoCurso">Situação</label>
                                                                     <select class="custom-select" id="cbbSituacaoCurso" name="cbbSituacaoCurso" required>
                                                                         <option value="" selected>Selecione</option>
                                                                         <option value="IM">Interrrompido</option>
@@ -463,10 +431,10 @@ $(function(){
                                                     </div>`
         );
 
-        $('#btnAddCardCursos').attr("disabled", true);
+        $('#btnAddCardCurso').attr("disabled", true);
 
-        ultimoRegistro = parseInt(ultimoRegistro);
-        $('#txtUltimoRegistro').val(ultimoRegistro + 1);
+        ultimoRegistroCurso = parseInt(ultimoRegistroCurso);
+        $('#txtUltimoRegistroCurso').val(ultimoRegistroCurso + 1);
 
     });
 
