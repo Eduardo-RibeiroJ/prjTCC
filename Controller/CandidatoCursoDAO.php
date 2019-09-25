@@ -25,7 +25,7 @@ class CandidatoCursoDAO
             die(mysqli_error($this->db->getConection()));
         }
 
-        mysqli_stmt_bind_param($stmt, 'sissss', $cpf, $idCurso, $nomeCurso, $nomeInstituicao, $anoConclusao, $cargaHoraria);
+        mysqli_stmt_bind_param($stmt, 'sisssi', $cpf, $idCurso, $nomeCurso, $nomeInstituicao, $anoConclusao, $cargaHoraria);
         mysqli_stmt_execute($stmt);
         mysqli_stmt_close($stmt);
 
@@ -110,7 +110,7 @@ class CandidatoCursoDAO
         public function UltimoRegistroCurso(CandidatoCurso $curso) 
     {
         $db = new Conexao();
-        $dados = mysqli_query($db->getConection(), "SELECT MAX(idCurso) as idCurso FROM tbCandidatocurso WHERE cpf = '".$curso->getCpf()."';");
+        $dados = mysqli_query($db->getConection(), "SELECT MAX(idCurso) as idCurso FROM tbCandidatoCurso WHERE cpf = '".$curso->getCpf()."';");
 
         $linha = $dados->fetch_array(MYSQLI_ASSOC);
         return $linha["idCurso"];

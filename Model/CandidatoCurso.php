@@ -6,6 +6,15 @@ class CandidatoCurso {
     private $nomeInstituicao;
     private $anoConclusao;
     private $cargaHoraria;
+
+    function inserirCurso($cpf, $idCurso, $nomeCurso, $nomeInstituicao, $anoConclusao, $cargaHoraria) {
+        $this->cpf = $cpf;
+        $this->idCurso = $idCurso;
+        $this->nomeCurso = $nomeCurso;
+        $this->nomeInstituicao = $nomeInstituicao;
+        $this->anoConclusao = $anoConclusao;
+        $this->cargaHoraria = $cargaHoraria;
+    }
     
     public function getUltimoRegistroCurso() {
         return CandidatoCursoDAO::UltimoRegistroCurso($this) + 1;
