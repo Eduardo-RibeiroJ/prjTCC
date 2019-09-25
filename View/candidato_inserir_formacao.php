@@ -20,6 +20,11 @@ $candidato->setCpf('415');
 
 $ultimoRegistro = $formacao->getUltimoRegistroFormacao();
 
+if (isset($_POST['btnContinuar'])) {
+
+  header('Location: candidato_inserir_curso.php');
+}
+
 ?>
 
 <?php include_once 'headerCand.php'; ?>
@@ -48,6 +53,13 @@ $ultimoRegistro = $formacao->getUltimoRegistroFormacao();
             </div>
 
         </div>
+
+         <div class="row">
+              <div class="col text-center">
+                <input type="submit" name="btnContinuar" id="btnContinuar" class="btn btn-primary" value="Continuar">
+              </div>
+            </div>
+
       </div>
     </div>
 

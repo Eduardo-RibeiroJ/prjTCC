@@ -57,15 +57,14 @@ class CandidatoFormacaoDAO
 
     }
 
-    public function Apagar(Questao $questao) {
+    public function Apagar(CandidatoFormacao $formacao) {
 
 
-        $idTesteOnline = $questao->getIdTesteOnline();
-        $idQuestao = $questao->getIdQuestao();
+        $idFormacao = $formacao->getIdFormacao();
 
-        $SQL = $this->db->getConection()->prepare("DELETE FROM tbQuestao WHERE idTesteOnline = ? AND idQuestao = ?;");
+        $SQL = $this->db->getConection()->prepare("DELETE FROM tbCandidatoFormacao WHERE idFormacao = ? ;");
 
-        $SQL->bind_param("ii", $idTesteOnline, $idQuestao);
+        $SQL->bind_param("i", $idFormacao);
         $SQL->execute();
 
         //Realocar os números das questões para não ficar "buraco"
@@ -77,50 +76,48 @@ class CandidatoFormacaoDAO
         return true;
     }
 
-    public function Listar(Questao $questao) {
+    public function Listar(CandidatoFormacao $formacao) {
         
-        if ($questao->getIdQuestao() == NULL) {
+        if ($formacao->getIdQuestao() == NULL) {
 
             $query = $this->db->getConection()->query("SELECT * FROM tbQuestao WHERE idTesteOnline ='".$questao->getIdTesteOnline()."' ORDER BY idQuestao;");
             $arrayQuery = array();
 
             while($reg = $query->fetch_array()) {
 
-                $questao = new Questao();
-                $questao->inserirQuestao(
+                $formacao = new Formacao();
+                $formacao->inserirFormacao(
                     
-                    $reg['idTesteOnline'],
-                    $reg['idQuestao'],
-                    $reg['questao'],
-                    $reg['altA'],
-                    $reg['altB'],
-                    $reg['altC'],
-                    $reg['altD'],
-                    $reg['resposta'],
-                    $reg['tempo']
+                    $reg['cpf'],
+                    $reg['idFormacao'],
+                    $reg['nomeCurso'],
+                    $reg['nomeInstituicao'],
+                    $reg['dataInicio'],
+                    $reg['dataTermino'],
+                    $reg['tipo'],
+                    $reg['estado']
                 );
 
-                $arrayQuery[] = $questao;
+                $arrayQuery[] = $formacao;
             }
 
             return $arrayQuery;
 
         } else {
 
-            $query = $this->db->getConection()->query("SELECT * FROM tbQuestao WHERE idTesteOnline ='".$questao->getIdTesteOnline()."' AND idQuestao ='".$questao->getIdQuestao()."';");
+            $query = $this->db->getConection()->query("SELECT * FROM tbCandidatoFormacao WHERE idFormacao ='".$formacao->getIdFormacao()."' AND idFormacao ='".$formacao->getIdFormacao()."';");
 
             $reg = $query->fetch_array();
-            $questao->inserirQuestao(
+            $formacao->inserirFormacao(
                     
-                    $reg['idTesteOnline'],
-                    $reg['idQuestao'],
-                    $reg['questao'],
-                    $reg['altA'],
-                    $reg['altB'],
-                    $reg['altC'],
-                    $reg['altD'],
-                    $reg['resposta'],
-                    $reg['tempo']
+                    $reg['cpf'],
+                    $reg['idFormacao'],
+                    $reg['nomeCurso'],
+                    $reg['nomeInstituicao'],
+                    $reg['dataInicio'],
+                    $reg['dataTermino'],
+                    $reg['tipo'],
+                    $reg['estado']
             );
         }
     }
