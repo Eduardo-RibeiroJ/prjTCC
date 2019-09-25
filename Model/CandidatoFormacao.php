@@ -1,4 +1,7 @@
 <?php
+
+include_once "../Controller/CandidatoFormacaoDAO.php";
+
 class CandidatoFormacao {
     private $cpf;
     private $idFormacao;
@@ -9,6 +12,22 @@ class CandidatoFormacao {
     private $tipo;
     private $estado;
     
+
+    function inserirFormacao($cpf, $idFormacao, $nomeCurso, $nomeInstituicao, $dataInicio, $dataTermino, $tipo, $estado) {
+        $this->cpf = $cpf;
+        $this->idFormacao = $idFormacao;
+        $this->nomeCurso = $nomeCurso;
+        $this->nomeInstituicao = $nomeInstituicao;
+        $this->dataInicio = $dataInicio;
+        $this->dataTermino = $dataTermino;
+        $this->tipo = $tipo;
+        $this->estado = $estado;
+    }
+
+    public function getUltimoRegistroFormacao() {
+        return CandidatoFormacaoDAO::UltimoRegistroFormacao($this) + 1;
+    }
+
     function getCpf() {
         return $this->cpf;
     }

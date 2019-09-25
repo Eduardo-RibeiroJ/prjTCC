@@ -300,8 +300,8 @@ $(function(){
 
         $('#accordionCandidatoFormacao').append(`<div class="card">
                                                     <div class="card-header" id="candidatoFormacao` + ultimoRegistro + `">
-                                                        Formação
-                                                        <button value="` + ultimoRegistro + `" name="btnAlterarSalvar" id="btnAlterarSalvar" class="btn btn-primary float-right" data-toggle="collapse" data-target="#collapseCandidatoFormacao` + ultimoRegistro + `" aria-expanded="true" aria-controls="collapseCandidatoFormacao` + ultimoRegistro + `">Salvar</button>
+                                                        <p id="tituloHeader` + ultimoRegistro + `" class="d-inline">Formação</p>
+                                                        <button value="` + ultimoRegistro + `" name="btnSalvar" id="btnSalvar" class="btn btn-primary float-right d-inline" data-toggle="collapse" data-target="#collapseCandidatoFormacao` + ultimoRegistro + `" aria-expanded="true" aria-controls="collapseCandidatoFormacao` + ultimoRegistro + `">Salvar</button>
                                                     </div>
                                                     <div id="collapseCandidatoFormacao` + ultimoRegistro + `" class="collapse show" aria-labelledby="candidatoFormacao` + ultimoRegistro + `" data-parent="#accordionCandidatoFormacao">
                                                         <div class="card-body">
@@ -309,12 +309,12 @@ $(function(){
                                                                 <div class="form-row">
                                                                     <div class="form-group col-md-4">
                                                                     <label for="txtNomeCurso">Nome do curso</label>
-                                                                    <input type="text" class="form-control" id="txtTelefone" name="txtTelefone" placeholder="" required>
+                                                                    <input type="text" class="form-control" id="txtNomeCurso" name="txtNomeCurso" placeholder="" required>
                                                                     </div>
 
                                                                     <div class="form-group col-md-4">
-                                                                    <label for="txNomeInsti">Nome da instituição</label>
-                                                                    <input type="text" class="form-control" id="txtTelefone2" name="txtTelefone2" placeholder="">
+                                                                    <label for="txtNomeInsti">Nome da instituição</label>
+                                                                    <input type="text" class="form-control" id="txtNomeInsti" name="txtNomeInsti" placeholder="">
                                                                     </div>
 
                                                                     <div class="form-group col-md-4">
@@ -369,36 +369,37 @@ $(function(){
         
     });
 
-    $('#accordionCandidatoFormacao').on('click', '#btnAlterarSalvar', function (e) {
+    
+    $('#accordionCandidatoFormacao').on('click', '#btnSalvar', function (e) {
 
         e.preventDefault();
+        var idFormacao = $(this).val();
 
-        if ($("#btnAlterarSalvarContato").html() == "Alterar") {
-
-            $("#btnAlterarSalvarContato").html("Salvar");
-
-        } else {
-
-            $.post('../PostAjax/alterar.php', {
-                acao: "alterarCandidatoFormacao",
-                curso: $('#txtNomeCurso').val(),
-                instituicao: $('#txNomeInsti').val(),
-                tipo: $('#cbbTipoCurso').val(),
-                dtaInicio: $('#dtaInicioInsti').val(),
-                dtaTerm: $('#dtaTermInsti').val(),
-                situacao: $('#cbbSituacaoInsti').val()
+        $.post('../PostAjax/salvar.php', {
+            acao: "salvarFormacao",
+            cpf: $('#txtCpf').val(),
+            idFormacao: idFormacao,
+            curso: $('#txtNomeCurso').val(),
+            instituicao: $('#txtNomeInsti').val(),
+            dtaInicio: $('#dtaInicioInsti').val(),
+            dtaTerm: $('#dtaTermInsti').val(),
+            tipo: $('#cbbTipoCurso').val(),
+            situacao: $('#cbbSituacaoInsti').val()
 
             }, function (sucesso) {
 
                 if (sucesso == true) {
-                    $("#btnAlterarSalvarContato").html("Alterar");
-                    $('#btnAddCard').attr("disabled", false);
+                    $("#btnSalvar").html("Alterar");
+                    $('#btnSalvar').prop('id', 'btnAlterarSalvar');
+                    $('#btnSalvar').prop('name', 'btnAlterarSalvar');
+                    $('#btnAddCardFormacao').removeAttr('disabled');
+                    $('#tituloHeader'+idFormacao).html('Kasino');
+
                 } else {
                     alert('Erro: ' + sucesso);
                 }
-            });
-
-        }
+            
+        });        
         
     });
 

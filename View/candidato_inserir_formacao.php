@@ -1,5 +1,24 @@
 <?php
 
+include_once "../Model/Conexao.php";
+include_once "../Model/CandidatoFormacao.php";
+include_once "../Controller/CandidatoFormacaoDAO.php";
+
+include_once "../Model/Candidato.php";
+include_once "../Controller/CandidatoDAO.php";
+
+$conn = new Conexao();
+
+$formacao = new CandidatoFormacao();
+$formacaoDAO = new CandidatoFormacaoDAO($conn);
+
+$candidato = new Candidato();
+$candidatoDAO = new CandidatoDAO($conn);
+
+$formacao->setCpf('415');
+$candidato->setCpf('415');
+
+$ultimoRegistro = $formacao->getUltimoRegistroFormacao();
 
 ?>
 
@@ -7,7 +26,8 @@
 
 <div class="container">
 
-    <input type="hidden" id="txtUltimoRegistro" name="txtUltimoRegistro" value="5">
+    <input type="hidden" id="txtUltimoRegistro" name="txtUltimoRegistro" value="<?= $ultimoRegistro ?>">
+    <input type="hidden" id="txtCpf" name="txtCpf" value="<?= $candidato->getCpf() ?>">
 
   <section>
 
@@ -19,7 +39,7 @@
             <div class="row">
 
               <div class="jumbotron col-12">
-                <h1 class="display-10">Adicione sua formação!</h1>
+                <h1 class="display-10">Adicione sua formação! <?= $ultimoRegistro ?></h1>
                 <p class="lead">Aqui você poderá adicionar todas as instituições pelas quais já passou.</p>
                 <hr class="my-10">
                 <p>Para adiciona-las basta clicar nesse botão sempre que precisar adicionar uma formação.</p>
