@@ -309,17 +309,17 @@ $(function(){
                                                                 <div class="form-row">
                                                                     <div class="form-group col-md-4">
                                                                     <label for="txtNomeCurso">Nome do curso</label>
-                                                                    <input type="text" class="form-control" id="txtNomeCurso" name="txtNomeCurso" placeholder="" required>
+                                                                    <input type="text" class="form-control" id="txtNomeCurso` + ultimoRegistro + `" name="txtNomeCurso" placeholder="" required>
                                                                     </div>
 
                                                                     <div class="form-group col-md-4">
                                                                     <label for="txtNomeInsti">Nome da instituição</label>
-                                                                    <input type="text" class="form-control" id="txtNomeInsti" name="txtNomeInsti" placeholder="">
+                                                                    <input type="text" class="form-control" id="txtNomeInsti` + ultimoRegistro + `" name="txtNomeInsti" placeholder="">
                                                                     </div>
 
                                                                     <div class="form-group col-md-4">
                                                                     <label for="tipoCurso">Tipo do curso</label>
-                                                                    <select class="custom-select" id="cbbTipoCurso" name="cbbTipoCurso" required>
+                                                                    <select class="custom-select" id="cbbTipoCurso` + ultimoRegistro + `" name="cbbTipoCurso" required>
                                                                         <option value="" selected>Selecione</option>
                                                                         <option value="F12">Formação escolar fundamental (1°Grau) e média (2°Grau)</option>
                                                                         <option value="EMP">Ensino Médio profisisonalizante</option>
@@ -336,11 +336,11 @@ $(function(){
 
                                                                     <div class="form-group col-md-3">
                                                                     <label for="dtaInicioInsti">Data início</label>
-                                                                    <input type="date" class="form-control" id="dtaInicioInsti" name="dtaInicioInsti" placeholder="" required>
+                                                                    <input type="date" class="form-control" id="dtaInicioInsti` + ultimoRegistro + `" name="dtaInicioInsti" placeholder="" required>
                                                                     </div>
                                                                     <div class="form-group col-md-3">
                                                                     <label for="dtaTermInsti">Data término (previsão)</label>
-                                                                    <input type="date" class="form-control" id="dtaTermInsti" name="dtaTermInsti" placeholder="" required>
+                                                                    <input type="date" class="form-control" id="dtaTermInsti` + ultimoRegistro + `" name="dtaTermInsti" placeholder="" required>
                                                                     </div>
 
                                                                 </div>
@@ -348,7 +348,7 @@ $(function(){
                                                                     <div class="form-row">
                                                                     <div class="form-group col-md-6">
                                                                         <label for="cbbSituacaoInsti">Tipo do curso</label>
-                                                                        <select class="custom-select" id="cbbSituacaoInsti" name="cmbSituacaoInsti" required>
+                                                                        <select class="custom-select" id="cbbSituacaoInsti` + ultimoRegistro + `" name="cmbSituacaoInsti" required>
                                                                             <option value="" selected>Selecione</option>
                                                                             <option value="IM">Interrrompido</option>
                                                                             <option value="EM">Em andamento</option>
@@ -374,17 +374,18 @@ $(function(){
 
         e.preventDefault();
         var idFormacao = $(this).val();
+        var nomeCurso = $('#txtNomeCurso' + idFormacao).val();
 
         $.post('../PostAjax/salvar.php', {
             acao: "salvarFormacao",
             cpf: $('#txtCpf').val(),
             idFormacao: idFormacao,
-            curso: $('#txtNomeCurso').val(),
-            instituicao: $('#txtNomeInsti').val(),
-            dtaInicio: $('#dtaInicioInsti').val(),
-            dtaTerm: $('#dtaTermInsti').val(),
-            tipo: $('#cbbTipoCurso').val(),
-            situacao: $('#cbbSituacaoInsti').val()
+            curso: nomeCurso,
+            instituicao: $('#txtNomeInsti' + idFormacao).val(),
+            dtaInicio: $('#dtaInicioInsti' + idFormacao).val(),
+            dtaTerm: $('#dtaTermInsti' + idFormacao).val(),
+            tipo: $('#cbbTipoCurso' + idFormacao).val(),
+            situacao: $('#cbbSituacaoInsti' + idFormacao).val()
 
             }, function (sucesso) {
 
@@ -393,7 +394,7 @@ $(function(){
                     $('#btnSalvar').prop('id', 'btnAlterarSalvar');
                     $('#btnSalvar').prop('name', 'btnAlterarSalvar');
                     $('#btnAddCardFormacao').removeAttr('disabled');
-                    $('#tituloHeader'+idFormacao).html('Kasino');
+                    $('#tituloHeader'+idFormacao).html(nomeCurso);
 
                 } else {
                     alert('Erro: ' + sucesso);
