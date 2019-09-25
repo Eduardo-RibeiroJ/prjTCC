@@ -7,6 +7,10 @@ class CandidatoCurso {
     private $anoConclusao;
     private $cargaHoraria;
     
+    public function getUltimoRegistroCurso() {
+        return CandidatoCursoDAO::UltimoRegistroCurso($this) + 1;
+    }
+
     function getCpf() {
         return $this->cpf;
     }

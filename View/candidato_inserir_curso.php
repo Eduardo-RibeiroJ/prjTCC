@@ -18,7 +18,7 @@ $candidatoDAO = new CandidatoDAO($conn);
 $curso->setCpf('415');
 $candidato->setCpf('415');
 
-$ultimoRegistroCurso = $formacao->getUltimoRegistroCurso();
+$ultimoRegistroCurso = $curso->getUltimoRegistroCurso();
 
 ?>
 
@@ -34,7 +34,7 @@ $ultimoRegistroCurso = $formacao->getUltimoRegistroCurso();
 
     <div class="row">
       <div class="col">
-        <div class="accordion" id="accordionCandidatoCursos">
+        <div class="accordion" id="accordionCandidatoCurso">
 
             <div class="row">
 

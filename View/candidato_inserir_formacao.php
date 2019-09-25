@@ -56,7 +56,7 @@ if (isset($_POST['btnContinuar'])) {
 
          <div class="row">
               <div class="col text-center">
-                <button type="submit" name="btnContinuar" id="btnContinuar" class="btn btn-primary" value="Continuar">continuar</button>
+                <input type="submit" name="btnContinuar" id="btnContinuar" class="btn btn-primary" value="Continuar">
               </div>
             </div>
 

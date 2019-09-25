@@ -9,7 +9,7 @@ class CandidatoCursoDAO
         $this->db = $db;
     }
 
-    public function Inserir(Candidatocurso $curso) 
+    public function Inserir(CandidatoCurso $curso) 
     {
         $cpf = $curso->getCpf();
         $idCurso = $curso->getIdCurso();
@@ -18,20 +18,20 @@ class CandidatoCursoDAO
         $anoConclusao = $curso->getAnoConclusao();
         $cargaHoraria = $curso->getCargaHoraria();
 
-        $query = "INSERT INTO tbCandidatocurso (cpf, idcurso, nomeCurso, nomeInstituicao, anoConclusao, cargaHoraria) VALUES (?,?,?,?,?,?);";
+        $query = "INSERT INTO tbCandidatocurso (cpf, idCurso, nomeCurso, nomeInstituicao, anoConclusao, cargaHoraria) VALUES (?,?,?,?,?,?);";
         $stmt = mysqli_prepare($this->db->getConection(), $query);
 
         if($stmt === FALSE){
             die(mysqli_error($this->db->getConection()));
         }
 
-        mysqli_stmt_bind_param($stmt, 'sissss', $cpf, $idcurso, $nomeCurso, $nomeInstituicao, $anoConclusao, $cargaHoraria);
+        mysqli_stmt_bind_param($stmt, 'sissss', $cpf, $idCurso, $nomeCurso, $nomeInstituicao, $anoConclusao, $cargaHoraria);
         mysqli_stmt_execute($stmt);
         mysqli_stmt_close($stmt);
 
     }
 
-    public function Alterar(Candidatocurso $curso)    { 
+    public function Alterar(CandidatoCurso $curso)    { 
         $cpf = $curso->getCpf();
         $idCurso = $curso->getIdCurso();
         $nomeCurso = $curso->getNomeCurso();
@@ -47,13 +47,13 @@ class CandidatoCursoDAO
             die(mysqli_error($this->db->getConection()));
         } 
         
-        mysqli_stmt_bind_param($stmt, 'sssssi', $nomeCurso, $nomeInstituicao, $anoConclusao, $cargaHoraria, $cpf, $idcurso);
+        mysqli_stmt_bind_param($stmt, 'sssssi', $nomeCurso, $nomeInstituicao, $anoConclusao, $cargaHoraria, $cpf, $idCurso);
         mysqli_stmt_execute($stmt);
         mysqli_stmt_close($stmt);
 
     }
 
-    public function Apagar(Curso $curso) {
+    public function Apagar(CandidatoCurso $curso) {
 
         $idCurso = $questao->getIdCurso();
 
@@ -65,7 +65,7 @@ class CandidatoCursoDAO
         return true;
     }
 
-    public function Listar(Curso $curso) {
+    public function Listar(CandidatoCurso $curso) {
         
         if ($questao->getIdQuestao() == NULL) {
 
@@ -107,13 +107,13 @@ class CandidatoCursoDAO
         }
     }
 
-        public function UltimoRegistrocurso(Candidatocurso $curso) 
+        public function UltimoRegistroCurso(CandidatoCurso $curso) 
     {
         $db = new Conexao();
-        $dados = mysqli_query($db->getConection(), "SELECT MAX(idcurso) as idcurso FROM tbCandidatocurso WHERE cpf = '".$curso->getCpf()."';");
+        $dados = mysqli_query($db->getConection(), "SELECT MAX(idCurso) as idCurso FROM tbCandidatocurso WHERE cpf = '".$curso->getCpf()."';");
 
         $linha = $dados->fetch_array(MYSQLI_ASSOC);
-        return $linha["idcurso"];
+        return $linha["idCurso"];
     }
 
 }

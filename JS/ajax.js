@@ -340,21 +340,17 @@ $(function(){
     });
 
 
-    $('#accordionCandidatoCurso').on('click', '#btnAlterarSalvarCursoProfiss', function (e) {
+    $('#accordionCandidatoCurso').on('click', '#btnSalvarCurso', function (e) {
 
         e.preventDefault();
-
-        if ($("#btnAlterarSalvarCursoProfiss").html() == "Alterar") {
-
-            $("#btnAlterarSalvarCursoProfiss").html("Salvar");
-
-        } else {
+        var idCurso = $(this).val();
 
             $.post('../PostAjax/salvar.php', {
                 acao: "salvarCandidatoCursoProfiss",
+                cpf: $('#txtCpf').val(),
+                idCurso: idCurso,
                 cursoP: $('#txtNomeCursoP').val(),
-                instituicaoP: $('#txNomeInstiP').val(),
-                situacaoP: $('#cbbSituacaoCurso').val(),
+                instituicaoP: $('#txtNomeInstiP').val(),
                 conclusao: $('#dtaconclusao').val(),
                 CargaHora: $('#cargaHora').val()
 
@@ -369,9 +365,8 @@ $(function(){
                 } else {
                     alert('Erro: ' + sucesso);
                 }
-            });
 
-        }
+            });
     });
 
     $('#accordionCandidatoCurso').on('click', '#btnAddCardCurso', function (e) {
@@ -381,10 +376,10 @@ $(function(){
         $('#accordionCandidatoCurso').append(`<div class="card">
                                                     <div class="card-header" id="candidatoCurso` + ultimoRegistroCurso + `">
                                                         <p id="tituloHeader` + ultimoRegistroCurso + `" class="d-inline">Curso Profissionalizante</p>
-                                                        <button value="` + ultimoRegistroCurso + `" name="btnSalvarCurso" id="btnSalvarCurso" class="btn btn-primary float-right d-inline" data-toggle="collapse" data-target="#collapsecandidatoCurso` + ultimoRegistro + `" aria-expanded="true" aria-controls="collapsecandidatoCurso` + ultimoRegistroCurso + `">Salvar</button>
+                                                        <button value="` + ultimoRegistroCurso + `" name="btnSalvarCurso" id="btnSalvarCurso" class="btn btn-primary float-right d-inline" data-toggle="collapse" data-target="#collapsecandidatoCurso` + ultimoRegistroCurso + `" aria-expanded="true" aria-controls="collapsecandidatoCurso` + ultimoRegistroCurso + `">Salvar</button>
                                                     </div >
 
-                                                    <div id="collapsecandidatoCurso" class="collapse" aria-labelledby="candidatoCurso" data-parent="#accordionCandidatoCurso">
+                                                    <div id="collapsecandidatoCurso" class="collapse show" aria-labelledby="candidatoCurso" data-parent="#accordionCandidatoCurso">
 
                                                         <div class="card-body">
                                                         <div class="card-text">
@@ -392,30 +387,20 @@ $(function(){
                                                             <div class="form-row">
                                                                 <div class="form-group col-md-6">
                                                                 <label for="txtNomeCursoP">Nome do curso</label>
-                                                                <input type="text" class="form-control" id="txtTelefone" name="txtTelefone" placeholder="" required>
+                                                                <input type="text" class="form-control" id="txtNomeCursoP" name="txtNomeCursoP" placeholder="" required>
                                                                 </div>
 
                                                                 <div class="form-group col-md-6">
-                                                                <label for="txNomeInstiP">Nome da instituição</label>
-                                                                <input type="text" class="form-control" id="txtTelefone2" name="txtTelefone2" placeholder="">
+                                                                <label for="txtNomeInstiP">Nome da instituição</label>
+                                                                <input type="text" class="form-control" id="txtNomeInstiP" name="txtNomeInstiP" placeholder="">
                                                                 </div>
                                                             </div>
 
                                                             <div class="form-row">
 
                                                                 <div class="form-group col-md-4">
-                                                                    <label for="cbbSituacaoCurso">Situação</label>
-                                                                    <select class="custom-select" id="cbbSituacaoCurso" name="cbbSituacaoCurso" required>
-                                                                        <option value="" selected>Selecione</option>
-                                                                        <option value="IM">Interrrompido</option>
-                                                                        <option value="EM">Em andamento</option>
-                                                                        <option value="FI">Finalizado</option>
-                                                                    </select>
-                                                                    </div>
-
-                                                                <div class="form-group col-md-4">
                                                                     <label for="dtaconclusao">Conclusão</label>
-                                                                    <input type="date" class="form-control" id="dtaTermCurso" name="dtaTermCurso" placeholder="" required>
+                                                                    <input type="date" class="form-control" id="dtaconclusao" name="dtaconclusao" placeholder="" required>
                                                                 </div>
 
                                                                 <div class="form-group col-md-4">
