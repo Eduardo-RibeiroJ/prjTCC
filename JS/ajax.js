@@ -237,7 +237,7 @@ $(function(){
         $('#accordionCandidatoFormacao').append(`<div class="card">
                                                     <div class="card-header" id="candidatoFormacao` + ultimoRegistro + `">
                                                         <p id="tituloHeader` + ultimoRegistro + `" class="d-inline">Formação</p>
-                                                        <button value="` + ultimoRegistro + `" name="btnSalvar" id="btnSalvar" class="btn btn-primary float-right d-inline" data-toggle="collapse" data-target="#collapseCandidatoFormacao` + ultimoRegistro + `" aria-expanded="true" aria-controls="collapseCandidatoFormacao` + ultimoRegistro + `">Salvar</button>
+                                                        <button value="` + ultimoRegistro + `" name="btnSalvarFormacao" id="btnSalvarFormacao" class="btn btn-primary float-right d-inline" data-toggle="collapse" data-target="#collapseCandidatoFormacao` + ultimoRegistro + `" aria-expanded="true" aria-controls="collapseCandidatoFormacao` + ultimoRegistro + `">Salvar</button>
                                                     </div>
                                                     <div id="collapseCandidatoFormacao` + ultimoRegistro + `" class="collapse show" aria-labelledby="candidatoFormacao` + ultimoRegistro + `" data-parent="#accordionCandidatoFormacao">
                                                         <div class="card-body">
@@ -305,12 +305,15 @@ $(function(){
         
     });
 
-    
-    $('#accordionCandidatoFormacao').on('click', '#btnSalvar', function (e) {
+
+    //BOTÃO QUE É PARA INSERIR A FORMAÇÃO
+    $('#accordionCandidatoFormacao').on('click', '#btnSalvarFormacao', function (e) {
 
         e.preventDefault();
         var idFormacao = $(this).val();
         var nomeCurso = $('#txtNomeCurso' + idFormacao).val();
+        var botao = $(this);
+        
 
         $.post('../PostAjax/salvar.php', {
             acao: "salvarFormacao",
@@ -326,9 +329,9 @@ $(function(){
             }, function (sucesso) {
 
                 if (sucesso == true) {
-                    $("#btnSalvar").html("Alterar");
-                    $('#btnSalvar').prop('id', 'btnAlterarSalvar');
-                    $('#btnSalvar').prop('name', 'btnAlterarSalvar');
+                    botao.html("Alterar");
+                    botao.attr('id', 'btnAlterarSalvarFormacao');
+                    botao.attr('name', 'btnAlterarSalvarFormacao');
                     $('#btnAddCardFormacao').removeAttr('disabled');
                     $('#tituloHeader'+idFormacao).html(nomeCurso);
 
@@ -336,10 +339,46 @@ $(function(){
                     alert('Erro: ' + sucesso);
                 }
             
-        });        
+        });
         
     });
 
+    //BOTÃO QUE É PARA ALTERAR A FORMAÇÃO
+    $('#accordionCandidatoFormacao').on('click', '#btnAlterarSalvarFormacao', function (e) {
+
+        e.preventDefault();
+        var idFormacao = $(this).val;
+        var nomeCurso = $('#txtNomeCurso' + idFormacao).val();
+        var botao = $(this);
+
+        if (botao.html() == "Alterar") {
+
+            botao.html("Salvar");
+
+        } else {
+
+            $.post('../PostAjax/alterar.php', {
+                acao: "alterarCandidatoFormacao",
+                cpf: $('#txtCpf').val(),
+                idFormacao: idFormacao,
+                curso: nomeCurso,
+                instituicao: $('#txtNomeInsti' + idFormacao).val(),
+                dtaInicio: $('#dtaInicioInsti' + idFormacao).val(),
+                dtaTerm: $('#dtaTermInsti' + idFormacao).val(),
+                tipo: $('#cbbTipoCurso' + idFormacao).val(),
+                situacao: $('#cbbSituacaoInsti' + idFormacao).val()
+
+            }, function (sucesso) {
+
+                if (sucesso == true) {
+                    botao.html("Alterar");
+                } else {
+                    alert('Erro: ' + sucesso);
+                }
+            });
+
+        }
+    });
 
     $('#accordionCandidatoCurso').on('click', '#btnSalvarCurso', function (e) {
 
