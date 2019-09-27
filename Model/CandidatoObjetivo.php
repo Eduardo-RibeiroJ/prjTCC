@@ -5,6 +5,15 @@ class CandidatoObjetivo {
     private $cargo;
     private $nivel;
     private $pretSal;
+
+    function inserirObjetivo($cpf, $idObjetivo, $cargo, $nivel, $pretSal) {
+        $this->cpf = $cpf;
+        $this->idObjetivo = $idObjetivo;
+        $this->cargo = $cargo;
+        $this->nivel = $nivel;
+        $this->pretSal = $pretSal;
+    }
+
     
     function getCpf() {
         return $this->cpf;

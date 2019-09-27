@@ -7,6 +7,18 @@ class CandidatoEmpresa {
     private $dataInicio;
     private $dataSaida;
     private $atividades;
+
+     function inserirEmpresa($cpf, $idEmpresa, $nomeEmpresa, $cargo, $dataInicio, $dataSaida, $atividades) {
+        $this->cpf = $cpf;
+        $this->idEmpresa = $idEmpresa;
+        $this->nomeEmpresa = $nomeEmpresa;
+        $this->cargo = $cargo;
+        $this->dataInicio = $dataInicio;
+        $this->dataSaida = $dataSaida;
+        $this->tipo = $tipo;
+        $this->atividades = $atividades;
+    }
+
     
     function getCpf() {
         return $this->cpf;
