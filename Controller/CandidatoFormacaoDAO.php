@@ -78,14 +78,14 @@ class CandidatoFormacaoDAO
 
     public function Listar(CandidatoFormacao $formacao) {
         
-        if ($formacao->getIdQuestao() == NULL) {
+        if ($formacao->getIdFormacao() == NULL) {
 
-            $query = $this->db->getConection()->query("SELECT * FROM tbQuestao WHERE idTesteOnline ='".$questao->getIdTesteOnline()."' ORDER BY idQuestao;");
+            $query = $this->db->getConection()->query("SELECT * FROM tbCandidatoFormacao WHERE cpf ='".$formacao->getCpf()."' ORDER BY dataTermino desc;");
             $arrayQuery = array();
 
             while($reg = $query->fetch_array()) {
 
-                $formacao = new Formacao();
+                $formacao = new CandidatoFormacao();
                 $formacao->inserirFormacao(
                     
                     $reg['cpf'],
@@ -119,6 +119,7 @@ class CandidatoFormacaoDAO
                     $reg['tipo'],
                     $reg['estado']
             );
+            return $formacao;
         }
     }
 

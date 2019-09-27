@@ -229,6 +229,54 @@ $(function(){
         }
     });
 
+    $('#sectionCardsFormacao').on('click', '#btnAlterarSalvarFormacao, #btnSalvarFormacao', function (e) {
+
+        e.preventDefault();
+        var idFormacao = $(this).val();
+        var button = $(this);
+        var salvarAlterar;
+
+        if($(this).html() == "Inserir")
+            salvarAlterar = '../PostAjax/salvar.php';
+        else
+            salvarAlterar = '../PostAjax/alterar.php';
+
+
+        if (button.html() == "Alterar") {
+
+            button.html("Salvar");
+
+        } else {
+
+            $.post(salvarAlterar, {
+                acao: "candidatoFormacao",
+                cpf: $('#txtCpf').val(),
+                idFormacao: idFormacao,
+                curso: $('#txtNomeCurso' + idFormacao).val(),
+                instituicao: $('#txtNomeInsti' + idFormacao).val(),
+                dtaInicio: $('#dtaInicioInsti' + idFormacao).val(),
+                dtaTerm: $('#dtaTermInsti' + idFormacao).val(),
+                tipo: $('#cbbTipoCurso' + idFormacao).val(),
+                situacao: $('#cbbSituacaoInsti' + idFormacao).val()
+
+            }, function (sucesso) {
+
+                if (sucesso == true) {
+                    if(button.html() == "Salvar") {
+                        button.html("Alterar");
+                        $('#tituloHeader' + idFormacao).html($('#txtNomeCurso' + idFormacao).val());
+                    }
+                    else {
+                        window.location.reload();
+                    }
+                } else {
+                    alert('Erro: ' + sucesso);
+                }
+            });
+
+        }
+    });
+
     //TESTEEEEEEEEEEEEEEEE
     $('#accordionCandidatoFormacao').on('click', '#btnAddCardFormacao', function (e) {
 
@@ -237,7 +285,7 @@ $(function(){
         $('#accordionCandidatoFormacao').append(`<div class="card">
                                                     <div class="card-header" id="candidatoFormacao` + ultimoRegistro + `">
                                                         <p id="tituloHeader` + ultimoRegistro + `" class="d-inline">Formação</p>
-                                                        <button value="` + ultimoRegistro + `" name="btnSalvar" id="btnSalvar" class="btn btn-primary float-right d-inline" data-toggle="collapse" data-target="#collapseCandidatoFormacao` + ultimoRegistro + `" aria-expanded="true" aria-controls="collapseCandidatoFormacao` + ultimoRegistro + `">Salvar</button>
+                                                        <button value="` + ultimoRegistro + `" name="btnAlterarSalvarFormacao" id="btnAlterarSalvarFormacao" class="btn btn-primary float-right d-inline" data-toggle="collapse" data-target="#collapseCandidatoFormacao` + ultimoRegistro + `" aria-expanded="true" aria-controls="collapseCandidatoFormacao` + ultimoRegistro + `">Inserir</button>
                                                     </div>
                                                     <div id="collapseCandidatoFormacao` + ultimoRegistro + `" class="collapse show" aria-labelledby="candidatoFormacao` + ultimoRegistro + `" data-parent="#accordionCandidatoFormacao">
                                                         <div class="card-body">
@@ -306,41 +354,6 @@ $(function(){
     });
 
     
-    $('#accordionCandidatoFormacao').on('click', '#btnSalvar', function (e) {
-
-        e.preventDefault();
-        var idFormacao = $(this).val();
-        var nomeCurso = $('#txtNomeCurso' + idFormacao).val();
-
-        $.post('../PostAjax/salvar.php', {
-            acao: "salvarFormacao",
-            cpf: $('#txtCpf').val(),
-            idFormacao: idFormacao,
-            curso: nomeCurso,
-            instituicao: $('#txtNomeInsti' + idFormacao).val(),
-            dtaInicio: $('#dtaInicioInsti' + idFormacao).val(),
-            dtaTerm: $('#dtaTermInsti' + idFormacao).val(),
-            tipo: $('#cbbTipoCurso' + idFormacao).val(),
-            situacao: $('#cbbSituacaoInsti' + idFormacao).val()
-
-            }, function (sucesso) {
-
-                if (sucesso == true) {
-                    $("#btnSalvar").html("Alterar");
-                    $('#btnSalvar').prop('id', 'btnAlterarSalvar');
-                    $('#btnSalvar').prop('name', 'btnAlterarSalvar');
-                    $('#btnAddCardFormacao').removeAttr('disabled');
-                    $('#tituloHeader'+idFormacao).html(nomeCurso);
-
-                } else {
-                    alert('Erro: ' + sucesso);
-                }
-            
-        });        
-        
-    });
-
-
     $('#accordionCandidatoCurso').on('click', '#btnSalvarCurso', function (e) {
 
         e.preventDefault();

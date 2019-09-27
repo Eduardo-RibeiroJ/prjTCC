@@ -42,7 +42,7 @@ if($_POST['acao'] == "salvarTesteOnline") {
 	$testeOnlineDAO->Inserir($testeOnline);
 }
 
-if($_POST['acao'] == "salvarFormacao") {
+if($_POST['acao'] == "candidatoFormacao") {
 
 	include_once "../Model/CandidatoFormacao.php";
 	include_once "../Controller/candidatoFormacaoDAO.php";
