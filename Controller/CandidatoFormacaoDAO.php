@@ -59,19 +59,13 @@ class CandidatoFormacaoDAO
 
     public function Apagar(CandidatoFormacao $formacao) {
 
-
+        $cpf = $formacao->getCpf();
         $idFormacao = $formacao->getIdFormacao();
 
-        $SQL = $this->db->getConection()->prepare("DELETE FROM tbCandidatoFormacao WHERE idFormacao = ? ;");
+        $SQL = $this->db->getConection()->prepare("DELETE FROM tbCandidatoFormacao WHERE CPF = ? AND idFormacao = ?;");
 
-        $SQL->bind_param("i", $idFormacao);
+        $SQL->bind_param("si", $cpf, $idFormacao);
         $SQL->execute();
-
-        //Realocar os números das questões para não ficar "buraco"
-        /*$SQL = $this->db->getConection()->prepare("UPDATE tbQuestao SET idQuestao = (idQuestao - 1) WHERE idQuestao > ? AND idTesteOnline = ?;");
-
-        $SQL->bind_param("ii", $idQuestao, $idTesteOnline);
-        $SQL->execute();*/
    
         return true;
     }

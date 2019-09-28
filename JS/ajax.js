@@ -229,7 +229,9 @@ $(function(){
         }
     });
 
-    $('#sectionCardsFormacao').on('click', '#btnAlterarSalvarFormacao, #btnSalvarFormacao', function (e) {
+    //********** INSERIR, ALTERAR E APAGAR FORMAÇÃO
+
+    $('#sectionCardsFormacao').on('click', '#btnAlterarSalvarFormacao', function (e) {
 
         e.preventDefault();
         var idFormacao = $(this).val();
@@ -241,9 +243,7 @@ $(function(){
         else
             salvarAlterar = '../PostAjax/alterar.php';
 
-
-        if (button.html() == "Alterar") {
-
+        if(button.html() == "Alterar") {
             button.html("Salvar");
 
         } else {
@@ -263,97 +263,43 @@ $(function(){
 
                 if (sucesso == true) {
                     if(button.html() == "Salvar") {
-                        button.html("Alterar");
                         $('#tituloHeader' + idFormacao).html($('#txtNomeCurso' + idFormacao).val());
+                        $("#btnAlterar" + idFormacao).click();
                     }
                     else {
-                        window.location.reload();
+                        location.reload();
                     }
                 } else {
                     alert('Erro: ' + sucesso);
                 }
             });
-
         }
     });
 
-    //TESTEEEEEEEEEEEEEEEE
-    $('#accordionCandidatoFormacao').on('click', '#btnAddCardFormacao', function (e) {
+    $('#sectionCardsFormacao').on('click', '#btnExcluirFormacao', function (e) {
 
-        var ultimoRegistro = $('#txtUltimoRegistro').val();
+        var cardAlvo = $(this).closest('.card');
 
-        $('#accordionCandidatoFormacao').append(`<div class="card">
-                                                    <div class="card-header" id="candidatoFormacao` + ultimoRegistro + `">
-                                                        <p id="tituloHeader` + ultimoRegistro + `" class="d-inline">Formação</p>
-                                                        <button value="` + ultimoRegistro + `" name="btnAlterarSalvarFormacao" id="btnAlterarSalvarFormacao" class="btn btn-primary float-right d-inline" data-toggle="collapse" data-target="#collapseCandidatoFormacao` + ultimoRegistro + `" aria-expanded="true" aria-controls="collapseCandidatoFormacao` + ultimoRegistro + `">Inserir</button>
+        $.post('../PostAjax/excluir.php', {
+            acao: "excluirFormacao",
+            cpf: $('#txtCpf').val(),
+            idFormacao: $(this).val()
 
-                                                    </div>
-                                                    <div id="collapseCandidatoFormacao` + ultimoRegistro + `" class="collapse show" aria-labelledby="candidatoFormacao` + ultimoRegistro + `" data-parent="#accordionCandidatoFormacao">
-                                                        <div class="card-body">
-                                                            <div class="card-text">
-                                                                <div class="form-row">
-                                                                    <div class="form-group col-md-4">
-                                                                    <label for="txtNomeCurso">Nome do curso</label>
-                                                                    <input type="text" class="form-control" id="txtNomeCurso` + ultimoRegistro + `" name="txtNomeCurso" placeholder="" required>
-                                                                    </div>
+        }, function(sucesso) {
 
-                                                                    <div class="form-group col-md-4">
-                                                                    <label for="txtNomeInsti">Nome da instituição</label>
-                                                                    <input type="text" class="form-control" id="txtNomeInsti` + ultimoRegistro + `" name="txtNomeInsti" placeholder="">
-                                                                    </div>
+        if(sucesso == true) {
 
-                                                                    <div class="form-group col-md-4">
-                                                                    <label for="tipoCurso">Tipo do curso</label>
-                                                                    <select class="custom-select" id="cbbTipoCurso` + ultimoRegistro + `" name="cbbTipoCurso" required>
-                                                                        <option value="" selected>Selecione</option>
-                                                                        <option value="F12">Formação escolar fundamental (1°Grau) e média (2°Grau)</option>
-                                                                        <option value="EMP">Ensino Médio profisisonalizante</option>
-                                                                        <option value="GR">Graduação</option>
-                                                                        <option value="GRE">Graduação - especialização</option>
-                                                                        <option value="GRMB">Graduação - MBA</option>
-                                                                        <option value="GRME">Graduação - Mestrado</option>
-                                                                        <option value="GRD">Graduação - Doutorado</option>
-                                                                    </select>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="form-row">
-
-                                                                    <div class="form-group col-md-3">
-                                                                    <label for="dtaInicioInsti">Data início</label>
-                                                                    <input type="date" class="form-control" id="dtaInicioInsti` + ultimoRegistro + `" name="dtaInicioInsti" placeholder="" required>
-                                                                    </div>
-                                                                    <div class="form-group col-md-3">
-                                                                    <label for="dtaTermInsti">Data término (previsão)</label>
-                                                                    <input type="date" class="form-control" id="dtaTermInsti` + ultimoRegistro + `" name="dtaTermInsti" placeholder="" required>
-                                                                    </div>
-
-                                                                </div>
-
-                                                                    <div class="form-row">
-                                                                    <div class="form-group col-md-6">
-                                                                        <label for="cbbSituacaoInsti">Tipo do curso</label>
-                                                                        <select class="custom-select" id="cbbSituacaoInsti` + ultimoRegistro + `" name="cmbSituacaoInsti" required>
-                                                                            <option value="" selected>Selecione</option>
-                                                                            <option value="IM">Interrrompido</option>
-                                                                            <option value="EM">Em andamento</option>
-                                                                            <option value="FI">Finalizado</option>
-                                                                        </select>
-                                                                        </div>
-                                                                    </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>`
-        );
-
-        $('#btnAddCardFormacao').attr("disabled", true);
-
-        ultimoRegistro = parseInt(ultimoRegistro);
-        $('#txtUltimoRegistro').val(ultimoRegistro + 1);
-        
+            cardAlvo.fadeOut(500,function(){ 
+                cardAlvo.remove();                 
+            }); 
+            
+        } else {
+            alert('Erro: ' + sucesso);
+        }
+        });
     });
 
+    //********** INSERIR, ALTERAR E APAGAR CURSO
 
     $('#accordionCandidatoCurso').on('click', '#btnSalvarCurso', function (e) {
 
@@ -382,60 +328,6 @@ $(function(){
                 }
 
             });
-    });
-
-    $('#accordionCandidatoCurso').on('click', '#btnAddCardCurso', function (e) {
-
-        var ultimoRegistroCurso = $('#txtUltimoRegistroCurso').val();
-
-        $('#accordionCandidatoCurso').append(`<div class="card">
-                                                    <div class="card-header" id="candidatoCurso` + ultimoRegistroCurso + `">
-                                                        <p id="tituloHeader` + ultimoRegistroCurso + `" class="d-inline">Curso Profissionalizante</p>
-                                                        <button value="` + ultimoRegistroCurso + `" name="btnSalvarCurso" id="btnSalvarCurso" class="btn btn-primary float-right d-inline" data-toggle="collapse" data-target="#collapsecandidatoCurso` + ultimoRegistroCurso + `" aria-expanded="true" aria-controls="collapsecandidatoCurso` + ultimoRegistroCurso + `">Salvar</button>
-                                                    </div >
-
-                                                    <div id="collapsecandidatoCurso" class="collapse show" aria-labelledby="candidatoCurso" data-parent="#accordionCandidatoCurso">
-
-                                                        <div class="card-body">
-                                                        <div class="card-text">
-
-                                                            <div class="form-row">
-                                                                <div class="form-group col-md-6">
-                                                                <label for="txtNomeCursoP">Nome do curso</label>
-                                                                <input type="text" class="form-control" id="txtNomeCursoP" name="txtNomeCursoP" placeholder="" required>
-                                                                </div>
-
-                                                                <div class="form-group col-md-6">
-                                                                <label for="txtNomeInstiP">Nome da instituição</label>
-                                                                <input type="text" class="form-control" id="txtNomeInstiP" name="txtNomeInstiP" placeholder="">
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="form-row">
-
-                                                                <div class="form-group col-md-4">
-                                                                    <label for="dtaconclusao">Conclusão</label>
-                                                                    <input type="date" class="form-control" id="dtaconclusao" name="dtaconclusao" placeholder="" required>
-                                                                </div>
-
-                                                                <div class="form-group col-md-4">
-                                                                    <label for="cargaHora">Carga horária</label>
-                                                                    <input type="text" class="form-control" id="cargaHora" name="cargaHora" placeholder="">
-                                                                </div>
-
-                                                                </div>
-
-                                                        </div>
-                                                        </div>
-                                                    </div>
-                                                    </div>`
-        );
-
-        $('#btnAddCardCurso').attr("disabled", true);
-
-        ultimoRegistroCurso = parseInt(ultimoRegistroCurso);
-        $('#txtUltimoRegistroCurso').val(ultimoRegistroCurso + 1);
-
     });
 
 
