@@ -41,16 +41,16 @@ if (isset($_POST['btnSalvar'])) {
 
 <div class="container">
 
+  <div class="jumbotron p-3 p-md-5">
+    <div class="container p-0">
+      <h5 class="display-4 display-md-2"><i class="fas fa-user-tie d-none d-md-inline"></i>Queremos saber sobre você!</h1>
+      
+      <hr class="my-2 my-md-4">
+      <p class="lead">Insira seus dados pessoais para começarmos.</p>
+    </div>
+  </div>
+
   <section>
-
-    <div class="container-small">
-      <div class="row">
-        <div class=col>
-          <h4>Crie seu perfil!</h4>
-        </div>
-      </div>
-     </div>
-
 
     <div class="row">
       <div class="col">
@@ -64,6 +64,7 @@ if (isset($_POST['btnSalvar'])) {
 
             <div class="card">
               <div class="card-header">
+                <i class="fas fa-id-card"></i>
                 Dados Pessoais
               </div>
 
@@ -117,6 +118,7 @@ if (isset($_POST['btnSalvar'])) {
             <div class="card">
 
               <div class="card-header">
+                <i class="fas fa-map-marked-alt"></i>
                 Endereço
               </div>
 
@@ -160,6 +162,7 @@ if (isset($_POST['btnSalvar'])) {
             <div class="card">
 
               <div class="card-header">
+                <i class="fas fa-phone"></i>
                 Contato
               </div>
 
@@ -204,9 +207,11 @@ if (isset($_POST['btnSalvar'])) {
               </div>
             </div>
 
-            <div class="row">
+            <hr class="my-2 my-md-4">
+
+            <div class="form-row">
               <div class="col text-center">
-                <input type="submit" name="btnSalvar" id="btnSalvar" class="btn btn-primary" value="Salvar e Continuar">
+                <input type="submit" href="candidato_inserir_formacao.php" name="btnSalvar" id="btnSalvar" class="btn btn-primary float-right" value="Salvar e Continuar">
               </div>
             </div>
 

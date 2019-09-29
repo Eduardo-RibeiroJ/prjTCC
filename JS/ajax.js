@@ -89,8 +89,6 @@ $(function(){
 
     $('#accordionTesteOnline').on('click', '#btnExcluir', function(e) {
 
-        console.log("rsrsrs");
-
         var cardAlvo = $(this).closest('.card');
 
         $.post('../PostAjax/excluir.php', {
@@ -136,97 +134,77 @@ $(function(){
         
     });
 
+    //************ SALVAR E ALTERAR DADOS PESSOAIS
+
     $('#accordionCandidatoDadosPessoais').on('click', '#btnAlterarSalvarDadosPessoais', function(e) {
 
         e.preventDefault();
         
-        if($("#btnAlterarSalvarDadosPessoais").html() == "Alterar") {
+        $.post('../PostAjax/alterar.php', {
+            acao: "alterarCandidatoDadosPessoais",
+            cpf: $('#cpf').val(),
+            nome: $('#txtNome').val(),
+            sobrenome: $('#txtSobrenome').val(),
+            dataNasc: $('#txtDataNasc').val(),
+            estadoCivil: $('#cbbEstadoCivil').val(),
+            sexo: $('#cbbSexo').val()
 
-            $("#btnAlterarSalvarDadosPessoais").html("Salvar");
-
-        } else {
-        
-            $.post('../PostAjax/alterar.php', {
-                acao: "alterarCandidatoDadosPessoais",
-                cpf: $('#cpf').val(),
-                nome: $('#txtNome').val(),
-                sobrenome: $('#txtSobrenome').val(),
-                dataNasc: $('#txtDataNasc').val(),
-                estadoCivil: $('#cbbEstadoCivil').val(),
-                sexo: $('#cbbSexo').val()
-
-            }, function(sucesso) {
+        }, function(sucesso) {
 
             if(sucesso == true) {
-                $("#btnAlterarSalvarDadosPessoais").html("Alterar");
+                $("#btnAlterarDadosPessoais").click();
             } else {
                 alert('Erro: ' + sucesso);
             }
-            });
-        
-        }
+        });
     });
 
     $('#accordionCandidatoDadosPessoais').on('click', '#btnAlterarSalvarEndereco', function (e) {
 
         e.preventDefault();
 
-        if ($("#btnAlterarSalvarEndereco").html() == "Alterar") {
+        $.post('../PostAjax/alterar.php', {
+            acao: "alterarCandidatoEndereco",
+            cpf: $('#cpf').val(),
+            cep: $('#txtCEP').val(),
+            endereco: $('#txtEndereco').val(),
+            bairro: $('#txtBairro').val(),
+            cidade: $('#txtCidade').val(),
+            estado: $('#txtUF').val()
 
-            $("#btnAlterarSalvarEndereco").html("Salvar");
+        }, function (sucesso) {
 
-        } else {
+            if (sucesso == true) {
+                $("#btnAlterarEndereco").click();
+            } else {
+                alert('Erro: ' + sucesso);
+            }
+        });
 
-            $.post('../PostAjax/alterar.php', {
-                acao: "alterarCandidatoEndereco",
-                cpf: $('#cpf').val(),
-                cep: $('#txtCEP').val(),
-                endereco: $('#txtEndereco').val(),
-                bairro: $('#txtBairro').val(),
-                cidade: $('#txtCidade').val(),
-                estado: $('#txtUF').val()
-
-            }, function (sucesso) {
-
-                if (sucesso == true) {
-                    $("#btnAlterarSalvarEndereco").html("Alterar");
-                } else {
-                    alert('Erro: ' + sucesso);
-                }
-            });
-
-        }
     });
 
     $('#accordionCandidatoDadosPessoais').on('click', '#btnAlterarSalvarContato', function (e) {
 
         e.preventDefault();
 
-        if ($("#btnAlterarSalvarContato").html() == "Alterar") {
+        $.post('../PostAjax/alterar.php', {
+            acao: "alterarCandidatoContato",
+            cpf: $('#cpf').val(),
+            tel1: $('#txtTelefone').val(),
+            tel2: $('#txtTelefone2').val(),
+            linkedin: $('#txtlinkedin').val(),
+            facebook: $('#txtFacebook').val(),
+            sitePessoal: $('#txtSitePessoal').val()
 
-            $("#btnAlterarSalvarContato").html("Salvar");
+        }, function (sucesso) {
 
-        } else {
+            if (sucesso == true) {
+                $("#btnAlterarContato").click();
+            } else {
+                alert('Erro: ' + sucesso);
+            }
+        });
 
-            $.post('../PostAjax/alterar.php', {
-                acao: "alterarCandidatoContato",
-                cpf: $('#cpf').val(),
-                tel1: $('#txtTelefone').val(),
-                tel2: $('#txtTelefone2').val(),
-                linkedin: $('#txtlinkedin').val(),
-                facebook: $('#txtFacebook').val(),
-                sitePessoal: $('#txtSitePessoal').val()
-
-            }, function (sucesso) {
-
-                if (sucesso == true) {
-                    $("#btnAlterarSalvarContato").html("Alterar");
-                } else {
-                    alert('Erro: ' + sucesso);
-                }
-            });
-
-        }
     });
 
     //********** INSERIR, ALTERAR E APAGAR FORMAÇÃO

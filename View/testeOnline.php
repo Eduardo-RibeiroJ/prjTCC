@@ -14,44 +14,31 @@ $arrayTestesOnline = $testeOnlineDAO->Listar($testeOnline);
 
 <div class="container">
 
-  <section>
-    <div class="row">
-      <div class="col-lg-8">
-        <div class="card">
-          <div class="card-header">
-            Crie um teste online personalizado!
-          </div>
-
-          <div class="card-body">
-            <div class="card-text">
-
-              <form method="GET" action="testeOnline_questao_inserir.php">
-
-                <div class="row">
-                  <div class="col">
-                    <label class="col-form-label">Nome do Teste Online</label>
-                  </div>
-                </div>
-
-                <div class="row">
-                  <div class="col-lg-10" style="padding-bottom:1rem">
-                      <input class="form-control" type="text" name="nomeTeste" id="nomeTeste" placeholder="" required autofocus>
-                  </div>
-
-                  <div class="col-lg-2 text-center">
-                    <input type="submit" name="btnCriar" id="btnCriar" class="btn btn-primary btn-mg" value="Criar"/>
-                  </div>
-                </div>
-
-              </form>
-
-            </div>
-          </div>
-                    
+  <div class="jumbotron p-3 p-md-5">
+    <div class="container p-0">
+      <h5 class="display-4 display-md-2"><i class="fas fa-tasks d-none d-md-inline"> </i>Crie um teste online personalizado!</h1>
+      
+      <hr class="my-2 my-md-4">
+      <div class="form-row">
+        <div class="form-group col-lg-10">
+          <p class="lead">Também fique a vontade para utilizar os testes já criados.</p>
         </div>
       </div>
+
+      <form method="GET" action="testeOnline_questao_inserir.php">
+        <div class="form-row">
+          <div class="form-group col-lg-10">
+              <input class="form-control" type="text" name="nomeTeste" id="nomeTeste" placeholder="Insira um nome para criar..." required autofocus>
+          </div>
+
+          <div class="form-group col-lg-2 text-center">
+            <input type="submit" name="btnCriar" id="btnCriar" class="btn btn-primary btn-mg" value="Criar"/>
+          </div>
+        </div>
+
+      </form>
     </div>
-  </section>
+  </div>
 
   <section>
     <div class="row">

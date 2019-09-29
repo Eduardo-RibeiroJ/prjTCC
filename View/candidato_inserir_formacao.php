@@ -35,10 +35,10 @@ if (isset($_POST['btnContinuar'])) {
 
   <div class="jumbotron p-3 p-md-5">
     <div class="container p-0">
-      <h5 class="display-4 display-md-2"><i class="fas fa-graduation-cap d-none d-md-inline"> </i> Gerencie aqui suas formações!</h1>
+      <h5 class="display-4 display-md-2"><i class="fas fa-graduation-cap d-none d-md-inline"> </i>Queremos saber sobre suas formações acadêmicas!</h1>
       
       <hr class="my-2 my-md-4">
-      <p class="lead">Queremos saber suas formações acadêmicas!</p>
+      <p class="lead">Gerencie aqui tudo sobre as suas formações.</p>
     </div>
   </div>
 

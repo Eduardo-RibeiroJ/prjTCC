@@ -71,11 +71,6 @@
 
     /*FORMATAÇÃO DE ITENS DO BOOTSTRAP */
 
-    footer.footer {
-        padding-top: 2rem;
-        padding-bottom: 2rem;
-    }
-
     .container {
         padding-top: 7rem;
         padding-bottom: 5rem;
@@ -86,15 +81,14 @@
         padding-bottom: 2rem
     }
 
-    .btn {
-        margin-bottom: 0.5em;
-    }
-
-    .card-header {
+    .card .card-header {
         font-weight: 600;
+        padding: 0 1em 0 1em;
+        line-height: 4em;
+        font-family: 'Segoe UI';
     }
 
-    .accordion .card-header:hover {
+    .card-header:hover {
         background-color: rgba(0,0,0,0.08);
     }
 
@@ -102,6 +96,14 @@
         font-size: 2em;
         padding: 0;
         font-weight: 400;
+    }
+
+    .card-header .btn {
+        font-size: 1.5em;
+        width: 2em;
+        height: 2em;
+        margin-top: 0.35em;
+        padding: 0;
     }
 
 

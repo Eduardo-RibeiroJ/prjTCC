@@ -30,17 +30,15 @@ if(isset($_GET['btnCriar'])) {
       
 <div class="container" id="containerPrincipal">
 
-  <section> 
-
-    <div class="container">
-      <div class="row">
-        <div class="col">
-          <h4 class="d-inline" id="numTeste"><?= $testeOnline->getIdTesteOnline();?></h4>
-          <h4 class="d-inline">&nbsp;- Nome:&nbsp;</h4> <!-- &nbsp dá espaço -->
-          <h4 class="d-inline" id="nomeTeste"><?= $testeOnline->getNomeTesteOnline(); ?> </h4>
-        </div>
-      </div>
+  <div class="row">
+    <div class="col-12">
+      <h4 class="d-inline" id="numTeste"><?= $testeOnline->getIdTesteOnline();?></h4>
+      <h4 class="d-inline">&nbsp;- Nome:&nbsp;</h4> <!-- &nbsp dá espaço -->
+      <h4 class="d-inline" id="nomeTeste"><?= $testeOnline->getNomeTesteOnline(); ?> </h4>
     </div>
+  </div>
+
+  <section> 
 
     <div class="row">
       <div class="col">

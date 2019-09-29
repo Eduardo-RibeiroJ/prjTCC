@@ -18,31 +18,32 @@ $candidatoDAO->Listar($candidato);
 
 <div class="container">
 
+<div class="jumbotron p-3 p-md-5">
+    <div class="container p-0">
+      <h5 class="display-4 display-md-2"><i class="fas fa-user-tie d-none d-md-inline"> </i>Mantenha-se atualizado!</h1>
+      
+      <hr class="my-2 my-md-4">
+      <p class="lead">Gerencie aqui seus principais dados.</p>
+    </div>
+  </div>
+
   <section>
-
-    <div class="container-small">
-      <div class="row">
-        <div class=col>
-          <h4>Altere seu perfil!</h4>
-        </div>
-      </div>
-     </div>
-
 
     <div class="row">
       <div class="col">
 
         <div class="accordion" id="accordionCandidatoDadosPessoais">
 
-          <form>
-
             <input type="hidden" id="cpf" name="cpf" value="<?= $candidato->getCpf(); ?>">
 
             <div class="card">
 
               <div class="card-header" id="candidatoDadosPessoais">
+                <i class="fas fa-id-card"></i>
                 Dados Pessoais
-                <button name="btnAlterarSalvarDadosPessoais" id="btnAlterarSalvarDadosPessoais" class="btn btn-primary float-right" data-toggle="collapse" data-target="#collapsecandidatoDadosPessoais" aria-expanded="true" aria-controls="collapsecandidatoDadosPessoais">Alterar</button>
+                <button name="btnAlterarDadosPessoais" id="btnAlterarDadosPessoais" class="btn btn-outline-primary float-right" data-toggle="collapse" data-target="#collapsecandidatoDadosPessoais" aria-expanded="true" aria-controls="collapsecandidatoDadosPessoais">
+                  <i class="fas fa-pencil-alt"></i>
+                </button>
               </div>
 
               <div id="collapsecandidatoDadosPessoais" class="collapse" aria-labelledby="candidatoDadosPessoais" data-parent="#accordionCandidatoDadosPessoais">
@@ -113,6 +114,13 @@ $candidatoDAO->Listar($candidato);
 
                         </select>
                       </div>
+
+                      <div class="row d-flex justify-content-center">
+                        <div class="col d-flex justify-content-center">
+                          <button name="btnAlterarSalvarDadosPessoais" id="btnAlterarSalvarDadosPessoais" class="btn btn-primary">Salvar</button>
+                        </div>
+                      </div>
+
                     </div>
                           
                   </div>
@@ -123,44 +131,53 @@ $candidatoDAO->Listar($candidato);
             <div class="card">
 
               <div class="card-header" id="candidatoEndereco">
+                <i class="fas fa-map-marked-alt"></i>
                 Endereço
-                <button name="btnAlterarSalvarEndereco" id="btnAlterarSalvarEndereco" class="btn btn-primary float-right" data-toggle="collapse" data-target="#collapsecandidatoEndereco" aria-expanded="true" aria-controls="collapsecandidatoEndereco">Alterar</button>
+                <button name="btnAlterarEndereco" id="btnAlterarEndereco" class="btn btn-outline-primary float-right" data-toggle="collapse" data-target="#collapseCandidatoEndereco" aria-expanded="true" aria-controls="collapseCandidatoEndereco">
+                  <i class="fas fa-pencil-alt"></i>
+                </button>
               </div>
 
-              <div id="collapsecandidatoEndereco" class="collapse" aria-labelledby="candidatoEndereco" data-parent="#accordionCandidatoDadosPessoais">
+              <div id="collapseCandidatoEndereco" class="collapse" aria-labelledby="candidatoEndereco" data-parent="#accordionCandidatoDadosPessoais">
 
                 <div class="card-body">
                   <div class="card-text">
 
-                      <div class="form-row">
-                        <div class="form-group col-lg-6">
-                          <label for="txtCEP">CEP</label>
-                          <input type="text" class="form-control" id="txtCEP" name="txtCEP" value="<?= $candidato->getCep(); ?>" required>
-                        </div>
-
-                        <div class="form-group col-lg-6">
-                          <label for="txtEndereco">Endereço</label>
-                          <input type="text" class="form-control" id="txtEndereco" name="txtEndereco" value="<?= $candidato->getEndereco(); ?>" required>
-                        </div>
+                    <div class="form-row">
+                      <div class="form-group col-lg-6">
+                        <label for="txtCEP">CEP</label>
+                        <input type="text" class="form-control" id="txtCEP" name="txtCEP" value="<?= $candidato->getCep(); ?>" required>
                       </div>
 
-                      <div class="form-row">
+                      <div class="form-group col-lg-6">
+                        <label for="txtEndereco">Endereço</label>
+                        <input type="text" class="form-control" id="txtEndereco" name="txtEndereco" value="<?= $candidato->getEndereco(); ?>" required>
+                      </div>
+                    </div>
 
-                        <div class="form-group col-md-5">
-                          <label for="txtBairro">Bairro</label>
-                          <input type="text" class="form-control" id="txtBairro" name="txtBairro" value="<?= $candidato->getBairro(); ?>" required>
-                        </div>
+                    <div class="form-row">
 
-                        <div class="form-group col-md-5">
-                          <label for="txtCidade">Cidade</label>
-                          <input type="text" class="form-control" id="txtCidade" name="txtCidade" value="<?= $candidato->getCidade(); ?>" required>
-                        </div>
+                      <div class="form-group col-md-5">
+                        <label for="txtBairro">Bairro</label>
+                        <input type="text" class="form-control" id="txtBairro" name="txtBairro" value="<?= $candidato->getBairro(); ?>" required>
+                      </div>
 
-                        <div class="form-group col-md-2">
-                          <label for="txtUF">Estado</label>
-                          <input type="text" class="form-control" id="txtUF" name="txtUF" value="<?= $candidato->getEstado(); ?>" required>
-                        </div>
-                      </div> 
+                      <div class="form-group col-md-5">
+                        <label for="txtCidade">Cidade</label>
+                        <input type="text" class="form-control" id="txtCidade" name="txtCidade" value="<?= $candidato->getCidade(); ?>" required>
+                      </div>
+
+                      <div class="form-group col-md-2">
+                        <label for="txtUF">Estado</label>
+                        <input type="text" class="form-control" id="txtUF" name="txtUF" value="<?= $candidato->getEstado(); ?>" required>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col">
+                        <button name="btnAlterarSalvarEndereco" id="btnAlterarSalvarEndereco" class="btn btn-primary float-right">Salvar</button>
+                      </div>
+                    </div>
                   
                   </div>
                 </div>
@@ -170,8 +187,11 @@ $candidatoDAO->Listar($candidato);
             <div class="card">
 
               <div class="card-header" id="candidatoContato">
+                <i class="fas fa-phone"></i>
                 Contato
-                <button name="btnAlterarSalvarContato" id="btnAlterarSalvarContato" class="btn btn-primary float-right" data-toggle="collapse" data-target="#collapsecandidatoContato" aria-expanded="true" aria-controls="collapsecandidatoContato">Alterar</button>
+                <button name="btnAlterarContato" id="btnAlterarContato" class="btn btn-outline-primary float-right" data-toggle="collapse" data-target="#collapsecandidatoContato" aria-expanded="true" aria-controls="collapsecandidatoContato">
+                  <i class="fas fa-pencil-alt"></i>
+                </button>
               </div>
 
               <div id="collapsecandidatoContato" class="collapse" aria-labelledby="candidatoContato" data-parent="#accordionCandidatoDadosPessoais">
@@ -212,21 +232,31 @@ $candidatoDAO->Listar($candidato);
                           <input type="text" class="form-control" id="txtSitePessoal" name="txtSitePessoal" value="<?= $candidato->getSitePessoal(); ?>">
                         </div>
                       </div>
+
+                      <div class="row">
+                        <div class="col d-flex justify-content-center">
+                          <button name="btnAlterarSalvarContato" id="btnAlterarSalvarContato" class="btn btn-primary">Salvar</button>
+                        </div>
+                      </div>
                       
                   </div>
                 </div>
               </div>
             </div>
 
-          </form>
-
         </div>
       </div>
     </div>
 
-  </section>
+    <hr class="my-2 my-md-4">
 
-    <button name="btnContinuar" id="btnContinuar" class="btn btn-primary float-right" data-toggle="collapse">Continuar</button>
+    <div class="row">
+      <div class="col">
+        <button href="candidato.php" class="btn btn-primary float-right" >Visualizar Perfil</button>
+      </div>
+    </div>
+
+  </section>
 
 </div>
 
