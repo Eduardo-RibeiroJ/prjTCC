@@ -25,7 +25,7 @@ class CandidatoCursoDAO
             die(mysqli_error($this->db->getConection()));
         }
 
-        mysqli_stmt_bind_param($stmt, 'sisssi', $cpf, $idCurso, $nomeCurso, $nomeInstituicao, $anoConclusao, $cargaHoraria);
+        mysqli_stmt_bind_param($stmt, 'iisssi', $cpf, $idCurso, $nomeCurso, $nomeInstituicao, $anoConclusao, $cargaHoraria);
         mysqli_stmt_execute($stmt);
         mysqli_stmt_close($stmt);
 
@@ -56,11 +56,11 @@ class CandidatoCursoDAO
     public function Apagar(CandidatoCurso $curso) {
 
         $cpf = $curso->getCpf();
-        $idCurso = $questao->getIdCurso();
+        $idCurso = $curso->getIdCurso();
 
         $SQL = $this->db->getConection()->prepare("DELETE FROM tbCandidatoCurso WHERE idCurso = ? AND cpf = ?;");
 
-        $SQL->bind_param("i", $idCurso);
+        $SQL->bind_param("ii", $idCurso, $cpf);
         $SQL->execute();
    
         return true;
@@ -68,9 +68,9 @@ class CandidatoCursoDAO
 
     public function Listar(CandidatoCurso $curso) {
         
-        if ($questao->getIdQuestao() == NULL) {
+        if ($curso->getIdCurso() == NULL) {
 
-            $query = $this->db->getConection()->query("SELECT * FROM tbCandidatoCuro WHERE idCurso ='".$curso->getIdCurso()."' ORDER BY idCurso;");
+            $query = $this->db->getConection()->query("SELECT * FROM tbCandidatoCurso WHERE idCurso ='".$curso->getIdCurso()."' ORDER BY idCurso;");
             $arrayQuery = array();
 
             while($reg = $query->fetch_array()) {
