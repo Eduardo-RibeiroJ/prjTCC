@@ -45,6 +45,20 @@ if($_POST['acao'] == "excluirFormacao") {
 	$formacaoDAO->Apagar($formacao);
 }
 
+if($_POST['acao'] == "excluirCurso") {
+
+	include_once "../Model/CandidatoCurso.php";
+	include_once "../Controller/CandidatoCursoDAO.php";
+
+	$curso = new CandidatoCurso();
+	$cursoDAO = new CandidatoCursoDAO($conn);
+
+	$curso->setCpf ($_POST['cpf']);
+	$curso->setIdCurso ($_POST['idCurso']);
+
+	$cursoDAO->Apagar($curso);
+}
+
 echo true;
 
 ?>

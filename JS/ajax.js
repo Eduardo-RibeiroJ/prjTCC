@@ -322,4 +322,29 @@ $(function(){
         }
     });
 
+    $('#sectionCardsCurso').on('click', '#btnExcluirCurso', function (e) {
+
+        var cardAlvo = $(this).closest('.card');
+
+        $.post('../PostAjax/excluir.php', {
+            acao: "excluirCurso",
+            cpf: $('#txtCpf').val(),
+            idCurso: $(this).val()
+
+        }, function (sucesso) {
+
+            if (sucesso == true) {
+
+                cardAlvo.fadeOut(500, function () {
+                    cardAlvo.remove();
+                });
+
+            } else {
+                alert('Erro: ' + sucesso);
+            }
+        });
+    });
+
+
+
 });
