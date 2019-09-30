@@ -64,7 +64,7 @@ if($_POST['acao'] == "candidatoFormacao") {
 	$formacaoDAO->Inserir($formacao);
 }
 
-if($_POST['acao'] == "salvarCandidatoCursoProfiss") {
+if($_POST['acao'] == "CandidatoCurso") {
 
 	include_once "../Model/CandidatoCurso.php";
 	include_once "../Controller/candidatoCursoDAO.php";
@@ -75,10 +75,10 @@ if($_POST['acao'] == "salvarCandidatoCursoProfiss") {
 	$curso->inserirCurso (
 	    $_POST['cpf'],
 	    $_POST['idCurso'],
-	    $_POST['cursoP'],
-	    $_POST['instituicaoP'],
-	    $_POST['conclusao'],
-		$_POST['CargaHora']
+	    $_POST['curso'],
+	    $_POST['instituicao'],
+	    $_POST['anoConclusao'],
+		$_POST['cargaHoraria']
 	);
 
 	$cursoDAO->Inserir($curso);

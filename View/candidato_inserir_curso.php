@@ -49,14 +49,14 @@ $arrayCurso = $cursoDAO->Listar($curso)
         <div class="col">
 
           <div class="card">
-            <div class="card-header" id="collapseCurso<?= $reg->getIdCurso(); ?>">
+            <div class="card-header" id="candidatoCurso<?= $reg->getIdCurso(); ?>">
               <p id="tituloHeader<?= $reg->getIdCurso(); ?>" class="d-inline"><?= $reg->getNomeCurso(); ?></p>
-              <button name="btnAlterar<?= $reg->getIdCurso(); ?>" id="btnAlterar<?= $reg->getIdCurso(); ?>" class="btn btn-outline-primary float-right d-inline" data-toggle="collapse" data-target="#collapseCandidato<?= $reg->getIdCurso(); ?>">
+              <button name="btnAlterar<?= $reg->getIdCurso(); ?>" id="btnAlterar<?= $reg->getIdCurso(); ?>" class="btn btn-outline-primary float-right d-inline" data-toggle="collapse" data-target="#collapseCandidatoCurso<?= $reg->getIdCurso(); ?>">
                 <i class="fas fa-pencil-alt"></i>
               </button>
             </div>
 
-            <div id="collapseCandidato<?= $reg->getIdCurso(); ?>" class="collapse">
+            <div id="collapseCandidatoCurso<?= $reg->getIdCurso(); ?>" class="collapse">
 
               <div class="card-body">
                 <div class="card-text">
@@ -104,13 +104,13 @@ $arrayCurso = $cursoDAO->Listar($curso)
     <div class="row">
       <div class="col">
         <div class="card">
-          <div class="card-header" id="collapseCurso<?= $ultimoRegistro ?>">
+          <div class="card-header" id="candidatoCurso<?= $ultimoRegistro ?>">
               <p class="d-inline">Insira aqui um novo curso!</p>
-              <button name="btnAlterar<?= $ultimoRegistro ?>" id="btnAlterar<?= $ultimoRegistro ?>" class="btn btn-outline-primary float-right d-inline" data-toggle="collapse" data-target="#collapseCandidato<?= $ultimoRegistro ?>">
+              <button name="btnAlterar<?= $ultimoRegistro ?>" id="btnAlterar<?= $ultimoRegistro ?>" class="btn btn-outline-primary float-right d-inline" data-toggle="collapse" data-target="#collapseCandidatoCurso<?= $ultimoRegistro ?>">
                 <i class="fas fa-plus"></i>
               </button>
           </div>
-          <div id="collapseCandidato<?= $ultimoRegistro ?>" class="collapse">
+          <div id="collapseCandidatoCurso<?= $ultimoRegistro ?>" class="collapse">
             <div class="card-body">
               <div class="card-text">
                 <div class="form-row">
@@ -131,7 +131,7 @@ $arrayCurso = $cursoDAO->Listar($curso)
                     </div>
                     <div class="form-group col-md-6">
                       <label for="CargaHoraria">Carga horária</label>
-                      <input type="int" class="form-control" id="CargaHoraria<?= $ultimoRegistro ?>" name="CargaHoraria" placeholder="" required>
+                      <input type="text" class="form-control" id="CargaHoraria<?= $ultimoRegistro ?>" name="CargaHoraria" placeholder="" required>
                     </div>
                   </div>
 
@@ -145,10 +145,10 @@ $arrayCurso = $cursoDAO->Listar($curso)
               </div>
             </div>
           </div>
-
       </div>
     </div>
 
   </section>
 </div>   
+
 <?php include 'footer.php'; ?>

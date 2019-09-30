@@ -279,34 +279,47 @@ $(function(){
 
     //********** INSERIR, ALTERAR E APAGAR CURSO
 
-    $('#accordionCandidatoCurso').on('click', '#btnSalvarCurso', function (e) {
+    $('#sectionCardsCurso').on('click', '#btnAlterarSalvarCurso', function (e) {
 
         e.preventDefault();
         var idCurso = $(this).val();
+        var button = $(this);
+        var salvarAlterar;
 
-            $.post('../PostAjax/salvar.php', {
-                acao: "salvarCandidatoCursoProfiss",
+        if ($(this).html() == "Inserir")
+            salvarAlterar = '../PostAjax/salvar.php';
+        else
+            salvarAlterar = '../PostAjax/alterar.php';
+
+        if (button.html() == "Alterar") {
+            button.html("Salvar");
+
+        } else {
+
+            $.post(salvarAlterar, {
+                acao: "CandidatoCurso",
                 cpf: $('#txtCpf').val(),
                 idCurso: idCurso,
-                cursoP: $('#txtNomeCursoP').val(),
-                instituicaoP: $('#txtNomeInstiP').val(),
-                conclusao: $('#dtaconclusao').val(),
-                CargaHora: $('#cargaHora').val()
-
+                curso: $('#txtNomeCurso' + idCurso).val(),
+                instituicao: $('#txtNomeInsti' + idCurso).val(),
+                anoConclusao: $('#Conclusao' + idCurso).val(),
+                cargaHoraria: $('#CargaHoraria' + idCurso).val()
+ 
             }, function (sucesso) {
 
                 if (sucesso == true) {
-                    $("#btnSalvarCurso").html("Alterar");
-                    $('#btnSalvarCurso').prop('id', 'btnAlterarSalvarCursoProfiss');
-                    $('#btnSalvarCurso').prop('name', 'btnAlterarSalvarCursoProfiss');
-                    $('#btnAddCardCurso').removeAttr('disabled');
-                    $('#tituloHeader' + idCurso).html('Kasino Aee!!');
+                    if (button.html() == "Salvar") {
+                        $('#tituloHeader' + idCurso).html($('#txtNomeCurso' + idCurso).val());
+                        $("#btnAlterar" + idCurso).click();
+                    }
+                    else {
+                        location.reload();
+                    }
                 } else {
                     alert('Erro: ' + sucesso);
                 }
-
             });
+        }
     });
-
 
 });

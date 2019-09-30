@@ -1,4 +1,7 @@
 <?php
+
+include_once "../Controller/CandidatoCursoDAO.php";
+
 class CandidatoCurso {
     private $cpf;
     private $idCurso;

@@ -70,12 +70,12 @@ class CandidatoCursoDAO
         
         if ($curso->getIdCurso() == NULL) {
 
-            $query = $this->db->getConection()->query("SELECT * FROM tbCandidatoCurso WHERE idCurso ='".$curso->getIdCurso()."' ORDER BY idCurso;");
+            $query = $this->db->getConection()->query("SELECT * FROM tbCandidatoCurso WHERE cpf ='".$curso->getCpf()."' ORDER BY anoConclusao desc;");
             $arrayQuery = array();
 
             while($reg = $query->fetch_array()) {
 
-                $curso = new Curso();
+                $curso = new CandidatoCurso();
                 $curso->inserirCurso(
                     
                     $reg['cpf'],
@@ -93,7 +93,7 @@ class CandidatoCursoDAO
 
         } else {
 
-            $query = $this->db->getConection()->query("SELECT * FROM tbCurso WHERE idCurso ='".$curso->getIdCurso()."' AND idCurso ='".$curso->getIdCurso()."';");
+            $query = $this->db->getConection()->query("SELECT * FROM tbCandidatoCurso WHERE idCurso ='".$curso->getIdCurso()."' AND idCurso ='".$curso->getIdCurso()."';");
 
             $reg = $query->fetch_array();
             $curso->inserirCurso(
@@ -105,6 +105,8 @@ class CandidatoCursoDAO
                     $reg['anoConclusao'],
                     $reg['cargaHoraria']
             );
+
+            return $curso;
         }
     }
 
