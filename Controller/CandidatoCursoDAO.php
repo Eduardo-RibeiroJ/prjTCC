@@ -55,9 +55,10 @@ class CandidatoCursoDAO
 
     public function Apagar(CandidatoCurso $curso) {
 
+        $cpf = $curso->getCpf();
         $idCurso = $questao->getIdCurso();
 
-        $SQL = $this->db->getConection()->prepare("DELETE FROM tbCandidatoCurso WHERE idCurso = ?;");
+        $SQL = $this->db->getConection()->prepare("DELETE FROM tbCandidatoCurso WHERE idCurso = ? AND cpf = ?;");
 
         $SQL->bind_param("i", $idCurso);
         $SQL->execute();
@@ -110,7 +111,7 @@ class CandidatoCursoDAO
         public function UltimoRegistroCurso(CandidatoCurso $curso) 
     {
         $db = new Conexao();
-        $dados = mysqli_query($db->getConection(), "SELECT MAX(idCurso) as idCurso FROM tbCandidatoCurso WHERE cpf = '".$curso->getCpf()."';");
+        $dados = mysqli_query($db->getConection(), "SELECT MAX(idCurso) as idCurso FROM tbCandidatoCurso WHERE cpf = '".$curso->getIdCurso()."';");
 
         $linha = $dados->fetch_array(MYSQLI_ASSOC);
         return $linha["idCurso"];

@@ -65,7 +65,7 @@ class CandidatoCompetenciaDAO
 
           if ($questao->getIdQuestao() == NULL) {
         
-            $query = $this->db->getConection()->query("SELECT * FROM tbCandidatoCompetencia WHERE idCompetencia ='".$candCompetencia->getdCompetencia()."' AND cpf ='".$candCompetencia->getCpf()."';");
+            $query = $this->db->getConection()->query("SELECT * FROM tbCandidatoCompetencia WHERE idCompetencia ='".$candCompetencia->getIdCompetencia()."' ORDER BY idCompetencia asc;");
             $arrayQuery = array();
 
             while($reg = $query->fetch_array()) {
@@ -86,7 +86,7 @@ class CandidatoCompetenciaDAO
 
         } else {
 
-            $query = $this->db->getConection()->query("SELECT * FROM tbCandidatoCompetencia WHERE idCompetencia ='".$candCompetencia->getIdCompetencia()."' AND cpf ='".$candCompetencia->getCpf()."';");
+            $query = $this->db->getConection()->query("SELECT * FROM tbCandidatoCompetencia WHERE idCompetencia ='".$candCompetencia->getIdCompetencia()."' AND idCompetencia ='".$candCompetencia->getIdCompetencia()."';");
 
             $reg = $query->fetch_array();
             $candCompetencia->InserirCompetencia(
@@ -102,7 +102,7 @@ class CandidatoCompetenciaDAO
     public function UltimoRegistroCompetenciaCand(CandidatoCompetencia $candCompetencia) {
 
         $db = new Conexao();
-        $dados = mysqli_query($db->getConection(), "SELECT MAX(idCompetenciaCand) as idCompetenciaCand FROM tbCandidatoCompetencia WHERE cpf = '".$candCompetencia->getCpf()."';");
+        $dados = mysqli_query($db->getConection(), "SELECT MAX(idCompetenciaCand) as idCompetenciaCand FROM tbCandidatoCompetencia WHERE cpf = '".$candCompetencia->getIdCompetencia()."';");
 
         $linha = $dados->fetch_array(MYSQLI_ASSOC);
         return $linha["idCompetenciaCand"];

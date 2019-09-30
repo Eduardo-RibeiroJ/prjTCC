@@ -54,6 +54,7 @@ class CandidatoObjetivoDAO
 
     public function Apagar(CandidatoObjetivo $objetivo) {
 
+        $cpf = $objetivo->getCpf();
         $idobjetivo = $objetivo->getidobjetivo();
 
         $SQL = $this->db->getConection()->prepare("DELETE FROM tbCandidatoObjetivo WHERE idObjetivo = ? AND Cpf = ?;");
@@ -90,7 +91,7 @@ class CandidatoObjetivoDAO
 
         } else {
 
-            $query = $this->db->getConection()->query("SELECT * FROM tbCandidatoObjetivo WHERE idobjetivo ='".$objetivo->getIdObjetivo()."' AND idCpf ='".$objetivo->getCpf()."';");
+            $query = $this->db->getConection()->query("SELECT * FROM tbCandidatoObjetivo WHERE idObjetivo ='".$objetivo->getIdObjetivo()."' AND idObjetivo ='".$objetivo->getIdObjetivo()."';");
 
             $reg = $query->fetch_array();
             $objetivo->inserirObjetivo(

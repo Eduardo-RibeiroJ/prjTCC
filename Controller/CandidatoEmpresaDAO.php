@@ -57,9 +57,10 @@ class CandidatoEmpresaDAO
 
     public function Apagar(CandidatoEmpresa $empresa) {
 
+        $cpf = $empresa->getCpf();
         $idEmpresa = $empresa->getidEmpresa();
 
-        $SQL = $this->db->getConection()->prepare("DELETE FROM tbCandidatoEmpresa WHERE idEmpresa = ? ;");
+        $SQL = $this->db->getConection()->prepare("DELETE FROM tbCandidatoEmpresa WHERE idEmpresa = ? AND cpf = ?;");
 
         $SQL->bind_param("i", $idEmpresa);
         $SQL->execute();

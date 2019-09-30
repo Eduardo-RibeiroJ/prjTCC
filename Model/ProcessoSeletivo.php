@@ -9,6 +9,18 @@ class ProcessoSeletivo {
     private $nivelCargo;
     private $tipoContratacao;
     private $salario;
+
+    function inserirProcessoSeletivo($idProcesso, $cnpj, $idCargo, $dataInicio, $dataLimiteCandidatar, $resumoVaga, $nivelCargo, $tipoContratacao, $salario) {
+        $this->idProcesso = $idProcesso;
+        $this->cnpj = $cnpj;
+        $this->idCargo = $idCargo;
+        $this->dataInicio = $dataInicio;
+        $this->dataLimiteCandidatar = $dataLimiteCandidatar;
+        $this->resumoVaga = $resumoVaga;
+        $this->nivelCargo = $nivelCargo;
+        $this->tipoContratacao = $tipoContratacao;
+        $this->salario = $salario;
+    }
     
     function getIdProcesso() {
         return $this->idProcesso;

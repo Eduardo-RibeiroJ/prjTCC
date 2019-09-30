@@ -2,6 +2,11 @@
 class Cargo {
     private $idCargo;
     private $nomeCargo;
+
+    public function inserirCargo ($idCargo, $nomeCargo) {
+        $this->idCargo = $idCargo;
+        $this->nomeCargo = $nomeCargo;
+    }
     
     function getIdCargo() {
         return $this->idCargo;
