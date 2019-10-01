@@ -134,7 +134,7 @@ if($_POST['acao'] == "candidatoFormacao") {
 	$formacaoDAO->Alterar($formacao);
 }
 
-if($_POST['acao'] == "candidatoCurso") {
+if($_POST['acao'] == "CandidatoCurso") {
 
 	include_once "../Model/CandidatoCurso.php";
 	include_once "../Controller/CandidatoCursoDAO.php";
@@ -151,7 +151,7 @@ if($_POST['acao'] == "candidatoCurso") {
 		$_POST['cargaHoraria']
 	);
 
-	$formacaoDAO->Alterar($curso);
+	$cursoDAO->Alterar($curso);
 }
 
 echo true;
