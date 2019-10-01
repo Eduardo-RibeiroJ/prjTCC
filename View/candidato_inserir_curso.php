@@ -119,32 +119,33 @@ $arrayCurso = $cursoDAO->Listar($curso)
                     <input type="text" class="form-control" id="txtNomeCurso<?= $ultimoRegistro ?>" name="txtNomeCurso" placeholder="" required>
                   </div>
 
-                  <div class="form-group col-md-4">
+                  <div class="form-group col-md-6">
                     <label for="txtNomeInsti">Nome da instituição</label>
                     <input type="text" class="form-control" id="txtNomeInsti<?= $ultimoRegistro ?>" name="txtNomeInsti" placeholder="">
                   </div>
+                 </div>  
 
                   <div class="form-row">
-                    <div class="form-group col-md-6">
+                    <div class="form-group col-md-4">
                       <label for="Conclusao">Conclusão</label>
                       <input type="date" class="form-control" id="Conclusao<?= $ultimoRegistro ?>" name="Conclusao" placeholder="" required>
                     </div>
-                    <div class="form-group col-md-6">
+                    <div class="form-group col-md-6-3">
                       <label for="CargaHoraria">Carga horária</label>
                       <input type="text" class="form-control" id="CargaHoraria<?= $ultimoRegistro ?>" name="CargaHoraria" placeholder="" required>
                     </div>
                   </div>
 
-                  <div class="form-row col-md-12">
+                  <div class="form-row">
                     <div class="col">
                       <button value="<?= $ultimoRegistro ?>" name="btnAlterarSalvarCurso" id="btnAlterarSalvarCurso" class="btn btn-primary">Inserir</button>
                     </div>
                   </div>
 
-                </div>
-              </div>
-            </div>
-          </div>
+              </div><!-- Car-text-->
+            </div> <!-- Car-body-->
+          </div> <!-- Car-body-->
+        </div>
       </div>
     </div>
 
