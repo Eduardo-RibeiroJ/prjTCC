@@ -134,6 +134,26 @@ if($_POST['acao'] == "candidatoFormacao") {
 	$formacaoDAO->Alterar($formacao);
 }
 
+if($_POST['acao'] == "candidatoCurso") {
+
+	include_once "../Model/CandidatoCurso.php";
+	include_once "../Controller/CandidatoCursoDAO.php";
+
+	$curso = new CandidatoCurso();
+	$cursoDAO = new CandidatoCursoDAO($conn);
+
+	$curso->inserirCurso (
+	    $_POST['cpf'],
+	    $_POST['idCurso'],
+	    $_POST['curso'],
+	    $_POST['instituicao'],
+	    $_POST['anoConclusao'],
+		$_POST['cargaHoraria']
+	);
+
+	$formacaoDAO->Alterar($curso);
+}
+
 echo true;
 
 ?>
