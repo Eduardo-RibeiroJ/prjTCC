@@ -26,7 +26,7 @@ class CandidatoEmpresaDAO
             die(mysqli_error($this->db->getConection()));
         }
 
-        mysqli_stmt_bind_param($stmt, 'iissssss', $cpf, $idEmpresa, $nomeEmpresa, $cargo, $dataInicio, $dataSaida, $atividades);
+        mysqli_stmt_bind_param($stmt, 'iisssss', $cpf, $idEmpresa, $nomeEmpresa, $cargo, $dataInicio, $dataSaida, $atividades);
         mysqli_stmt_execute($stmt);
         mysqli_stmt_close($stmt);
 
@@ -62,7 +62,7 @@ class CandidatoEmpresaDAO
 
         $SQL = $this->db->getConection()->prepare("DELETE FROM tbCandidatoEmpresa WHERE idEmpresa = ? AND cpf = ?;");
 
-        $SQL->bind_param("i", $idEmpresa);
+        $SQL->bind_param("ii", $idEmpresa, $cpf);
         $SQL->execute();
 
         return true;
@@ -70,9 +70,9 @@ class CandidatoEmpresaDAO
 
     public function Listar(CandidatoEmpresa $empresa) {
         
-        if ($empresa->getIdQuestao() == NULL) {
+        if ($empresa->getIdEmpresa() == NULL) {
 
-            $query = $this->db->getConection()->query("SELECT * FROM tbCandidatoEmpresa WHERE idEmpresa ='".$empresa->getIdEmpresa()."' ORDER BY idEmpresa;");
+            $query = $this->db->getConection()->query("SELECT * FROM tbCandidatoEmpresa WHERE idEmpresa ='".$empresa->getIdEmpresa()."' ORDER BY dataSaida desc;");
             $arrayQuery = array();
 
             while($reg = $query->fetch_array()) {
@@ -109,6 +109,7 @@ class CandidatoEmpresaDAO
                     $reg['dataSaida'],
                     $reg['atividades'],
             );
+            return $empresa;
         }
     }
 

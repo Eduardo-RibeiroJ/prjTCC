@@ -346,5 +346,73 @@ $(function(){
     });
 
 
+    //********** INSERIR, ALTERAR E APAGAR EMPRESA
+
+    $('#sectionCardsEmpresa').on('click', '#btnAlterarSalvarEmpresa', function (e) {
+
+        e.preventDefault();
+        var idEmpresa = $(this).val();
+        var button = $(this);
+        var salvarAlterar;
+
+        if ($(this).html() == "Inserir")
+            salvarAlterar = '../PostAjax/salvar.php';
+        else
+            salvarAlterar = '../PostAjax/alterar.php';
+
+        if (button.html() == "Alterar") {
+            button.html("Salvar");
+
+        } else {
+
+            $.post(salvarAlterar, {
+                acao: "CandidatoEmpresa",
+                cpf: $('#txtCpf').val(),
+                idEmpresa: idEmpresa,
+                nomeEmpresa: $('#txtNomeEmpresa' + idEmpresa).val(),
+                dataInicio: $('#dtaInicio' + idEmpresa).val(),
+                dataSaida: $('#dtaTermino' + idEmpresa).val(),
+                atividades: $('#txtAtividades' + idEmpresa).val()
+
+            }, function (sucesso) {
+
+                if (sucesso == true) {
+                    if (button.html() == "Salvar") {
+                        $('#tituloHeader' + idEmpresa).html($('#txtNomeEmpresa' + idEmpresa).val());
+                        $("#btnAlterar" + idEmpresa).click();
+                    }
+                    else {
+                        location.reload();
+                    }
+                } else {
+                    alert('Erro: ' + sucesso);
+                }
+            });
+        }
+    });
+
+    $('#sectionCardsCurso').on('click', '#btnExcluirEmpresa', function (e) {
+
+        var cardAlvo = $(this).closest('.card');
+
+        $.post('../PostAjax/excluir.php', {
+            acao: "excluirEmpresa",
+            cpf: $('#txtCpf').val(),
+            idEmpresa: $(this).val()
+
+        }, function (sucesso) {
+
+            if (sucesso == true) {
+
+                cardAlvo.fadeOut(500, function () {
+                    cardAlvo.remove();
+                });
+
+            } else {
+                alert('Erro: ' + sucesso);
+            }
+        });
+    });
+
 
 });

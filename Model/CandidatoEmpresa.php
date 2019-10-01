@@ -1,4 +1,7 @@
 <?php
+
+include_once "../Controller/CandidatoEmpresaDAO.php";
+
 class CandidatoEmpresa {
     private $cpf;
     private $idEmpresa;
@@ -15,10 +18,12 @@ class CandidatoEmpresa {
         $this->cargo = $cargo;
         $this->dataInicio = $dataInicio;
         $this->dataSaida = $dataSaida;
-        $this->tipo = $tipo;
         $this->atividades = $atividades;
     }
 
+    public function getUltimoRegistroEmpresa() {
+        return CandidatoEmpresaDAO::UltimoRegistroEmpresa($this) + 1;
+    }
     
     function getCpf() {
         return $this->cpf;
