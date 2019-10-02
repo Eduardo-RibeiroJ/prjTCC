@@ -1,4 +1,7 @@
 <?php
+
+include_once "../Criptografia/Bcrypt.php";
+
 class Candidato {
     private $cpf;
     private $nome;
@@ -20,9 +23,12 @@ class Candidato {
     private $sitePessoal;
 
     function inserirUsuarioCandidato($cpf, $email, $senha) {
+
+        $senha_banco = Bcrypt::hash($senha);
+
         $this->cpf = $cpf;
         $this->email = $email;
-        $this->senha = $senha;
+        $this->senha = $senha_banco;
     }
 
     function inserirCandidato($cpf, $nome, $sobrenome, $sexo, $dataNasc, $email, $senha, $estadoCivil, $cep, $endereco, $bairro, $cidade, $estado, $tel1, $tel2, $linkedin, $facebook, $sitePessoal) {

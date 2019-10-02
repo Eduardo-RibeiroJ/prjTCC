@@ -75,14 +75,14 @@ class CandidatoDAO
                                          cidade = ?, endereco = ?, bairro = ?, tel1 = ?,
                                          tel2 = ?, linkedin = ?, facebook = ?, sitePessoal = ? WHERE cpf = ?;";
 
-        $stmt = mysqli_prepare($this->db->getConection(), $query);                                 
+        $stmt = mysqli_prepare($this->db->getConection(), $query);
     
         if($stmt === FALSE){
             die(mysqli_error($this->db->getConection()));
         }
         
         mysqli_stmt_bind_param($stmt, 'ssssssssssssssssss', $nome, $sobrenome, $sexo, $dataNasc,
-                                                            $email, $senha, $estadoCivil,
+                                                            $email, $senha_banco, $estadoCivil,
                                                             $cep, $estado, $cidade, $endereco,
                                                             $bairro, $tel1, $tel2, $linkedin,
                                                             $facebook, $sitePessoal, $cpf);
