@@ -8,11 +8,11 @@
                    <div class="row">
                 
                       <div class="col-md-7 px-5">
-                          <h1 class="mb-2" style="color:#0C1014">Seja bem-vindo a Connection, o site que conecta as empresas com os melhores candidatos!</h1>
+                          <h1 class="mb-2" style="color:#12181F">Seja bem-vindo a Connection, o site que conecta as empresas com os melhores candidatos!</h1>
                       </div>
 
                       <div class="col-md-6 py-4 px-5">
-                          <button type="submit" class="btn btn-block btn-lg" style="background-color:#f9cf00">Saiba Mais</button>
+                          <a href="#sobre" class="btn btn-block btn-outline-dark btn-lg" style="background-color:#f9cf00" role="button" aria-pressed="true">Saiba Mais</a>
                       </div>
                       
                    </div>
