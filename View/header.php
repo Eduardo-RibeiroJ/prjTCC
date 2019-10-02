@@ -67,15 +67,15 @@
                <div class="form-row">
                <div class="form-group col-12">
                   <label class="text-left"><h6>CPF</h6></label>
-                  <input type="email" id="inputEmail" class="form-control" placeholder="Seu cpf" required="" autofocus="">
+                  <input type="text" id="txtCpf" name="txtCpf" class="form-control" placeholder="Seu cpf" required="" autofocus="">
                </div>
                 <div class="form-group col-12">
                   <label class="text-left"><h6>Endereço de email</h6></label>
-                  <input type="email" id="inputEmail" class="form-control" placeholder="Seu email" required="" autofocus="">
+                  <input type="email" id="inputEmail" name="inputEmail"class="form-control" placeholder="Seu email" required="" autofocus="">
                </div>
                 <div class="form-group col-12">
                   <label class="text-left"><h6>Senha</h6></label>
-                  <input type="password" id="inputPassword" class="form-control" placeholder="Senha" required="">
+                  <input type="password" id="inputPassword" name="inputPassword" class="form-control" placeholder="Senha" required="">
                 </div>
               </div>
 
@@ -88,8 +88,8 @@
             </form>
           </div>
           <div class="modal-footer">
-              <p class="text-left">É novo no site? cadastre-se aqui.</p>
-              <a href="Candidato_precadastro.php" type="button" class="btn btn-primary">Cadastrar</a>
+              <p class="pt-3">É novo no site? cadastre-se aqui.</p>
+              <a href="Candidato_cadastrar.php" class="btn btn-primary" role="button" aria-pressed="true">Cadastrar</a>
           </div>
         </div>
       </div>
