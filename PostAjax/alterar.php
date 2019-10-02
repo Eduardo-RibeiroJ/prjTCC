@@ -169,7 +169,7 @@ if($_POST['acao'] == "CandidatoEmpresa") {
         $_POST['cargo'],
         $_POST['dataInicio'],
         $_POST['dataSaida'],
-        $_POST['atividades'],
+        $_POST['atividades']
 	);
 
 	$empresaDAO->Alterar($empresa);

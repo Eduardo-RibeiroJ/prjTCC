@@ -4,14 +4,14 @@
   <!-- Masthead -->
           <header class="masthead text-white text-left" id="home">
             <div class="overlay"></div>
-               <div class="container">
+               <div class="px-5 py-5">
                    <div class="row">
                 
-                      <div class="col-7">
-                          <h1 class="mb-2" style="color:#1d2731">Seja bem-vindo a Connection, o site que conecta as empresas com os melhores candidatos!</h1>
+                      <div class="col-md-7 px-5">
+                          <h1 class="mb-2" style="color:#0C1014">Seja bem-vindo a Connection, o site que conecta as empresas com os melhores candidatos!</h1>
                       </div>
 
-                      <div class="col-6">
+                      <div class="col-md-6 py-4 px-5">
                           <button type="submit" class="btn btn-block btn-lg" style="background-color:#f9cf00">Saiba Mais</button>
                       </div>
                       

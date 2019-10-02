@@ -4,8 +4,7 @@
 			<!-- main -->
 				<!-- inner -->
 
-                    <footer class="footer bg-light">
-                        <div class="container">
+                    <footer class="footer bg-light p-5">
                             <div class="row">
                                 <div class="col-lg-6 h-50 text-center text-lg-left my-auto">
                                     <ul class="list-inline mb-2">
@@ -29,7 +28,6 @@
                                 </div>
 
                              </div>
-                         </div>
                      </footer>
 
 					<!-- Scripts -->
