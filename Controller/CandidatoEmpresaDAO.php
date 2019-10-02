@@ -72,12 +72,12 @@ class CandidatoEmpresaDAO
         
         if ($empresa->getIdEmpresa() == NULL) {
 
-            $query = $this->db->getConection()->query("SELECT * FROM tbCandidatoEmpresa WHERE idEmpresa ='".$empresa->getIdEmpresa()."' ORDER BY dataSaida desc;");
+            $query = $this->db->getConection()->query("SELECT * FROM tbCandidatoEmpresa WHERE cpf ='".$empresa->getCpf()."' ORDER BY dataSaida desc;");
             $arrayQuery = array();
 
             while($reg = $query->fetch_array()) {
 
-                $empresa = new Empresa();
+                $empresa = new CandidatoEmpresa();
                 $empresa->inserirEmpresa(
                     
                     $reg['cpf'],
@@ -96,7 +96,7 @@ class CandidatoEmpresaDAO
 
         } else {
 
-            $query = $this->db->getConection()->query("SELECT * FROM tbCandidatoEmpresa WHERE idEmpresa ='".$empresa->getidEmpresa()."' AND idEmpresa ='".$empresa->getidEmpresa()."';");
+            $query = $this->db->getConection()->query("SELECT * FROM tbCandidatoEmpresa WHERE idEmpresa ='".$empresa->getIdEmpresa()."' AND idEmpresa ='".$empresa->getIdEmpresa()."';");
 
             $reg = $query->fetch_array();
             $empresa->inserirEmpresa(

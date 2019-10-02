@@ -84,6 +84,27 @@ if($_POST['acao'] == "CandidatoCurso") {
 	$cursoDAO->Inserir($curso);
 }
 
+if($_POST['acao'] == "CandidatoEmpresa") {
+
+	include_once "../Model/CandidatoEmpresa.php";
+	include_once "../Controller/candidatoEmpresaDAO.php";
+
+	$empresa = new CandidatoEmpresa();
+	$empresaDAO = new CandidatoEmpresaDAO($conn);
+
+	$empresa->inserirEmpresa (
+	    $_POST['cpf'],
+        $_POST['idEmpresa'],
+        $_POST['nomeEmpresa'],
+        $_POST['cargo'],
+        $_POST['dataInicio'],
+        $_POST['dataSaida'],
+        $_POST['atividades']
+	);
+
+	$empresaDAO->Inserir($empresa);
+}
+
 echo true;
 
 ?>

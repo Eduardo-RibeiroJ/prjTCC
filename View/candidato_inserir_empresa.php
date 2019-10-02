@@ -82,10 +82,10 @@ $arrayEmpresa = $empresaDAO->Listar($empresa);
                       </div>
                   </div>
 
-                  <div class="form-row col-md-12">
-                    <div class="form-group">
+                  <div class="form-row">
+                    <div class="form-group col-md-12">
                       <label for="txtAtividades">Atividade</label>
-                      <textarea  type="text" class="form-control" id="txtAtividades<?= $reg->getIdEmpresa(); ?>" name="txtAtividades" rows="5" value="<?= $reg->getAtividades(); ?>"></textarea >
+                        <textarea class="form-control" id="txtAtividades<?= $reg->getIdEmpresa(); ?>" name="txtAtividades" rows="5" value="<?= $reg->getAtividades(); ?>" required></textarea>
                     </div>
                   </div>
 
@@ -144,7 +144,7 @@ $arrayEmpresa = $empresaDAO->Listar($empresa);
                   <div class="form-row">
                     <div class="form-group col-md-12">
                       <label for="txtAtividades">Atividade</label>
-                        <textarea type="text" class="form-control" id="txtAtividades<?= $ultimoRegistro ?>" name="txtAtividades" rows="5" value="<?= $ultimoRegistro ?>"></textarea>
+                        <textarea class="form-control" id="txtAtividades<?= $ultimoRegistro ?>" name="txtAtividades" rows="5" value="<?= $ultimoRegistro ?>" required></textarea>
                     </div>
                   </div>
 

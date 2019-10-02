@@ -370,6 +370,7 @@ $(function(){
                 cpf: $('#txtCpf').val(),
                 idEmpresa: idEmpresa,
                 nomeEmpresa: $('#txtNomeEmpresa' + idEmpresa).val(),
+                cargo: $('#txtCargo' + idEmpresa).val(),
                 dataInicio: $('#dtaInicio' + idEmpresa).val(),
                 dataSaida: $('#dtaTermino' + idEmpresa).val(),
                 atividades: $('#txtAtividades' + idEmpresa).val()
@@ -391,7 +392,7 @@ $(function(){
         }
     });
 
-    $('#sectionCardsCurso').on('click', '#btnExcluirEmpresa', function (e) {
+    $('#sectionCardsEmpresa').on('click', '#btnExcluirEmpresa', function (e) {
 
         var cardAlvo = $(this).closest('.card');
 
