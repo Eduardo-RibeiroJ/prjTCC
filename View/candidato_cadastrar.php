@@ -72,8 +72,8 @@ if (isset($_POST['btnCadastrar'])) {
                             </div>
                         </form>  -->
 
-
                         <form class="form-signin mx-5" action="candidato_cadastrar.php" method="post">
+                        	<div class="mx-md-5">
                             <h1 class="h3 mb-3 font-weight-normal">Faça seu cadastro</h1>
 
                             <label for="txtCpf" class="sr-only">CPF</label>
@@ -88,10 +88,10 @@ if (isset($_POST['btnCadastrar'])) {
                             <label for="txtRepetirSenha" class="sr-only">Repetir Senha</label>   
                             <input type="password" id="txtRepetirSenha" name="txtRepetirSenha" class="form-control mb-3" placeholder="Repita a senha..." required>
                         
-                                <input type="submit" id="btnCadastrar" name="btnCadastrar" class="btn btn-warning btn-lg" value="Cadastrar!">
+                            <input type="submit" id="btnCadastrar" name="btnCadastrar" class="btn btn-warning btn-lg" value="Cadastrar!">
+                          </div>
                         </form>       
-                      
                    </div>
-          </header>
+          	</header>
   
 <?php include 'footer.php'; ?>
