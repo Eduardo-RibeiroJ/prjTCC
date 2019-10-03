@@ -1,4 +1,4 @@
-$('nav a').click(function(e) {
+/*$('nav a').click(function(e) {
   e.preventDefault();
   var id = $(this).attr('href'),
   targetOffset = $(id).offset().top,
@@ -9,5 +9,5 @@ $('nav a').click(function(e) {
     scrollTop: targetOffset - menuHeight
   }, 500);
   
-});
+});*/
 
