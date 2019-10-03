@@ -31,9 +31,9 @@ if (isset($_POST['btnCadastrar'])) {
   <?php include_once 'header.php'; ?>
 
             <header class="masthead text-white text-center" id="home">
-                   <div class="row">
+                   <!--<div class="row">
                 
-                        <!-- <form action="candidato_cadastrar.php" method="post">
+                        <form action="candidato_cadastrar.php" method="post">
 
                             <div class=form-row>
                                 <div class="form-group col">
@@ -72,7 +72,7 @@ if (isset($_POST['btnCadastrar'])) {
                             </div>
                         </form>  -->
 
-                        <form class="form-signin mx-5" action="candidato_cadastrar.php" method="post">
+                        <form class="form-signin mx-5 row" action="candidato_cadastrar.php" method="post">
                         	<div class="mx-md-5">
                             <h1 class="h3 mb-3 font-weight-normal">Faça seu cadastro</h1>
 
@@ -91,7 +91,6 @@ if (isset($_POST['btnCadastrar'])) {
                             <input type="submit" id="btnCadastrar" name="btnCadastrar" class="btn btn-warning btn-lg" value="Cadastrar!">
                           </div>
                         </form>       
-                   </div>
           	</header>
   
 <?php include 'footer.php'; ?>
