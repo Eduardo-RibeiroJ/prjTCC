@@ -1,6 +1,7 @@
 <?php
 
 include_once "../Model/Conexao.php";
+include_once "../Criptografia/Bcrypt.php";
 
 class CandidatoDAO
 {    
@@ -41,8 +42,10 @@ class CandidatoDAO
             die(mysqli_error($this->db->getConection()));
         }
 
+        $senha_banco = Bcrypt::hash($senha);
+
         mysqli_stmt_bind_param($stmt, 'ssssssssssssssssss', $cpf, $nome, $sobrenome, $sexo, $dataNasc,
-                                                            $email, $senha, $estadoCivil,
+                                                            $email, $senha_banco, $estadoCivil,
                                                             $cep, $estado, $cidade, $endereco,
                                                             $bairro, $tel1, $tel2, $linkedin,
                                                             $facebook, $sitePessoal);
@@ -81,6 +84,8 @@ class CandidatoDAO
             die(mysqli_error($this->db->getConection()));
         }
         
+        $senha_banco = Bcrypt::hash($senha);
+
         mysqli_stmt_bind_param($stmt, 'ssssssssssssssssss', $nome, $sobrenome, $sexo, $dataNasc,
                                                             $email, $senha_banco, $estadoCivil,
                                                             $cep, $estado, $cidade, $endereco,
@@ -125,6 +130,36 @@ class CandidatoDAO
                 $reg['facebook'],
                 $reg['sitePessoal']
         );
+    }
+
+    public static function Logar(Candidato $candidato){        
+    
+        $sql = "SELECT * FROM tbCandidato WHERE email='".$candidato->getEmail()."' ;";
+
+        $db = new Conexao();
+
+        $dados = mysqli_query($db->getConection(), $sql);
+
+        if(mysqli_num_rows($dados)){
+
+            $linha=mysqli_fetch_array($dados);
+
+            if(Bcrypt::check($candidato->getSenha(), $linha['senha'])){
+
+                $_SESSION['logado'] = 1;
+                $_SESSION['nomeCandidato'] = $linha['nome'];
+                $_SESSION['cpf'] = $linha['cpf'];
+
+                $response = 1; //Login deu certo
+            }
+            else {
+                $response = 2; //Senha errada
+            }
+        }
+        else {
+            $response = 3; //Não existe o cadastro
+        }
+        return $response;
     }
 }
 

@@ -28,7 +28,7 @@
                   <ul class="navbar-nav mr-auto">
 
                     <li class="nav-item">
-                      <a class="nav-link" href="#home">Home</a>
+                      <a class="nav-link" href="index.php">Home</a>
                     </li>
 
                     <li class="nav-item">
@@ -40,7 +40,11 @@
                     </li>
 
                     <li class="nav-item">
-                      <a class="nav-link" href="#cadastro">Cadastre-se</a>
+                      <a class="nav-link" href="candidato_cadastrar.php">Cadastre-se</a>
+                    </li>
+
+                    <li class="nav-item">
+                      <a class="nav-link" href="candidato_logar.php">Entrar</a>
                     </li>
                   </ul>
 

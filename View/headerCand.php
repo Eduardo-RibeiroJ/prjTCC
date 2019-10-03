@@ -1,3 +1,33 @@
+<?php 
+session_start();
+
+if (isset($_POST['btnEntrar'])) {
+    
+	$conn = new Conexao();
+    $candidato = new Candidato();
+    $candidatoDAO = new CandidatoDAO($conn);
+
+	$candidato->setEmail($_POST['txtEmail']);
+	$candidato->setSenha($_POST['txtSenha']);
+
+    $resultado = $candidatoDAO->Logar($candidato);
+
+    var_dump($session);
+    
+    if($resultado == 1)
+        echo "<script> window.location.replace('candidato_alterar.php'); </script>";
+    else if($resultado == 2)
+        echo "<script> alert('Senha errada!'); history.go(-1); </script>";
+    else if($resultado == 3)
+        echo "<script> alert('E-mail não cadastrado!'); history.go(-1); </script>";
+	
+}
+
+if(empty($_SESSION['logado'])){
+	 echo "<script>location.href='index.php'</script>";
+}
+?>
+
 <!DOCTYPE HTML>
 <html>
 
@@ -73,7 +103,7 @@
                             <!-- Nav Item - Informação do usuário -->
                             <li class="nav-item dropdown no-arrow" style="padding-left:1rem">
                                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <span>Valerie Luna</span>
+                                    <span><?= $_SESSION['nomeCandidato']; ?></span>
                                     <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/30x30">
                                 </a>
 
@@ -88,7 +118,7 @@
                                     Configurações
                                     </a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                    <a class="dropdown-item" href="logout.php" data-toggle="modal" data-target="#logoutModal">
                                     <i></i>
                                     Sair
                                     </a>
