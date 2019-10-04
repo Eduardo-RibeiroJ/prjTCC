@@ -1,6 +1,7 @@
 <?php
 
 include_once 'headerCand.php';
+
 include_once "../Model/Conexao.php";
 include_once "../Model/Candidato.php";
 include_once "../Controller/CandidatoDAO.php";

@@ -1,6 +1,10 @@
 <?php 
 session_start();
 
+include_once "../Model/Conexao.php";
+include_once "../Model/Candidato.php";
+include_once "../Controller/CandidatoDAO.php";
+
 if (isset($_POST['btnEntrar'])) {
     
 	$conn = new Conexao();

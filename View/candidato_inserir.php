@@ -47,7 +47,7 @@ if (isset($_POST['btnSalvar'])) {
 
   <div class="jumbotron p-3 p-md-5">
     <div class="container p-0">
-      <h5 class="display-4 display-md-2"><i class="fas fa-user-tie d-none d-md-inline"></i>Queremos saber sobre você!</h1>
+      <h5 class="display-4 display-md-2"><i class="fas fa-user-tie d-none d-md-inline"></i> Queremos saber sobre você!</h1>
       
       <hr class="my-2 my-md-4">
       <p class="lead">Insira seus dados pessoais para começarmos.</p>
@@ -215,7 +215,7 @@ if (isset($_POST['btnSalvar'])) {
 
             <div class="form-row">
               <div class="col text-center">
-                <input type="submit" name="btnSalvar" id="btnSalvar" class="btn btn-primary float-right" value="Salvar e Continuar">
+                <input type="submit" name="btnSalvar" id="btnSalvar" class="btn btn-warning btn-lg float-right" value="Cadastrar!">
               </div>
             </div>
 

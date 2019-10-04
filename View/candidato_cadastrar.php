@@ -1,8 +1,6 @@
 <?php
 session_start();
 
-include_once 'header.php';
-
 include_once "../Model/Conexao.php";
 include_once "../Model/Candidato.php";
 include_once "../Controller/CandidatoDAO.php";
@@ -19,8 +17,9 @@ if (isset($_POST['btnCadastrar'])) {
     $_SESSION['senha'] = $_POST['txtSenha'];
     
     header('Location: candidato_inserir.php');
-	
 }
+
+include_once 'header.php';
 
 ?>
 
