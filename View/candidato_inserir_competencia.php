@@ -1,5 +1,7 @@
 <?php
 
+include_once 'headerCand.php';
+
 include_once "../Model/Conexao.php";
 include_once "../Model/CandidatoCompetencia.php";
 include_once "../Controller/CandidatoCompetenciaDAO.php";
@@ -15,16 +17,14 @@ $competenciaDAO = new CandidatoCompetenciaDAO($conn);
 $candidato = new Candidato();
 $candidatoDAO = new CandidatoDAO($conn);
 
-$competencia->setCpf('415');
-$candidato->setCpf('415');
+$competencia->setCpf($_SESSION['cpf']);
+$candidato->setCpf($_SESSION['cpf']);
 
 //$ultimoRegistro = $competencia->getUltimoRegistroCompetencia();
 
 //$arrayCompetencia = $competenciaDAO->Listar($competencia);
 
 ?>
-
-<?php include_once 'headerCand.php'; ?>
 
 <div class="container">
 

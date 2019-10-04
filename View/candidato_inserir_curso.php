@@ -1,5 +1,7 @@
 <?php
 
+include_once 'headerCand.php';
+
 include_once "../Model/Conexao.php";
 include_once "../Model/CandidatoCurso.php";
 include_once "../Controller/CandidatoCursoDAO.php";
@@ -15,15 +17,13 @@ $cursoDAO = new CandidatoCursoDAO($conn);
 $candidato = new Candidato();
 $candidatoDAO = new CandidatoDAO($conn);
 
-$curso->setCpf('415');
-$candidato->setCpf('415');
+$curso->setCpf($_SESSION['cpf']);
+$candidato->setCpf($_SESSION['cpf']);
 
 $ultimoRegistro = $curso->getUltimoRegistroCurso();
 $arrayCurso = $cursoDAO->Listar($curso)
 
 ?>
-
-<?php include_once 'headerCand.php'; ?>
 
 <div class="container">
 

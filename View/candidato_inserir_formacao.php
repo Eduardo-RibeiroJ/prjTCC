@@ -1,5 +1,7 @@
 <?php
 
+include_once 'headerCand.php';
+
 include_once "../Model/Conexao.php";
 include_once "../Model/CandidatoFormacao.php";
 include_once "../Controller/CandidatoFormacaoDAO.php";
@@ -15,8 +17,8 @@ $formacaoDAO = new CandidatoFormacaoDAO($conn);
 $candidato = new Candidato();
 $candidatoDAO = new CandidatoDAO($conn);
 
-$formacao->setCpf('415');
-$candidato->setCpf('415');
+$formacao->setCpf($_SESSION['cpf']);
+$candidato->setCpf($_SESSION['cpf']);
 
 $ultimoRegistro = $formacao->getUltimoRegistroFormacao();
 
@@ -28,8 +30,6 @@ if (isset($_POST['btnContinuar'])) {
 }
 
 ?>
-
-<?php include_once 'headerCand.php'; ?>
 
 <div class="container">
 

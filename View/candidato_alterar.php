@@ -1,4 +1,6 @@
 <?php
+
+include_once 'headerCand.php';
 include_once "../Model/Conexao.php";
 include_once "../Model/Candidato.php";
 include_once "../Controller/CandidatoDAO.php";
@@ -8,13 +10,11 @@ $candidato = new Candidato();
 $candidatoDAO = new CandidatoDAO($conn);
 
 //Aqui é o CPF da session
-$candidato->setCpf("415");
+$candidato->setCpf($_SESSION['cpf']);
 
 $candidatoDAO->Listar($candidato);
 
 ?>
-
-<?php include_once 'headerCand.php'; ?>
 
 <div class="container">
 

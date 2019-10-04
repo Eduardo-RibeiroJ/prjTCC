@@ -1,5 +1,7 @@
 <?php
 
+include_once 'headerCand.php';
+
 include_once "../Model/Conexao.php";
 include_once "../Model/CandidatoEmpresa.php";
 include_once "../Controller/CandidatoEmpresaDAO.php";
@@ -15,16 +17,14 @@ $empresaDAO = new CandidatoEmpresaDAO($conn);
 $candidato = new Candidato();
 $candidatoDAO = new CandidatoDAO($conn);
 
-$empresa->setCpf('415');
-$candidato->setCpf('415');
+$empresa->setCpf($_SESSION['cpf']);
+$candidato->setCpf($_SESSION['cpf']);
 
 $ultimoRegistro = $empresa->getUltimoRegistroEmpresa();
 
 $arrayEmpresa = $empresaDAO->Listar($empresa);
 
 ?>
-
-<?php include_once 'headerCand.php'; ?>
 
 <div class="container">
 
