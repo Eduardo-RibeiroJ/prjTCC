@@ -11,15 +11,13 @@ if (isset($_POST['btnEntrar'])) {
 	$candidato->setSenha($_POST['txtSenha']);
 
     $resultado = $candidatoDAO->Logar($candidato);
-
-    var_dump($session);
     
     if($resultado == 1)
         echo "<script> window.location.replace('candidato_alterar.php'); </script>";
     else if($resultado == 2)
-        echo "<script> alert('Senha errada!'); history.go(-1); </script>";
+        echo "<script> alert('Senha errada!'); history.go(-1); window.location.replace('candidato_logar.php');</script>";
     else if($resultado == 3)
-        echo "<script> alert('E-mail não cadastrado!'); history.go(-1); </script>";
+        echo "<script> alert('E-mail não cadastrado!'); window.location.replace('candidato_logar.php'); </script>";
 	
 }
 

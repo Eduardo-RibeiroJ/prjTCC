@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 include_once "../Model/Conexao.php";
 include_once "../Model/Candidato.php";
 include_once "../Controller/CandidatoDAO.php";
@@ -10,13 +12,13 @@ $candidatoDAO = new CandidatoDAO($conn);
 if (isset($_POST['btnSalvar'])) {
 
   $candidato->inserirCandidato(
-    $_POST['cpf'],
+    $_SESSION['cpf'],
     $_POST['txtNome'],
     $_POST['txtSobrenome'],
     $_POST['cbbSexo'],
     $_POST['txtDataNasc'],
-    $_POST['email'],
-    $_POST['senha'],
+    $_SESSION['email'],
+    $_SESSION['senha'],
     $_POST['cbbEstadoCivil'],
     $_POST['txtCEP'],
     $_POST['txtEndereco'],
@@ -30,14 +32,16 @@ if (isset($_POST['btnSalvar'])) {
     $_POST['txtSitePessoal']
   );
 
-  $candidatoDAO->Alterar($candidato);
+  $candidatoDAO->Inserir($candidato);
 
-  header('Location: candidato_inserir_formacao.php');
+  session_destroy();
+  header('Location: candidato_logar.php');
+
 }
 
 ?>
 
-<?php include_once 'headerCand.php'; ?>
+<?php include_once 'header.php'; ?>
 
 <div class="container">
 
@@ -58,7 +62,7 @@ if (isset($_POST['btnSalvar'])) {
           <form method="POST" action="candidato_inserir.php">
 
           <!-- Input hidden só pare teste, o verdadeiro vai ficar em uma variavel session -->
-          <input type="hidden" id="cpf" name="cpf" value="415">
+          <input type="hidden" id="cpf" name="cpf" value="<?= $_SESSION['cpf']; ?>">
           <input type="hidden" id="email" name="email" value="edu@edu">
           <input type="hidden" id="senha" name="senha" value="12345">
 
@@ -211,7 +215,7 @@ if (isset($_POST['btnSalvar'])) {
 
             <div class="form-row">
               <div class="col text-center">
-                <input type="submit" href="candidato_inserir_formacao.php" name="btnSalvar" id="btnSalvar" class="btn btn-primary float-right" value="Salvar e Continuar">
+                <input type="submit" name="btnSalvar" id="btnSalvar" class="btn btn-primary float-right" value="Salvar e Continuar">
               </div>
             </div>
 

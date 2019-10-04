@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 include_once "../Model/Conexao.php";
 include_once "../Model/Candidato.php";
@@ -10,19 +11,12 @@ if (isset($_POST['btnCadastrar'])) {
 		echo "<script>window.alert('As senhas não conferem!'); history.go(-1); </script>";
 		die;
     }
+
+    $_SESSION['cpf'] = $_POST['txtCpf'];
+    $_SESSION['email'] = $_POST['txtEmail'];
+    $_SESSION['senha'] = $_POST['txtSenha'];
     
-	$conn = new Conexao();
-    $candidato = new Candidato();
-    $candidatoDAO = new CandidatoDAO($conn);
-
-	$candidato->inserirUsuarioCandidato(
-		$_POST['txtCpf'],
-		$_POST['txtEmail'],
-		$_POST['txtSenha']
-	);
-
-	$candidatoDAO->Inserir($candidato);
-	echo "<script> window.location.replace('candidato_inserir.php'); </script>";
+    header('Location: candidato_inserir.php');
 	
 }
 
@@ -88,7 +82,7 @@ if (isset($_POST['btnCadastrar'])) {
                             <label for="txtRepetirSenha" class="sr-only">Repetir Senha</label>   
                             <input type="password" id="txtRepetirSenha" name="txtRepetirSenha" class="form-control mb-3" placeholder="Repita a senha..." required>
                         
-                            <input type="submit" id="btnCadastrar" name="btnCadastrar" class="btn btn-warning btn-lg" value="Cadastrar!">
+                            <input type="submit" id="btnCadastrar" name="btnCadastrar" class="btn btn-warning btn-lg" value="Avançar">
                           </div>
                         </form>       
           	</header>

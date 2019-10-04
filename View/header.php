@@ -46,6 +46,7 @@
                     <li class="nav-item">
                       <a class="nav-link" href="candidato_logar.php">Entrar</a>
                     </li>
+                    
                   </ul>
 
                   <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#candidato">Sou candidato</button>
