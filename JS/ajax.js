@@ -351,7 +351,7 @@ $(function(){
     $('#sectionCardsEmpresa').on('click', '#btnAlterarSalvarEmpresa', function (e) {
 
         e.preventDefault();
-        var idEmpresa = $(this).val();
+        var idPergunta = $(this).val();
         var button = $(this);
         var salvarAlterar;
 
@@ -368,19 +368,19 @@ $(function(){
             $.post(salvarAlterar, {
                 acao: "CandidatoEmpresa",
                 cpf: $('#txtCpf').val(),
-                idEmpresa: idEmpresa,
-                nomeEmpresa: $('#txtNomeEmpresa' + idEmpresa).val(),
-                cargo: $('#txtCargo' + idEmpresa).val(),
-                dataInicio: $('#dtaInicio' + idEmpresa).val(),
-                dataSaida: $('#dtaTermino' + idEmpresa).val(),
-                atividades: $('#txtAtividades' + idEmpresa).val()
+                idPergunta: idPergunta,
+                nomeEmpresa: $('#txtNomeEmpresa' + idPergunta).val(),
+                cargo: $('#txtCargo' + idPergunta).val(),
+                dataInicio: $('#dtaInicio' + idPergunta).val(),
+                dataSaida: $('#dtaTermino' + idPergunta).val(),
+                atividades: $('#txtAtividades' + idPergunta).val()
 
             }, function (sucesso) {
 
                 if (sucesso == true) {
                     if (button.html() == "Salvar") {
-                        $('#tituloHeader' + idEmpresa).html($('#txtNomeEmpresa' + idEmpresa).val());
-                        $("#btnAlterar" + idEmpresa).click();
+                        $('#tituloHeader' + idPergunta).html($('#txtNomeEmpresa' + idPergunta).val());
+                        $("#btnAlterar" + idPergunta).click();
                     }
                     else {
                         location.reload();
@@ -399,7 +399,7 @@ $(function(){
         $.post('../PostAjax/excluir.php', {
             acao: "excluirEmpresa",
             cpf: $('#txtCpf').val(),
-            idEmpresa: $(this).val()
+            idPergunta: $(this).val()
 
         }, function (sucesso) {
 
@@ -413,6 +413,46 @@ $(function(){
                 alert('Erro: ' + sucesso);
             }
         });
+    });
+
+
+    $('#sectionCardsPergunta').on('click', '#btnAlterarSalvarPergunta', function (e) {
+
+        e.preventDefault();
+        var idPergunta = $(this).val();
+        var button = $(this);
+        var salvarAlterar;
+
+        if ($(this).html() == "Criar")
+            salvarAlterar = '../PostAjax/salvar.php';
+        else
+            salvarAlterar = '../PostAjax/alterar.php';
+
+        if (button.html() == "Alterar") {
+            button.html("Salvar");
+
+        } else {
+
+            $.post(salvarAlterar, {
+                acao: "SalvarPergunta",
+                idPergunta: idPergunta,
+                pergunta: $('#txtPergunta' + idPergunta).val()
+
+            }, function (sucesso) {
+
+                if (sucesso == true) {
+                    if (button.html() == "Salvar") {
+                        $('#tituloHeader' + idPergunta).html($('#txtPergunta' + idPergunta).val());
+                        $("#btnAlterar" + idPergunta).click();
+                    }
+                    else {
+                        location.reload();
+                    }
+                } else {
+                    alert('Erro: ' + sucesso);
+                }
+            });
+        }
     });
 
 

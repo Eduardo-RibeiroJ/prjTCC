@@ -12,7 +12,7 @@ include_once "../Controller/CandidatoDAO.php";
                <div class="container">
                    <div class="row">
                 
-                        <form action="candidato_alterar.php" method="post">
+                        <form action="candidato.php" method="post">
 
                             <div class=form-row>
                                 <div class="form-group col">
