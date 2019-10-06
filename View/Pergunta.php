@@ -29,10 +29,10 @@ $arrayPergunta = $perguntaDAO->Listar($pergunta);
 
   <div class="jumbotron p-3 p-md-5">
     <div class="container p-0">
-      <h5 class="display-4 display-md-2"><i class="fas fa-graduation-cap d-none d-md-inline"> </i>Adicione perguntas!</h1>
+      <h5 class="display-4 display-md-2"><i class="fas fa-question-circle d-none d-md-inline"> </i>Adicione perguntas!</h1>
 
         <hr class="my-2 my-md-4">
-        <p class="lead">Crie perguntas para que possam ser utilizadas no seu processo seletivo.</p>
+        <p class="lead">Crie perguntas para que possam ser utilizadas no seu processo seletivo, ajudará muito a conhecer mais os candidatos.</p>
     </div>
   </div>
 
@@ -59,7 +59,7 @@ $arrayPergunta = $perguntaDAO->Listar($pergunta);
               <div class="card-body">
                 <div class="card-text">
                   <div class="form-row">
-                    <div class="form-group col-md-4">
+                    <div class="form-group col-md-10">
                       <label for="txtPergunta">Pergunta</label>
                       <input type="text" class="form-control" id="txtPergunta<?= $reg->getIdPergunta(); ?>" name="txtPergunta" value="<?= $reg->getPergunta(); ?>" required>
                     </div>
@@ -85,7 +85,7 @@ $arrayPergunta = $perguntaDAO->Listar($pergunta);
       <div class="col">
         <div class="card">
           <div class="card-header" id="pergunta<?= $ultimoRegistro ?>">
-            <p class="d-inline">Insira aqui uma nova formação!</p>
+            <p class="d-inline">Insira aqui uma nova pergunta!</p>
             <button name="btnAlterar<?= $ultimoRegistro ?>" id="btnAlterar<?= $ultimoRegistro ?>" class="btn btn-outline-primary float-right d-inline" data-toggle="collapse" data-target="#collapseRecrutadorPergunta<?= $ultimoRegistro ?>">
               <i class="fas fa-plus"></i>
             </button>
@@ -94,7 +94,7 @@ $arrayPergunta = $perguntaDAO->Listar($pergunta);
             <div class="card-body">
               <div class="card-text">
                 <div class="form-row">
-                  <div class="form-group col-md-4">
+                  <div class="form-group col-md-10">
                     <label for="txtPergunta">Pergunta</label>
                     <input type="text" class="form-control" id="txtPergunta<?= $ultimoRegistro ?>" name="txtPergunta" placeholder="" required>
                   </div>
