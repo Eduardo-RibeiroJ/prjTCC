@@ -3,17 +3,23 @@ include_once "../Controller/PerguntaDAO.php";
 
 
 class Pergunta {
+    private $cnpj;
     private $idPergunta;
     private $pergunta;
 
-    function inserirPergunta($idPergunta, $pergunta)
+    function inserirPergunta($cnpj, $idPergunta, $pergunta)
     {
+        $this->cnpj = $cnpj;
         $this->idPergunta = $idPergunta;
         $this->pergunta = $pergunta;
     }
 
     public function getUltimoRegistroPergunta() {
         return PerguntaDAO::UltimoRegistroPergunta($this) + 1;
+    }
+
+    function getCnpj(){
+        return $this->cnpj;
     }
     
     function getIdPergunta() {
@@ -22,6 +28,10 @@ class Pergunta {
 
     function getPergunta() {
         return $this->pergunta;
+    }
+
+    function setCnpj($cnpj){
+        $this->cnpj = $cnpj;
     }
 
     function setIdPergunta($idPergunta) {

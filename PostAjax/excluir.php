@@ -73,6 +73,20 @@ if($_POST['acao'] == "excluirEmpresa") {
 	$empresaDAO->Apagar($empresa);
 }
 
+if ($_POST['acao'] == "excluirPergunta") {
+
+	include_once "../Model/Pergunta.php";
+	include_once "../Controller/PerguntaDAO.php";
+
+	$pergunta = new Pergunta();
+	$perguntaDAO = new PerguntaDAO($conn);
+
+	$pergunta->setCnpj($_POST['cnpj']);
+	$pergunta->setIdPergunta($_POST['idPergunta']);
+
+	$perguntaDAO->Apagar($pergunta);
+}
+
 echo true;
 
 ?>

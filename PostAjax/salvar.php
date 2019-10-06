@@ -114,6 +114,8 @@ if ($_POST['acao'] == "SalvarPergunta") {
 	$perguntaDAO = new PerguntaDAO($conn);
 
 	$pergunta->inserirPergunta(
+
+    $_POST['cnpj'],
 		$_POST['idPergunta'],
 		$_POST['pergunta']
 
