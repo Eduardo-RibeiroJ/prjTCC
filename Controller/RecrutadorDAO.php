@@ -10,22 +10,22 @@ class RecrutadorDAO
     }
 
     public function Inserir(Recrutador $recrutador) {
-        $cnpj = $cnpj->getCnpj();
-        $nomeEmpresa = $nomeEmpresa->getNomeEmpresa();
-        $email = $email->getEmail();
-        $senha = $senha->getSenha();
-        $cep = $cep->getCep();
-        $estado = $estado->getEstado();
-        $cidade = $cidade->getCidade();
-        $endereco = $endereco->getEndereco();
-        $bairro = $bairro->getBairro();
-        $tel1 = $tel1->getTel1();
-        $tel2 = $tel2->getTel2();
-        $linkedin = $linkedin->getLinkedin();
-        $facebook = $facebook->getFacebook();
-        $siteEmpresa = $siteEmpresa->getSiteEmpresa();
+        $cnpj = $recrutador->getCnpj();
+        $nomeEmpresa = $recrutador->getNomeEmpresa();
+        $email = $recrutador->getEmail();
+        $senha = $recrutador->getSenha();
+        $cep = $recrutador->getCep();
+        $estado = $recrutador->getEstado();
+        $cidade = $recrutador->getCidade();
+        $endereco = $recrutador->getEndereco();
+        $bairro = $recrutador->getBairro();
+        $tel1 = $recrutador->getTel1();
+        $tel2 = $recrutador->getTel2();
+        $linkedin = $recrutador->getLinkedin();
+        $facebook = $recrutador->getFacebook();
+        $siteEmpresa = $recrutador->getSiteEmpresa();
 
-        $query = "INSERT INTO tbRecrutador (cnpj, nomeEmpresa, email, senha, 
+        $query = "INSERT INTO tbEmpresa (cnpj, nomeEmpresa, email, senha, 
                                             cep, estado, cidade,
                                             endereco, bairro, tel1, tel2,
                                             linkedin, facebook, siteEmpresa) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
@@ -36,7 +36,7 @@ class RecrutadorDAO
             die(mysqli_error($this->db->getConection()));
         }
 
-        mysqli_stmt_bind_param($stmt, 'ssssssssssssss', $cnpj, $nomeEmpresa, $email, $senha,
+        mysqli_stmt_bind_param($stmt, 'isssssssssssss', $cnpj, $nomeEmpresa, $email, $senha,
                                                             $cep, $estado, $cidade,
                                                             $endereco, $bairro, $tel1, $tel2,
                                                             $linkedin, $facebook, $siteEmpresa);
@@ -45,22 +45,22 @@ class RecrutadorDAO
     }
 
     public function Alterar(Recrutador $recrutador) { 
-        $cnpj = $cnpj->getCnpj();
-        $nomeEmpresa = $nomeEmpresa->getNomeEmpresa();
-        $email = $email->getEmail();
-        $senha = $senha->getSenha();
-        $cep = $cep->getCep();
-        $estado = $estado->getEstado();
-        $cidade = $cidade->getCidade();
-        $endereco = $endereco->getEndereco();
-        $bairro = $bairro->getBairro();
-        $tel1 = $tel1->getTel1();
-        $tel2 = $tel2->getTel2();
-        $linkedin = $linkedin->getLinkedin();
-        $facebook = $facebook->getFacebook();
-        $siteEmpresa = $siteEmpresa->getSiteEmpresa();
+        $cnpj = $recrutador->getCnpj();
+        $nomeEmpresa = $recrutador->getNomeEmpresa();
+        $email = $recrutador->getEmail();
+        $senha = $recrutador->getSenha();
+        $cep = $recrutador->getCep();
+        $estado = $recrutador->getEstado();
+        $cidade = $recrutador->getCidade();
+        $endereco = $recrutador->getEndereco();
+        $bairro = $recrutador->getBairro();
+        $tel1 = $recrutador->getTel1();
+        $tel2 = $recrutador->getTel2();
+        $linkedin = $recrutador->getLinkedin();
+        $facebook = $recrutador->getFacebook();
+        $siteEmpresa = $recrutador->getSiteEmpresa();
 
-        $query = "UPDATE tbRecrutador SET nomeEmpresa = ?, email = ?, senha = ?, cep = ?, 
+        $query = "UPDATE tbEmpresa SET nomeEmpresa = ?, email = ?, senha = ?, cep = ?, 
                                          estado = ?, cidade = ?, endereco = ?, bairro = ?,
                                          tel1 = ?, tel2 = ?, linkedin = ?, facebook = ?,
                                          siteEmpresa = ? WHERE cnpj = ?;";
@@ -71,27 +71,26 @@ class RecrutadorDAO
             die(mysqli_error($this->db->getConection()));
         }
         
-        mysqli_stmt_bind_param($stmt, 'ssssssssssssss', $cnpj, $nomeEmpresa, $email, $senha,
-                                                            $cep, $estado, $cidade,
-                                                            $endereco, $bairro, $tel1, $tel2,
-                                                            $linkedin, $facebook, $siteEmpresa);
+        mysqli_stmt_bind_param($stmt, 'sssssssssssssi', $nomeEmpresa, $email, $senha, $cep, 
+                                                        $estado, $cidade, $endereco, $bairro, $tel1, $tel2,
+                                                        $linkedin,$facebook,$siteEmpresa,$cnpj );
         mysqli_stmt_execute($stmt);
         mysqli_stmt_close($stmt);
     }
 
     public function Apagar(Recrutador $recrutador) {
-		$cnpj = $cnpj->getCnpj();
+		$cnpj = $recrutador->getCnpj();
         
-        $SQL = $this->db->getConection()->prepare("DELETE FROM tbRecrutador WHERE cnpj = ?;");
+        $SQL = $this->db->getConection()->prepare("DELETE FROM tbEmpresa WHERE cnpj = ?;");
         
-        $SQL->bind_param("s", $cnpj);
+        $SQL->bind_param("i", $cnpj);
         $SQL->execute();
 
         return true;
     }
 
     public function Listar(Recrutador $recrutador) {
-        $query = $this->db->getConection()->query("SELECT * FROM tbRecrutador WHERE cnpj ='".$cnpj->getCnpj()."';");
+        $query = $this->db->getConection()->query("SELECT * FROM tbEmpresa WHERE cnpj ='".$recrutador->getCnpj()."';");
            
         $reg = $query->fetch_array();
         $recrutador->inserirRecrutador(
