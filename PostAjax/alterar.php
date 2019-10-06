@@ -175,6 +175,24 @@ if($_POST['acao'] == "CandidatoEmpresa") {
 	$empresaDAO->Alterar($empresa);
 }
 
+if ($_POST['acao'] == "alterarPergunta") {
+
+	include_once "../Model/Pergunta.php";
+	include_once "../Controller/PerguntaDAO.php";
+
+	$pergunta = new Pergunta();
+	$perguntaDAO = new PerguntaDAO($conn);
+
+	$empresa->inserirPergunta(
+		$_POST['cnpj'],
+		$_POST['idPergunta'],
+		$_POST['pergunta']
+
+	);
+
+	$perguntaDAO->Alterar($pergunta);
+}
+
 echo true;
 
 ?>
