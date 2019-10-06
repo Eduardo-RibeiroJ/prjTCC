@@ -65,13 +65,13 @@ class PerguntaDAO
 
           if ($pergunta->getIdPergunta() == NULL) {
         
-            $query = $this->db->getConection()->query("SELECT * FROM tbPergunta WHERE idPergunta ='".$pergunta->getIdPergunta()."';");
+            $query = $this->db->getConection()->query("SELECT * FROM tbPergunta WHERE cnpj ='".$pergunta->getCnpj()."';");
             $arrayQuery = array();
 
             while($reg = $query->fetch_array()) {
 
                 $pergunta = new Pergunta();            
-                $pergunta->InserirPergunta(
+                $pergunta->inserirPergunta(
                     
                     $reg['cnpj'],
                     $reg['idPergunta'],
@@ -89,15 +89,16 @@ class PerguntaDAO
             $query = $this->db->getConection()->query("SELECT * FROM tbPergunta WHERE idPergunta ='".$pergunta->getIdPergunta(). "' AND idPergunta ='".$pergunta->getIdPergunta()."';");
 
             $reg = $query->fetch_array();
-            $pergunta->InserirPergunta(
+            $pergunta->inserirPergunta(
 
                 $reg['cnpj'],
                 $reg['idPergunta'],
                 $reg['pergunta']
             );
+
+            return $pergunta;
         }
     }
-
 
     public function UltimoRegistroPergunta(Pergunta $pergunta) {
 
@@ -109,5 +110,3 @@ class PerguntaDAO
     }
 
 }
-
-?>

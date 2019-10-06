@@ -39,7 +39,7 @@ $arrayPergunta = $perguntaDAO->Listar($pergunta);
   <input type="hidden" id="txtUltimoRegistro" name="txtUltimoRegistro" value="<?= $ultimoRegistro ?>">
   <input type="hidden" id="txtCnpj" name="txtCnpj" value="<?= $recrutador->getCnpj() ?>">
 
-  <section id="sectionCardsFormacao">
+  <section id="sectionCardsPergunta">
 
     <?php foreach ($arrayPergunta as $reg) : ?>
 
