@@ -1,6 +1,7 @@
 <?php
 
 include_once "../Model/Conexao.php";
+include_once "../Criptografia/Bcrypt.php";
 
 class RecrutadorDAO
 {    
@@ -110,6 +111,36 @@ class RecrutadorDAO
                 $reg['siteEmpresa']
         );
     }
+
+    public static function Logar(Recrutador $recrutador)
+    {
+
+        $sql = "SELECT * FROM tbEmpresa WHERE email='" . $recrutador->getEmail() . "' ;";
+
+        $db = new Conexao();
+
+        $dados = mysqli_query($db->getConection(), $sql);
+
+        if (mysqli_num_rows($dados)) {
+
+            $linha = mysqli_fetch_array($dados);
+
+            if (Bcrypt::check($recrutador->getSenha(), $linha['senha'])) {
+
+                $_SESSION['logado'] = 1;
+                $_SESSION['nomeEmpresa'] = $linha['nome'];
+                $_SESSION['cnpj'] = $linha['cnpj'];
+
+                $response = 1; //Login deu certo
+            } else {
+                $response = 2; //Senha errada
+            }
+        } else {
+            $response = 3; //Não existe o cadastro
+        }
+        return $response;
+    }
+
 }
 
 ?>

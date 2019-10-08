@@ -1,7 +1,5 @@
 <?php
 
-include_once "../Controller/RecrutadorDAO.php";
-
 class Recrutador {
     private $cnpj;
     private $nomeEmpresa;
@@ -17,6 +15,13 @@ class Recrutador {
     private $linkedin;
     private $facebook;
     private $siteEmpresa;
+
+    function inserirUsuarioRecrutador($cnpj, $email, $senha)
+    {
+        $this->cnpj = $cnpj;
+        $this->email = $email;
+        $this->senha = $senha;
+    }
 
     function inserirRecrutador($cnpj, $nomeEmpresa, $email, $senha, $cep, $estado, $cidade, $endereco, $bairro, $tel1, $tel2, $linkedin, $facebook, $siteEmpresa)
     {
@@ -35,6 +40,27 @@ class Recrutador {
         $this->facebook = $facebook;
         $this->siteEmpresa = $siteEmpresa;
     }
+
+    function alterarRecrutadorEndereco($cnpj, $cep, $estado, $cidade, $endereco, $bairro)
+    {
+        $this->cnpj = $cnpj;
+        $this->cep = $cep;
+        $this->estado = $estado;
+        $this->cidade = $cidade;
+        $this->endereco = $endereco;
+        $this->bairro = $bairro;
+    }
+
+    function alterarRecrutadorContato($cnpj, $tel1, $tel2, $linkedin, $facebook, $siteEmpresa)
+    {
+        $this->cnpj = $cnpj;
+        $this->tel1 = $tel1;
+        $this->tel2 = $tel2;
+        $this->linkedin = $linkedin;
+        $this->facebook = $facebook;
+        $this->siteEmpresa = $siteEmpresa;
+    }
+    
     
     function getCnpj() {
         return $this->cnpj;
