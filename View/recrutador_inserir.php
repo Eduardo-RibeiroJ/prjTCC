@@ -13,7 +13,7 @@ if (isset($_POST['btnSalvar'])) {
 
   $recrutador->inserirRecrutador(
     $_SESSION['cnpj'],
-    $_POST['nomeEmpresa'],
+    $_POST['txtNomeEmpresa'],
     $_SESSION['email'],
     $_SESSION['senha'],
     $_POST['txtCEP'],
@@ -56,11 +56,6 @@ if (isset($_POST['btnSalvar'])) {
 
         <form method="POST" action="recrutador_inserir.php">
 
-          <!-- Input hidden só pare teste, o verdadeiro vai ficar em uma variavel session -->
-          <input type="hidden" id="cnpj" name="cnpj" value="<?= $_SESSION['cnpj']; ?>">
-          <input type="hidden" id="email" name="email" value="edu@edu">
-          <input type="hidden" id="senha" name="senha" value="12345">
-
           <div class="card">
             <div class="card-header">
               <i class="fas fa-id-card"></i>
@@ -72,8 +67,8 @@ if (isset($_POST['btnSalvar'])) {
 
                 <div class="form-row">
                   <div class="form-group col-md-6">
-                    <label for="txtNome">Nome da empresa</label>
-                    <input type="text" class="form-control" id="txtNome" name="txtNome" required autofocus>
+                    <label for="txtNomeEmpresa">Nome da empresa</label>
+                    <input type="text" class="form-control" id="txtNomeEmpresa" name="txtNomeEmpresa" required autofocus>
                   </div>
                 </div>
 
