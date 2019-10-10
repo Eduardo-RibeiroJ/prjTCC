@@ -14,8 +14,8 @@ include_once "../Controller/RecrutadorDAO.php";
         <div class="mx-md-5">
             <h1 class="h3 mb-3 font-weight-normal">Entre com sua conta!</h1>
 
-            <label for="txtCpf" class="sr-only">CPF</label>
-            <input id="txtCpf" name="txtCpf" class="form-control mb-1" placeholder="Insira seu CPF.." autofocus="" required>
+            <label for="txtCnpj" class="sr-only">CPF</label>
+            <input id="txtCnpj" name="txtCnpj" class="form-control mb-1" placeholder="Insira seu CNPJ.." autofocus="" required>
 
             <label for="txtEmail" class="sr-only">Endereço de email</label>
             <input type="email" id="txtEmail" name="txtEmail" class="form-control mb-1" placeholder="Insira seu e-mail..." required>
