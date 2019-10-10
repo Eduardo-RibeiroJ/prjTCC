@@ -37,7 +37,9 @@ class RecrutadorDAO
             die(mysqli_error($this->db->getConection()));
         }
 
-        mysqli_stmt_bind_param($stmt, 'isssssssssssss', $cnpj, $nomeEmpresa, $email, $senha,
+        $senha_banco = Bcrypt::hash($senha);
+
+        mysqli_stmt_bind_param($stmt, 'isssssssssssss', $cnpj, $nomeEmpresa, $email,$senha_banco,
                                                             $cep, $estado, $cidade,
                                                             $endereco, $bairro, $tel1, $tel2,
                                                             $linkedin, $facebook, $siteEmpresa);
@@ -71,8 +73,10 @@ class RecrutadorDAO
         if($stmt === FALSE){
             die(mysqli_error($this->db->getConection()));
         }
+
+        $senha_banco = Bcrypt::hash($senha);
         
-        mysqli_stmt_bind_param($stmt, 'sssssssssssssi', $nomeEmpresa, $email, $senha, $cep, 
+        mysqli_stmt_bind_param($stmt, 'sssssssssssssi', $nomeEmpresa, $email,$senha_banco, $cep, 
                                                         $estado, $cidade, $endereco, $bairro, $tel1, $tel2,
                                                         $linkedin,$facebook,$siteEmpresa,$cnpj );
         mysqli_stmt_execute($stmt);
@@ -80,7 +84,7 @@ class RecrutadorDAO
     }
 
     public function Apagar(Recrutador $recrutador) {
-		$cnpj = $recrutador->getCnpj();
+        $cnpj = $recrutador->getCnpj();
         
         $SQL = $this->db->getConection()->prepare("DELETE FROM tbEmpresa WHERE cnpj = ?;");
         
@@ -142,5 +146,3 @@ class RecrutadorDAO
     }
 
 }
-
-?>
