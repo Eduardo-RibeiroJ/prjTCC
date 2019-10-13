@@ -118,8 +118,7 @@ class RecrutadorDAO
 
     public static function Logar(Recrutador $recrutador)
     {
-
-        $sql = "SELECT * FROM tbEmpresa WHERE email='" . $recrutador->getEmail() . "' ;";
+        $sql = "SELECT * FROM tbEmpresa WHERE email='" . $recrutador->getEmail() . "' AND cnpj ='" . $recrutador->getCnpj() . "';";
 
         $db = new Conexao();
 
@@ -146,3 +145,5 @@ class RecrutadorDAO
     }
 
 }
+
+?>

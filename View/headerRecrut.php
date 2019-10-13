@@ -1,3 +1,35 @@
+<?php
+session_start();
+
+include_once "../Model/Conexao.php";
+include_once "../Model/Recrutador.php";
+include_once "../Controller/RecrutadorDAO.php";
+
+if (isset($_POST['btnEntrarRecrutador'])) {
+
+    $conn = new Conexao();
+    $recrutador = new Recrutador();
+    $recrutadorDAO = new RecrutadorDAO($conn);
+
+    $recrutador->setCnpj($_POST['txtCnpj']);
+    $recrutador->setEmail($_POST['txtEmail']);
+    $recrutador->setSenha($_POST['txtSenha']);
+
+    $resultado = $recrutadorDAO->Logar($recrutador);
+
+    if ($resultado == 1)
+        echo "<script> window.location.replace('recrutador_alterar.php'); </script>";
+    else if ($resultado == 2)
+        echo "<script> alert('Senha errada!'); history.go(-1); window.location.replace('recrutador_logar.php');</script>";
+    else if ($resultado == 3)
+        echo "<script> alert('E-mail não cadastrado!'); window.location.replace('recrutador_logar.php'); </script>";
+}
+
+if (empty($_SESSION['logado'])) {
+    echo "<script>location.href='index.php'</script>";
+}
+?>
+
 <!DOCTYPE HTML>
 <html>
 
