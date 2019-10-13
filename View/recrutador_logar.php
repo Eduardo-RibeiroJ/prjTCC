@@ -23,7 +23,7 @@ include_once "../Controller/RecrutadorDAO.php";
             <label for="txtSenha" class="sr-only">Senha</label>
             <input type="password" id="txtSenha" name="txtSenha" class="form-control mb-1" placeholder="Insira uma senha..." required>
 
-            <input type="submit" id="btnEntrar" name="btnEntrar" class="btn btn-warning btn-lg col-5" value="Entrar">
+            <input type="submit" id="btnEntrarRecrutador" name="btnEntrarRecrutador" class="btn btn-warning btn-lg col-5" value="Entrar">
         </div>
     </form>
 </header>
