@@ -358,9 +358,9 @@ ALTER TABLE `tbcompetencia`
   ADD PRIMARY KEY (`idCompetencia`);
 
 --
--- Índices para tabela `tbempresa`
+-- Índices para tabela `tbrecrutador`
 --
-ALTER TABLE `tbempresa`
+ALTER TABLE `tbrecrutador`
   ADD PRIMARY KEY (`cnpj`);
 
 --
@@ -536,7 +536,7 @@ ALTER TABLE `tbprocessopergunta`
 -- Limitadores para a tabela `tbprocessoseletivo`
 --
 ALTER TABLE `tbprocessoseletivo`
-  ADD CONSTRAINT `FK_CNPJ` FOREIGN KEY (`cnpj`) REFERENCES `tbempresa` (`cnpj`),
+  ADD CONSTRAINT `FK_CNPJ` FOREIGN KEY (`cnpj`) REFERENCES `tbrecrutador` (`cnpj`),
   ADD CONSTRAINT `FK_IDCARGO` FOREIGN KEY (`idCargo`) REFERENCES `tbcargo` (`idCargo`);
 
 --
