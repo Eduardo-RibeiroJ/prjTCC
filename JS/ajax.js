@@ -455,5 +455,21 @@ $(function(){
         }
     });
 
+    //CANDIDATO PERFIL
+    $('#accordionCandidatoPerfil').on('click', '#btnExpandir', function (e) {
+
+        e.preventDefault();
+        var btn = $(this);
+
+        if(btn.val() == "min") {
+            btn.val("max");
+            btn.html("<i class='fas fa-plus'></i>");
+        } else {
+            btn.val("min");
+            btn.html("<i class='fas fa-minus'></i>");
+        }
+
+    });
+
 
 });

@@ -1,6 +1,6 @@
 <?php
 
-include_once 'headerRecrut.php';
+include_once 'headerCand.php';
 
 include_once "../Model/Conexao.php";
 include_once "../Model/Candidato.php";
@@ -19,65 +19,52 @@ $candidatoDAO->Listar($candidato);
 
 <div class="container">
 
-<div class="jumbotron p-3 p-md-5">
-    <div class="container p-0">
-      <h5 class="display-4 display-md-2"><i class="fas fa-user-tie d-none d-md-inline"> </i>Mantenha-se atualizado!</h1>
-      
-      <hr class="my-2 my-md-4">
-      <p class="lead">Gerencie aqui seus principais dados.</p>
-    </div>
-  </div>
-
   <section>
 
     <div class="row">
       <div class="col">
 
-        <div class="accordion" id="accordionCandidatoDadosPessoais">
+        <div class="accordion" id="accordionCandidatoPerfil">
 
             <input type="hidden" id="cpf" name="cpf" value="<?= $candidato->getCpf(); ?>">
 
             <div class="card">
 
               <div class="card-header" id="candidatoDadosPessoais">
-                <i class="fas fa-id-card"></i>
                 Dados Pessoais
-                <button name="btnAlterarDadosPessoais" id="btnAlterarDadosPessoais" class="btn btn-outline-primary float-right" data-toggle="collapse" data-target="#collapsecandidatoDadosPessoais" aria-expanded="true" aria-controls="collapsecandidatoDadosPessoais">
-                  <i class="fas fa-pencil-alt"></i>
+                <button value="min" name="btnExpandir" id="btnExpandir" class="btn btn-outline-primary float-right" data-toggle="collapse" data-target="#collapsecandidatoDadosPessoais" aria-expanded="true" aria-controls="collapsecandidatoDadosPessoais">
+									<i class="fas fa-minus"></i>
                 </button>
               </div>
 
-              <div id="collapsecandidatoDadosPessoais" class="collapse" aria-labelledby="candidatoDadosPessoais" data-parent="#accordionCandidatoDadosPessoais">
+              <div id="collapsecandidatoDadosPessoais" class="collapse show" aria-labelledby="candidatoDadosPessoais" data-parent="#accordionCandidatoPerfil">
 
                 <div class="card-body">
                   <div class="card-text">
 
                     <div class="form-row">
-                      <div class="form-group col-md-6">
-                        <label for="txtNome">Nome</label>
-                        <input type="text" class="form-control" id="txtNome" name="txtNome" value="<?= $candidato->getNome(); ?>" required autofocus>
-                      </div>
-
-                      <div class="form-group col-md-6">
-                        <label for="txtSobrenome">Sobrenome</label>
-                        <input type="text" class="form-control" id="txtSobrenome" name="txtSobrenome" value="<?= $candidato->getSobrenome(); ?>" required>
+                      <div class="form-group col">
+												<h4 class="display-4">
+													<?= $candidato->getNome(); ?> <?= $candidato->getSobrenome(); ?>
+												</h4>
                       </div>
                     </div>
 
 
                     <div class="form-row">
-                      <div class="form-group col-md-4">
-                        <label for="txtDataNasc">Data Nascimento</label>
-                        <input type="date" class="form-control" id="txtDataNasc" name="txtDataNasc" value="<?= $candidato->getDataNasc(); ?>" required>
-                      </div>
-
-                      <div class="row d-flex justify-content-center">
-                        <div class="col d-flex justify-content-center">
-                          <button name="btnAlterarSalvarDadosPessoais" id="btnAlterarSalvarDadosPessoais" class="btn btn-primary">Salvar</button>
+											<div class="form-group col">
+												<p><strong>Data de nascimento: </strong><?= $candidato->getDataNasc(); ?></p>
+												<p><strong>Estado Civil: </strong><?= $candidato->getEstadoCivil(); ?></p>
+												<p><strong>Sexo: </strong><?= $candidato->getSexo(); ?></p>
+                      
+											</div>
+										</div>
+                    
+                      <div class="row">
+                        <div class="col">
+                          <button name="btnAlterarSalvarDadosPessoais" id="btnAlterarSalvarDadosPessoais" class="btn btn-outline-primary float-right"><i class="fas fa-pencil-alt"></i></button>
                         </div>
                       </div>
-
-                    </div>
                           
                   </div>
                 </div>
@@ -87,14 +74,13 @@ $candidatoDAO->Listar($candidato);
             <div class="card">
 
               <div class="card-header" id="candidatoEndereco">
-                <i class="fas fa-map-marked-alt"></i>
                 Endereço
                 <button name="btnAlterarEndereco" id="btnAlterarEndereco" class="btn btn-outline-primary float-right" data-toggle="collapse" data-target="#collapseCandidatoEndereco" aria-expanded="true" aria-controls="collapseCandidatoEndereco">
                   <i class="fas fa-pencil-alt"></i>
                 </button>
               </div>
 
-              <div id="collapseCandidatoEndereco" class="collapse" aria-labelledby="candidatoEndereco" data-parent="#accordionCandidatoDadosPessoais">
+              <div id="collapseCandidatoEndereco" class="collapse" aria-labelledby="candidatoEndereco" data-parent="#accordionCandidatoPerfil">
 
                 <div class="card-body">
                   <div class="card-text">
@@ -150,7 +136,7 @@ $candidatoDAO->Listar($candidato);
                 </button>
               </div>
 
-              <div id="collapsecandidatoContato" class="collapse" aria-labelledby="candidatoContato" data-parent="#accordionCandidatoDadosPessoais">
+              <div id="collapsecandidatoContato" class="collapse" aria-labelledby="candidatoContato" data-parent="#accordionCandidatoPerfil">
 
                 <div class="card-body">
                   <div class="card-text">

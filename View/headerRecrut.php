@@ -109,7 +109,7 @@ if (empty($_SESSION['logado'])) {
                     <!-- Nav Item - Informação do usuário -->
                     <li class="nav-item dropdown no-arrow" style="padding-left:1rem">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span>Mercedes-Benz</span>
+                            <span><?= $_SESSION['nomeEmpresa']; ?></span>
                             <img class="img-profile rounded-circle" src="imagem/logo-mercedes.jpg">
                         </a>
 

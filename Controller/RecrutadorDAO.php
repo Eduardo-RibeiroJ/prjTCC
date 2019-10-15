@@ -26,7 +26,7 @@ class RecrutadorDAO
         $facebook = $recrutador->getFacebook();
         $siteEmpresa = $recrutador->getSiteEmpresa();
 
-        $query = "INSERT INTO tbEmpresa (cnpj, nomeEmpresa, email, senha, 
+        $query = "INSERT INTO tbRecrutador (cnpj, nomeEmpresa, email, senha, 
                                             cep, estado, cidade,
                                             endereco, bairro, tel1, tel2,
                                             linkedin, facebook, siteEmpresa) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
@@ -63,7 +63,7 @@ class RecrutadorDAO
         $facebook = $recrutador->getFacebook();
         $siteEmpresa = $recrutador->getSiteEmpresa();
 
-        $query = "UPDATE tbEmpresa SET nomeEmpresa = ?, email = ?, senha = ?, cep = ?, 
+        $query = "UPDATE tbRecrutador SET nomeEmpresa = ?, email = ?, senha = ?, cep = ?, 
                                          estado = ?, cidade = ?, endereco = ?, bairro = ?,
                                          tel1 = ?, tel2 = ?, linkedin = ?, facebook = ?,
                                          siteEmpresa = ? WHERE cnpj = ?;";
@@ -86,7 +86,7 @@ class RecrutadorDAO
     public function Apagar(Recrutador $recrutador) {
         $cnpj = $recrutador->getCnpj();
         
-        $SQL = $this->db->getConection()->prepare("DELETE FROM tbEmpresa WHERE cnpj = ?;");
+        $SQL = $this->db->getConection()->prepare("DELETE FROM tbRecrutador WHERE cnpj = ?;");
         
         $SQL->bind_param("i", $cnpj);
         $SQL->execute();
@@ -95,7 +95,7 @@ class RecrutadorDAO
     }
 
     public function Listar(Recrutador $recrutador) {
-        $query = $this->db->getConection()->query("SELECT * FROM tbEmpresa WHERE cnpj ='".$recrutador->getCnpj()."';");
+        $query = $this->db->getConection()->query("SELECT * FROM tbRecrutador WHERE cnpj ='".$recrutador->getCnpj()."';");
            
         $reg = $query->fetch_array();
         $recrutador->inserirRecrutador(
@@ -118,7 +118,7 @@ class RecrutadorDAO
 
     public static function Logar(Recrutador $recrutador)
     {
-        $sql = "SELECT * FROM tbEmpresa WHERE email='" . $recrutador->getEmail() . "' AND cnpj ='" . $recrutador->getCnpj() . "';";
+        $sql = "SELECT * FROM tbRecrutador WHERE email='" . $recrutador->getEmail() . "' AND cnpj ='" . $recrutador->getCnpj() . "';";
 
         $db = new Conexao();
 
@@ -131,7 +131,7 @@ class RecrutadorDAO
             if (Bcrypt::check($recrutador->getSenha(), $linha['senha'])) {
 
                 $_SESSION['logado'] = 1;
-                $_SESSION['nomeEmpresa'] = $linha['nome'];
+                $_SESSION['nomeEmpresa'] = $linha['nomeEmpresa'];
                 $_SESSION['cnpj'] = $linha['cnpj'];
 
                 $response = 1; //Login deu certo
