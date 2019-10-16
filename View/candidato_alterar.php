@@ -253,7 +253,7 @@ $candidatoDAO->Listar($candidato);
 
     <div class="row">
       <div class="col">
-        <button href="candidato.php" class="btn btn-primary float-right" >Visualizar Perfil</button>
+        <a href="candidato_perfil.php" class="btn btn-primary float-right" >Visualizar Perfil</a>
       </div>
     </div>
 

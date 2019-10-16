@@ -41,17 +41,16 @@ $candidatoDAO->Listar($candidato);
                 <div class="card-body">
                   <div class="card-text">
 
-                    <div class="form-row">
-                      <div class="form-group col">
-												<h4 class="display-4">
+                    <div class="row">
+                      <div class="col">
+												<h4 class="display-4 mb-4">
 													<?= $candidato->getNome(); ?> <?= $candidato->getSobrenome(); ?>
 												</h4>
                       </div>
                     </div>
 
-
-                    <div class="form-row">
-											<div class="form-group col">
+                    <div class="row">
+											<div class="col">
 												<p><strong>Data de Nascimento: </strong><?= $candidato->getDataNasc(); ?></p>
 												<p><strong>Estado Civil: </strong><?= $candidato->getEstadoCivil(); ?></p>
 												<p><strong>Sexo: </strong><?= $candidato->getSexo(); ?></p>
@@ -78,8 +77,8 @@ $candidatoDAO->Listar($candidato);
                 <div class="card-body">
                   <div class="card-text">
 
-                    <div class="form-row">
-                      <div class="form-group col">
+                    <div class="row">
+                      <div class="col">
 
                         <p><strong>CEP: </strong><?= $candidato->getCep(); ?></p>
 												<p><strong>Endereço: </strong><?= $candidato->getEndereco(); ?></p>
@@ -108,8 +107,8 @@ $candidatoDAO->Listar($candidato);
                 <div class="card-body">
                   <div class="card-text">
 
-                      <div class="form-row">
-                        <div class="form-group col">  
+                      <div class="row">
+                        <div class="col">  
 
                           <p><strong>E-mail: </strong><?= $candidato->getEmail(); ?></p>
                           <p><strong>Telefone 1: </strong><?= $candidato->getTel1(); ?></p>

@@ -110,6 +110,10 @@
 
     /* PERSONALIZAÇÃO DE ITENS*/
 
+#sectionCandidatoPerfil p {
+    margin-bottom: 0.15em;
+}    
+
     .div-competencia {
         padding: 0.3em;
         line-height: 2.2em;
