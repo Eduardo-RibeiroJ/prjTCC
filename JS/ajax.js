@@ -351,7 +351,7 @@ $(function(){
     $('#sectionCardsEmpresa').on('click', '#btnAlterarSalvarEmpresa', function (e) {
 
         e.preventDefault();
-        var idPergunta = $(this).val();
+        var idEmpresa = $(this).val();
         var button = $(this);
         var salvarAlterar;
 
@@ -368,19 +368,19 @@ $(function(){
             $.post(salvarAlterar, {
                 acao: "CandidatoEmpresa",
                 cpf: $('#txtCpf').val(),
-                idPergunta: idPergunta,
-                nomeEmpresa: $('#txtNomeEmpresa' + idPergunta).val(),
-                cargo: $('#txtCargo' + idPergunta).val(),
-                dataInicio: $('#dtaInicio' + idPergunta).val(),
-                dataSaida: $('#dtaTermino' + idPergunta).val(),
-                atividades: $('#txtAtividades' + idPergunta).val()
+                idEmpresa: idEmpresa,
+                nomeEmpresa: $('#txtNomeEmpresa' + idEmpresa).val(),
+                cargo: $('#txtCargo' + idEmpresa).val(),
+                dataInicio: $('#dtaInicio' + idEmpresa).val(),
+                dataSaida: $('#dtaTermino' + idEmpresa).val(),
+                atividades: $('#txtAtividades' + idEmpresa).val()
 
             }, function (sucesso) {
 
                 if (sucesso == true) {
                     if (button.html() == "Salvar") {
-                        $('#tituloHeader' + idPergunta).html($('#txtNomeEmpresa' + idPergunta).val());
-                        $("#btnAlterar" + idPergunta).click();
+                        $('#tituloHeader' + idEmpresa).html($('#txtNomeEmpresa' + idEmpresa).val());
+                        $("#btnAlterar" + idEmpresa).click();
                     }
                     else {
                         location.reload();
@@ -399,7 +399,7 @@ $(function(){
         $.post('../PostAjax/excluir.php', {
             acao: "excluirEmpresa",
             cpf: $('#txtCpf').val(),
-            idPergunta: $(this).val()
+            idEmpresa: $(this).val()
 
         }, function (sucesso) {
 

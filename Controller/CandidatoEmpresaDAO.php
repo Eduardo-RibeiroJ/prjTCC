@@ -86,7 +86,7 @@ class CandidatoEmpresaDAO
                     $reg['cargo'],
                     $reg['dataInicio'],
                     $reg['dataSaida'],
-                    $reg['atividades'],
+                    $reg['atividades']
                 );
 
                 $arrayQuery[] = $empresa;
@@ -107,7 +107,7 @@ class CandidatoEmpresaDAO
                     $reg['cargo'],
                     $reg['dataInicio'],
                     $reg['dataSaida'],
-                    $reg['atividades'],
+                    $reg['atividades']
             );
             return $empresa;
         }

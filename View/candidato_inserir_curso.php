@@ -21,7 +21,7 @@ $curso->setCpf($_SESSION['cpf']);
 $candidato->setCpf($_SESSION['cpf']);
 
 $ultimoRegistro = $curso->getUltimoRegistroCurso();
-$arrayCurso = $cursoDAO->Listar($curso)
+$arrayCurso = $cursoDAO->Listar($curso);
 
 ?>
 
@@ -146,6 +146,14 @@ $arrayCurso = $cursoDAO->Listar($curso)
             </div> <!-- Car-body-->
           </div> <!-- Car-body-->
         </div>
+      </div>
+    </div>
+    
+    <hr class="my-2 my-md-4">
+
+    <div class="row">
+      <div class="col">
+        <a href="candidato_perfil.php" class="btn btn-primary float-right" >Visualizar Perfil</a>
       </div>
     </div>
 

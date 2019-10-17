@@ -62,40 +62,24 @@ class CandidatoCompetenciaDAO
     }
 
     public function Listar(CandidatoCompetencia $candCompetencia) {
-
-          if ($questao->getIdQuestao() == NULL) {
         
-            $query = $this->db->getConection()->query("SELECT * FROM tbCandidatoCompetencia WHERE idCompetencia ='".$candCompetencia->getIdCompetencia()."' ORDER BY idCompetencia asc;");
-            $arrayQuery = array();
+        $query = $this->db->getConection()->query("SELECT * FROM tbCandidatoCompetencia WHERE cpf ='".$candCompetencia->getCpf()."' ORDER BY idCompetencia asc;");
+        $arrayQuery = array();
 
-            while($reg = $query->fetch_array()) {
+        while($reg = $query->fetch_array()) {
 
-                $candCompetencia = new CandidatoCompetencia();            
-                $candCompetencia->InserirCompetencia(
-                            
-                    $reg['cpf'],
-                    $reg['idCompetenciaCand'],
-                    $reg['nivel']
-        
-                );
-
-                $arrayQuery[] = $candCompetencia;
-            }
-
-            return $arrayQuery;
-
-        } else {
-
-            $query = $this->db->getConection()->query("SELECT * FROM tbCandidatoCompetencia WHERE idCompetencia ='".$candCompetencia->getIdCompetencia()."' AND idCompetencia ='".$candCompetencia->getIdCompetencia()."';");
-
-            $reg = $query->fetch_array();
-            $candCompetencia->InserirCompetencia(
-                    
-                    $reg['cpf'],
-                    $reg['idCompetenciaCand'],
-                    $reg['nivel']
+            $candCompetencia = new CandidatoCompetencia();            
+            
+            $candCompetencia->InserirCompetencia(         
+                $reg['cpf'],
+                $reg['idCompetencia'],
+                $reg['nivel']
             );
+            $arrayQuery[] = $candCompetencia;
         }
+
+        return $arrayQuery;
+
     }
 
 

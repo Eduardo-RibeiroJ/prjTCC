@@ -162,6 +162,14 @@ $arrayEmpresa = $empresaDAO->Listar($empresa);
       </div>
     </div>
 
+    <hr class="my-2 my-md-4">
+
+    <div class="row">
+      <div class="col">
+        <a href="candidato_perfil.php" class="btn btn-primary float-right" >Visualizar Perfil</a>
+      </div>
+    </div>
+
   </section>
 </div>
 

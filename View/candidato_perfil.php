@@ -6,14 +6,46 @@ include_once "../Model/Conexao.php";
 include_once "../Model/Candidato.php";
 include_once "../Controller/CandidatoDAO.php";
 
+include_once "../Model/CandidatoFormacao.php";
+include_once "../Controller/CandidatoFormacaoDAO.php";
+
+include_once "../Model/CandidatoCurso.php";
+include_once "../Controller/CandidatoCursoDAO.php";
+
+include_once "../Model/CandidatoEmpresa.php";
+include_once "../Controller/CandidatoEmpresaDAO.php";
+
+include_once "../Model/CandidatoCompetencia.php";
+include_once "../Controller/CandidatoCompetenciaDAO.php";
+
 $conn = new Conexao();
 $candidato = new Candidato();
 $candidatoDAO = new CandidatoDAO($conn);
 
+$formacao = new CandidatoFormacao();
+$formacaoDAO = new CandidatoFormacaoDAO($conn);
+
+$curso = new CandidatoCurso();
+$cursoDAO = new CandidatoCursoDAO($conn);
+
+$empresa = new CandidatoEmpresa();
+$empresaDAO = new CandidatoEmpresaDAO($conn);
+
+$competencia = new CandidatoCompetencia();
+$competenciaDAO = new CandidatoCompetenciaDAO($conn);
+
 //Aqui é o CPF da session
 $candidato->setCpf($_SESSION['cpf']);
+$formacao->setCpf($_SESSION['cpf']);
+$curso->setCpf($_SESSION['cpf']);
+$empresa->setCpf($_SESSION['cpf']);
+$competencia->setCpf($_SESSION['cpf']);
 
 $candidatoDAO->Listar($candidato);
+$arrayFormacao = $formacaoDAO->Listar($formacao);
+$arrayCurso = $cursoDAO->Listar($curso);
+$arrayEmpresa = $empresaDAO->Listar($empresa);
+$arrayCompetencia = $competenciaDAO->Listar($competencia);
 
 ?>
 
@@ -24,107 +56,246 @@ $candidatoDAO->Listar($candidato);
     <div class="row">
       <div class="col">
 
+        <input type="hidden" id="cpf" name="cpf" value="<?= $candidato->getCpf(); ?>">
 
-            <input type="hidden" id="cpf" name="cpf" value="<?= $candidato->getCpf(); ?>">
+        <div class="card">
 
-            <div class="card">
+          <div class="card-header" id="candidatoDadosPessoais" data-toggle="collapse" data-target="#collapsecandidatoDadosPessoais" aria-expanded="true" aria-controls="collapsecandidatoDadosPessoais">
+            Dados Pessoais
+            <button name="btnAlterarDadosPessoais" id="btnAlterarDadosPessoais" class="btn btn-outline-primary float-right">
+              <i class="fas fa-pencil-alt"></i>
+            </button>
+          </div>
 
-              <div class="card-header" id="candidatoDadosPessoais" data-toggle="collapse" data-target="#collapsecandidatoDadosPessoais" aria-expanded="true" aria-controls="collapsecandidatoDadosPessoais">
-                Dados Pessoais
-                <button name="btnAlterarDadosPessoais" id="btnAlterarDadosPessoais" class="btn btn-outline-primary float-right">
-                  <i class="fas fa-pencil-alt"></i>
-                </button>
-              </div>
+          <div id="collapsecandidatoDadosPessoais" class="collapse show" aria-labelledby="candidatoDadosPessoais">
 
-              <div id="collapsecandidatoDadosPessoais" class="collapse show" aria-labelledby="candidatoDadosPessoais">
+            <div class="card-body">
+              <div class="card-text">
 
-                <div class="card-body">
-                  <div class="card-text">
-
-                    <div class="row">
-                      <div class="col">
-												<h4 class="display-4 mb-4">
-													<?= $candidato->getNome(); ?> <?= $candidato->getSobrenome(); ?>
-												</h4>
-                      </div>
-                    </div>
-
-                    <div class="row">
-											<div class="col">
-												<p><strong>Data de Nascimento: </strong><?= $candidato->getDataNasc(); ?></p>
-												<p><strong>Estado Civil: </strong><?= $candidato->getEstadoCivil(); ?></p>
-												<p><strong>Sexo: </strong><?= $candidato->getSexo(); ?></p>
-                      
-											</div>
-										</div>
-                          
+                <div class="row">
+                  <div class="col">
+                    <h4 class="display-4 mb-4">
+                      <?= $candidato->getNome(); ?> <?= $candidato->getSobrenome(); ?>
+                    </h4>
                   </div>
                 </div>
-              </div>
-            </div>
 
-            <div class="card">
-
-              <div class="card-header" id="candidatoEndereco" data-toggle="collapse" data-target="#collapseCandidatoEndereco" aria-expanded="true" aria-controls="collapseCandidatoEndereco">
-                Endereço
-                <button name="btnAlterarEndereco" id="btnAlterarEndereco" class="btn btn-outline-primary float-right">
-                  <i class="fas fa-pencil-alt"></i>
-                </button>
-              </div>
-
-              <div id="collapseCandidatoEndereco" class="collapse show" aria-labelledby="candidatoEndereco">
-
-                <div class="card-body">
-                  <div class="card-text">
-
-                    <div class="row">
-                      <div class="col">
-
-                        <p><strong>CEP: </strong><?= $candidato->getCep(); ?></p>
-												<p><strong>Endereço: </strong><?= $candidato->getEndereco(); ?></p>
-												<p><strong>Bairro: </strong><?= $candidato->getBairro(); ?></p>
-												<p><strong>Cidade: </strong><?= $candidato->getCidade(); ?> - <?= $candidato->getEstado(); ?></p>
-                      
-                      </div>                      
-                    </div>
+                <div class="row">
+                  <div class="col">
+                    <p><strong>Data de Nascimento: </strong><?= $candidato->getDataNasc(); ?></p>
+                    <p><strong>Estado Civil: </strong><?= $candidato->getEstadoCivil(); ?></p>
+                    <p><strong>Sexo: </strong><?= $candidato->getSexo(); ?></p>
                   
                   </div>
                 </div>
+                      
               </div>
             </div>
+          </div>
+        </div>
 
-            <div class="card">
+        <div class="card">
 
-              <div class="card-header" id="candidatoContato" data-toggle="collapse" data-target="#collapsecandidatoContato" aria-expanded="true" aria-controls="collapsecandidatoContato">
-                Contato
-                <button name="btnAlterarContato" id="btnAlterarContato" class="btn btn-outline-primary float-right">
-                  <i class="fas fa-pencil-alt"></i>
-                </button>
+          <div class="card-header" id="candidatoEndereco" data-toggle="collapse" data-target="#collapseCandidatoEndereco" aria-expanded="true" aria-controls="collapseCandidatoEndereco">
+            Endereço
+            <button name="btnAlterarEndereco" id="btnAlterarEndereco" class="btn btn-outline-primary float-right">
+              <i class="fas fa-pencil-alt"></i>
+            </button>
+          </div>
+
+          <div id="collapseCandidatoEndereco" class="collapse show" aria-labelledby="candidatoEndereco">
+
+            <div class="card-body">
+              <div class="card-text">
+
+                <div class="row">
+                  <div class="col">
+
+                    <p><strong>CEP: </strong><?= $candidato->getCep(); ?></p>
+                    <p><strong>Endereço: </strong><?= $candidato->getEndereco(); ?></p>
+                    <p><strong>Bairro: </strong><?= $candidato->getBairro(); ?></p>
+                    <p><strong>Cidade: </strong><?= $candidato->getCidade(); ?> - <?= $candidato->getEstado(); ?></p>
+                  
+                  </div>                      
+                </div>
+              
               </div>
+            </div>
+          </div>
+        </div>
 
-              <div id="collapsecandidatoContato" class="collapse show" aria-labelledby="candidatoContato">
+        <div class="card">
 
-                <div class="card-body">
-                  <div class="card-text">
+          <div class="card-header" id="candidatoContato" data-toggle="collapse" data-target="#collapsecandidatoContato" aria-expanded="true" aria-controls="collapsecandidatoContato">
+            Contato
+            <button name="btnAlterarContato" id="btnAlterarContato" class="btn btn-outline-primary float-right">
+              <i class="fas fa-pencil-alt"></i>
+            </button>
+          </div>
 
-                      <div class="row">
-                        <div class="col">  
+          <div id="collapsecandidatoContato" class="collapse show" aria-labelledby="candidatoContato">
 
-                          <p><strong>E-mail: </strong><?= $candidato->getEmail(); ?></p>
-                          <p><strong>Telefone 1: </strong><?= $candidato->getTel1(); ?></p>
-                          <p><strong>Telefone 2: </strong><?= $candidato->getTel2(); ?></p>
-                          <p><strong>LinkedIn: </strong><?= $candidato->getLinkedin(); ?></p>
-                          <p><strong>Facebook: </strong><?= $candidato->getFacebook(); ?></p>
-                          <p><strong>Site Pessoal: </strong><?= $candidato->getSitePessoal(); ?></p>
+            <div class="card-body">
+              <div class="card-text">
 
-                        </div>
+                  <div class="row">
+                    <div class="col">  
+
+                      <p><strong>E-mail: </strong><?= $candidato->getEmail(); ?></p>
+                      <p><strong>Telefone 1: </strong><?= $candidato->getTel1(); ?></p>
+                      <p><strong>Telefone 2: </strong><?= $candidato->getTel2(); ?></p>
+                      <p><strong>LinkedIn: </strong><?= $candidato->getLinkedin(); ?></p>
+                      <p><strong>Facebook: </strong><?= $candidato->getFacebook(); ?></p>
+                      <p><strong>Site Pessoal: </strong><?= $candidato->getSitePessoal(); ?></p>
+
+                    </div>
+
+                  </div>
+                  
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+
+          <div class="card-header" id="candidatoFormacao" data-toggle="collapse" data-target="#collapsecandidatoFormacao" aria-expanded="true" aria-controls="collapsecandidatoFormacao">
+            Formação
+            <a href="candidato_inserir_formacao.php" name="btnAlterarFormacao" id="btnAlterarFormacao" class="btn btn-outline-primary float-right">
+              <i class="fas fa-pencil-alt"></i>
+            </a>
+          </div>
+
+          <div id="collapsecandidatoFormacao" class="collapse show" aria-labelledby="candidatoFormacao">
+
+            <div class="card-body">
+              <div class="card-text">
+
+              <?php if($arrayFormacao): ?>
+
+                <?php foreach($arrayFormacao as $reg): ?>
+
+                    <div class="row">
+                      <div class="col">
+
+                        <h5><?= $reg->getTipo(); ?></h5>
+                        <p><strong><?= $reg->getNomeCurso(); ?></strong>, <?= $reg->getNomeInstituicao(); ?></p>
+                        <p><?= $reg->getDataInicio(); ?> - <?= $reg->getDataTermino(); ?></p>
+                        <p><?= $reg->getEstado(); ?></p>
+                        <hr />
 
                       </div>
-                      
-                  </div>
-                </div>
+                    </div>
+
+                <?php endforeach; ?>
+              
+              <?php else: ?>
+                <p>
+                  <strong>Insira suas formações acadêmicas!</strong>
+                  <a href="candidato_inserir_formacao.php" name="btnAlterarFormacao" id="btnAlterarFormacao" class="btn btn-outline-dark ml-4">
+                    <i class="fas fa-plus"></i>
+                  </a>
+                </p>
+              <?php endif; ?>
+
+                  
               </div>
             </div>
+          </div>
+        </div>
+
+        <div class="card">
+
+          <div class="card-header" id="candidatoCurso" data-toggle="collapse" data-target="#collapsecandidatoCurso" aria-expanded="true" aria-controls="collapsecandidatoCurso">
+            Cursos Complementares
+            <a href="candidato_inserir_curso.php" name="btnAlterarCurso" id="btnAlterarCurso" class="btn btn-outline-primary float-right">
+              <i class="fas fa-pencil-alt"></i>
+            </a>
+          </div>
+
+          <div id="collapsecandidatoCurso" class="collapse show" aria-labelledby="candidatoCurso">
+
+            <div class="card-body">
+              <div class="card-text">
+
+              <?php if($arrayCurso): ?>
+
+                <?php foreach($arrayCurso as $reg): ?>
+
+                    <div class="row">
+                      <div class="col">
+
+                        <p><strong><?= $reg->getNomeCurso(); ?></strong>, <?= $reg->getNomeInstituicao(); ?></p>
+                        <p>Concluído em <?= $reg->getAnoConclusao(); ?></p>
+                        <p><?= $reg->getCargaHoraria(); ?> horas de curso</p>
+                        <hr />
+
+                      </div>
+                    </div>
+
+                <?php endforeach; ?>
+              
+              <?php else: ?>
+                <p>
+                  <strong>Insira seus cursos complementares!</strong>
+                  <a href="candidato_inserir_curso.php" name="btnAlterarCurso" id="btnAlterarCurso" class="btn btn-outline-dark ml-4">
+                    <i class="fas fa-plus"></i>
+                  </a>
+                </p>
+              <?php endif; ?>
+
+                  
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+
+          <div class="card-header" id="candidatoEmpresa" data-toggle="collapse" data-target="#collapsecandidatoEmpresa" aria-expanded="true" aria-controls="collapsecandidatoEmpresa">
+            Experiência Profissional
+            <a href="candidato_inserir_empresa.php" name="btnAlterarEmpresa" id="btnAlterarEmpresa" class="btn btn-outline-primary float-right">
+              <i class="fas fa-pencil-alt"></i>
+            </a>
+          </div>
+
+          <div id="collapsecandidatoEmpresa" class="collapse show" aria-labelledby="candidatoEmpresa">
+
+            <div class="card-body">
+              <div class="card-text">
+
+              <?php if($arrayEmpresa): ?>
+
+                <?php foreach($arrayEmpresa as $reg): ?>
+
+                    <div class="row">
+                      <div class="col">
+
+                        <h5><?= $reg->getNomeEmpresa(); ?></h5>
+                        <p><strong><?= $reg->getCargo(); ?></strong></p>
+                        <p><?= $reg->getAtividades(); ?></p>
+                        <p>De<?= $reg->getDataInicio(); ?> a <?= $reg->getDataSaida(); ?></p>
+                        <hr />
+
+                      </div>
+                    </div>
+
+                <?php endforeach; ?>
+              
+              <?php else: ?>
+                <p>
+                  <strong>Insira suas últimas experiências profissionais!</strong>
+                  <a href="candidato_inserir_empresa.php" name="btnAlterarEmpresa" id="btnAlterarEmpresa" class="btn btn-outline-dark ml-4">
+                    <i class="fas fa-plus"></i>
+                  </a>
+                </p>
+              <?php endif; ?>
+
+                  
+              </div>
+            </div>
+          </div>
+        </div>
 
       </div>
     </div>
