@@ -467,4 +467,46 @@ $(function(){
 
     });
 
+    //CANDIDATO COMPETENCIAS
+
+    $('#sectionCandCompetencias').on('click', '#btnInserirCompetencia', function (e) {
+
+        e.preventDefault();
+        var btn = $(this);
+        var nomeCompetencia = $('#txtNomeCompetencia').val();
+        var nivelCompetencia = $('#cbbNivelCompetencia').val();
+
+        $.post('../PostAjax/salvar.php', {
+            acao: "SalvarCompetencia",
+            cpf: $('#txtCpf').val(),
+            idCompetencia: $('#txtUltimoRegistro').val(),
+            competencia: nomeCompetencia,
+            nivel: nivelCompetencia
+
+        }, function (sucesso) {
+
+            if (sucesso == true) {
+                $('#divCandCompetencias').prepend(`<div class="div-competencia flex-fill">
+                                                    <p>
+                                                        <h5 class="d-inline">`+ nomeCompetencia +`</h5>
+                                                        <button class="btn btn-outline-dark d-inline ml-4" id="btnExcluirCompetencia"><i class="fas fa-trash-alt"></i></button>
+                                                    </p>
+                                                    <p>
+                                                    <select class="custom-select d-inline" id="cbbNivelCompetencia<?= $ultimoRegistro ?>" name="cbbNivelCompetencia" required>
+                                                        <option value="B">Básico</option>
+                                                        <option value="I">Intermediário</option>
+                                                        <option value="A">Avançado</option>
+                                                    </select>
+                                                    </p>
+                                                </div>`
+                                            );
+
+
+            } else {
+                alert('Erro: ' + sucesso);
+            }
+        });
+
+    });
+
 });

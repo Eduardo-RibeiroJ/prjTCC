@@ -59,9 +59,9 @@ $candidato->setCpf($_SESSION['cpf']);
         </form>
     </div>
 
-    <section id="sectionCompetencias">
+    <section id="sectionCandCompetencias">
 
-    <div class="d-flex flex-wrap">
+    <div class="d-flex flex-wrap" id="divCandCompetencias">
 
     <?php //foreach($arrayCompetencias as $reg): ?>
 
@@ -71,14 +71,14 @@ $candidato->setCpf($_SESSION['cpf']);
                 <button class="btn btn-outline-dark d-inline ml-4" id="btnExcluirCompetencia"><i class="fas fa-trash-alt"></i></button>
             </p>
             <p>
-
-                <select class="custom-select d-inline" id="cbbNivelCompetencia<?= $ultimoRegistro ?>" name="cbbNivelCompetencia" required>
-                    <option value="B">Básico</option>
-                    <option value="I">Intermediário</option>
-                    <option value="A">Avançado</option>
-                </select>
+            <select class="custom-select d-inline" id="cbbNivelCompetencia<?= $ultimoRegistro ?>" name="cbbNivelCompetencia" required>
+                <option value="B">Básico</option>
+                <option value="I">Intermediário</option>
+                <option value="A">Avançado</option>
+            </select>
             </p>
         </div>
+
         <div class="div-competencia flex-fill">
             <p>
                 <h5 class="d-inline">Visual Studio</h5>

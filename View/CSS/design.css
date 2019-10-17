@@ -116,13 +116,22 @@
 
     .div-competencia {
         padding: 0 1em 0 1em;;
-        line-height: 2.2em;
+        line-height: 2em;
         background-color: rgb(247, 247, 247);
         text-align: center;
         margin: 0.2em;
 
         border: 1px solid rgba(0, 0, 0, 0.125);
         border-radius: 7px;
+    }
+
+    .div-competencia .btn {
+        padding: 0.1em 0.4em;
+        margin-top: -1.2em;
+    }
+
+    .div-competencia .custom-select {
+        margin-top: -1em;
     }
 
     /*
