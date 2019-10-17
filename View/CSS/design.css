@@ -115,12 +115,14 @@
 }    
 
     .div-competencia {
-        padding: 0.3em;
+        padding: 0 1em 0 1em;;
         line-height: 2.2em;
         background-color: rgb(247, 247, 247);
+        text-align: center;
+        margin: 0.2em;
 
         border: 1px solid rgba(0, 0, 0, 0.125);
-        border-radius: 5px;
+        border-radius: 7px;
     }
 
     /*

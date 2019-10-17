@@ -61,111 +61,117 @@ $candidato->setCpf($_SESSION['cpf']);
 
     <section id="sectionCompetencias">
 
-    <div class="row d-flex justify-content-center">
+    <div class="d-flex flex-wrap">
 
     <?php //foreach($arrayCompetencias as $reg): ?>
 
-        <div class="col-sm-6 div-competencia">
-            <div class="row">
-                <div class="col-sm-6">
-                    Visual Studio
-                </div>
+        <div class="div-competencia flex-fill">
+            <p>
+                <h5 class="d-inline">Visual Studio</h5>
+                <button class="btn btn-outline-dark d-inline ml-4" id="btnExcluirCompetencia"><i class="fas fa-trash-alt"></i></button>
+            </p>
+            <p>
 
-                <div class="col-sm-5">
-                    <select class="custom-select" id="cbbNivelCompetencia<?= $ultimoRegistro ?>" name="cbbNivelCompetencia" required>
-                        <option value="" selected>Nível de conhecimento</option>
-                        <option value="B">Básico</option>
-                        <option value="I">Intermediário</option>
-                        <option value="A">Avançado</option>
-                    </select>
-                </div>
-                <div class="col-sm-1">
-                    <button class="btn btn-outline-primary float-right" id="btnExcluirCompetencia"><i class="fas fa-trash-alt"></i></button>
-                </div>
-            </div>    
+                <select class="custom-select d-inline" id="cbbNivelCompetencia<?= $ultimoRegistro ?>" name="cbbNivelCompetencia" required>
+                    <option value="B">Básico</option>
+                    <option value="I">Intermediário</option>
+                    <option value="A">Avançado</option>
+                </select>
+            </p>
         </div>
+        <div class="div-competencia flex-fill">
+            <p>
+                <h5 class="d-inline">Visual Studio</h5>
+                <button class="btn btn-outline-dark d-inline ml-4" id="btnExcluirCompetencia"><i class="fas fa-trash-alt"></i></button>
+            </p>
+            <p>
 
-        <div class="col-sm-6 div-competencia">
-            <div class="row">
-                <div class="col-sm-6">
-                    Visual Studio
-                </div>
-
-                <div class="col-sm-5">
-                    <select class="custom-select" id="cbbNivelCompetencia<?= $ultimoRegistro ?>" name="cbbNivelCompetencia" required>
-                        <option value="" selected>Nível de conhecimento</option>
-                        <option value="B">Básico</option>
-                        <option value="I">Intermediário</option>
-                        <option value="A">Avançado</option>
-                    </select>
-                </div>
-                <div class="col-sm-1">
-                    <button class="btn btn-outline-primary float-right" id="btnExcluirCompetencia"><i class="fas fa-trash-alt"></i></button>
-                </div>
-            </div>    
+                <select class="custom-select d-inline" id="cbbNivelCompetencia<?= $ultimoRegistro ?>" name="cbbNivelCompetencia" required>
+                    <option value="" selected>Nível de conhecimento</option>
+                    <option value="B">Básico</option>
+                    <option value="I">Intermediário</option>
+                    <option value="A">Avançado</option>
+                </select>
+            </p>
         </div>
+        <div class="div-competencia flex-fill">
+            <p>
+                <h5 class="d-inline">Desenvolvimento de Sistemas</h5>
+                <button class="btn btn-outline-dark d-inline ml-4" id="btnExcluirCompetencia"><i class="fas fa-trash-alt"></i></button>
+            </p>
+            <p>
 
-        <div class="col-sm-6 div-competencia">
-            <div class="row">
-                <div class="col-sm-6">
-                    Visual Studio
-                </div>
-
-                <div class="col-sm-5">
-                    <select class="custom-select" id="cbbNivelCompetencia<?= $ultimoRegistro ?>" name="cbbNivelCompetencia" required>
-                        <option value="" selected>Nível de conhecimento</option>
-                        <option value="B">Básico</option>
-                        <option value="I">Intermediário</option>
-                        <option value="A">Avançado</option>
-                    </select>
-                </div>
-                <div class="col-sm-1">
-                    <button class="btn btn-outline-primary float-right" id="btnExcluirCompetencia"><i class="fas fa-trash-alt"></i></button>
-                </div>
-            </div>    
+                <select class="custom-select d-inline" id="cbbNivelCompetencia<?= $ultimoRegistro ?>" name="cbbNivelCompetencia" required>
+                    <option value="" selected>Nível de conhecimento</option>
+                    <option value="B">Básico</option>
+                    <option value="I">Intermediário</option>
+                    <option value="A">Avançado</option>
+                </select>
+            </p>
         </div>
+        <div class="div-competencia">
+            <p>
+                <h5 class="d-inline">Adobe Photoshop</h5>
+                <button class="btn btn-outline-dark d-inline ml-4" id="btnExcluirCompetencia"><i class="fas fa-trash-alt"></i></button>
+            </p>
+            <p>
 
-        <div class="col-sm-6 div-competencia">
-            <div class="row">
-                <div class="col-sm-6">
-                    Visual Studio
-                </div>
-
-                <div class="col-sm-5">
-                    <select class="custom-select" id="cbbNivelCompetencia<?= $ultimoRegistro ?>" name="cbbNivelCompetencia" required>
-                        <option value="" selected>Nível de conhecimento</option>
-                        <option value="B">Básico</option>
-                        <option value="I">Intermediário</option>
-                        <option value="A">Avançado</option>
-                    </select>
-                </div>
-                <div class="col-sm-1">
-                    <button class="btn btn-outline-primary float-right" id="btnExcluirCompetencia"><i class="fas fa-trash-alt"></i></button>
-                </div>
-            </div>
+                <select class="custom-select d-inline" id="cbbNivelCompetencia<?= $ultimoRegistro ?>" name="cbbNivelCompetencia" required>
+                    <option value="" selected>Nível de conhecimento</option>
+                    <option value="B">Básico</option>
+                    <option value="I">Intermediário</option>
+                    <option value="A">Avançado</option>
+                </select>
+            </p>
         </div>
+        <div class="div-competencia">
+            <p>
+                <h5 class="d-inline">Excel Avançado</h5>
+                <button class="btn btn-outline-dark d-inline ml-4" id="btnExcluirCompetencia"><i class="fas fa-trash-alt"></i></button>
+            </p>
+            <p>
 
-        <div class="col-sm-6 div-competencia">
-            <div class="row">
-                <div class="col-sm-6">
-                    Visual Studio
-                </div>
-
-                <div class="col-sm-5">
-                    <select class="custom-select" id="cbbNivelCompetencia<?= $ultimoRegistro ?>" name="cbbNivelCompetencia" required>
-                        <option value="" selected>Nível de conhecimento</option>
-                        <option value="B">Básico</option>
-                        <option value="I">Intermediário</option>
-                        <option value="A">Avançado</option>
-                    </select>
-                </div>
-                <div class="col-sm-1">
-                    <button class="btn btn-outline-primary float-right" id="btnExcluirCompetencia"><i class="fas fa-trash-alt"></i></button>
-                </div>
-            
-            </div>    
+                <select class="custom-select d-inline" id="cbbNivelCompetencia<?= $ultimoRegistro ?>" name="cbbNivelCompetencia" required>
+                    <option value="" selected>Nível de conhecimento</option>
+                    <option value="B">Básico</option>
+                    <option value="I">Intermediário</option>
+                    <option value="A">Avançado</option>
+                </select>
+            </p>
         </div>
+        <div class="div-competencia">
+            <p>
+                <h5 class="d-inline">C#</h5>
+                <button class="btn btn-outline-dark d-inline ml-4" id="btnExcluirCompetencia"><i class="fas fa-trash-alt"></i></button>
+            </p>
+            <p>
 
+                <select class="custom-select d-inline" id="cbbNivelCompetencia<?= $ultimoRegistro ?>" name="cbbNivelCompetencia" required>
+                    <option value="" selected>Nível de conhecimento</option>
+                    <option value="B">Básico</option>
+                    <option value="I">Intermediário</option>
+                    <option value="A">Avançado</option>
+                </select>
+            </p>
+        </div>
+        <div class="div-competencia">
+            <p>
+                <h5 class="d-inline">Visual Studio</h5>
+                <button class="btn btn-outline-dark d-inline ml-4" id="btnExcluirCompetencia"><i class="fas fa-trash-alt"></i></button>
+            </p>
+            <p>
+
+                <select class="custom-select d-inline" id="cbbNivelCompetencia<?= $ultimoRegistro ?>" name="cbbNivelCompetencia" required>
+                    <option value="" selected>Nível de conhecimento</option>
+                    <option value="B">Básico</option>
+                    <option value="I">Intermediário</option>
+                    <option value="A">Avançado</option>
+                </select>
+            </p>
+        </div>
+        
+
+        
     <?php //endforeach; ?>
     <hr class="my-2 my-md-4">
     </div>
