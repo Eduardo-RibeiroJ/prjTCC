@@ -36,18 +36,18 @@ if (isset($_POST['btnContinuar'])) {
   <div class="jumbotron p-3 p-md-5">
     <div class="container p-0">
       <h5 class="display-4 display-md-2"><i class="fas fa-graduation-cap d-none d-md-inline"> </i>Queremos saber sobre suas formações acadêmicas!</h1>
-      
-      <hr class="my-2 my-md-4">
-      <p class="lead">Gerencie aqui tudo sobre as suas formações.</p>
+
+        <hr class="my-2 my-md-4">
+        <p class="lead">Gerencie aqui tudo sobre as suas formações.</p>
     </div>
   </div>
 
-    <input type="hidden" id="txtUltimoRegistro" name="txtUltimoRegistro" value="<?= $ultimoRegistro ?>">
-    <input type="hidden" id="txtCpf" name="txtCpf" value="<?= $candidato->getCpf() ?>">
+  <input type="hidden" id="txtUltimoRegistro" name="txtUltimoRegistro" value="<?= $ultimoRegistro ?>">
+  <input type="hidden" id="txtCpf" name="txtCpf" value="<?= $candidato->getCpf() ?>">
 
   <section id="sectionCardsFormacao">
 
-      <?php foreach($arrayFormacao as $reg): ?>
+    <?php foreach ($arrayFormacao as $reg) : ?>
 
       <div class="row">
         <div class="col">
@@ -78,14 +78,18 @@ if (isset($_POST['btnContinuar'])) {
                     <div class="form-group col-md-4">
                       <label for="tipoCurso">Tipo do curso</label>
                       <select class="custom-select" id="cbbTipoCurso<?= $reg->getIdFormacao(); ?>" name="cbbTipoCurso" required>
-                          <option value="" selected>Selecione</option>
-                          <option value="F12">Formação escolar fundamental (1°Grau) e média (2°Grau)</option>
-                          <option value="EMP">Ensino Médio profisisonalizante</option>
-                          <option value="GR">Graduação</option>
-                          <option value="GRE">Graduação - especialização</option>
-                          <option value="GRMB">Graduação - MBA</option>
-                          <option value="GRME">Graduação - Mestrado</option>
-                          <option value="GRD">Graduação - Doutorado</option>
+                        <option value="" selected>Selecione</option>
+                        <option value="EF">Ensino Fundamental</option>
+                        <option value="EM">Ensino Médio</option>
+                        <option value="EMP">Ensino Médio profisisonalizante</option>
+                        <option value="ET">Ensino Técnico</option>
+                        <option value="GRB">Graduação - Bacharelado</option>
+                        <option value="GRT">Graduação - Tecnólogo</option>
+                        <option value="GRL">Graduação - Licenciatura</option>
+                        <option value="GRE">Graduação - Especialização</option>
+                        <option value="GRMB">Graduação - MBA</option>
+                        <option value="GRME">Graduação - Mestrado</option>
+                        <option value="GRD">Graduação - Doutorado</option>
                       </select>
                     </div>
                   </div>
@@ -96,7 +100,7 @@ if (isset($_POST['btnContinuar'])) {
                       <label for="dtaInicioInsti">Data início</label>
                       <input type="date" class="form-control" id="dtaInicioInsti<?= $reg->getIdFormacao(); ?>" name="dtaInicioInsti" value="<?= $reg->getDataInicio(); ?>" required>
                     </div>
-                      <div class="form-group col-md-3">
+                    <div class="form-group col-md-3">
                       <label for="dtaTermInsti">Data término (previsão)</label>
                       <input type="date" class="form-control" id="dtaTermInsti<?= $reg->getIdFormacao(); ?>" name="dtaTermInsti" value="<?= $reg->getDataTermino(); ?>" required>
                     </div>
@@ -107,10 +111,10 @@ if (isset($_POST['btnContinuar'])) {
                     <div class="form-group col-md-6">
                       <label for="cbbSituacaoInsti">Tipo do curso</label>
                       <select class="custom-select" id="cbbSituacaoInsti<?= $reg->getIdFormacao(); ?>" name="cmbSituacaoInsti" required>
-                          <option value="" selected>Selecione</option>
-                          <option value="IM">Interrrompido</option>
-                          <option value="EM">Em andamento</option>
-                          <option value="FI">Finalizado</option>
+                        <option value="" selected>Selecione</option>
+                        <option value="IM">Interrrompido</option>
+                        <option value="EM">Em andamento</option>
+                        <option value="FI">Finalizado</option>
                       </select>
                     </div>
                   </div>
@@ -130,16 +134,16 @@ if (isset($_POST['btnContinuar'])) {
         </div>
       </div>
 
-      <?php endforeach; ?>
+    <?php endforeach; ?>
 
     <div class="row">
       <div class="col">
         <div class="card">
           <div class="card-header" id="candidatoFormacao<?= $ultimoRegistro ?>">
-              <p class="d-inline">Insira aqui uma nova formação!</p>
-              <button name="btnAlterar<?= $ultimoRegistro ?>" id="btnAlterar<?= $ultimoRegistro ?>" class="btn btn-outline-primary float-right d-inline" data-toggle="collapse" data-target="#collapseCandidatoFormacao<?= $ultimoRegistro ?>">
-                <i class="fas fa-plus"></i>
-              </button>
+            <p class="d-inline">Insira aqui uma nova formação!</p>
+            <button name="btnAlterar<?= $ultimoRegistro ?>" id="btnAlterar<?= $ultimoRegistro ?>" class="btn btn-outline-primary float-right d-inline" data-toggle="collapse" data-target="#collapseCandidatoFormacao<?= $ultimoRegistro ?>">
+              <i class="fas fa-plus"></i>
+            </button>
           </div>
           <div id="collapseCandidatoFormacao<?= $ultimoRegistro ?>" class="collapse">
             <div class="card-body">
@@ -166,43 +170,43 @@ if (isset($_POST['btnContinuar'])) {
                       <option value="GRMB">Graduação - MBA</option>
                       <option value="GRME">Graduação - Mestrado</option>
                       <option value="GRD">Graduação - Doutorado</option>
-                      </select>
-                    </div>
+                    </select>
                   </div>
-
-                  <div class="form-row">
-                    <div class="form-group col-md-3">
-                      <label for="dtaInicioInsti">Data início</label>
-                      <input type="date" class="form-control" id="dtaInicioInsti<?= $ultimoRegistro ?>" name="dtaInicioInsti" placeholder="" required>
-                    </div>
-                    <div class="form-group col-md-3">
-                      <label for="dtaTermInsti">Data término (previsão)</label>
-                      <input type="date" class="form-control" id="dtaTermInsti<?= $ultimoRegistro ?>" name="dtaTermInsti" placeholder="" required>
-                    </div>
-                  </div>
-
-                  <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="cbbSituacaoInsti">Tipo do curso</label>
-                        <select class="custom-select" id="cbbSituacaoInsti<?= $ultimoRegistro ?>" name="cmbSituacaoInsti" required>
-                          <option value="" selected>Selecione</option>
-                          <option value="IM">Interrrompido</option>
-                          <option value="EM">Em andamento</option>
-                          <option value="FI">Finalizado</option>
-                        </select>
-                      </div>
-                  </div>
-
-                  <div class="form-row">
-                    <div class="col">
-                      <button value="<?= $ultimoRegistro ?>" name="btnAlterarSalvarFormacao" id="btnAlterarSalvarFormacao" class="btn btn-primary">Inserir</button>
-                    </div>
-                  </div>
-
                 </div>
+
+                <div class="form-row">
+                  <div class="form-group col-md-3">
+                    <label for="dtaInicioInsti">Data início</label>
+                    <input type="date" class="form-control" id="dtaInicioInsti<?= $ultimoRegistro ?>" name="dtaInicioInsti" placeholder="" required>
+                  </div>
+                  <div class="form-group col-md-3">
+                    <label for="dtaTermInsti">Data término (previsão)</label>
+                    <input type="date" class="form-control" id="dtaTermInsti<?= $ultimoRegistro ?>" name="dtaTermInsti" placeholder="" required>
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="cbbSituacaoInsti">Tipo do curso</label>
+                    <select class="custom-select" id="cbbSituacaoInsti<?= $ultimoRegistro ?>" name="cmbSituacaoInsti" required>
+                      <option value="" selected>Selecione</option>
+                      <option value="IM">Interrrompido</option>
+                      <option value="EM">Em andamento</option>
+                      <option value="FI">Finalizado</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="col">
+                    <button value="<?= $ultimoRegistro ?>" name="btnAlterarSalvarFormacao" id="btnAlterarSalvarFormacao" class="btn btn-primary">Inserir</button>
+                  </div>
+                </div>
+
               </div>
             </div>
           </div>
+        </div>
 
       </div>
     </div>
@@ -211,7 +215,7 @@ if (isset($_POST['btnContinuar'])) {
 
     <div class="row">
       <div class="col">
-        <a href="candidato_perfil.php" class="btn btn-primary float-right" >Visualizar Perfil</a>
+        <a href="candidato_perfil.php" class="btn btn-primary float-right">Visualizar Perfil</a>
       </div>
     </div>
 

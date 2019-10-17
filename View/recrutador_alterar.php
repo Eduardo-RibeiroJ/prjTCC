@@ -3,17 +3,17 @@
 include_once 'headerRecrut.php';
 
 include_once "../Model/Conexao.php";
-include_once "../Model/Candidato.php";
-include_once "../Controller/CandidatoDAO.php";
+include_once "../Model/Recrutador.php";
+include_once "../Controller/RecrutadorDAO.php";
 
 $conn = new Conexao();
-$candidato = new Candidato();
-$candidatoDAO = new CandidatoDAO($conn);
+$recrutador = new Recrutador();
+$recrutadorDAO = new RecrutadorDAO($conn);
 
 //Aqui é o CPF da session
-$candidato->setCpf($_SESSION['cpf']);
+$recrutador->setCnpj($_SESSION['cnpj']);
 
-$candidatoDAO->Listar($candidato);
+$recrutadorDAO->Listar($recrutador);
 
 ?>
 
@@ -35,7 +35,7 @@ $candidatoDAO->Listar($candidato);
 
         <div class="accordion" id="accordionCandidatoDadosPessoais">
 
-            <input type="hidden" id="cpf" name="cpf" value="<?= $candidato->getCpf(); ?>">
+            <input type="hidden" id="cnpj" name="cnpj" value="<?= $recrutador->getCpf(); ?>">
 
             <div class="card">
 
@@ -55,12 +55,12 @@ $candidatoDAO->Listar($candidato);
                     <div class="form-row">
                       <div class="form-group col-md-6">
                         <label for="txtNome">Nome</label>
-                        <input type="text" class="form-control" id="txtNome" name="txtNome" value="<?= $candidato->getNome(); ?>" required autofocus>
+                        <input type="text" class="form-control" id="txtNome" name="txtNome" value="<?= $recrutador->getNome(); ?>" required autofocus>
                       </div>
 
                       <div class="form-group col-md-6">
                         <label for="txtSobrenome">Sobrenome</label>
-                        <input type="text" class="form-control" id="txtSobrenome" name="txtSobrenome" value="<?= $candidato->getSobrenome(); ?>" required>
+                        <input type="text" class="form-control" id="txtSobrenome" name="txtSobrenome" value="<?= $recrutador->getSobrenome(); ?>" required>
                       </div>
                     </div>
 
@@ -68,7 +68,7 @@ $candidatoDAO->Listar($candidato);
                     <div class="form-row">
                       <div class="form-group col-md-4">
                         <label for="txtDataNasc">Data Nascimento</label>
-                        <input type="date" class="form-control" id="txtDataNasc" name="txtDataNasc" value="<?= $candidato->getDataNasc(); ?>" required>
+                        <input type="date" class="form-control" id="txtDataNasc" name="txtDataNasc" value="<?= $recrutador->getDataNasc(); ?>" required>
                       </div>
 
                       <div class="row d-flex justify-content-center">
@@ -102,12 +102,12 @@ $candidatoDAO->Listar($candidato);
                     <div class="form-row">
                       <div class="form-group col-lg-6">
                         <label for="txtCEP">CEP</label>
-                        <input type="text" class="form-control" id="txtCEP" name="txtCEP" value="<?= $candidato->getCep(); ?>" required>
+                        <input type="text" class="form-control" id="txtCEP" name="txtCEP" value="<?= $recrutador->getCep(); ?>" required>
                       </div>
 
                       <div class="form-group col-lg-6">
                         <label for="txtEndereco">Endereço</label>
-                        <input type="text" class="form-control" id="txtEndereco" name="txtEndereco" value="<?= $candidato->getEndereco(); ?>" required>
+                        <input type="text" class="form-control" id="txtEndereco" name="txtEndereco" value="<?= $recrutador->getEndereco(); ?>" required>
                       </div>
                     </div>
 
@@ -115,17 +115,17 @@ $candidatoDAO->Listar($candidato);
 
                       <div class="form-group col-md-5">
                         <label for="txtBairro">Bairro</label>
-                        <input type="text" class="form-control" id="txtBairro" name="txtBairro" value="<?= $candidato->getBairro(); ?>" required>
+                        <input type="text" class="form-control" id="txtBairro" name="txtBairro" value="<?= $recrutador->getBairro(); ?>" required>
                       </div>
 
                       <div class="form-group col-md-5">
                         <label for="txtCidade">Cidade</label>
-                        <input type="text" class="form-control" id="txtCidade" name="txtCidade" value="<?= $candidato->getCidade(); ?>" required>
+                        <input type="text" class="form-control" id="txtCidade" name="txtCidade" value="<?= $recrutador->getCidade(); ?>" required>
                       </div>
 
                       <div class="form-group col-md-2">
                         <label for="txtUF">Estado</label>
-                        <input type="text" class="form-control" id="txtUF" name="txtUF" value="<?= $candidato->getEstado(); ?>" required>
+                        <input type="text" class="form-control" id="txtUF" name="txtUF" value="<?= $recrutador->getEstado(); ?>" required>
                       </div>
                     </div>
 
@@ -158,12 +158,12 @@ $candidatoDAO->Listar($candidato);
                       <div class="form-row">
                         <div class="form-group col-md-6">
                           <label for="txtTelefone">Telefone</label>
-                          <input type="text" class="form-control" id="txtTelefone" name="txtTelefone" value="<?= $candidato->getTel1(); ?>" required>
+                          <input type="text" class="form-control" id="txtTelefone" name="txtTelefone" value="<?= $recrutador->getTel1(); ?>" required>
                         </div>
 
                         <div class="form-group col-md-6">
                           <label for="txtTelefone2">Telefone 2</label>
-                          <input type="text" class="form-control" id="txtTelefone2" name="txtTelefone2" value="<?= $candidato->getTel2(); ?>">
+                          <input type="text" class="form-control" id="txtTelefone2" name="txtTelefone2" value="<?= $recrutador->getTel2(); ?>">
                         </div>
 
                       </div>
@@ -171,21 +171,21 @@ $candidatoDAO->Listar($candidato);
                       <div class="form-row">
                         <div class="form-group col">
                           <label for="txtlinkedin">LinkedIn</label>
-                          <input type="text" class="form-control" id="txtlinkedin" name="txtlinkedin" value="<?= $candidato->getLinkedin(); ?>">
+                          <input type="text" class="form-control" id="txtlinkedin" name="txtlinkedin" value="<?= $recrutador->getLinkedin(); ?>">
                         </div>
                       </div>
 
                       <div class="form-row">
                         <div class="form-group col">
                           <label for="txtFacebook">Facebook</label>
-                          <input type="text" class="form-control" id="txtFacebook" name="txtFacebook" value="<?= $candidato->getFacebook(); ?>">
+                          <input type="text" class="form-control" id="txtFacebook" name="txtFacebook" value="<?= $recrutador->getFacebook(); ?>">
                         </div>
                       </div>
 
                       <div class="form-row">
                         <div class="form-group col">
                           <label for="txtSitePessoal">Site Pessoal</label>
-                          <input type="text" class="form-control" id="txtSitePessoal" name="txtSitePessoal" value="<?= $candidato->getSitePessoal(); ?>">
+                          <input type="text" class="form-control" id="txtSitePessoal" name="txtSitePessoal" value="<?= $recrutador->getSitePessoal(); ?>">
                         </div>
                       </div>
 
@@ -208,7 +208,7 @@ $candidatoDAO->Listar($candidato);
 
     <div class="row">
       <div class="col">
-        <button href="candidato.php" class="btn btn-primary float-right" >Visualizar Perfil</button>
+        <button href="recrutador.php" class="btn btn-primary float-right" >Visualizar Perfil</button>
       </div>
     </div>
 

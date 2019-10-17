@@ -118,7 +118,7 @@ class RecrutadorDAO
 
     public static function Logar(Recrutador $recrutador)
     {
-        $sql = "SELECT * FROM tbRecrutador WHERE email='" . $recrutador->getEmail() . "' AND cnpj ='" . $recrutador->getCnpj() . "';";
+        $sql = "SELECT * FROM tbRecrutador WHERE cnpj ='" . $recrutador->getCnpj() . "';";
 
         $db = new Conexao();
 
@@ -130,7 +130,7 @@ class RecrutadorDAO
 
             if (Bcrypt::check($recrutador->getSenha(), $linha['senha'])) {
 
-                $_SESSION['logado'] = 1;
+                $_SESSION['logado'] = 2;
                 $_SESSION['nomeEmpresa'] = $linha['nomeEmpresa'];
                 $_SESSION['cnpj'] = $linha['cnpj'];
 

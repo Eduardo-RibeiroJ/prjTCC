@@ -17,9 +17,6 @@ include_once "../Controller/RecrutadorDAO.php";
             <label for="txtCnpj" class="sr-only">Cnpj</label>
             <input id="txtCnpj" name="txtCnpj" class="form-control mb-1" placeholder="Insira seu CNPJ.." autofocus="" required>
 
-            <label for="txtEmail" class="sr-only">Endereço de email</label>
-            <input type="email" id="txtEmail" name="txtEmail" class="form-control mb-1" placeholder="Insira seu e-mail..." required>
-
             <label for="txtSenha" class="sr-only">Senha</label>
             <input type="password" id="txtSenha" name="txtSenha" class="form-control mb-1" placeholder="Insira uma senha..." required>
 

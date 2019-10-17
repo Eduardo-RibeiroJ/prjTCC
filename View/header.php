@@ -38,10 +38,6 @@
             <a class="nav-link" href="#funcionalidades">Caracteristicas</a>
           </li>
 
-          <li class="nav-item">
-            <a class="nav-link" href="candidato_cadastrar.php">Cadastre-se</a>
-          </li>
-
           <!--<li class="nav-item">
             <a class="nav-link" href="candidato_logar.php">Entrar</a>
           </li>-->
@@ -131,12 +127,6 @@
               </div>
               <div class="form-group col-12">
                 <label class="text-left">
-                  <h6>Endereço de email</h6>
-                </label>
-                <input type="email" id="txtEmail" name="txtEmail" class="form-control" placeholder="Seu email" required="" autofocus="">
-              </div>
-              <div class="form-group col-12">
-                <label class="text-left">
                   <h6>Senha</h6>
                 </label>
                 <input type="password" id="txtSenha" name="txtSenha" class="form-control" placeholder="Senha" required="">
@@ -158,24 +148,5 @@
       </div>
     </div>
   </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   <!-- Fim do Cabeçalho que irá em todas as páginas  -->
