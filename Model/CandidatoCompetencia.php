@@ -4,9 +4,10 @@ class CandidatoCompetencia {
     private $idCompetencia;
     private $nivel;
 
-    public function inserirCompetencia ($cpf, $idCompetencia, $nivel) {
+    public function inserirCompetencia ($cpf, $idCompetencia, $competencia, $nivel) {
         $this->cpf = $cpf;
         $this->idCompetencia = $idCompetencia;
+        $this->competencia = $competencia;
         $this->nivel = $nivel;
     }
     
@@ -16,6 +17,10 @@ class CandidatoCompetencia {
 
     function getIdCompetencia() {
         return $this->idCompetencia;
+    }
+
+    function getCompetencia() {
+        return $this->competencia;
     }
 
     function getNivel() {
@@ -34,9 +39,8 @@ class CandidatoCompetencia {
         $this->idCompetencia = $idCompetencia;
     }
 
-    public function getUltimoRegistro() {
-
-        return CandidatoCompetenciaDAO::UltimoRegistro() + 1;
+    function setCompetencia($competencia) {
+        $this->competencia = $competencia;
     }
 
     public function getUltimoRegistroComp() {

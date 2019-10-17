@@ -58,6 +58,7 @@ CREATE TABLE `tbcandidato` (
 CREATE TABLE `tbcandidatocompetencia` (
   `cpf` varchar(15) NOT NULL,
   `idCompetencia` int(11) NOT NULL,
+  `competencia` varchar(30) NOT NULL,
   `nivel` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 

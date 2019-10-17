@@ -124,6 +124,26 @@ if ($_POST['acao'] == "SalvarPergunta") {
 	$perguntaDAO->Inserir($pergunta);
 }
 
+if ($_POST['acao'] == "SalvarCandCompetencia") {
+
+	include_once "../Model/CandidatoCompetencia.php";
+	include_once "../Controller/CandidatoCompetenciaDAO.php";
+
+	$competencia = new CandidatoCompetencia();
+	$competenciaDAO = new CandidatoCompetenciaDAO($conn);
+
+	$competencia->inserirCompetencia(
+
+    $_POST['cpf'],
+		$_POST['idCompetencia'],
+		$_POST['competencia'],
+		$_POST['nivel']
+
+	);
+
+	$competenciaDAO->Inserir($competencia);
+}
+
 echo true;
 
 ?>

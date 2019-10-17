@@ -469,17 +469,17 @@ $(function(){
 
     //CANDIDATO COMPETENCIAS
 
-    $('#sectionCandCompetencias').on('click', '#btnInserirCompetencia', function (e) {
+    $('#containerCompetencias').on('click', '#btnInserirCompetencia', function (e) {
 
         e.preventDefault();
-        var btn = $(this);
         var nomeCompetencia = $('#txtNomeCompetencia').val();
         var nivelCompetencia = $('#cbbNivelCompetencia').val();
+        var ultimoRegistro = $('#txtUltimoRegistro').val();
 
         $.post('../PostAjax/salvar.php', {
-            acao: "SalvarCompetencia",
+            acao: "SalvarCandCompetencia",
             cpf: $('#txtCpf').val(),
-            idCompetencia: $('#txtUltimoRegistro').val(),
+            idCompetencia: ultimoRegistro,
             competencia: nomeCompetencia,
             nivel: nivelCompetencia
 
@@ -500,6 +500,12 @@ $(function(){
                                                     </p>
                                                 </div>`
                                             );
+                
+                $('#txtUltimoRegistro').val(parseInt(ultimoRegistro) + 1);
+                $('#txtNomeCompetencia').val('');
+                $('#cbbNivelCompetencia').val('');
+                
+                $('#txtNomeCompetencia').focus();
 
 
             } else {
@@ -507,6 +513,29 @@ $(function(){
             }
         });
 
+    });
+
+    $('#sectionCandCompetencias').on('click', '#btnExcluirCompetencia', function (e) {
+
+        var cardAlvo = $(this).closest('.div-competencia');
+
+        $.post('../PostAjax/excluir.php', {
+            acao: "excluirCompetencia",
+            cpf: $('#txtCpf').val(),
+            idCompetencia: $(this).val()
+
+        }, function (sucesso) {
+
+            if (sucesso == true) {
+
+                cardAlvo.fadeOut(500, function () {
+                    cardAlvo.remove();
+                });
+
+            } else {
+                alert('Erro: ' + sucesso);
+            }
+        });
     });
 
 });

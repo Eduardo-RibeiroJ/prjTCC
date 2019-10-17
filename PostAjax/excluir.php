@@ -87,6 +87,20 @@ if ($_POST['acao'] == "excluirPergunta") {
 	$perguntaDAO->Apagar($pergunta);
 }
 
+if($_POST['acao'] == "excluirCompetencia") {
+
+	include_once "../Model/CandidatoCompetencia.php";
+	include_once "../Controller/CandidatoCompetenciaDAO.php";
+
+	$competencia = new CandidatoCompetencia();
+	$competenciaDAO = new CandidatoCompetenciaDAO($conn);
+
+	$competencia->setCpf ($_POST['cpf']);
+	$competencia->setIdCompetencia ($_POST['idCompetencia']);
+
+	$competenciaDAO->Apagar($competencia);
+}
+
 echo true;
 
 ?>

@@ -20,13 +20,13 @@ $candidatoDAO = new CandidatoDAO($conn);
 $competencia->setCpf($_SESSION['cpf']);
 $candidato->setCpf($_SESSION['cpf']);
 
-//$ultimoRegistro = $competencia->getUltimoRegistroCompetencia();
+$ultimoRegistro = $competencia->getUltimoRegistroComp();
 
-//$arrayCompetencia = $competenciaDAO->Listar($competencia);
+$arrayCompetencia = $competenciaDAO->Listar($competencia);
 
 ?>
 
-<div class="container">
+<div class="container" id="containerCompetencias">
 
     <input type="hidden" id="txtUltimoRegistro" name="txtUltimoRegistro" value="<?= $ultimoRegistro ?>">
     <input type="hidden" id="txtCpf" name="txtCpf" value="<?= $candidato->getCpf() ?>">
@@ -42,10 +42,10 @@ $candidato->setCpf($_SESSION['cpf']);
         <form>
         <div class="form-row">
             <div class="form-group col-md-6">
-                <input type="text" class="form-control" id="txtNomeCompetencia<?= $ultimoRegistro ?>" name="txtNomeCompetencia" placeholder="Digite uma competência..." required>
+                <input type="text" class="form-control" id="txtNomeCompetencia" name="txtNomeCompetencia" placeholder="Digite uma competência..." required autofocus>
             </div>
             <div class="form-group col-md-5">
-                <select class="custom-select" id="cbbNivelCompetencia<?= $ultimoRegistro ?>" name="cbbNivelCompetencia" required>
+                <select class="custom-select" id="cbbNivelCompetencia" name="cbbNivelCompetencia" required>
                     <option value="" selected>Nível de conhecimento</option>
                     <option value="B">Básico</option>
                     <option value="I">Intermediário</option>
@@ -53,7 +53,7 @@ $candidato->setCpf($_SESSION['cpf']);
                 </select>
             </div>
             <div class="form-group col-md-1">
-                <input type="submit" class="btn btn-primary" id="btnInserirCompetencia<?= $ultimoRegistro ?>" name="btnInserirCompetencia" value="Inserir">
+                <button class="btn btn-primary" id="btnInserirCompetencia" name="btnInserirCompetencia">Inserir</button>
             </div>
         </div>
         </form>
@@ -63,125 +63,25 @@ $candidato->setCpf($_SESSION['cpf']);
 
     <div class="d-flex flex-wrap" id="divCandCompetencias">
 
-    <?php //foreach($arrayCompetencias as $reg): ?>
+    <?php foreach($arrayCompetencia as $reg): ?>
 
         <div class="div-competencia flex-fill">
             <p>
-                <h5 class="d-inline">Visual Studio</h5>
-                <button class="btn btn-outline-dark d-inline ml-4" id="btnExcluirCompetencia"><i class="fas fa-trash-alt"></i></button>
+                <h5 class="d-inline"><?= $reg->getCompetencia() ?></h5>
+                <button class="btn btn-outline-dark d-inline ml-4" id="btnExcluirCompetencia" value="<?= $reg->getIdCompetencia() ?>"><i class="fas fa-trash-alt"></i></button>
             </p>
             <p>
-            <select class="custom-select d-inline" id="cbbNivelCompetencia<?= $ultimoRegistro ?>" name="cbbNivelCompetencia" required>
+            <select class="custom-select d-inline" id="cbbNivelCompetencia<?= $reg->getIdCompetencia() ?>" name="cbbNivelCompetencia" required>
                 <option value="B">Básico</option>
                 <option value="I">Intermediário</option>
                 <option value="A">Avançado</option>
             </select>
             </p>
-        </div>
+        </div>      
 
-        <div class="div-competencia flex-fill">
-            <p>
-                <h5 class="d-inline">Visual Studio</h5>
-                <button class="btn btn-outline-dark d-inline ml-4" id="btnExcluirCompetencia"><i class="fas fa-trash-alt"></i></button>
-            </p>
-            <p>
-
-                <select class="custom-select d-inline" id="cbbNivelCompetencia<?= $ultimoRegistro ?>" name="cbbNivelCompetencia" required>
-                    <option value="" selected>Nível de conhecimento</option>
-                    <option value="B">Básico</option>
-                    <option value="I">Intermediário</option>
-                    <option value="A">Avançado</option>
-                </select>
-            </p>
-        </div>
-        <div class="div-competencia flex-fill">
-            <p>
-                <h5 class="d-inline">Desenvolvimento de Sistemas</h5>
-                <button class="btn btn-outline-dark d-inline ml-4" id="btnExcluirCompetencia"><i class="fas fa-trash-alt"></i></button>
-            </p>
-            <p>
-
-                <select class="custom-select d-inline" id="cbbNivelCompetencia<?= $ultimoRegistro ?>" name="cbbNivelCompetencia" required>
-                    <option value="" selected>Nível de conhecimento</option>
-                    <option value="B">Básico</option>
-                    <option value="I">Intermediário</option>
-                    <option value="A">Avançado</option>
-                </select>
-            </p>
-        </div>
-        <div class="div-competencia">
-            <p>
-                <h5 class="d-inline">Adobe Photoshop</h5>
-                <button class="btn btn-outline-dark d-inline ml-4" id="btnExcluirCompetencia"><i class="fas fa-trash-alt"></i></button>
-            </p>
-            <p>
-
-                <select class="custom-select d-inline" id="cbbNivelCompetencia<?= $ultimoRegistro ?>" name="cbbNivelCompetencia" required>
-                    <option value="" selected>Nível de conhecimento</option>
-                    <option value="B">Básico</option>
-                    <option value="I">Intermediário</option>
-                    <option value="A">Avançado</option>
-                </select>
-            </p>
-        </div>
-        <div class="div-competencia">
-            <p>
-                <h5 class="d-inline">Excel Avançado</h5>
-                <button class="btn btn-outline-dark d-inline ml-4" id="btnExcluirCompetencia"><i class="fas fa-trash-alt"></i></button>
-            </p>
-            <p>
-
-                <select class="custom-select d-inline" id="cbbNivelCompetencia<?= $ultimoRegistro ?>" name="cbbNivelCompetencia" required>
-                    <option value="" selected>Nível de conhecimento</option>
-                    <option value="B">Básico</option>
-                    <option value="I">Intermediário</option>
-                    <option value="A">Avançado</option>
-                </select>
-            </p>
-        </div>
-        <div class="div-competencia">
-            <p>
-                <h5 class="d-inline">C#</h5>
-                <button class="btn btn-outline-dark d-inline ml-4" id="btnExcluirCompetencia"><i class="fas fa-trash-alt"></i></button>
-            </p>
-            <p>
-
-                <select class="custom-select d-inline" id="cbbNivelCompetencia<?= $ultimoRegistro ?>" name="cbbNivelCompetencia" required>
-                    <option value="" selected>Nível de conhecimento</option>
-                    <option value="B">Básico</option>
-                    <option value="I">Intermediário</option>
-                    <option value="A">Avançado</option>
-                </select>
-            </p>
-        </div>
-        <div class="div-competencia">
-            <p>
-                <h5 class="d-inline">Visual Studio</h5>
-                <button class="btn btn-outline-dark d-inline ml-4" id="btnExcluirCompetencia"><i class="fas fa-trash-alt"></i></button>
-            </p>
-            <p>
-
-                <select class="custom-select d-inline" id="cbbNivelCompetencia<?= $ultimoRegistro ?>" name="cbbNivelCompetencia" required>
-                    <option value="" selected>Nível de conhecimento</option>
-                    <option value="B">Básico</option>
-                    <option value="I">Intermediário</option>
-                    <option value="A">Avançado</option>
-                </select>
-            </p>
-        </div>
-        
-
-        
-    <?php //endforeach; ?>
+    <?php endforeach; ?>
     <hr class="my-2 my-md-4">
     </div>
-        
-
-    <?php //foreach($arrayCompetencias as $reg): ?>
-    <?php //endforeach; ?>
-
-
-
 
   </section>
 </div>
