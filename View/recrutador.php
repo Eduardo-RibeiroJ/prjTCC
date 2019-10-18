@@ -20,32 +20,102 @@
   <section id="sectionRecrutador">
 
       <div class="row">
-        <div class="col">
 
-          <div class="card mb-2">
-            <div class="d-flex align-items-stretch p-5" style="background-color: lightblue;">
-              <i class="fas fa-archive fa-5x align-self-start" style="height:32px; weight:32px"></i>
-                    <h5 class="display-4 display-md-2 pl-5 pt-3">Processos finalizados!</h1>
+        <div class="col-md-4">
+          <div class="btn-grande">
+            <div class="row">
+
+              <div class="col-md-3 text-center my-auto">
+                <i class="fas fa-folder-open fa-3x"></i>
+              </div>
+
+              <div class="col-md-9 text-center">
+                <h4>Processos seletivos em andamento</h4>
+              </div>
             </div>
           </div>
+        </div>
 
-          <div class="card mb-2">
-            <div class="d-flex align-items-stretch p-5" style="background-color: lightblue;">
-              <i class="fas fa-folder-open fa-5x align-self-start" style="height:32px; weight:32px"></i>
-                    <h5 class="display-4 display-md-2 pl-5 pt-3">Processos em andamento!</h1>
+        <div class="col-md-4">
+          <div class="btn-grande">
+
+            <div class="row">
+              <div class="col-md-3 text-center my-auto">
+                <i class="fas fa-archive fa-3x"></i>
+              </div>
+
+              <div class="col-md-9 text-center">
+                <h4>Processos seletivos encerrados</h4>
+              </div>
             </div>
           </div>
+        </div>
 
-          <div class="media">
-            <div class="d-flex align-items-stretch p-5" style="background-color: lightblue;">
-              <i class="fas fa-plus fa-5x align-self-start" style="height:32px; weight:32px"></i>
-                    <h5 class="display-4 display-md-2 pl-5 pt-3">Abrir Processo Seletivo</h1>
+        <div class="col-md-4">
+          <div class="btn-grande">
+            <div class="row">
+              <div class="col-md-3 text-center my-auto">
+                <i class="fas fa-plus fa-3x"></i>
+              </div>
+
+              <div class="col-md-9 text-center">
+                <h4>Abrir novo processo seletivo</h4>
+              </div>
+            </div>
+          </div>  
+        </div> 
+      </div>
+
+      <div class="row">
+
+        <div class="col-md-6">
+          <div class="btn-grande">
+            <div class="row">
+
+              <div class="col-md-3 text-center my-auto">
+                <i class="fas fa-folder-open fa-3x"></i>
+              </div>
+
+              <div class="col-md-9 text-center">
+                <h4>Processos seletivos em andamento</h4>
+              </div>
             </div>
           </div>
+        </div>
 
+        <div class="col-md-6">
+          <div class="btn-grande">
+
+            <div class="row">
+              <div class="col-md-3 text-center my-auto">
+                <i class="fas fa-archive fa-3x"></i>
+              </div>
+
+              <div class="col-md-9 text-center">
+                <h4>Processos seletivos encerrados</h4>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
+      <div class="row">
+
+        <div class="col">
+          <div class="btn-grande">
+            <div class="row">
+
+              <div class="col-md-3 text-center my-auto">
+                <i class="fas fa-folder-open fa-3x float-right"></i>
+              </div>
+
+              <div class="col-md-9 text-center">
+                <h4>Processos seletivos em andamento</h4>
+              </div>
+            </div>
+          </div>
+        </div> 
+      </div>
 
     </section>
   </div>

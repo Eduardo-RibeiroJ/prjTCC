@@ -134,6 +134,15 @@
         margin-top: -1em;
     }
 
+    .btn-grande {
+        /* margin: 0.2em 0.5em; */
+        margin-bottom: 0.8em;
+        border-radius: 0.2em;
+        padding: 1.4em 1em;
+        background-color: #9cc5ee;
+        height: 95%;
+    }
+
     /*
     Relacionado a divisão dos conteúdos*/
 

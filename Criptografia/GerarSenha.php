@@ -1,8 +1,8 @@
 <?php 
-include "../Model/Bcrypt.php";
+include "Bcrypt.php";
 
-$senha_login = "12345";
-$senha       = "12345";
+$senha_login = "123456";
+$senha       = "123456";
 
 echo $senha;
 
