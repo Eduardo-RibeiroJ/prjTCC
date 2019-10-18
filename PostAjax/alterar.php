@@ -193,6 +193,23 @@ if ($_POST['acao'] == "alterarPergunta") {
 	$perguntaDAO->Alterar($pergunta);
 }
 
+if ($_POST['acao'] == "alterarCandCompetencia") {
+
+	include_once "../Model/CandidatoCompetencia.php";
+	include_once "../Controller/CandidatoCompetenciaDAO.php";
+
+	$competencia = new CandidatoCompetencia();
+	$competenciaDAO = new CandidatoCompetenciaDAO($conn);
+
+	$competencia->alterarCompetencia(
+		$_POST['cpf'],
+		$_POST['idCompetencia'],
+		$_POST['nivel']
+	);
+
+	$competenciaDAO->Alterar($competencia);
+}
+
 echo true;
 
 ?>

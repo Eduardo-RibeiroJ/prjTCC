@@ -46,10 +46,9 @@ $arrayCompetencia = $competenciaDAO->Listar($competencia);
             </div>
             <div class="form-group col-md-5">
                 <select class="custom-select" id="cbbNivelCompetencia" name="cbbNivelCompetencia" required>
-                    <option value="" selected>Nível de conhecimento</option>
-                    <option value="B">Básico</option>
-                    <option value="I">Intermediário</option>
-                    <option value="A">Avançado</option>
+                    <option value="Básico">Básico</option>
+                    <option value="Intermediário">Intermediário</option>
+                    <option value="Avançado">Avançado</option>
                 </select>
             </div>
             <div class="form-group col-md-1">
@@ -71,16 +70,38 @@ $arrayCompetencia = $competenciaDAO->Listar($competencia);
                 <button class="btn btn-outline-dark d-inline ml-4" id="btnExcluirCompetencia" value="<?= $reg->getIdCompetencia() ?>"><i class="fas fa-trash-alt"></i></button>
             </p>
             <p>
-            <select class="custom-select d-inline" id="cbbNivelCompetencia<?= $reg->getIdCompetencia() ?>" name="cbbNivelCompetencia" required>
-                <option value="B">Básico</option>
-                <option value="I">Intermediário</option>
-                <option value="A">Avançado</option>
-            </select>
+                <select class="custom-select d-inline" id="cbbNivelCompetencia<?= $reg->getIdCompetencia() ?>" name="cbbNivelCompetencia" required>
+                    
+                <?php
+
+                    $alternativas = ['Básico','Intermediário','Avançado'];
+
+                    foreach ($alternativas as $value) {
+
+                        if($value == $reg->getNivel())
+                            $selected = 'selected';
+                        else
+                            $selected = '';
+
+                        echo '<option value="'.$value.'" '.$selected.'>'.$value.'</option>';
+                    }
+
+                ?>
+                    
+                </select>
             </p>
         </div>      
 
     <?php endforeach; ?>
+    
+    </div>
+
     <hr class="my-2 my-md-4">
+
+    <div class="row">
+        <div class="col">
+            <a href="candidato_perfil.php" class="btn btn-primary float-right">Visualizar Perfil</a>
+        </div>
     </div>
 
   </section>

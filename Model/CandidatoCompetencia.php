@@ -10,6 +10,12 @@ class CandidatoCompetencia {
         $this->competencia = $competencia;
         $this->nivel = $nivel;
     }
+
+    public function alterarCompetencia ($cpf, $idCompetencia, $nivel) {
+        $this->cpf = $cpf;
+        $this->idCompetencia = $idCompetencia;
+        $this->nivel = $nivel;
+    }
     
     function getCpf() {
         return $this->cpf;

@@ -16,6 +16,13 @@ class CandidatoCompetenciaDAO
         $competenciaCand = $candCompetencia->getCompetencia();
         $nivel = $candCompetencia->getNivel();
 
+        if($nivel == 'Básico')
+            $nivel = 'B';
+        else if($nivel == 'Intermediário')
+            $nivel = 'I';
+        else if($nivel == 'Avançado')
+            $nivel = 'A';
+
         $query = "INSERT INTO tbCandidatoCompetencia (cpf, idCompetencia, competencia, nivel) VALUES (?,?,?,?);";
         $stmt = mysqli_prepare($this->db->getConection(), $query);
 
@@ -35,6 +42,13 @@ class CandidatoCompetenciaDAO
         $idCompetenciaCand = $candCompetencia->getIdCompetencia();
         $nivel = $candCompetencia->getNivel();
 
+        if($nivel == 'Básico')
+            $nivel = 'B';
+        else if($nivel == 'Intermediário')
+            $nivel = 'I';
+        else if($nivel == 'Avançado')
+            $nivel = 'A';
+
         $query = "UPDATE tbCandidatoCompetencia SET nivel=? WHERE cpf = ? AND idCompetencia = ?;";
  
         $stmt = mysqli_prepare($this->db->getConection(), $query);
@@ -43,7 +57,7 @@ class CandidatoCompetenciaDAO
             die(mysqli_error($this->db->getConection()));
         } 
         
-        mysqli_stmt_bind_param($stmt, 'sii', $nivel, $cpf, $idCompetenciaCand);
+        mysqli_stmt_bind_param($stmt, 'ssi', $nivel, $cpf, $idCompetenciaCand);
         mysqli_stmt_execute($stmt);
         mysqli_stmt_close($stmt);
 
@@ -69,7 +83,14 @@ class CandidatoCompetenciaDAO
 
         while($reg = $query->fetch_array()) {
 
-            $candCompetencia = new CandidatoCompetencia();            
+            $candCompetencia = new CandidatoCompetencia();
+
+            if($reg['nivel'] == 'B')
+                $reg['nivel'] = 'Básico';
+            else if($reg['nivel'] == 'I')
+                $reg['nivel'] = 'Intermediário';
+            else if($reg['nivel'] == 'A')
+                $reg['nivel'] = 'Avançado';
             
             $candCompetencia->InserirCompetencia(         
                 $reg['cpf'],

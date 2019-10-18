@@ -489,21 +489,24 @@ $(function(){
                 $('#divCandCompetencias').prepend(`<div class="div-competencia flex-fill">
                                                     <p>
                                                         <h5 class="d-inline">`+ nomeCompetencia +`</h5>
-                                                        <button class="btn btn-outline-dark d-inline ml-4" id="btnExcluirCompetencia"><i class="fas fa-trash-alt"></i></button>
+                                                        <button class="btn btn-outline-dark d-inline ml-4" value="` + ultimoRegistro +`" id="btnExcluirCompetencia"><i class="fas fa-trash-alt"></i></button>
                                                     </p>
                                                     <p>
-                                                    <select class="custom-select d-inline" id="cbbNivelCompetencia<?= $ultimoRegistro ?>" name="cbbNivelCompetencia" required>
-                                                        <option value="B">Básico</option>
-                                                        <option value="I">Intermediário</option>
-                                                        <option value="A">Avançado</option>
+                                                    <select class="custom-select d-inline" id="cbbNivelCompetencia` + ultimoRegistro +`" name="cbbNivelCompetencia" required>
+                                                        <option value="Básico">Básico</option>
+                                                        <option value="Intermediário">Intermediário</option>
+                                                        <option value="Avançado">Avançado</option>
                                                     </select>
                                                     </p>
                                                 </div>`
                                             );
                 
+                                            
+                $('#cbbNivelCompetencia' + ultimoRegistro).val(nivelCompetencia);
                 $('#txtUltimoRegistro').val(parseInt(ultimoRegistro) + 1);
                 $('#txtNomeCompetencia').val('');
-                $('#cbbNivelCompetencia').val('');
+                $('#cbbNivelCompetencia').val('Básico');
+                
                 
                 $('#txtNomeCompetencia').focus();
 
@@ -531,6 +534,31 @@ $(function(){
                 cardAlvo.fadeOut(500, function () {
                     cardAlvo.remove();
                 });
+
+            } else {
+                alert('Erro: ' + sucesso);
+            }
+        });
+    });
+
+    $('#sectionCandCompetencias').on('change', 'select', function (e) {
+
+        var nivel = $(this).val();
+
+        //Retorna apenas o int (idCompetencia) que esta misturado em uma string
+        var idCompetencia = $(this).attr('id').split("").filter(Number).join("");
+
+        $.post('../PostAjax/alterar.php', {
+            acao: "alterarCandCompetencia",
+            cpf: $('#txtCpf').val(),
+            idCompetencia: idCompetencia,
+            nivel: nivel
+
+        }, function (sucesso) {
+
+            if (sucesso == true) {
+                console.log('ALTEROU');
+                
 
             } else {
                 alert('Erro: ' + sucesso);
