@@ -159,6 +159,47 @@ $arrayCompetencia = $competenciaDAO->Listar($competencia);
 
         <div class="card">
 
+          <div class="card-header" id="candidatoCompetencia" data-toggle="collapse" data-target="#collapsecandidatoCompetencia" aria-expanded="true" aria-controls="collapsecandidatoCompetencia">
+            Idiomas e Competências
+            <a href="candidato_inserir_competencia.php" name="btnAlterarCompetencia" id="btnAlterarCompetencia" class="btn btn-outline-primary float-right">
+              <i class="fas fa-pencil-alt"></i>
+            </a>
+          </div>
+
+          <div id="collapsecandidatoCompetencia" class="collapse show" aria-labelledby="candidatoCompetencia">
+
+            <div class="card-body">
+              <div class="card-text">
+
+              <?php if($arrayCompetencia): ?>
+
+              <ul>
+
+                <?php foreach($arrayCompetencia as $reg): ?>
+
+                  <li><strong><?= $reg->getCompetencia(); ?></strong>, nível <?= $reg->getNivel(); ?></li>
+
+                <?php endforeach; ?>
+
+              </ul>
+              
+              <?php else: ?>
+                <p>
+                  <strong>Insira seus idiomas e competências!</strong>
+                  <a href="candidato_inserir_competencia.php" name="btnAlterarCompetencia" id="btnAlterarCompetencia" class="btn btn-outline-dark ml-4">
+                    <i class="fas fa-plus"></i>
+                  </a>
+                </p>
+              <?php endif; ?>
+
+                  
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+
           <div class="card-header" id="candidatoFormacao" data-toggle="collapse" data-target="#collapsecandidatoFormacao" aria-expanded="true" aria-controls="collapsecandidatoFormacao">
             Formação
             <a href="candidato_inserir_formacao.php" name="btnAlterarFormacao" id="btnAlterarFormacao" class="btn btn-outline-primary float-right">
