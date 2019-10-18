@@ -1,5 +1,8 @@
 <?php
-session_start();
+
+if (!isset($_SESSION)) {
+	session_start();
+}
 
 include_once "../Model/Conexao.php";
 include_once "../Model/Candidato.php";
@@ -24,7 +27,7 @@ if (isset($_POST['btnEntrar'])) {
 		echo "<script> alert('E-mail não cadastrado!'); window.location.replace('candidato_logar.php'); </script>";
 }
 
-if (empty($_SESSION['logado'])) {
+if ($_SESSION['logado'] != 1) {
 	echo "<script>location.href='index.php'</script>";
 }
 ?>
@@ -47,8 +50,8 @@ if (empty($_SESSION['logado'])) {
 
 	<!-- Navbar -->
 	<header id="header">
-		<nav class="navbar fixed-top navbar-expand-lg navbar-dark" style="background-image: linear-gradient(to right, rgba(10, 100, 180, 1), rgba(23,166,255,1));">
-			<a class="navbar-brand h1 mb-0" href="#"> Connection</a>
+		<nav class="navbar fixed-top navbar-expand-lg navbar-dark" style="background-image: linear-gradient(to right, rgba(10, 100, 180, 0.3), rgba(23,166,255,0.3));">
+			<a class="navbar-brand h1 mb-0" href="index.php"> Connection</a>
 
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsite" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
 				<span class="navbar-toggler-icon"></span>
@@ -58,7 +61,7 @@ if (empty($_SESSION['logado'])) {
 				<ul class="navbar-nav">
 
 					<li class="nav-item">
-						<a class="nav-link" href="#home">Home</a>
+						<a class="nav-link" href="candidato.php">Home</a>
 					</li>
 
 					<li class="nav-item">
@@ -104,12 +107,12 @@ if (empty($_SESSION['logado'])) {
 					<li class="nav-item dropdown no-arrow" style="padding-left:1rem">
 						<a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 							<span><?= $_SESSION['nomeCandidato']; ?></span>
-							<img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/30x30">
+							<img class="img-profile rounded-circle ml-2" style="width: 30px; height: 30px;" src="https://www.letradamusica.net/fotos/k/kasino/fotos/kasino-8.jpg">
 						</a>
 
 						<!-- Dropdown - User Information -->
 						<div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-							<a class="dropdown-item" href="#">
+							<a class="dropdown-item" href="candidato_perfil.php">
 								<i></i>
 								Perfil
 							</a>

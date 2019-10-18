@@ -1,5 +1,15 @@
+<?php
 
-<?php include_once 'header.php'; ?>
+session_start();
+
+if(empty($_SESSION['logado']))
+  include_once 'header.php';
+else if($_SESSION['logado'] == 1)
+  include_once 'headerCand.php';
+else if($_SESSION['logado'] == 2)
+  include_once 'headerRecrut.php';
+
+?>
 
   <!-- Masthead -->
           <header class="masthead text-white text-left" id="home">

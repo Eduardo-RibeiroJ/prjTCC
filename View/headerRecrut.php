@@ -24,7 +24,7 @@ if (isset($_POST['btnEntrarRecrutador'])) {
 		echo "<script> alert('Cnpj não cadastrado!'); window.location.replace('recrutador_cadastrar.php'); </script>";
 }
 
-if (empty($_SESSION['logado'])) {
+if ($_SESSION['logado'] != 2) {
 	echo "<script>location.href='index.php'</script>";
 }
 ?>
@@ -47,8 +47,8 @@ if (empty($_SESSION['logado'])) {
 
 	<!-- Navbar -->
 	<header id="header">
-		<nav class="navbar fixed-top navbar-expand-lg navbar-dark" style="background-image: linear-gradient(to right, rgba(10, 100, 180, 1), rgba(23,166,255,1));">
-			<a class="navbar-brand h1 mb-0" href="#"> Connection</a>
+		<nav class="navbar fixed-top navbar-expand-lg navbar-dark" style="background-image: linear-gradient(to right, rgba(10, 100, 180, 0.3), rgba(23,166,255,0.3));">
+			<a class="navbar-brand h1 mb-0" href="index.php"> Connection</a>
 
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsite" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
 				<span class="navbar-toggler-icon"></span>
@@ -58,7 +58,7 @@ if (empty($_SESSION['logado'])) {
 				<ul class="navbar-nav">
 
 					<li class="nav-item">
-						<a class="nav-link" href="#home">Home</a>
+						<a class="nav-link" href="recrutador.php">Home</a>
 					</li>
 
 					<li class="nav-item">
@@ -109,7 +109,7 @@ if (empty($_SESSION['logado'])) {
 
 						<!-- Dropdown - User Information -->
 						<div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-							<a class="dropdown-item" href="#">
+							<a class="dropdown-item" href="recrutador_alterar.php">
 								<i></i>
 								Perfil
 							</a>

@@ -26,7 +26,7 @@ if(isset($_GET['btnCriar'])) {
 
 ?>
 
-<?php include_once 'header.php'; ?>
+<?php include_once 'headerRecrut.php'; ?>
       
 <div class="container" id="containerPrincipal">
 
