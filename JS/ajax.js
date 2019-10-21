@@ -592,4 +592,19 @@ $(function(){
         });
     });
 
+    $('#sectionProcesso1').on('change', '#chkAc', function (e) {
+
+        var txtSal = $('#txtSalario');
+        
+        if(this.checked) {
+            txtSal.val('A combinar');
+            txtSal.attr('readonly', true);
+        } else {
+            txtSal.val('');
+            txtSal.attr('readonly', false);
+
+        }
+
+    });
+
 });
