@@ -1,5 +1,32 @@
 <?php
+session_start();
 
+include_once "../Model/Conexao.php";
+include_once "../Model/ProcessoSeletivo.php";
+include_once "../Controller/ProcessoSeletivoDAO.php";
+
+$conn = new Conexao();
+$processo = new ProcessoSeletivo();
+
+if (isset($_POST['btnAvancar'])) {
+
+  $processo->inserirProcessoSeletivo(
+    3,
+    $_SESSION['cnpj'],
+    $_POST['txtCargo'],
+    $_POST['txtDataInicio'],
+    $_POST['txtDataLimite'],
+    $_POST['txtResumo'],
+    $_POST['cbbNivel'],
+    $_POST['cbbContratacao'],
+    $_POST['txtSalario']
+  );
+
+  $_SESSION['processo_etapa1'] = serialize($processo);
+
+  header('Location: criar_processo_2.php');
+
+}
 ?>
 
 <?php include_once 'headerRecrut.php'; ?>
@@ -17,7 +44,7 @@
 
                     <div class="card-body">
                         <div class="card-text">
-                            <form>
+                            <form method="POST" action="criar_processo_1.php">
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="txtCargo">Cargo</label>
@@ -39,8 +66,8 @@
                                 <div class="form-row my-3">
 
                                     <div class="form-group col-md-12">
-                                        <label for="txtCargo">Resumo da vaga</label>
-                                        <textarea class="form-control" id="txtCargo" rows="6" placeholder="Insira aqui informações da vaga..." required></textarea>
+                                        <label for="txtResumo">Resumo da vaga</label>
+                                        <textarea class="form-control" id="txtResumo" name="txtResumo" rows="6" placeholder="Insira aqui informações da vaga..." required></textarea>
                                     </div>
 
                                 </div>

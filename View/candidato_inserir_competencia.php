@@ -33,28 +33,28 @@ $arrayCompetencia = $competenciaDAO->Listar($competencia);
 
     <div class="jumbotron p-3 p-md-5">
         <div class="container p-0">
-        <h5 class="display-4 display-md-2"><i class="fas fa-lightbulb d-none d-md-inline"></i> Queremos saber sobre suas competências!</h1>
-        
-        <hr class="my-2 my-md-4">
-        <p class="lead">Adicione uma nova competência sempre que quiser.</p>
+            <h5 class="display-4 display-md-2"><i class="fas fa-lightbulb d-none d-md-inline"></i> Queremos saber sobre suas competências!</h1>
+            
+            <hr class="my-2 my-md-4">
+            <p class="lead">Adicione uma nova competência sempre que quiser.</p>
         </div>
 
         <form>
-        <div class="form-row">
-            <div class="form-group col-md-6">
-                <input type="text" class="form-control" id="txtNomeCompetencia" name="txtNomeCompetencia" placeholder="Digite uma competência..." required autofocus>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <input type="text" class="form-control" id="txtNomeCompetencia" name="txtNomeCompetencia" placeholder="Digite uma competência..." required autofocus>
+                </div>
+                <div class="form-group col-md-5">
+                    <select class="custom-select" id="cbbNivelCompetencia" name="cbbNivelCompetencia" required>
+                        <option value="Básico">Básico</option>
+                        <option value="Intermediário">Intermediário</option>
+                        <option value="Avançado">Avançado</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-1">
+                    <button class="btn btn-primary" id="btnInserirCompetencia" name="btnInserirCompetencia">Inserir</button>
+                </div>
             </div>
-            <div class="form-group col-md-5">
-                <select class="custom-select" id="cbbNivelCompetencia" name="cbbNivelCompetencia" required>
-                    <option value="Básico">Básico</option>
-                    <option value="Intermediário">Intermediário</option>
-                    <option value="Avançado">Avançado</option>
-                </select>
-            </div>
-            <div class="form-group col-md-1">
-                <button class="btn btn-primary" id="btnInserirCompetencia" name="btnInserirCompetencia">Inserir</button>
-            </div>
-        </div>
         </form>
     </div>
 

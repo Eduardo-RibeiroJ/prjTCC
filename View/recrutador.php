@@ -21,7 +21,7 @@
         <div class="row">
 
           <div class="col-md-6 text-center">
-            <button class="btn btn-primary btn-grande"><i class="fas fa-plus fa-3x"> </i> <h4>Abrir novo processo seletivo</h4></button>
+            <a href="criar_processo.php" class="btn btn-primary btn-grande"><i class="fas fa-plus fa-3x"> </i> <h4>Abrir novo processo seletivo</h4></a>
           </div>
 
           <div class="col-md-6">
