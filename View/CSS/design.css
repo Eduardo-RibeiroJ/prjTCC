@@ -134,13 +134,16 @@
         margin-top: -1em;
     }
 
-    .btn-grande {
-        /* margin: 0.2em 0.5em; */
-        margin-bottom: 0.8em;
-        border-radius: 0.2em;
-        padding: 1.4em 1em;
+    #sectionRecrutador .btn-grande {
+        color: black;
+        background-color: #bddaf7;
+        width: 100%;
+        margin: 0.2em;
+        border: none;
+    }
+
+    #sectionRecrutador .btn-grande:hover {
         background-color: #9cc5ee;
-        height: 95%;
     }
 
     /*
