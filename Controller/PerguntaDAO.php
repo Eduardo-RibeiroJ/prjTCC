@@ -22,7 +22,7 @@ class PerguntaDAO
             die(mysqli_error($this->db->getConection()));
         }
 
-        mysqli_stmt_bind_param($stmt, 'iis', $cnpj, $idPergunta, $pergunta);
+        mysqli_stmt_bind_param($stmt, 'sis', $cnpj, $idPergunta, $pergunta);
         mysqli_stmt_execute($stmt);
         mysqli_stmt_close($stmt);
 
@@ -42,7 +42,7 @@ class PerguntaDAO
             die(mysqli_error($this->db->getConection()));
         } 
         
-        mysqli_stmt_bind_param($stmt, 'sii', $pergunta, $idPergunta, $cnpj);
+        mysqli_stmt_bind_param($stmt, 'sis', $pergunta, $idPergunta, $cnpj);
         mysqli_stmt_execute($stmt);
         mysqli_stmt_close($stmt);
 
@@ -53,9 +53,9 @@ class PerguntaDAO
         $cnpj = $pergunta->getCnpj();
         $idPergunta = $pergunta->getIdPergunta();
 
-        $SQL = $this->db->getConection()->prepare("DELETE FROM tbPergunta WHERE cnpj ='" . $pergunta->getCnpj()."' ORDER BY idPergunta desc;");
+        $SQL = $this->db->getConection()->prepare("DELETE FROM tbPergunta WHERE cnpj = ? AND idPergunta = ? ;");
 
-        $SQL->bind_param("ii", $cnpj, $idPergunta);
+        $SQL->bind_param("si", $cnpj, $idPergunta);
         $SQL->execute();
 
         return true;
@@ -103,10 +103,12 @@ class PerguntaDAO
     public function UltimoRegistroPergunta(Pergunta $pergunta) {
 
         $db = new Conexao();
-        $dados = mysqli_query($db->getConection(), "SELECT MAX(idPergunta) as Pergunta FROM tbPergunta WHERE cnpj = '".$pergunta->getCnpj()."';");
+        $dados = mysqli_query($db->getConection(), "SELECT MAX(idPergunta) as idPergunta FROM tbPergunta WHERE cnpj = '".$pergunta->getCnpj()."';");
 
         $linha = $dados->fetch_array(MYSQLI_ASSOC);
         return $linha["idPergunta"];
     }
 
 }
+
+?>

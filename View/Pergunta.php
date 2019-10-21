@@ -47,7 +47,7 @@ $arrayPergunta = $perguntaDAO->Listar($pergunta);
         <div class="col">
 
           <div class="card">
-            <div class="card-header" id="pergunta<?= $reg->getIdPergunta(); ?>">
+            <div class="card-header" id="SalvarPergunta<?= $reg->getIdPergunta(); ?>">
               <p id="tituloHeader<?= $reg->getIdPergunta(); ?>" class="d-inline"><?= $reg->getPergunta(); ?></p>
               <button name="btnAlterar<?= $reg->getIdPergunta(); ?>" id="btnAlterar<?= $reg->getIdPergunta(); ?>" class="btn btn-outline-primary float-right d-inline" data-toggle="collapse" data-target="#collapseRecrutadorPergunta<?= $reg->getIdPergunta(); ?>">
                 <i class="fas fa-pencil-alt"></i>
@@ -84,7 +84,7 @@ $arrayPergunta = $perguntaDAO->Listar($pergunta);
     <div class="row">
       <div class="col">
         <div class="card">
-          <div class="card-header" id="pergunta<?= $ultimoRegistro ?>">
+          <div class="card-header" id="SalvarPergunta<?= $ultimoRegistro ?>">
             <p class="d-inline">Insira aqui uma nova pergunta!</p>
             <button name="btnAlterar<?= $ultimoRegistro ?>" id="btnAlterar<?= $ultimoRegistro ?>" class="btn btn-outline-primary float-right d-inline" data-toggle="collapse" data-target="#collapseRecrutadorPergunta<?= $ultimoRegistro ?>">
               <i class="fas fa-plus"></i>

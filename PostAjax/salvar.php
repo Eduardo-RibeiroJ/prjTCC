@@ -105,9 +105,9 @@ if($_POST['acao'] == "CandidatoEmpresa") {
 	$empresaDAO->Inserir($empresa);
 }
 
-if ($_POST['acao'] == "SalvarPergunta") {
+if ($_POST['acao'] == "Pergunta") {
 
-	include_once "../Model/pergunta.php";
+	include_once "../Model/Pergunta.php";
 	include_once "../Controller/perguntaDAO.php";
 
 	$pergunta = new Pergunta();

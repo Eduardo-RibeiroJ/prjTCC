@@ -416,6 +416,8 @@ $(function(){
     });
 
 
+    //********** INSERIR, ALTERAR E APAGAR EMPRESA
+
     $('#sectionCardsPergunta').on('click', '#btnAlterarSalvarPergunta', function (e) {
 
         e.preventDefault();
@@ -423,7 +425,7 @@ $(function(){
         var button = $(this);
         var salvarAlterar;
 
-        if ($(this).html() == "Criar")
+        if ($(this).html() == "Inserir")
             salvarAlterar = '../PostAjax/salvar.php';
         else
             salvarAlterar = '../PostAjax/alterar.php';
@@ -434,7 +436,8 @@ $(function(){
         } else {
 
             $.post(salvarAlterar, {
-                acao: "SalvarPergunta",
+                acao: "Pergunta",
+                cnpj: $('#txtCnpj').val(),
                 idPergunta: idPergunta,
                 pergunta: $('#txtPergunta' + idPergunta).val()
 
@@ -453,6 +456,29 @@ $(function(){
                 }
             });
         }
+    });
+
+    $('#sectionCardsPergunta').on('click', '#btnExcluirPergunta', function (e) {
+
+        var cardAlvo = $(this).closest('.card');
+
+        $.post('../PostAjax/excluir.php', {
+            acao: "excluirPergunta",
+            cnpj: $('#txtCnpj').val(),
+            idPergunta: $(this).val()
+
+        }, function (sucesso) {
+
+            if (sucesso == true) {
+
+                cardAlvo.fadeOut(500, function () {
+                    cardAlvo.remove();
+                });
+
+            } else {
+                alert('Erro: ' + sucesso);
+            }
+        });
     });
 
     //CANDIDATO PERFIL
