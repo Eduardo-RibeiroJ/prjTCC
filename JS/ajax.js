@@ -693,4 +693,19 @@ $(function () {
         });
 
     });
+
+    $('#sectionProcesso2').on('click', '#btnConcluir', function (e) {
+
+        e.preventDefault();
+        
+        $(".div-competencia").each(function() {
+
+            var div = $(this);
+            console.log(div.find('h5').html());
+            console.log(div.find('select').val());
+        });
+
+        window.location.replace("criar_processo_concluir.php");
+
+    });
 });

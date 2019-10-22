@@ -33,11 +33,11 @@
         <div class="row">
 
           <div class="col-md-6 text-center">
-            <button class="btn btn-primary btn-grande"><i class="fas fa-tasks fa-3x"> </i> <h4>Gerenciar testes online</h4></button>
+            <a href="testesOnline.php" class="btn btn-primary btn-grande"><i class="fas fa-tasks fa-3x"> </i> <h4>Gerenciar testes online</h4></a>
           </div>
 
           <div class="col-md-6">
-            <button class="btn btn-primary btn-grande"><i class="far fa-comment-dots fa-3x"> </i> <h4>Gerenciar perguntas</h4></button>
+            <a href="perguntas.php" class="btn btn-primary btn-grande"><i class="far fa-comment-dots fa-3x"> </i> <h4>Gerenciar perguntas</h4></a>
           </div>
         </div>
 

@@ -21,14 +21,14 @@ class ProcessoSeletivoDAO
         $tipoContratacao = $processo->getTipoContratacao();
         $salario = $processo->getSalario();
 
-        $query = "INSERT INTO tbProcessoSeletivo (idProcesso, cnpj, idCargo, dataInicio, dataLimite, resumoVaga, nivelCargo, tipoContratacao, salario) VALUES (?,?,?,?,?,?,?,?,?);";
+        $query = "INSERT INTO tbProcessoSeletivo (idProcesso, cnpj, idCargo, dataInicio, dataLimiteCandidatar, resumoVaga, nivelCargo, tipoContratacao, salario) VALUES (?,?,?,?,?,?,?,?,?);";
         $stmt = mysqli_prepare($this->db->getConection(), $query);
 
         if($stmt === FALSE){
             die(mysqli_error($this->db->getConection()));
         }
 
-        mysqli_stmt_bind_param($stmt, 'isissssss', $idProcesso, $cnpj, $idCargo, $dataInicio, $dataLimite, $resumoVaga, $nivelCargo, $tipoContratacao, $salario);
+        mysqli_stmt_bind_param($stmt, 'issssssss', $idProcesso, $cnpj, $idCargo, $dataInicio, $dataLimite, $resumoVaga, $nivelCargo, $tipoContratacao, $salario);
         mysqli_stmt_execute($stmt);
         mysqli_stmt_close($stmt);
 

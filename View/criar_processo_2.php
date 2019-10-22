@@ -29,7 +29,7 @@ $arrayPergunta = $perguntaDAO->Listar($pergunta);
 
 <?php include_once 'headerRecrut.php'; ?>
 
-<section class="masthead" id="sectionProcesso1" style="background: url(imagem/90463.jpg); background-size: cover;">
+<section class="masthead" id="sectionProcesso2" style="background: url(imagem/90463.jpg); background-size: cover;">
     <div class="container">
 
         <div class="row">
@@ -165,7 +165,7 @@ $arrayPergunta = $perguntaDAO->Listar($pergunta);
                             <div class="form-row">
                                 <div class="col text-right">
                                     <a href="criar_processo_1.php" name="btnVoltar" id="btnVoltar" class="btn btn-warning btn-lg">Voltar</a>
-                                    <a href="criar_processo_concluir.php" name="brnConcluir" id="btnVobrnConcluirltar" class="btn btn-warning btn-lg"><i class="fas fa-plus mr-1"></i> Concluír</a>
+                                    <button name="btnConcluir" id="btnConcluir" class="btn btn-warning btn-lg"><i class="fas fa-plus mr-1"></i> Concluir</button>
                                 </div>
                             </div>
 
