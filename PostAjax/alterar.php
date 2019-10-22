@@ -193,21 +193,41 @@ if ($_POST['acao'] == "Pergunta") {
 	$perguntaDAO->Alterar($pergunta);
 }
 
-if ($_POST['acao'] == "alterarCandCompetencia") {
+if ($_POST['acao'] == "CandidatoObjetivo") {
 
-	include_once "../Model/CandidatoCompetencia.php";
-	include_once "../Controller/CandidatoCompetenciaDAO.php";
+	include_once "../Model/CandidatoObjetivo.php";
+	include_once "../Controller/CandidatoObjetivoDAO.php";
 
-	$competencia = new CandidatoCompetencia();
-	$competenciaDAO = new CandidatoCompetenciaDAO($conn);
+	$objetivo = new CandidatoObjetivo();
+	$objetivoDAO = new CandidatoObjetivoDAO($conn);
 
-	$competencia->alterarCompetencia(
+	$objetivo->alterarObjetivo(
 		$_POST['cpf'],
-		$_POST['idCompetencia'],
-		$_POST['nivel']
+		$_POST['idObjetivo'],
+		$_POST['cargo'],
+		$_POST['nivel'],
+		$_POST['pretSal']
 	);
 
-	$competenciaDAO->Alterar($competencia);
+	$objetivoDAO->Alterar($objetivo);
+}
+
+if ($_POST['acao'] == "Pergunta") {
+
+	include_once "../Model/Pergunta.php";
+	include_once "../Controller/PerguntaDAO.php";
+
+	$pergunta = new Pergunta();
+	$perguntaDAO = new PerguntaDAO($conn);
+
+	$pergunta->inserirPergunta(
+		$_POST['cnpj'],
+		$_POST['idPergunta'],
+		$_POST['pergunta']
+
+	);
+
+	$perguntaDAO->Alterar($pergunta);
 }
 
 echo true;

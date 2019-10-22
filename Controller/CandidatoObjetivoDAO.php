@@ -25,7 +25,7 @@ class CandidatoObjetivoDAO
             die(mysqli_error($this->db->getConection()));
         }
 
-        mysqli_stmt_bind_param($stmt, 'iissi', $cpf, $idobjetivo, $nomeobjetivo, $cargo, $nivel, $pretSal);
+        mysqli_stmt_bind_param($stmt, 'iissi', $cpf, $idObjetivo, $cargo, $nivel, $pretSal);
         mysqli_stmt_execute($stmt);
         mysqli_stmt_close($stmt);
 
@@ -46,39 +46,26 @@ class CandidatoObjetivoDAO
             die(mysqli_error($this->db->getConection()));
         } 
         
-        mysqli_stmt_bind_param($stmt, 'sssii', $cargo, $nivel, $pretSal, $cpf, $idobjetivo);
+        mysqli_stmt_bind_param($stmt, 'sssii', $cargo, $nivel, $pretSal, $cpf, $idObjetivo);
         mysqli_stmt_execute($stmt);
         mysqli_stmt_close($stmt);
 
     }
 
-    public function Apagar(CandidatoObjetivo $objetivo) {
-
-        $cpf = $objetivo->getCpf();
-        $idobjetivo = $objetivo->getidobjetivo();
-
-        $SQL = $this->db->getConection()->prepare("DELETE FROM tbCandidatoObjetivo WHERE idObjetivo = ? AND Cpf = ?;");
-
-        $SQL->bind_param("ii", $idObjetivo, $Cpf);
-        $SQL->execute();
-
-        return true;
-    }
-
     public function Listar(CandidatoObjetivo $objetivo) {
         
-        if ($objetivo->getIdQuestao() == NULL) {
+        if ($objetivo->getIdObjetivo() == NULL) {
 
-            $query = $this->db->getConection()->query("SELECT * FROM tbCandidatoObjetivo WHERE idObjetivo ='".$objetivo->getIdObjetivo()."' ORDER BY idobjetivo;");
+            $query = $this->db->getConection()->query("SELECT * FROM tbCandidatoObjetivo WHERE cpf ='".$objetivo->getCpf()."';");
             $arrayQuery = array();
 
             while($reg = $query->fetch_array()) {
 
-                $objetivo = new objetivo();
-                $objetivo->inserirobjetivo(
+                $objetivo = new CandidatoObjetivo();
+                $objetivo->inserirObjetivo(
                     
                     $reg['cpf'],
-                    $reg['idobjetivo'],
+                    $reg['idObjetivo'],
                     $reg['cargo'],
                     $reg['nivel'],
                     $reg['pretSal']
@@ -91,17 +78,18 @@ class CandidatoObjetivoDAO
 
         } else {
 
-            $query = $this->db->getConection()->query("SELECT * FROM tbCandidatoObjetivo WHERE idObjetivo ='".$objetivo->getIdObjetivo()."' AND idObjetivo ='".$objetivo->getIdObjetivo()."';");
+            $query = $this->db->getConection()->query("SELECT * FROM tbCandidatoObjetivo WHERE cpf ='" . $objetivo->getCpf() . "' AND cpf ='" . $objetivo->getCpf() . "';");
 
             $reg = $query->fetch_array();
             $objetivo->inserirObjetivo(
                     
                     $reg['cpf'],
-                    $reg['idobjetivo'],
+                    $reg['idObjetivo'],
                     $reg['cargo'],
                     $reg['nivel'],
                     $reg['pretSal']
             );
+            return $objetivo;
         }
     }
 }

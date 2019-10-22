@@ -1,6 +1,6 @@
-$(function(){
+$(function () {
 
-    $('#formInserirQuestao').on('click', '#btnAdicionar', function(e) {
+    $('#formInserirQuestao').on('click', '#btnAdicionar', function (e) {
 
         var numQuestao = $('#numQuestao').val();
         // Cancela o envio do formulário
@@ -9,12 +9,12 @@ $(function(){
         console.log($('#numQuestao').val());
 
 
-        if($('#numQuestao').val() == "1") { //Salvará o questionário apenas na primeira inclusão de questão
-            
+        if ($('#numQuestao').val() == "1") { //Salvará o questionário apenas na primeira inclusão de questão
+
             $.post('../PostAjax/salvar.php', {
-            acao: "salvarTesteOnline",
-            numTeste: $('#numTeste').html(),
-            nomeTeste: $('#nomeTeste').html()
+                acao: "salvarTesteOnline",
+                numTeste: $('#numTeste').html(),
+                nomeTeste: $('#nomeTeste').html()
             });
         }
 
@@ -31,29 +31,29 @@ $(function(){
             resposta: $('#resposta').val(),
             tempo: $('#tempo').val()
 
-        }, function(sucesso) { //RETORNO DO SALVAR
+        }, function (sucesso) { //RETORNO DO SALVAR
             // Valida a resposta
-        if(sucesso == true){
+            if (sucesso == true) {
 
-            numQuestao ++;
-            $('#numQuestao').val(numQuestao);
+                numQuestao++;
+                $('#numQuestao').val(numQuestao);
 
-            $('#numQuestaoCard-Header').html('Questão ' + numQuestao);
-            $('input[type=text], textarea').val('');
-            $('input[type=number]').val(30);
-            $('select').val("A");
+                $('#numQuestaoCard-Header').html('Questão ' + numQuestao);
+                $('input[type=text], textarea').val('');
+                $('input[type=number]').val(30);
+                $('select').val("A");
 
-            window.location.href = '#containerPrincipal';
-            
-        } else {
-            alert('Erro: ' + sucesso);
-        }
+                window.location.href = '#containerPrincipal';
+
+            } else {
+                alert('Erro: ' + sucesso);
+            }
 
         });
-        
+
     });
 
-    $('#formAlterarQuestao').on('click', '#btnSalvar', function(e) {
+    $('#formAlterarQuestao').on('click', '#btnSalvar', function (e) {
 
         var numTesteOnline = $('#numTeste').html();
 
@@ -73,21 +73,21 @@ $(function(){
             resposta: $('#resposta').val(),
             tempo: $('#tempo').val()
 
-        }, function(sucesso) { //RETORNO DO SALVAR
+        }, function (sucesso) { //RETORNO DO SALVAR
             // Valida a resposta
-        if(sucesso == true) {
+            if (sucesso == true) {
 
-            window.location.replace('TesteOnline_questao_listar.php?idTesteOnline=' + numTesteOnline);
-            
-        } else {
-            alert('Erro: ' + sucesso);
-        }
+                window.location.replace('TesteOnline_questao_listar.php?idTesteOnline=' + numTesteOnline);
+
+            } else {
+                alert('Erro: ' + sucesso);
+            }
 
         });
-        
+
     });
 
-    $('#accordionTesteOnline').on('click', '#btnExcluir', function(e) {
+    $('#accordionTesteOnline').on('click', '#btnExcluir', function (e) {
 
         var cardAlvo = $(this).closest('.card');
 
@@ -95,22 +95,22 @@ $(function(){
             acao: "excluirTesteOnline",
             idTesteOnline: $(this).val()
 
-        }, function(sucesso) {
+        }, function (sucesso) {
 
-        if(sucesso == true) {
+            if (sucesso == true) {
 
-            cardAlvo.fadeOut(500,function(){ 
-                cardAlvo.remove();
-            }); 
-            
-        } else {
-            alert('Erro: ' + sucesso);
-        }
+                cardAlvo.fadeOut(500, function () {
+                    cardAlvo.remove();
+                });
+
+            } else {
+                alert('Erro: ' + sucesso);
+            }
         });
-        
+
     });
 
-    $('#accordionQuestao').on('click', '#btnExcluir', function(e) {
+    $('#accordionQuestao').on('click', '#btnExcluir', function (e) {
 
         var cardAlvo = $(this).closest('.card');
 
@@ -119,27 +119,27 @@ $(function(){
             idTesteOnline: $('#idTesteOnline').html(),
             idQuestao: $(this).val()
 
-        }, function(sucesso) {
+        }, function (sucesso) {
 
-        if(sucesso == true) {
+            if (sucesso == true) {
 
-            cardAlvo.fadeOut(500,function(){ 
-                cardAlvo.remove();                 
-            }); 
-            
-        } else {
-            alert('Erro: ' + sucesso);
-        }
+                cardAlvo.fadeOut(500, function () {
+                    cardAlvo.remove();
+                });
+
+            } else {
+                alert('Erro: ' + sucesso);
+            }
         });
-        
+
     });
 
     //************ SALVAR E ALTERAR DADOS PESSOAIS
 
-    $('#accordionCandidatoDadosPessoais').on('click', '#btnAlterarSalvarDadosPessoais', function(e) {
+    $('#accordionCandidatoDadosPessoais').on('click', '#btnAlterarSalvarDadosPessoais', function (e) {
 
         e.preventDefault();
-        
+
         $.post('../PostAjax/alterar.php', {
             acao: "alterarCandidatoDadosPessoais",
             cpf: $('#cpf').val(),
@@ -149,9 +149,9 @@ $(function(){
             estadoCivil: $('#cbbEstadoCivil').val(),
             sexo: $('#cbbSexo').val()
 
-        }, function(sucesso) {
+        }, function (sucesso) {
 
-            if(sucesso == true) {
+            if (sucesso == true) {
                 $("#btnAlterarDadosPessoais").click();
             } else {
                 alert('Erro: ' + sucesso);
@@ -216,12 +216,12 @@ $(function(){
         var button = $(this);
         var salvarAlterar;
 
-        if($(this).html() == "Inserir")
+        if ($(this).html() == "Inserir")
             salvarAlterar = '../PostAjax/salvar.php';
         else
             salvarAlterar = '../PostAjax/alterar.php';
 
-        if(button.html() == "Alterar") {
+        if (button.html() == "Alterar") {
             button.html("Salvar");
 
         } else {
@@ -240,7 +240,7 @@ $(function(){
             }, function (sucesso) {
 
                 if (sucesso == true) {
-                    if(button.html() == "Salvar") {
+                    if (button.html() == "Salvar") {
                         $('#tituloHeader' + idFormacao).html($('#txtNomeCurso' + idFormacao).val());
                         $("#btnAlterar" + idFormacao).click();
                     }
@@ -263,17 +263,17 @@ $(function(){
             cpf: $('#txtCpf').val(),
             idFormacao: $(this).val()
 
-        }, function(sucesso) {
+        }, function (sucesso) {
 
-        if(sucesso == true) {
+            if (sucesso == true) {
 
-            cardAlvo.fadeOut(500,function(){ 
-                cardAlvo.remove();                 
-            }); 
-            
-        } else {
-            alert('Erro: ' + sucesso);
-        }
+                cardAlvo.fadeOut(500, function () {
+                    cardAlvo.remove();
+                });
+
+            } else {
+                alert('Erro: ' + sucesso);
+            }
         });
     });
 
@@ -304,7 +304,7 @@ $(function(){
                 instituicao: $('#txtNomeInsti' + idCurso).val(),
                 anoConclusao: $('#Conclusao' + idCurso).val(),
                 cargaHoraria: $('#CargaHoraria' + idCurso).val()
- 
+
             }, function (sucesso) {
 
                 if (sucesso == true) {
@@ -481,6 +481,48 @@ $(function(){
         });
     });
 
+
+    $('#sectionCardsObjetivo').on('click', '#btnAlterarSalvarObjetivo', function (e) {
+
+        e.preventDefault();
+        var idObjetivo = $(this).val();
+        var button = $(this);
+        var salvarAlterar;
+
+        if ($(this).html() == "Inserir")
+            salvarAlterar = '../PostAjax/salvar.php';
+        else
+            salvarAlterar = '../PostAjax/alterar.php';
+
+        if (button.html() == "Alterar") {
+            button.html("Salvar");
+
+        } else {
+
+            $.post(salvarAlterar, {
+                acao: "CandidatoObjetivo",
+                cpf: $('#txtCpf').val(),
+                idObjetivo: idObjetivo,
+                cargo: $('#txtCargo' + idObjetivo).val(),
+                nivel: $('#cbbNivel' + idObjetivo).val(),
+                pretSal: $('#txtPretSal' + idObjetivo).val()
+
+            }, function (sucesso) {
+
+                if (sucesso == true) {
+                    if (button.html() == "Salvar") {
+                        $("#btnAlterar" + idObjetivo).click();
+                    }
+                    else {
+                        location.reload();
+                    }
+                } else {
+                    alert('Erro: ' + sucesso);
+                }
+            });
+        }
+    });
+
     //CANDIDATO PERFIL
     $('#sectionCandidatoPerfil').on('click', '#btnAlterarDadosPessoais', function (e) {
 
@@ -514,26 +556,26 @@ $(function(){
             if (sucesso == true) {
                 $('#divCandCompetencias').prepend(`<div class="div-competencia flex-fill">
                                                     <p>
-                                                        <h5 class="d-inline">`+ nomeCompetencia +`</h5>
-                                                        <button class="btn btn-outline-dark d-inline ml-4" value="` + ultimoRegistro +`" id="btnExcluirCompetencia"><i class="fas fa-trash-alt"></i></button>
+                                                        <h5 class="d-inline">`+ nomeCompetencia + `</h5>
+                                                        <button class="btn btn-outline-dark d-inline ml-4" value="` + ultimoRegistro + `" id="btnExcluirCompetencia"><i class="fas fa-trash-alt"></i></button>
                                                     </p>
                                                     <p>
-                                                    <select class="custom-select d-inline" id="cbbNivelCompetencia` + ultimoRegistro +`" name="cbbNivelCompetencia" required>
+                                                    <select class="custom-select d-inline" id="cbbNivelCompetencia` + ultimoRegistro + `" name="cbbNivelCompetencia" required>
                                                         <option value="Básico">Básico</option>
                                                         <option value="Intermediário">Intermediário</option>
                                                         <option value="Avançado">Avançado</option>
                                                     </select>
                                                     </p>
                                                 </div>`
-                                            );
-                
-                                            
+                );
+
+
                 $('#cbbNivelCompetencia' + ultimoRegistro).val(nivelCompetencia);
                 $('#txtUltimoRegistro').val(parseInt(ultimoRegistro) + 1);
                 $('#txtNomeCompetencia').val('');
                 $('#cbbNivelCompetencia').val('Básico');
-                
-                
+
+
                 $('#txtNomeCompetencia').focus();
 
 
@@ -584,7 +626,7 @@ $(function(){
 
             if (sucesso == true) {
                 console.log('ALTEROU');
-                
+
 
             } else {
                 alert('Erro: ' + sucesso);
