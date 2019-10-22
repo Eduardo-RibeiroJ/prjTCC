@@ -1,5 +1,7 @@
 <?php
-session_start();
+if (!isset($_SESSION)) {
+	session_start();
+}
 
 include_once "../Model/Conexao.php";
 include_once "../Model/Recrutador.php";

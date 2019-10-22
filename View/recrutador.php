@@ -11,7 +11,6 @@
     <div class="jumbotron p-3 p-md-5" style="background-color: #FFF">
       <div class="container p-0">
         <h5 class="display-4 display-md-2">Aproveite a melhor ferramenta para encontrar o candidato ideal!</h1>
-        
         <hr class="my-2 my-md-4">
         <p class="lead">Acompanhe e gerencie aqui os seus processos seletivos.</p>
       </div>
@@ -22,7 +21,7 @@
         <div class="row">
 
           <div class="col-md-6 text-center">
-            <button class="btn btn-primary btn-grande"><i class="fas fa-plus fa-3x"> </i> <h4>Abrir novo processo seletivo</h4></button>
+            <a href="criar_processo.php" class="btn btn-primary btn-grande"><i class="fas fa-plus fa-3x"> </i> <h4>Abrir novo processo seletivo</h4></a>
           </div>
 
           <div class="col-md-6">
@@ -56,30 +55,5 @@
 
     </div>
   </section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 <?php include 'footer.php'; ?>

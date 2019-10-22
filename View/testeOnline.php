@@ -51,7 +51,7 @@ $arrayTestesOnline = $testeOnlineDAO->Listar($testeOnline);
         
       <?php foreach($arrayTestesOnline as $reg): ?>
 
-        <div class="card" id=cardTesteOnline>
+        <div class="card" id="cardTesteOnline">
           <div class="card-header" id="teste<?= $reg->getIdTesteOnline(); ?>" data-toggle="collapse" data-target="#collapse<?= $reg->getIdTesteOnline(); ?>" aria-expanded="true" aria-controls="collapse<?= $reg->getIdTesteOnline(); ?>">
             <?= $reg->getIdTesteOnline(); ?> - <?= $reg->getNomeTesteOnline(); ?>
           </div>

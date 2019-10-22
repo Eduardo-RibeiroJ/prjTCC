@@ -634,4 +634,63 @@ $(function () {
         });
     });
 
+    //ETAPAS DO PROCESSO SELETIVO
+
+    $('#sectionProcesso1').on('change', '#chkAc', function (e) {
+
+        var txtSal = $('#txtSalario');
+
+        if(this.checked) {
+            txtSal.val('A combinar');
+            txtSal.attr('readonly', true);
+        } else {
+            txtSal.val('');
+            txtSal.attr('readonly', false);
+
+        }
+
+    });
+
+    $('#cardProcessoCompetencias').on('click', '#btnInserirCompetencia', function (e) {
+
+        e.preventDefault();
+        var nomeCompetencia = $('#txtNomeCompetencia').val();
+        var nivelCompetencia = $('#cbbNivelCompetencia').val();
+        var ultimoRegistro = $('#txtContador').val();
+
+
+        $('#divProcessoCompetencias').prepend(`<div class="div-competencia flex-fill">
+                                            <p>
+                                                <h5 class="d-inline">`+ nomeCompetencia +`</h5>
+                                                <button class="btn btn-outline-dark d-inline ml-4" value="` + ultimoRegistro +`" id="btnExcluirCompetencia"><i class="fas fa-trash-alt"></i></button>
+                                            </p>
+                                            <p>
+                                            <select class="custom-select d-inline" id="cbbNivelCompetencia` + ultimoRegistro +`" name="cbbNivelCompetencia" required>
+                                                <option value="Básico">Básico</option>
+                                                <option value="Intermediário">Intermediário</option>
+                                                <option value="Avançado">Avançado</option>
+                                            </select>
+                                            </p>
+                                        </div>`
+                                    );
+            
+                                            
+        $('#cbbNivelCompetencia' + ultimoRegistro).val(nivelCompetencia);
+        $('#txtContador').val(parseInt(ultimoRegistro) + 1);
+        $('#txtNomeCompetencia').val('');
+        $('#cbbNivelCompetencia').val('Básico');
+        
+        $('#txtNomeCompetencia').focus();
+
+    });
+
+    $('#cardProcessoCompetencias').on('click', '#btnExcluirCompetencia', function (e) {
+
+        var cardAlvo = $(this).closest('.div-competencia');
+
+        cardAlvo.fadeOut(500, function () {
+            cardAlvo.remove();
+        });
+
+    });
 });
