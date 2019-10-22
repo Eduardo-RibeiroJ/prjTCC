@@ -63,13 +63,23 @@ $objetivoDAO->Listar($objetivo);
 
                     <div class="form-group col-md-5">
                       <label for="cbbNivel">Nível</label>
-                      <select class="custom-select" id="cbbNivel" name="cbbNivel" value="<?= $objetivo->getNivel(); ?>" required>
-                        <option value="" selected>Selecione</option>
-                        <option value="T">Trainee</option>
-                        <option value="E">Estágio</option>
-                        <option value="J">Junior</option>
-                        <option value="S">Senior</option>
-                        <option value="P">Pleno</option>
+                      <select class="custom-select" id="cbbNivel" name="cbbNivel" required>
+      
+                        <?php
+
+                        $alternativas = ['Selecione','Trainee', 'Estágio', 'Junior', 'Senior', 'Pleno'];
+
+                        foreach ($alternativas as $value) {
+
+                          if ($value == $objetivo->getNivel())
+                            $selected = 'selected';
+                          else
+                            $selected = '';
+
+                          echo '<option value="' . $value . '" ' . $selected . '>' . $value . '</option>';
+                        }
+
+                        ?>
                       </select>
                     </div>
                   </div>
