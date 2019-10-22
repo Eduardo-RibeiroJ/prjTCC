@@ -201,7 +201,7 @@ if ($_POST['acao'] == "CandidatoObjetivo") {
 	$objetivo = new CandidatoObjetivo();
 	$objetivoDAO = new CandidatoObjetivoDAO($conn);
 
-	$objetivo->alterarObjetivo(
+	$objetivo->inserirObjetivo(
 		$_POST['cpf'],
 		$_POST['idObjetivo'],
 		$_POST['cargo'],

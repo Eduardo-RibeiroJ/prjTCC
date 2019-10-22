@@ -54,31 +54,7 @@ class CandidatoObjetivoDAO
 
     public function Listar(CandidatoObjetivo $objetivo) {
         
-        if ($objetivo->getIdObjetivo() == NULL) {
-
-            $query = $this->db->getConection()->query("SELECT * FROM tbCandidatoObjetivo WHERE cpf ='".$objetivo->getCpf()."';");
-            $arrayQuery = array();
-
-            while($reg = $query->fetch_array()) {
-
-                $objetivo = new CandidatoObjetivo();
-                $objetivo->inserirObjetivo(
-                    
-                    $reg['cpf'],
-                    $reg['idObjetivo'],
-                    $reg['cargo'],
-                    $reg['nivel'],
-                    $reg['pretSal']
-               );
-
-                $arrayQuery[] = $objetivo;
-            }
-
-            return $arrayQuery;
-
-        } else {
-
-            $query = $this->db->getConection()->query("SELECT * FROM tbCandidatoObjetivo WHERE cpf ='" . $objetivo->getCpf() . "' AND cpf ='" . $objetivo->getCpf() . "';");
+            $query = $this->db->getConection()->query("SELECT * FROM tbCandidatoObjetivo WHERE cpf ='" . $objetivo->getCpf() . "';");
 
             $reg = $query->fetch_array();
             $objetivo->inserirObjetivo(
@@ -89,9 +65,6 @@ class CandidatoObjetivoDAO
                     $reg['nivel'],
                     $reg['pretSal']
             );
-            return $objetivo;
-        }
+    
     }
 }
-
-?>

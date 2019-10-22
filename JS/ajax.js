@@ -510,12 +510,11 @@ $(function () {
             }, function (sucesso) {
 
                 if (sucesso == true) {
-                    if (button.html() == "Salvar") {
-                        $("#btnAlterar" + idObjetivo).click();
+                    
+                    if (button.html() == "Inserir") {
+                        button.html("Salvar");
                     }
-                    else {
-                        location.reload();
-                    }
+            
                 } else {
                     alert('Erro: ' + sucesso);
                 }
