@@ -107,6 +107,27 @@
         padding: 0;
     }
 
+    .div-addTesteOn {
+        border-radius: 4px;
+        padding: 0.3em 1.3em;
+        margin: 0.2em 0;
+        background-color: #e5f5ab;
+    }
+
+    .div-addTesteOn .lead {
+        font-size: 1.7em;
+    }
+
+    .div-addTesteOn input[type='checkbox'] {
+        /* Double-sized Checkboxes */
+        -ms-transform: scale(2); /* IE */
+        -moz-transform: scale(2); /* FF */
+        -webkit-transform: scale(2); /* Safari and Chrome */
+        -o-transform: scale(2); /* Opera */
+        transform: scale(2);
+        margin-top: 0.6em;
+    }
+
 
     /* PERSONALIZAÇÃO DE ITENS*/
 

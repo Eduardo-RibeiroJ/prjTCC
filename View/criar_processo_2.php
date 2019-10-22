@@ -73,29 +73,16 @@ $arrayTestesOnline = $testeOnlineDAO->Listar($testeOnline);
                             <div>
                                 <?php foreach($arrayTestesOnline as $reg): ?>
 
-                                <div class="card" id="cardTesteOnline">
-                                    <div class="card-header" id="teste<?= $reg->getIdTesteOnline(); ?>" data-toggle="collapse" data-target="#collapse<?= $reg->getIdTesteOnline(); ?>" aria-expanded="true" aria-controls="collapse<?= $reg->getIdTesteOnline(); ?>">
-                                        <?= $reg->getIdTesteOnline(); ?> - <?= $reg->getNomeTesteOnline(); ?>
-                                    </div>
-
-                                    <div id="collapse<?= $reg->getIdTesteOnline(); ?>" class="collapse" aria-labelledby="teste<?= $reg->getIdTesteOnline(); ?>" data-parent="#accordionTesteOnline">
-                                        <div class="card-body">
-                                            <div class="row">
-
-                                                <div class="col-lg-7">
-                                                <h5 class="card-title">Teste online <?= $reg->getNomeTesteOnline(); ?></h5>
-                                                <p>Contém <?= $reg->getQuantidadeQuestoes(); ?> questões.</p>
-                                                </div>
-
-                                                <div class="col-lg-5 text-center">
-                                                <a class="btn btn-outline-dark btn-mg" href="testeOnline_questao_listar.php?idTesteOnline=<?= $reg->getIdTesteOnline(); ?>&nomeTesteOnline=<?= $reg->getNomeTesteOnline(); ?>">Visualizar Questões</a>
-                                                <button class="btn btn-danger" id="btnExcluir" type="button" value="<?= $reg->getIdTesteOnline(); ?>">Excluir Teste Online</button>
-                                                </div>
-
-                                            </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="div-addTesteOn">
+                                            <div class="form-check mt-2">
+                                                <input class="form-check-input lead" type="checkbox" value="<?= $reg->getIdTesteOnline(); ?>" id="chkTeste<?= $reg->getIdTesteOnline(); ?>" name="chkTeste<?= $reg->getIdTesteOnline(); ?>">
+                                                <label class="form-check-label lead ml-2" for="chkTeste<?= $reg->getIdTesteOnline(); ?>"><?= $reg->getNomeTesteOnline(); ?></label>
+                                                <p class="ml-2">Contém <?= $reg->getQuantidadeQuestoes(); ?> questões.</p>
+                                            </div>                                    
                                         </div>
                                     </div>
-
                                 </div>
 
                             <?php endforeach; ?>
