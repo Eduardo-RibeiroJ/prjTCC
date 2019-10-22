@@ -3,14 +3,25 @@ session_start();
 
 include_once "../Model/Conexao.php";
 include_once "../Model/ProcessoSeletivo.php";
+
 include_once "../Model/TesteOnline.php";
 include_once "../Controller/TesteOnlineDAO.php";
+
+include_once "../Model/Pergunta.php";
+include_once "../Controller/PerguntaDAO.php";
 
 $conn = new Conexao();
 
 $testeOnline = new TesteOnline();
 $testeOnlineDAO = new TesteOnlineDAO($conn);
 $arrayTestesOnline = $testeOnlineDAO->Listar($testeOnline);
+
+$pergunta = new Pergunta();
+$perguntaDAO = new PerguntaDAO($conn);
+
+$pergunta->setCnpj($_SESSION['cnpj']);
+
+$arrayPergunta = $perguntaDAO->Listar($pergunta);
 
 //var_dump(unserialize($_SESSION['processo_etapa1']));
 
@@ -60,13 +71,18 @@ $arrayTestesOnline = $testeOnlineDAO->Listar($testeOnline);
 
                     </div>    
                 </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
 
                 <div class="card mb-3">
                     <div class="card-header">
                         Testes Online
                     </div>
 
-                    <div class="card-body" id="cardProcessoCompetencias">
+                    <div class="card-body" id="cardTestesOnline">
                         <div class="card-text">
                             <h5 class="display-4 mb-4">Adicione testes online para os candidatos</h5>
                             
@@ -75,7 +91,7 @@ $arrayTestesOnline = $testeOnlineDAO->Listar($testeOnline);
 
                                 <div class="row">
                                     <div class="col">
-                                        <div class="div-addTesteOn">
+                                        <div class="div-add">
                                             <div class="form-check mt-2">
                                                 <input class="form-check-input lead" type="checkbox" value="<?= $reg->getIdTesteOnline(); ?>" id="chkTeste<?= $reg->getIdTesteOnline(); ?>" name="chkTeste<?= $reg->getIdTesteOnline(); ?>">
                                                 <label class="form-check-label lead ml-2" for="chkTeste<?= $reg->getIdTesteOnline(); ?>"><?= $reg->getNomeTesteOnline(); ?></label>
@@ -93,27 +109,76 @@ $arrayTestesOnline = $testeOnlineDAO->Listar($testeOnline);
                     </div>
 
                 </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
 
                 <div class="card mb-3">
                     <div class="card-header">
                         Perguntas
                     </div>
 
-                    <div class="card-body" id="cardProcessoCompetencias">
+                    <div class="card-body" id="cardPerguntas">
                         <div class="card-text">
                             <h5 class="display-4 mb-4">Adicione perguntas dissertativas para os candidatos</h5>
-                            <form>
+                            <div>
+
+                                <?php if($arrayPergunta): ?>
                                 
-                            </form>
+                                    <?php foreach($arrayPergunta as $reg): ?>
+
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="div-add div-add-pergunta py-3">
+                                                <div class="form-check">
+                                                    <input class="form-check-input lead" type="checkbox" value="<?= $reg->getIdPergunta(); ?>" id="chkTeste<?= $reg->getIdPergunta(); ?>" name="chkTeste<?= $reg->getIdPergunta(); ?>">
+                                                    <label class="form-check-label lead ml-2" for="chkTeste<?= $reg->getIdPergunta(); ?>"><?= $reg->getPergunta(); ?></label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <?php endforeach; ?>
+
+                                <?php else: ?>
+                                    <p>
+                                        <strong>Nenhuma pergunta cadastrada.</strong>
+                                    </p>
+                                <?php endif; ?>
+
+                            </div>
                         </div>
 
-                    </div>    
+                    </div>
                 </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col">
+                
+                <div class="card">
+                    <div class="card-body">
+                        <div class="card-text">
+                            <div class="form-row">
+                                <div class="col text-right">
+                                    <a href="criar_processo_1.php" name="btnVoltar" id="btnVoltar" class="btn btn-warning btn-lg">Voltar</a>
+                                    <a href="criar_processo_concluir.php" name="brnConcluir" id="btnVobrnConcluirltar" class="btn btn-warning btn-lg"><i class="fas fa-plus mr-1"></i> Concluír</a>
+                                </div>
+                            </div>
+
+                        </div>
+                    
+                    </div>
+                </div>
+                        
             </div>
 
         </div>
 
     </div>
-  </section>
+</section>
 
 <?php include 'footer.php'; ?>
