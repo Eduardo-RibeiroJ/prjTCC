@@ -522,6 +522,59 @@ $(function () {
         }
     });
 
+    //RECRUTADOR EDITAR
+    $('#accordionRecrutadorDados').on('click', '#btnAlterarSalvarEnderecoRecrutador', function (e) {
+
+        e.preventDefault();
+
+        $.post('../PostAjax/alterar.php', {
+            acao: "alterarRecrutadorEndereco",
+            cnpj: $('#txtCnpj').val(),
+            nomeEmpresa: $('#txtNomeEmpresa').val(),
+            endereco: $('#txtEndereco').val(),
+            cep: $('#txtCEP').val(),
+            estado: $('#txtEstado').val(),
+            cidade: $('#txtCidade').val(),
+            bairro: $('#txtBairro').val()
+
+        }, function (sucesso) {
+
+            if (sucesso == true) {
+                $("#btnAlterarEndereco").click();
+            } else {
+                alert('Erro: ' + sucesso);
+            }
+        });
+
+    });
+
+    $('#accordionRecrutadorDados').on('click', '#btnAlterarSalvarContatoRecrutador', function (e) {
+
+        e.preventDefault();
+
+        $.post('../PostAjax/alterar.php', {
+            acao: "alterarRecrutadorContato",
+            cnpj: $('#txtCnpj').val(),
+            tel1: $('#txtTelefone1').val(),
+            tel2: $('#txtTelefone2').val(),
+            linkedin: $('#txtLinkedin').val(),
+            facebook: $('#txtFacebook').val(),
+            siteEmpresa: $('#txtSiteEmpresa').val()
+
+        }, function (sucesso) {
+
+            if (sucesso == true) {
+                $("#btnAlterarContato").click();
+            } else {
+                alert('Erro: ' + sucesso);
+            }
+        });
+
+    });
+
+
+
+
     //CANDIDATO PERFIL
     $('#sectionCandidatoPerfil').on('click', '#btnAlterarDadosPessoais', function (e) {
 

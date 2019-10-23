@@ -41,9 +41,10 @@ class Recrutador {
         $this->siteEmpresa = $siteEmpresa;
     }
 
-    function alterarRecrutadorEndereco($cnpj, $cep, $estado, $cidade, $endereco, $bairro)
+    function alterarRecrutadorEndereco($cnpj, $nomeEmpresa, $cep, $estado, $cidade, $endereco, $bairro)
     {
         $this->cnpj = $cnpj;
+        $this->nomeEmpresa = $nomeEmpresa;
         $this->cep = $cep;
         $this->estado = $estado;
         $this->cidade = $cidade;

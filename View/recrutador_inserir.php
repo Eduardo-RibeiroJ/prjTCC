@@ -25,7 +25,7 @@ if (isset($_POST['btnSalvar'])) {
     $_POST['txtTelefone2'],
     $_POST['txtLinkedin'],
     $_POST['txtFacebook'],
-    $_POST['txtSitePessoal']
+    $_POST['txtSiteEmpresa']
   );
 
   $recrutadorDAO->Inserir($recrutador);
@@ -139,8 +139,8 @@ if (isset($_POST['btnSalvar'])) {
 
                 <div class="form-row">
                   <div class="form-group col">
-                    <label for="txtSitePessoal">Site Pessoal</label>
-                    <input type="text" class="form-control" id="txtSitePessoal" name="txtSitePessoal" placeholder="">
+                    <label for="txtSiteEmpresa">Site da empresa</label>
+                    <input type="text" class="form-control" id="txtSiteEmpresa" name="txtSiteEmpresa" placeholder="">
                   </div>
                 </div>
 

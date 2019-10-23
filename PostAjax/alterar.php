@@ -230,6 +230,50 @@ if ($_POST['acao'] == "Pergunta") {
 	$perguntaDAO->Alterar($pergunta);
 }
 
+if ($_POST['acao'] == "alterarRecrutadorEndereco") {
+
+	include_once "../Model/Recrutador.php";
+	include_once "../Controller/RecrutadorDAO.php";
+
+	$recrutador = new Recrutador();
+	$recrutadorDAO = new RecrutadorDAO($conn);
+
+	$recrutador->alterarRecrutadorEndereco(
+		$_POST['cnpj'],
+		$_POST['nomeEmpresa'],
+		$_POST['endereco'],
+		$_POST['cep'],
+		$_POST['estado'],
+		$_POST['cidade'],
+		$_POST['bairro']
+
+	);
+
+	$recrutadorDAO->Alterar($recrutador);
+}
+
+if ($_POST['acao'] == "alterarRecrutadorContato") {
+
+	include_once "../Model/Recrutador.php";
+	include_once "../Controller/RecrutadorDAO.php";
+
+	$recrutador = new Recrutador();
+	$recrutadorDAO = new RecrutadorDAO($conn);
+
+	$recrutador->alterarRecrutadorContato(
+		$_POST['cnpj'],
+		$_POST['tel1'],
+		$_POST['tel2'],
+		$_POST['linkedin'],
+		$_POST['facebook'],
+		$_POST['siteEmpresa'],
+
+	);
+
+	$recrutadorDAO->Alterar($recrutador);
+}
+
+
 echo true;
 
 ?>
