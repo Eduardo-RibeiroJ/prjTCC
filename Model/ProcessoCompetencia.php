@@ -3,6 +3,12 @@ class ProcessoCompetencia {
     private $idProcesso;
     private $idCompetencia;
     private $nivel;
+
+    function inserirProcessoCompetencia($idProcesso, $idCompetencia, $nivel) {
+        $this->idProcesso = $idProcesso;
+        $this->idCompetencia = $idCompetencia;
+        $this->nivel = $nivel;
+    }
     
     function getIdProcesso() {
         return $this->idProcesso;

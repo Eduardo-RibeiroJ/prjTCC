@@ -153,7 +153,7 @@ if ($_POST['acao'] == "SalvarCandCompetencia") {
 
 	$competencia->inserirCompetencia(
 
-    $_POST['cpf'],
+    	$_POST['cpf'],
 		$_POST['idCompetencia'],
 		$_POST['competencia'],
 		$_POST['nivel']
@@ -161,6 +161,32 @@ if ($_POST['acao'] == "SalvarCandCompetencia") {
 	);
 
 	$competenciaDAO->Inserir($competencia);
+}
+
+if ($_POST['acao'] == "SalvarProcessoCompetencia") {
+
+	include_once "../Model/ProcessoCompetencia.php";
+	include_once "../Controller/ProcessoCompetenciaDAO.php";
+	include_once "../Model/Competencia.php";
+	include_once "../Controller/CompetenciaDAO.php";
+
+	$processoCompetencia = new ProcessoCompetencia();
+	$processoCompetenciaDAO = new ProcessoCompetenciaDAO($conn);
+	$competencia = new Competencia();
+	$competenciaDAO = new CompetenciaDAO($conn);
+
+	$competencia->setNomeComp($_POST['competencia']);
+
+	$idCompetencia = $competencia->idRegistro();
+
+	$processoCompetencia->inserirProcessoCompetencia(
+
+		$idProcesso,
+		$idCompetencia,
+		$_POST['nivel']
+	);
+
+	$processoCompetenciaDAO->Inserir($processoCompetencia);
 }
 
 echo true;

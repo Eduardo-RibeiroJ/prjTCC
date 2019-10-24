@@ -23,6 +23,10 @@ $pergunta->setCnpj($_SESSION['cnpj']);
 
 $arrayPergunta = $perguntaDAO->Listar($pergunta);
 
+$dados = unserialize($_SESSION['processo_etapa1']);
+
+var_dump($dados->getIdProcesso());
+
 //var_dump(unserialize($_SESSION['processo_etapa1']));
 
 ?>
@@ -45,6 +49,7 @@ $arrayPergunta = $perguntaDAO->Listar($pergunta);
                             <h5 class="display-4 mb-4">Adicione as competências necessárias do processo seletivo</h5>
                             <form>
                                 <input type="hidden" id="txtContador" name="txtContador" value="1">
+                                <input type="hidden" id="txtIdProcesso" name="txtIdProcesso" value="<?=$dados->getIdProcesso()?>">
 
                                 <div class="form-row">
                                     <div class="form-group col-md-6">

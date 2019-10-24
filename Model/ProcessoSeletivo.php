@@ -93,4 +93,9 @@ class ProcessoSeletivo {
     function setSalario($salario) {
         $this->salario = $salario;
     }
+    
+    public function getUltimoRegistroProcesso() {
+
+        return ProcessoSeletivoDAO::UltimoRegistroProcesso($this) + 1;
+    }
 }

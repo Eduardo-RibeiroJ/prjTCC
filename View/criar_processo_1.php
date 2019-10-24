@@ -10,16 +10,16 @@ $processo = new ProcessoSeletivo();
 
 if (isset($_POST['btnAvancar'])) {
 
-  $processo->inserirProcessoSeletivo(
-    3,
-    $_SESSION['cnpj'],
-    $_POST['txtCargo'],
-    $_POST['txtDataInicio'],
-    $_POST['txtDataLimite'],
-    $_POST['txtResumo'],
-    $_POST['cbbNivel'],
-    $_POST['cbbContratacao'],
-    $_POST['txtSalario']
+    $processo->inserirProcessoSeletivo(
+        $processo->getUltimoRegistroProcesso(),
+        $_SESSION['cnpj'],
+        $_POST['txtCargo'],
+        $_POST['txtDataInicio'],
+        $_POST['txtDataLimite'],
+        $_POST['txtResumo'],
+        $_POST['cbbNivel'],
+        $_POST['cbbContratacao'],
+        $_POST['txtSalario']
   );
 
   $_SESSION['processo_etapa1'] = serialize($processo);

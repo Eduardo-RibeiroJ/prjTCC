@@ -51,7 +51,7 @@ class CandidatoCompetencia {
 
     public function getUltimoRegistroComp() {
 
-        return CandidatoCompetenciaDAO::UltimoRegistroComp($this) + 1;
+        return CompetenciaDAO::UltimoRegistroComp($this) + 1;
     }
 
 }

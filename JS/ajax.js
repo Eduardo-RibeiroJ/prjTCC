@@ -751,10 +751,23 @@ $(function () {
         e.preventDefault();
         
         $(".div-competencia").each(function() {
-
             var div = $(this);
-            console.log(div.find('h5').html());
-            console.log(div.find('select').val());
+            $.post('../PostAjax/salvar.php', {
+                acao: "SalvarProcessoCompetencia",
+                idProcesso: $('#txtIdProcesso').val(),
+                competencia: div.find('h5').html(),
+                nivel: div.find('select').val()
+    
+            }, function (sucesso) {
+    
+                if (sucesso == true) {
+                    console.log('INSERIU');
+    
+                } else {
+                    alert('Erro: ' + sucesso);
+                }
+            });
+
         });
 
         window.location.replace("criar_processo_concluir.php");

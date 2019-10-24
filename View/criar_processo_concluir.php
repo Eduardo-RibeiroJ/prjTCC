@@ -11,9 +11,11 @@ $processoDAO = new ProcessoSeletivoDAO($conn);
 
 $processoDAO->Inserir(unserialize($_SESSION['processo_etapa1']));
 
-var_dump(unserialize($_SESSION['processo_etapa1']));
+$dados = unserialize($_SESSION['processo_etapa1']);
 
+var_dump($dados->getIdProcesso());
 
+unset($_SESSION['processo_etapa1']);
 
 ?>
 

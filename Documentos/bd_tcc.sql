@@ -188,6 +188,7 @@ CREATE TABLE `tbrecrutador` (
 
 CREATE TABLE `tbpergunta` (
   `idPergunta` int(11) NOT NULL,
+  `cnpj` varchar(20) NOT NULL,
   `pergunta` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 

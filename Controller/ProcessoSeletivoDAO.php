@@ -119,6 +119,15 @@ class ProcessoSeletivoDAO
             return $processo;
         }
     }
+
+    public function UltimoRegistroProcesso(ProcessoSeletivo $processo) {
+
+        $db = new Conexao();
+        $dados = mysqli_query($db->getConection(), "SELECT MAX(idProcesso) as idProcesso FROM tbProcessoSeletivo;");
+
+        $linha = $dados->fetch_array(MYSQLI_ASSOC);
+        return $linha["idProcesso"];
+    }
 }
 
 ?>
