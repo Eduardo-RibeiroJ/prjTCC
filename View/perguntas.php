@@ -61,7 +61,7 @@ $arrayPergunta = $perguntaDAO->Listar($pergunta);
                   <div class="form-row">
                     <div class="form-group col-md-10">
                       <label for="txtPergunta">Pergunta</label>
-                      <input type="text" class="form-control" id="txtPergunta<?= $reg->getIdPergunta(); ?>" name="txtPergunta" value="<?= $reg->getPergunta(); ?>" required>
+                      <textarea type="text" class="form-control" rows="4" id="txtPergunta<?= $reg->getIdPergunta(); ?>" name="txtPergunta" value="<?= $reg->getPergunta(); ?>" required><?= $reg->getPergunta(); ?></textarea>
                     </div>
                   </div>
 
@@ -96,7 +96,7 @@ $arrayPergunta = $perguntaDAO->Listar($pergunta);
                 <div class="form-row">
                   <div class="form-group col-md-10">
                     <label for="txtPergunta">Pergunta</label>
-                    <input type="text" class="form-control" id="txtPergunta<?= $ultimoRegistro ?>" name="txtPergunta" placeholder="" required>
+                    <textarea type="text" class="form-control" rows="4" id="txtPergunta<?= $ultimoRegistro ?>" name="txtPergunta" placeholder="" required></textarea>
                   </div>
                 </div>
 
