@@ -64,7 +64,7 @@
 
     <div class="row">
       <div class="col-lg-4 col-sm-6 ">
-        <div class="card text-center hover-shadow-lg hover-translate-y-n10 shadow-sm bg-white rounded">
+        <div class="card text-center shadow-sm bg-white rounded">
           <a href="criar_processo.php" class="btn btn-outline-light" style="background-color:#1874CD">
             <div class="fas fa-plus fa-3x mt-5">
             </div>
@@ -78,7 +78,7 @@
       </div>
 
       <div class="col-lg-4 col-sm-6">
-        <div class="card text-center hover-shadow-lg hover-translate-y-n10 shadow-sm bg-white rounded">
+        <div class="card text-center shadow-sm bg-white rounded">
           <a href="" class="btn btn-outline-light" style="background-color:#1874CD">
             <div class="fas fa-folder-open fa-3x mt-5">
             </div>
@@ -92,7 +92,7 @@
       </div>
 
       <div class="col-lg-4 col-sm-6">
-        <div class="card text-center hover-shadow-lg hover-translate-y-n10 shadow-sm bg-white rounded">
+        <div class="card text-center shadow-sm bg-white rounded">
           <a href="" class="btn btn-outline-light" style="background-color:#1874CD">
             <div class="fas fa-archive fa-3x mt-5">
             </div>
@@ -110,7 +110,7 @@
 
     <div class="row">
       <div class="col-lg-4 col-sm-6">
-        <div class="card text-center hover-shadow-lg hover-translate-y-n10 shadow-sm bg-white rounded">
+        <div class="card text-center shadow-sm bg-white rounded">
           <a href="" class="btn btn-outline-light" style="background-color:#1874CD">
             <div class="fas fa-tasks fa-3x mt-5">
             </div>
@@ -124,7 +124,7 @@
       </div>
 
       <div class="col-lg-4 col-sm-6">
-        <div class="card text-center hover-shadow-lg hover-translate-y-n10 shadow-sm bg-white rounded">
+        <div class="card text-center shadow-sm bg-white rounded">
           <a href="" class="btn btn-outline-light" style="background-color:#1874CD">
             <div class="fas fa-comment-dots fa-3x mt-5">
             </div>
