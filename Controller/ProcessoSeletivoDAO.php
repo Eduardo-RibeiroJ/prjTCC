@@ -28,7 +28,7 @@ class ProcessoSeletivoDAO
             die(mysqli_error($this->db->getConection()));
         }
 
-        mysqli_stmt_bind_param($stmt, 'issssssss', $idProcesso, $cnpj, $idCargo, $dataInicio, $dataLimite, $resumoVaga, $nivelCargo, $tipoContratacao, $salario);
+        mysqli_stmt_bind_param($stmt, 'isisssssi', $idProcesso, $cnpj, $idCargo, $dataInicio, $dataLimite, $resumoVaga, $nivelCargo, $tipoContratacao, $salario);
         mysqli_stmt_execute($stmt);
         mysqli_stmt_close($stmt);
 
@@ -52,7 +52,7 @@ class ProcessoSeletivoDAO
             die(mysqli_error($this->db->getConection()));
         } 
         
-        mysqli_stmt_bind_param($stmt, 'sssssssi', $idCargo, $dataInicio, $dataLimite, $resumoVaga, $nivelCargo, $tipoContratacao, $salario, $idProcesso);
+        mysqli_stmt_bind_param($stmt, 'isssssii', $idCargo, $dataInicio, $dataLimite, $resumoVaga, $nivelCargo, $tipoContratacao, $salario, $idProcesso);
         mysqli_stmt_execute($stmt);
         mysqli_stmt_close($stmt);
 

@@ -27,22 +27,20 @@ class ProcessoTesteDAO
 
     }
 
-    public function Listar(ProcessoCompetencia $processoCompetencia) {
+    public function Listar(ProcessoTeste $processoTeste) {
         
-        $query = $this->db->getConection()->query("SELECT * FROM tbProcessoCompetencia WHERE cpf ='".$candCompetencia->getCpf()."' ORDER BY competencia asc;");
+        $query = $this->db->getConection()->query("SELECT * FROM tbProcessoCompetencia WHERE idProcesso ='". $processoTeste->getIdProcesso()."' AND idTesteOnline ='" . $processoTeste->getIdTesteOnline()."';");
         $arrayQuery = array();
 
         while($reg = $query->fetch_array()) {
 
-            $candCompetencia = new CandidatoCompetencia();
-            
-            $candCompetencia->InserirCompetencia(         
-                $reg['cpf'],
-                $reg['idCompetencia'],
-                $reg['competencia'],
-                $reg['nivel']
+            $processoTeste = new ProcessoTeste();
+
+            $processoTeste->InserirCompetencia(         
+                $reg['idProcesso'],
+                $reg['idTestOnline']
             );
-            $arrayQuery[] = $candCompetencia;
+            $arrayQuery[] = $processoTeste;
         }
 
         return $arrayQuery;
