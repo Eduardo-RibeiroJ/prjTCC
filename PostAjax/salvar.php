@@ -163,8 +163,31 @@ if ($_POST['acao'] == "SalvarCandCompetencia") {
 	$competenciaDAO->Inserir($competencia);
 }
 
+if ($_POST['acao'] == "SalvarProcessoSeletivo") {
+
+	session_start();
+
+	include_once "../Model/ProcessoSeletivo.php";
+	include_once "../Controller/ProcessoSeletivoDAO.php";
+
+	$processoDAO = new ProcessoSeletivoDAO($conn);
+	
+	$processoSeletivo = unserialize($_SESSION['processo_etapa1']);
+	
+	$idProcesso = $processoSeletivo->getUltimoRegistroProcesso();
+	$processoSeletivo->setIdProcesso($idProcesso);
+	$processoDAO->Inserir($processoSeletivo);
+
+	$_SESSION['processo_etapa1'] = serialize($processoSeletivo);
+
+}
+
 if ($_POST['acao'] == "SalvarProcessoCompetencia") {
 
+	session_start();
+
+	include_once "../Model/ProcessoSeletivo.php";
+	include_once "../Controller/ProcessoSeletivoDAO.php";
 	include_once "../Model/ProcessoCompetencia.php";
 	include_once "../Controller/ProcessoCompetenciaDAO.php";
 	include_once "../Model/Competencia.php";
@@ -174,19 +197,64 @@ if ($_POST['acao'] == "SalvarProcessoCompetencia") {
 	$processoCompetenciaDAO = new ProcessoCompetenciaDAO($conn);
 	$competencia = new Competencia();
 	$competenciaDAO = new CompetenciaDAO($conn);
+	
+	$idProcesso = unserialize($_SESSION['processo_etapa1'])->getIdProcesso();
 
 	$competencia->setNomeComp($_POST['competencia']);
 
 	$idCompetencia = $competencia->idRegistro();
 
 	$processoCompetencia->inserirProcessoCompetencia(
-
 		$idProcesso,
 		$idCompetencia,
 		$_POST['nivel']
 	);
 
 	$processoCompetenciaDAO->Inserir($processoCompetencia);
+}
+
+if ($_POST['acao'] == "SalvarProcessoTeste") {
+
+	session_start();
+
+	include_once "../Model/ProcessoSeletivo.php";
+	include_once "../Controller/ProcessoSeletivoDAO.php";
+	include_once "../Model/ProcessoTeste.php";
+	include_once "../Controller/ProcessoTesteDAO.php";
+
+	$processoTeste = new ProcessoTeste();
+	$processoTesteDAO = new ProcessoTesteDAO($conn);
+	
+	$idProcesso = unserialize($_SESSION['processo_etapa1'])->getIdProcesso();
+
+	$processoTeste->inserirProcessoTeste(
+		$idProcesso,
+		$_POST['idTeste']
+	);
+
+	$processoTesteDAO->Inserir($processoTeste);
+}
+
+if ($_POST['acao'] == "SalvarProcessoPergunta") {
+
+	session_start();
+
+	include_once "../Model/ProcessoSeletivo.php";
+	include_once "../Controller/ProcessoSeletivoDAO.php";
+	include_once "../Model/ProcessoPergunta.php";
+	include_once "../Controller/ProcessoPerguntaDAO.php";
+
+	$processoPergunta = new ProcessoPergunta();
+	$processoPerguntaDAO = new ProcessoPerguntaDAO($conn);
+	
+	$idProcesso = unserialize($_SESSION['processo_etapa1'])->getIdProcesso();
+
+	$processoPergunta->inserirProcessoPergunta(
+		$idProcesso,
+		$_POST['idPergunta']
+	);
+
+	$processoPerguntaDAO->Inserir($processoPergunta);
 }
 
 echo true;

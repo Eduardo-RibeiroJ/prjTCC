@@ -2,6 +2,11 @@
 class ProcessoTeste {
     private $idProcesso;
     private $idTesteOnline;
+
+    function inserirProcessoTeste($idProcesso, $idTesteOnline) {
+        $this->idProcesso = $idProcesso;
+        $this->idTesteOnline = $idTesteOnline;
+    }
     
     function getIdProcesso() {
         return $this->idProcesso;

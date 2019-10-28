@@ -11,7 +11,7 @@ $processo = new ProcessoSeletivo();
 if (isset($_POST['btnAvancar'])) {
 
     $processo->inserirProcessoSeletivo(
-        $processo->getUltimoRegistroProcesso(),
+        NULL, //Será inserido o ultimo id na etapa de salvar (Para não segurar o id por muito tempo)
         $_SESSION['cnpj'],
         $_POST['txtCargo'],
         $_POST['txtDataInicio'],

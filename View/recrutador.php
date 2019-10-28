@@ -111,7 +111,7 @@
     <div class="row">
       <div class="col-lg-4 col-sm-6">
         <div class="card text-center shadow-sm bg-white rounded">
-          <a href="" class="btn btn-outline-light" style="background-color:#1874CD">
+          <a href="testesOnline.php" class="btn btn-outline-light" style="background-color:#1874CD">
             <div class="fas fa-tasks fa-3x mt-5">
             </div>
             <div class="px-4 pb-5">
@@ -125,7 +125,7 @@
 
       <div class="col-lg-4 col-sm-6">
         <div class="card text-center shadow-sm bg-white rounded">
-          <a href="" class="btn btn-outline-light" style="background-color:#1874CD">
+          <a href="perguntas.php" class="btn btn-outline-light" style="background-color:#1874CD">
             <div class="fas fa-comment-dots fa-3x mt-5">
             </div>
             <div class="px-4 pb-5">

@@ -20,14 +20,7 @@ $pergunta = new Pergunta();
 $perguntaDAO = new PerguntaDAO($conn);
 
 $pergunta->setCnpj($_SESSION['cnpj']);
-
 $arrayPergunta = $perguntaDAO->Listar($pergunta);
-
-$dados = unserialize($_SESSION['processo_etapa1']);
-
-var_dump($dados->getIdProcesso());
-
-//var_dump(unserialize($_SESSION['processo_etapa1']));
 
 ?>
 
@@ -49,7 +42,6 @@ var_dump($dados->getIdProcesso());
                             <h5 class="display-4 mb-4">Adicione as competências necessárias do processo seletivo</h5>
                             <form>
                                 <input type="hidden" id="txtContador" name="txtContador" value="1">
-                                <input type="hidden" id="txtIdProcesso" name="txtIdProcesso" value="<?=$dados->getIdProcesso()?>">
 
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
@@ -98,7 +90,7 @@ var_dump($dados->getIdProcesso());
                                     <div class="col">
                                         <div class="div-add">
                                             <div class="form-check mt-2">
-                                                <input class="form-check-input lead" type="checkbox" value="<?= $reg->getIdTesteOnline(); ?>" id="chkTeste<?= $reg->getIdTesteOnline(); ?>" name="chkTeste<?= $reg->getIdTesteOnline(); ?>">
+                                                <input class="chkTeste form-check-input lead" type="checkbox" value="<?= $reg->getIdTesteOnline(); ?>" id="chkTeste<?= $reg->getIdTesteOnline(); ?>" name="chkTeste<?= $reg->getIdTesteOnline(); ?>">
                                                 <label class="form-check-label lead ml-2" for="chkTeste<?= $reg->getIdTesteOnline(); ?>"><?= $reg->getNomeTesteOnline(); ?></label>
                                                 <p class="ml-2">Contém <?= $reg->getQuantidadeQuestoes(); ?> questões.</p>
                                             </div>                                    
@@ -138,7 +130,7 @@ var_dump($dados->getIdProcesso());
                                         <div class="col">
                                             <div class="div-add div-add-pergunta py-3">
                                                 <div class="form-check">
-                                                    <input class="form-check-input lead" type="checkbox" value="<?= $reg->getIdPergunta(); ?>" id="chkTeste<?= $reg->getIdPergunta(); ?>" name="chkTeste<?= $reg->getIdPergunta(); ?>">
+                                                    <input class="chkPergunta form-check-input lead" type="checkbox" value="<?= $reg->getIdPergunta(); ?>" id="chkTeste<?= $reg->getIdPergunta(); ?>" name="chkTeste<?= $reg->getIdPergunta(); ?>">
                                                     <label class="form-check-label lead ml-2" for="chkTeste<?= $reg->getIdPergunta(); ?>"><?= $reg->getPergunta(); ?></label>
                                                 </div>
                                             </div>

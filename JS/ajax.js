@@ -749,28 +749,80 @@ $(function () {
     $('#sectionProcesso2').on('click', '#btnConcluir', function (e) {
 
         e.preventDefault();
+
+        $.post('../PostAjax/salvar.php', {
+            acao: "SalvarProcessoSeletivo"
+
+        }, function (sucesso) {
+
+            if (sucesso == true) {
+                console.log('INSERIU PROCESSO');
+
+                //Inserir competencias do processo
+                $(".div-competencia").each(function() {
+                    var div = $(this);
+                    $.post('../PostAjax/salvar.php', {
+                        acao: "SalvarProcessoCompetencia",
+                        competencia: div.find('h5').html(),
+                        nivel: div.find('select').val()
+            
+                    }, function (sucesso) {
+            
+                        if (sucesso == true) {
+                            console.log('INSERIU COMPETENCIA');
+                        } else {
+                            alert('Erro: ' + sucesso);
+                        }
+                    });
         
-        $(".div-competencia").each(function() {
-            var div = $(this);
-            $.post('../PostAjax/salvar.php', {
-                acao: "SalvarProcessoCompetencia",
-                idProcesso: $('#txtIdProcesso').val(),
-                competencia: div.find('h5').html(),
-                nivel: div.find('select').val()
-    
-            }, function (sucesso) {
-    
-                if (sucesso == true) {
-                    console.log('INSERIU');
-    
-                } else {
-                    alert('Erro: ' + sucesso);
-                }
-            });
+                });
 
+                $(".chkTeste").each(function() {
+                    
+                    var checkbox = $(this);
+                    if(checkbox.prop("checked")) {
+
+                        $.post('../PostAjax/salvar.php', {
+                            acao: "SalvarProcessoTeste",
+                            idTeste: checkbox.val()
+                
+                        }, function (sucesso) {
+                
+                            if (sucesso == true) {
+                                console.log('INSERIU TESTE');
+                            } else {
+                                alert('Erro: ' + sucesso);
+                            }
+                        });
+                    }        
+                });
+
+                $(".chkPergunta").each(function() {
+                    
+                    var checkbox = $(this);
+                    if(checkbox.prop("checked")) {
+
+                        $.post('../PostAjax/salvar.php', {
+                            acao: "SalvarProcessoPergunta",
+                            idPergunta: checkbox.val()
+                
+                        }, function (sucesso) {
+                
+                            if (sucesso == true) {
+                                console.log('INSERIU PERGUNTA');
+                            } else {
+                                alert('Erro: ' + sucesso);
+                            }
+                        });
+                    }        
+                });
+
+            window.location.replace("criar_processo_concluir.php");
+
+            } else {
+                alert('Erro: ' + sucesso);
+            }
         });
-
-        window.location.replace("criar_processo_concluir.php");
-
     });
+
 });
