@@ -37,12 +37,13 @@ class ProcessoCompetenciaDAO
 
     public function Listar(ProcessoCompetencia $processoCompetencia) {
         
-        $query = $this->db->getConection()->query("SELECT * FROM tbProcessoCompetencia WHERE cpf ='".$candCompetencia->getCpf()."' ORDER BY competencia asc;");
+        $query = $this->db->getConection()->query("SELECT * FROM tbProcessoCompetencia WHERE idProcesso = '".$processoCompetencia->getIdProcesso()."';");
+        
         $arrayQuery = array();
 
         while($reg = $query->fetch_array()) {
 
-            $candCompetencia = new CandidatoCompetencia();
+            $processoCompetencia = new ProcessoCompetencia();
 
             if($reg['nivel'] == 'B')
                 $reg['nivel'] = 'Básico';
@@ -51,17 +52,15 @@ class ProcessoCompetenciaDAO
             else if($reg['nivel'] == 'A')
                 $reg['nivel'] = 'Avançado';
             
-            $candCompetencia->InserirCompetencia(         
-                $reg['cpf'],
+            $processoCompetencia->inserirProcessoCompetencia(         
+                $reg['idProcesso'],
                 $reg['idCompetencia'],
-                $reg['competencia'],
                 $reg['nivel']
             );
-            $arrayQuery[] = $candCompetencia;
+            $arrayQuery[] = $processoCompetencia;
         }
 
         return $arrayQuery;
-
     }
 
     public function UltimoRegistroComp(CandidatoCompetencia $candCompetencia) {

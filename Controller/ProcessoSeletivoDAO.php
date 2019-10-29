@@ -86,7 +86,7 @@ class ProcessoSeletivoDAO
                     $reg['cnpj'],
                     $reg['idCargo'],
                     $reg['dataInicio'],
-                    $reg['dataLimite'],
+                    $reg['dataLimiteCandidatar'],
                     $reg['resumoVaga'],
                     $reg['nivelCargo'],
                     $reg['tipoContratacao'],
@@ -101,7 +101,7 @@ class ProcessoSeletivoDAO
 
         } else {
 
-            $query = $this->db->getConection()->query("SELECT * FROM tbProcessoSeletivo WHERE idProcesso ='".$processo->getIdProcesso()."' AND idProcesso ='".$processo->getIdProcesso()."';");
+            $query = $this->db->getConection()->query("SELECT * FROM tbProcessoSeletivo WHERE idProcesso ='".$processo->getIdProcesso()."';");
 
             $reg = $query->fetch_array();
             $processo->inserirProcessoSeletivo(
@@ -110,7 +110,7 @@ class ProcessoSeletivoDAO
                     $reg['cnpj'],
                     $reg['idCargo'],
                     $reg['dataInicio'],
-                    $reg['dataLimite'],
+                    $reg['dataLimiteCandidatar'],
                     $reg['resumoVaga'],
                     $reg['nivelCargo'],
                     $reg['tipoContratacao'],

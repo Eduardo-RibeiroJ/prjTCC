@@ -29,16 +29,17 @@ class ProcessoTesteDAO
 
     public function Listar(ProcessoTeste $processoTeste) {
         
-        $query = $this->db->getConection()->query("SELECT * FROM tbProcessoCompetencia WHERE idProcesso ='". $processoTeste->getIdProcesso()."' AND idTesteOnline ='" . $processoTeste->getIdTesteOnline()."';");
+        $query = $this->db->getConection()->query("SELECT * FROM tbProcessoTeste WHERE idProcesso ='". $processoTeste->getIdProcesso()."';");
+        
         $arrayQuery = array();
 
         while($reg = $query->fetch_array()) {
 
             $processoTeste = new ProcessoTeste();
 
-            $processoTeste->InserirCompetencia(         
+            $processoTeste->inserirProcessoTeste(         
                 $reg['idProcesso'],
-                $reg['idTestOnline']
+                $reg['idTesteOnline']
             );
             $arrayQuery[] = $processoTeste;
         }

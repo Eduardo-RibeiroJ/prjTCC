@@ -27,22 +27,20 @@ class ProcessoPerguntaDAO
 
     }
 
-    public function Listar(ProcessoCompetencia $processoCompetencia) {
+    public function Listar(ProcessoPergunta $processoPergunta) {
         
-        $query = $this->db->getConection()->query("SELECT * FROM tbProcessoCompetencia WHERE cpf ='".$candCompetencia->getCpf()."' ORDER BY competencia asc;");
+        $query = $this->db->getConection()->query("SELECT * FROM tbProcessoPergunta WHERE idProcesso ='".$processoPergunta->getIdProcesso()."';");
         $arrayQuery = array();
 
         while($reg = $query->fetch_array()) {
 
-            $candCompetencia = new CandidatoCompetencia();
+            $processoPergunta = new ProcessoPergunta();
             
-            $candCompetencia->InserirCompetencia(         
-                $reg['cpf'],
-                $reg['idCompetencia'],
-                $reg['competencia'],
-                $reg['nivel']
+            $processoPergunta->inserirProcessoPergunta(         
+                $reg['idProcesso'],
+                $reg['idPergunta']
             );
-            $arrayQuery[] = $candCompetencia;
+            $arrayQuery[] = $processoPergunta;
         }
 
         return $arrayQuery;
