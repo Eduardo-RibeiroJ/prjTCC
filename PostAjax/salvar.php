@@ -149,20 +149,26 @@ if ($_POST['acao'] == "SalvarCandCompetencia") {
 
 	include_once "../Model/CandidatoCompetencia.php";
 	include_once "../Controller/CandidatoCompetenciaDAO.php";
+	include_once "../Model/Competencia.php";
+	include_once "../Controller/CompetenciaDAO.php";
 
-	$competencia = new CandidatoCompetencia();
-	$competenciaDAO = new CandidatoCompetenciaDAO($conn);
+	$candCompetencia = new CandidatoCompetencia();
+	$candCompetenciaDAO = new CandidatoCompetenciaDAO($conn);
 
-	$competencia->inserirCompetencia(
+	$competencia = new Competencia();
+	$competenciaDAO = new CompetenciaDAO($conn);
 
+	$competencia->setNomeComp($_POST['competencia']);
+	$idCompetencia = $competencia->idRegistro();
+
+	$candCompetencia->inserirCompetencia(
     $_POST['cpf'],
-		$_POST['idCompetencia'],
+		$idCompetencia,
 		$_POST['competencia'],
 		$_POST['nivel']
-
 	);
-
-	$competenciaDAO->Inserir($competencia);
+	$candCompetenciaDAO->Inserir($candCompetencia);
+	echo ($idCompetencia."-"); //Retornando a ID
 }
 
 if ($_POST['acao'] == "SalvarProcessoSeletivo") {

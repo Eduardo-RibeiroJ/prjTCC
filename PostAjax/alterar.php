@@ -177,6 +177,23 @@ if($_POST['acao'] == "CandidatoEmpresa") {
 	$empresaDAO->Alterar($empresa);
 }
 
+if($_POST['acao'] == "alterarCandCompetencia") {
+
+	include_once "../Model/CandidatoCompetencia.php";
+	include_once "../Controller/CandidatoCompetenciaDAO.php";
+
+	$candComp = new CandidatoCompetencia();
+	$candCompDAO = new CandidatoCompetenciaDAO($conn);
+
+	$candComp->alterarCompetencia (
+	    $_POST['cpf'],
+      $_POST['idCompetencia'],
+      $_POST['nivel']
+	);
+
+	$candCompDAO->Alterar($candComp);
+}
+
 if ($_POST['acao'] == "Pergunta") {
 
 	include_once "../Model/Pergunta.php";

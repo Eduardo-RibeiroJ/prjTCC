@@ -600,25 +600,26 @@ $(function () {
         e.preventDefault();
         var nomeCompetencia = $('#txtNomeCompetencia').val();
         var nivelCompetencia = $('#cbbNivelCompetencia').val();
-        var ultimoRegistro = $('#txtUltimoRegistro').val();
 
         $.post('../PostAjax/salvar.php', {
             acao: "SalvarCandCompetencia",
             cpf: $('#txtCpf').val(),
-            idCompetencia: ultimoRegistro,
             competencia: nomeCompetencia,
             nivel: nivelCompetencia
 
         }, function (sucesso) {
 
-            if (sucesso == true) {
+            if (sucesso.substring(sucesso.length - 1) == 1) {
+
+                idCompetencia = sucesso.substring(0, sucesso.length - 2)
+
                 $('#divCandCompetencias').prepend(`<div class="div-competencia flex-fill">
                                                     <p>
                                                         <h5 class="d-inline">`+ nomeCompetencia + `</h5>
-                                                        <button class="btn btn-outline-dark d-inline ml-4" value="` + ultimoRegistro + `" id="btnExcluirCompetencia"><i class="fas fa-trash-alt"></i></button>
+                                                        <button class="btn btn-outline-dark d-inline ml-4" value="` + idCompetencia + `" id="btnExcluirCompetencia"><i class="fas fa-trash-alt"></i></button>
                                                     </p>
                                                     <p>
-                                                    <select class="custom-select d-inline" id="cbbNivelCompetencia` + ultimoRegistro + `" name="cbbNivelCompetencia" required>
+                                                    <select class="custom-select d-inline" id="cbbNivelCompetencia` + idCompetencia + `" name="cbbNivelCompetencia" required>
                                                         <option value="Básico">Básico</option>
                                                         <option value="Intermediário">Intermediário</option>
                                                         <option value="Avançado">Avançado</option>
@@ -628,14 +629,11 @@ $(function () {
                 );
 
 
-                $('#cbbNivelCompetencia' + ultimoRegistro).val(nivelCompetencia);
-                $('#txtUltimoRegistro').val(parseInt(ultimoRegistro) + 1);
+                $('#cbbNivelCompetencia' + idCompetencia).val(nivelCompetencia);
                 $('#txtNomeCompetencia').val('');
                 $('#cbbNivelCompetencia').val('Básico');
 
-
                 $('#txtNomeCompetencia').focus();
-
 
             } else {
                 alert('Erro: ' + sucesso);
@@ -671,8 +669,8 @@ $(function () {
 
         var nivel = $(this).val();
 
-        //Retorna apenas o int (idCompetencia) que esta misturado em uma string
-        var idCompetencia = $(this).attr('id').split("").filter(Number).join("");
+        //Retorna apenas os int (idCompetencia) que esta misturado em uma string
+        var idCompetencia = $(this).attr('id').replace(/\D+/g, '');
 
         $.post('../PostAjax/alterar.php', {
             acao: "alterarCandCompetencia",
@@ -684,7 +682,6 @@ $(function () {
 
             if (sucesso == true) {
                 console.log('ALTEROU');
-
 
             } else {
                 alert('Erro: ' + sucesso);

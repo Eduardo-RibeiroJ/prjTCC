@@ -20,15 +20,12 @@ $candidatoDAO = new CandidatoDAO($conn);
 $competencia->setCpf($_SESSION['cpf']);
 $candidato->setCpf($_SESSION['cpf']);
 
-$ultimoRegistro = $competencia->getUltimoRegistroComp();
-
 $arrayCompetencia = $competenciaDAO->Listar($competencia);
 
 ?>
 
 <div class="container" id="containerCompetencias">
 
-    <input type="hidden" id="txtUltimoRegistro" name="txtUltimoRegistro" value="<?= $ultimoRegistro ?>">
     <input type="hidden" id="txtCpf" name="txtCpf" value="<?= $candidato->getCpf() ?>">
 
     <div class="jumbotron p-3 p-md-5">
