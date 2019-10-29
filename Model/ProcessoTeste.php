@@ -2,6 +2,7 @@
 class ProcessoTeste {
     private $idProcesso;
     private $idTesteOnline;
+    private $testeOnline;
 
     function inserirProcessoTeste($idProcesso, $idTesteOnline) {
         $this->idProcesso = $idProcesso;
@@ -16,11 +17,19 @@ class ProcessoTeste {
         return $this->idTesteOnline;
     }
 
+    function getTesteOnline() {
+        return $this->testeOnline;
+    }
+
     function setIdProcesso($idProcesso) {
         $this->idProcesso = $idProcesso;
     }
 
     function setIdTesteOnline($idTesteOnline) {
         $this->idTesteOnline = $idTesteOnline;
+    }
+
+    function setTesteOnline($testeOnline) {
+        $this->testeOnline = $testeOnline;
     }
 }

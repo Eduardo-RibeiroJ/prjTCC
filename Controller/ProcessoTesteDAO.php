@@ -28,6 +28,8 @@ class ProcessoTesteDAO
     }
 
     public function Listar(ProcessoTeste $processoTeste) {
+
+        $conn = new Conexao();
         
         $query = $this->db->getConection()->query("SELECT * FROM tbProcessoTeste WHERE idProcesso ='". $processoTeste->getIdProcesso()."';");
         
@@ -36,11 +38,18 @@ class ProcessoTesteDAO
         while($reg = $query->fetch_array()) {
 
             $processoTeste = new ProcessoTeste();
+            $testeOnline = new TesteOnline();
+            $testeOnlineDAO = new TesteOnlineDAO($conn);
 
+            $testeOnline->setIdTesteOnline($reg['idTesteOnline']);
+            $testeOnlineDAO->Listar($testeOnline);
+            
             $processoTeste->inserirProcessoTeste(         
                 $reg['idProcesso'],
                 $reg['idTesteOnline']
             );
+            $processoTeste->setTesteOnline($testeOnline);
+
             $arrayQuery[] = $processoTeste;
         }
 

@@ -8,12 +8,16 @@ include_once "../Model/ProcessoCompetencia.php";
 include_once "../Model/ProcessoTeste.php";
 include_once "../Model/ProcessoPergunta.php";
 include_once "../Model/Competencia.php";
+include_once "../Model/TesteOnline.php";
+include_once "../Model/Pergunta.php";
 
 include_once "../Controller/ProcessoSeletivoDAO.php";
 include_once "../Controller/ProcessoCompetenciaDAO.php";
 include_once "../Controller/ProcessoTesteDAO.php";
 include_once "../Controller/ProcessoPerguntaDAO.php";
 include_once "../Controller/CompetenciaDAO.php";
+include_once "../Controller/TesteOnlineDAO.php";
+include_once "../Controller/PerguntaDAO.php";
 
 $conn = new Conexao();
 
@@ -26,10 +30,9 @@ $processoDAO = new ProcessoSeletivoDAO($conn);
 $processoCompetenciaDAO = new ProcessoCompetenciaDAO($conn);
 $processoTesteDAO = new ProcessoTesteDAO($conn);
 $processoPerguntaDAO = new ProcessoPerguntaDAO($conn);
-$competenciaDAO = new CompetenciaDAO($conn);
 
 //Setando manualmente o id que vai ver no link
-$idProcesso = 13;
+$idProcesso = 4;
 
 $processo->setIdProcesso($idProcesso);
 $processoDAO->Listar($processo);
@@ -38,10 +41,10 @@ $processoCompetencia->setIdProcesso($idProcesso);
 $arrayCompetencia = $processoCompetenciaDAO->Listar($processoCompetencia);
 
 $processoTeste->setIdProcesso($idProcesso);
-$processoTesteDAO->Listar($processoTeste);
+$arrayTeste = $processoTesteDAO->Listar($processoTeste);
 
 $processoPergunta->setIdProcesso($idProcesso);
-$processoPerguntaDAO->Listar($processoPergunta);
+$arrayPergunta = $processoPerguntaDAO->Listar($processoPergunta);
 
 ?>
 
@@ -61,26 +64,50 @@ $processoPerguntaDAO->Listar($processoPergunta);
                   </div>
                 </div>
 
-                <div class="row">
-                  <div class="col-12">
-                  <p class="lead mb-1"><strong>Competências necessárias:</strong></p>
-                  <ul>
-                    <?php if($arrayCompetencia): ?>
+                <?php if($arrayCompetencia): ?>
+                  <div class="row">
+                    <div class="col-12">
+                      <p class="lead mb-1"><strong>Competências necessárias:</strong></p>
+                      <ul>
                       <?php foreach($arrayCompetencia as $reg): ?>
 
-                        <?php
-                          $competencia = new Competencia();
-                          $competencia->setIdComp($reg->getIdCompetencia());
-                          $competenciaDAO->Listar($competencia);
-                        ?>
-
-                        <li><?= $competencia->getNomeComp(); ?> nível <?= $reg->getNivel(); ?></li>
+                        <li><?= $reg->getCompetencia()->getNomeComp(); ?> nível <?= $reg->getNivel(); ?></li>
 
                       <?php endforeach; ?>
-                    <?php endif; ?>
-                  </ul>
+                      </ul>
+                    </div>
                   </div>
-                </div>
+                <?php endif; ?>
+
+                <?php if($arrayTeste): ?>
+                  <div class="row">
+                    <div class="col-12">
+                      <p class="lead mb-1"><strong>Testes online necessários:</strong></p>
+                      <ul>
+                      <?php foreach($arrayTeste as $reg): ?>
+
+                        <li><?= $reg->getTesteOnline()->getNomeTesteOnline(); ?></li>
+
+                      <?php endforeach; ?>
+                      </ul>
+                    </div>
+                  </div>
+                <?php endif; ?>
+
+                <?php if($arrayPergunta): ?>
+                  <div class="row">
+                    <div class="col-12">
+                      <p class="lead mb-1"><strong>Perguntas necessárias:</strong></p>
+                      <ul>
+                      <?php foreach($arrayPergunta as $reg): ?>
+
+                        <li><?= $reg->getPergunta()->getPergunta(); ?></li>
+
+                      <?php endforeach; ?>
+                      </ul>
+                    </div>
+                  </div>
+                <?php endif; ?>
             </div>
             <hr class="my-2 my-md-4">
 

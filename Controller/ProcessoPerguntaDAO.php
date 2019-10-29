@@ -28,6 +28,8 @@ class ProcessoPerguntaDAO
     }
 
     public function Listar(ProcessoPergunta $processoPergunta) {
+
+        $conn = new Conexao();
         
         $query = $this->db->getConection()->query("SELECT * FROM tbProcessoPergunta WHERE idProcesso ='".$processoPergunta->getIdProcesso()."';");
         $arrayQuery = array();
@@ -35,11 +37,18 @@ class ProcessoPerguntaDAO
         while($reg = $query->fetch_array()) {
 
             $processoPergunta = new ProcessoPergunta();
+            $pergunta = new Pergunta();
+            $perguntaDAO = new PerguntaDAO($conn);
+
+            $pergunta->setIdPergunta($reg['idPergunta']);
+            $perguntaDAO->Listar($pergunta);
             
             $processoPergunta->inserirProcessoPergunta(         
                 $reg['idProcesso'],
                 $reg['idPergunta']
             );
+            $processoPergunta->setPergunta($pergunta);
+
             $arrayQuery[] = $processoPergunta;
         }
 

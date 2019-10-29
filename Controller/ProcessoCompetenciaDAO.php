@@ -36,6 +36,8 @@ class ProcessoCompetenciaDAO
     }
 
     public function Listar(ProcessoCompetencia $processoCompetencia) {
+
+        $conn = new Conexao();
         
         $query = $this->db->getConection()->query("SELECT * FROM tbProcessoCompetencia WHERE idProcesso = '".$processoCompetencia->getIdProcesso()."';");
         
@@ -44,6 +46,11 @@ class ProcessoCompetenciaDAO
         while($reg = $query->fetch_array()) {
 
             $processoCompetencia = new ProcessoCompetencia();
+            $competencia = new Competencia();
+            $competenciaDAO = new CompetenciaDAO($conn);
+
+            $competencia->setIdComp($reg['idCompetencia']);
+            $competenciaDAO->Listar($competencia);
 
             if($reg['nivel'] == 'B')
                 $reg['nivel'] = 'Básico';
@@ -57,6 +64,8 @@ class ProcessoCompetenciaDAO
                 $reg['idCompetencia'],
                 $reg['nivel']
             );
+            $processoCompetencia->setCompetencia($competencia);
+            
             $arrayQuery[] = $processoCompetencia;
         }
 
