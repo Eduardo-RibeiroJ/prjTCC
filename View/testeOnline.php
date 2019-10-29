@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 include_once "../Model/Conexao.php";
 include_once "../Model/TesteOnline.php";
 include_once "../Controller/TesteOnlineDAO.php";
@@ -6,6 +8,7 @@ include_once "../Controller/TesteOnlineDAO.php";
 $conn = new Conexao();
 $testeOnline = new TesteOnline();
 $testeOnlineDAO = new TesteOnlineDAO($conn);
+$testeOnline->setCnpj($_SESSION['cnpj']);
 $arrayTestesOnline = $testeOnlineDAO->Listar($testeOnline);
 
 ?>
@@ -13,6 +16,7 @@ $arrayTestesOnline = $testeOnlineDAO->Listar($testeOnline);
 <?php include_once 'headerRecrut.php'; ?>
 
 <div class="container">
+<input type="hidden" id="txtCnpj" name="txtCnpj" value="<?= $_SESSION['cnpj']; ?>">
 
   <div class="jumbotron p-3 p-md-5">
     <div class="container p-0">

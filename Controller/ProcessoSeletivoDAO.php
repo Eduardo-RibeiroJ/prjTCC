@@ -17,18 +17,17 @@ class ProcessoSeletivoDAO
         $dataInicio = $processo->getDataInicio();
         $dataLimite = $processo->getDataLimiteCandidatar();
         $resumoVaga = $processo->getResumoVaga();
-        $nivelCargo = $processo->getNivelCargo();
         $tipoContratacao = $processo->getTipoContratacao();
         $salario = $processo->getSalario();
 
-        $query = "INSERT INTO tbProcessoSeletivo (idProcesso, cnpj, idCargo, dataInicio, dataLimiteCandidatar, resumoVaga, nivelCargo, tipoContratacao, salario) VALUES (?,?,?,?,?,?,?,?,?);";
+        $query = "INSERT INTO tbProcessoSeletivo (idProcesso, cnpj, idCargo, dataInicio, dataLimiteCandidatar, resumoVaga, tipoContratacao, salario) VALUES (?,?,?,?,?,?,?,?);";
         $stmt = mysqli_prepare($this->db->getConection(), $query);
 
         if($stmt === FALSE){
             die(mysqli_error($this->db->getConection()));
         }
 
-        mysqli_stmt_bind_param($stmt, 'isisssssi', $idProcesso, $cnpj, $idCargo, $dataInicio, $dataLimite, $resumoVaga, $nivelCargo, $tipoContratacao, $salario);
+        mysqli_stmt_bind_param($stmt, 'isissssi', $idProcesso, $cnpj, $idCargo, $dataInicio, $dataLimite, $resumoVaga, $tipoContratacao, $salario);
         mysqli_stmt_execute($stmt);
         mysqli_stmt_close($stmt);
 
@@ -40,11 +39,10 @@ class ProcessoSeletivoDAO
         $dataInicio = $processo->getDataInicio();
         $dataLimite = $processo->getDataLimiteCandidatar();
         $resumoVaga = $processo->getResumoVaga();
-        $nivelCargo = $processo->getNivelCargo();
         $tipoContratacao = $processo->getTipoContratacao();
         $salario = $processo->getSalario();
 
-        $query = "UPDATE tbProcessoSeletivo SET idCargo=?, dataInicio=?, dataLimite=?, resumoVaga=?, nivelCargo=?, tipoContratacao=?, salario=? WHERE idProcesso = ?;";
+        $query = "UPDATE tbProcessoSeletivo SET idCargo=?, dataInicio=?, dataLimite=?, resumoVaga=?, tipoContratacao=?, salario=? WHERE idProcesso = ?;";
  
         $stmt = mysqli_prepare($this->db->getConection(), $query);
 
@@ -52,7 +50,7 @@ class ProcessoSeletivoDAO
             die(mysqli_error($this->db->getConection()));
         } 
         
-        mysqli_stmt_bind_param($stmt, 'isssssii', $idCargo, $dataInicio, $dataLimite, $resumoVaga, $nivelCargo, $tipoContratacao, $salario, $idProcesso);
+        mysqli_stmt_bind_param($stmt, 'issssii', $idCargo, $dataInicio, $dataLimite, $resumoVaga, $tipoContratacao, $salario, $idProcesso);
         mysqli_stmt_execute($stmt);
         mysqli_stmt_close($stmt);
 
@@ -71,6 +69,8 @@ class ProcessoSeletivoDAO
     }
 
     public function Listar(ProcessoSeletivo $processo) {
+
+        $conn = new Conexao();
         
         if ($processo->getIdProcesso() == NULL) {
 
@@ -80,19 +80,23 @@ class ProcessoSeletivoDAO
             while($reg = $query->fetch_array()) {
 
                 $processo = new ProcessoSeletivo();
+                $cargo = new Cargo();
+                $cargoDAO = new CargoDAO($conn);
+
+                $cargo->setIdCargo($reg['idCargo']);
+                $cargoDAO->Listar($cargo);
+
                 $processo->inserirProcessoSeletivo(
-                    
                     $reg['idProcesso'],
                     $reg['cnpj'],
                     $reg['idCargo'],
                     $reg['dataInicio'],
                     $reg['dataLimiteCandidatar'],
                     $reg['resumoVaga'],
-                    $reg['nivelCargo'],
                     $reg['tipoContratacao'],
                     $reg['salario']
-
                 );
+                $processo->setCargo($cargo);
 
                 $arrayQuery[] = $processo;
             }
@@ -104,6 +108,13 @@ class ProcessoSeletivoDAO
             $query = $this->db->getConection()->query("SELECT * FROM tbProcessoSeletivo WHERE idProcesso ='".$processo->getIdProcesso()."';");
 
             $reg = $query->fetch_array();
+
+            $cargo = new Cargo();
+            $cargoDAO = new CargoDAO($conn);
+
+            $cargo->setIdCargo($reg['idCargo']);
+            $cargoDAO->Listar($cargo);
+
             $processo->inserirProcessoSeletivo(
                     
                     $reg['idProcesso'],
@@ -112,10 +123,11 @@ class ProcessoSeletivoDAO
                     $reg['dataInicio'],
                     $reg['dataLimiteCandidatar'],
                     $reg['resumoVaga'],
-                    $reg['nivelCargo'],
                     $reg['tipoContratacao'],
                     $reg['salario']
             );
+            $processo->setCargo($cargo);
+
             return $processo;
         }
     }

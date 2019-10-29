@@ -11,6 +11,7 @@ class QuestaoDAO
 
     public function Inserir(Questao $questao) 
     {
+        $cnpj = $questao->getCnpj();
         $altA = $questao->getAltA();
         $altB = $questao->getAltB();
         $altC = $questao->getAltC();
@@ -21,14 +22,14 @@ class QuestaoDAO
         $idQuestao = $questao->getIdQuestao();
         $questao = $questao->getQuestao();
 
-        $query = "INSERT INTO tbQuestao (idTesteOnline, idQuestao, questao, altA, altB, altC, altD, resposta, tempo) VALUES (?,?,?,?,?,?,?,?,?);";
+        $query = "INSERT INTO tbQuestao (idTesteOnline, cnpj, idQuestao, questao, altA, altB, altC, altD, resposta, tempo) VALUES (?,?,?,?,?,?,?,?,?,?);";
         $stmt = mysqli_prepare($this->db->getConection(), $query);
 
         if($stmt === FALSE){
             die(mysqli_error($this->db->getConection()));
         }
 
-        mysqli_stmt_bind_param($stmt, 'iissssssi', $idTesteOnline, $idQuestao, $questao, $altA, $altB, $altC, $altD, $resposta, $tempo);
+        mysqli_stmt_bind_param($stmt, 'isissssssi', $idTesteOnline, $cnpj, $idQuestao, $questao, $altA, $altB, $altC, $altD, $resposta, $tempo);
         mysqli_stmt_execute($stmt);
         mysqli_stmt_close($stmt);
 
@@ -36,6 +37,7 @@ class QuestaoDAO
 
     public function Alterar(Questao $questao)
     { 
+        $cnpj = $questao->getCnpj();
         $altA = $questao->getAltA();
         $altB = $questao->getAltB();
         $altC = $questao->getAltC();
@@ -46,7 +48,7 @@ class QuestaoDAO
         $idQuestao = $questao->getIdQuestao();
         $questao = $questao->getQuestao();
 
-        $query = "UPDATE tbQuestao SET questao=?, altA=?, altB=?, altC=?, altD=?, resposta=?, tempo=? WHERE idTesteOnline = ? AND idQuestao = ?;";
+        $query = "UPDATE tbQuestao SET questao=?, altA=?, altB=?, altC=?, altD=?, resposta=?, tempo=? WHERE idTesteOnline = ? AND cnpj = ? AND idQuestao = ?;";
  
         $stmt = mysqli_prepare($this->db->getConection(), $query);
 
@@ -54,7 +56,7 @@ class QuestaoDAO
             die(mysqli_error($this->db->getConection()));
         } 
         
-        mysqli_stmt_bind_param($stmt, 'ssssssiii', $questao, $altA, $altB, $altC, $altD, $resposta, $tempo, $idTesteOnline, $idQuestao);
+        mysqli_stmt_bind_param($stmt, 'ssssssiisi', $questao, $altA, $altB, $altC, $altD, $resposta, $tempo, $idTesteOnline, $cnpj, $idQuestao);
         mysqli_stmt_execute($stmt);
         mysqli_stmt_close($stmt);
 
@@ -62,20 +64,20 @@ class QuestaoDAO
 
     public function Apagar(Questao $questao) {
 
-
         $idTesteOnline = $questao->getIdTesteOnline();
         $idQuestao = $questao->getIdQuestao();
+        $cnpj = $questao->getCnpj();
 
-        $SQL = $this->db->getConection()->prepare("DELETE FROM tbQuestao WHERE idTesteOnline = ? AND idQuestao = ?;");
+        $SQL = $this->db->getConection()->prepare("DELETE FROM tbQuestao WHERE idTesteOnline = ? AND cnpj = ? AND idQuestao = ?;");
 
-        $SQL->bind_param("ii", $idTesteOnline, $idQuestao);
+        $SQL->bind_param("isi", $idTesteOnline, $cnpj, $idQuestao);
         $SQL->execute();
 
         //Realocar os números das questões para não ficar "buraco"
-        /*$SQL = $this->db->getConection()->prepare("UPDATE tbQuestao SET idQuestao = (idQuestao - 1) WHERE idQuestao > ? AND idTesteOnline = ?;");
+        $SQL = $this->db->getConection()->prepare("UPDATE tbQuestao SET idQuestao = (idQuestao - 1) WHERE idQuestao > ? AND idTesteOnline = ? AND cnpj = ?;");
 
-        $SQL->bind_param("ii", $idQuestao, $idTesteOnline);
-        $SQL->execute();*/
+        $SQL->bind_param("iis", $idQuestao, $idTesteOnline, $cnpj);
+        $SQL->execute();
    
         return true;
     }
@@ -84,7 +86,7 @@ class QuestaoDAO
         
         if ($questao->getIdQuestao() == NULL) {
 
-            $query = $this->db->getConection()->query("SELECT * FROM tbQuestao WHERE idTesteOnline ='".$questao->getIdTesteOnline()."' ORDER BY idQuestao;");
+            $query = $this->db->getConection()->query("SELECT * FROM tbQuestao WHERE idTesteOnline ='".$questao->getIdTesteOnline()."' AND cnpj ='".$questao->getCnpj()."' ORDER BY idQuestao;");
             $arrayQuery = array();
 
             while($reg = $query->fetch_array()) {
@@ -93,6 +95,7 @@ class QuestaoDAO
                 $questao->inserirQuestao(
                     
                     $reg['idTesteOnline'],
+                    $reg['cnpj'],
                     $reg['idQuestao'],
                     $reg['questao'],
                     $reg['altA'],
@@ -110,12 +113,13 @@ class QuestaoDAO
 
         } else {
 
-            $query = $this->db->getConection()->query("SELECT * FROM tbQuestao WHERE idTesteOnline ='".$questao->getIdTesteOnline()."' AND idQuestao ='".$questao->getIdQuestao()."';");
+            $query = $this->db->getConection()->query("SELECT * FROM tbQuestao WHERE idTesteOnline ='".$questao->getIdTesteOnline()."' AND cnpj ='".$questao->getCnpj()."' AND idQuestao ='".$questao->getIdQuestao()."';");
 
             $reg = $query->fetch_array();
             $questao->inserirQuestao(
                     
                     $reg['idTesteOnline'],
+                    $reg['cnpj'],
                     $reg['idQuestao'],
                     $reg['questao'],
                     $reg['altA'],

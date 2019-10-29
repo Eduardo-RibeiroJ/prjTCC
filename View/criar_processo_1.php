@@ -17,7 +17,6 @@ if (isset($_POST['btnAvancar'])) {
         $_POST['txtDataInicio'],
         $_POST['txtDataLimite'],
         $_POST['txtResumo'],
-        $_POST['cbbNivel'],
         $_POST['cbbContratacao'],
         $_POST['txtSalario']
   );
@@ -46,19 +45,9 @@ if (isset($_POST['btnAvancar'])) {
                         <div class="card-text">
                             <form method="POST" action="criar_processo_1.php">
                                 <div class="form-row">
-                                    <div class="form-group col-md-6">
+                                    <div class="form-group col-12 col-md-8">
                                         <label for="txtCargo">Cargo</label>
                                         <input type="text" class="form-control" id="txtCargo" name="txtCargo" required autofocus>
-                                    </div>
-
-                                    <div class="form-group col-md-6">
-                                        <label for="cbbNivel">Nível</label>
-                                        <select class="custom-select" id="cbbNivel" name="cbbNivel" required>
-                                            <option value="" selected>Selecione</option>
-                                            <option value="Júnior">Júnior</option>
-                                            <option value="Pleno">Pleno</option>
-                                            <option value="Sênior">Sênior</option>
-                                        </select>
                                     </div>
                                 </div>
 

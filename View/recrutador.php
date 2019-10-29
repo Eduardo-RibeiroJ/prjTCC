@@ -34,7 +34,7 @@
     <div class="row">
 
       <div class="col-md-6 text-center">
-        <a href="testesOnline.php" class="btn btn-primary btn-grande"><i class="fas fa-tasks fa-3x"> </i>
+        <a href="testeOnline.php" class="btn btn-primary btn-grande"><i class="fas fa-tasks fa-3x"> </i>
           <h4>Gerenciar testes online</h4>
         </a>
       </div>
@@ -111,7 +111,7 @@
     <div class="row">
       <div class="col-lg-4 col-sm-6">
         <div class="card text-center shadow-sm bg-white rounded">
-          <a href="testesOnline.php" class="btn btn-outline-light" style="background-color:#1874CD">
+          <a href="testeOnline.php" class="btn btn-outline-light" style="background-color:#1874CD">
             <div class="fas fa-tasks fa-3x mt-5">
             </div>
             <div class="px-4 pb-5">

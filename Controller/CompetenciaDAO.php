@@ -102,7 +102,6 @@ class CompetenciaDAO
             //         $reg['dataInicio'],
             //         $reg['dataLimiteCandidatar'],
             //         $reg['resumoVaga'],
-            //         $reg['nivelCargo'],
             //         $reg['tipoContratacao'],
             //         $reg['salario']
 

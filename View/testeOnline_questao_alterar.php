@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 include_once "../Model/Conexao.php";
 include_once "../Model/Questao.php";
@@ -13,8 +14,11 @@ $testeOnline = new TesteOnline();
 $testeOnlineDAO = new TesteOnlineDAO($conn);
 
 $testeOnline->setIdTesteOnline($_GET['idTesteOnline']);
+$testeOnline->setCnpj($_SESSION['cnpj']);
+
 $questao->setIdTesteOnline($_GET['idTesteOnline']);
 $questao->setIdQuestao($_GET['idQuestao']);
+$questao->setCnpj($_SESSION['cnpj']);
 
 $testeOnlineDAO->Listar($testeOnline);
 $questaoDAO->Listar($questao);
@@ -47,6 +51,7 @@ $questaoDAO->Listar($questao);
           </div>
 
           <input type="hidden" id="numQuestao" name="numQuestao" value="<?= $questao->getIdQuestao(); ?>">
+          <input type="hidden" id="txtCnpj" name="txtCnpj" value="<?= $_SESSION['cnpj']; ?>">
 
           <form id="formAlterarQuestao">
 

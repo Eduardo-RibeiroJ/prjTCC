@@ -14,6 +14,7 @@ if($_POST['acao'] == "alterarQuestao") {
 
 	$questao->inserirQuestao (
 	    $_POST['numTeste'],
+	    $_POST['cnpj'],
 	    $_POST['numQuestao'],
 	    $_POST['questao'],
 	    $_POST['a'],
@@ -37,6 +38,7 @@ if($_POST['acao'] == "alterarTesteOnline") {
 
 	$testeOnline->inserirTesteOnline (
 	    $_POST['numTeste'],
+	    $_POST['cnpj'],
 	    $_POST['nomeTeste']
 	);
 
@@ -266,13 +268,11 @@ if ($_POST['acao'] == "alterarRecrutadorContato") {
 		$_POST['tel2'],
 		$_POST['linkedin'],
 		$_POST['facebook'],
-		$_POST['siteEmpresa'],
-
+		$_POST['siteEmpresa']
 	);
 
 	$recrutadorDAO->Alterar($recrutador);
 }
-
 
 echo true;
 

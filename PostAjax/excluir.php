@@ -13,6 +13,7 @@ if($_POST['acao'] == "excluirTesteOnline") {
 	$testeOnlineDAO = new TesteOnlineDAO($conn);
 
 	$testeOnline->setIdTesteOnline ($_POST['idTesteOnline']);
+	$testeOnline->setCnpj ($_POST['cnpj']);
 
 	$testeOnlineDAO->Apagar($testeOnline);
 }
@@ -26,6 +27,7 @@ if($_POST['acao'] == "excluirQuestao") {
 	$questaoDAO = new QuestaoDAO($conn);
 
 	$questao->setIdTesteOnline ($_POST['idTesteOnline']);
+	$questao->setCnpj ($_POST['cnpj']);
 	$questao->setIdQuestao ($_POST['idQuestao']);
 
 	$questaoDAO->Apagar($questao);

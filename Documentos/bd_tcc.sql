@@ -254,7 +254,6 @@ CREATE TABLE `tbprocessoseletivo` (
   `dataInicio` date NOT NULL,
   `dataLimiteCandidatar` date NOT NULL,
   `resumoVaga` varchar(200) NOT NULL,
-  `nivelCargo` varchar(30) NOT NULL,
   `tipoContratacao` varchar(30) NOT NULL,
   `salario` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -278,6 +277,7 @@ CREATE TABLE `tbprocessoteste` (
 
 CREATE TABLE `tbquestao` (
   `idTesteOnline` int(11) NOT NULL,
+  `cnpj` varchar(20) NOT NULL,
   `idQuestao` int(11) NOT NULL,
   `questao` varchar(1000) NOT NULL,
   `altA` varchar(500) NOT NULL,
@@ -296,6 +296,7 @@ CREATE TABLE `tbquestao` (
 
 CREATE TABLE `tbtesteonline` (
   `idTesteOnline` int(11) NOT NULL,
+  `cnpj` varchar(20) NOT NULL,
   `nomeTesteOnline` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 

@@ -6,18 +6,17 @@ class ProcessoSeletivo {
     private $dataInicio;
     private $dataLimiteCandidatar;
     private $resumoVaga;
-    private $nivelCargo;
     private $tipoContratacao;
     private $salario;
-
-    function inserirProcessoSeletivo($idProcesso, $cnpj, $idCargo, $dataInicio, $dataLimiteCandidatar, $resumoVaga, $nivelCargo, $tipoContratacao, $salario) {
+    private $cargo;
+    
+    function inserirProcessoSeletivo($idProcesso, $cnpj, $idCargo, $dataInicio, $dataLimiteCandidatar, $resumoVaga, $tipoContratacao, $salario) {
         $this->idProcesso = $idProcesso;
         $this->cnpj = $cnpj;
         $this->idCargo = $idCargo;
         $this->dataInicio = $dataInicio;
         $this->dataLimiteCandidatar = $dataLimiteCandidatar;
         $this->resumoVaga = $resumoVaga;
-        $this->nivelCargo = $nivelCargo;
         $this->tipoContratacao = $tipoContratacao;
         $this->salario = $salario;
     }
@@ -46,16 +45,16 @@ class ProcessoSeletivo {
         return $this->resumoVaga;
     }
 
-    function getNivelCargo() {
-        return $this->nivelCargo;
-    }
-
     function getTipoContratacao() {
         return $this->tipoContratacao;
     }
 
     function getSalario() {
         return $this->salario;
+    }
+
+    function getCargo() {
+        return $this->cargo;
     }
 
     function setIdProcesso($idProcesso) {
@@ -82,16 +81,16 @@ class ProcessoSeletivo {
         $this->resumoVaga = $resumoVaga;
     }
 
-    function setNivelCargo($nivelCargo) {
-        $this->nivelCargo = $nivelCargo;
-    }
-
     function setTipoContratacao($tipoContratacao) {
         $this->tipoContratacao = $tipoContratacao;
     }
 
     function setSalario($salario) {
         $this->salario = $salario;
+    }
+
+    function setCargo($cargo) {
+        $this->cargo = $cargo;
     }
     
     public function getUltimoRegistroProcesso() {

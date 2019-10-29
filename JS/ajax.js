@@ -14,6 +14,7 @@ $(function () {
             $.post('../PostAjax/salvar.php', {
                 acao: "salvarTesteOnline",
                 numTeste: $('#numTeste').html(),
+                cnpj: $('#txtCnpj').val(),
                 nomeTeste: $('#nomeTeste').html()
             });
         }
@@ -22,6 +23,7 @@ $(function () {
         $.post('../PostAjax/salvar.php', {
             acao: "salvarQuestao",
             numTeste: $('#numTeste').html(), //<numTeste(variavel que vai enviar) || numTeste>(variavel daqui)
+            cnpj: $('#txtCnpj').val(),
             numQuestao: numQuestao,
             questao: $('#questao').val(),
             a: $('#a').val(),
@@ -64,6 +66,7 @@ $(function () {
         $.post('../PostAjax/alterar.php', {
             acao: "alterarQuestao",
             numTeste: numTesteOnline, //<numTeste(variavel que vai enviar) || numTeste>(variavel daqui)
+            cnpj: $('#txtCnpj').val(),
             numQuestao: $('#numQuestao').val(),
             questao: $('#questao').val(),
             a: $('#a').val(),
@@ -93,7 +96,8 @@ $(function () {
 
         $.post('../PostAjax/excluir.php', {
             acao: "excluirTesteOnline",
-            idTesteOnline: $(this).val()
+            idTesteOnline: $(this).val(),
+            cnpj: $('#txtCnpj').val()
 
         }, function (sucesso) {
 
@@ -117,6 +121,7 @@ $(function () {
         $.post('../PostAjax/excluir.php', {
             acao: "excluirQuestao",
             idTesteOnline: $('#idTesteOnline').html(),
+            cnpj: $('#txtCnpj').val(),
             idQuestao: $(this).val()
 
         }, function (sucesso) {
@@ -126,6 +131,7 @@ $(function () {
                 cardAlvo.fadeOut(500, function () {
                     cardAlvo.remove();
                 });
+                window.location.reload();
 
             } else {
                 alert('Erro: ' + sucesso);

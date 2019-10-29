@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 include_once "../Model/Conexao.php";
 include_once "../Model/TesteOnline.php";
@@ -8,11 +9,15 @@ $conn = new Conexao();
 $testeOnline = new TesteOnline();
 $testeOnlineDAO = new TesteOnlineDAO($conn);
 
+$testeOnline->setCnpj($_SESSION['cnpj']);
+
+$ultimoRegistro = TesteOnline::getUltimoRegistro($testeOnline);
 
 if(isset($_GET['btnCriar'])) {
 
   $testeOnline->inserirTesteOnline(
-    TesteOnline::getUltimoRegistro(),
+    $ultimoRegistro,
+    $_SESSION['cnpj'],
     $_GET['nomeTeste']
   );
 
@@ -20,6 +25,7 @@ if(isset($_GET['btnCriar'])) {
 
   $testeOnline->inserirTesteOnline(
     $_GET['idTeste'],
+    $_SESSION['cnpj'],
     $_GET['nomeTeste']
   );
 }
@@ -48,6 +54,7 @@ if(isset($_GET['btnCriar'])) {
             Questão <?= $testeOnline->getUltimoRegistroQuestao() ?>
           </div>
           <input type="hidden" id="numQuestao" name="numQuestao" value="<?= $testeOnline->getUltimoRegistroQuestao() ?>">
+          <input type="hidden" id="txtCnpj" name="txtCnpj" value="<?= $_SESSION['cnpj'] ?>">
 
             <form id="formInserirQuestao">
               <div class="card-body">

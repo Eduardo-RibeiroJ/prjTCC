@@ -21,13 +21,15 @@ if (isset($_POST['btnEntrarRecrutador'])) {
 	if ($resultado == 1)
 		echo "<script> window.location.replace('recrutador.php'); </script>";
 	else if ($resultado == 2)
-		echo "<script> alert('Senha errada!'); history.go(-1);</script>";
+		echo "<script> alert('Senha errada!'); history.go(-1); window.location.replace('index.php');</script>";
 	else if ($resultado == 3)
 		echo "<script> alert('Cnpj não cadastrado!'); window.location.replace('recrutador_cadastrar.php'); </script>";
 }
 
-if ($_SESSION['logado'] != 2) {
-	echo "<script>location.href='index.php'</script>";
+if($_SESSION['logado']) {
+	if ($_SESSION['logado'] != 2) {
+		echo "<script>location.href='index.php'</script>";
+	}
 }
 ?>
 

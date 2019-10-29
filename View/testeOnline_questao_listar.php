@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 include_once "../Model/Conexao.php";
 include_once "../Model/Questao.php";
 include_once "../Model/TesteOnline.php";
@@ -14,7 +16,9 @@ $testeOnlineDAO = new TesteOnlineDAO($conn);
 $questaoDAO = new QuestaoDAO($conn);
 
 $testeOnline->setIdTesteOnline($_GET['idTesteOnline']);
+$testeOnline->setCnpj($_SESSION['cnpj']);
 $questao->setIdTesteOnline($_GET['idTesteOnline']);
+$questao->setCnpj($_SESSION['cnpj']);
 
 $testeOnlineDAO->Listar($testeOnline);
 $arrayQuestao = $questaoDAO->Listar($questao);
@@ -38,6 +42,7 @@ $arrayQuestao = $questaoDAO->Listar($questao);
 
     <div class="row">
       <div class="col">
+      <input type="hidden" id="txtCnpj" name="txtCnpj" value="<?= $_SESSION['cnpj']; ?>">
 
         <div class="accordion" id="accordionQuestao">
             

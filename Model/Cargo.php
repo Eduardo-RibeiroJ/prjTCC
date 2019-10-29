@@ -23,4 +23,8 @@ class Cargo {
     function setNomeCargo($nomeCargo) {
         $this->nomeCargo = $nomeCargo;
     }
+
+    function idRegistro() {
+        return CargoDAO::Registro($this);
+    }
 }

@@ -9,7 +9,7 @@ class CargoDAO
         $this->db = $db;
     }
 
-    public function Inserir(Questao $cargo) 
+    public function Inserir(Cargo $cargo) 
     {
         $idCargo = $cargo->getIdCargo();
         $nomeCargo = $cargo->getNomeCargo();
@@ -27,41 +27,9 @@ class CargoDAO
 
     }
 
-    public function Alterar(Questao $cargo)
-    { 
-        $idCargo = $cargo->getIdCargo();
-        $nomeCargo = $cargo->getNomeCargo();
-
-        $query = "UPDATE tbCargo SET nomeCargo=? WHERE idCargo = ?;";
- 
-        $stmt = mysqli_prepare($this->db->getConection(), $query);
-
-        if($stmt === FALSE){
-            die(mysqli_error($this->db->getConection()));
-        } 
+    public function Listar(Cargo $cargo) {
         
-        mysqli_stmt_bind_param($stmt, 'si',$nomeCargo, $idCargo);
-        mysqli_stmt_execute($stmt);
-        mysqli_stmt_close($stmt);
-
-    }
-
-    public function Apagar(Questao $cargo) {
-
-        $idCargo = $cargo->getIdTesteOnline();
-        $idQuestao = $cargo->getIdQuestao();
-
-        $SQL = $this->db->getConection()->prepare("DELETE FROM tbCargo WHERE idCargo = ?;");
-
-        $SQL->bind_param("ii", $idCargo, $idQuestao);
-        $SQL->execute();
-   
-        return true;
-    }
-
-    public function Listar(Questao $cargo) {
-        
-        if ($cargo->getIdQuestao() == NULL) {
+        if ($cargo->getIdCargo() == NULL) {
 
             $query = $this->db->getConection()->query("SELECT * FROM tbCargo WHERE idCargo ='".$cargo->getIdCargo()."' ORDER BY idCargo;");
             $arrayQuery = array();
@@ -85,11 +53,37 @@ class CargoDAO
             $query = $this->db->getConection()->query("SELECT * FROM tbCargo WHERE idCargo ='".$cargo->getIdCargo()."'");
 
             $reg = $query->fetch_array();
-            $cargo->inserirQuestao(
-                    
+            $cargo->inserirCargo(
                     $reg['idCargo'],
-                    $reg['idQuestao']
+                    $reg['nomeCargo']
             );
+        }
+    }
+
+    public function Registro(Cargo $cargo) {
+
+        $db = new Conexao();
+
+        if($cargo->getNomeCargo() != NULL) {
+
+            $query = $db->getConection()->query("SELECT * FROM tbCargo WHERE nomeCargo ='".$cargo->getNomeCargo()."';");
+            $linha = $query->fetch_array();
+
+            if($linha) {
+                return $linha["idCargo"];
+            }
+            else {
+                $dados = $db->getConection()->query("SELECT MAX(idCargo) as idCargo FROM tbCargo;");
+                $linha = $dados->fetch_array();
+                $idCargo = intval($linha["idCargo"]) + 1;
+
+                $cargoDAO = new CargoDAO($db);
+
+                $cargo->setIdCargo($idCargo);
+                $cargoDAO->Inserir($cargo);
+
+                return intval($linha["idCargo"]) + 1;
+            }
         }
     }
 }

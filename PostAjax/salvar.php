@@ -14,6 +14,7 @@ if($_POST['acao'] == "salvarQuestao") {
 
 	$questao->inserirQuestao (
 	    $_POST['numTeste'],
+	    $_POST['cnpj'],
 	    $_POST['numQuestao'],
 	    $_POST['questao'],
 	    $_POST['a'],
@@ -35,7 +36,8 @@ if($_POST['acao'] == "salvarTesteOnline") {
 	$testeOnlineDAO = new TesteOnlineDAO($conn);
 
 	$testeOnline->inserirTesteOnline (
-	    $_POST['numTeste'],
+			$_POST['numTeste'],
+			$_POST['cnpj'],
 	    $_POST['nomeTeste']
 	);
 
@@ -153,7 +155,7 @@ if ($_POST['acao'] == "SalvarCandCompetencia") {
 
 	$competencia->inserirCompetencia(
 
-    	$_POST['cpf'],
+    $_POST['cpf'],
 		$_POST['idCompetencia'],
 		$_POST['competencia'],
 		$_POST['nivel']
@@ -169,13 +171,22 @@ if ($_POST['acao'] == "SalvarProcessoSeletivo") {
 
 	include_once "../Model/ProcessoSeletivo.php";
 	include_once "../Controller/ProcessoSeletivoDAO.php";
+	include_once "../Model/Cargo.php";
+	include_once "../Controller/CargoDAO.php";
 
 	$processoDAO = new ProcessoSeletivoDAO($conn);
+	$cargo = new Cargo($conn);
+	$cargoDAO = new CargoDAO($conn);
 	
 	$processoSeletivo = unserialize($_SESSION['processo_etapa1']);
 	
 	$idProcesso = $processoSeletivo->getUltimoRegistroProcesso();
 	$processoSeletivo->setIdProcesso($idProcesso);
+
+	$cargo->setNomeCargo($processoSeletivo->getIdCargo());
+	$idCargo = $cargo->idRegistro();
+	$processoSeletivo->setIdCargo($idCargo);
+
 	$processoDAO->Inserir($processoSeletivo);
 
 	$_SESSION['processo_etapa1'] = serialize($processoSeletivo);

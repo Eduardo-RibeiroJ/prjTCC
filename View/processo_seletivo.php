@@ -10,6 +10,7 @@ include_once "../Model/ProcessoPergunta.php";
 include_once "../Model/Competencia.php";
 include_once "../Model/TesteOnline.php";
 include_once "../Model/Pergunta.php";
+include_once "../Model/Cargo.php";
 
 include_once "../Controller/ProcessoSeletivoDAO.php";
 include_once "../Controller/ProcessoCompetenciaDAO.php";
@@ -18,6 +19,7 @@ include_once "../Controller/ProcessoPerguntaDAO.php";
 include_once "../Controller/CompetenciaDAO.php";
 include_once "../Controller/TesteOnlineDAO.php";
 include_once "../Controller/PerguntaDAO.php";
+include_once "../Controller/CargoDAO.php";
 
 $conn = new Conexao();
 
@@ -32,7 +34,7 @@ $processoTesteDAO = new ProcessoTesteDAO($conn);
 $processoPerguntaDAO = new ProcessoPerguntaDAO($conn);
 
 //Setando manualmente o id que vai ver no link
-$idProcesso = 4;
+$idProcesso = 11;
 
 $processo->setIdProcesso($idProcesso);
 $processoDAO->Listar($processo);
@@ -55,12 +57,17 @@ $arrayPergunta = $processoPerguntaDAO->Listar($processoPergunta);
 
         <div class="jumbotron p-3 p-md-5" style="background-color: #FFF">
             <div class="container p-0">
-                <h5 class="display-4 display-md-2">Vaga para <?= $processo->getIdCargo() ?>!</h1>
+                <h5 class="display-4 display-md-2">Vaga para <?= $processo->getCargo()->getNomeCargo() ?>!</h1>
                 <p class="lead">O processo seletivo estará aberto entre <?= $processo->getDataInicio(); ?> a <?= $processo->getDataLimiteCandidatar(); ?>.</p>
                 
                 <div class="row d-flex justify-content-center">
                   <div class="col-12 col-md-9 border rounded p-4 mt-2 mb-5">
                     <p class="lead"><?= $processo->getResumoVaga() ?></p>
+                    <div class="row">
+                      <div class="col-12">
+                        <p class="lead">Contratação: <?= $processo->getTipoContratacao() ?>, salário <?= $processo->getSalario() == 0 ? ' a combinar.' : 'de R$ '.$processo->getSalario().'.'?></p>
+                      </div>
+                    </div>
                   </div>
                 </div>
 

@@ -3,6 +3,7 @@
 class Questao {
   	
   	private $idTesteOnline;
+  	private $cnpj;
     private $idQuestao;
     private $questao;
     private $altA;
@@ -13,8 +14,9 @@ class Questao {
     private $tempo;
   
 
-    public function inserirQuestao ($idTesteOnline, $idQuestao, $questao, $altA, $altB, $altC, $altD, $resposta, $tempo) {
+    public function inserirQuestao ($idTesteOnline, $cnpj, $idQuestao, $questao, $altA, $altB, $altC, $altD, $resposta, $tempo) {
         $this->idTesteOnline = $idTesteOnline;
+        $this->cnpj = $cnpj;
         $this->idQuestao = $idQuestao;
         $this->questao = $questao;
         $this->altA = $altA;
@@ -30,6 +32,13 @@ class Questao {
     }
     public function setIdTesteOnline($idTesteOnline) {
         $this->idTesteOnline = $idTesteOnline;
+    }
+
+    public function getCnpj() {
+        return $this->cnpj;
+    }
+    public function setCnpj($cnpj) {
+        $this->cnpj = $cnpj;
     }
 
     public function getIdQuestao() {
