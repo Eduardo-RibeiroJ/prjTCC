@@ -22,9 +22,9 @@ unset($_SESSION['processo_etapa1']);
                 
                 <hr class="my-2 my-md-4">
                 <p class="lead">O processo seletivo estará aberto entre <?= $dadosProcesso->getDataInicio(); ?> a <?= $dadosProcesso->getDataLimiteCandidatar(); ?></p>
-                <p class="lead">Vaga para <?= $dadosProcesso->getIdCargo(); ?></p>
+                <p class="lead">Vaga para <?= $dadosProcesso->getIdCargo()->getNomeCargo(); ?></p>
 
-                <h4>Segue link do processo seletivo: <a href="#">www.site/processoseletivo/4684844</a> <button class="btn btn-outline-dark ml-2" id="brnCopiar"><i class="far fa-copy"></i> Copiar</button></h4>
+                <h4 class="mt-4">Segue link do processo seletivo: <a href="#">www.site/processoseletivo/4684844</a> <button class="btn btn-outline-dark ml-2" id="brnCopiar"><i class="far fa-copy"></i> Copiar</button></h4>
             </div>
             <hr class="my-2 my-md-4">
 

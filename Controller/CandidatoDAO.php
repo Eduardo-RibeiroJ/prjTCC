@@ -110,6 +110,27 @@ class CandidatoDAO
         $query = $this->db->getConection()->query("SELECT * FROM tbCandidato WHERE cpf ='".$candidato->getCpf()."';");
            
         $reg = $query->fetch_array();
+        
+        if($reg['estadoCivil'] == 'S') {
+            $reg['estadoCivil'] = 'Solteiro(a)';
+        } 
+        else if($reg['estadoCivil'] == 'C') {
+            $reg['estadoCivil'] = 'Casado(a)';
+        } 
+        else if($reg['estadoCivil'] == 'D') {
+            $reg['estadoCivil'] = 'Divorciado(a)';
+        } 
+        else if($reg['estadoCivil'] == 'V') {
+            $reg['estadoCivil'] = 'Viúvo(a)';
+        }
+
+        if($reg['sexo'] == 'M') {
+            $reg['sexo'] = 'Masculino';
+        } 
+        else if($reg['sexo'] == 'F') {
+            $reg['sexo'] = 'Feminino';
+        }
+
         $candidato->inserirCandidato(
                 $reg['cpf'],
                 $reg['nome'],

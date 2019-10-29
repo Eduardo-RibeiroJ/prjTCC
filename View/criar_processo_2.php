@@ -14,6 +14,8 @@ $conn = new Conexao();
 
 $testeOnline = new TesteOnline();
 $testeOnlineDAO = new TesteOnlineDAO($conn);
+
+$testeOnline->setCnpj($_SESSION['cnpj']);
 $arrayTestesOnline = $testeOnlineDAO->Listar($testeOnline);
 
 $pergunta = new Pergunta();

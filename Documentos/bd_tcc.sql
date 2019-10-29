@@ -253,7 +253,7 @@ CREATE TABLE `tbprocessoseletivo` (
   `idCargo` int(11) NOT NULL,
   `dataInicio` date NOT NULL,
   `dataLimiteCandidatar` date NOT NULL,
-  `resumoVaga` varchar(200) NOT NULL,
+  `resumoVaga` text NOT NULL,
   `tipoContratacao` varchar(30) NOT NULL,
   `salario` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;

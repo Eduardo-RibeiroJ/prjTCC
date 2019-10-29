@@ -34,7 +34,7 @@ $processoTesteDAO = new ProcessoTesteDAO($conn);
 $processoPerguntaDAO = new ProcessoPerguntaDAO($conn);
 
 //Setando manualmente o id que vai ver no link
-$idProcesso = 11;
+$idProcesso = 12;
 
 $processo->setIdProcesso($idProcesso);
 $processoDAO->Listar($processo);
@@ -62,7 +62,7 @@ $arrayPergunta = $processoPerguntaDAO->Listar($processoPergunta);
                 
                 <div class="row d-flex justify-content-center">
                   <div class="col-12 col-md-9 border rounded p-4 mt-2 mb-5">
-                    <p class="lead"><?= $processo->getResumoVaga() ?></p>
+                    <p class="lead"><pre class="lead-pre"><?= $processo->getResumoVaga() ?></pre></p>
                     <div class="row">
                       <div class="col-12">
                         <p class="lead">Contratação: <?= $processo->getTipoContratacao() ?>, salário <?= $processo->getSalario() == 0 ? ' a combinar.' : 'de R$ '.$processo->getSalario().'.'?></p>
