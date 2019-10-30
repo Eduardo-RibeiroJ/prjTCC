@@ -89,7 +89,7 @@ $arrayEmpresa = $empresaDAO->Listar($empresa);
                     </div>
                   </div>
 
-                  <div class="form-row">
+                  <div class="form-row float-right mb-2">
                     <div class="col">
                       <button value="<?= $reg->getIdEmpresa(); ?>" name="btnAlterarSalvarEmpresa" id="btnAlterarSalvarEmpresa" class="btn btn-primary">Salvar</button>
                       <button value="<?= $reg->getIdEmpresa(); ?>" name="btnExcluirEmpresa" id="btnExcluirEmpresa" class="btn btn-secondary">Apagar</button>
@@ -150,7 +150,7 @@ $arrayEmpresa = $empresaDAO->Listar($empresa);
 
                 <div class="form-row">
                   <div class="col">
-                    <button value="<?= $ultimoRegistro ?>" name="btnAlterarSalvarEmpresa" id="btnAlterarSalvarEmpresa" class="btn btn-primary">Inserir</button>
+                    <button value="<?= $ultimoRegistro ?>" name="btnAlterarSalvarEmpresa" id="btnAlterarSalvarEmpresa" class="btn btn-primary float-right">Inserir</button>
                   </div>
                 </div>
 

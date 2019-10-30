@@ -5,7 +5,7 @@ class Conexao
 	private $host = "localhost";
 	private $username = "root";
 	private $password = "";
-	private $database = "bd_tcc";
+	private $database = "bd_tcc3";
 	private $conexao = null;
 
 	public function __construct()
