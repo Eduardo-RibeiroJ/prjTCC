@@ -537,10 +537,10 @@ $(function () {
             acao: "alterarRecrutadorEndereco",
             cnpj: $('#txtCnpj').val(),
             nomeEmpresa: $('#txtNomeEmpresa').val(),
-            endereco: $('#txtEndereco').val(),
             cep: $('#txtCEP').val(),
             estado: $('#txtEstado').val(),
             cidade: $('#txtCidade').val(),
+            endereco: $('#txtEndereco').val(),
             bairro: $('#txtBairro').val()
 
         }, function (sucesso) {

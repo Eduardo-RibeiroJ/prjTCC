@@ -78,7 +78,7 @@ if (isset($_POST['btnContinuar'])) {
                     <div class="form-group col-md-4">
                       <label for="tipoCurso">Tipo do curso</label>
                       <select class="custom-select" id="cbbTipoCurso<?= $reg->getIdFormacao(); ?>" name="cbbTipoCurso" required>
-                        <option value="" selected>Selecione</option>
+                        <option value="<?= $reg->getTipo(); ?>" selected><?= $reg->getTipo(); ?></option>
                         <option value="EF">Ensino Fundamental</option>
                         <option value="EM">Ensino Médio</option>
                         <option value="EMP">Ensino Médio profisisonalizante</option>
@@ -111,7 +111,7 @@ if (isset($_POST['btnContinuar'])) {
                     <div class="form-group col-md-6">
                       <label for="cbbSituacaoInsti">Tipo do curso</label>
                       <select class="custom-select" id="cbbSituacaoInsti<?= $reg->getIdFormacao(); ?>" name="cmbSituacaoInsti" required>
-                        <option value="" selected>Selecione</option>
+                        <option value="" selected><?= $reg->getEstado(); ?></option>
                         <option value="IM">Interrrompido</option>
                         <option value="EM">Em andamento</option>
                         <option value="FI">Finalizado</option>
@@ -119,7 +119,7 @@ if (isset($_POST['btnContinuar'])) {
                     </div>
                   </div>
 
-                  <div class="form-row">
+                  <div class="form-row float-right">
                     <div class="col">
                       <button value="<?= $reg->getIdFormacao(); ?>" name="btnAlterarSalvarFormacao" id="btnAlterarSalvarFormacao" class="btn btn-primary">Salvar</button>
                       <button value="<?= $reg->getIdFormacao(); ?>" name="btnExcluirFormacao" id="btnExcluirFormacao" class="btn btn-secondary">Apagar</button>
@@ -163,10 +163,14 @@ if (isset($_POST['btnContinuar'])) {
                     <label for="tipoCurso">Tipo do curso</label>
                     <select class="custom-select" id="cbbTipoCurso<?= $ultimoRegistro ?>" name="cbbTipoCurso" required>
                       <option value="" selected>Selecione</option>
-                      <option value="F12">Formação escolar fundamental (1°Grau) e média (2°Grau)</option>
+                      <option value="EF">Ensino Fundamental</option>
+                      <option value="EM">Ensino Médio</option>
                       <option value="EMP">Ensino Médio profisisonalizante</option>
-                      <option value="GR">Graduação</option>
-                      <option value="GRE">Graduação - especialização</option>
+                      <option value="ET">Ensino Técnico</option>
+                      <option value="GRB">Graduação - Bacharelado</option>
+                      <option value="GRT">Graduação - Tecnólogo</option>
+                      <option value="GRL">Graduação - Licenciatura</option>
+                      <option value="GRE">Graduação - Especialização</option>
                       <option value="GRMB">Graduação - MBA</option>
                       <option value="GRME">Graduação - Mestrado</option>
                       <option value="GRD">Graduação - Doutorado</option>
@@ -199,7 +203,7 @@ if (isset($_POST['btnContinuar'])) {
 
                 <div class="form-row">
                   <div class="col">
-                    <button value="<?= $ultimoRegistro ?>" name="btnAlterarSalvarFormacao" id="btnAlterarSalvarFormacao" class="btn btn-primary">Inserir</button>
+                    <button value="<?= $ultimoRegistro ?>" name="btnAlterarSalvarFormacao" id="btnAlterarSalvarFormacao" class="btn btn-primary float-right">Inserir</button>
                   </div>
                 </div>
 

@@ -64,10 +64,10 @@ $objetivoDAO->Listar($objetivo);
                     <div class="form-group col-md-5">
                       <label for="cbbNivel">Nível</label>
                       <select class="custom-select" id="cbbNivel" name="cbbNivel" required>
-      
+
                         <?php
 
-                        $alternativas = ['Selecione','Trainee', 'Estágio', 'Junior', 'Senior', 'Pleno'];
+                        $alternativas = ['Selecione', 'Trainee', 'Estágio', 'Junior', 'Senior', 'Pleno'];
 
                         foreach ($alternativas as $value) {
 
@@ -93,7 +93,7 @@ $objetivoDAO->Listar($objetivo);
 
                   <div class="form-row">
                     <div class="col">
-                      <button name="btnAlterarSalvarObjetivo" id="btnAlterarSalvarObjetivo" class="btn btn-primary">Inserir</button>
+                      <button name="btnAlterarSalvarObjetivo" id="btnAlterarSalvarObjetivo" class="btn btn-primary float-right">Inserir</button>
                     </div>
                   </div>
 
