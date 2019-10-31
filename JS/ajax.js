@@ -428,13 +428,15 @@ $(function () {
     $('#containerPergunta').on('click', '#btnInserirPergunta', function (e) {
 
         e.preventDefault();
-        var idPergunta = $(this).val();
+        var idPergunta = $('#txtUltimoRegistro').val();
+        var pergunta = $('#txtPergunta').val();
+        console.log($('#txtPergunta').val());
 
         $.post('../PostAjax/salvar.php', {
             acao: "Pergunta",
             cnpj: $('#txtCnpj').val(),
             idPergunta: idPergunta,
-            pergunta: $('#txtPergunta' + idPergunta).val()
+            pergunta: pergunta
 
         }, function (sucesso) {
 
@@ -445,27 +447,27 @@ $(function () {
                                                     <div class="col">
 
                                                         <div class="card">
-                                                        <div class="card-header" id="SalvarPergunta">
-                                                            <p id="tituloHeader" class="d-inline">`+ pergunta +`</p>
-                                                            <button name="btnAlterar" id="btnAlterar" class="btn btn-outline-primary float-right d-inline" data-toggle="collapse" data-target="#collapseRecrutadorPergunta">
+                                                        <div class="card-header" id="SalvarPergunta`+idPergunta+`">
+                                                            <p id="tituloHeader`+ idPergunta +`" class="d-inline">`+ pergunta +`</p>
+                                                            <button name="btnAlterar`+ idPergunta +`" id="btnAlterar`+ idPergunta +`" class="btn btn-outline-primary float-right d-inline" data-toggle="collapse" data-target="#collapseRecrutadorPergunta`+ idPergunta +`">
                                                             <i class="fas fa-pencil-alt"></i>
                                                             </button>
                                                         </div>
 
-                                                        <div id="collapseRecrutadorPergunta" class="collapse">
+                                                        <div id="collapseRecrutadorPergunta`+ idPergunta +`" class="collapse">
 
                                                             <div class="card-body">
                                                             <div class="card-text">
                                                                 <div class="form-row">
                                                                 <div class="form-group col-md-10">
                                                                     <label for="txtPergunta">Pergunta</label>
-                                                                    <textarea type="text" class="form-control" rows="4" id="txtPergunta" name="txtPergunta" value="`+idPergunta+`" required>`+ pergunta +`</textarea>
+                                                                    <textarea type="text" class="form-control" rows="4" id="txtPergunta`+idPergunta+`" name="txtPergunta" value="`+idPergunta+`" required>`+ pergunta +`</textarea>
                                                                 </div>
                                                                 </div>
 
                                                                 <div class="form-row">
                                                                 <div class="col">
-                                                                    <button value="`+ idPergunta + `" name="btnInserirPergunta" id="btnInserirPergunta" class="btn btn-primary">Salvar</button>
+                                                                    <button value="`+ idPergunta + `" name="btnAlterarSalvarPergunta" id="btnAlterarSalvarPergunta" class="btn btn-primary">Salvar</button>
                                                                     <button value="`+ idPergunta + `" name="btnExcluirPergunta" id="btnExcluirPergunta" class="btn btn-secondary">Apagar</button>
                                                                 </div>
                                                                 </div>
@@ -500,7 +502,7 @@ $(function () {
 
             if (sucesso == true) {
                 console.log('ALTEROU');
-                location.reload();
+                $('#btnAlterar'+idPergunta).click();
 
             } else {
                 alert('Erro: ' + sucesso);

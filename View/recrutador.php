@@ -15,7 +15,7 @@
       </div>
     </div>
 
-    <!--<div class="row">
+    <div class="row">
 
       <div class="col-md-6 text-center">
         <a href="criar_processo.php" class="btn btn-primary btn-grande"><i class="fas fa-plus fa-3x"> </i>
@@ -58,11 +58,11 @@
           <h4>Processos seletivos encerrados</h4>
         </button>
       </div>
-    </div>-->
+    </div>
 
     <!--Processo seletivo -->
 
-    <div class="row">
+    <!--<div class="row">
       <div class="col-lg-4 col-sm-6 ">
         <div class="card text-center shadow-sm bg-white rounded">
           <a href="criar_processo.php" class="btn btn-outline-light" style="background-color:#1874CD">
@@ -106,7 +106,7 @@
       </div>
     </div>
 
-    <!--Outros -->
+    Outros 
 
     <div class="row">
       <div class="col-lg-4 col-sm-6">
@@ -150,7 +150,7 @@
           </a>
         </div>
       </div>
-    </div>
+    </div> -->
 
 
   </div>
