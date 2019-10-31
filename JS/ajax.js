@@ -421,47 +421,91 @@ $(function () {
         });
     });
 
+    
 
-    //********** INSERIR, ALTERAR E APAGAR EMPRESA
+    //********** INSERIR, ALTERAR E APAGAR PERGUNTA
 
-    $('#sectionCardsPergunta').on('click', '#btnAlterarSalvarPergunta', function (e) {
+    $('#containerPergunta').on('click', '#btnInserirPergunta', function (e) {
 
         e.preventDefault();
         var idPergunta = $(this).val();
-        var button = $(this);
-        var salvarAlterar;
 
-        if ($(this).html() == "Inserir")
-            salvarAlterar = '../PostAjax/salvar.php';
-        else
-            salvarAlterar = '../PostAjax/alterar.php';
+        $.post('../PostAjax/salvar.php', {
+            acao: "Pergunta",
+            cnpj: $('#txtCnpj').val(),
+            idPergunta: idPergunta,
+            pergunta: $('#txtPergunta' + idPergunta).val()
 
-        if (button.html() == "Alterar") {
-            button.html("Salvar");
+        }, function (sucesso) {
 
-        } else {
+            if (sucesso == true) {
 
-            $.post(salvarAlterar, {
-                acao: "Pergunta",
-                cnpj: $('#txtCnpj').val(),
-                idPergunta: idPergunta,
-                pergunta: $('#txtPergunta' + idPergunta).val()
+                $('#sectionCardsPergunta').prepend(`
+                                                    <div class="row">
+                                                    <div class="col">
 
-            }, function (sucesso) {
+                                                        <div class="card">
+                                                        <div class="card-header" id="SalvarPergunta">
+                                                            <p id="tituloHeader" class="d-inline">`+ pergunta +`</p>
+                                                            <button name="btnAlterar" id="btnAlterar" class="btn btn-outline-primary float-right d-inline" data-toggle="collapse" data-target="#collapseRecrutadorPergunta">
+                                                            <i class="fas fa-pencil-alt"></i>
+                                                            </button>
+                                                        </div>
 
-                if (sucesso == true) {
-                    if (button.html() == "Salvar") {
-                        $('#tituloHeader' + idPergunta).html($('#txtPergunta' + idPergunta).val());
-                        $("#btnAlterar" + idPergunta).click();
-                    }
-                    else {
-                        location.reload();
-                    }
-                } else {
-                    alert('Erro: ' + sucesso);
-                }
-            });
-        }
+                                                        <div id="collapseRecrutadorPergunta" class="collapse">
+
+                                                            <div class="card-body">
+                                                            <div class="card-text">
+                                                                <div class="form-row">
+                                                                <div class="form-group col-md-10">
+                                                                    <label for="txtPergunta">Pergunta</label>
+                                                                    <textarea type="text" class="form-control" rows="4" id="txtPergunta" name="txtPergunta" value="`+idPergunta+`" required>`+ pergunta +`</textarea>
+                                                                </div>
+                                                                </div>
+
+                                                                <div class="form-row">
+                                                                <div class="col">
+                                                                    <button value="`+ idPergunta + `" name="btnInserirPergunta" id="btnInserirPergunta" class="btn btn-primary">Salvar</button>
+                                                                    <button value="`+ idPergunta + `" name="btnExcluirPergunta" id="btnExcluirPergunta" class="btn btn-secondary">Apagar</button>
+                                                                </div>
+                                                                </div>
+                                                            </div> <!-- CardText -->
+                                                            </div> <!-- CardBody -->
+                                                        </div>
+                                                        </div> <!-- Card -->
+                                                    </div>
+                                                    </div>`                  
+                );
+
+                $('#txtPergunta').val('');
+                $('#txtPergunta').focus();
+
+            } else {
+                alert('Erro: ' + sucesso);
+            }
+        });
+    });
+
+    $('#sectionCardsPergunta').on('click', '#btnAlterarSalvarPergunta', function (e) {
+
+        var idPergunta = $(this).val();
+        
+        $.post('../PostAjax/alterar.php', {
+            acao: "Pergunta",
+            cnpj: $('#txtCnpj').val(),
+            idPergunta: idPergunta,
+            pergunta: $('#txtPergunta' + idPergunta).val()
+
+        }, function (sucesso) {
+
+            if (sucesso == true) {
+                console.log('ALTEROU');
+                location.reload();
+
+            } else {
+                alert('Erro: ' + sucesso);
+            }
+        });
     });
 
     $('#sectionCardsPergunta').on('click', '#btnExcluirPergunta', function (e) {
@@ -487,6 +531,8 @@ $(function () {
         });
     });
 
+
+// ------------------------------------------------Objetivo-------------------------------------------------
 
     $('#sectionCardsObjetivo').on('click', '#btnAlterarSalvarObjetivo', function (e) {
 
