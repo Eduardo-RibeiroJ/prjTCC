@@ -1,11 +1,22 @@
 <?php
 session_start();
 
+include_once "../Model/Conexao.php";
 include_once "../Model/ProcessoSeletivo.php";
+include_once "../Controller/ProcessoSeletivoDAO.php";
+include_once "../Model/Cargo.php";
+include_once "../Controller/CargoDAO.php";
+
+$conn = new Conexao();
 
 $processo = new ProcessoSeletivo();
+$processoDAO = new ProcessoSeletivoDAO($conn);
 
 $dadosProcesso = unserialize($_SESSION['processo_etapa1']);
+
+$processo->setIdProcesso($dadosProcesso->getIdProcesso());
+$processoDAO->Listar($processo);
+
 unset($_SESSION['processo_etapa1']);
 
 ?>
@@ -21,10 +32,10 @@ unset($_SESSION['processo_etapa1']);
                 <p class="lead">O processo seletivo não poderá ser modificado, apenas cancelado.</p>
                 
                 <hr class="my-2 my-md-4">
-                <p class="lead">O processo seletivo estará aberto entre <?= $dadosProcesso->getDataInicio(); ?> a <?= $dadosProcesso->getDataLimiteCandidatar(); ?></p>
-                <p class="lead">Vaga para <?= $dadosProcesso->getIdCargo()->getNomeCargo(); ?></p>
+                <p class="lead">O processo seletivo estará aberto entre <?= $processo->getDataInicio(); ?> a <?= $processo->getDataLimiteCandidatar(); ?></p>
+                <p class="lead"><strong>Vaga para <?= $processo->getCargo()->getNomeCargo(); ?></strong></p>
 
-                <h4 class="mt-4">Segue link do processo seletivo: <a href="#">www.site/processoseletivo/4684844</a> <button class="btn btn-outline-dark ml-2" id="brnCopiar"><i class="far fa-copy"></i> Copiar</button></h4>
+                <h4 class="mt-4">Segue link do processo seletivo: <a href="processo_seletivo-<?= $processo->getIdProcesso(); ?>">localhost/processo_seletivo-<?= $processo->getIdProcesso(); ?></a> <button class="btn btn-outline-dark ml-2" id="brnCopiar"><i class="far fa-copy"></i> Copiar</button></h4>
             </div>
             <hr class="my-2 my-md-4">
 

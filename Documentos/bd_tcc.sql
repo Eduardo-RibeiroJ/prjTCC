@@ -370,7 +370,7 @@ ALTER TABLE `tbrecrutador`
 -- Índices para tabela `tbpergunta`
 --
 ALTER TABLE `tbpergunta`
-  ADD PRIMARY KEY (`idPergunta`);
+  ADD PRIMARY KEY (`idPergunta`, `cnpj`);
 
 --
 -- Índices para tabela `tbprocessocandpergunta`
@@ -421,13 +421,13 @@ ALTER TABLE `tbprocessoteste`
 -- Índices para tabela `tbquestao`
 --
 ALTER TABLE `tbquestao`
-  ADD PRIMARY KEY (`idTesteOnline`,`idQuestao`);
+  ADD PRIMARY KEY (`idTesteOnline`,`idQuestao`, `cnpj`);
 
 --
 -- Índices para tabela `tbtesteonline`
 --
 ALTER TABLE `tbtesteonline`
-  ADD PRIMARY KEY (`idTesteOnline`);
+  ADD PRIMARY KEY (`idTesteOnline`, `cnpj`);
 
 --
 -- AUTO_INCREMENT de tabelas despejadas
@@ -446,22 +446,10 @@ ALTER TABLE `tbcompetencia`
   MODIFY `idCompetencia` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de tabela `tbpergunta`
---
-ALTER TABLE `tbpergunta`
-  MODIFY `idPergunta` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT de tabela `tbprocessoseletivo`
 --
 ALTER TABLE `tbprocessoseletivo`
   MODIFY `idProcesso` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de tabela `tbtesteonline`
---
-ALTER TABLE `tbtesteonline`
-  MODIFY `idTesteOnline` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Restrições para despejos de tabelas

@@ -11,8 +11,8 @@ class ProcessoTesteDAO
 
     public function Inserir(ProcessoTeste $processoTeste)
     {
-        $idProcesso = $processoTeste->getIdProcesso();
-        $idTeste = $processoTeste->getIdTesteOnline();
+        $idProcesso = $processoTeste->getProcesso()->getIdProcesso();
+        $idTeste = $processoTeste->getTesteOnline()->getIdTesteOnline();
 
         $query = "INSERT INTO tbProcessoTeste (idProcesso, idTesteOnline) VALUES (?,?);";
         $stmt = mysqli_prepare($this->db->getConection(), $query);
@@ -30,8 +30,10 @@ class ProcessoTesteDAO
     public function Listar(ProcessoTeste $processoTeste) {
 
         $conn = new Conexao();
+
+        $idProcesso = $processoTeste->getProcesso()->getIdProcesso();
         
-        $query = $this->db->getConection()->query("SELECT * FROM tbProcessoTeste WHERE idProcesso ='". $processoTeste->getIdProcesso()."';");
+        $query = $this->db->getConection()->query("SELECT * FROM tbProcessoTeste WHERE idProcesso ='". $idProcesso ."';");
         
         $arrayQuery = array();
 
@@ -40,15 +42,20 @@ class ProcessoTesteDAO
             $processoTeste = new ProcessoTeste();
             $testeOnline = new TesteOnline();
             $testeOnlineDAO = new TesteOnlineDAO($conn);
+            $processo = new ProcessoSeletivo();
+            $processoDAO = new ProcessoSeletivoDAO($conn);
+
+            $processo->setIdProcesso($reg['idProcesso']);
+            $processoDAO->Listar($processo);
 
             $testeOnline->setIdTesteOnline($reg['idTesteOnline']);
+            $testeOnline->setCnpj($processo->getCnpj());
             $testeOnlineDAO->Listar($testeOnline);
             
-            $processoTeste->inserirProcessoTeste(         
-                $reg['idProcesso'],
-                $reg['idTesteOnline']
+            $processoTeste->inserirProcessoTeste(
+                $processo,
+                $testeOnline
             );
-            $processoTeste->setTesteOnline($testeOnline);
 
             $arrayQuery[] = $processoTeste;
         }

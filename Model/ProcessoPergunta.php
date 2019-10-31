@@ -1,32 +1,23 @@
 <?php
 class ProcessoPergunta {
-    private $idProcesso;
-    private $idPergunta;
+    private $processo;
     private $pergunta;
 
-    function inserirProcessoPergunta($idProcesso, $idPergunta) {
-        $this->idProcesso = $idProcesso;
-        $this->idPergunta = $idPergunta;
+    function inserirProcessoPergunta($processo, $pergunta) {
+        $this->processo = $processo;
+        $this->pergunta = $pergunta;
     }
     
-    function getIdProcesso() {
-        return $this->idProcesso;
-    }
-
-    function getIdPergunta() {
-        return $this->idPergunta;
+    function getProcesso() {
+        return $this->processo;
     }
 
     function getPergunta() {
         return $this->pergunta;
     }
 
-    function setIdProcesso($idProcesso) {
-        $this->idProcesso = $idProcesso;
-    }
-
-    function setIdPergunta($idPergunta) {
-        $this->idPergunta = $idPergunta;
+    function setProcesso($processo) {
+        $this->processo = $processo;
     }
 
     function setPergunta($pergunta) {

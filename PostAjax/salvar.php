@@ -238,15 +238,30 @@ if ($_POST['acao'] == "SalvarProcessoTeste") {
 	include_once "../Controller/ProcessoSeletivoDAO.php";
 	include_once "../Model/ProcessoTeste.php";
 	include_once "../Controller/ProcessoTesteDAO.php";
+	include_once "../Model/TesteOnline.php";
+	include_once "../Controller/TesteOnlineDAO.php";
+	include_once "../Model/Cargo.php";
+	include_once "../Controller/CargoDAO.php";
 
 	$processoTeste = new ProcessoTeste();
 	$processoTesteDAO = new ProcessoTesteDAO($conn);
-	
+	$processo = new ProcessoSeletivo();
+	$processoDAO = new ProcessoSeletivoDAO($conn);
+	$testeOnline = new TesteOnline();
+	$testeOnlineDAO = new TesteOnlineDAO($conn);
+
 	$idProcesso = unserialize($_SESSION['processo_etapa1'])->getIdProcesso();
+	
+	$processo->setIdProcesso($idProcesso);
+	$processoDAO->Listar($processo);
+
+	$testeOnline->setIdTesteOnline($_POST['idTeste']);
+	$testeOnline->setCnpj($_SESSION['cnpj']);
+	$testeOnlineDAO->Listar($testeOnline);
 
 	$processoTeste->inserirProcessoTeste(
-		$idProcesso,
-		$_POST['idTeste']
+		$processo,
+		$testeOnline
 	);
 
 	$processoTesteDAO->Inserir($processoTeste);
@@ -260,15 +275,30 @@ if ($_POST['acao'] == "SalvarProcessoPergunta") {
 	include_once "../Controller/ProcessoSeletivoDAO.php";
 	include_once "../Model/ProcessoPergunta.php";
 	include_once "../Controller/ProcessoPerguntaDAO.php";
+	include_once "../Model/Pergunta.php";
+	include_once "../Controller/PerguntaDAO.php";
+	include_once "../Model/Cargo.php";
+	include_once "../Controller/CargoDAO.php";
 
+	$processo = new ProcessoSeletivo();
+	$processoDAO = new ProcessoSeletivoDAO($conn);
 	$processoPergunta = new ProcessoPergunta();
 	$processoPerguntaDAO = new ProcessoPerguntaDAO($conn);
+	$pergunta = new Pergunta();
+	$perguntaDAO = new PerguntaDAO($conn);
 	
 	$idProcesso = unserialize($_SESSION['processo_etapa1'])->getIdProcesso();
 
+	$processo->setIdProcesso($idProcesso);
+	$processoDAO->Listar($processo);
+
+	$pergunta->setIdPergunta($_POST['idPergunta']);
+	$pergunta->setCnpj($processo->getCnpj());
+	$perguntaDAO->Listar($pergunta);
+
 	$processoPergunta->inserirProcessoPergunta(
-		$idProcesso,
-		$_POST['idPergunta']
+		$processo,
+		$pergunta
 	);
 
 	$processoPerguntaDAO->Inserir($processoPergunta);

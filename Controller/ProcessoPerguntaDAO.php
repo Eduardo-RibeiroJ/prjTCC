@@ -11,8 +11,8 @@ class ProcessoPerguntaDAO
 
     public function Inserir(ProcessoPergunta $processoPergunta)
     {
-        $idProcesso = $processoPergunta->getIdProcesso();
-        $idPergunta = $processoPergunta->getIdPergunta();
+        $idProcesso = $processoPergunta->getProcesso()->getIdProcesso();
+        $idPergunta = $processoPergunta->getPergunta()->getIdPergunta();
 
         $query = "INSERT INTO tbProcessoPergunta (idProcesso, idPergunta) VALUES (?,?);";
         $stmt = mysqli_prepare($this->db->getConection(), $query);
@@ -30,8 +30,10 @@ class ProcessoPerguntaDAO
     public function Listar(ProcessoPergunta $processoPergunta) {
 
         $conn = new Conexao();
+
+        $idProcesso = $processoPergunta->getProcesso()->getIdProcesso();
         
-        $query = $this->db->getConection()->query("SELECT * FROM tbProcessoPergunta WHERE idProcesso ='".$processoPergunta->getIdProcesso()."';");
+        $query = $this->db->getConection()->query("SELECT * FROM tbProcessoPergunta WHERE idProcesso ='". $idProcesso ."';");
         $arrayQuery = array();
 
         while($reg = $query->fetch_array()) {
@@ -39,15 +41,20 @@ class ProcessoPerguntaDAO
             $processoPergunta = new ProcessoPergunta();
             $pergunta = new Pergunta();
             $perguntaDAO = new PerguntaDAO($conn);
+            $processo = new ProcessoSeletivo();
+            $processoDAO = new ProcessoSeletivoDAO($conn);
+
+            $processo->setIdProcesso($idProcesso);
+            $processoDAO->Listar($processo);
 
             $pergunta->setIdPergunta($reg['idPergunta']);
+            $pergunta->setCnpj($processo->getCnpj());
             $perguntaDAO->Listar($pergunta);
             
             $processoPergunta->inserirProcessoPergunta(         
-                $reg['idProcesso'],
-                $reg['idPergunta']
+                $processo,
+                $pergunta
             );
-            $processoPergunta->setPergunta($pergunta);
 
             $arrayQuery[] = $processoPergunta;
         }
