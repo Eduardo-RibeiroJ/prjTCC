@@ -86,6 +86,8 @@ $arrayPergunta = $perguntaDAO->Listar($pergunta);
                             <h5 class="display-4 mb-4">Adicione testes online para os candidatos</h5>
                             
                             <div>
+
+                                <div class="form-group">
                                 <?php foreach($arrayTestesOnline as $reg): ?>
 
                                 <div class="row">
@@ -100,7 +102,8 @@ $arrayPergunta = $perguntaDAO->Listar($pergunta);
                                     </div>
                                 </div>
 
-                            <?php endforeach; ?>
+                                <?php endforeach; ?>
+                                </div>
                             
                             </div>
                         </div>
@@ -124,22 +127,25 @@ $arrayPergunta = $perguntaDAO->Listar($pergunta);
                             <h5 class="display-4 mb-4">Adicione perguntas dissertativas para os candidatos</h5>
                             <div>
 
+
                                 <?php if($arrayPergunta): ?>
                                 
+                                    <div class="form-group">
                                     <?php foreach($arrayPergunta as $reg): ?>
 
                                     <div class="row">
                                         <div class="col">
                                             <div class="div-add div-add-pergunta py-3">
                                                 <div class="form-check">
-                                                    <input class="chkPergunta form-check-input lead" type="checkbox" value="<?= $reg->getIdPergunta(); ?>" id="chkTeste<?= $reg->getIdPergunta(); ?>" name="chkTeste<?= $reg->getIdPergunta(); ?>">
-                                                    <label class="form-check-label lead ml-2" for="chkTeste<?= $reg->getIdPergunta(); ?>"><?= $reg->getPergunta(); ?></label>
+                                                    <input class="chkPergunta form-check-input lead" type="checkbox" value="<?= $reg->getIdPergunta(); ?>" id="chkPergunta<?= $reg->getIdPergunta(); ?>" name="chkPergunta<?= $reg->getIdPergunta(); ?>">
+                                                    <label class="form-check-label lead ml-2" for="chkPergunta<?= $reg->getIdPergunta(); ?>"><?= $reg->getPergunta(); ?></label>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
 
                                     <?php endforeach; ?>
+                                    </div>
 
                                 <?php else: ?>
                                     <p>

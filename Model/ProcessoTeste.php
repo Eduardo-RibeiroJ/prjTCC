@@ -1,32 +1,23 @@
 <?php
 class ProcessoTeste {
-    private $idProcesso;
-    private $idTesteOnline;
+    private $processo;
     private $testeOnline;
 
-    function inserirProcessoTeste($idProcesso, $idTesteOnline) {
-        $this->idProcesso = $idProcesso;
-        $this->idTesteOnline = $idTesteOnline;
-    }
-    
-    function getIdProcesso() {
-        return $this->idProcesso;
+    function inserirProcessoTeste($processo, $testeOnline) {
+        $this->processo = $processo;
+        $this->testeOnline = $testeOnline;
     }
 
-    function getIdTesteOnline() {
-        return $this->idTesteOnline;
+    function getProcesso() {
+        return $this->processo;
     }
 
     function getTesteOnline() {
         return $this->testeOnline;
     }
 
-    function setIdProcesso($idProcesso) {
-        $this->idProcesso = $idProcesso;
-    }
-
-    function setIdTesteOnline($idTesteOnline) {
-        $this->idTesteOnline = $idTesteOnline;
+    function setProcesso($processo) {
+        $this->processo = $processo;
     }
 
     function setTesteOnline($testeOnline) {

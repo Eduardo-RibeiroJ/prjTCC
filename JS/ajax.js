@@ -752,80 +752,123 @@ $(function () {
     $('#sectionProcesso2').on('click', '#btnConcluir', function (e) {
 
         e.preventDefault();
+        $(this).attr("disabled", true);
 
+        //Inserir Processo Seletivo
         $.post('../PostAjax/salvar.php', {
-            acao: "SalvarProcessoSeletivo"
+        acao: "SalvarProcessoSeletivo"
 
         }, function (sucesso) {
 
             if (sucesso == true) {
                 console.log('INSERIU PROCESSO');
+                
+            } else {
+                alert('Erro: ' + sucesso);
+            }
+        }).done(function() {
+            console.log('caiu no done do processo');
+            addCompetencias();
+        });
 
-                //Inserir competencias do processo
-                $(".div-competencia").each(function() {
-                    var div = $(this);
-                    $.post('../PostAjax/salvar.php', {
-                        acao: "SalvarProcessoCompetencia",
-                        competencia: div.find('h5').html(),
-                        nivel: div.find('select').val()
+        function addCompetencias() {
+            var contCompetencias = 0;
+
+            $(".div-competencia").each(async function() {
+                var div = $(this);
+                await $.post('../PostAjax/salvar.php', {
+                    acao: "SalvarProcessoCompetencia",
+                    competencia: div.find('h5').html(),
+                    nivel: div.find('select').val()
+                    
+                }, function (sucesso) {
+                    
+                    if (sucesso == true) {
+                        console.log('INSERIU COMPETENCIA');
+                    } else {
+                        alert('Erro: ' + sucesso);
+                    }
+                });
+
+                contCompetencias++;
+                if(contCompetencias === $(".div-competencia").length) {
+                    console.log('addTodasCOmpetencias');
+                    addTestes();
+                }
+            });
+            //Cai aqui se nao tiver nenhuma competencia adicionada
+            if($(".div-competencia").length === 0) {
+                console.log('addTodasCOmpetencias');
+                addTestes();
+            }
+        }
+
+        function addTestes() {
+            var contTestes = 0;
+
+            $(".chkTeste").each(async function() {
+                
+                var checkbox = $(this);
+                if(checkbox.prop("checked")) {
+
+                    await $.post('../PostAjax/salvar.php', {
+                        acao: "SalvarProcessoTeste",
+                        idTeste: checkbox.val()
             
                     }, function (sucesso) {
             
                         if (sucesso == true) {
-                            console.log('INSERIU COMPETENCIA');
+                            console.log('INSERIU TESTE');
                         } else {
                             alert('Erro: ' + sucesso);
                         }
                     });
-        
-                });
+                }
 
-                $(".chkTeste").each(function() {
-                    
-                    var checkbox = $(this);
-                    if(checkbox.prop("checked")) {
+                contTestes++;
+                if(contTestes === $(".chkTeste").length) {
+                    console.log('addTodas Testes');
+                    addPerguntas();
+                }        
+            });
+        }
+        function addPerguntas() {
+            var contPerguntas = 0;
 
-                        $.post('../PostAjax/salvar.php', {
-                            acao: "SalvarProcessoTeste",
-                            idTeste: checkbox.val()
+            $(".chkPergunta").each(async function() {
                 
-                        }, function (sucesso) {
-                
-                            if (sucesso == true) {
-                                console.log('INSERIU TESTE');
-                            } else {
-                                alert('Erro: ' + sucesso);
-                            }
-                        });
-                    }        
-                });
+                var checkbox = $(this);
+                if(checkbox.prop("checked")) {
 
-                $(".chkPergunta").each(function() {
-                    
-                    var checkbox = $(this);
-                    if(checkbox.prop("checked")) {
+                    await $.post('../PostAjax/salvar.php', {
+                        acao: "SalvarProcessoPergunta",
+                        idPergunta: checkbox.val()
+            
+                    }, function (sucesso) {
+            
+                        if (sucesso == true) {
+                            console.log('INSERIU PERGUNTA');
+                        } else {
+                            alert('Erro: ' + sucesso);
+                        }
+                    });
+                }
 
-                        $.post('../PostAjax/salvar.php', {
-                            acao: "SalvarProcessoPergunta",
-                            idPergunta: checkbox.val()
-                
-                        }, function (sucesso) {
-                
-                            if (sucesso == true) {
-                                console.log('INSERIU PERGUNTA');
-                            } else {
-                                alert('Erro: ' + sucesso);
-                            }
-                        });
-                    }        
-                });
-
-            window.location.replace("criar_processo_concluir.php");
-
-            } else {
-                alert('Erro: ' + sucesso);
+                contPerguntas++;
+                if(contPerguntas === $(".chkPergunta").length) {
+                    console.log('addTodas Perguntas');
+                    mudarPagina();
+                }
+            });
+            if($(".chkPergunta").length === 0) {
+                console.log('addTodas Perguntas');
+                mudarPagina();
             }
-        });
+        }
+        function mudarPagina() {
+            window.location.replace("criar_processo_concluir.php");
+            console.log('Trocou paginaaaaa')
+        }
     });
 
 });

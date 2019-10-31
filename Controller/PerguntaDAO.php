@@ -86,11 +86,10 @@ class PerguntaDAO
 
         } else {
 
-            $query = $this->db->getConection()->query("SELECT * FROM tbPergunta WHERE idPergunta ='".$pergunta->getIdPergunta(). "' AND idPergunta ='".$pergunta->getIdPergunta()."';");
+            $query = $this->db->getConection()->query("SELECT * FROM tbPergunta WHERE idPergunta ='".$pergunta->getIdPergunta(). "' AND cnpj ='".$pergunta->getCnpj()."';");
 
             $reg = $query->fetch_array();
             $pergunta->inserirPergunta(
-
                 $reg['cnpj'],
                 $reg['idPergunta'],
                 $reg['pergunta']

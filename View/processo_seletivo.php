@@ -34,7 +34,7 @@ $processoTesteDAO = new ProcessoTesteDAO($conn);
 $processoPerguntaDAO = new ProcessoPerguntaDAO($conn);
 
 //Setando manualmente o id que vai ver no link
-$idProcesso = 12;
+$idProcesso = $_GET['id'];
 
 $processo->setIdProcesso($idProcesso);
 $processoDAO->Listar($processo);
@@ -42,10 +42,10 @@ $processoDAO->Listar($processo);
 $processoCompetencia->setIdProcesso($idProcesso);
 $arrayCompetencia = $processoCompetenciaDAO->Listar($processoCompetencia);
 
-$processoTeste->setIdProcesso($idProcesso);
+$processoTeste->setProcesso($processo);
 $arrayTeste = $processoTesteDAO->Listar($processoTeste);
 
-$processoPergunta->setIdProcesso($idProcesso);
+$processoPergunta->setProcesso($processo);
 $arrayPergunta = $processoPerguntaDAO->Listar($processoPergunta);
 
 ?>

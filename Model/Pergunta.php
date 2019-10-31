@@ -13,11 +13,7 @@ class Pergunta {
         $this->idPergunta = $idPergunta;
         $this->pergunta = $pergunta;
     }
-
-    public function getUltimoRegistroPergunta() {
-        return PerguntaDAO::UltimoRegistroPergunta($this) + 1;
-    }
-
+    
     function getCnpj(){
         return $this->cnpj;
     }
@@ -25,20 +21,24 @@ class Pergunta {
     function getIdPergunta() {
         return $this->idPergunta;
     }
-
+    
     function getPergunta() {
         return $this->pergunta;
     }
-
+    
     function setCnpj($cnpj){
         $this->cnpj = $cnpj;
     }
-
+    
     function setIdPergunta($idPergunta) {
         $this->idPergunta = $idPergunta;
     }
-
+    
     function setPergunta($pergunta) {
         $this->pergunta = $pergunta;
+    }
+
+    public function getUltimoRegistroPergunta() {
+        return PerguntaDAO::UltimoRegistroPergunta($this) + 1;
     }
 }
