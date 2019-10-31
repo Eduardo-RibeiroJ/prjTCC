@@ -33,11 +33,16 @@ $processoCompetenciaDAO = new ProcessoCompetenciaDAO($conn);
 $processoTesteDAO = new ProcessoTesteDAO($conn);
 $processoPerguntaDAO = new ProcessoPerguntaDAO($conn);
 
-//Setando manualmente o id que vai ver no link
+//Id pegado no link
 $idProcesso = $_GET['id'];
 
 $processo->setIdProcesso($idProcesso);
 $processoDAO->Listar($processo);
+
+//Não encontrou processo seletivo
+if($processo->getIdProcesso() == NULL) {
+  header('Location: index.php');
+}
 
 $processoCompetencia->setIdProcesso($idProcesso);
 $arrayCompetencia = $processoCompetenciaDAO->Listar($processoCompetencia);
