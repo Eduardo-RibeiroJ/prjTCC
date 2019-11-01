@@ -37,7 +37,7 @@ $arrayPergunta = $perguntaDAO->Listar($pergunta);
     <form>
       <div class="form-row">
         <div class="form-group col-md-11">
-          <textarea type="text" class="form-control" rows="4" id="txtPergunta" name="txtPergunta" placeholder="Digite uma competência..." required autofocus></textarea>
+          <textarea type="text" class="form-control" rows="4" id="txtPergunta" name="txtPergunta" placeholder="Escreva sua pergunta..." required autofocus></textarea>
         </div>
         <div class="form-group col-md-1">
           <button class="btn btn-primary" id="btnInserirPergunta" name="btnInserirPergunta">Inserir</button>

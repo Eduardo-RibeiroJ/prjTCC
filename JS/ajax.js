@@ -503,7 +503,9 @@ $(function () {
 
             if (sucesso == true) {
                 console.log('ALTEROU');
+                console.log($('#txtPergunta' + idPergunta).val());
                 $('#btnAlterar'+idPergunta).click();
+                $('#tituloHeader' + idPergunta).html($('#txtPergunta' + idPergunta).val());
 
             } else {
                 alert('Erro: ' + sucesso);
