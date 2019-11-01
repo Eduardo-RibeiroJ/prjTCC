@@ -481,6 +481,7 @@ $(function () {
 
                 $('#txtPergunta').val('');
                 $('#txtPergunta').focus();
+                $('#txtUltimoRegistro').val(parseInt(idPergunta) + 1);
 
             } else {
                 alert('Erro: ' + sucesso);
