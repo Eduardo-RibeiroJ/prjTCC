@@ -223,7 +223,8 @@ if ($_POST['acao'] == "CandidatoObjetivo") {
 	$objetivo->inserirObjetivo(
 		$_POST['cpf'],
 		$_POST['idObjetivo'],
-		$_POST['cargo'],
+		$_POST['idCargo'],
+		$_POST['nomeCargo'],
 		$_POST['nivel'],
 		$_POST['pretSal']
 	);

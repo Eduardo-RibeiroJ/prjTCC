@@ -35,11 +35,21 @@ class CandidatoObjetivoDAO
     public function Alterar(CandidatoObjetivo $objetivo)    { 
         $cpf = $objetivo->getCpf();
         $idObjetivo = $objetivo->getIdobjetivo();
-        $idCargo = $objetivo->getIdCargo();
         $nivel = $objetivo->getNivel();
         $pretSal = $objetivo->getPretSal();
 
-        $query = "UPDATE tbCandidatoObjetivo SET nivel=?, pretSal=? WHERE cpf = ? AND idObjetivo = ? AND idCargo = ?;";
+        if ($nivel == 'Tainee')
+            $nivel = 'T';
+        else if ($nivel == 'Estágio')
+            $nivel = 'E';
+        else if ($nivel == 'Junior')
+            $nivel = 'J';
+        else if ($nivel == 'Senior')
+            $nivel = 'S';
+        else if ($nivel == 'Pleno')
+            $nivel = 'P';
+
+        $query = "UPDATE tbCandidatoObjetivo SET nivel=?, pretSal=? WHERE cpf = ? AND idObjetivo = ?;";
  
         $stmt = mysqli_prepare($this->db->getConection(), $query);
 
@@ -47,7 +57,7 @@ class CandidatoObjetivoDAO
             die(mysqli_error($this->db->getConection()));
         } 
         
-        mysqli_stmt_bind_param($stmt, 'ssiii', $nivel, $pretSal, $cpf, $idObjetivo, $idCargo);
+        mysqli_stmt_bind_param($stmt, 'ssii', $nivel, $pretSal, $cpf, $idObjetivo);
         mysqli_stmt_execute($stmt);
         mysqli_stmt_close($stmt);
 

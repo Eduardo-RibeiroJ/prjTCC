@@ -556,12 +556,42 @@ $(function () {
 
                 if (sucesso == true) {
                     $('#txtCargo').focus();
+                    button.html("Salvar");
             
                 } else {
                     alert('Erro: ' + sucesso);
                 }
             });
     });
+
+
+    $('#sectionCardsObjetivo').on('click', '#btnAlterarObjetivo', function (e) {
+
+        e.preventDefault();
+        var idCargo = $(this).attr('id').replace(/\D+/g, '');
+
+        $.post('../PostAjax/alterar.php', {
+            acao: "CandidatoObjetivo",
+            cpf: $('#txtCpf').val(), 
+            idObjetivo: $('#txtIdObjetivo').val(),
+            idCargo: idCargo,
+            nomeCargo: $('#txtCargo').val(),
+            nivel: $('#cbbNivel').val(),
+            pretSal: $('#txtPretSal').val()
+
+        }, function (sucesso) {
+
+            if (sucesso == true) {
+                $('#txtCargo').focus();
+                console.log('função retornou sucesso');
+
+            } else {
+                alert('Erro: ' + sucesso);
+            }
+        });
+    });
+
+
 
     //RECRUTADOR EDITAR
     $('#accordionRecrutadorDados').on('click', '#btnAlterarSalvarEnderecoRecrutador', function (e) {

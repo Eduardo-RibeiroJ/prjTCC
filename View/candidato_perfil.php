@@ -18,6 +18,9 @@ include_once "../Controller/CandidatoEmpresaDAO.php";
 include_once "../Model/CandidatoCompetencia.php";
 include_once "../Controller/CandidatoCompetenciaDAO.php";
 
+include_once "../Model/CandidatoObjetivo.php";
+include_once "../Controller/CandidatoObjetivoDAO.php";
+
 $conn = new Conexao();
 $candidato = new Candidato();
 $candidatoDAO = new CandidatoDAO($conn);
@@ -34,18 +37,23 @@ $empresaDAO = new CandidatoEmpresaDAO($conn);
 $competencia = new CandidatoCompetencia();
 $competenciaDAO = new CandidatoCompetenciaDAO($conn);
 
+$objetivo = new CandidatoObjetivo();
+$objetivoDAO = new CandidatoObjetivoDAO($conn);
+
 //Aqui é o CPF da session
 $candidato->setCpf($_SESSION['cpf']);
 $formacao->setCpf($_SESSION['cpf']);
 $curso->setCpf($_SESSION['cpf']);
 $empresa->setCpf($_SESSION['cpf']);
 $competencia->setCpf($_SESSION['cpf']);
+$objetivo->setCpf($_SESSION['cpf']);
 
 $candidatoDAO->Listar($candidato);
 $arrayFormacao = $formacaoDAO->Listar($formacao);
 $arrayCurso = $cursoDAO->Listar($curso);
 $arrayEmpresa = $empresaDAO->Listar($empresa);
 $arrayCompetencia = $competenciaDAO->Listar($competencia);
+$arrayObjetivo = $objetivoDAO->Listar($objetivo);
 
 ?>
 
@@ -85,10 +93,10 @@ $arrayCompetencia = $competenciaDAO->Listar($competencia);
                     <p><strong>Data de Nascimento: </strong><?= $candidato->getDataNasc(); ?></p>
                     <p><strong>Estado Civil: </strong><?= $candidato->getEstadoCivil(); ?></p>
                     <p><strong>Sexo: </strong><?= $candidato->getSexo(); ?></p>
-                  
+
                   </div>
                 </div>
-                      
+
               </div>
             </div>
           </div>
@@ -115,10 +123,10 @@ $arrayCompetencia = $competenciaDAO->Listar($competencia);
                     <p><strong>Endereço: </strong><?= $candidato->getEndereco(); ?></p>
                     <p><strong>Bairro: </strong><?= $candidato->getBairro(); ?></p>
                     <p><strong>Cidade: </strong><?= $candidato->getCidade(); ?> - <?= $candidato->getEstado(); ?></p>
-                  
-                  </div>                      
+
+                  </div>
                 </div>
-              
+
               </div>
             </div>
           </div>
@@ -138,20 +146,20 @@ $arrayCompetencia = $competenciaDAO->Listar($competencia);
             <div class="card-body">
               <div class="card-text">
 
-                  <div class="row">
-                    <div class="col">  
+                <div class="row">
+                  <div class="col">
 
-                      <p><strong>E-mail: </strong><?= $candidato->getEmail(); ?></p>
-                      <p><strong>Telefone 1: </strong><?= $candidato->getTel1(); ?></p>
-                      <p><strong>Telefone 2: </strong><?= $candidato->getTel2(); ?></p>
-                      <p><strong>LinkedIn: </strong><?= $candidato->getLinkedin(); ?></p>
-                      <p><strong>Facebook: </strong><?= $candidato->getFacebook(); ?></p>
-                      <p><strong>Site Pessoal: </strong><?= $candidato->getSitePessoal(); ?></p>
-
-                    </div>
+                    <p><strong>E-mail: </strong><?= $candidato->getEmail(); ?></p>
+                    <p><strong>Telefone 1: </strong><?= $candidato->getTel1(); ?></p>
+                    <p><strong>Telefone 2: </strong><?= $candidato->getTel2(); ?></p>
+                    <p><strong>LinkedIn: </strong><?= $candidato->getLinkedin(); ?></p>
+                    <p><strong>Facebook: </strong><?= $candidato->getFacebook(); ?></p>
+                    <p><strong>Site Pessoal: </strong><?= $candidato->getSitePessoal(); ?></p>
 
                   </div>
-                  
+
+                </div>
+
               </div>
             </div>
           </div>
@@ -171,28 +179,28 @@ $arrayCompetencia = $competenciaDAO->Listar($competencia);
             <div class="card-body">
               <div class="card-text">
 
-              <?php if($arrayCompetencia): ?>
+                <?php if ($arrayCompetencia) : ?>
 
-              <ul>
+                  <ul>
 
-                <?php foreach($arrayCompetencia as $reg): ?>
+                    <?php foreach ($arrayCompetencia as $reg) : ?>
 
-                  <li><strong><?= $reg->getCompetencia(); ?></strong>, nível <?= $reg->getNivel(); ?></li>
+                      <li><strong><?= $reg->getCompetencia(); ?></strong>, nível <?= $reg->getNivel(); ?></li>
 
-                <?php endforeach; ?>
+                    <?php endforeach; ?>
 
-              </ul>
-              
-              <?php else: ?>
-                <p>
-                  <strong>Insira seus idiomas e competências!</strong>
-                  <a href="candidato_inserir_competencia.php" name="btnAlterarCompetencia" id="btnAlterarCompetencia" class="btn btn-outline-dark ml-4">
-                    <i class="fas fa-plus"></i>
-                  </a>
-                </p>
-              <?php endif; ?>
+                  </ul>
 
-                  
+                <?php else : ?>
+                  <p>
+                    <strong>Insira seus idiomas e competências!</strong>
+                    <a href="candidato_inserir_competencia.php" name="btnAlterarCompetencia" id="btnAlterarCompetencia" class="btn btn-outline-dark ml-4">
+                      <i class="fas fa-plus"></i>
+                    </a>
+                  </p>
+                <?php endif; ?>
+
+
               </div>
             </div>
           </div>
@@ -212,9 +220,9 @@ $arrayCompetencia = $competenciaDAO->Listar($competencia);
             <div class="card-body">
               <div class="card-text">
 
-              <?php if($arrayFormacao): ?>
+                <?php if ($arrayFormacao) : ?>
 
-                <?php foreach($arrayFormacao as $reg): ?>
+                  <?php foreach ($arrayFormacao as $reg) : ?>
 
                     <div class="row">
                       <div class="col">
@@ -228,18 +236,18 @@ $arrayCompetencia = $competenciaDAO->Listar($competencia);
                       </div>
                     </div>
 
-                <?php endforeach; ?>
-              
-              <?php else: ?>
-                <p>
-                  <strong>Insira suas formações acadêmicas!</strong>
-                  <a href="candidato_inserir_formacao.php" name="btnAlterarFormacao" id="btnAlterarFormacao" class="btn btn-outline-dark ml-4">
-                    <i class="fas fa-plus"></i>
-                  </a>
-                </p>
-              <?php endif; ?>
+                  <?php endforeach; ?>
 
-                  
+                <?php else : ?>
+                  <p>
+                    <strong>Insira suas formações acadêmicas!</strong>
+                    <a href="candidato_inserir_formacao.php" name="btnAlterarFormacao" id="btnAlterarFormacao" class="btn btn-outline-dark ml-4">
+                      <i class="fas fa-plus"></i>
+                    </a>
+                  </p>
+                <?php endif; ?>
+
+
               </div>
             </div>
           </div>
@@ -259,9 +267,9 @@ $arrayCompetencia = $competenciaDAO->Listar($competencia);
             <div class="card-body">
               <div class="card-text">
 
-              <?php if($arrayCurso): ?>
+                <?php if ($arrayCurso) : ?>
 
-                <?php foreach($arrayCurso as $reg): ?>
+                  <?php foreach ($arrayCurso as $reg) : ?>
 
                     <div class="row">
                       <div class="col">
@@ -274,18 +282,47 @@ $arrayCompetencia = $competenciaDAO->Listar($competencia);
                       </div>
                     </div>
 
-                <?php endforeach; ?>
-              
-              <?php else: ?>
-                <p>
-                  <strong>Insira seus cursos complementares!</strong>
-                  <a href="candidato_inserir_curso.php" name="btnAlterarCurso" id="btnAlterarCurso" class="btn btn-outline-dark ml-4">
-                    <i class="fas fa-plus"></i>
-                  </a>
-                </p>
-              <?php endif; ?>
+                  <?php endforeach; ?>
 
-                  
+                <?php else : ?>
+                  <p>
+                    <strong>Insira seus cursos complementares!</strong>
+                    <a href="candidato_inserir_curso.php" name="btnAlterarCurso" id="btnAlterarCurso" class="btn btn-outline-dark ml-4">
+                      <i class="fas fa-plus"></i>
+                    </a>
+                  </p>
+                <?php endif; ?>
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+
+          <div class="card-header" id="candidatoObjetivo" data-toggle="collapse" data-target="#collapsecandidatoObjetivo" aria-expanded="true" aria-controls="collapsecandidatoObjetivo">
+            Objetivo
+            <a href="candidato_alterar_objetivo.php" name="btnAlterarObjetivo" id="btnAlterarObjetivo" class="btn btn-outline-primary float-right">
+              <i class="fas fa-pencil-alt"></i>
+            </a>
+          </div>
+
+          <div id="collapsecandidatoObjetivo" class="collapse show" aria-labelledby="candidatoObjetivo">
+
+            <div class="card-body">
+              <div class="card-text">
+
+                <div class="row">
+                  <div class="col">
+
+                    <p><strong>Cargo: </strong><?= $objetivo->getNomeCargo(); ?></p>
+                    <p><strong>Nível: </strong><?= $objetivo->getNivel(); ?></p>
+                    <p><strong>Pretenção salarial: </strong><?= $objetivo->getPretSal(); ?></p>
+
+                  </div>
+                </div>
+
               </div>
             </div>
           </div>
@@ -305,9 +342,9 @@ $arrayCompetencia = $competenciaDAO->Listar($competencia);
             <div class="card-body">
               <div class="card-text">
 
-              <?php if($arrayEmpresa): ?>
+                <?php if ($arrayEmpresa) : ?>
 
-                <?php foreach($arrayEmpresa as $reg): ?>
+                  <?php foreach ($arrayEmpresa as $reg) : ?>
 
                     <div class="row">
                       <div class="col">
@@ -321,18 +358,18 @@ $arrayCompetencia = $competenciaDAO->Listar($competencia);
                       </div>
                     </div>
 
-                <?php endforeach; ?>
-              
-              <?php else: ?>
-                <p>
-                  <strong>Insira suas últimas experiências profissionais!</strong>
-                  <a href="candidato_inserir_empresa.php" name="btnAlterarEmpresa" id="btnAlterarEmpresa" class="btn btn-outline-dark ml-4">
-                    <i class="fas fa-plus"></i>
-                  </a>
-                </p>
-              <?php endif; ?>
+                  <?php endforeach; ?>
 
-                  
+                <?php else : ?>
+                  <p>
+                    <strong>Insira suas últimas experiências profissionais!</strong>
+                    <a href="candidato_inserir_empresa.php" name="btnAlterarEmpresa" id="btnAlterarEmpresa" class="btn btn-outline-dark ml-4">
+                      <i class="fas fa-plus"></i>
+                    </a>
+                  </p>
+                <?php endif; ?>
+
+
               </div>
             </div>
           </div>
@@ -345,6 +382,6 @@ $arrayCompetencia = $competenciaDAO->Listar($competencia);
 
 </div>
 
-       
+
 
 <?php include 'footer.php'; ?>
