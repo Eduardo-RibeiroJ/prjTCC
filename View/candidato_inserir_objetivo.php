@@ -58,7 +58,7 @@ $objetivoDAO->Listar($objetivo);
                   <div class="form-row">
                     <div class="form-group col-md-6">
                       <label for="txtCargo">Cargo</label>
-                      <input type="text" class="form-control" id="txtCargo" name="txtCargo" value="<?= $objetivo->getCargo(); ?>" required autofocus>
+                      <input type="text" class="form-control" id="txtCargo" name="txtCargo" value="<?= $objetivo->getNomeCargo(); ?>" required autofocus>
                     </div>
 
                     <div class="form-group col-md-5">

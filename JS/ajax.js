@@ -542,41 +542,25 @@ $(function () {
     $('#sectionCardsObjetivo').on('click', '#btnAlterarSalvarObjetivo', function (e) {
 
         e.preventDefault();
-        var idObjetivo = $(this).val();
-        var button = $(this);
-        var salvarAlterar;
-
-        if ($(this).html() == "Inserir")
-            salvarAlterar = '../PostAjax/salvar.php';
-        else
-            salvarAlterar = '../PostAjax/alterar.php';
-
-        if (button.html() == "Alterar") {
-            button.html("Salvar");
-
-        } else {
-
-            $.post(salvarAlterar, {
+        var idObjetivo = 1;
+     
+        $.post('../PostAjax/salvar.php', {
                 acao: "CandidatoObjetivo",
                 cpf: $('#txtCpf').val(),
                 idObjetivo: idObjetivo,
-                cargo: $('#txtCargo' + idObjetivo).val(),
-                nivel: $('#cbbNivel' + idObjetivo).val(),
-                pretSal: $('#txtPretSal' + idObjetivo).val()
+                cargo: $('#txtCargo').val(),
+                nivel: $('#cbbNivel').val(),
+                pretSal: $('#txtPretSal').val()
 
             }, function (sucesso) {
 
                 if (sucesso == true) {
-                    
-                    if (button.html() == "Inserir") {
-                        button.html("Salvar");
-                    }
+                    $('#txtCargo').focus();
             
                 } else {
                     alert('Erro: ' + sucesso);
                 }
             });
-        }
     });
 
     //RECRUTADOR EDITAR

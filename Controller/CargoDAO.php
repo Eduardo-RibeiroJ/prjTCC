@@ -31,22 +31,22 @@ class CargoDAO
         
         if ($cargo->getIdCargo() == NULL) {
 
-            $query = $this->db->getConection()->query("SELECT * FROM tbCargo WHERE idCargo ='".$cargo->getIdCargo()."' ORDER BY idCargo;");
+            /*$query = $this->db->getConection()->query("SELECT * FROM tbCargo WHERE idCargo ='".$cargo->getIdCargo()."' ORDER BY idCargo;");
             $arrayQuery = array();
 
             while($reg = $query->fetch_array()) {
 
-                $cargo = new Questao();
+                $cargo = new Cargo();
                 $cargo->inserirQuestao(
                     
                     $reg['idCargo'],
-                    $reg['idQuestao']
+                    $reg['cargo']
                 );
 
                 $arrayQuery[] = $cargo;
             }
 
-            return $arrayQuery;
+            return $arrayQuery; */
 
         } else {
 
@@ -57,6 +57,8 @@ class CargoDAO
                     $reg['idCargo'],
                     $reg['nomeCargo']
             );
+
+            return $cargo;
         }
     }
 
