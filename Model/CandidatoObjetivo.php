@@ -3,15 +3,15 @@ class CandidatoObjetivo {
     private $cpf;
     private $idObjetivo;
     private $idCargo;
-    private $nomeCargo;
     private $nivel;
     private $pretSal;
+    private $cargo;
 
-    function inserirObjetivo($cpf, $idObjetivo, $idCargo, $nomeCargo, $nivel, $pretSal) {
+
+    function inserirObjetivo($cpf, $idObjetivo, $idCargo, $nivel, $pretSal) {
         $this->cpf = $cpf;
         $this->idObjetivo = $idObjetivo;
         $this->idCargo = $idCargo;
-        $this->nomeCargo = $nomeCargo;
         $this->nivel = $nivel;
         $this->pretSal = $pretSal;
     }
@@ -29,16 +29,16 @@ class CandidatoObjetivo {
         return $this->idCargo;
     }
 
-    function getNomeCargo() {
-        return $this->nomeCargo;
-    }
-
     function getNivel() {
         return $this->nivel;
     }
 
     function getPretSal() {
         return $this->pretSal;
+    }
+
+    function getCargo(){
+        return $this->cargo;
     }
 
     function setCpf($cpf) {
@@ -53,15 +53,15 @@ class CandidatoObjetivo {
         $this->idCargo = $idCargo;
     }
 
-    function setNomeCargo($nomeCargo){
-        $this->nomeCargo = $nomeCargo;
-    }
-
     function setNivel($nivel) {
         $this->nivel = $nivel;
     }
 
     function setPretSal($pretSal) {
         $this->pretSal = $pretSal;
+    }
+
+    function setCargo($cargo){
+        $this->cargo = $cargo;
     }
 }

@@ -119,7 +119,7 @@ CREATE TABLE `tbcandidatoformacao` (
 CREATE TABLE `tbcandidatoobjetivo` (
   `cpf` varchar(15) NOT NULL,
   `idObjetivo` int(11) NOT NULL,
-  `cargo` varchar(50) NOT NULL,
+  `idCargo` int(11) NOT NULL,
   `nivel` varchar(30) NOT NULL,
   `pretSal` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -350,7 +350,8 @@ ALTER TABLE `tbcandidatoformacao`
 -- Índices para tabela `tbcandidatoobjetivo`
 --
 ALTER TABLE `tbcandidatoobjetivo`
-  ADD PRIMARY KEY (`cpf`,`idObjetivo`);
+  ADD PRIMARY KEY (`cpf`,`idObjetivo`),
+  ADD KEY `FK_CARGOCAND` (`idCargo`);
 
 --
 -- Índices para tabela `tbcandidatoprocesso`
@@ -504,7 +505,8 @@ ALTER TABLE `tbcandidatoformacao`
 -- Limitadores para a tabela `tbcandidatoobjetivo`
 --
 ALTER TABLE `tbcandidatoobjetivo`
-  ADD CONSTRAINT `FK_CPFOBJ` FOREIGN KEY (`cpf`) REFERENCES `tbcandidato` (`cpf`);
+  ADD CONSTRAINT `FK_CPFOBJ` FOREIGN KEY (`cpf`) REFERENCES `tbcandidato` (`cpf`),
+  ADD CONSTRAINT `FK_CARGOCAND` FOREIGN KEY (`idCargo`) REFERENCES `tbCargo` (`idCargo`);
 
 --
 -- Limitadores para a tabela `tbcandidatoprocesso`
