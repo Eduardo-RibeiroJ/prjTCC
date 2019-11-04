@@ -53,9 +53,16 @@ $arrayTeste = $processoTesteDAO->Listar($processoTeste);
 $processoPergunta->setProcesso($processo);
 $arrayPergunta = $processoPerguntaDAO->Listar($processoPergunta);
 
+
+if(empty($_SESSION['logado']))
+  include_once 'header.php';
+else if($_SESSION['logado'] == 1)
+  include_once 'headerCand.php';
+else if($_SESSION['logado'] == 2)
+  include_once 'headerRecrut.php';
+
 ?>
 
-<?php include_once 'headerRecrut.php'; ?>
 
 <section class="masthead" id="sectionProcesso1" style="background: url(imagem/90463.jpg); background-size: cover;">
     <div class="container">

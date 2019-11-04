@@ -1,6 +1,8 @@
 <?php
 session_start();
 
+unset($_SESSION['dadosTeste']);
+
 include_once "../Model/Conexao.php";
 
 include_once "../Model/ProcessoSeletivo.php";
@@ -70,19 +72,24 @@ $arrayPergunta = $processoPerguntaDAO->Listar($processoPergunta);
                     <div class="col-12">
                       <p class="lead mb-1"><strong>Testes online necessários:</strong></p>
                       <?php foreach($arrayTeste as $reg): ?>
-                        <div class="card mb-1">
-                          <div class="card-body">
-                            <div class="row">
-                              <div class="col-12 col-md-10">
-                                <p class="lead"><strong><?= $reg->getTesteOnline()->getNomeTesteOnline(); ?></strong></p>
-                              </div>
-                              <div class="col-12 col-md-2 text-center">
-                              
-                                <input type="submit" class="btn btn-primary" value="Realizar teste"></a>
+                        <form method="POST" action="realizar_testeonline.php">
+                          <input type="hidden" id="idProcesso" name="idProcesso" value="<?= $idProcesso ?>" />
+                          <input type="hidden" id="idTeste" name="idTeste" value="<?= $reg->getTesteOnline()->getIdTesteOnline() ?>" />
+
+                          <div class="card mb-1">
+                            <div class="card-body">
+                              <div class="row">
+                                <div class="col-12 col-md-10">
+                                  <p class="lead"><strong><?= $reg->getTesteOnline()->getNomeTesteOnline(); ?></strong></p>
+                                </div>
+                                <div class="col-12 col-md-2 text-center">
+                                
+                                  <input type="submit" name="btnRealizarTeste" class="btn btn-primary" value="Realizar teste"></a>
+                                </div>
                               </div>
                             </div>
                           </div>
-                        </div>
+                        </form>
                       <?php endforeach; ?>
                     </div>
                   </div>
