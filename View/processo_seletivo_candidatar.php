@@ -55,7 +55,7 @@ $arrayPergunta = $processoPerguntaDAO->Listar($processoPergunta);
 
 ?>
 
-<?php include_once 'headerRecrut.php'; ?>
+<?php include_once 'headerCand.php'; ?>
 
 <section class="masthead" id="sectionProcesso1" style="background: url(imagem/90463.jpg); background-size: cover;">
     <div class="container">
@@ -63,45 +63,27 @@ $arrayPergunta = $processoPerguntaDAO->Listar($processoPergunta);
         <div class="jumbotron p-3 p-md-5" style="background-color: #FFF">
             <div class="container p-0">
                 <h5 class="display-4 display-md-2">Vaga para <?= $processo->getCargo()->getNomeCargo() ?>!</h1>
-                <p class="lead">O processo seletivo estará aberto entre <?= $processo->getDataInicio(); ?> a <?= $processo->getDataLimiteCandidatar(); ?>.</p>
-                
-                <div class="row d-flex justify-content-center">
-                  <div class="col-12 col-md-9 border rounded p-4 mt-2 mb-5">
-                    <p class="lead"><pre class="lead-pre"><?= $processo->getResumoVaga() ?></pre></p>
-                    <div class="row">
-                      <div class="col-12">
-                        <p class="lead">Contratação: <?= $processo->getTipoContratacao() ?>, salário <?= $processo->getSalario() == 0 ? ' a combinar.' : 'de R$ '.$processo->getSalario().'.'?></p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <?php if($arrayCompetencia): ?>
-                  <div class="row">
-                    <div class="col-12">
-                      <p class="lead mb-1"><strong>Competências necessárias:</strong></p>
-                      <ul>
-                      <?php foreach($arrayCompetencia as $reg): ?>
-
-                        <li><?= $reg->getCompetencia()->getNomeComp(); ?> nível <?= $reg->getNivel(); ?></li>
-
-                      <?php endforeach; ?>
-                      </ul>
-                    </div>
-                  </div>
-                <?php endif; ?>
+                <p class="lead"><strong>Atenção!</strong> - Todos os testes online e perguntas devem ser respondidos até <?= $processo->getDataLimiteCandidatar(); ?>.</p>
 
                 <?php if($arrayTeste): ?>
                   <div class="row">
                     <div class="col-12">
                       <p class="lead mb-1"><strong>Testes online necessários:</strong></p>
-                      <ul>
                       <?php foreach($arrayTeste as $reg): ?>
-
-                        <li><?= $reg->getTesteOnline()->getNomeTesteOnline(); ?></li>
-
+                        <div class="card mb-1">
+                          <div class="card-body">
+                            <div class="row">
+                              <div class="col-12 col-md-10">
+                                <p class="lead"><strong><?= $reg->getTesteOnline()->getNomeTesteOnline(); ?></strong></p>
+                              </div>
+                              <div class="col-12 col-md-2 text-center">
+                              
+                                <input type="submit" class="btn btn-primary" value="Realizar teste"></a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                       <?php endforeach; ?>
-                      </ul>
                     </div>
                   </div>
                 <?php endif; ?>
@@ -125,7 +107,7 @@ $arrayPergunta = $processoPerguntaDAO->Listar($processoPergunta);
 
             <div class="form-row">
               <div class="col text-center">
-                <a href="processo_seletivo_candidatar-<?= $idProcesso ?>" class="btn btn-warning btn-lg float-right">Candidatar-se!</a>
+                <a href="recrutador.php" class="btn btn-warning btn-lg float-right">Enviar Resultados!</a>
               </div>
             </div>
         </div>

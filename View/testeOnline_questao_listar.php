@@ -58,12 +58,12 @@ $arrayQuestao = $questaoDAO->Listar($questao);
                   <div class="row">
 
                     <div class="col-lg-7">
-                      <p class="card-title justify"><?= $reg->getQuestao(); ?></p>
-                      <p><h5>Alternativa correta: </h5><?= $reg->getRespostaCorreta(); ?></p>
-                      <p><h5>Responder em </h5><?= $reg->getTempo(); ?> segundos</p>
+                      <h5 class="card-title justify"><?= $reg->getQuestao(); ?></h5>
+                      <p>Alternativa correta: <strong>(<?= $reg->getResposta(); ?>) <?= $reg->getRespostaCorreta(); ?></strong></p>
+                      <p>Responder em <strong><?= $reg->getTempo(); ?> segundos</strong></p>
                     </div>
 
-                    <div class="col-lg-5 text-center">
+                    <div class="col-lg-5 text-right">
                       <a class="btn btn-outline-dark btn-mg" href="testeOnline_questao_alterar.php?idTesteOnline=<?= $reg->getIdTesteOnline(); ?>&idQuestao=<?= $reg->getIdQuestao(); ?>" role="button">Alterar</a>
                       <button class="btn btn-danger btn-mg" id="btnExcluir" type="button" value="<?= $reg->getIdQuestao(); ?>">Excluir</button>
                     </div>
