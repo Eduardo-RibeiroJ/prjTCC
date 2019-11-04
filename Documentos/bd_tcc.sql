@@ -218,6 +218,17 @@ CREATE TABLE `tbprocessocandteste` (
   `resultado` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+-- Estrutura da tabela `tbprocessocandtestequestao`
+--
+
+CREATE TABLE `tbprocessocandtestequestao` (
+  `idProcesso` int(11) NOT NULL,
+  `cpf` varchar(15) NOT NULL,
+  `idTesteOnline` int(11) NOT NULL,
+  `idQuestao` int(11) NOT NULL,
+  `resposta` varchar(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 -- --------------------------------------------------------
 
 --
@@ -387,6 +398,15 @@ ALTER TABLE `tbprocessocandteste`
   ADD PRIMARY KEY (`idProcesso`,`cpf`,`idTesteOnline`),
   ADD KEY `FK_CPF_TESTE` (`cpf`),
   ADD KEY `FK_TESTE_PROC_CPF` (`idTesteOnline`);
+
+--
+-- Índices para tabela `tbprocessocandtestequestao`
+--
+ALTER TABLE `tbprocessocandtestequestao`
+  ADD PRIMARY KEY (`idProcesso`,`cpf`,`idTesteOnline`,`idQuestao`),
+  ADD KEY `FK_CPF_TESTE` (`cpf`),
+  ADD KEY `FK_TESTE_PROC_CPF` (`idTesteOnline`),
+  ADD KEY `FK_TESTE_PROC_QUESTAO` (`idQuestao`);
 
 --
 -- Índices para tabela `tbprocessocompetencia`

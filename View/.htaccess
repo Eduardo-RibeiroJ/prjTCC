@@ -4,3 +4,4 @@ RewriteCond %(REQUEST_FILENAME) !-f
 RewriteCond %(REQUEST_FILENAME) !-d
 
 RewriteRule ^processo_seletivo-([0-9]+)$ processo_seletivo.php?id=$1
+RewriteRule ^processo_seletivo_candidatar-([0-9]+)$ processo_seletivo_candidatar.php?id=$1
