@@ -21,6 +21,9 @@ include_once "../Controller/CandidatoCompetenciaDAO.php";
 include_once "../Model/CandidatoObjetivo.php";
 include_once "../Controller/CandidatoObjetivoDAO.php";
 
+include_once "../Model/Cargo.php";
+include_once "../Controller/CargoDAO.php";
+
 $conn = new Conexao();
 $candidato = new Candidato();
 $candidatoDAO = new CandidatoDAO($conn);
@@ -316,7 +319,7 @@ $arrayObjetivo = $objetivoDAO->Listar($objetivo);
                 <div class="row">
                   <div class="col">
 
-                    <p><strong>Cargo: </strong><?= $objetivo->getNomeCargo(); ?></p>
+                    <p><strong>Cargo: </strong><?= $objetivo->getCargo()->getNomeCargo(); ?></p>
                     <p><strong>Nível: </strong><?= $objetivo->getNivel(); ?></p>
                     <p><strong>Pretenção salarial: </strong><?= $objetivo->getPretSal(); ?></p>
 
