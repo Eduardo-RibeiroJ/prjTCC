@@ -138,7 +138,7 @@ $arrayCurso = $cursoDAO->Listar($curso);
 
                 <div class="form-row">
                   <div class="col">
-                    <button value="<?= $ultimoRegistro ?>" name="btnAlterarSalvarCurso" id="btnAlterarSalvarCurso" class="btn btn-primary">Inserir</button>
+                    <button value="<?= $ultimoRegistro ?>" name="btnAlterarSalvarCurso" id="btnAlterarSalvarCurso" class="btn btn-primary float-right">Inserir</button>
                   </div>
                 </div>
 

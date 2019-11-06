@@ -32,7 +32,6 @@ include_once 'headerRecrut.php'
 
           <div class="card-header" id="">
             <span>Arnoldo Barreto Neto</span>
-            <span class="ml-5">Competências 5/5</span>
             <button name="btnAbrir" id="btnAbrir" class="btn btn-outline-primary float-right d-inline ml-5" data-toggle="collapse" data-target="#collapseCandidato">
               <i class="fas fa-plus"></i>
             </button>
@@ -49,16 +48,16 @@ include_once 'headerRecrut.php'
                       <li>Desenvolvimento de pessoas</li>
                       <li>Trabalho em equipe</li>
                       <li>Análise de mercado financeiro</li>
-                      <li>Milk</li>
-                      <li>Milk</li>
-                      <li>Milk</li>
-                      <li>Milk</li>
-                      <li>Milk</li>
-                      <li>Milk</li>
+                      <li>Coaching quântico</li>
+                      <li>Mildfsdffsdfsdfk</li>
+                      <li>Msdfssdfdfsdfsilk</li>
+                      <li>Misdfsdsdfsdfsdlk</li>
+                      <li>Mifssdfdflk</li>
+                      <li>Misdfsdfsdflk</li>
                     </ul>
                   </div>
 
-                  <div class="col-lg-3 col-md-3">
+                  <div class="col-lg-3 col-md-3 ml-3">
                     <h6 class="card-title text-uppercase text-muted mb-1">Matemática</h6>
                     <span class="h2 mb-0 card-title">10</span>
                     <h6 class="card-title text-uppercase text-muted mb-1">Português</h6>
@@ -68,7 +67,7 @@ include_once 'headerRecrut.php'
                     <h6 class="card-title text-uppercase text-muted mb-1">Inglês</h6>
                     <span class="h2 mb-0 card-title">10</span>
                   </div>
-                  <div class="col-lg-3 col-md-4">
+                  <div class="col-lg-3 col-md-3 ml-3">
                     <h6 class="card-title text-uppercase text-muted mb-1">Testes específicos 1</h6>
                     <span class="h2 mb-0 card-title">10</span>
                     <h6 class="card-title text-uppercase text-muted mb-1">Testes específicos 2</h6>
@@ -79,8 +78,10 @@ include_once 'headerRecrut.php'
                     <span class="h2 mb-0 card-title">10</span>
                   </div>
 
-                  <h2 class="pr-5 mt-3">Perguntas</h2>
+                </div> <!-- form-row -->
 
+                <div class="form-row">
+                  <h3 class="pr-5 mt-3">Perguntas</h3>
                   <div class="row">
                     <div class="card-body">
                       <h5 class="card-title text-uppercase text-muted mb-2">Por quê</h5>
@@ -105,20 +106,13 @@ include_once 'headerRecrut.php'
                       <span class="h6 mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. , vulputate dolor.</span>
                     </div>
                   </div>
-                  <div class="row">
-                    <div class="card-body">
-                      <h5 class="card-title text-uppercase text-muted mb-2">Por quê</h5>
-                      <span class="h6 mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. , vulputate dolor.</span>
-                    </div>
-                  </div>
+                </div>
 
-                  <div class="row p-5">
-                    <div class="card-body">
-                      <a href="candidato_perfil.php" class="btn btn-primary float-right">Visualizar Perfil</a>
-                    </div>
+                <div class="form-row">
+                  <div class="col">
+                    <a href="candidato_perfil.php" class="btn btn-primary float-right">Visualizar Perfil</a>
                   </div>
-
-                </div> <!-- form-row -->
+                </div>
 
               </div><!-- card-text -->
             </div><!-- card-body -->
