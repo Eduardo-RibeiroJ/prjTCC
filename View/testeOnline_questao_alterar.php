@@ -27,20 +27,18 @@ $questaoDAO->Listar($questao);
 
 <?php include_once 'headerRecrut.php'; ?>
 
-    
+
 <div class="container">
 
-  <section>
-
-    <div class="container">
-      <div class="row">
-        <div class="col-md">
-          <h4 class="d-inline" id="numTeste"><?= $testeOnline->getIdTesteOnline(); ?></h4>
-          <h4 class="d-inline">&nbsp;- Nome:&nbsp;</h4> <!-- &nbsp dá espaço -->
-          <h4 class="d-inline" id="nomeTeste"><?= $testeOnline->getNomeTesteOnline(); ?></h4>
-        </div>
-      </div>
+  <div class="row">
+    <div class="col-12 mb-4">
+      <h4 class="d-inline" id="numTeste"><?= $testeOnline->getIdTesteOnline(); ?></h4>
+      <h4 class="d-inline">&nbsp;- Nome:&nbsp;</h4> <!-- &nbsp dá espaço -->
+      <h4 class="d-inline" id="nomeTeste"><?= $testeOnline->getNomeTesteOnline(); ?></h4>
     </div>
+  </div>
+
+  <section>
 
     <div class="row">
       <div class="col">
@@ -95,34 +93,34 @@ $questaoDAO->Listar($questao);
 
                 <div class="form-row">
                   <div class="form-group col-md-6">
-                        <label for="tempo">Tempo para responder (segundos)</label>
-                        <input type="number" class="form-control" id="tempo" name="tempo" value="<?= $questao->getTempo(); ?>">
+                    <label for="tempo">Tempo para responder (segundos)</label>
+                    <input type="number" class="form-control" id="tempo" name="tempo" value="<?= $questao->getTempo(); ?>">
                   </div>
-        
+
                   <div class="form-group col-md-6">
                     <label for="inputResposta">Alternativa correta</label>
                     <select id="resposta" name="resposta" class="form-control" tabindex="1">
-                    
+
                       <?php
 
-                      $alternativas = ['A','B','C','D'];
+                      $alternativas = ['A', 'B', 'C', 'D'];
 
-                        foreach ($alternativas as $value) {
+                      foreach ($alternativas as $value) {
 
-                          if($value == $questao->getResposta()) 
-                            $selected = 'selected';
-                          else
-                            $selected = '';
+                        if ($value == $questao->getResposta())
+                          $selected = 'selected';
+                        else
+                          $selected = '';
 
-                          echo '<option value="'.$value.'" '.$selected.'>'.$value.'</option>';
-                        }
-    
+                        echo '<option value="' . $value . '" ' . $selected . '>' . $value . '</option>';
+                      }
+
                       ?>
                     </select>
                   </div>
                 </div>
 
-                 <ul class="list-group list-group-flush">
+                <ul class="list-group list-group-flush">
                   <li class="list-group-item">
                     <div class="form-row">
                       <div class="form-group col text-center">
@@ -131,20 +129,18 @@ $questaoDAO->Listar($questao);
                       </div>
                     </div>
                   </li>
-                 </ul>   
-                  
+                </ul>
+
               </div>
             </div>
-
           </form>
 
         </div>
       </div>
     </div>
-                
+
   </section>
-  
+
 </div>
 
-
-  <?php include 'footer.php'; ?>
+<?php include 'footer.php'; ?>
