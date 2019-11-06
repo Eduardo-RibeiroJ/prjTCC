@@ -72,7 +72,7 @@ $arrayPergunta = $processoPerguntaDAO->Listar($processoPergunta);
                     <div class="col-12">
                       <p class="lead mb-1"><strong>Testes online necessários:</strong></p>
                       <?php foreach($arrayTeste as $reg): ?>
-                        <form method="POST" action="realizar_testeonline.php">
+                        <form method="POST" action="testeonline_realizar.php">
                           <input type="hidden" id="idProcesso" name="idProcesso" value="<?= $idProcesso ?>" />
                           <input type="hidden" id="idTeste" name="idTeste" value="<?= $reg->getTesteOnline()->getIdTesteOnline() ?>" />
 

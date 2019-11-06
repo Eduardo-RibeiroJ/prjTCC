@@ -560,6 +560,49 @@ ALTER TABLE `tbprocessoteste`
   ADD CONSTRAINT `FK_IDTESTE_PROCESSO` FOREIGN KEY (`idTesteOnline`) REFERENCES `tbtesteonline` (`idTesteOnline`);
 COMMIT;
 
+
+/* INSERINDO TESTES ONLINE */
+
+INSERT INTO `tbtesteonline` (`idTesteOnline`, `cnpj`, `nomeTesteOnline`) VALUES
+(1, '555', 'Português '),
+(2, '555', 'Raciocínio Lógico '),
+(3, '555', 'Inglês ');
+
+INSERT INTO `tbquestao` (`idTesteOnline`, `cnpj`, `idQuestao`, `questao`, `altA`, `altB`, `altC`, `altD`, `resposta`, `tempo`) VALUES
+(1, '555', 1, 'Ela sempre resolve os problemas com bastante ..........', 'Discrição', 'Descrição', 'Discrissão', 'Todas as anteriores', 'A', 30),
+(1, '555', 2, 'Camila falou que queria ......... exemplos, ......... não falou quantos.', 'Más / mais', 'Mais / mais', 'Mais / más', 'Mais / mas', 'D', 30),
+(1, '555', 3, 'Vou ao mercado comprar algo pra ......... beber.', 'Mim', 'Eu', 'Nós', 'Nenhuma das anteriores', 'B', 30),
+(1, '555', 4, 'Preciso levar o meu carro para ..........', 'Concertar', 'Consertar', 'Conscertar', 'Todas as anteriores', 'B', 30),
+(1, '555', 5, 'Qual é o significado de \"supérfluo\"?', 'Grande', 'Lucro', 'Desnecessário', 'Poderoso', 'C', 30),
+(1, '555', 6, 'Ele está trabalhando ......... pois está sempre de ......... humor.', 'Mal / mau', 'Mau / mal', 'Mal / mal', 'Mau / mau', 'A', 30),
+(1, '555', 7, 'Qual é o significado de \"nostalgia\"?', 'Magia negra', 'Saudade', 'Tipo de remédio', 'Valor', 'B', 30),
+(1, '555', 8, '......... muito tempo que não visitávamos um museu.', 'A', 'À', 'Á', 'Há', 'D', 30),
+(1, '555', 9, 'Qual é o significado de \"xenofobia\"?', 'Aversão a cachoeiras e riachos', 'Aversão a insetos', 'Aversão a pessoas e coisas estrangeiras', 'Aversão ao escuro', 'C', 30),
+(1, '555', 10, '......... você não me conta a verdade e me explica o ......... disso tudo?', 'Porque / por que', 'Porque / por quê', 'Por que / porquê', 'Por que / porque', 'C', 30),
+(2, '555', 1, 'Considere a série de números: 26, 24, 20, 18, 14,... Qual é o próximo número?', '10', '12', '13', '16', 'B', 120),
+(2, '555', 2, 'Considere a série de números: 51, 9, 51, 12, 51, 15, 51,… Qual é o próximo número?', '14', '18', '21', '24', 'B', 120),
+(2, '555', 3, 'Considere a série de números: 23, 24, 27, 28, 31, 32,… Qual é o próximo número?', '27', '30', '34', '35', 'D', 120),
+(2, '555', 4, 'Todas as árvores do parque são floridas. Algumas árvores do parque são ipês amarelos. Todos os ipês amarelos são árvores floridas. Se as duas primeiras sentenças são verdadeiras, a terceira é:', 'Verdadeira', 'Falsa', 'Incerta', 'Nenhuma das anteriores', 'A', 120),
+(2, '555', 5, 'Maria corre mais rápido do que Ana. Sílvia corre mais rápido do que Maria. Ana corre mais rápido do que Sílvia. Se as duas primeiras sentenças são verdadeiras, a terceira é:', 'Verdadeira', 'Falsa', 'Incerta', 'Nenhuma das anteriores', 'B', 120),
+(2, '555', 6, 'A turma A tem um maior número de alunos do que a turma B. A turma C tem um número menor de alunos do que a turma B. A turma A tem um maior número de alunos do que a turma C. Se as duas primeiras sentenças são verdadeiras, a terceira é:', 'Verdadeira', 'Falsa', 'Incerta', 'Nenhuma das anteriores', 'A', 120),
+(2, '555', 7, 'Todas as escolas do bairro ficaram fechadas durante a semana. Muitos pais cancelaram as matrículas de seus filhos das escolas do bairro.', 'A sentença 1 é a causa e a sentença 2 é o seu efeito', 'A sentença 2 é a causa e sentença 1 é o seu efeito', 'As sentenças 1 e 2 são causas independentes', 'As sentenças 1 e 2 são efeitos de causas independentes', 'D', 120),
+(2, '555', 8, 'O preço do ouro no mercado interno permaneceu inalterado durante a última semana. O preço do ouro no mercado internacional subiu durante a última semana.', 'A sentença 1 é a causa e a sentença 2 é o seu efeito', 'A sentença 2 é a causa e sentença 1 é o seu efeito', 'As sentenças 1 e 2 são causas independentes', 'As sentenças 1 e 2 são efeitos de causas independentes', 'D', 120),
+(2, '555', 9, 'Cada pessoa que é sócia do clube Alfa também é sócia do clube Beta. Alguns sócios do clube Gama, também são sócios do clube Beta. João é sócio de dois desses clubes.', 'Se João é sócio do clube Alfa, ele não faz parte do clube Gama.', 'Se João é sócio do clube Beta, ele não é sócio do clube Gama.', 'Se João é sócio do clube Beta, ele pertence ao clube Alfa.', 'Todos os sócios do clube Beta, fazem parte de, no mínimo, dois clubes.', 'A', 120),
+(2, '555', 10, 'No final de uma corrida, quatro motos cruzaram a linha de chegada, uma após a outra. As quatro motos eram das cores: amarela, vermelha, marrom e laranja.\n\nConsidere as seguintes afirmativas:\n    1) João chegou logo atrás de Pedro.\n    2) A moto vermelha chegou antes da moto laranja.\n    3) Fábio não estava na moto marrom.\n    4) Pedro estava na moto vermelha.\n    5) Tiago, que estava na moto amarela, chegou após João.\n\nBaseado na informação anterior, qual das afirmativas é verdadeira?', 'Fábio chegou na terceira posição', 'A moto marrom terminou a corrida antes da moto laranja', 'João estava na moto laranja', 'A moto laranja chegou na terceira posição', 'B', 180),
+(3, '555', 1, 'Quando perguntam ¨Can I take a picture with you?¨, significa:', 'Eu posso falar com você?', 'Eu posso tirar uma foto com você?', 'Eu posso tirar uma foto sua?', '  Eu posso dançar com você?', 'B', 60),
+(3, '555', 2, 'A palavra TREE é o mesmo que:', 'Três', 'Torre', 'Terça-feira', 'Árvore', 'D', 60),
+(3, '555', 3, 'Quando alguém diz ¨I am in love with you\", significa:', 'Eu estou apaixonado(a) por você', 'Eu te amo muito', 'Eu te quero', 'Eu amo estar com você', 'A', 60),
+(3, '555', 4, 'Complete: Did you ___ well last night?', 'slep', 'slept', 'sleep', 'slopt', 'C', 60),
+(3, '555', 5, 'Na frase, ¨I\'m angry because the bus is late.¨, a palavra ANGRY significa:', 'Feliz', 'Atrasado', 'Nervoso', 'Ansioso', 'C', 60),
+(3, '555', 6, 'Na frase, ¨What is wrong with being confident?¨, a tradução da palavra CONFIDENT seria:', 'Confidente', 'Confuso', 'Carinhoso', 'Confiante', 'D', 60),
+(3, '555', 7, 'Complete: ¨___ I help you?¨', 'Do', 'May', 'Have', 'Does', 'B', 60),
+(3, '555', 8, 'Qual é o antônimo de HAPPY?', 'Love', 'Joyful', 'Sad', 'Unfortunate', 'C', 60),
+(3, '555', 9, 'A palavra PIECE significa o quê?', 'Pedaço', 'Coisa', 'Pedra', 'Paz', 'A', 60),
+(3, '555', 10, 'Na frase, ¨I\'m feeling weird¨, a palavra WEIRD significa o quê?', 'doente', 'estranho', 'assustado', 'cansado', 'B', 60);
+
+-- --------------------------------------------------------
+
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
