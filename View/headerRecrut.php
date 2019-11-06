@@ -26,11 +26,10 @@ if (isset($_POST['btnEntrarRecrutador'])) {
 		echo "<script> alert('Cnpj não cadastrado!'); window.location.replace('recrutador_cadastrar.php'); </script>";
 }
 
-if($_SESSION['logado']) {
-	if ($_SESSION['logado'] != 2) {
-		echo "<script>location.href='index.php'</script>";
-	}
+if(!(isset($_SESSION['logado'])) || $_SESSION['logado'] != 2) {
+	echo "<script>location.href='index.php'</script>";
 }
+
 ?>
 
 <!DOCTYPE HTML>

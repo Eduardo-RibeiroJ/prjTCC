@@ -1,9 +1,16 @@
 <?php
-class ProcessoCandPerg {
+class ProcessoCandPergunta {
     private $idProcesso;
     private $cpf;
     private $idPergunta;
     private $resposta;
+
+    function inserirProcCandPerg($idProcesso, $cpf, $idPergunta, $resposta) {
+        $this->idProcesso = $idProcesso;
+        $this->cpf = $cpf;
+        $this->idPergunta = $idPergunta;
+        $this->resposta = $resposta;
+    }
     
     function getIdProcesso() {
         return $this->idProcesso;

@@ -32,22 +32,18 @@ class ProcessoCandTesteDAO
     public function Listar(ProcessoCandTeste $processoCandTeste) {
         
         $query = $this->db->getConection()->query("SELECT * FROM tbProcessoCandTeste WHERE idTesteOnline ='". $processoCandTeste->getidTesteOnline()."' AND cpf ='" . $processoCandTeste->getCpf(). "' AND idProcesso ='" . $processoCandTeste->getIdProcesso() . "';");
-        $arrayQuery = array();
 
-        while($reg = $query->fetch_array()) {
+        $reg = $query->fetch_array();
 
         $processoCandTeste = new ProcessoCandTeste();
-        $processoCandTeste->InserirCompetencia(         
-                $reg['idProcesso'],
-                $reg['cpf'],
-                $reg['idTesteOnline'],
-                $reg['resultado']
-            );
-            $arrayQuery[] = $processoCandTeste;
-        }
+        $processoCandTeste->inserirProcCandTeste(         
+            $reg['idProcesso'],
+            $reg['cpf'],
+            $reg['idTesteOnline'],
+            $reg['resultado']
+        );
 
-        return $arrayQuery;
-
+        return $processoCandTeste;
     }
 }
 

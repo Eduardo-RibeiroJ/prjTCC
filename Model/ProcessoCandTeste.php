@@ -4,6 +4,13 @@ class ProcessoCandTeste {
     private $cpf;
     private $idTesteOnline;
     private $resultado;
+
+    function inserirProcCandTeste($idProcesso, $cpf, $idTesteOnline, $resultado) {
+        $this->idProcesso = $idProcesso;
+        $this->cpf = $cpf;
+        $this->idTesteOnline = $idTesteOnline;
+        $this->resultado = $resultado;
+    }
     
     function getIdProcesso() {
         return $this->idProcesso;

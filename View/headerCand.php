@@ -27,7 +27,7 @@ if (isset($_POST['btnEntrar'])) {
 		echo "<script> alert('E-mail não cadastrado!'); window.location.replace('candidato_cadastrar.php'); </script>";
 }
 
-if ($_SESSION['logado'] != 1) {
+if(!(isset($_SESSION['logado'])) || $_SESSION['logado'] != 1) {
 	echo "<script>location.href='index.php'</script>";
 }
 ?>

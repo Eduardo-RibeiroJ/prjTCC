@@ -108,6 +108,14 @@ $arrayPergunta = $processoPerguntaDAO->Listar($processoPergunta);
                       </ul>
                     </div>
                   </div>
+                  <form method="POST" action="pergunta_responder.php">
+                    <div class="row">
+                      <input type="hidden" id="txtIdProcesso" name="txtIdProcesso" value="<?= $idProcesso ?>" />
+                      <div class="col-12">
+                        <input type="submit" name="btnResponder" class="btn btn-primary float-right mr-5" value="Responder"></a>
+                      </div>
+                    </div>
+                  </form>                
                 <?php endif; ?>
             </div>
             <hr class="my-2 my-md-4">

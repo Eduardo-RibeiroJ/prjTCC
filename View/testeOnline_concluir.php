@@ -4,11 +4,13 @@ session_start();
 include_once "../Model/Conexao.php";
 
 include_once "../Model/ProcessoSeletivo.php";
+include_once "../Model/ProcessoCandTeste.php";
 include_once "../Model/TesteOnline.php";
 include_once "../Model/Questao.php";
 include_once "../Model/Cargo.php";
 
 include_once "../Controller/ProcessoSeletivoDAO.php";
+include_once "../Controller/ProcessoCandTesteDAO.php";
 include_once "../Controller/TesteOnlineDAO.php";
 include_once "../Controller/QuestaoDAO.php";
 include_once "../Controller/CargoDAO.php";
@@ -17,6 +19,8 @@ $conn = new Conexao();
 
 $processo = new ProcessoSeletivo();
 $processoDAO = new ProcessoSeletivoDAO($conn);
+$processoCandTeste = new ProcessoCandTeste();
+$processoCandTesteDAO = new ProcessoCandTesteDAO($conn);
 $questao = new Questao();
 $questaoDAO = new QuestaoDAO($conn);
 $testeOnline = new TesteOnline();
@@ -35,7 +39,15 @@ $testeOnlineDAO->Listar($testeOnline);
 $questao->setCnpj($processo->getCnpj());
 $questao->setIdTesteOnline($_SESSION['dadosTeste']['idTesteOnline']);
 
-if(intval($_SESSION['dadosTeste']['resultado'] != 0) {
+$processoCandTeste->inserirProcCandTeste(
+  $processo->getIdProcesso(),
+  $_SESSION['cpf'],
+  $testeOnline->getIdTesteOnline(),
+  $_SESSION['dadosTeste']['resultado']
+);
+$processoCandTesteDAO->Inserir($processoCandTeste);
+
+if(intval($_SESSION['dadosTeste']['resultado']) != 0) {
   $acertos = intval($testeOnline->getQuantidadeQuestoes()) / intval($_SESSION['dadosTeste']['resultado']);
 } else {
   $acertos = 2;
