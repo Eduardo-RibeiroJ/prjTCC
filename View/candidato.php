@@ -17,8 +17,6 @@ $candidato = new Candidato();
 $candidatoDAO = new CandidatoDAO($conn);
 $candidatoProcesso = new CandidatoProcesso();
 $candidatoProcessoDAO = new CandidatoProcessoDAO($conn);
-$cargo = new Cargo();
-$cargoDAO = new CargoDAO($conn);
 
 $candidato->setCpf($_SESSION['cpf']);
 $candidatoDAO->Listar($candidato);

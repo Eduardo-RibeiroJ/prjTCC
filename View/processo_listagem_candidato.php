@@ -1,4 +1,52 @@
 <?php
+session_start();
+
+include_once "../Model/Conexao.php";
+
+include_once "../Model/Candidato.php";
+include_once "../Model/ProcessoSeletivo.php";
+include_once "../Model/CandidatoProcesso.php";
+include_once "../Model/CandidatoCompetencia.php";
+include_once "../Model/ProcessoCompetencia.php";
+include_once "../Model/ProcessoTeste.php";
+include_once "../Model/ProcessoPergunta.php";
+include_once "../Model/ProcessoCandTeste.php";
+include_once "../Model/ProcessoCandPergunta.php";
+include_once "../Model/Cargo.php";
+include_once "../Model/TesteOnline.php";
+
+include_once "../Controller/CandidatoDAO.php";
+include_once "../Controller/ProcessoSeletivoDAO.php";
+include_once "../Controller/CandidatoProcessoDAO.php";
+include_once "../Controller/CandidatoCompetenciaDAO.php";
+include_once "../Controller/ProcessoCompetenciaDAO.php";
+include_once "../Controller/ProcessoTesteDAO.php";
+include_once "../Controller/ProcessoPerguntaDAO.php";
+include_once "../Controller/ProcessoCandTesteDAO.php";
+include_once "../Controller/ProcessoCandPerguntaDAO.php";
+include_once "../Controller/ProcessoCandPerguntaDAO.php";
+include_once "../Controller/TesteOnlineDAO.php";
+
+include_once "../Controller/CargoDAO.php";
+
+$conn = new Conexao();
+$processo = new ProcessoSeletivo();
+$processoDAO = new ProcessoSeletivoDAO($conn);
+$candidatoProcesso = new CandidatoProcesso();
+$candidatoProcessoDAO = new CandidatoProcessoDAO($conn);
+
+if(isset($_POST['btnVisualizarCandidatos'])) {
+  $idProcesso = $_POST['txtIdProcesso'];
+
+  $processo->setIdProcesso($idProcesso);
+  $processoDAO->Listar($processo);
+
+  $candidatoProcesso->setIdProcesso($idProcesso);
+  $arrayCandidatos = $candidatoProcessoDAO->Listar($candidatoProcesso);
+
+} else {
+  //SAIR DA PAGINA
+}
 
 include_once 'headerRecrut.php'
 
@@ -9,22 +57,101 @@ include_once 'headerRecrut.php'
   <div class="container">
 
     <div class="row">
-      <div class="card-body col">
-        <h6 class="card-title text-uppercase text-muted mb-2">Vaga</h6>
-        <span class="h2 mb-0">Estágio em Desenvolvimento</span>
+      <div class="col-12">
+        <h5 class="display-4">Vaga para <strong><?= $processo->getCargo()->getNomeCargo(); ?></strong>, encerra em <?= $processo->getDataLimiteCandidatar(); ?>.</h4>
+      <p class="lead text-muted">49 candidatos</p>
       </div>
     </div>
-
-    <hr class="my-2 my-md-4">
-
-    <div class="row mb-3">
-      <div class="card-body col-4 mr-2">
-        <h6 class="card-title text-uppercase text-muted mb-2">Candidatos</h6>
-        <span class="h2 mb-0">50</span>
-      </div>
-    </div>
+    <hr>
 
     <!-- CARD DO CANDIDATO-->
+
+
+    <?php if($arrayCandidatos): ?>
+      <div id="accordion">
+              
+        <?php foreach($arrayCandidatos as $reg): ?>
+          <div class="card">
+            <div class="card-header" id="heading<?= $reg->getCpf() ?>">
+              <h5 class="d-inline"><?= $reg->getNome() ?> <?= $reg->getSobrenome() ?></h5>
+              <button class="btn btn-outline-primary float-right d-inline" data-toggle="collapse" data-target="#collapse<?= $reg->getCpf() ?>" aria-expanded="true" aria-controls="collapse<?= $reg->getCpf() ?>">
+                <i class="fas fa-search"></i>
+              </button>
+            </div>
+
+            <div id="collapse<?= $reg->getCpf() ?>" class="collapse" aria-labelledby="heading<?= $reg->getCpf() ?>" data-parent="#accordion">
+              <div class="card-body">
+                <div class="card-text">
+                  <form method="POST" action="candidato_cv.php">
+                    <input type="hidden" id="txtIdProcesso" name="txtIdProcesso" value="<?= $reg->getCpf() ?>" />
+
+                      <?php
+
+                        $candidatoCompetencia = new CandidatoCompetencia();
+                        $candidatoCompetenciaDAO = new CandidatoCompetenciaDAO($conn);
+                        $candidatoCompetencia->setCpf($reg->getCpf());
+                        $arrayCompetencias = $candidatoCompetenciaDAO->Listar($candidatoCompetencia);
+
+                        $processoCandTeste = new ProcessoCandTeste();
+                        $processoCandTesteDAO = new ProcessoCandTesteDAO($conn);
+                        $processoCandTeste->setCpf($reg->getCpf());
+                        $processoCandTeste->setIdProcesso($processo->getIdProcesso());
+                        $arrayTestes = $processoCandTesteDAO->Listar($processoCandTeste);
+                      
+                      ?>
+
+                      <?php if($arrayCompetencias): ?>
+
+                        <div class="row">
+                          <div class="col-12 col-lg-6">
+                            <p class="lead mb-0">Competências</p>
+                            <ul>
+                            <?php foreach($arrayCompetencias as $reg): ?>
+                              <li><strong><?= $reg->getCompetencia(); ?></strong>, nível <?= $reg->getNivel(); ?></li>
+                            <?php endforeach; ?>
+                            </ul>
+                          
+                          </div>
+                      <?php else: ?>
+                        <p class="lead">O candidato não tem competências cadastradas.</p>
+                      <?php endif; ?>
+
+                      <?php if($arrayTestes): ?>
+
+                          <div class="col-12 col-lg-6">
+                            <p class="lead mb-0">Testes Online Realizados</p>
+                            <?php foreach($arrayTestes as $reg): ?>
+                              <?php
+                                $testeOnline = new TesteOnline();
+                                $testeOnlineDAO = new TesteOnlineDAO($conn);
+
+                                $testeOnline->setIdTesteOnline($reg->getIdTesteOnline());
+                                $testeOnline->setCnpj($processo->getCnpj());
+                                $testeOnlineDAO->Listar($testeOnline);
+                              ?>
+
+                              Teste de <?= $testeOnline->getNomeTesteOnline(); ?>: <strong><?= $reg->getResultado(); ?> acertos </strong> entre <?= $testeOnline->getQuantidadeQuestoes(); ?> perguntas.
+                            <?php endforeach; ?>
+                          
+                          </div>
+                        </div>
+                      <?php else: ?>
+                        <p class="lead">O candidato não realizou nenhum teste online.</p>
+                      <?php endif; ?>
+
+                    <button type="submit" id="btnVisualizarPerfil" name="btnVisualizarPerfil" class="btn btn-warning float-right mb-2">Visualizar Perfil</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div> <!-- card -->
+
+        <?php endforeach; ?>
+      </div> <!-- accordion -->
+    <?php else: ?>
+      <p class="lead">Não há candidatos, divulgue seu processo seletivo!</p>
+    <?php endif; ?>
+
 
     <div class="row">
       <div class="col">
@@ -32,8 +159,8 @@ include_once 'headerRecrut.php'
 
           <div class="card-header" id="">
             <span>Arnoldo Barreto Neto</span>
-            <button name="btnAbrir" id="btnAbrir" class="btn btn-outline-primary float-right d-inline ml-5" data-toggle="collapse" data-target="#collapseCandidato">
-              <i class="fas fa-plus"></i>
+            <button name="btnAbrir" id="btnAbrir" class="btn btn-outline-primary float-right d-inline" data-toggle="collapse" data-target="#collapseCandidato">
+              <i class="fas fa-search"></i>
             </button>
           </div>
 

@@ -62,6 +62,7 @@ class TesteOnlineDAO
                     $reg['cnpj'],
                     $reg['nomeTesteOnline']
             );
+            return $testeOnline;
         }
      }
 

@@ -34,7 +34,7 @@ include_once 'headerRecrut.php';
             <?php if($arrayProcessos): ?>
               
               <?php foreach($arrayProcessos as $reg): ?>
-                <form method="POST" action="processo_listagem_candidatos.php">
+                <form method="POST" action="processo_listagem_candidato.php">
                   <div class="row">
                     <div class="col-12">
                       <input type="hidden" id="txtIdProcesso" name="txtIdProcesso" value="<?= $reg->getidProcesso() ?>" />
@@ -44,6 +44,7 @@ include_once 'headerRecrut.php';
                     </div>
                   </div>
                 </form>
+                <hr>
 
               <?php endforeach; ?>
             <?php else: ?>
@@ -67,7 +68,7 @@ include_once 'headerRecrut.php';
             <?php if($arrayProcessos): ?>
               
               <?php foreach($arrayProcessos as $reg): ?>
-                <form method="POST" action="processo_listagem_candidatos.php">
+                <form method="POST" action="processo_listagem_candidato.php">
                   <div class="row">
                     <div class="col-12">
                       <input type="hidden" id="txtIdProcesso" name="txtIdProcesso" value="<?= $reg->getidProcesso() ?>" />
@@ -77,6 +78,7 @@ include_once 'headerRecrut.php';
                     </div>
                   </div>
                 </form>
+                <hr>
 
               <?php endforeach; ?>
             <?php else: ?>

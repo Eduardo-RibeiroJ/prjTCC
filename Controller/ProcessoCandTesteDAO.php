@@ -30,20 +30,39 @@ class ProcessoCandTesteDAO
     }
 
     public function Listar(ProcessoCandTeste $processoCandTeste) {
+
+        if($processoCandTeste->getIdTesteOnline() != NULL) {
         
-        $query = $this->db->getConection()->query("SELECT * FROM tbProcessoCandTeste WHERE idTesteOnline ='". $processoCandTeste->getidTesteOnline()."' AND cpf ='" . $processoCandTeste->getCpf(). "' AND idProcesso ='" . $processoCandTeste->getIdProcesso() . "';");
+            $query = $this->db->getConection()->query("SELECT * FROM tbProcessoCandTeste WHERE idTesteOnline ='". $processoCandTeste->getidTesteOnline()."' AND cpf ='" . $processoCandTeste->getCpf(). "' AND idProcesso ='" . $processoCandTeste->getIdProcesso() . "';");
 
-        $reg = $query->fetch_array();
+            $reg = $query->fetch_array();
 
-        $processoCandTeste = new ProcessoCandTeste();
-        $processoCandTeste->inserirProcCandTeste(         
-            $reg['idProcesso'],
-            $reg['cpf'],
-            $reg['idTesteOnline'],
-            $reg['resultado']
-        );
+            $processoCandTeste = new ProcessoCandTeste();
+            $processoCandTeste->inserirProcCandTeste(         
+                $reg['idProcesso'],
+                $reg['cpf'],
+                $reg['idTesteOnline'],
+                $reg['resultado']
+            );
 
-        return $processoCandTeste;
+            return $processoCandTeste;
+        } else {
+            $query = $this->db->getConection()->query("SELECT * FROM tbProcessoCandTeste WHERE cpf ='" . $processoCandTeste->getCpf(). "' AND idProcesso ='" . $processoCandTeste->getIdProcesso() . "';");
+            $arrayQuery = array();
+
+            while($reg = $query->fetch_array()) {
+
+                $processoCandTeste = new ProcessoCandTeste();
+                $processoCandTeste->inserirProcCandTeste(         
+                    $reg['idProcesso'],
+                    $reg['cpf'],
+                    $reg['idTesteOnline'],
+                    $reg['resultado']
+                );
+                $arrayQuery[] = $processoCandTeste;
+            }
+            return $arrayQuery;
+        }
     }
 }
 
