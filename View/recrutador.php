@@ -24,9 +24,9 @@
       </div>
 
       <div class="col-md-6">
-        <button class="btn btn-primary btn-grande"><i class="fas fa-folder-open fa-3x"> </i>
+        <a href="processo_listagem.php" class="btn btn-primary btn-grande"><i class="fas fa-folder-open fa-3x"> </i>
           <h4>Processos seletivos em andamento</h4>
-        </button>
+        </a>
       </div>
 
     </div>

@@ -74,7 +74,7 @@ class ProcessoSeletivoDAO
         
         if ($processo->getIdProcesso() == NULL) {
 
-            $query = $this->db->getConection()->query("SELECT * FROM tbProcessoSeletivo WHERE idProcesso ='".$processo->getIdProcesso()."' ORDER BY dataInicio asc;");
+            $query = $this->db->getConection()->query("SELECT * FROM tbProcessoSeletivo WHERE cnpj ='".$processo->getCnpj()."' ORDER BY dataInicio asc;");
             $arrayQuery = array();
 
             while($reg = $query->fetch_array()) {
