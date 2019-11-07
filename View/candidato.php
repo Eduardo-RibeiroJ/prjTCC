@@ -4,15 +4,25 @@ include_once 'headerCand.php';
 
 include_once "../Model/Conexao.php";
 include_once "../Model/Candidato.php";
+include_once "../Model/ProcessoSeletivo.php";
+include_once "../Model/CandidatoProcesso.php";
+include_once "../Model/Cargo.php";
 include_once "../Controller/CandidatoDAO.php";
+include_once "../Controller/ProcessoSeletivoDAO.php";
+include_once "../Controller/CandidatoProcessoDAO.php";
+include_once "../Controller/CargoDAO.php";
 
 $conn = new Conexao();
 $candidato = new Candidato();
 $candidatoDAO = new CandidatoDAO($conn);
+$candidatoProcesso = new CandidatoProcesso();
+$candidatoProcessoDAO = new CandidatoProcessoDAO($conn);
 
 $candidato->setCpf($_SESSION['cpf']);
 $candidatoDAO->Listar($candidato);
 
+$candidatoProcesso->setCpf($_SESSION['cpf']);
+$arrayProcessos = $candidatoProcessoDAO->Listar($candidatoProcesso);
 ?>
 
 <!-- Masthead -->
@@ -69,7 +79,21 @@ $candidatoDAO->Listar($candidato);
 
           <div class="card-body">
             <div class="card-text">
-              RSRS
+                <?php if($arrayProcessos): ?>
+              
+                  <?php foreach($arrayProcessos as $reg): ?>
+                    <form method="POST" action="processo_seletivo_testes.php">
+                      <div class="row">
+                        <div class="col-12">
+                          <input type="hidden" id="idProcesso" name="idProcesso" value="<?= $reg->getidProcesso() ?>" />
+
+                          <p class="lead d-inline">Vaga para <strong><?= $reg->getIdCargo(); ?></strong>, encerra em <?= $reg->getDataLimiteCandidatar(); ?>.</p>
+                          <button type="submit" id="btnVisualizarProcesso" name="btnVisualizarProcesso" class="btn bnt-sm btn-outline-dark float-right mb-1"><i class='fas fa-search'></i></button>
+                        </div>
+                      </div>
+                    </form>
+                  <?php endforeach; ?>
+                <?php endif; ?>
             </div>
           </div>
         </div>

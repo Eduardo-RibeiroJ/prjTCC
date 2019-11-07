@@ -7,6 +7,7 @@ include_once "../Model/Conexao.php";
 
 include_once "../Model/ProcessoSeletivo.php";
 include_once "../Model/ProcessoCompetencia.php";
+include_once "../Model/CandidatoProcesso.php";
 include_once "../Model/ProcessoTeste.php";
 include_once "../Model/ProcessoPergunta.php";
 include_once "../Model/Competencia.php";
@@ -16,6 +17,7 @@ include_once "../Model/Cargo.php";
 
 include_once "../Controller/ProcessoSeletivoDAO.php";
 include_once "../Controller/ProcessoCompetenciaDAO.php";
+include_once "../Controller/CandidatoProcessoDAO.php";
 include_once "../Controller/ProcessoTesteDAO.php";
 include_once "../Controller/ProcessoPerguntaDAO.php";
 include_once "../Controller/CompetenciaDAO.php";
@@ -26,25 +28,25 @@ include_once "../Controller/CargoDAO.php";
 $conn = new Conexao();
 
 $processo = new ProcessoSeletivo();
+$candProcesso = new CandidatoProcesso();
 $processoCompetencia = new ProcessoCompetencia();
 $processoTeste = new ProcessoTeste();
 $processoPergunta = new ProcessoPergunta();
 
 $processoDAO = new ProcessoSeletivoDAO($conn);
+$candProcessoDAO = new CandidatoProcessoDAO($conn);
 $processoCompetenciaDAO = new ProcessoCompetenciaDAO($conn);
 $processoTesteDAO = new ProcessoTesteDAO($conn);
 $processoPerguntaDAO = new ProcessoPerguntaDAO($conn);
 
-//Id pegado no link
-$idProcesso = $_GET['id'];
+if(isset($_POST['txtIdProcesso'])) {
+  $idProcesso = $_POST['txtIdProcesso'];
+} else {
+  header('Location: index.php');
+}
 
 $processo->setIdProcesso($idProcesso);
 $processoDAO->Listar($processo);
-
-//Não encontrou processo seletivo
-if($processo->getIdProcesso() == NULL) {
-  header('Location: index.php');
-}
 
 $processoCompetencia->setIdProcesso($idProcesso);
 $arrayCompetencia = $processoCompetenciaDAO->Listar($processoCompetencia);
@@ -55,6 +57,14 @@ $arrayTeste = $processoTesteDAO->Listar($processoTeste);
 $processoPergunta->setProcesso($processo);
 $arrayPergunta = $processoPerguntaDAO->Listar($processoPergunta);
 
+if(isset($_POST['btnCandidatar'])) {
+  $candProcesso->inserirCandProcesso(
+    $_SESSION['cpf'],
+    $processo->getIdProcesso()
+  );
+  $candProcessoDAO->Inserir($candProcesso);
+}
+
 ?>
 
 <?php include_once 'headerCand.php'; ?>
@@ -64,8 +74,14 @@ $arrayPergunta = $processoPerguntaDAO->Listar($processoPergunta);
 
         <div class="jumbotron p-3 p-md-5" style="background-color: #FFF">
             <div class="container p-0">
+              <?php if(isset($_POST['btnCandidatar'])): ?>
+                <h5 class="display-4 display-md-2">Boa sorte!</h1>
+                <p class="lead">Você se candidatou para a vaga de <strong><?= $processo->getCargo()->getNomeCargo() ?></strong> - Responda os testes online e perguntas até <strong><?= $processo->getDataLimiteCandidatar(); ?></strong>.</p>
+              <?php else: ?>
                 <h5 class="display-4 display-md-2">Vaga para <?= $processo->getCargo()->getNomeCargo() ?>!</h1>
                 <p class="lead"><strong>Atenção!</strong> - Todos os testes online e perguntas devem ser respondidos até <?= $processo->getDataLimiteCandidatar(); ?>.</p>
+              <?php endif; ?>
+
 
                 <?php if($arrayTeste): ?>
                   <div class="row">
@@ -84,7 +100,7 @@ $arrayPergunta = $processoPerguntaDAO->Listar($processoPergunta);
                                 </div>
                                 <div class="col-12 col-md-2 text-center">
                                 
-                                  <input type="submit" name="btnRealizarTeste" class="btn btn-primary" value="Realizar teste"></a>
+                                  <input type="submit" name="btnRealizarTeste" class="btn btn-primary" value="Realizar teste" />
                                 </div>
                               </div>
                             </div>
@@ -112,7 +128,7 @@ $arrayPergunta = $processoPerguntaDAO->Listar($processoPergunta);
                     <div class="row">
                       <input type="hidden" id="txtIdProcesso" name="txtIdProcesso" value="<?= $idProcesso ?>" />
                       <div class="col-12">
-                        <input type="submit" name="btnResponder" class="btn btn-primary float-right mr-5" value="Responder"></a>
+                        <input type="submit" name="btnResponder" class="btn btn-primary float-right mr-5" value="Responder" />
                       </div>
                     </div>
                   </form>                
@@ -122,7 +138,7 @@ $arrayPergunta = $processoPerguntaDAO->Listar($processoPergunta);
 
             <div class="form-row">
               <div class="col text-center">
-                <a href="recrutador.php" class="btn btn-warning btn-lg float-right">Enviar Resultados!</a>
+                <a href="candidato.php" class="btn btn-warning float-right">Retornar</a>
               </div>
             </div>
         </div>

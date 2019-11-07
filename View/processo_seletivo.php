@@ -130,11 +130,14 @@ else if($_SESSION['logado'] == 2)
             </div>
             <hr class="my-2 my-md-4">
 
-            <div class="form-row">
-              <div class="col text-center">
-                <a href="processo_seletivo_candidatar-<?= $idProcesso ?>" class="btn btn-warning btn-lg float-right">Candidatar-se!</a>
+            <form method="POST" action="processo_seletivo_testes.php">
+              <input type="hidden" name="txtIdProcesso" id="txtIdProcesso" value="<?= $idProcesso; ?>" />
+              <div class="form-row">
+                <div class="col text-center">
+                  <input type="submit" name="btnCandidatar" id="btnCandidatar" class="btn btn-warning btn-lg float-right" value="Candidatar-se!" />
+                </div>
               </div>
-            </div>
+            </form>
         </div>
     </div>
   </section>

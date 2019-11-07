@@ -2,6 +2,11 @@
 class CandidatoProcesso {
     private $cpf;
     private $idProcesso;
+
+    function inserirCandProcesso($cpf, $idProcesso) {
+        $this->cpf = $cpf;
+        $this->idProcesso = $idProcesso;
+    }
     
     function getCpf() {
         return $this->cpf;
