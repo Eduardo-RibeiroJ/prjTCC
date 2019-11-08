@@ -355,7 +355,7 @@ $arrayObjetivo = $objetivoDAO->Listar($objetivo);
                         <h5><?= $reg->getNomeEmpresa(); ?></h5>
                         <p><strong><?= $reg->getCargo(); ?></strong></p>
                         <p><?= $reg->getAtividades(); ?></p>
-                        <p>De<?= $reg->getDataInicio(); ?> a <?= $reg->getDataSaida(); ?></p>
+                        <p>De <?= $reg->getDataInicio(); ?> a <?= $reg->getDataSaida(); ?></p>
                         <hr />
 
                       </div>
