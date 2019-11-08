@@ -56,8 +56,8 @@ include_once 'headerRecrut.php';
 
           <div class="row mt-3 mb-3">
             <div class="col-12">
-              <p class="lead mb-1"><strong>Formação Acadêmica</strong></p>
-              <div class="card">
+              <p class="lead mb-1 pb-3"><strong>Formação Acadêmica</strong></p>
+              <div class="card border-0 pb-0 pt-0">
                 <div class="card-body">
                   <h5 class="card-title">Fatec Sorocaba</h5>
                   <h6 class="card-text mb-3"><strong>Curso: </strong>Análise e Desenvolvimento de Sistemas</h6>
@@ -68,13 +68,16 @@ include_once 'headerRecrut.php';
             </div>
           </div>
 
+          <hr class="my-2 my-md-4">
+
           <!-- Cursos-->
 
           <div class="row mt-3 mb-3">
             <div class="col-12">
-              <p class="lead mb-1"><strong>Curso Profissionalizante</strong></p>
-              <div class="card">
-                <div class="card-body">
+              <p class="lead mb-1 pb-3"><strong>Curso Profissionalizante</strong></p>
+
+              <div class="card border-0">
+                <div class="card-body pb-0 pt-0">
                   <h5 class="card-title">Introdução a redes</h5>
                   <h6 class="card-text mb-3"><strong>Instituição: </strong>Cisco Networking Academic</h6>
                   <p class="card-text mb-0">Ano conclusão: 12/06/2016</p>
@@ -84,13 +87,26 @@ include_once 'headerRecrut.php';
             </div>
           </div>
 
+          <hr class="my-2 my-md-4">
+
+          <div class="card border-0">
+            <div class="card-body pb-0 pt-0">
+              <h5 class="card-title">Introdução a redes</h5>
+              <h6 class="card-text mb-3"><strong>Instituição: </strong>Cisco Networking Academic</h6>
+              <p class="card-text mb-0">Ano conclusão: 12/06/2016</p>
+              <p class="card-text mb-0">Carga horária: 70</p>
+            </div>
+          </div>
+
+          <hr class="my-2 my-md-4">
+
           <!-- Empresas-->
 
           <div class="row mt-3 mb-3">
             <div class="col-12">
-              <p class="lead mb-1"><strong>Histórico profissional</strong></p>
-              <div class="card">
-                <div class="card-body">
+              <p class="lead mb-1 pb-3"><strong>Histórico profissional</strong></p>
+              <div class="card border-0">
+                <div class="card-body pb-0 pt-0">
                   <h5 class="card-title">IBM</h5>
                   <h6 class="card-text mb-3"><strong>Cargo: </strong>Programador C#</h6>
                   <p class="card-text mb-0"><strong>Período: </strong>de 12/06/2016 a 22/04/2017</p>
