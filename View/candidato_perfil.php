@@ -56,7 +56,7 @@ $arrayFormacao = $formacaoDAO->Listar($formacao);
 $arrayCurso = $cursoDAO->Listar($curso);
 $arrayEmpresa = $empresaDAO->Listar($empresa);
 $arrayCompetencia = $competenciaDAO->Listar($competencia);
-$arrayObjetivo = $objetivoDAO->Listar($objetivo);
+$objetivo = $objetivoDAO->Listar($objetivo);
 
 ?>
 
