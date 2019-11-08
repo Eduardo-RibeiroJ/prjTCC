@@ -83,7 +83,8 @@ include_once 'headerRecrut.php'
               <div class="card-body">
                 <div class="card-text">
                   <form method="POST" action="candidato_cv.php">
-                    <input type="hidden" id="txtIdProcesso" name="txtIdProcesso" value="<?= $reg->getCpf() ?>" />
+                    <input type="hidden" id="txtCpf" name="txtCpf" value="<?= $reg->getCpf() ?>" />
+                    <input type="hidden" id="txtIdProcesso" name="txtIdProcesso" value="<?= $idProcesso ?>" />
 
                       <?php
 

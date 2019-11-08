@@ -1,4 +1,69 @@
 <?php
+
+include_once "../Model/Conexao.php";
+include_once "../Model/Candidato.php";
+include_once "../Controller/CandidatoDAO.php";
+
+include_once "../Model/CandidatoFormacao.php";
+include_once "../Controller/CandidatoFormacaoDAO.php";
+
+include_once "../Model/CandidatoCurso.php";
+include_once "../Controller/CandidatoCursoDAO.php";
+
+include_once "../Model/CandidatoEmpresa.php";
+include_once "../Controller/CandidatoEmpresaDAO.php";
+
+include_once "../Model/CandidatoCompetencia.php";
+include_once "../Controller/CandidatoCompetenciaDAO.php";
+
+include_once "../Model/CandidatoObjetivo.php";
+include_once "../Controller/CandidatoObjetivoDAO.php";
+
+include_once "../Model/Cargo.php";
+include_once "../Controller/CargoDAO.php";
+
+$conn = new Conexao();
+$candidato = new Candidato();
+$candidatoDAO = new CandidatoDAO($conn);
+
+$formacao = new CandidatoFormacao();
+$formacaoDAO = new CandidatoFormacaoDAO($conn);
+
+$curso = new CandidatoCurso();
+$cursoDAO = new CandidatoCursoDAO($conn);
+
+$empresa = new CandidatoEmpresa();
+$empresaDAO = new CandidatoEmpresaDAO($conn);
+
+$competencia = new CandidatoCompetencia();
+$competenciaDAO = new CandidatoCompetenciaDAO($conn);
+
+$objetivo = new CandidatoObjetivo();
+$objetivoDAO = new CandidatoObjetivoDAO($conn);
+
+if(isset($_POST['btnVisualizarPerfil'])) {
+  $cpf = $_POST['txtCpf'];
+  $idProcesso = $_POST['txtIdProcesso'];
+
+} else {
+  header('Location: index.php');
+}
+
+//Aqui é o CPF da session
+$candidato->setCpf($cpf);
+$formacao->setCpf($cpf);
+$curso->setCpf($cpf);
+$empresa->setCpf($cpf);
+$competencia->setCpf($cpf);
+$objetivo->setCpf($cpf);
+
+$candidatoDAO->Listar($candidato);
+$objetivoDAO->Listar($objetivo);
+$arrayFormacao = $formacaoDAO->Listar($formacao);
+$arrayCurso = $cursoDAO->Listar($curso);
+$arrayEmpresa = $empresaDAO->Listar($empresa);
+$arrayCompetencia = $competenciaDAO->Listar($competencia);
+
 include_once 'headerRecrut.php';
 ?>
 
@@ -8,19 +73,30 @@ include_once 'headerRecrut.php';
 
     <div class="jumbotron p-3 p-md-5" style="background-color: #FFF">
       <div class="container p-0">
-        <h5 class="display-4 display">Will Smith</h1>
-          <h6 class="lead mb-0">Solteiro, 51 anos</h6>
-          <h6 class="lead mb-0">Rua Ocean Drive, Bairro Miami, Cidade New York</h6>
-          <h6 class="lead mb-0">Email: will_fresh_prince@hotmail.com , telefone: (51)98524-9874</h6>
+        <h5 class="display-3"><?= $candidato->getNome() ?> <?= $candidato->getSobrenome() ?></h1>
+          <h6 class="lead mb-0"><?= $candidato->getEstadoCivil() ?>, <?= $candidato->getIdade() ?> anos</h6>
+          <h6 class="lead mb-0"><?= $candidato->getEndereco() ?> - CEP: <?= $candidato->getCep() ?></h6>
+          <h6 class="lead mb-0"><?= $candidato->getBairro() ?>, <?= $candidato->getCidade() ?>-<?= $candidato->getEstado() ?></h6>
+          <h6 class="lead mb-0">Contato: <?= $candidato->getTel1() ?> <?= $candidato->getTel2() == '' ? '' : '- '.$candidato->getTel2() ?></h6>
+          <h6 class="lead mb-0">E-mail: <?= $candidato->getEmail() ?></h6>
+          <?php if($candidato->getLinkedin()): ?>
+            <h6 class="lead mb-0">LinkedIn: <?= $candidato->getLinkedin() ?></h6>
+          <?php endif; ?>
+          <?php if($candidato->getFacebook()): ?>
+            <h6 class="lead mb-0">Facebook: <?= $candidato->getFacebook() ?></h6>
+          <?php endif; ?>
+          <?php if($candidato->getSitePessoal()): ?>
+            <h6 class="lead mb-0">Site Pessoal: <?= $candidato->getSitePessoal() ?></h6>
+          <?php endif; ?>
 
           <hr class="my-2 my-md-4">
 
-          <div class="row mt-5">
+          <div class="row mt-2">
             <div class="col-12">
-              <p class="lead mb-1"><strong>Objetivo Profissional</strong></p>
+              <p class="lead mb-1 text-uppercase"><strong>Objetivo Profissional</strong></p>
               <ul>
                 <li>
-                  <p class="mb-0"><strong>Cargo: </strong> Desenvolvedor</p>
+                  <p class="mb-0"><strong>Atuar como: </strong> Porteiro</p>
                 </li>
                 <li>
                   <p class="mb-0"><strong>Nível: </strong> Junior</p>
@@ -32,105 +108,88 @@ include_once 'headerRecrut.php';
             </div>
           </div>
 
-          <div class="row mt-3 mb-3">
-            <div class="col-12">
-              <p class="lead mb-1"><strong>Competências</strong></p>
-              <ul>
-                <li>
-                  <p class="mb-0">C#</p>
-                </li>
-                <li>
-                  <p class="mb-0">SQL Server</p>
-                </li>
-                <li>
-                  <p class="mb-0">Java</p>
-                </li>
-                <li>
-                  <p class="mb-0">Metodologia Scrum</p>
-                </li>
-              </ul>
+          <?php if($arrayCompetencia): ?>
+            <div class="row">
+
+              <div class="col-12">
+                <p class="lead mb-1 text-uppercase"><strong>Competências</strong></p>
+                <ul>
+                <?php foreach($arrayCompetencia as $reg): ?>
+                  <li>
+                    <p class="mb-0"><strong><?= $reg->getCompetencia(); ?></strong>, nível <?= $reg->getNivel(); ?></p>
+                  </li>
+                <?php endforeach; ?>
+                </ul>
+
+              </div>
+          <?php else: ?>
+              <p class="lead">O candidato não tem competências cadastradas.</p>
             </div>
+          <?php endif; ?>
           </div>
 
-          <!-- Formação-->
+          <?php if($arrayFormacao): ?>
+            <div class="row">
 
-          <div class="row mt-3 mb-3">
-            <div class="col-12">
-              <p class="lead mb-1 pb-3"><strong>Formação Acadêmica</strong></p>
-              <div class="card border-0 pb-0 pt-0">
-                <div class="card-body">
-                  <h5 class="card-title">Fatec Sorocaba</h5>
-                  <h6 class="card-text mb-3"><strong>Curso: </strong>Análise e Desenvolvimento de Sistemas</h6>
-                  <p class="card-text mb-0">Data: 26/05/2010 - 05/12/2014</p>
-                  <p class="card-text">Situação: Em andamento</p>
-                </div>
+              <div class="col-12">
+                <p class="lead mb-1 text-uppercase"><strong>Formação Acadêmica</strong></p>
+                <?php foreach($arrayFormacao as $reg): ?>
+                  <h5><?= $reg->getTipo(); ?></h5>
+                  <p class="mb-0"><strong><?= $reg->getNomeCurso(); ?></strong>, <?= $reg->getNomeInstituicao(); ?></p>
+                  <p class="mb-0">De <?= $reg->getDataInicio(); ?> a <?= $reg->getDataTermino(); ?></p>
+                  <p class="mb-0"><?= $reg->getEstado(); ?></p>
+                <hr>
+                <?php endforeach; ?>
+
               </div>
             </div>
+          <?php endif; ?>
           </div>
 
-          <hr class="my-2 my-md-4">
+          <?php if($arrayCurso): ?>
+            <div class="row">
 
-          <!-- Cursos-->
+              <div class="col-12">
+                <p class="lead mb-1 text-uppercase"><strong>Cursos Complementares</strong></p>
+                <?php foreach($arrayCurso as $reg): ?>
+                    <p class="mb-0"><strong><?= $reg->getNomeCurso(); ?></strong>, <?= $reg->getNomeInstituicao(); ?></p>
+                    <p class="mb-0">Concluído em <?= $reg->getAnoConclusao(); ?></strong> - <?= $reg->getCargaHoraria(); ?> horas de curso</p>
+                <hr>
+                <?php endforeach; ?>
 
-          <div class="row mt-3 mb-3">
-            <div class="col-12">
-              <p class="lead mb-1 pb-3"><strong>Curso Profissionalizante</strong></p>
-
-              <div class="card border-0">
-                <div class="card-body pb-0 pt-0">
-                  <h5 class="card-title">Introdução a redes</h5>
-                  <h6 class="card-text mb-3"><strong>Instituição: </strong>Cisco Networking Academic</h6>
-                  <p class="card-text mb-0">Ano conclusão: 12/06/2016</p>
-                  <p class="card-text mb-0">Carga horária: 70</p>
-                </div>
               </div>
             </div>
-          </div>
+          <?php endif; ?>
 
-          <hr class="my-2 my-md-4">
+          <?php if($arrayEmpresa): ?>
+            <div class="row">
 
-          <div class="card border-0">
-            <div class="card-body pb-0 pt-0">
-              <h5 class="card-title">Introdução a redes</h5>
-              <h6 class="card-text mb-3"><strong>Instituição: </strong>Cisco Networking Academic</h6>
-              <p class="card-text mb-0">Ano conclusão: 12/06/2016</p>
-              <p class="card-text mb-0">Carga horária: 70</p>
-            </div>
-          </div>
+              <div class="col-12">
+                <p class="lead mb-1 text-uppercase"><strong>Experiência Profissional</strong></p>
+                <?php foreach($arrayEmpresa as $reg): ?>
+                  <h5><?= $reg->getNomeEmpresa(); ?></h5>
+                  <p class="mb-0"><strong><?= $reg->getCargo(); ?></strong></p>
+                  <p class="mb-0"><?= $reg->getAtividades(); ?></p>
+                  <p class="mb-0">De <?= $reg->getDataInicio(); ?> a <?= $reg->getDataSaida(); ?></p>
+                <hr>
+                <?php endforeach; ?>
 
-          <hr class="my-2 my-md-4">
-
-          <!-- Empresas-->
-
-          <div class="row mt-3 mb-3">
-            <div class="col-12">
-              <p class="lead mb-1 pb-3"><strong>Histórico profissional</strong></p>
-              <div class="card border-0">
-                <div class="card-body pb-0 pt-0">
-                  <h5 class="card-title">IBM</h5>
-                  <h6 class="card-text mb-3"><strong>Cargo: </strong>Programador C#</h6>
-                  <p class="card-text mb-0"><strong>Período: </strong>de 12/06/2016 a 22/04/2017</p>
-                  <p class="card-text mb-0"><strong>Atividade: </strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tristique rutrum sem et rutrum. Vivamus ex sem, malesuada sed ultrices eget, maximus sed turpis. Cras porta dolor quis eros faucibus, nec porta lorem lobortis. Pellentesque pellentesque convallis efficitur. Sed dignissim fermentum augue eu volutpat. Aenean enim massa, euismod a tristique et, venenatis ut massa. Aenean ultricies, nulla ac dignissim dictum, tortor magna faucibus quam, nec faucibus nisi elit sit amet velit. Phasellus lobortis velit non porta consequat. Mauris finibus porta eros, ut aliquam dui ultrices eu. Quisque sed convallis mauris. Morbi vestibulum auctor nisi ac ultricies.</p>
-                </div>
               </div>
             </div>
+          <?php endif; ?>
+          
+          <div class="row">
+            <div class="col">
+              <form method="POST" action="processo_listagem_candidato.php">
+                <input type="hidden" name="txtIdProcesso" id="txtIdProcesso" value="<?= $idProcesso ?>" />
+                <input type="submit" name="btnVisualizarCandidatos" id="btnVisualizarCandidatos" class="btn btn-warning btn-lg float-right" value="Voltar" />
+              </form>
+            </div>
           </div>
-
-
       </div>
       <!--container p-0 -->
     </div>
     <!--jumbotron -->
-
-    <hr class="my-2 my-md-4">
-
-    <input type="hidden" name="txtIdProcesso" id="txtIdProcesso" value="" />
-    <div class="form-row">
-      <div class="col text-center">
-        <input type="submit" name="btnCandidatar" id="btnCandidatar" class="btn btn-warning btn-lg float-right" value="Candidatar-se!" />
-      </div>
-    </div>
-
 
   </div>
 </section>
