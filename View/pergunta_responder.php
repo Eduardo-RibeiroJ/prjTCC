@@ -55,6 +55,7 @@ if(isset($_POST['btnConcluir'])) {
       $processoCandPerguntaDAO->Inserir($processoCandPergunta);
     }
   }
+  //********* PRECISA ARRUMAR ESSE LINK E ENVIAR O IDPROCESSO POR POST */
   header('Location: processo_seletivo_candidatar-'.$idProcesso);
 }
 
@@ -82,7 +83,7 @@ $arrayPergunta = $processoPerguntaDAO->Listar($processoPergunta);
                   <div class="col-12">
                     <div class="form-group">
                       <label class="lead" for="txtPergunta<?= $reg->getPergunta()->getIdPergunta(); ?>"><?= $reg->getPergunta()->getPergunta(); ?></label>
-                      <textarea name="txtPergunta<?= $reg->getPergunta()->getIdPergunta(); ?>" id="txtPergunta<?= $reg->getPergunta()->getIdPergunta(); ?>" rows="3" class="form-control" placeholder="Responda aqui..."></textarea>
+                      <textarea name="txtPergunta<?= $reg->getPergunta()->getIdPergunta(); ?>" id="txtPergunta<?= $reg->getPergunta()->getIdPergunta(); ?>" rows="3" class="form-control" placeholder="Responda aqui..." required></textarea>
                     </div>
                   </div>
                 </div>
@@ -101,35 +102,5 @@ $arrayPergunta = $processoPerguntaDAO->Listar($processoPergunta);
         </div>
     </div>
   </section>
-
-  <script>
-    window.onload = function() {
-
-      var tempo = "<?= $tempo ?>";
-      timer = parseInt(tempo);
-      tempo = (parseInt(tempo)+1)*1000;
-      var pTimer = document.getElementById('p-timer');
-
-      var timerInterval = setInterval(function () {
-        pTimer.innerHTML = timer + ' segundos restantes';
-        timer--;
-
-        if(timer == '-1') {
-          clearInterval(timerInterval);
-          pTimer.innerHTML = 'Tempo esgotado!';
-        }
-
-      }, 1000);
-      
-      setTimeout(function () {
-        var rdb = document.getElementsByName('Alt');
-        for(var i=0;i < rdb.length ;i++) {
-          
-          rdb[i].checked = false;
-          rdb[i].setAttribute("disabled", "disabled");
-        }
-      }, tempo);
-    }
-  </script>
 
 <?php include 'footer.php'; ?>
