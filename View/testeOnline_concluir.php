@@ -85,11 +85,14 @@ else if($acertos == 1) {
         </div>
         <hr class="my-2 my-md-4">
 
-        <div class="form-row">
-          <div class="col text-center">
-            <a href="processo_seletivo_candidatar-<?= $processo->getIdProcesso() ?>" name="btnVoltar" id="btnVoltar" class="btn btn-warning btn-lg float-right">Retornar</a>
+        <form method="POST" action="processo_seletivo_testes.php">
+          <div class="form-row">
+            <div class="col text-center">
+              <input type="hidden" name="txtIdProcesso" value="<?= $processo->getIdProcesso() ?>">
+              <input type="submit" name="btnVoltar" id="btnVoltar" class="btn btn-warning btn-lg float-right" value="Retornar" />
+            </div>
           </div>
-        </div>
+        </form>
     </div>
   </section>
 

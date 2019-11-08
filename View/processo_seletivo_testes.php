@@ -10,6 +10,8 @@ include_once "../Model/ProcessoCompetencia.php";
 include_once "../Model/CandidatoProcesso.php";
 include_once "../Model/ProcessoTeste.php";
 include_once "../Model/ProcessoPergunta.php";
+include_once "../Model/ProcessoCandTeste.php";
+include_once "../Model/ProcessoCandPergunta.php";
 include_once "../Model/Competencia.php";
 include_once "../Model/TesteOnline.php";
 include_once "../Model/Pergunta.php";
@@ -20,6 +22,8 @@ include_once "../Controller/ProcessoCompetenciaDAO.php";
 include_once "../Controller/CandidatoProcessoDAO.php";
 include_once "../Controller/ProcessoTesteDAO.php";
 include_once "../Controller/ProcessoPerguntaDAO.php";
+include_once "../Controller/ProcessoCandTesteDAO.php";
+include_once "../Controller/ProcessoCandPerguntaDAO.php";
 include_once "../Controller/CompetenciaDAO.php";
 include_once "../Controller/TesteOnlineDAO.php";
 include_once "../Controller/PerguntaDAO.php";
@@ -98,8 +102,23 @@ if(isset($_POST['btnCandidatar'])) {
                                   <p class="lead"><strong><?= $reg->getTesteOnline()->getNomeTesteOnline(); ?></strong></p>
                                 </div>
                                 <div class="col-12 col-md-2 text-center">
-                                
-                                  <input type="submit" name="btnRealizarTeste" class="btn btn-primary" value="Realizar teste" />
+                                  <?php
+                                    $processoCandTeste = new ProcessoCandTeste();
+                                    $processoCandTesteDAO = new ProcessoCandTesteDAO($conn);
+
+                                    $processoCandTeste->setIdProcesso($processo->getIdProcesso());
+                                    $processoCandTeste->setIdTesteOnline($reg->getTesteOnline()->getIdTesteOnline());
+                                    $processoCandTeste->setCpf($_SESSION['cpf']);
+
+                                    $realizouTeste = $processoCandTesteDAO->Listar($processoCandTeste);
+                                    
+                                  ?>
+                                  <?php if($realizouTeste->getResultado()): ?>
+                                    <input type="submit" class="btn btn-success" disabled="true" value="Teste Realizado!" />
+                                  <?php else: ?>
+                                    <input type="submit" name="btnRealizarTeste" class="btn btn-primary" value="Realizar teste" />
+                                  <?php endif; ?>
+
                                 </div>
                               </div>
                             </div>
@@ -124,12 +143,28 @@ if(isset($_POST['btnCandidatar'])) {
                     </div>
                   </div>
                   <form method="POST" action="pergunta_responder.php">
-                    <div class="row">
-                      <input type="hidden" id="txtIdProcesso" name="txtIdProcesso" value="<?= $idProcesso ?>" />
-                      <div class="col-12">
-                        <input type="submit" name="btnResponder" class="btn btn-primary float-right mr-5" value="Responder" />
+                    <input type="hidden" id="txtIdProcesso" name="txtIdProcesso" value="<?= $idProcesso ?>" />
+                    <?php
+                      $processoCandPergunta = new ProcessoCandPergunta();
+                      $processoCandPerguntaDAO = new ProcessoCandPerguntaDAO($conn);
+                      
+                      $processoCandPergunta->setIdProcesso($processo->getIdProcesso());
+                      $processoCandPergunta->setIdPergunta($reg->getPergunta()->getIdPergunta());
+                      $processoCandPergunta->setCpf($_SESSION['cpf']);
+                      
+                      $realizouPergunta = $processoCandPerguntaDAO->Listar($processoCandPergunta);
+                      
+                      ?>
+                      <div class="row">
+                        <div class="col-12">
+                          <?php if($realizouPergunta->getResposta()): ?>
+                            <input type="submit" class="btn btn-success" disabled="true" value="Perguntas Respondidas!" />
+                          <?php else: ?>
+                            <input type="submit" name="btnResponder" class="btn btn-primary float-right mr-5" value="Responder" />
+                          <?php endif; ?>
+                        </div>
                       </div>
-                    </div>
+                    
                   </form>                
                 <?php endif; ?>
             </div>
