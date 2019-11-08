@@ -149,7 +149,6 @@ if(isset($_POST['btnCandidatar'])) {
                       $processoCandPerguntaDAO = new ProcessoCandPerguntaDAO($conn);
                       
                       $processoCandPergunta->setIdProcesso($processo->getIdProcesso());
-                      $processoCandPergunta->setIdPergunta($reg->getPergunta()->getIdPergunta());
                       $processoCandPergunta->setCpf($_SESSION['cpf']);
                       
                       $realizouPergunta = $processoCandPerguntaDAO->Listar($processoCandPergunta);
@@ -157,8 +156,8 @@ if(isset($_POST['btnCandidatar'])) {
                       ?>
                       <div class="row">
                         <div class="col-12">
-                          <?php if($realizouPergunta->getResposta()): ?>
-                            <input type="submit" class="btn btn-success" disabled="true" value="Perguntas Respondidas!" />
+                          <?php if($realizouPergunta): ?>
+                            <input type="submit" class="btn btn-success float-right" disabled="true" value="Perguntas Respondidas!" />
                           <?php else: ?>
                             <input type="submit" name="btnResponder" class="btn btn-primary float-right mr-5" value="Responder" />
                           <?php endif; ?>
