@@ -40,6 +40,7 @@ $arrayCompetencia = $competenciaDAO->Listar($competencia);
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <input type="text" class="form-control" id="txtNomeCompetencia" name="txtNomeCompetencia" placeholder="Digite uma competência..." required autofocus>
+                    <div id="compList"></div>
                 </div>
                 <div class="form-group col-md-5">
                     <select class="custom-select" id="cbbNivelCompetencia" name="cbbNivelCompetencia" required>
@@ -104,4 +105,28 @@ $arrayCompetencia = $competenciaDAO->Listar($competencia);
   </section>
 </div>
 
+
 <?php include 'footer.php'; ?>
+<script>
+    $(document).ready(function() {
+        $('#txtNomeCompetencia').keyup(function (){
+            var palavra = $(this).val();
+            if(palavra != '') {
+                $.post('../Controller/PesquisarCompetencia.php', {
+                palavra: palavra
+            }, function(lista) {
+                $('#compList').fadeIn();
+                $('#compList').html(lista);
+
+                });
+            } else {
+                $('#compList').html('');
+            }
+        });
+    });
+
+    $(document).on('click', 'li', function() {
+        $('#txtNomeCompetencia').val($(this).text());
+        $('#compList').html('');
+    })
+</script>
