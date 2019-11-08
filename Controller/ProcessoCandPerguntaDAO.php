@@ -30,20 +30,38 @@ class ProcessoCandPerguntaDAO
     }
 
     public function Listar(ProcessoCandPergunta $processoCandPergunta) {
+
+        if($processoCandPergunta->getIdPergunta() != NULL) {
         
-        $query = $this->db->getConection()->query("SELECT * FROM tbProcessoCandPergunta WHERE idPergunta ='". $processoCandPergunta->getIdPergunta()."' AND cpf ='" . $processoCandPergunta->getCpf(). "' AND idProcesso ='" . $processoCandPergunta->getIdProcesso() . "';");
+            $query = $this->db->getConection()->query("SELECT * FROM tbProcessoCandPergunta WHERE idPergunta ='". $processoCandPergunta->getIdPergunta()."' AND cpf ='" . $processoCandPergunta->getCpf(). "' AND idProcesso ='" . $processoCandPergunta->getIdProcesso() . "';");
 
-        $reg = $query->fetch_array();
+            $reg = $query->fetch_array();
 
-        $processoCandPergunta = new ProcessoCandPergunta();
-        $processoCandPergunta->inserirProcCandPergunta(         
-            $reg['idProcesso'],
-            $reg['cpf'],
-            $reg['idPergunta'],
-            $reg['resposta']
-        );
+            $processoCandPergunta = new ProcessoCandPergunta();
+            $processoCandPergunta->inserirProcCandPerg(         
+                $reg['idProcesso'],
+                $reg['cpf'],
+                $reg['idPergunta'],
+                $reg['resposta']
+            );
+            return $processoCandPergunta;
 
-        return $processoCandPergunta;
+        } else {
+            $query = $this->db->getConection()->query("SELECT * FROM tbProcessoCandPergunta WHERE cpf ='".$processoCandPergunta->getCpf()."' AND idProcesso ='" .$processoCandPergunta->getIdProcesso()."';");
+            $arrayQuery = array();
+
+            while($reg = $query->fetch_array()) {
+                $processoCandPergunta = new ProcessoCandPergunta();
+                $processoCandPergunta->inserirProcCandPerg(         
+                    $reg['idProcesso'],
+                    $reg['cpf'],
+                    $reg['idPergunta'],
+                    $reg['resposta']
+                );
+                $arrayQuery[] = $processoCandPergunta;
+            }
+            return $arrayQuery;
+        }
     }
 }
 
