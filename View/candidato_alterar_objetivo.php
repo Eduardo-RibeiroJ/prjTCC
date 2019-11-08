@@ -40,9 +40,10 @@ $candObjetivoDAO->Listar($candObjetivo);
   </div>
 
   <input type="hidden" id="txtCpf" name="txtCpf" value="<?= $candidato->getCpf() ?>">
-  <input type="hidden" id="txtIdcandObjetivo" name="txtCpf" value="<?= $candObjetivo->getIdObjetivo() ?>">
+  <input type="hidden" id="txtIdcandObjetivo" name="txtIdcandObjetivo" value="<?= $candObjetivo->getIdObjetivo() ?>">
+  <input type="hidden" class="form-control" id="txtIdCargo" name="txtIdCargo" value="<?= $candObjetivo->getCargo()->getIdCargo(); ?>">
 
-  <section id="sectionCardscandObjetivo">
+  <section id="sectionObjetivo">
 
     <div class="row">
       <div class="col">
@@ -53,16 +54,18 @@ $candObjetivoDAO->Listar($candObjetivo);
             <div class="card">
               <div class="card-header">
                 <i class="fas fa-id-card"></i>
-                candObjetivo profissional
+                Objetivo profissional
               </div>
 
               <div class="card-body">
                 <div class="card-text">
 
                   <div class="form-row">
+
                     <div class="form-group col-md-6">
                       <label for="txtCargo">Cargo</label>
                       <input type="text" class="form-control" id="txtCargo" name="txtCargo" value="<?= $candObjetivo->getCargo()->getNomeCargo(); ?>" required autofocus>
+                      <div id="compList"></div>
                     </div>
 
                     <div class="form-group col-md-5">
@@ -120,3 +123,27 @@ $candObjetivoDAO->Listar($candObjetivo);
 </div>
 
 <?php include 'footer.php'; ?>
+
+<script>
+  $(document).ready(function() {
+    $('#txtCargo').keyup(function() {
+      var palavra = $(this).val();
+      if (palavra != '') {
+        $.post('../Controller/PesquisarCargo.php', {
+          palavra: palavra
+        }, function(lista) {
+          $('#compList').fadeIn();
+          $('#compList').html(lista);
+
+        });
+      } else {
+        $('#compList').html('');
+      }
+    });
+  });
+
+  $(document).on('click', 'li', function() {
+    $('#txtCargo').val($(this).text());
+    $('#compList').html('');
+  })
+</script>

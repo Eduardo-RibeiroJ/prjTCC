@@ -216,20 +216,28 @@ if ($_POST['acao'] == "CandidatoObjetivo") {
 
 	include_once "../Model/CandidatoObjetivo.php";
 	include_once "../Controller/CandidatoObjetivoDAO.php";
+	include_once "../Model/Cargo.php";
+	include_once "../Controller/CargoDAO.php";
 
 	$objetivo = new CandidatoObjetivo();
 	$objetivoDAO = new CandidatoObjetivoDAO($conn);
 
+	$cargo = new Cargo();
+	$cargoDAO = new CargoDAO($conn);
+
+	$cargo->setNomeCargo($_POST['cargo']);
+	$idCargo = $cargo->idRegistro();
+
 	$objetivo->inserirObjetivo(
 		$_POST['cpf'],
 		$_POST['idObjetivo'],
-		$_POST['idCargo'],
-		$_POST['nomeCargo'],
+		$idCargo,
 		$_POST['nivel'],
 		$_POST['pretSal']
 	);
 
 	$objetivoDAO->Alterar($objetivo);
+
 }
 
 if ($_POST['acao'] == "Pergunta") {

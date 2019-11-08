@@ -539,10 +539,12 @@ $(function () {
 
 // ------------------------------------------------Objetivo-------------------------------------------------
 
-    $('#sectionCardsObjetivo').on('click', '#btnAlterarSalvarObjetivo', function (e) {
+    $('#sectionCardsObjetivo').on('click', '#btnSalvarObjetivo', function (e) {
 
         e.preventDefault();
         var idObjetivo = 1;
+
+        console.log('passou aqui no salvar');
      
         $.post('../PostAjax/salvar.php', {
                 acao: "CandidatoObjetivo",
@@ -555,9 +557,8 @@ $(function () {
             }, function (sucesso) {
 
                 if (sucesso == true) {
-                    $('#txtCargo').focus();
-                    button.html("Salvar");
-            
+                    console.log('sucesso');
+
                 } else {
                     alert('Erro: ' + sucesso);
                 }
@@ -565,17 +566,16 @@ $(function () {
     });
 
 
-    $('#sectionCardsObjetivo').on('click', '#btnAlterarObjetivo', function (e) {
+    $('#sectionObjetivo').on('click', '#btnAlterarcandObjetivo', function (e) {
 
         e.preventDefault();
-        var idCargo = $(this).attr('id').replace(/\D+/g, '');
+        var idObjetivo = $('#txtIdcandObjetivo').val();
 
         $.post('../PostAjax/alterar.php', {
             acao: "CandidatoObjetivo",
             cpf: $('#txtCpf').val(), 
-            idObjetivo: $('#txtIdObjetivo').val(),
-            idCargo: idCargo,
-            nomeCargo: $('#txtCargo').val(),
+            idObjetivo: idObjetivo,
+            cargo: $('#txtCargo').val(),
             nivel: $('#cbbNivel').val(),
             pretSal: $('#txtPretSal').val()
 

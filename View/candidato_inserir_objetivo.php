@@ -9,6 +9,9 @@ include_once "../Controller/CandidatoObjetivoDAO.php";
 include_once "../Model/Candidato.php";
 include_once "../Controller/CandidatoDAO.php";
 
+include_once "../Model/Cargo.php";
+include_once "../Controller/CargoDAO.php";
+
 $conn = new Conexao();
 
 $objetivo = new CandidatoObjetivo();
@@ -58,7 +61,8 @@ $objetivoDAO->Listar($objetivo);
                   <div class="form-row">
                     <div class="form-group col-md-6">
                       <label for="txtCargo">Cargo</label>
-                      <input type="text" class="form-control" id="txtCargo" name="txtCargo" value="<?= $objetivo->getNomeCargo(); ?>" required autofocus>
+                      <input type="text" class="form-control" id="txtCargo" name="txtCargo" placeholder="Digite..." required autofocus>
+                      <div id="compList"></div>
                     </div>
 
                     <div class="form-group col-md-5">
@@ -87,13 +91,13 @@ $objetivoDAO->Listar($objetivo);
                   <div class="form-row">
                     <div class="form-group col-md-4">
                       <label for="txtPretSal">Pretenção salarial</label>
-                      <input type="text" class="form-control" id="txtPretSal" name="txtPretSal" value="<?= $objetivo->getPretSal(); ?>" required>
+                      <input type="text" class="form-control" id="txtPretSal" name="txtPretSal" value="" required>
                     </div>
                   </div>
 
                   <div class="form-row">
                     <div class="col">
-                      <button name="btnAlterarSalvarObjetivo" id="btnAlterarSalvarObjetivo" class="btn btn-primary float-right">Inserir</button>
+                      <button name="btnSalvarObjetivo" id="btnSalvarObjetivo" class="btn btn-primary float-right">Inserir</button>
                     </div>
                   </div>
 
@@ -116,3 +120,27 @@ $objetivoDAO->Listar($objetivo);
 </div>
 
 <?php include 'footer.php'; ?>
+
+<script>
+  $(document).ready(function() {
+    $('#txtCargo').keyup(function() {
+      var palavra = $(this).val();
+      if (palavra != '') {
+        $.post('../Controller/PesquisarCargo.php', {
+          palavra: palavra
+        }, function(lista) {
+          $('#compList').fadeIn();
+          $('#compList').html(lista);
+
+        });
+      } else {
+        $('#compList').html('');
+      }
+    });
+  });
+
+  $(document).on('click', 'li', function() {
+    $('#txtCargo').val($(this).text());
+    $('#compList').html('');
+  })
+</script>

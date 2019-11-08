@@ -16,7 +16,6 @@ class CandidatoObjetivo {
         $this->pretSal = $pretSal;
     }
 
-    
     function getCpf() {
         return $this->cpf;
     }

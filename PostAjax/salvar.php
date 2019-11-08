@@ -128,7 +128,7 @@ if ($_POST['acao'] == "CandidatoObjetivo") {
 		$_POST['cpf'],
 		$_POST['idObjetivo'],
 		$idCargo,
-		$_POST['cargo'],
+	/*	$_POST['cargo'],*/
 		$_POST['nivel'],
 		$_POST['pretSal']
 	);
