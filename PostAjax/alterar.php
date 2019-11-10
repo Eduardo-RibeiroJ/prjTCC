@@ -266,6 +266,9 @@ if ($_POST['acao'] == "alterarRecrutadorEndereco") {
 	$recrutador = new Recrutador();
 	$recrutadorDAO = new RecrutadorDAO($conn);
 
+	$recrutador->setCnpj($_POST['cnpj']);
+	$recrutadorDAO->Listar($recrutador);
+
 	$recrutador->alterarRecrutadorEndereco(
 		$_POST['cnpj'],
 		$_POST['nomeEmpresa'],
@@ -287,6 +290,9 @@ if ($_POST['acao'] == "alterarRecrutadorContato") {
 
 	$recrutador = new Recrutador();
 	$recrutadorDAO = new RecrutadorDAO($conn);
+
+	$recrutador->setCnpj($_POST['cnpj']);
+	$recrutadorDAO->Listar($recrutador);
 
 	$recrutador->alterarRecrutadorContato(
 		$_POST['cnpj'],
