@@ -15,7 +15,7 @@
       </div>
     </div>
 
-    <div class="row">
+    <!--<div class="row">
 
       <div class="col-md-6 text-center">
         <a href="criar_processo.php" class="btn btn-primary btn-grande"><i class="fas fa-plus fa-3x"> </i>
@@ -25,7 +25,7 @@
 
       <div class="col-md-6">
         <a href="processo_listagem.php" class="btn btn-primary btn-grande"><i class="fas fa-folder-open fa-3x"> </i>
-          <h4>Processos seletivos em andamento</h4>
+          <h4>Processos seletivos</h4>
         </a>
       </div>
 
@@ -44,31 +44,17 @@
           <h4>Gerenciar perguntas</h4>
         </a>
       </div>
-    </div>
-
-    <div class="row">
-      <div class="col-md-6">
-        <button class="btn btn-primary btn-grande"><i class="fas fa-user-tie fa-3x"> </i>
-          <h4>Pesquisar candidatos</h4>
-        </button>
-      </div>
-
-      <div class="col-md-6">
-        <button class="btn btn-primary btn-grande"><i class="fas fa-archive fa-3x"> </i>
-          <h4>Processos seletivos encerrados</h4>
-        </button>
-      </div>
-    </div>
+    </div>-->
 
     <!--Processo seletivo -->
 
-    <!--<div class="row">
-      <div class="col-lg-4 col-sm-6 ">
+    <div class="row">
+      <div class="col-lg-6 col-sm-6 ">
         <div class="card text-center shadow-sm bg-white rounded">
           <a href="criar_processo.php" class="btn btn-outline-light" style="background-color:#1874CD">
-            <div class="fas fa-plus fa-3x mt-5">
+            <div class="fas fa-plus fa-3x mt-4">
             </div>
-            <div class="px-4 pb-5">
+            <div class="px-4 pb-4">
               <h5>
                 <p>Criar processo seletivo</p>
               </h5>
@@ -77,28 +63,14 @@
         </div>
       </div>
 
-      <div class="col-lg-4 col-sm-6">
+      <div class="col-lg-6 col-sm-6">
         <div class="card text-center shadow-sm bg-white rounded">
-          <a href="" class="btn btn-outline-light" style="background-color:#1874CD">
-            <div class="fas fa-folder-open fa-3x mt-5">
+          <a href="processo_listagem.php" class="btn btn-outline-light" style="background-color:#1874CD">
+            <div class="fas fa-folder-open fa-3x mt-4">
             </div>
-            <div class="px-4 pb-5">
+            <div class="px-4 pb-4">
               <h5>
-                <p>Em andamento</p>
-              </h5>
-            </div>
-          </a>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-sm-6">
-        <div class="card text-center shadow-sm bg-white rounded">
-          <a href="" class="btn btn-outline-light" style="background-color:#1874CD">
-            <div class="fas fa-archive fa-3x mt-5">
-            </div>
-            <div class="px-4 pb-5">
-              <h5>
-                <p>Encerrados</p>
+                <p>Processos seletivos</p>
               </h5>
             </div>
           </a>
@@ -106,15 +78,14 @@
       </div>
     </div>
 
-    Outros 
 
     <div class="row">
-      <div class="col-lg-4 col-sm-6">
+      <div class="col-lg-6 col-sm-6">
         <div class="card text-center shadow-sm bg-white rounded">
           <a href="testeOnline.php" class="btn btn-outline-light" style="background-color:#1874CD">
-            <div class="fas fa-tasks fa-3x mt-5">
+            <div class="fas fa-tasks fa-3x mt-4">
             </div>
-            <div class="px-4 pb-5">
+            <div class="px-4 pb-4">
               <h5>
                 <p>Gerenciar testes onlines</p>
               </h5>
@@ -123,12 +94,12 @@
         </div>
       </div>
 
-      <div class="col-lg-4 col-sm-6">
+      <div class="col-lg-6 col-sm-6">
         <div class="card text-center shadow-sm bg-white rounded">
           <a href="perguntas.php" class="btn btn-outline-light" style="background-color:#1874CD">
-            <div class="fas fa-comment-dots fa-3x mt-5">
+            <div class="fas fa-comment-dots fa-3x mt-4">
             </div>
-            <div class="px-4 pb-5">
+            <div class="px-4 pb-4">
               <h5>
                 <p>Gerenciar perguntas</p>
               </h5>
@@ -136,21 +107,7 @@
           </a>
         </div>
       </div>
-
-      <div class="col-lg-4 col-sm-6">
-        <div class="card text-center hover-shadow-lg hover-translate-y-n10 shadow-sm bg-white rounded">
-          <a href="" class="btn btn-outline-light" style="background-color:#1874CD">
-            <div class="fas fa-user-tie fa-3x mt-5">
-            </div>
-            <div class="px-4 pb-5">
-              <h5>
-                <p>Pesquisar candidatos</p>
-              </h5>
-            </div>
-          </a>
-        </div>
-      </div>
-    </div> -->
+    </div>
 
 
   </div>
