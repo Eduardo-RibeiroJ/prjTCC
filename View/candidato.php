@@ -136,7 +136,7 @@ $arrayVagas = $processoSeletivoDAO->ListarVaga($processoSeletivo, $objetivo);
                     <input type="hidden" id="txtIdProcesso" name="txtIdProcesso" value="<?= $reg->getidProcesso() ?>" />
 
                     <p class="lead d-inline">Vaga para <strong></strong>, <?= $reg->getCargo()->getNomeCargo(); ?> encerra em <?= $reg->getDataLimiteCandidatar(); ?>.</p>
-                    <button type="submit" id="btnVisualizarProcesso" name="btnVisualizarProcesso" class="btn bnt-sm btn-outline-dark float-right mb-1"><i class='fas fa-search'></i></button>
+                    <a href="processo_seletivo-<?= $reg->getidProcesso() ?>" id="btnVisualizarProcesso" name="btnVisualizarProcesso" class="btn bnt-sm btn-outline-dark float-right mb-1"><i class='fas fa-search'></i></a>
                   </div>
                 </div>
               <?php endforeach; ?>
