@@ -105,7 +105,7 @@ $arrayVagas = $processoSeletivoDAO->ListarVaga($processoSeletivo, $objetivo);
                       <div class="col-12">
                         <ul class="list-group list-group-flush">
                           <input type="hidden" id="txtIdProcesso" name="txtIdProcesso" value="<?= $reg->getidProcesso() ?>" />
-                          <li class="list-group-item">
+                          <li class="list-group-item list-group-item-action">
                             <p class="lead d-inline">Vaga para <strong><?= $reg->getCargo()->getNomeCargo(); ?></strong>, encerra em <?= $reg->getDataLimiteCandidatar(); ?>.</p>
                             <button type="submit" id="btnVisualizarProcesso" name="btnVisualizarProcesso" class="btn bnt-sm btn-outline-dark float-right mb-1 mt-3"><i class='fas fa-search'></i></button>
                           </li>
@@ -138,7 +138,7 @@ $arrayVagas = $processoSeletivoDAO->ListarVaga($processoSeletivo, $objetivo);
                   <div class="col-12">
                     <ul class="list-group list-group-flush">
                       <input type="hidden" id="txtIdProcesso" name="txtIdProcesso" value="<?= $reg->getidProcesso() ?>" />
-                      <li class="list-group-item">
+                      <li class="list-group-item list-group-item-action">
                         <p class="lead d-inline"><?= $reg->getCargo()->getNomeCargo(); ?> encerra em <?= $reg->getDataLimiteCandidatar(); ?>.</p>
                         <a href="processo_seletivo-<?= $reg->getidProcesso() ?>" id="btnVisualizarProcesso" name="btnVisualizarProcesso" class="btn bnt-sm btn-outline-dark float-right mb-1 mt-3"><i class='fas fa-search'></i></a>
                       </li>
