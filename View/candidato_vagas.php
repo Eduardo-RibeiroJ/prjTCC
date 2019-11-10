@@ -65,7 +65,7 @@ $arrayVagas = $processoSeletivoDAO->ListarVaga($processoSeletivo, $objetivo);
             <div class="card-body p-3">
               <h5 class="card-title mb-0"><?= $reg->getCargo()->getNomeCargo(); ?></h5>
               <p class="card-text mb-0"> O processo encerra em <?= $reg->getDataLimiteCandidatar(); ?></p>
-              <button type="submit" class="btn btn-primary btn-md mb-0" id="btnVisualizarProcesso"><i class="fas fa-search"></i></button>
+              <a href="processo_seletivo-<?= $reg->getidProcesso() ?>" class="btn btn-primary btn-md mb-0" id="btnVisualizarProcesso"><i class="fas fa-search"></i></a>
             </div>
           </div>
         </div>
