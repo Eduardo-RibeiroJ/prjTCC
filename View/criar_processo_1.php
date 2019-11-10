@@ -19,12 +19,11 @@ if (isset($_POST['btnAvancar'])) {
         $_POST['txtResumo'],
         $_POST['cbbContratacao'],
         $_POST['txtSalario']
-  );
+    );
 
-  $_SESSION['processo_etapa1'] = serialize($processo);
+    $_SESSION['processo_etapa1'] = serialize($processo);
 
-  header('Location: criar_processo_2.php');
-
+    header('Location: criar_processo_2.php');
 }
 ?>
 
@@ -35,7 +34,7 @@ if (isset($_POST['btnAvancar'])) {
 
         <div class="row">
             <div class="col">
-        
+
                 <div class="card">
                     <div class="card-header">
                         Etapa 1
@@ -48,6 +47,8 @@ if (isset($_POST['btnAvancar'])) {
                                     <div class="form-group col-12 col-md-8">
                                         <label for="txtCargo">Cargo</label>
                                         <input type="text" class="form-control" id="txtCargo" name="txtCargo" required autofocus>
+                                        <div id="compList"></div>
+
                                     </div>
                                 </div>
 
@@ -84,7 +85,7 @@ if (isset($_POST['btnAvancar'])) {
                                             <label class="form-check-label" for="chkAc">A combinar</label>
 
                                         </div>
-                                        
+
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="cbbContratacao">Tipo de contratação</label>
@@ -109,13 +110,37 @@ if (isset($_POST['btnAvancar'])) {
                                 </div>
                             </form>
                         </div>
-                    </div>    
+                    </div>
                 </div>
             </div>
 
         </div>
 
     </div>
-  </section>
+</section>
 
 <?php include 'footer.php'; ?>
+
+<script>
+    $(document).ready(function() {
+        $('#txtCargo').keyup(function() {
+            var palavra = $(this).val();
+            if (palavra != '') {
+                $.post('../Controller/PesquisarCargo.php', {
+                    palavra: palavra
+                }, function(lista) {
+                    $('#compList').fadeIn();
+                    $('#compList').html(lista);
+
+                });
+            } else {
+                $('#compList').html('');
+            }
+        });
+    });
+
+    $(document).on('click', 'li', function() {
+        $('#txtCargo').val($(this).text());
+        $('#compList').html('');
+    })
+</script>

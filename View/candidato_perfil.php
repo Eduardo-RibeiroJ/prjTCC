@@ -73,9 +73,9 @@ $objetivo = $objetivoDAO->Listar($objetivo);
 
           <div class="card-header" id="candidatoDadosPessoais" data-toggle="collapse" data-target="#collapsecandidatoDadosPessoais" aria-expanded="true" aria-controls="collapsecandidatoDadosPessoais">
             Dados Pessoais
-            <button name="btnAlterarDadosPessoais" id="btnAlterarDadosPessoais" class="btn btn-outline-primary float-right">
+            <a href="candidato_alterar.php" name="btnAlterarDadosPessoais" id="btnAlterarDadosPessoais" class="btn btn-outline-primary float-right">
               <i class="fas fa-pencil-alt"></i>
-            </button>
+            </a>
           </div>
 
           <div id="collapsecandidatoDadosPessoais" class="collapse show" aria-labelledby="candidatoDadosPessoais">
@@ -109,9 +109,9 @@ $objetivo = $objetivoDAO->Listar($objetivo);
 
           <div class="card-header" id="candidatoEndereco" data-toggle="collapse" data-target="#collapseCandidatoEndereco" aria-expanded="true" aria-controls="collapseCandidatoEndereco">
             Endereço
-            <button name="btnAlterarEndereco" id="btnAlterarEndereco" class="btn btn-outline-primary float-right">
+            <a href="candidato_alterar.php" name="btnAlterarEndereco" id="btnAlterarEndereco" class="btn btn-outline-primary float-right">
               <i class="fas fa-pencil-alt"></i>
-            </button>
+            </a>
           </div>
 
           <div id="collapseCandidatoEndereco" class="collapse show" aria-labelledby="candidatoEndereco">
@@ -139,9 +139,9 @@ $objetivo = $objetivoDAO->Listar($objetivo);
 
           <div class="card-header" id="candidatoContato" data-toggle="collapse" data-target="#collapsecandidatoContato" aria-expanded="true" aria-controls="collapsecandidatoContato">
             Contato
-            <button name="btnAlterarContato" id="btnAlterarContato" class="btn btn-outline-primary float-right">
+            <a href="candidato_alterar.php" name="btnAlterarContato" id="btnAlterarContato" class="btn btn-outline-primary float-right">
               <i class="fas fa-pencil-alt"></i>
-            </button>
+            </a>
           </div>
 
           <div id="collapsecandidatoContato" class="collapse show" aria-labelledby="candidatoContato">

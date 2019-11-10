@@ -33,7 +33,7 @@ $arrayPergunta = $perguntaDAO->Listar($pergunta);
 
         <div class="row">
             <div class="col">
-        
+
                 <div class="card mb-3">
                     <div class="card-header">
                         Competências
@@ -48,6 +48,7 @@ $arrayPergunta = $perguntaDAO->Listar($pergunta);
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <input type="text" class="form-control" id="txtNomeCompetencia" name="txtNomeCompetencia" placeholder="Digite uma competência..." required autofocus>
+                                        <div id="compList"></div>
                                     </div>
                                     <div class="form-group col-md-5">
                                         <select class="custom-select" id="cbbNivelCompetencia" name="cbbNivelCompetencia" required>
@@ -68,7 +69,7 @@ $arrayPergunta = $perguntaDAO->Listar($pergunta);
 
                         </div>
 
-                    </div>    
+                    </div>
                 </div>
             </div>
         </div>
@@ -84,30 +85,30 @@ $arrayPergunta = $perguntaDAO->Listar($pergunta);
                     <div class="card-body" id="cardTestesOnline">
                         <div class="card-text">
                             <h5 class="display-4 mb-4">Adicione testes online para os candidatos</h5>
-                            
+
                             <div>
 
                                 <div class="form-group">
-                                <?php foreach($arrayTestesOnline as $reg): ?>
+                                    <?php foreach ($arrayTestesOnline as $reg) : ?>
 
-                                <div class="row">
-                                    <div class="col">
-                                        <div class="div-add">
-                                            <div class="form-check mt-2">
-                                                <input class="chkTeste form-check-input lead" type="checkbox" value="<?= $reg->getIdTesteOnline(); ?>" id="chkTeste<?= $reg->getIdTesteOnline(); ?>" name="chkTeste<?= $reg->getIdTesteOnline(); ?>">
-                                                <label class="form-check-label lead ml-2" for="chkTeste<?= $reg->getIdTesteOnline(); ?>"><?= $reg->getNomeTesteOnline(); ?></label>
-                                                <p class="ml-2">Contém <?= $reg->getQuantidadeQuestoes(); ?> questões.</p>
-                                            </div>                                    
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="div-add">
+                                                    <div class="form-check mt-2">
+                                                        <input class="chkTeste form-check-input lead" type="checkbox" value="<?= $reg->getIdTesteOnline(); ?>" id="chkTeste<?= $reg->getIdTesteOnline(); ?>" name="chkTeste<?= $reg->getIdTesteOnline(); ?>">
+                                                        <label class="form-check-label lead ml-2" for="chkTeste<?= $reg->getIdTesteOnline(); ?>"><?= $reg->getNomeTesteOnline(); ?></label>
+                                                        <p class="ml-2">Contém <?= $reg->getQuantidadeQuestoes(); ?> questões.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
+
+                                    <?php endforeach; ?>
                                 </div>
 
-                                <?php endforeach; ?>
-                                </div>
-                            
                             </div>
                         </div>
-                        
+
                     </div>
 
                 </div>
@@ -128,26 +129,26 @@ $arrayPergunta = $perguntaDAO->Listar($pergunta);
                             <div>
 
 
-                                <?php if($arrayPergunta): ?>
-                                
-                                    <div class="form-group">
-                                    <?php foreach($arrayPergunta as $reg): ?>
+                                <?php if ($arrayPergunta) : ?>
 
-                                    <div class="row">
-                                        <div class="col">
-                                            <div class="div-add div-add-pergunta py-3">
-                                                <div class="form-check">
-                                                    <input class="chkPergunta form-check-input lead" type="checkbox" value="<?= $reg->getIdPergunta(); ?>" id="chkPergunta<?= $reg->getIdPergunta(); ?>" name="chkPergunta<?= $reg->getIdPergunta(); ?>">
-                                                    <label class="form-check-label lead ml-2" for="chkPergunta<?= $reg->getIdPergunta(); ?>"><?= $reg->getPergunta(); ?></label>
+                                    <div class="form-group">
+                                        <?php foreach ($arrayPergunta as $reg) : ?>
+
+                                            <div class="row">
+                                                <div class="col">
+                                                    <div class="div-add div-add-pergunta py-3">
+                                                        <div class="form-check">
+                                                            <input class="chkPergunta form-check-input lead" type="checkbox" value="<?= $reg->getIdPergunta(); ?>" id="chkPergunta<?= $reg->getIdPergunta(); ?>" name="chkPergunta<?= $reg->getIdPergunta(); ?>">
+                                                            <label class="form-check-label lead ml-2" for="chkPergunta<?= $reg->getIdPergunta(); ?>"><?= $reg->getPergunta(); ?></label>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
+
+                                        <?php endforeach; ?>
                                     </div>
 
-                                    <?php endforeach; ?>
-                                    </div>
-
-                                <?php else: ?>
+                                <?php else : ?>
                                     <p>
                                         <strong>Nenhuma pergunta cadastrada.</strong>
                                     </p>
@@ -160,10 +161,10 @@ $arrayPergunta = $perguntaDAO->Listar($pergunta);
                 </div>
             </div>
         </div>
-        
+
         <div class="row">
             <div class="col">
-                
+
                 <div class="card">
                     <div class="card-body">
                         <div class="card-text">
@@ -175,10 +176,10 @@ $arrayPergunta = $perguntaDAO->Listar($pergunta);
                             </div>
 
                         </div>
-                    
+
                     </div>
                 </div>
-                        
+
             </div>
 
         </div>
@@ -187,3 +188,27 @@ $arrayPergunta = $perguntaDAO->Listar($pergunta);
 </section>
 
 <?php include 'footer.php'; ?>
+
+<script>
+    $(document).ready(function() {
+        $('#txtNomeCompetencia').keyup(function() {
+            var palavra = $(this).val();
+            if (palavra != '') {
+                $.post('../Controller/PesquisarCompetencia.php', {
+                    palavra: palavra
+                }, function(lista) {
+                    $('#compList').fadeIn();
+                    $('#compList').html(lista);
+
+                });
+            } else {
+                $('#compList').html('');
+            }
+        });
+    });
+
+    $(document).on('click', 'li', function() {
+        $('#txtNomeCompetencia').val($(this).text());
+        $('#compList').html('');
+    })
+</script>
