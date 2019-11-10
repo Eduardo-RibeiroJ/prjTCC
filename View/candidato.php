@@ -103,10 +103,13 @@ $arrayVagas = $processoSeletivoDAO->ListarVaga($processoSeletivo, $objetivo);
                   <form method="POST" action="processo_seletivo_testes.php">
                     <div class="row">
                       <div class="col-12">
-                        <input type="hidden" id="txtIdProcesso" name="txtIdProcesso" value="<?= $reg->getidProcesso() ?>" />
-
-                        <p class="lead d-inline">Vaga para <strong><?= $reg->getCargo()->getNomeCargo(); ?></strong>, encerra em <?= $reg->getDataLimiteCandidatar(); ?>.</p>
-                        <button type="submit" id="btnVisualizarProcesso" name="btnVisualizarProcesso" class="btn bnt-sm btn-outline-dark float-right mb-1"><i class='fas fa-search'></i></button>
+                        <ul class="list-group list-group-flush">
+                          <input type="hidden" id="txtIdProcesso" name="txtIdProcesso" value="<?= $reg->getidProcesso() ?>" />
+                          <li class="list-group-item">
+                            <p class="lead d-inline">Vaga para <strong><?= $reg->getCargo()->getNomeCargo(); ?></strong>, encerra em <?= $reg->getDataLimiteCandidatar(); ?>.</p>
+                            <button type="submit" id="btnVisualizarProcesso" name="btnVisualizarProcesso" class="btn bnt-sm btn-outline-dark float-right mb-1 mt-3"><i class='fas fa-search'></i></button>
+                          </li>
+                        </ul>
                       </div>
                     </div>
                   </form>
@@ -133,10 +136,14 @@ $arrayVagas = $processoSeletivoDAO->ListarVaga($processoSeletivo, $objetivo);
               <?php foreach ($arrayVagas as $reg) : ?>
                 <div class="row">
                   <div class="col-12">
-                    <input type="hidden" id="txtIdProcesso" name="txtIdProcesso" value="<?= $reg->getidProcesso() ?>" />
+                    <ul class="list-group list-group-flush">
+                      <input type="hidden" id="txtIdProcesso" name="txtIdProcesso" value="<?= $reg->getidProcesso() ?>" />
+                      <li class="list-group-item">
+                        <p class="lead d-inline"><?= $reg->getCargo()->getNomeCargo(); ?> encerra em <?= $reg->getDataLimiteCandidatar(); ?>.</p>
+                        <a href="processo_seletivo-<?= $reg->getidProcesso() ?>" id="btnVisualizarProcesso" name="btnVisualizarProcesso" class="btn bnt-sm btn-outline-dark float-right mb-1 mt-3"><i class='fas fa-search'></i></a>
+                      </li>
+                    </ul>
 
-                    <p class="lead d-inline">Vaga para <strong></strong>, <?= $reg->getCargo()->getNomeCargo(); ?> encerra em <?= $reg->getDataLimiteCandidatar(); ?>.</p>
-                    <a href="processo_seletivo-<?= $reg->getidProcesso() ?>" id="btnVisualizarProcesso" name="btnVisualizarProcesso" class="btn bnt-sm btn-outline-dark float-right mb-1"><i class='fas fa-search'></i></a>
                   </div>
                 </div>
               <?php endforeach; ?>
