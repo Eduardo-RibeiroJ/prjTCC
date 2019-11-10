@@ -42,10 +42,8 @@ class CandidatoDAO
             die(mysqli_error($this->db->getConection()));
         }
 
-        $senha_banco = Bcrypt::hash($senha);
-
         mysqli_stmt_bind_param($stmt, 'ssssssssssssssssss', $cpf, $nome, $sobrenome, $sexo, $dataNasc,
-                                                            $email, $senha_banco, $estadoCivil,
+                                                            $email, $senha, $estadoCivil,
                                                             $cep, $estado, $cidade, $endereco,
                                                             $bairro, $tel1, $tel2, $linkedin,
                                                             $facebook, $sitePessoal);
