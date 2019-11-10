@@ -146,8 +146,8 @@ class ProcessoSeletivoDAO
     {
         $conn = new Conexao();
 
-        $query = $this->db->getConection()->query("SELECT * FROM tbProcessoSeletivo WHERE idCargo = '" . $objetivo->getCargo()->getIdCargo() . "';"); //Não tá retornando nada, e não dá erro também
-        /*$query = $this->db->getConection()->query("SELECT * FROM tbProcessoSeletivo;");*/
+        /*$query = $this->db->getConection()->query("SELECT * FROM tbProcessoSeletivo WHERE idCargo = '" . $objetivo->getCargo()->getIdCargo() . "';"); *///Não tá retornando nada, e não dá erro também
+        $query = $this->db->getConection()->query("SELECT * FROM tbProcessoSeletivo;");
 
         $arrayQuery = array();
 

@@ -7,24 +7,36 @@ include_once "../Model/Candidato.php";
 include_once "../Model/ProcessoSeletivo.php";
 include_once "../Model/CandidatoProcesso.php";
 include_once "../Model/Cargo.php";
+include_once "../Model/CandidatoObjetivo.php";
+
 include_once "../Controller/CandidatoDAO.php";
 include_once "../Controller/ProcessoSeletivoDAO.php";
 include_once "../Controller/CandidatoProcessoDAO.php";
 include_once "../Controller/CargoDAO.php";
+include_once "../Controller/CandidatoObjetivoDAO.php";
 
 $conn = new Conexao();
+
 $candidato = new Candidato();
 $candidatoDAO = new CandidatoDAO($conn);
-$candidatoProcesso = new CandidatoProcesso();
-$candidatoProcessoDAO = new CandidatoProcessoDAO($conn);
+
 $cargo = new Cargo();
 $cargoDAO = new CargoDAO($conn);
+
+$processoSeletivo = new ProcessoSeletivo();
+$processoSeletivoDAO = new ProcessoSeletivoDAO($conn);
+
+$objetivo = new CandidatoObjetivo();
+$objetivoDAO = new CandidatoObjetivoDAO($conn);
 
 $candidato->setCpf($_SESSION['cpf']);
 $candidatoDAO->Listar($candidato);
 
-$candidatoProcesso->setCpf($_SESSION['cpf']);
-$arrayProcessos = $candidatoProcessoDAO->Listar($candidatoProcesso);
+$objetivo->setCpf($_SESSION['cpf']);
+$objetivo = $objetivoDAO->Listar($objetivo);
+
+$arrayVagas = $processoSeletivoDAO->ListarVaga($processoSeletivo, $objetivo);
+
 ?>
 
 <div style="background: url(imagem/fundo31.png); background-size: cover;">
@@ -46,45 +58,18 @@ $arrayProcessos = $candidatoProcessoDAO->Listar($candidatoProcesso);
 
     <div class="d-flex flex-wrap justify-content-center">
 
-      <div class="form-group col-lg-6">
-        <div class="card text-center">
-          <div class="card-body p-3">
-            <h5 class="card-title mb-0">Programador C#</h5>
-            <p class="card-text mb-0"> O processo encerra em dd/mm/aaa</p>
-            <button class="btn btn-primary btn-md mb-0" id="btnPesquisar"><i class="fas fa-search"></i></button>
+      <?php foreach ($arrayVagas as $reg) : ?>
+        <input type="hidden" id="txtIdProcesso" name="txtIdProcesso" value="<?= $reg->getidProcesso() ?>" />
+        <div class="form-group col-lg-6">
+          <div class="card text-center">
+            <div class="card-body p-3">
+              <h5 class="card-title mb-0"><?= $reg->getCargo()->getNomeCargo(); ?></h5>
+              <p class="card-text mb-0"> O processo encerra em <?= $reg->getDataLimiteCandidatar(); ?></p>
+              <button type="submit" class="btn btn-primary btn-md mb-0" id="btnVisualizarProcesso"><i class="fas fa-search"></i></button>
+            </div>
           </div>
         </div>
-      </div>
-
-      <div class="form-group col-lg-6">
-        <div class="card text-center">
-          <div class="card-body p-3">
-            <h5 class="card-title mb-0">Analista de sistema</h5>
-            <p class="card-text mb-0"> O processo encerra em dd/mm/aaa</p>
-            <button class="btn btn-primary btn-md" mb-0 id="btnPesquisar"><i class="fas fa-search"></i></button>
-          </div>
-        </div>
-      </div>
-
-      <div class="form-group col-lg-6">
-        <div class="card text-center">
-          <div class="card-body p-3">
-            <h5 class="card-title mb-0">Suporte ao usuário</h5>
-            <p class="card-text mb-0"> O processo encerra em dd/mm/aaa</p>
-            <button class="btn btn-primary btn-md" id="btnPesquisar"><i class="fas fa-search"></i></button>
-          </div>
-        </div>
-      </div>
-
-      <div class="form-group col-lg-6">
-        <div class="card text-center">
-          <div class="card-body p-3">
-            <h5 class="card-title mb-0">Tester</h5>
-            <p class="card-text mb-0"> O processo encerra em dd/mm/aaa</p>
-            <button class="btn btn-primary btn-md mb-0" id="btnPesquisar"><i class="fas fa-search"></i></button>
-          </div>
-        </div>
-      </div>
+      <?php endforeach; ?>
 
     </div><!-- d-flex flex-wrap justify-content-center-->
 
