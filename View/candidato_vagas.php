@@ -48,40 +48,40 @@ $arrayProcessos = $candidatoProcessoDAO->Listar($candidatoProcesso);
 
       <div class="form-group col-lg-6">
         <div class="card text-center">
-          <div class="card-body">
-            <h5 class="card-title">Programador C#</h5>
-            <p class="card-text"> O processo encerra em dd/mm/aaa</p>
-            <button class="btn btn-primary btn-sm" id="btnPesquisar"><i class="fas fa-search"></i></button>
+          <div class="card-body p-3">
+            <h5 class="card-title mb-0">Programador C#</h5>
+            <p class="card-text mb-0"> O processo encerra em dd/mm/aaa</p>
+            <button class="btn btn-primary btn-md mb-0" id="btnPesquisar"><i class="fas fa-search"></i></button>
           </div>
         </div>
       </div>
 
       <div class="form-group col-lg-6">
         <div class="card text-center">
-          <div class="card-body">
-            <h5 class="card-title">Analista de sistema</h5>
-            <p class="card-text"> O processo encerra em dd/mm/aaa</p>
-            <button class="btn btn-primary btn-sm" id="btnPesquisar"><i class="fas fa-search"></i></button>
+          <div class="card-body p-3">
+            <h5 class="card-title mb-0">Analista de sistema</h5>
+            <p class="card-text mb-0"> O processo encerra em dd/mm/aaa</p>
+            <button class="btn btn-primary btn-md" mb-0 id="btnPesquisar"><i class="fas fa-search"></i></button>
           </div>
         </div>
       </div>
 
       <div class="form-group col-lg-6">
         <div class="card text-center">
-          <div class="card-body">
-            <h5 class="card-title">Suporte ao usuário</h5>
-            <p class="card-text"> O processo encerra em dd/mm/aaa</p>
-            <button class="btn btn-primary btn-sm" id="btnPesquisar"><i class="fas fa-search"></i></button>
+          <div class="card-body p-3">
+            <h5 class="card-title mb-0">Suporte ao usuário</h5>
+            <p class="card-text mb-0"> O processo encerra em dd/mm/aaa</p>
+            <button class="btn btn-primary btn-md" id="btnPesquisar"><i class="fas fa-search"></i></button>
           </div>
         </div>
       </div>
 
       <div class="form-group col-lg-6">
         <div class="card text-center">
-          <div class="card-body">
-            <h5 class="card-title">Tester</h5>
-            <p class="card-text"> O processo encerra em dd/mm/aaa</p>
-            <button class="btn btn-primary btn-sm" id="btnPesquisar"><i class="fas fa-search"></i></button>
+          <div class="card-body p-3">
+            <h5 class="card-title mb-0">Tester</h5>
+            <p class="card-text mb-0"> O processo encerra em dd/mm/aaa</p>
+            <button class="btn btn-primary btn-md mb-0" id="btnPesquisar"><i class="fas fa-search"></i></button>
           </div>
         </div>
       </div>
