@@ -64,7 +64,7 @@ $candObjetivoDAO->Listar($candObjetivo);
 
                     <div class="form-group col-md-6">
                       <label for="txtCargo">Cargo</label>
-                      <input type="text" class="form-control" id="txtCargo" name="txtCargo" value="<?= $candObjetivo->getCargo()->getNomeCargo(); ?>" required autofocus>
+                      <input type="text" class="form-control" id="txtCargo" name="txtCargo" autocomplete="off" value="<?= $candObjetivo->getCargo()->getNomeCargo(); ?>" required autofocus>
                       <div id="compList"></div>
                     </div>
 

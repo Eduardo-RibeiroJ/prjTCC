@@ -36,7 +36,7 @@ $arrayCompetencia = $competenciaDAO->Listar($competencia);
             <p class="lead">Adicione uma nova competência sempre que quiser.</p>
         </div>
 
-        <form>
+        <form autocomplete="off">
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <input type="text" class="form-control" id="txtNomeCompetencia" name="txtNomeCompetencia" placeholder="Digite uma competência..." required autofocus>

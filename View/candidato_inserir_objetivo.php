@@ -55,54 +55,56 @@ $objetivoDAO->Listar($objetivo);
                 Objetivo profissional
               </div>
 
-              <div class="card-body">
-                <div class="card-text">
+              <form autocomplete="off">
+                <div class="card-body">
+                  <div class="card-text">
 
-                  <div class="form-row">
-                    <div class="form-group col-md-6">
-                      <label for="txtCargo">Cargo</label>
-                      <input type="text" class="form-control" id="txtCargo" name="txtCargo" placeholder="Digite..." required autofocus>
-                      <div id="compList"></div>
+                    <div class="form-row">
+                      <div class="form-group col-md-6">
+                        <label for="txtCargo">Cargo</label>
+                        <input type="text" class="form-control" id="txtCargo" name="txtCargo" placeholder="Digite..." required autofocus>
+                        <div id="compList"></div>
+                      </div>
+
+                      <div class="form-group col-md-5">
+                        <label for="cbbNivel">Nível</label>
+                        <select class="custom-select" id="cbbNivel" name="cbbNivel" required>
+
+                          <?php
+
+                          $alternativas = ['Selecione', 'Trainee', 'Estágio', 'Junior', 'Senior', 'Pleno'];
+
+                          foreach ($alternativas as $value) {
+
+                            if ($value == $objetivo->getNivel())
+                              $selected = 'selected';
+                            else
+                              $selected = '';
+
+                            echo '<option value="' . $value . '" ' . $selected . '>' . $value . '</option>';
+                          }
+
+                          ?>
+                        </select>
+                      </div>
                     </div>
 
-                    <div class="form-group col-md-5">
-                      <label for="cbbNivel">Nível</label>
-                      <select class="custom-select" id="cbbNivel" name="cbbNivel" required>
-
-                        <?php
-
-                        $alternativas = ['Selecione', 'Trainee', 'Estágio', 'Junior', 'Senior', 'Pleno'];
-
-                        foreach ($alternativas as $value) {
-
-                          if ($value == $objetivo->getNivel())
-                            $selected = 'selected';
-                          else
-                            $selected = '';
-
-                          echo '<option value="' . $value . '" ' . $selected . '>' . $value . '</option>';
-                        }
-
-                        ?>
-                      </select>
+                    <div class="form-row">
+                      <div class="form-group col-md-4">
+                        <label for="txtPretSal">Pretenção salarial</label>
+                        <input type="text" class="form-control" id="txtPretSal" name="txtPretSal" value="" required>
+                      </div>
                     </div>
+
+                    <div class="form-row">
+                      <div class="col">
+                        <button type="submit" name="btnSalvarObjetivo" id="btnSalvarObjetivo" class="btn btn-primary float-right">Inserir</button>
+                      </div>
+                    </div>
+
                   </div>
-
-                  <div class="form-row">
-                    <div class="form-group col-md-4">
-                      <label for="txtPretSal">Pretenção salarial</label>
-                      <input type="text" class="form-control" id="txtPretSal" name="txtPretSal" value="" required>
-                    </div>
-                  </div>
-
-                  <div class="form-row">
-                    <div class="col">
-                      <button name="btnSalvarObjetivo" id="btnSalvarObjetivo" class="btn btn-primary float-right">Inserir</button>
-                    </div>
-                  </div>
-
                 </div>
-              </div>
+              </form>
             </div>
 
           </div>
