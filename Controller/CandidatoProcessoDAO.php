@@ -29,7 +29,17 @@ class CandidatoProcessoDAO
 
     public function Listar(CandidatoProcesso $candidatoProcesso) {
 
-        if($candidatoProcesso->getIdProcesso() != NULL) {
+        if($candidatoProcesso->getIdProcesso() != NULL && $candidatoProcesso->getCpf() != NULL) {
+            $conn = new Conexao();
+            $query = $this->db->getConection()->query("SELECT * FROM tbCandidatoProcesso WHERE idProcesso ='". $candidatoProcesso->getIdProcesso()."' AND cpf ='". $candidatoProcesso->getCpf()."';");
+
+            $reg = $query->fetch_array();
+            $candidatoProcesso->setCpf($reg['cpf']);
+
+            return $candidatoProcesso;
+
+        }
+        else if($candidatoProcesso->getIdProcesso() != NULL) {
             $conn = new Conexao();
             $query = $this->db->getConection()->query("SELECT * FROM tbCandidatoProcesso WHERE idProcesso ='". $candidatoProcesso->getIdProcesso()."';");
             $arrayQuery = array();
@@ -45,7 +55,7 @@ class CandidatoProcessoDAO
             return $arrayQuery;
 
         }
-        if($candidatoProcesso->getCpf() != NULL) {
+        else if($candidatoProcesso->getCpf() != NULL) {
             $conn = new Conexao();
             $query = $this->db->getConection()->query("SELECT * FROM tbCandidatoProcesso WHERE cpf ='". $candidatoProcesso->getCpf()."';");
             $arrayQuery = array();

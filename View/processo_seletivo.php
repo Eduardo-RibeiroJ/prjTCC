@@ -7,6 +7,7 @@ include_once "../Model/ProcessoSeletivo.php";
 include_once "../Model/ProcessoCompetencia.php";
 include_once "../Model/ProcessoTeste.php";
 include_once "../Model/ProcessoPergunta.php";
+include_once "../Model/CandidatoProcesso.php";
 include_once "../Model/Competencia.php";
 include_once "../Model/TesteOnline.php";
 include_once "../Model/Pergunta.php";
@@ -16,6 +17,7 @@ include_once "../Controller/ProcessoSeletivoDAO.php";
 include_once "../Controller/ProcessoCompetenciaDAO.php";
 include_once "../Controller/ProcessoTesteDAO.php";
 include_once "../Controller/ProcessoPerguntaDAO.php";
+include_once "../Controller/CandidatoProcessoDAO.php";
 include_once "../Controller/CompetenciaDAO.php";
 include_once "../Controller/TesteOnlineDAO.php";
 include_once "../Controller/PerguntaDAO.php";
@@ -24,11 +26,13 @@ include_once "../Controller/CargoDAO.php";
 $conn = new Conexao();
 
 $processo = new ProcessoSeletivo();
+$candidatoProcesso = new CandidatoProcesso();
 $processoCompetencia = new ProcessoCompetencia();
 $processoTeste = new ProcessoTeste();
 $processoPergunta = new ProcessoPergunta();
 
 $processoDAO = new ProcessoSeletivoDAO($conn);
+$candidatoProcessoDAO = new CandidatoProcessoDAO($conn);
 $processoCompetenciaDAO = new ProcessoCompetenciaDAO($conn);
 $processoTesteDAO = new ProcessoTesteDAO($conn);
 $processoPerguntaDAO = new ProcessoPerguntaDAO($conn);
@@ -53,6 +57,10 @@ $arrayTeste = $processoTesteDAO->Listar($processoTeste);
 $processoPergunta->setProcesso($processo);
 $arrayPergunta = $processoPerguntaDAO->Listar($processoPergunta);
 
+//Verificar se o candidato ja se candidatou
+$candidatoProcesso->setCpf($_SESSION['cpf']);
+$candidatoProcesso->setIdProcesso($idProcesso);
+$candidatoProcessoDAO->Listar($candidatoProcesso);
 
 if(empty($_SESSION['logado']))
   include_once 'header.php';
@@ -134,7 +142,13 @@ else if($_SESSION['logado'] == 2)
               <input type="hidden" name="txtIdProcesso" id="txtIdProcesso" value="<?= $idProcesso; ?>" />
               <div class="form-row">
                 <div class="col text-center">
-                  <input type="submit" name="btnCandidatar" id="btnCandidatar" class="btn btn-warning btn-lg float-right" value="Candidatar-se!" />
+                  <?php if($candidatoProcesso->getCpf() == NULL): ?>
+                    <input type="submit" name="btnCandidatar" id="btnCandidatar" class="btn btn-warning btn-lg float-right" value="Candidatar-se!" />
+                  <?php else: ?>
+                    <input type="submit" name="btnTestes" id="btnTestes" class="btn btn-success btn-lg float-right" value="Visualizar Testes" />
+                  <?php endif; ?>
+
+
                 </div>
               </div>
             </form>
