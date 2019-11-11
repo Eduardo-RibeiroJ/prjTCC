@@ -43,6 +43,37 @@ class CandidatoFormacaoDAO
         $tipo = $formacao->getTipo();
         $estado = $formacao->getEstado();
 
+        if ($tipo == 'Ensino Fundamental')
+            $tipo = 'EF';
+        else if ($tipo == 'Ensino Médio')
+            $tipo = 'EM';
+        else if ($tipo == 'Ensino Médio profissionalizante')
+            $tipo = 'EMP';
+        else if ($tipo == 'Ensino Técnico')
+            $tipo = 'ET';
+        if ($tipo == 'Graduação - Bacharelado')
+            $tipo = 'GRB';
+        else if ($tipo == 'Graduação - Tecnólogo')
+            $tipo = 'GRT';
+        else if ($tipo == 'Graduação - Licenciatura')
+            $tipo = 'GRL';
+        else if ($tipo == 'Graduação - Especialização')
+            $tipo = 'GRE';
+        if ($tipo == 'Graduação - MBA')
+            $tipo = 'GRMBA';
+        else if ($tipo == 'Graduação - Mestrado')
+            $tipo = 'GRME';
+        else if ($tipo == 'Graduação - Doutorado')
+            $tipo = 'GRD';
+
+        if ($estado == 'Interrompido')
+            $estado = 'IN';
+        else if ($estado == 'Em andamento')
+            $estado = 'EA';
+        else if ($estado == 'Finalizado')
+            $estado = 'FI';
+
+
         $query = "UPDATE tbCandidatoFormacao SET nomeCurso=?, nomeInstituicao=?, dataInicio=?, dataTermino=?, tipo=?, estado=? WHERE cpf = ? AND idFormacao = ?;";
  
         $stmt = mysqli_prepare($this->db->getConection(), $query);

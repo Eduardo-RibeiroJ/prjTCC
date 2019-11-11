@@ -74,45 +74,23 @@ $candidatoDAO->Listar($candidato);
                     <div class="form-group col-md-4">
                       <label for="cbbEstadoCivil">Estado Civil</label>
                       <select class="custom-select" id="cbbEstadoCivil" name="cbbEstadoCivil" required>
-
-                        <?php
-
-                        $alternativas = ['S', 'C', 'D', 'V'];
-
-                        foreach ($alternativas as $value) {
-
-                          if ($value == $candidato->getEstadoCivil())
-                            $selected = 'selected';
-                          else
-                            $selected = '';
-
-                          echo '<option value="' . $value . '" ' . $selected . '>' . $value . '</option>';
-                        }
-
-                        ?>
+                        <option value="<?= $candidato->getEstadoCivil(); ?>" selected><?= $candidato->getEstadoCivil(); ?></option>
+                        <option value="S">Solteiro(a)</option>
+                        <option value="C">Casado(a)</option>
+                        <option value="D">Divorcidado(a)</option>
+                        <option value="V">Viúvo(a)</option>
                       </select>
+                      <?php
+
+                      ?>
                     </div>
 
                     <div class="form-group col-md-4">
                       <label for="cbbSexo">Sexo</label>
                       <select class="custom-select" id="cbbSexo" name="cbbSexo" required>
-
-                        <?php
-
-                        $alternativas = ['M', 'F'];
-
-                        foreach ($alternativas as $value) {
-
-                          if ($value == $candidato->getSexo())
-                            $selected = 'selected';
-                          else
-                            $selected = '';
-
-                          echo '<option value="' . $value . '" ' . $selected . '>' . $value . '</option>';
-                        }
-
-                        ?>
-
+                        <option value="<?= $candidato->getSexo(); ?>" selected><?= $candidato->getSexo(); ?></option>
+                        <option value="M">Masculino</option>
+                        <option value="F">Feminino</option>
                       </select>
                     </div>
                   </div>
@@ -122,7 +100,6 @@ $candidatoDAO->Listar($candidato);
                       <button name="btnAlterarSalvarDadosPessoais" id="btnAlterarSalvarDadosPessoais" class="btn btn-primary float-right">Salvar</button>
                     </div>
                   </div>
-
 
                 </div>
               </div>

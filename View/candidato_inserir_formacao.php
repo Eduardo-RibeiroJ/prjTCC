@@ -78,7 +78,7 @@ if (isset($_POST['btnContinuar'])) {
                     <div class="form-group col-md-4">
                       <label for="tipoCurso">Tipo do curso</label>
                       <select class="custom-select" id="cbbTipoCurso<?= $reg->getIdFormacao(); ?>" name="cbbTipoCurso" required>
-                        <option value="" selected><?= $reg->getTipo(); ?></option>
+                        <option value="<?= $reg->getTipo(); ?>" selected><?= $reg->getTipo(); ?></option>
                         <option value="EF">Ensino Fundamental</option>
                         <option value="EM">Ensino Médio</option>
                         <option value="EMP">Ensino Médio profissionalizante</option>
@@ -109,7 +109,7 @@ if (isset($_POST['btnContinuar'])) {
                     <div class="form-group col-md-6">
                       <label for="cbbSituacaoInsti">Tipo do curso</label>
                       <select class="custom-select" id="cbbSituacaoInsti<?= $reg->getIdFormacao(); ?>" name="cmbSituacaoInsti" required>
-                        <option value="" selected><?= $reg->getEstado(); ?></option>
+                        <option value="<?= $reg->getEstado(); ?>" selected><?= $reg->getEstado(); ?></option>
                         <option value="IN">Interrrompido</option>
                         <option value="EA">Em andamento</option>
                         <option value="FI">Finalizado</option>
