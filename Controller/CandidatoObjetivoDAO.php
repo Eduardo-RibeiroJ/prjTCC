@@ -37,6 +37,17 @@ class CandidatoObjetivoDAO
         $nivel = $objetivo->getNivel();
         $pretSal = $objetivo->getPretSal();
 
+        if ($nivel == 'Trainee')
+            $nivel = 'T';
+        else if ($nivel == 'Estágio')
+            $nivel = 'E';
+        else if ($nivel == 'Junior')
+            $nivel = 'J';
+        else if ($nivel == 'Senior')
+            $nivel = 'S';
+        else if ($nivel == 'Pleno')
+            $nivel = 'P';
+
         $query = "UPDATE tbCandidatoObjetivo SET nivel=?, pretSal=?, idCargo=? WHERE cpf = ? AND idObjetivo = ?;";
 
         $stmt = mysqli_prepare($this->db->getConection(), $query);

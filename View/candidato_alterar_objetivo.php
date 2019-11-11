@@ -71,7 +71,7 @@ $candObjetivoDAO->Listar($candObjetivo);
                     <div class="form-group col-md-5">
                       <label for="cbbNivel">Nível</label>
                       <select class="custom-select" id="cbbNivel" name="cbbNivel" required>
-                        <option value="" selected><?= $candObjetivo->getNivel(); ?></option>
+                        <option value="<?= $candObjetivo->getNivel(); ?>" selected><?= $candObjetivo->getNivel(); ?></option>
                         <option value="T">Trainee</option>
                         <option value="E">Estágio</option>
                         <option value="J">Junior</option>

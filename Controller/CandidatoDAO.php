@@ -73,6 +73,21 @@ class CandidatoDAO
         $facebook = $candidato->getFacebook();
         $sitePessoal = $candidato->getSitePessoal();
 
+        if ($estadoCivil == 'Solteiro(a)')
+            $estadoCivil = 'S';
+        else if ($estadoCivil == 'Casado(a)')
+            $estadoCivil = 'C';
+        else if ($estadoCivil == 'Divorcidado(a)')
+            $estadoCivil = 'D';
+        else if ($estadoCivil == 'Viúvo(a)')
+            $estadoCivil = 'V';
+
+        if ($sexo == 'Masculino')
+            $sexo = 'M';
+        else if ($sexo == 'Feminino')
+            $sexo = 'F';
+
+
         $query = "UPDATE tbCandidato SET nome = ?, sobrenome = ?, sexo = ?, dataNasc = ?, email = ?, 
                                          senha = ?, estadoCivil = ?, cep = ?, estado = ?,
                                          cidade = ?, endereco = ?, bairro = ?, tel1 = ?,
@@ -111,21 +126,17 @@ class CandidatoDAO
         
         if($reg['estadoCivil'] == 'S') {
             $reg['estadoCivil'] = 'Solteiro(a)';
-        } 
-        else if($reg['estadoCivil'] == 'C') {
+        } else if($reg['estadoCivil'] == 'C') {
             $reg['estadoCivil'] = 'Casado(a)';
-        } 
-        else if($reg['estadoCivil'] == 'D') {
-            $reg['estadoCivil'] = 'Divorciado(a)';
-        } 
-        else if($reg['estadoCivil'] == 'V') {
+        } else if($reg['estadoCivil'] == 'D') {
+            $reg['estadoCivil'] = 'Divorcidado(a)';
+        } else if($reg['estadoCivil'] == 'V') {
             $reg['estadoCivil'] = 'Viúvo(a)';
         }
 
         if($reg['sexo'] == 'M') {
             $reg['sexo'] = 'Masculino';
-        } 
-        else if($reg['sexo'] == 'F') {
+        } else if($reg['sexo'] == 'F') {
             $reg['sexo'] = 'Feminino';
         }
 
