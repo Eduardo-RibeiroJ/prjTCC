@@ -45,7 +45,7 @@ class CandidatoObjetivoDAO
             die(mysqli_error($this->db->getConection()));
         }
 
-        mysqli_stmt_bind_param($stmt, 'ssiii', $nivel, $pretSal, $idCargo, $cpf, $idObjetivo);
+        mysqli_stmt_bind_param($stmt, 'ssisi', $nivel, $pretSal, $idCargo, $cpf, $idObjetivo);
         mysqli_stmt_execute($stmt);
         mysqli_stmt_close($stmt);
     }

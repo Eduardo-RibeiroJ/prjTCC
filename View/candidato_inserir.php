@@ -5,9 +5,21 @@ include_once "../Model/Conexao.php";
 include_once "../Model/Candidato.php";
 include_once "../Controller/CandidatoDAO.php";
 
+include_once "../Model/CandidatoObjetivo.php";
+include_once "../Controller/candidatoObjetivoDAO.php";
+
+include_once "../Model/Cargo.php";
+include_once "../Controller/CargoDAO.php";
+
 $conn = new Conexao();
 $candidato = new Candidato();
 $candidatoDAO = new CandidatoDAO($conn);
+
+$candObjetivo = new CandidatoObjetivo();
+$candObjetivoDAO = new CandidatoObjetivoDAO($conn);
+
+$cargo = new Cargo();
+$cargoDAO = new CargoDAO($conn);
 
 if (isset($_POST['btnSalvar'])) {
 
@@ -34,6 +46,19 @@ if (isset($_POST['btnSalvar'])) {
 
   $candidatoDAO->Inserir($candidato);
 
+	$cargo->setNomeCargo($_POST['txtCargo']);
+	$idCargo = $cargo->idRegistro();
+
+	$candObjetivo->inserirObjetivo(
+		$_SESSION['cpf'],
+		1,
+		$idCargo,
+		$_POST['cbbNivel'],
+		$_POST['txtPretSal']
+	);
+
+	$candObjetivoDAO->Inserir($candObjetivo);
+
   session_destroy();
   header('Location: candidato_logar.php');
 
@@ -59,7 +84,7 @@ if (isset($_POST['btnSalvar'])) {
     <div class="row">
       <div class="col">
 
-          <form method="POST" action="candidato_inserir.php">
+          <form method="POST" action="candidato_inserir.php" autocomplete="off">
 
           <!-- Input hidden só pare teste, o verdadeiro vai ficar em uma variavel session -->
           <input type="hidden" id="cpf" name="cpf" value="<?= $_SESSION['cpf']; ?>">
@@ -78,7 +103,7 @@ if (isset($_POST['btnSalvar'])) {
                   <div class="form-row">
                     <div class="form-group col-md-6">
                       <label for="txtNome">Nome</label>
-                      <input type="text" class="form-control" id="txtNome" name="txtNome" required autofocus>
+                      <input type="text" class="form-control" id="txtNome" name="txtNome" autocomplete="off" required autofocus>
                     </div>
 
                     <div class="form-group col-md-6">
@@ -211,6 +236,45 @@ if (isset($_POST['btnSalvar'])) {
               </div>
             </div>
 
+            <div class="card">
+              <div class="card-header">
+                <i class="fas fa-id-card"></i>
+                Objetivo profissional
+              </div>
+
+              <div class="card-body">
+                <div class="card-text">
+
+                  <div class="form-row">
+                    <div class="form-group col-md-6">
+                      <label for="txtCargo">Cargo</label>
+                      <input type="text" class="form-control" id="txtCargo" name="txtCargo" placeholder="Digite o cargo..." required autofocus>
+                      <div id="compList"></div>
+                    </div>
+
+                    <div class="form-group col-md-6">
+                      <label for="cbbNivel">Nível</label>
+                      <select class="custom-select" id="cbbNivel" name="cbbNivel" required>
+                        <option value="">Selecione</option>
+                        <option value="T">Trainee</option>
+                        <option value="E">Estágio</option>
+                        <option value="J">Junior</option>
+                        <option value="P">Pleno</option>
+                        <option value="S">Senior</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="form-row">
+                    <div class="form-group col-md-4">
+                      <label for="txtPretSal">Pretenção salarial</label>
+                      <input type="text" class="form-control" id="txtPretSal" name="txtPretSal" value="" required>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
             <hr class="my-2 my-md-4">
 
             <div class="form-row">
@@ -228,6 +292,28 @@ if (isset($_POST['btnSalvar'])) {
 
 </div>
 
-       
-
 <?php include 'footer.php'; ?>
+
+<script>
+  $(document).ready(function() {
+    $('#txtCargo').keyup(function() {
+      var palavra = $(this).val();
+      if (palavra != '') {
+        $.post('../Controller/PesquisarCargo.php', {
+          palavra: palavra
+        }, function(lista) {
+          $('#compList').fadeIn();
+          $('#compList').html(lista);
+
+        });
+      } else {
+        $('#compList').html('');
+      }
+    });
+  });
+
+  $(document).on('click', 'li', function() {
+    $('#txtCargo').val($(this).text());
+    $('#compList').html('');
+  })
+</script>
