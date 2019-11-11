@@ -100,7 +100,6 @@ $candObjetivoDAO->Listar($candObjetivo);
 
           </div>
         </div>
-
   </section>
 </div>
 

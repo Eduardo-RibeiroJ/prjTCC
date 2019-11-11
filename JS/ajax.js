@@ -555,7 +555,6 @@ $(function () {
 
             if (sucesso == true) {
                 window.location.replace('candidato_perfil.php');
-
             } else {
                 alert('Erro: ' + sucesso);
             }
