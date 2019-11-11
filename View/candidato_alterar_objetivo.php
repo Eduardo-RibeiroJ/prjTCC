@@ -71,22 +71,12 @@ $candObjetivoDAO->Listar($candObjetivo);
                     <div class="form-group col-md-5">
                       <label for="cbbNivel">Nível</label>
                       <select class="custom-select" id="cbbNivel" name="cbbNivel" required>
-
-                        <?php
-
-                        $alternativas = ['Selecione', 'T', 'E', 'J', 'S', 'P'];
-
-                        foreach ($alternativas as $value) {
-
-                          if ($value == $candObjetivo->getNivel())
-                            $selected = 'selected';
-                          else
-                            $selected = '';
-
-                          echo '<option value="' . $value . '" ' . $selected . '>' . $value . '</option>';
-                        }
-
-                        ?>
+                        <option value="" selected><?= $candObjetivo->getNivel(); ?></option>
+                        <option value="T">Trainee</option>
+                        <option value="E">Estágio</option>
+                        <option value="J">Junior</option>
+                        <option value="S">Senior</option>
+                        <option value="P">Pleno</option>
                       </select>
                     </div>
                   </div>

@@ -58,6 +58,18 @@ class CandidatoObjetivoDAO
         $query = $this->db->getConection()->query("SELECT * FROM tbCandidatoObjetivo WHERE cpf ='" . $objetivo->getCpf() . "';");
         $reg = $query->fetch_array();
 
+        if ($reg['nivel'] == 'T') {
+            $reg['nivel'] = 'Trainee';
+        } else if ($reg['nivel'] == 'E') {
+            $reg['nivel'] = 'Estágio';
+        } else if ($reg['nivel'] == 'J') {
+            $reg['nivel'] = 'Junior';
+        } else if ($reg['nivel'] == 'S') {
+            $reg['nivel'] = 'Senior';
+        } else if ($reg['nivel'] == 'P') {
+            $reg['nivel'] = 'Pleno';
+        }
+
         $cargo = new Cargo();
         $cargoDAO = new CargoDAO($conn);
 
