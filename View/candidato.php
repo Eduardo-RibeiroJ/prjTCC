@@ -51,16 +51,18 @@ $arrayVagas = $processoSeletivoDAO->ListarVaga($processoSeletivo, $objetivo);
 <div style="background: url(imagem/604621.jpg); background-size: cover;">
   <div class="container">
 
-    <form class="form-signin">
+  <form action="candidato_vagas.php" method="GET" class="form-signin" autocomplete="off">
       <div class="form-row">
 
-        <div class="form-group col">
+        <div class="form-group col-12">
           <div class="input-group">
-            <input class="form-control form-control-lg" type="text" placeholder="Pesquise pelo cargo desejado..." />
-            <div class="input-group-btn">
-              <button class="btn btn-warning btn-lg ml-2" id="btnPesquisar"><i class="fas fa-search"></i></button>
+            <input class="form-control form-control-lg" name="nomeCargo" id="nomeCargo" type="text" placeholder="Pesquise pelo cargo desejado..." aria-describedby="btnPesquisar" />
+            <div class="input-group-append">
+              <button type="submit" class="btn btn-warning btn-lg" id="btnPesquisar"><i class="fas fa-search"></i></button>
             </div>
+
           </div>
+          <div id="compList"></div>
         </div>
       </div>
     </form>
@@ -157,3 +159,27 @@ $arrayVagas = $processoSeletivoDAO->ListarVaga($processoSeletivo, $objetivo);
   </div>
 </div>
 <?php include 'footer.php'; ?>
+
+<script>
+  $(document).ready(function() {
+    $('#nomeCargo').keyup(function() {
+      var palavra = $(this).val();
+      if (palavra != '') {
+        $.post('../Controller/PesquisarCargo.php', {
+          palavra: palavra
+        }, function(lista) {
+          $('#compList').fadeIn();
+          $('#compList').html(lista);
+
+        });
+      } else {
+        $('#compList').html('');
+      }
+    });
+  });
+
+  $(document).on('click', 'li', function() {
+    $('#nomeCargo').val($(this).text());
+    $('#compList').html('');
+  })
+</script>
