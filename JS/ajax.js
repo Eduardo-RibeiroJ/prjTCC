@@ -539,14 +539,42 @@ $(function () {
 
 // ------------------------------------------------Objetivo-------------------------------------------------
 
+    $('#sectionCardsObjetivo').on('click', '#btnSalvarObjetivo', function (e) {
+
+        e.preventDefault();
+        var idObjetivo = 1;
+
+        console.log('passou aqui no salvar');
+     
+        $.post('../PostAjax/salvar.php', {
+                acao: "CandidatoObjetivo",
+                cpf: $('#txtCpf').val(),
+                idObjetivo: idObjetivo,
+                cargo: $('#txtCargo').val(),
+                nivel: $('#cbbNivel').val(),
+                pretSal: $('#txtPretSal').val()
+
+            }, function (sucesso) {
+
+                if (sucesso == true) {
+                    console.log('sucesso');
+
+                } else {
+                    alert('Erro: ' + sucesso);
+                }
+            });
+    });
+
+
     $('#sectionObjetivo').on('click', '#btnAlterarcandObjetivo', function (e) {
 
         e.preventDefault();
+        var idObjetivo = $('#txtIdcandObjetivo').val();
 
         $.post('../PostAjax/alterar.php', {
             acao: "CandidatoObjetivo",
             cpf: $('#txtCpf').val(), 
-            idObjetivo: 1,
+            idObjetivo: idObjetivo,
             cargo: $('#txtCargo').val(),
             nivel: $('#cbbNivel').val(),
             pretSal: $('#txtPretSal').val()
@@ -554,7 +582,8 @@ $(function () {
         }, function (sucesso) {
 
             if (sucesso == true) {
-                window.location.replace('candidato_perfil.php');
+                $('#txtCargo').focus();
+                console.log('função retornou sucesso');
 
             } else {
                 alert('Erro: ' + sucesso);
