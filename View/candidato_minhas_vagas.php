@@ -46,24 +46,30 @@ $arrayProcessos = $candidatoProcessoDAO->Listar($candidatoProcesso);
       </div>
     </div>
 
+    <?php foreach ($arrayProcessos as $reg) : ?>
+      <form method="POST" action="processo_seletivo_testes.php">
 
-      <?php foreach ($arrayProcessos as $reg) : ?>
-        <form method="POST" action="processo_seletivo_testes.php">
-          <div class="row">
-            <div class="col-12">
-              <ul class="list-group list-group-flush">
-                <input type="hidden" id="txtIdProcesso" name="txtIdProcesso" value="<?= $reg->getidProcesso() ?>" />
-                <li class="list-group-item list-group-item-action">
-                  <p class="lead d-inline">Vaga para <strong><?= $reg->getCargo()->getNomeCargo(); ?></strong>, encerra em <?= $reg->getDataLimiteCandidatar(); ?>.</p>
-                  <button type="submit" id="btnVisualizarProcesso" name="btnVisualizarProcesso" class="btn bnt-sm btn-outline-dark float-right mb-1"><i class='fas fa-search'></i></button>
-                </li>
-              </ul>
+        <div class="my-3 p-3 bg-white rounded shadow-sm">
+          <h6 class="border-bottom border-gray pb-2 mb-0">Candidaturas recentes</h6>
+          <div class="media text-muted pt-3">
+            <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+              <div class="d-flex justify-content-between align-items-center w-100">
+                <p class="lead d-inline p-0">Vaga para <strong><?= $reg->getCargo()->getNomeCargo(); ?></strong></p>
+                <button type="submit" id="btnVisualizarProcesso" name="btnVisualizarProcesso" class="btn bnt-sm btn-outline-dark float-right mb-1"><i class='fas fa-search'></i></button>
+              </div>
+              <h6><strong>Contratação:</strong> <?= $reg->getTipoContratacao(); ?></h6>
+              <h6><strong>Salário: </strong><?= $reg->getSalario(); ?></h6>
             </div>
           </div>
-        </form>
-      <?php endforeach; ?>
-
-
+          <small class="d-block text-right mt-3">
+            <a href="#">subir</a>
+          </small>
+        </div>
   </div>
+  </form>
+<?php endforeach; ?>
+
+
+</div>
 </div>
 <?php include 'footer.php'; ?>
