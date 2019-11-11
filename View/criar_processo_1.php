@@ -29,7 +29,7 @@ if (isset($_POST['btnAvancar'])) {
 
 <?php include_once 'headerRecrut.php'; ?>
 
-<section class="masthead" id="sectionProcesso1" style="background: url(imagem/90463.jpg); background-size: cover;">
+<section class="masthead" id="sectionProcesso1" style="background: url(imagem/604621.jpg); background-size: cover;">
     <div class="container">
 
         <div class="row">

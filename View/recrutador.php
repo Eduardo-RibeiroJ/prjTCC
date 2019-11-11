@@ -10,7 +10,7 @@
     <div class="jumbotron p-3 p-md-5" style="background-color: #FFF">
       <div class="container p-0">
         <h5 class="display-4 display-md-2">Aproveite a melhor ferramenta para encontrar o candidato ideal!</h1>
-          <hr class="my-2 my-md-4">
+          <hr class="my-2 my-md-3">
           <p class="lead">Acompanhe e gerencie aqui os seus processos seletivos.</p>
       </div>
     </div>

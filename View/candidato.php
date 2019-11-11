@@ -48,7 +48,7 @@ $arrayVagas = $processoSeletivoDAO->ListarVaga($processoSeletivo, $objetivo);
     
     </header> -->
 
-<div style="background: url(imagem/17209.jpg); background-size: cover;">
+<div style="background: url(imagem/604621.jpg); background-size: cover;">
   <div class="container">
 
     <form class="form-signin">
@@ -114,7 +114,7 @@ $arrayVagas = $processoSeletivoDAO->ListarVaga($processoSeletivo, $objetivo);
                     </div>
                   </form>
                 <?php endforeach; ?>
-                <a href="candidato_perfil" class="btn btn-sm btn-primary mt-3 float-right">Visualizar Todos</a>
+                <a href="candidato_minhas_vagas.php" class="btn btn-sm btn-primary mt-3 float-right">Visualizar Todos</a>
 
               <?php else : ?>
                 <p class="lead">Você não está participando de nenhum processo seletivo.</p>

@@ -39,7 +39,7 @@ $arrayVagas = $processoSeletivoDAO->ListarVaga($processoSeletivo, $objetivo);
 
 ?>
 
-<div style="background: url(imagem/fundo31.png); background-size: cover;">
+<div style="background: url(imagem/80124.jpg); background-size: cover;">
   <div class="container">
 
     <form class="form-signin">
