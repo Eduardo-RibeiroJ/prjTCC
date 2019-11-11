@@ -42,7 +42,7 @@ if (isset($_POST['btnAvancar'])) {
 
                     <div class="card-body">
                         <div class="card-text">
-                            <form method="POST" action="criar_processo_1.php">
+                            <form method="POST" action="criar_processo_1.php" autocomplete="off">
                                 <div class="form-row">
                                     <div class="form-group col-12 col-md-8">
                                         <label for="txtCargo">Cargo</label>

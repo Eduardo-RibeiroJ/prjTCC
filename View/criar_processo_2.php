@@ -42,7 +42,7 @@ $arrayPergunta = $perguntaDAO->Listar($pergunta);
                     <div class="card-body" id="cardProcessoCompetencias">
                         <div class="card-text">
                             <h5 class="display-4 mb-4">Adicione as competências necessárias do processo seletivo</h5>
-                            <form>
+                            <form autocomplete="off">
                                 <input type="hidden" id="txtContador" name="txtContador" value="1">
 
                                 <div class="form-row">
