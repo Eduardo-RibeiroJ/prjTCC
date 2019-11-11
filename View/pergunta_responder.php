@@ -32,10 +32,6 @@ if(!(isset($_POST['btnResponder'])) && !(isset($_POST['btnConcluir']))) {
 
 $idProcesso = $_POST['txtIdProcesso'];
 
-if(isset($_POST['btnResponder'])) {
-
-}
-
 if(isset($_POST['btnConcluir'])) {
   foreach($_POST as $name => $value) {
 
@@ -55,8 +51,9 @@ if(isset($_POST['btnConcluir'])) {
       $processoCandPerguntaDAO->Inserir($processoCandPergunta);
     }
   }
-  //********* PRECISA ARRUMAR ESSE LINK E ENVIAR O IDPROCESSO POR POST */
-  header('Location: processo_seletivo_candidatar-'.$idProcesso);
+
+  $_SESSION['txtIdProcesso'] = $idProcesso;
+  header('Location: processo_seletivo_testes.php');
 }
 
 $processo->setIdProcesso($idProcesso);

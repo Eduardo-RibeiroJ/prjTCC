@@ -45,6 +45,9 @@ $processoPerguntaDAO = new ProcessoPerguntaDAO($conn);
 
 if(isset($_POST['txtIdProcesso'])) {
   $idProcesso = $_POST['txtIdProcesso'];
+} else if(isset($_SESSION['txtIdProcesso'])) {
+  $idProcesso = $_SESSION['txtIdProcesso'];
+  unset($_SESSION['txtIdProcesso']);
 } else {
   header('Location: index.php');
 }
