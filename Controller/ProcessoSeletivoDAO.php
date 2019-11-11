@@ -146,12 +146,11 @@ class ProcessoSeletivoDAO
     {
         $conn = new Conexao();
 
-        /*$query = $this->db->getConection()->query("SELECT * FROM tbProcessoSeletivo WHERE idCargo = '" . $objetivo->getCargo()->getIdCargo() . "';"); *///Não tá retornando nada, e não dá erro também
-        $query = $this->db->getConection()->query("SELECT * FROM tbProcessoSeletivo;");
+        $query = $this->db->getConection()->query("SELECT * FROM tbProcessoSeletivo as p inner join tbCargo as c ON p.idCargo = c.idCargo  WHERE c.nomeCargo LIKE '%".$objetivo->getCargo()->getNomeCargo()."%';"); ///Não tá retornando nada, e não dá erro também
 
         $arrayQuery = array();
 
-        while ($reg = $query->fetch_array()) {
+        while($reg = $query->fetch_array()) {
 
             $processo = new ProcessoSeletivo();
             $cargo = new Cargo();

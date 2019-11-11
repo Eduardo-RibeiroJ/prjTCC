@@ -21,6 +21,10 @@ $candObjetivoDAO = new CandidatoObjetivoDAO($conn);
 $cargo = new Cargo();
 $cargoDAO = new CargoDAO($conn);
 
+if(!(isset($_SESSION['email']))) {
+  header('Location: index.php');
+}
+
 if (isset($_POST['btnSalvar'])) {
 
   $candidato->inserirCandidato(

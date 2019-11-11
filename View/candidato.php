@@ -147,7 +147,7 @@ $arrayVagas = $processoSeletivoDAO->ListarVaga($processoSeletivo, $objetivo);
                   </div>
                 </div>
               <?php endforeach; ?>
-              <a href="candidato_vagas.php" class="btn btn-sm btn-primary mt-3 float-right">Visualizar mais</a>
+              <a href="candidato_vagas.php?nomeCargo=<?= $reg->getCargo()->getNomeCargo(); ?>" class="btn btn-sm btn-primary mt-3 float-right">Visualizar mais</a>
 
             </div>
           </div>
