@@ -79,6 +79,38 @@ class CandidatoFormacaoDAO
 
             while($reg = $query->fetch_array()) {
 
+                if ($reg['estado'] == 'IN') {
+                    $reg['estado'] = 'Interrompido';
+                } else if ($reg['estado'] == 'EA') {
+                    $reg['estado'] = 'Em andamento';
+                } else if ($reg['estado'] == 'FI') {
+                    $reg['estado'] = 'Finalizado';
+                }
+
+                if ($reg['tipo'] == 'EF') {
+                    $reg['tipo'] = 'Ensino Fundamental';
+                } else if ($reg['tipo'] == 'EM') {
+                    $reg['tipo'] = 'Ensino Médio';
+                } else if ($reg['tipo'] == 'EMP') {
+                    $reg['tipo'] = 'Ensino Médio profissionalizante';
+                } else if ($reg['tipo'] == 'ET') {
+                    $reg['tipo'] = 'Ensino Técnico';
+                } else if ($reg['tipo'] == 'GRB') {
+                    $reg['tipo'] = 'Graduação - Bacharelado';
+                } else if ($reg['tipo'] == 'GRT') {
+                    $reg['tipo'] = 'Graduação - Tecnólogo';
+                } else if ($reg['tipo'] == 'GRL') {
+                    $reg['tipo'] = 'Graduação - Licenciatura';
+                } else if ($reg['tipo'] == 'GRE') {
+                    $reg['tipo'] = 'Graduação - Especialização';
+                } else if ($reg['tipo'] == 'GRMBA') {
+                    $reg['tipo'] = 'Graduação - MBA';
+                } else if ($reg['tipo'] == 'GRME') {
+                    $reg['tipo'] = 'Graduação - Mestrado';
+                } else if ($reg['tipo'] == 'GRD') {
+                    $reg['tipo'] = 'Graduação - Doutorado';
+                }  
+
                 $formacao = new CandidatoFormacao();
                 $formacao->inserirFormacao(
                     
@@ -127,5 +159,3 @@ class CandidatoFormacaoDAO
     }
 
 }
-
-?>
