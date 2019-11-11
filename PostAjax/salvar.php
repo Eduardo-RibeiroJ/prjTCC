@@ -107,35 +107,6 @@ if($_POST['acao'] == "CandidatoEmpresa") {
 	$empresaDAO->Inserir($empresa);
 }
 
-if ($_POST['acao'] == "CandidatoObjetivo") {
-
-	include_once "../Model/CandidatoObjetivo.php";
-	include_once "../Controller/candidatoObjetivoDAO.php";
-	include_once "../Model/Cargo.php";
-	include_once "../Controller/CargoDAO.php";
-	
-
-	$candObjetivo = new CandidatoObjetivo();
-	$candObjetivoDAO = new CandidatoObjetivoDAO($conn);
-
-	$cargo = new Cargo();
-	$cargoDAO = new CargoDAO($conn);
-
-	$cargo->setNomeCargo($_POST['cargo']);
-	$idCargo = $cargo->idRegistro();
-
-	$candObjetivo->inserirObjetivo(
-		$_POST['cpf'],
-		$_POST['idObjetivo'],
-		$idCargo,
-	/*	$_POST['cargo'],*/
-		$_POST['nivel'],
-		$_POST['pretSal']
-	);
-
-	$candObjetivoDAO->Inserir($candObjetivo);
-}
-
 if ($_POST['acao'] == "Pergunta") {
 
 	include_once "../Model/Pergunta.php";
