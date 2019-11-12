@@ -5,6 +5,7 @@ include_once "../Model/Conexao.php";
 
 include_once "../Model/Candidato.php";
 include_once "../Model/ProcessoSeletivo.php";
+include_once "../Model/ProcessoCompetencia.php";
 include_once "../Model/CandidatoProcesso.php";
 include_once "../Model/CandidatoCompetencia.php";
 include_once "../Model/ProcessoCompetencia.php";
@@ -15,9 +16,11 @@ include_once "../Model/ProcessoCandPergunta.php";
 include_once "../Model/Cargo.php";
 include_once "../Model/TesteOnline.php";
 include_once "../Model/Pergunta.php";
+include_once "../Model/Competencia.php";
 
 include_once "../Controller/CandidatoDAO.php";
 include_once "../Controller/ProcessoSeletivoDAO.php";
+include_once "../Controller/ProcessoCompetenciaDAO.php";
 include_once "../Controller/CandidatoProcessoDAO.php";
 include_once "../Controller/CandidatoCompetenciaDAO.php";
 include_once "../Controller/ProcessoCompetenciaDAO.php";
@@ -28,12 +31,15 @@ include_once "../Controller/ProcessoCandPerguntaDAO.php";
 include_once "../Controller/CargoDAO.php";
 include_once "../Controller/TesteOnlineDAO.php";
 include_once "../Controller/PerguntaDAO.php";
+include_once "../Controller/CompetenciaDAO.php";
 
 $conn = new Conexao();
 $processo = new ProcessoSeletivo();
 $processoDAO = new ProcessoSeletivoDAO($conn);
 $candidatoProcesso = new CandidatoProcesso();
 $candidatoProcessoDAO = new CandidatoProcessoDAO($conn);
+$processoCompetencia = new ProcessoCompetencia();
+$processoCompetenciaDAO = new ProcessoCompetenciaDAO($conn);
 
 if(isset($_POST['btnVisualizarCandidatos'])) {
   $idProcesso = $_POST['txtIdProcesso'];
@@ -43,6 +49,9 @@ if(isset($_POST['btnVisualizarCandidatos'])) {
 
   $candidatoProcesso->setIdProcesso($idProcesso);
   $arrayCandidatos = $candidatoProcessoDAO->Listar($candidatoProcesso);
+  
+  $processoCompetencia->setIdProcesso($idProcesso);
+  $arrayCompProcesso = $processoCompetenciaDAO->Listar($processoCompetencia);
 
 } else {
   header('Location: index.php');
@@ -104,6 +113,8 @@ include_once 'headerRecrut.php'
                         $processoCandPergunta->setCpf($reg->getCpf());
                         $processoCandPergunta->setIdProcesso($processo->getIdProcesso());
                         $arrayPerguntas = $processoCandPerguntaDAO->Listar($processoCandPergunta);
+
+                        var_dump($candidatoCompetenciaDAO->ListarQuantComp($candidatoCompetencia, $processoCompetencia));
                       
                       ?>
 

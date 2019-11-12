@@ -105,6 +105,28 @@ class CandidatoCompetenciaDAO
 
     }
 
+    public function ListarQuantComp(CandidatoCompetencia $candCompetencia, ProcessoCompetencia $processoCompetencia) {
+        
+        $query = $this->db->getConection()->query("SELECT cc.idCompetencia, cc.nivel FROM tbcandidatocompetencia as cc inner join tbprocessocompetencia as pc ON cc.idCompetencia = pc.idCompetencia WHERE cc.idCompetencia = pc.idCompetencia AND cc.cpf = '".$candCompetencia->getCpf()."' AND pc.idProcesso = '".$processoCompetencia->getIdProcesso()."';");
+        $pontosNivel = 0;
+        
+        while($reg = $query->fetch_array()) {
+
+            if($reg['nivel'] == 'B')
+            $pontosNivel += 1;
+            else if($reg['nivel'] == 'I')
+            $pontosNivel += 2;
+            else if($reg['nivel'] == 'A')
+            $pontosNivel += 3;
+            
+        }
+        
+        $arrayQuery = array('quantComp' => mysqli_num_rows($query), 'pontosNivel' => $pontosNivel);
+        
+        return $arrayQuery;
+
+    }
+
 
     public function UltimoRegistroComp(CandidatoCompetencia $candCompetencia) {
 
