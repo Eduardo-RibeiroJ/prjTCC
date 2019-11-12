@@ -164,14 +164,14 @@ class CandidatoDAO
 
     public function BuscarCpf($candidato)
     {
-        $sql = "SELECT * FROM tbCandidato WHERE cpf = $candidato;";
+        $sql = "SELECT * FROM tbCandidato WHERE cpf = '$candidato';";
         $db = new Conexao();
         $validacao = mysqli_query($db->getConection(), $sql);
 
         if(mysqli_num_rows($validacao) > 0)
-            return false;
-        else 
             return true;
+        else 
+            return false;
         
     }
 
