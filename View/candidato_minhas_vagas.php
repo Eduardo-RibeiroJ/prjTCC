@@ -51,9 +51,11 @@ $arrayProcessos = $candidatoProcessoDAO->Listar($candidatoProcesso);
 
       <?php foreach ($arrayProcessos as $reg) : ?>
         <form method="POST" action="processo_seletivo_testes.php">
+
           <div class="media text-muted pt-3">
             <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
               <div class="d-flex justify-content-between align-items-center w-100">
+                <input type="hidden" id="txtIdProcesso" name="txtIdProcesso" value="<?= $reg->getidProcesso() ?>" />
                 <p class="lead d-inline p-0">Vaga para <strong><?= $reg->getCargo()->getNomeCargo(); ?></strong></p>
                 <button type="submit" id="btnVisualizarProcesso" name="btnVisualizarProcesso" class="btn bnt-sm btn-outline-dark float-right mb-1"><i class='fas fa-search'></i></button>
               </div>
@@ -61,14 +63,14 @@ $arrayProcessos = $candidatoProcessoDAO->Listar($candidatoProcesso);
               <h6><strong>Salário: </strong><?= $reg->getSalario(); ?></h6>
             </div>
           </div>
+        </form>
+      <?php endforeach; ?>
 
-        <?php endforeach; ?>
-        <small class="d-block text-right mt-3">
-          <a href="#">subir</a>
-        </small>
+      <small class="d-block text-right mt-3">
+        <a href="#">subir</a>
+      </small>
     </div>
   </div>
-  </form>
 
 
 
