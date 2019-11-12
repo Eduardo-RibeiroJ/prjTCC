@@ -19,6 +19,7 @@ class Candidato {
     private $linkedin;
     private $facebook;
     private $sitePessoal;
+    private $cpfValidar;
 
     function inserirUsuarioCandidato($cpf, $email, $senha) {
 
@@ -73,6 +74,54 @@ class Candidato {
         $this->linkedin = $linkedin;
         $this->facebook = $facebook;
         $this->sitePessoal = $sitePessoal;
+    }
+
+    function getValidaCPF($cpfValidar)
+    {
+        $this->cpfValidar = $cpfValidar;
+
+        // Elimina possivel mascara
+        $cpfValidar = preg_replace("/[^0-9]/", "", $cpfValidar);
+        $cpfValidar = str_pad($cpfValidar, 11, '0', STR_PAD_LEFT);
+
+        // Verifica se o numero de digitos informados é igual a 11 
+        if (strlen($cpfValidar) != 11) {
+            return false;
+        }
+        // Verifica se nenhuma das sequências invalidas abaixo 
+        // foi digitada. Caso afirmativo, retorna falso
+        else if (
+            $cpfValidar == '00000000000' ||
+            $cpfValidar == '11111111111' ||
+            $cpfValidar == '22222222222' ||
+            $cpfValidar == '33333333333' ||
+            $cpfValidar == '44444444444' ||
+            $cpfValidar == '55555555555' ||
+            $cpfValidar == '66666666666' ||
+            $cpfValidar == '77777777777' ||
+            $cpfValidar == '88888888888' ||
+            $cpfValidar == '99999999999'
+        ) {
+            return false;
+            // Calcula os digitos verificadores para verificar se o
+            // CPF é válido
+        } else {
+
+            for ($t = 9; $t < 11; $t++) {
+
+                for ($d = 0, $c = 0; $c < $t; $c++) {
+                    $d += $cpfValidar{
+                        $c} * (($t + 1) - $c);
+                }
+                $d = ((10 * $d) % 11) % 10;
+                if ($cpfValidar{
+                    $c} != $d) {
+                    return false;
+                }
+            }
+
+            return true;
+        }
     }
     
     function getCpf() {

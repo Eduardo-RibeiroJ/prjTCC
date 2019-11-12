@@ -12,11 +12,19 @@ if (isset($_POST['btnCadastrar'])) {
         die;
     }
 
-    $_SESSION['cpf'] = $_POST['txtCpf'];
-    $_SESSION['email'] = $_POST['txtEmail'];
-    $_SESSION['senha'] = $_POST['txtSenha'];
+    $candidato = new Candidato();
 
-    header('Location: candidato_inserir.php');
+    if ($candidato->getValidaCPF($_POST['txtCpf'])== false) {
+        echo "<script>window.alert('CPF inválido'); history.go(-1); </script>";
+        die;
+
+    } else {
+
+        $_SESSION['cpf'] = $_POST['txtCpf'];
+        $_SESSION['email'] = $_POST['txtEmail'];
+        $_SESSION['senha'] = $_POST['txtSenha'];
+        header('Location: candidato_inserir.php');
+    }
 }
 
 include_once 'header.php';
