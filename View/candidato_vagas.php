@@ -81,7 +81,7 @@ $arrayVagas = $processoSeletivoDAO->ListarVaga($processoSeletivo, $objetivo);
         </div>
       </div>
 
-      <div class="d-flex flex-wrap justify-content-center">
+      <div class="d-flex flex-wrap justify-content-center mb-4">
         <?php foreach ($arrayVagas as $reg) : ?>
           <div class="form-group col-lg-6">
             <div class="card text-center">

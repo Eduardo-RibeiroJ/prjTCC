@@ -46,11 +46,11 @@ $arrayProcessos = $candidatoProcessoDAO->Listar($candidatoProcesso);
       </div>
     </div>
 
-    <?php foreach ($arrayProcessos as $reg) : ?>
-      <form method="POST" action="processo_seletivo_testes.php">
+    <div class="my-3 p-3 bg-white rounded shadow-sm">
+      <h6 class="border-bottom border-gray pb-2 mb-0">Candidaturas recentes</h6>
 
-        <div class="my-3 p-3 bg-white rounded shadow-sm">
-          <h6 class="border-bottom border-gray pb-2 mb-0">Candidaturas recentes</h6>
+      <?php foreach ($arrayProcessos as $reg) : ?>
+        <form method="POST" action="processo_seletivo_testes.php">
           <div class="media text-muted pt-3">
             <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
               <div class="d-flex justify-content-between align-items-center w-100">
@@ -61,13 +61,15 @@ $arrayProcessos = $candidatoProcessoDAO->Listar($candidatoProcesso);
               <h6><strong>Salário: </strong><?= $reg->getSalario(); ?></h6>
             </div>
           </div>
-          <small class="d-block text-right mt-3">
-            <a href="#">subir</a>
-          </small>
-        </div>
+
+        <?php endforeach; ?>
+        <small class="d-block text-right mt-3">
+          <a href="#">subir</a>
+        </small>
+    </div>
   </div>
   </form>
-<?php endforeach; ?>
+
 
 
 </div>
