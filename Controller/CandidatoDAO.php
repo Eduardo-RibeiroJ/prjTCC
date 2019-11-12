@@ -162,6 +162,19 @@ class CandidatoDAO
         );
     }
 
+    public function BuscarCpf($candidato)
+    {
+        $sql = mysql_query("SELECT * FROM tbCandidato WHERE cpf ='" .$candidato."';");
+        $db = new Conexao();
+        $validacao = mysqli_query($db->getConection(), $sql);
+
+        if ($validacao == 1) 
+            return false;
+        else 
+            return true;
+        
+    }
+
     public static function Logar(Candidato $candidato){        
     
         $sql = "SELECT * FROM tbCandidato WHERE email='".$candidato->getEmail()."' ;";
