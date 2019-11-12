@@ -12,11 +12,20 @@ if (isset($_POST['btnCadastrar'])) {
 		die;
 	}
 
-	$_SESSION['cnpj'] = $_POST['txtCnpj'];
-	$_SESSION['email'] = $_POST['txtEmail'];
-	$_SESSION['senha'] = $_POST['txtSenha'];
+	$recrutador = new Recrutador();
 
-	header('Location: recrutador_inserir.php');
+	if ($recrutador->validaCNPJ($_POST['txtCnpj']) == false) {
+		echo "<script>window.alert('CNPJ inválido'); history.go(-1); </script>";
+		die;
+	} else {
+
+		$_SESSION['cnpj'] = $_POST['txtCnpj'];
+		$_SESSION['email'] = $_POST['txtEmail'];
+		$_SESSION['senha'] = $_POST['txtSenha'];
+
+		header('Location: recrutador_inserir.php');
+	}
+	
 }
 
 include_once 'header.php';
