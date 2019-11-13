@@ -65,11 +65,6 @@ $processoPergunta->setProcesso($processo);
 $arrayPergunta = $processoPerguntaDAO->Listar($processoPergunta);
 
 if(isset($_POST['btnCandidatar'])) {
-
-  if(!(isset($_SESSION['cpf']))) {
-    header('Location: candidato_logar.php');
-  }
-
   $candProcesso->inserirCandProcesso(
     $_SESSION['cpf'],
     $processo->getIdProcesso()
