@@ -21,7 +21,7 @@ $candObjetivoDAO = new CandidatoObjetivoDAO($conn);
 $cargo = new Cargo();
 $cargoDAO = new CargoDAO($conn);
 
-if(!(isset($_SESSION['email']))) {
+if (!(isset($_SESSION['email']))) {
   header('Location: index.php');
 }
 
@@ -50,50 +50,50 @@ if (isset($_POST['btnSalvar'])) {
 
   $candidatoDAO->Inserir($candidato);
 
-	$cargo->setNomeCargo($_POST['txtCargo']);
-	$idCargo = $cargo->idRegistro();
+  $cargo->setNomeCargo($_POST['txtCargo']);
+  $idCargo = $cargo->idRegistro();
 
-	$candObjetivo->inserirObjetivo(
-		$_SESSION['cpf'],
-		1,
-		$idCargo,
-		$_POST['cbbNivel'],
-		$_POST['txtPretSal']
-	);
+  $candObjetivo->inserirObjetivo(
+    $_SESSION['cpf'],
+    1,
+    $idCargo,
+    $_POST['cbbNivel'],
+    $_POST['txtPretSal']
+  );
 
-	$candObjetivoDAO->Inserir($candObjetivo);
+  $candObjetivoDAO->Inserir($candObjetivo);
 
   session_destroy();
   header('Location: candidato_logar.php');
-
 }
 
 ?>
 
 <?php include_once 'header.php'; ?>
 
-<div class="container">
+<div style="background-color:#c1ddf3">
+  <div class="container">
 
-  <div class="jumbotron p-3 p-md-5">
-    <div class="container p-0">
-      <h5 class="display-4 display-md-2"><i class="fas fa-user-tie d-none d-md-inline"></i> Queremos saber sobre você!</h1>
-      
-      <hr class="my-2 my-md-4">
-      <p class="lead">Insira seus dados pessoais para começarmos.</p>
+    <div class="jumbotron p-3 p-md-5" style="background-color:#FFFF">
+      <div class="container p-0">
+        <h5 class="display-4 display-md-2"><i class="fas fa-user-tie d-none d-md-inline"></i> Queremos saber sobre você!</h1>
+
+          <hr class="my-2 my-md-3">
+          <p class="lead">Insira seus dados pessoais para começarmos.</p>
+      </div>
     </div>
-  </div>
 
-  <section>
+    <section>
 
-    <div class="row">
-      <div class="col">
+      <div class="row">
+        <div class="col">
 
           <form method="POST" action="candidato_inserir.php" autocomplete="off">
 
-          <!-- Input hidden só pare teste, o verdadeiro vai ficar em uma variavel session -->
-          <input type="hidden" id="cpf" name="cpf" value="<?= $_SESSION['cpf']; ?>">
-          <input type="hidden" id="email" name="email" value="edu@edu">
-          <input type="hidden" id="senha" name="senha" value="12345">
+            <!-- Input hidden só pare teste, o verdadeiro vai ficar em uma variavel session -->
+            <input type="hidden" id="cpf" name="cpf" value="<?= $_SESSION['cpf']; ?>">
+            <input type="hidden" id="email" name="email" value="edu@edu">
+            <input type="hidden" id="senha" name="senha" value="12345">
 
             <div class="card">
               <div class="card-header">
@@ -143,7 +143,7 @@ if (isset($_POST['btnSalvar'])) {
                       </select>
                     </div>
                   </div>
-                        
+
                 </div>
               </div>
             </div>
@@ -158,36 +158,36 @@ if (isset($_POST['btnSalvar'])) {
               <div class="card-body">
                 <div class="card-text">
 
-                    <div class="form-row">
-                      <div class="form-group col-lg-6">
-                        <label for="txtCEP">CEP</label>
-                        <input type="text" class="form-control" id="txtCEP" name="txtCEP" placeholder="" required>
-                      </div>
-
-                      <div class="form-group col-lg-6">
-                        <label for="txtEndereco">Endereço</label>
-                        <input type="text" class="form-control" id="txtEndereco" name="txtEndereco" placeholder="Rua e número" required>
-                      </div>
+                  <div class="form-row">
+                    <div class="form-group col-lg-6">
+                      <label for="txtCEP">CEP</label>
+                      <input type="text" class="form-control" id="txtCEP" name="txtCEP" placeholder="" required>
                     </div>
 
-                    <div class="form-row">
+                    <div class="form-group col-lg-6">
+                      <label for="txtEndereco">Endereço</label>
+                      <input type="text" class="form-control" id="txtEndereco" name="txtEndereco" placeholder="Rua e número" required>
+                    </div>
+                  </div>
 
-                      <div class="form-group col-md-5">
-                        <label for="txtBairro">Bairro</label>
-                        <input type="text" class="form-control" id="txtBairro" name="txtBairro" placeholder="" required>
-                      </div>
+                  <div class="form-row">
 
-                      <div class="form-group col-md-5">
-                        <label for="txtCidade">Cidade</label>
-                        <input type="text" class="form-control" id="txtCidade" name="txtCidade" placeholder="" required>
-                      </div>
+                    <div class="form-group col-md-5">
+                      <label for="txtBairro">Bairro</label>
+                      <input type="text" class="form-control" id="txtBairro" name="txtBairro" placeholder="" required>
+                    </div>
 
-                      <div class="form-group col-md-2">
-                        <label for="txtUF">Estado</label>
-                        <input type="text" class="form-control" id="txtUF" name="txtUF" placeholder="" required>
-                      </div>
-                    </div> 
-                
+                    <div class="form-group col-md-5">
+                      <label for="txtCidade">Cidade</label>
+                      <input type="text" class="form-control" id="txtCidade" name="txtCidade" placeholder="" required>
+                    </div>
+
+                    <div class="form-group col-md-2">
+                      <label for="txtUF">Estado</label>
+                      <input type="text" class="form-control" id="txtUF" name="txtUF" placeholder="" required>
+                    </div>
+                  </div>
+
                 </div>
               </div>
             </div>
@@ -202,40 +202,40 @@ if (isset($_POST['btnSalvar'])) {
               <div class="card-body">
                 <div class="card-text">
 
-                    <div class="form-row">
-                      <div class="form-group col-md-6">
-                        <label for="txtTelefone1">Telefone</label>
-                        <input type="text" class="form-control" id="txtTelefone1" name="txtTelefone1" placeholder="" required>
-                      </div>
-
-                      <div class="form-group col-md-6">
-                        <label for="txtTelefone2">Telefone 2</label>
-                        <input type="text" class="form-control" id="txtTelefone2" name="txtTelefone2" placeholder="">
-                      </div>
-
+                  <div class="form-row">
+                    <div class="form-group col-md-6">
+                      <label for="txtTelefone1">Telefone</label>
+                      <input type="text" class="form-control" id="txtTelefone1" name="txtTelefone1" placeholder="" required>
                     </div>
 
-                    <div class="form-row">
-                      <div class="form-group col">
-                        <label for="txtLinkedin">LinkedIn</label>
-                        <input type="text" class="form-control" id="txtLinkedin" name="txtLinkedin" placeholder="">
-                      </div>
+                    <div class="form-group col-md-6">
+                      <label for="txtTelefone2">Telefone 2</label>
+                      <input type="text" class="form-control" id="txtTelefone2" name="txtTelefone2" placeholder="">
                     </div>
 
-                    <div class="form-row">
-                      <div class="form-group col">
-                        <label for="txtFacebook">Facebook</label>
-                        <input type="text" class="form-control" id="txtFacebook" name="txtFacebook" placeholder="">
-                      </div>
-                    </div>
+                  </div>
 
-                    <div class="form-row">
-                      <div class="form-group col">
-                        <label for="txtSitePessoal">Site Pessoal</label>
-                        <input type="text" class="form-control" id="txtSitePessoal" name="txtSitePessoal" placeholder="">
-                      </div>
+                  <div class="form-row">
+                    <div class="form-group col">
+                      <label for="txtLinkedin">LinkedIn</label>
+                      <input type="text" class="form-control" id="txtLinkedin" name="txtLinkedin" placeholder="">
                     </div>
-                    
+                  </div>
+
+                  <div class="form-row">
+                    <div class="form-group col">
+                      <label for="txtFacebook">Facebook</label>
+                      <input type="text" class="form-control" id="txtFacebook" name="txtFacebook" placeholder="">
+                    </div>
+                  </div>
+
+                  <div class="form-row">
+                    <div class="form-group col">
+                      <label for="txtSitePessoal">Site Pessoal</label>
+                      <input type="text" class="form-control" id="txtSitePessoal" name="txtSitePessoal" placeholder="">
+                    </div>
+                  </div>
+
                 </div>
               </div>
             </div>
@@ -289,11 +289,12 @@ if (isset($_POST['btnSalvar'])) {
 
           </form>
 
+        </div>
       </div>
-    </div>
 
-  </section>
+    </section>
 
+  </div>
 </div>
 
 <?php include 'footer.php'; ?>

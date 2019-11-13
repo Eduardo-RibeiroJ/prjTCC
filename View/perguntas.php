@@ -25,39 +25,40 @@ $arrayPergunta = $perguntaDAO->Listar($pergunta);
 
 ?>
 
-<div class="container" id="containerPergunta">
+<div style="background: url(imagem/90464.jpg); background-size: cover;">
+  <div class="container" id="containerPergunta">
 
-  <div class="jumbotron p-3 p-md-5">
-    <div class="container p-0">
-      <h5 class="display-4 display-md-2"><i class="fas fa-question-circle d-none d-md-inline"> </i>Adicione perguntas!</h1>
+    <div class="jumbotron p-3 p-md-5" style="background-color:#FFFF">
+      <div class="container p-0">
+        <h5 class="display-4 display-md-2"><i class="fas fa-question-circle d-none d-md-inline"> </i>Adicione perguntas!</h1>
 
-        <hr class="my-2 my-md-4">
-        <p class="lead">Crie perguntas para que possam ser utilizadas no seu processo seletivo, ajudará muito a conhecer mais os candidatos.</p>
-    </div>
-    <form>
-      <div class="form-row">
-        <div class="form-group col-md-11">
-          <textarea type="text" class="form-control" rows="4" id="txtPergunta" name="txtPergunta" placeholder="Escreva sua pergunta..." required autofocus></textarea>
-        </div>
-        <div class="form-group col-md-1">
-          <button class="btn btn-primary" id="btnInserirPergunta" name="btnInserirPergunta">Inserir</button>
-        </div>
+          <hr class="my-2 my-md-4">
+          <p class="lead">Crie perguntas para que possam ser utilizadas no seu processo seletivo, ajudará muito a conhecer mais os candidatos.</p>
       </div>
-    </form>
+      <form>
+        <div class="form-row">
+          <div class="form-group col-md-11">
+            <textarea type="text" class="form-control" rows="4" id="txtPergunta" name="txtPergunta" placeholder="Escreva sua pergunta..." required autofocus></textarea>
+          </div>
+          <div class="form-group col-md-1">
+            <button class="btn btn-primary" id="btnInserirPergunta" name="btnInserirPergunta">Inserir</button>
+          </div>
+        </div>
+      </form>
 
-  </div>
+    </div>
 
-  <input type="hidden" id="txtUltimoRegistro" name="txtUltimoRegistro" value="<?= $ultimoRegistro ?>">
-  <input type="hidden" id="txtCnpj" name="txtCnpj" value="<?= $recrutador->getCnpj() ?>">
+    <input type="hidden" id="txtUltimoRegistro" name="txtUltimoRegistro" value="<?= $ultimoRegistro ?>">
+    <input type="hidden" id="txtCnpj" name="txtCnpj" value="<?= $recrutador->getCnpj() ?>">
 
-  <section id="sectionCardsPergunta">
+    <section id="sectionCardsPergunta">
 
       <?php foreach ($arrayPergunta as $reg) : ?>
 
         <div class="row">
           <div class="col">
 
-            <div class="card">
+            <div class="card" style="background-color:#FFFF">
               <div class="card-header" id="SalvarPergunta<?= $reg->getIdPergunta(); ?>">
                 <p id="tituloHeader<?= $reg->getIdPergunta(); ?>" class="d-inline"><?= $reg->getPergunta(); ?></p>
                 <button name="btnAlterar<?= $reg->getIdPergunta(); ?>" id="btnAlterar<?= $reg->getIdPergunta(); ?>" class="btn btn-outline-primary float-right d-inline" data-toggle="collapse" data-target="#collapseRecrutadorPergunta<?= $reg->getIdPergunta(); ?>">
@@ -92,7 +93,7 @@ $arrayPergunta = $perguntaDAO->Listar($pergunta);
 
       <?php endforeach; ?>
 
-  </section>
+    </section>
+  </div>
 </div>
-
 <?php include 'footer.php'; ?>

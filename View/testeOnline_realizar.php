@@ -23,10 +23,10 @@ $testeOnline = new TesteOnline();
 $testeOnlineDAO = new TesteOnlineDAO($conn);
 
 //Id pegado do POST
-if(isset($_POST['btnRealizarTeste'])) {
+if (isset($_POST['btnRealizarTeste'])) {
   $_SESSION['dadosTeste'] = array('idProcesso' => $_POST['idProcesso'], 'idTesteOnline' => $_POST['idTeste'], 'idQuestao' => 1, 'resultado' => 0);
 }
-if(!(isset($_POST['btnAvancar'])) && !(isset($_POST['btnRealizarTeste']))) {
+if (!(isset($_POST['btnAvancar'])) && !(isset($_POST['btnRealizarTeste']))) {
   header('Location: index.php');
 }
 
@@ -42,17 +42,17 @@ $questao->setCnpj($processo->getCnpj());
 $questao->setIdTesteOnline($_SESSION['dadosTeste']['idTesteOnline']);
 
 //VERIFICAR SE ACERTOU A ANTERIOR
-if(isset($_POST['btnAvancar'])) {
+if (isset($_POST['btnAvancar'])) {
 
   $questao->setIdQuestao($_SESSION['dadosTeste']['idQuestao']);
   $questaoDAO->Listar($questao);
-  if(isset($_POST['Alt'])) {
-    if($questao->getResposta() == $_POST['Alt']) {
+  if (isset($_POST['Alt'])) {
+    if ($questao->getResposta() == $_POST['Alt']) {
       $_SESSION['dadosTeste']['resultado']++;
     }
   }
 
-  if($_SESSION['dadosTeste']['idQuestao'] == $testeOnline->getQuantidadeQuestoes()) {
+  if ($_SESSION['dadosTeste']['idQuestao'] == $testeOnline->getQuantidadeQuestoes()) {
     header('Location: testeOnline_concluir.php');
   }
 
@@ -67,97 +67,97 @@ $tempo = $questao->getTempo();
 
 <?php include_once 'headerCand.php'; ?>
 
-<section class="masthead" id="sectionRealizarTeste" style="background: url(imagem/90463.jpg); background-size: cover;">
-    <div class="container">
+<section class="masthead" id="sectionRealizarTeste" style="background-color:#c1ddf3">
+  <div class="container">
 
-        <div class="jumbotron p-3 p-md-5" style="background-color: #FFF">
-            <div class="container p-0">
-              <h5 class="display-5 display-md-2">Teste de <?= $testeOnline->getNomeTesteOnline() ?></h1>
-              <hr>
-              <form method="POST" action="testeOnline_realizar.php">
-                <div class="row">
-                  <div class="col-12">
-                    <p class="lead"><strong><?= $questao->getIdQuestao() ?> - <?= $questao->getQuestao() ?></strong></p>
+    <div class="jumbotron p-3 p-md-5" style="background-color: #FFF">
+      <div class="container p-0">
+        <h5 class="display-5 display-md-2">Teste de <?= $testeOnline->getNomeTesteOnline() ?></h1>
+          <hr>
+          <form method="POST" action="testeOnline_realizar.php">
+            <div class="row">
+              <div class="col-12">
+                <p class="lead"><strong><?= $questao->getIdQuestao() ?> - <?= $questao->getQuestao() ?></strong></p>
+              </div>
+            </div>
+            <div class="form-group">
+
+              <div class="row">
+                <div class="col-12">
+                  <div id="div-rdb" class="form-check">
+                    <input type="radio" class="form-check-input" name="Alt" id="A" value="A" required>
+                    <label for="A" class="lead form-check-label"><?= $questao->getAltA() ?></label>
                   </div>
                 </div>
-                <div class="form-group">
-                
-                  <div class="row">
-                    <div class="col-12">
-                      <div id="div-rdb" class="form-check">
-                        <input type="radio" class="form-check-input" name="Alt" id="A" value="A"required>
-                        <label for="A" class="lead form-check-label"><?= $questao->getAltA() ?></label>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-12">
-                      <div class="form-check">
-                        <input type="radio" class="form-check-input" name="Alt" id="B" value="B" required>
-                        <label for="B" class="lead form-check-label"><?= $questao->getAltB() ?></label>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-12">
-                      <div class="form-check">
-                        <input type="radio" class="form-check-input" name="Alt" id="C" value="C"required>
-                        <label for="C" class="lead form-check-label"><?= $questao->getAltC() ?></label>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-12">
-                      <div class="form-check">
-                        <input type="radio" class="form-check-input" name="Alt" id="D" value="D"required>
-                        <label for="D" class="lead form-check-label"><?= $questao->getAltD() ?></label>
-                      </div>
-                    </div>
+              </div>
+              <div class="row">
+                <div class="col-12">
+                  <div class="form-check">
+                    <input type="radio" class="form-check-input" name="Alt" id="B" value="B" required>
+                    <label for="B" class="lead form-check-label"><?= $questao->getAltB() ?></label>
                   </div>
                 </div>
-            
-                <hr class="my-2 my-md-4">
-
-                <div class="form-row">
-
-                  <div class="col-12 text-center">
-                    <p class="d-inline float-left" id="p-timer"></p>
-                    <input type="submit" name="btnAvancar" id="btnAvancar" class="btn btn-warning btn-lg float-right" value="Avançar"/>
+              </div>
+              <div class="row">
+                <div class="col-12">
+                  <div class="form-check">
+                    <input type="radio" class="form-check-input" name="Alt" id="C" value="C" required>
+                    <label for="C" class="lead form-check-label"><?= $questao->getAltC() ?></label>
                   </div>
                 </div>
-              </form>
-        </div>
+              </div>
+              <div class="row">
+                <div class="col-12">
+                  <div class="form-check">
+                    <input type="radio" class="form-check-input" name="Alt" id="D" value="D" required>
+                    <label for="D" class="lead form-check-label"><?= $questao->getAltD() ?></label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <hr class="my-2 my-md-4">
+
+            <div class="form-row">
+
+              <div class="col-12 text-center">
+                <p class="d-inline float-left" id="p-timer"></p>
+                <input type="submit" name="btnAvancar" id="btnAvancar" class="btn btn-warning btn-lg float-right" value="Avançar" />
+              </div>
+            </div>
+          </form>
+      </div>
     </div>
-  </section>
+</section>
 
-  <script>
-    window.onload = function() {
+<script>
+  window.onload = function() {
 
-      var tempo = "<?= $tempo ?>";
-      timer = parseInt(tempo);
-      tempo = (parseInt(tempo)+1)*1000;
-      var pTimer = document.getElementById('p-timer');
+    var tempo = "<?= $tempo ?>";
+    timer = parseInt(tempo);
+    tempo = (parseInt(tempo) + 1) * 1000;
+    var pTimer = document.getElementById('p-timer');
 
-      var timerInterval = setInterval(function () {
-        pTimer.innerHTML = timer + ' segundos restantes';
-        timer--;
+    var timerInterval = setInterval(function() {
+      pTimer.innerHTML = timer + ' segundos restantes';
+      timer--;
 
-        if(timer == '-1') {
-          clearInterval(timerInterval);
-          pTimer.innerHTML = 'Tempo esgotado!';
-        }
+      if (timer == '-1') {
+        clearInterval(timerInterval);
+        pTimer.innerHTML = 'Tempo esgotado!';
+      }
 
-      }, 1000);
-      
-      setTimeout(function () {
-        var rdb = document.getElementsByName('Alt');
-        for(var i=0;i < rdb.length ;i++) {
-          
-          rdb[i].checked = false;
-          rdb[i].setAttribute("disabled", "disabled");
-        }
-      }, tempo);
-    }
-  </script>
+    }, 1000);
+
+    setTimeout(function() {
+      var rdb = document.getElementsByName('Alt');
+      for (var i = 0; i < rdb.length; i++) {
+
+        rdb[i].checked = false;
+        rdb[i].setAttribute("disabled", "disabled");
+      }
+    }, tempo);
+  }
+</script>
 
 <?php include 'footer.php'; ?>

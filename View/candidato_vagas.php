@@ -41,7 +41,7 @@ $arrayVagas = $processoSeletivoDAO->ListarVaga($processoSeletivo, $objetivo);
 
 ?>
 
-<div style="background: url(imagem/80124.jpg); background-size: cover;">
+<div style="background-color:#c1ddf3">
   <div class="container">
 
     <form action="candidato_vagas.php" method="GET" class="form-signin" autocomplete="off">
@@ -62,21 +62,21 @@ $arrayVagas = $processoSeletivoDAO->ListarVaga($processoSeletivo, $objetivo);
     <div class="row">
       <div class="col-12">
         <div class="btn-group float-right">
-        <a href="candidato_vagas.php?nomeCargo=" class="btn btn-success btn-lg" aria-describedby="btnVoltar"><i class="fas fa-search"></i> Todas as vagas</a>
+          <a href="candidato_vagas.php?nomeCargo=" class="btn btn-success btn-lg" aria-describedby="btnVoltar"><i class="fas fa-search"></i> Todas as vagas</a>
           <a href="candidato.php" class="btn btn-primary btn-lg" id="btnVoltar" name="btnVoltar">Voltar</a>
         </div>
       </div>
     </div>
 
 
-    <?php if($arrayVagas): ?>
+    <?php if ($arrayVagas) : ?>
       <div class="row mb-3">
         <div class="col-12">
-        <?php if($objetivo->getCargo()->getNomeCargo() != ''): ?>
-          <h4 class="mt-3">Vagas para <?= $objetivo->getCargo()->getNomeCargo() ?></h4>
-        <?php else: ?>
-          <h4 class="mt-3">Todas as vagas</h4>
-        <?php endif; ?>
+          <?php if ($objetivo->getCargo()->getNomeCargo() != '') : ?>
+            <h4 class="mt-3">Vagas para <?= $objetivo->getCargo()->getNomeCargo() ?></h4>
+          <?php else : ?>
+            <h4 class="mt-3">Todas as vagas</h4>
+          <?php endif; ?>
 
         </div>
       </div>
@@ -93,8 +93,8 @@ $arrayVagas = $processoSeletivoDAO->ListarVaga($processoSeletivo, $objetivo);
             </div>
           </div>
         <?php endforeach; ?>
-    </div><!-- d-flex flex-wrap justify-content-center-->
-    <?php else: ?>
+      </div><!-- d-flex flex-wrap justify-content-center-->
+    <?php else : ?>
 
       <h4 class="mt-3">Sem resultados para <?= $objetivo->getCargo()->getNomeCargo() ?>.</h4>
 

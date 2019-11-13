@@ -12,20 +12,29 @@ if (isset($_POST['btnCadastrar'])) {
 		die;
 	}
 
+	$conn = new Conexao();
 	$recrutador = new Recrutador();
+	$recrutadorDAO = new RecrutadorDAO($conn);
 
 	if ($recrutador->validaCNPJ($_POST['txtCnpj']) == false) {
 		echo "<script>window.alert('CNPJ inválido'); history.go(-1); </script>";
 		die;
+
+	} else if ($recrutador->BuscarCnpj($_POST['txtCnpj'], $_POST['txtEmail']) == true) {
+		echo "<script>window.alert('CPF e/ou E-mail já cadastrado!'); history.go(-1); </script>";
+		die;
+
 	} else {
 
-		$_SESSION['cnpj'] = $_POST['txtCnpj'];
+		$cnpjValidar = preg_replace("/[^0-9]/", "", $_POST['txtCnpj']);
+		$cnpjValidar = str_pad($cnpjValidar, 14, '0', STR_PAD_LEFT);
+
+		$_SESSION['cnpj'] = cnpjValidar;
 		$_SESSION['email'] = $_POST['txtEmail'];
 		$_SESSION['senha'] = $_POST['txtSenha'];
 
 		header('Location: recrutador_inserir.php');
 	}
-	
 }
 
 include_once 'header.php';

@@ -4,7 +4,7 @@
 
 <?php include_once 'headerRecrut.php'; ?>
 
-<section class="masthead" id="sectionProcesso1" style="background: url(imagem/604621.jpg); background-size: cover;">
+<section class="masthead" id="sectionProcesso1" style="background-color:#c1ddf3">
   <div class="container">
 
     <div class="jumbotron p-3 p-md-5" style="background-color: #FFF">
