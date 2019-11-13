@@ -26,7 +26,7 @@ if (isset($_POST['btnEntrarRecrutador'])) {
 		echo "<script> alert('Cnpj não cadastrado!'); window.location.replace('recrutador_cadastrar.php'); </script>";
 }
 
-if(!(isset($_SESSION['logado'])) || $_SESSION['logado'] != 2) {
+if (!(isset($_SESSION['logado'])) || $_SESSION['logado'] != 2) {
 	echo "<script>location.href='index.php'</script>";
 }
 
@@ -50,7 +50,7 @@ if(!(isset($_SESSION['logado'])) || $_SESSION['logado'] != 2) {
 
 	<!-- Navbar -->
 	<header id="header">
-		<nav class="navbar fixed-top navbar-expand-lg navbar-light" style="background-image: linear-gradient(to right, rgba(10, 100, 180, 0.3), rgba(23,166,255,0.3));">
+		<nav class="navbar fixed-top navbar-expand-lg navbar-dark" style="background-color: rgba(20, 137, 204, 1);">
 			<a class="navbar-brand h1 mb-0" href="index.php"> Connection</a>
 
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsite" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
@@ -89,7 +89,7 @@ if(!(isset($_SESSION['logado'])) || $_SESSION['logado'] != 2) {
 
 					<!-- Nav Item - Mensagem -->
 					<li class="nav-item dropdown no-arrow">
-						<a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						<a class="nav-link dropdown-toggle ml-1" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 							<i><img src="imagem/mensagem.png"></i>
 							<!-- Counter - mensagem -->
 							<span class="badge badge-danger badge-counter">7</span>
@@ -104,7 +104,7 @@ if(!(isset($_SESSION['logado'])) || $_SESSION['logado'] != 2) {
 					</li>
 
 					<!-- Nav Item - Informação do usuário -->
-					<li class="nav-item dropdown no-arrow" style="padding-left:1rem">
+					<li class="nav-item dropdown no-arrow" style="padding-left:0.15rem">
 						<a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 							<span><?= $_SESSION['nomeEmpresa']; ?></span>
 							<img class="img-profile rounded-circle" src="imagem/logo-mercedes.jpg">

@@ -48,7 +48,7 @@ $arrayVagas = $processoSeletivoDAO->ListarVaga($processoSeletivo, $objetivo);
     
     </header> -->
 
-<div style="background: url(imagem/604621.jpg); background-size: cover;">
+<div style="background-color:#c1ddf3">
   <div class="container">
 
     <form action="candidato_vagas.php" method="GET" class="form-signin" autocomplete="off">
@@ -129,7 +129,7 @@ $arrayVagas = $processoSeletivoDAO->ListarVaga($processoSeletivo, $objetivo);
       <div class="col-lg-6">
         <div class="card my-2" style="height: 94.5%">
           <div class="card-header">
-            <i class="fas fa-briefcase"> </i> Vagas
+            <i class="fas fa-briefcase"> </i> Vagas recomendadas
           </div>
 
           <div class="card-body">

@@ -28,7 +28,7 @@ $arrayPergunta = $perguntaDAO->Listar($pergunta);
 
 <?php include_once 'headerRecrut.php'; ?>
 
-<section class="masthead" id="sectionProcesso2" style="background: url(imagem/604621.jpg); background-size: cover;">
+<section class="masthead" id="sectionProcesso2" style="background-color:#c1ddf3">
     <div class="container">
 
         <div class="row">

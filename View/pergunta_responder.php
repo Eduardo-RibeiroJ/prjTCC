@@ -26,18 +26,18 @@ $processoPerguntaDAO = new ProcessoPerguntaDAO($conn);
 $processoCandPergunta = new ProcessoCandPergunta();
 $processoCandPerguntaDAO = new ProcessoCandPerguntaDAO($conn);
 
-if(!(isset($_POST['btnResponder'])) && !(isset($_POST['btnConcluir']))) {
+if (!(isset($_POST['btnResponder'])) && !(isset($_POST['btnConcluir']))) {
   header('Location: index.php');
 }
 
 $idProcesso = $_POST['txtIdProcesso'];
 
-if(isset($_POST['btnConcluir'])) {
-  foreach($_POST as $name => $value) {
+if (isset($_POST['btnConcluir'])) {
+  foreach ($_POST as $name => $value) {
 
     $input = (str_split($name, 11));
 
-    if($input[0] == "txtPergunta") {
+    if ($input[0] == "txtPergunta") {
       $idPergunta = $input[1];
       $resposta = $value;
 
@@ -66,38 +66,38 @@ $arrayPergunta = $processoPerguntaDAO->Listar($processoPergunta);
 
 <?php include_once 'headerCand.php'; ?>
 
-<section class="masthead" id="sectionRealizarTeste" style="background: url(imagem/90463.jpg); background-size: cover;">
-    <div class="container">
+<section class="masthead" id="sectionRealizarTeste" style="background-color:#c1ddf3">
+  <div class="container">
 
-        <div class="jumbotron p-3 p-md-5" style="background-color: #FFF">
-            <div class="container p-0">
-              <h5 class="display-4 display-md-2">Responda as perguntas necessárias para o processo seletivo!</h1>
-              <hr>
-              <form method="POST" action="pergunta_responder.php">
-                <input type="hidden" id="txtIdProcesso" name="txtIdProcesso" value="<?= $idProcesso ?>" />
-                <?php foreach($arrayPergunta as $reg): ?>
-                <div class="row">
-                  <div class="col-12">
-                    <div class="form-group">
-                      <label class="lead" for="txtPergunta<?= $reg->getPergunta()->getIdPergunta(); ?>"><?= $reg->getPergunta()->getPergunta(); ?></label>
-                      <textarea name="txtPergunta<?= $reg->getPergunta()->getIdPergunta(); ?>" id="txtPergunta<?= $reg->getPergunta()->getIdPergunta(); ?>" rows="3" class="form-control" placeholder="Responda aqui..." required></textarea>
-                    </div>
+    <div class="jumbotron p-3 p-md-5" style="background-color: #FFF">
+      <div class="container p-0">
+        <h5 class="display-4 display-md-2">Responda as perguntas necessárias para o processo seletivo!</h1>
+          <hr>
+          <form method="POST" action="pergunta_responder.php">
+            <input type="hidden" id="txtIdProcesso" name="txtIdProcesso" value="<?= $idProcesso ?>" />
+            <?php foreach ($arrayPergunta as $reg) : ?>
+              <div class="row">
+                <div class="col-12">
+                  <div class="form-group">
+                    <label class="lead" for="txtPergunta<?= $reg->getPergunta()->getIdPergunta(); ?>"><?= $reg->getPergunta()->getPergunta(); ?></label>
+                    <textarea name="txtPergunta<?= $reg->getPergunta()->getIdPergunta(); ?>" id="txtPergunta<?= $reg->getPergunta()->getIdPergunta(); ?>" rows="3" class="form-control" placeholder="Responda aqui..." required></textarea>
                   </div>
                 </div>
+              </div>
 
-                <?php endforeach; ?>
-            
-                <hr class="my-2 my-md-4">
+            <?php endforeach; ?>
 
-                <div class="form-row">
+            <hr class="my-2 my-md-4">
 
-                  <div class="col-12">
-                    <input type="submit" name="btnConcluir" id="btnConcluir" class="btn btn-warning btn-lg float-right" value="Concluir"/>
-                  </div>
-                </div>
-              </form>
-        </div>
+            <div class="form-row">
+
+              <div class="col-12">
+                <input type="submit" name="btnConcluir" id="btnConcluir" class="btn btn-warning btn-lg float-right" value="Concluir" />
+              </div>
+            </div>
+          </form>
+      </div>
     </div>
-  </section>
+</section>
 
 <?php include 'footer.php'; ?>

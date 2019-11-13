@@ -41,7 +41,7 @@ $candidatoProcessoDAO = new CandidatoProcessoDAO($conn);
 $processoCompetencia = new ProcessoCompetencia();
 $processoCompetenciaDAO = new ProcessoCompetenciaDAO($conn);
 
-if(isset($_POST['btnVisualizarCandidatos'])) {
+if (isset($_POST['btnVisualizarCandidatos'])) {
   $idProcesso = $_POST['txtIdProcesso'];
 
   $processo->setIdProcesso($idProcesso);
@@ -49,10 +49,9 @@ if(isset($_POST['btnVisualizarCandidatos'])) {
 
   $candidatoProcesso->setIdProcesso($idProcesso);
   $arrayCandidatos = $candidatoProcessoDAO->Listar($candidatoProcesso);
-  
+
   $processoCompetencia->setIdProcesso($idProcesso);
   $arrayCompProcesso = $processoCompetenciaDAO->Listar($processoCompetencia);
-
 } else {
   header('Location: index.php');
 }
@@ -61,14 +60,14 @@ include_once 'headerRecrut.php'
 
 ?>
 
-<div>
+<div style="background-color:#c1ddf3">
 
   <div class="container">
 
     <div class="row">
       <div class="col-12">
         <h5 class="display-4">Vaga para <strong><?= $processo->getCargo()->getNomeCargo(); ?></strong>, encerra em <?= $processo->getDataLimiteCandidatar(); ?>.</h4>
-      <p class="lead text-muted">49 candidatos</p>
+          <p class="lead text-muted">49 candidatos</p>
       </div>
     </div>
     <hr>
@@ -136,11 +135,9 @@ include_once 'headerRecrut.php'
 
     <?php endif; ?>
 
-
     <?php if($arrayClassifica): ?>
       <div id="accordion">
               
-        <?php foreach($arrayClassifica as $cand): ?>
           <div class="card">
             <div class="card-header" id="heading<?= $cand['candidato']->getCpf() ?>">
               <h5 class="d-inline"><?= $cand['candidato']->getNome() ?> <?= $cand['candidato']->getSobrenome() ?></h5>
@@ -156,7 +153,7 @@ include_once 'headerRecrut.php'
                     <input type="hidden" id="txtCpf" name="txtCpf" value="<?= $cand['candidato']->getCpf() ?>" />
                     <input type="hidden" id="txtIdProcesso" name="txtIdProcesso" value="<?= $idProcesso ?>" />
 
-                      <?php
+                    <?php
 
                         $candidatoCompetencia = new CandidatoCompetencia();
                         $candidatoCompetenciaDAO = new CandidatoCompetenciaDAO($conn);
@@ -176,9 +173,6 @@ include_once 'headerRecrut.php'
                         $arrayPerguntas = $processoCandPerguntaDAO->Listar($processoCandPergunta);
                         
                       ?>
-
-                      <div class="row">
-                        <?php if($arrayCompetencias): ?>
 
                           <div class="col-12 col-lg-6">
                             <p class="lead mb-0"><strong>Competências Correspondentes</strong></p>
@@ -222,14 +216,23 @@ include_once 'headerRecrut.php'
                         <?php endif; ?>
                       </div>
 
-                      <?php if($arrayPerguntas): ?>
-                        
+                      <?php foreach ($arrayPerguntas as $reg) : ?>
+                        <?php
+                                $pergunta = new Pergunta();
+                                $perguntaDAO = new PerguntaDAO($conn);
+
+                                $pergunta->setIdPergunta($reg->getIdPergunta());
+                                $pergunta->setCnpj($processo->getCnpj());
+                                $perguntaDAO->Listar($pergunta);
+                                ?>
+
                         <div class="row">
                           <div class="col-12">
-                            <p class="lead mb-0"><strong>Perguntas</strong></p>
+                            <p class="lead mb-0"><?= $pergunta->getPergunta(); ?></p>
+                            <p class="mt-0"><?= $reg->getResposta(); ?></p>
                           </div>
                         </div>
-
+                      <?php endforeach; ?>
                           <?php foreach($arrayPerguntas as $reg): ?>
                             <?php
                               $pergunta = new Pergunta();
@@ -255,7 +258,6 @@ include_once 'headerRecrut.php'
                           </div>
                         </div>
                       <?php endif; ?>
-
                     <button type="submit" id="btnVisualizarPerfil" name="btnVisualizarPerfil" class="btn btn-warning float-right mb-2"><i class="fas fa-user-tie"></i> Visualizar Perfil</button>
                   </form>
                 </div>
@@ -265,7 +267,7 @@ include_once 'headerRecrut.php'
 
         <?php endforeach; ?>
       </div> <!-- accordion -->
-    <?php else: ?>
+    <?php else : ?>
       <p class="lead">Não há candidatos, divulgue seu processo seletivo!</p>
     <?php endif; ?>
 

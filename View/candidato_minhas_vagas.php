@@ -34,7 +34,7 @@ $arrayProcessos = $candidatoProcessoDAO->Listar($candidatoProcesso);
 
 ?>
 
-<div style="background: url(imagem/80124.jpg); background-size: cover;">
+<div style="background-color:#c1ddf3">
   <div class="container">
 
     <div class="jumbotron p-3 p-md-5" style="background-color: #FFF">

@@ -15,20 +15,21 @@ if (isset($_POST['btnCadastrar'])) {
     $conn = new Conexao();
     $candidato = new Candidato();
     $candidatoDAO = new CandidatoDAO($conn);
-    $cpf = $_POST['txtCpf'];
 
     if ($candidato->getValidaCPF($_POST['txtCpf']) == false) {
         echo "<script>window.alert('CPF inválido!'); history.go(-1); </script>";
         die;
-    }
-    
-    /*else if ($RetornoBanco = $candidatoDAO->BuscarCpf($cpf) == false) {
-        echo "<script>window.alert('CPF já cadastrado!'); history.go(-1); </script>";
+        
+    } else if ($candidatoDAO->BuscarCpf($_POST['txtCpf'], $_POST['txtEmail']) == true) {
+        echo "<script>window.alert('CPF e/ou E-mail já cadastrado!'); history.go(-1); </script>";
         die;
 
-    }*/ else{
+    } else{
 
-        $_SESSION['cpf'] = $_POST['txtCpf'];
+        $cpfValidar = preg_replace("/[^0-9]/", "", $_POST['txtCpf']);
+        $cpfValidar = str_pad($cpfValidar, 11, '0', STR_PAD_LEFT);
+
+        $_SESSION['cpf'] =  $cpfValidar;
         $_SESSION['email'] = $_POST['txtEmail'];
         $_SESSION['senha'] = $_POST['txtSenha'];
         header('Location: candidato_inserir.php');

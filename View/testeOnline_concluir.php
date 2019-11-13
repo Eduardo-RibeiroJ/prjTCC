@@ -47,7 +47,7 @@ $processoCandTeste->inserirProcCandTeste(
 );
 $processoCandTesteDAO->Inserir($processoCandTeste);
 
-if(intval($_SESSION['dadosTeste']['resultado']) != 0) {
+if (intval($_SESSION['dadosTeste']['resultado']) != 0) {
   $acertos = intval($testeOnline->getQuantidadeQuestoes()) / intval($_SESSION['dadosTeste']['resultado']);
 } else {
   $acertos = 2;
@@ -57,14 +57,11 @@ unset($_SESSION['dadosTeste']);
 
 if ($acertos >= 2) {
   $resultado = 'regular';
-}
-else if ($acertos >= 1.66) {
+} else if ($acertos >= 1.66) {
   $resultado = 'bom';
-}
-else if ($acertos > 1) {
+} else if ($acertos > 1) {
   $resultado = 'ótimo';
-}
-else if($acertos == 1) {
+} else if ($acertos == 1) {
   $resultado = 'excelente';
 }
 
@@ -72,28 +69,28 @@ else if($acertos == 1) {
 
 <?php include_once 'headerCand.php'; ?>
 
-<section class="masthead" id="sectionConcluirTeste" style="background: url(imagem/90463.jpg); background-size: cover;">
-    <div class="container">
+<section class="masthead" id="sectionConcluirTeste" style="background-color:#c1ddf3">
+  <div class="container">
 
-        <div class="jumbotron p-3 p-md-5" style="background-color: #FFF">
-            <div class="container p-0">
-              <h5 class="display-4 display-md-2">Teste de <?= $testeOnline->getNomeTesteOnline() ?> realizado!</h1>
-              <p class="lead">Realize todos os testes e responda todas as perguntas para efetivar sua candidatura no processo seletivo.</p>
-              <hr>
-              
-              <p class="lead"><strong>Você teve um <?= $resultado ?> desempenho.</strong></p>
-        </div>
-        <hr class="my-2 my-md-4">
+    <div class="jumbotron p-3 p-md-5" style="background-color: #FFF">
+      <div class="container p-0">
+        <h5 class="display-4 display-md-2">Teste de <?= $testeOnline->getNomeTesteOnline() ?> realizado!</h1>
+          <p class="lead">Realize todos os testes e responda todas as perguntas para efetivar sua candidatura no processo seletivo.</p>
+          <hr>
 
-        <form method="POST" action="processo_seletivo_testes.php">
-          <div class="form-row">
-            <div class="col text-center">
-              <input type="hidden" name="txtIdProcesso" value="<?= $processo->getIdProcesso() ?>">
-              <input type="submit" name="btnVoltar" id="btnVoltar" class="btn btn-warning btn-lg float-right" value="Retornar" />
-            </div>
+          <p class="lead"><strong>Você teve um <?= $resultado ?> desempenho.</strong></p>
+      </div>
+      <hr class="my-2 my-md-4">
+
+      <form method="POST" action="processo_seletivo_testes.php">
+        <div class="form-row">
+          <div class="col text-center">
+            <input type="hidden" name="txtIdProcesso" value="<?= $processo->getIdProcesso() ?>">
+            <input type="submit" name="btnVoltar" id="btnVoltar" class="btn btn-warning btn-lg float-right" value="Retornar" />
           </div>
-        </form>
+        </div>
+      </form>
     </div>
-  </section>
+</section>
 
 <?php include 'footer.php'; ?>

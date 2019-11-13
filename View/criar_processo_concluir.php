@@ -23,29 +23,29 @@ unset($_SESSION['processo_etapa1']);
 
 <?php include_once 'headerRecrut.php'; ?>
 
-<section class="masthead" id="sectionProcesso1" style="background: url(imagem/90463.jpg); background-size: cover;">
-    <div class="container">
+<section class="masthead" id="sectionProcesso1" style="background-color:#c1ddf3">
+  <div class="container">
 
-        <div class="jumbotron p-3 p-md-5" style="background-color: #FFF">
-            <div class="container p-0">
-                <h5 class="display-4 display-md-2">Aberto novo processo seletivo!</h1>
-                <p class="lead">O processo seletivo não poderá ser modificado, apenas cancelado.</p>
-                
-                <hr class="my-2 my-md-4">
-                <p class="lead">O processo seletivo estará aberto entre <?= $processo->getDataInicio(); ?> a <?= $processo->getDataLimiteCandidatar(); ?></p>
-                <p class="lead"><strong>Vaga para <?= $processo->getCargo()->getNomeCargo(); ?></strong></p>
+    <div class="jumbotron p-3 p-md-5" style="background-color: #FFF">
+      <div class="container p-0">
+        <h5 class="display-4 display-md-2">Aberto novo processo seletivo!</h1>
+          <p class="lead">O processo seletivo não poderá ser modificado, apenas cancelado.</p>
 
-                <h4 class="mt-4">Segue link do processo seletivo: <a href="processo_seletivo-<?= $processo->getIdProcesso(); ?>">localhost/processo_seletivo-<?= $processo->getIdProcesso(); ?></a> <button class="btn btn-outline-dark ml-2" id="brnCopiar"><i class="far fa-copy"></i> Copiar</button></h4>
-            </div>
-            <hr class="my-2 my-md-4">
+          <hr class="my-2 my-md-4">
+          <p class="lead">O processo seletivo estará aberto entre <?= $processo->getDataInicio(); ?> a <?= $processo->getDataLimiteCandidatar(); ?></p>
+          <p class="lead"><strong>Vaga para <?= $processo->getCargo()->getNomeCargo(); ?></strong></p>
 
-            <div class="form-row">
-              <div class="col text-center">
-                <a href="recrutador.php" class="btn btn-primary btn-lg float-right">Retornar</a>
-              </div>
-            </div>
+          <h4 class="mt-4">Segue link do processo seletivo: <a href="processo_seletivo-<?= $processo->getIdProcesso(); ?>">localhost/processo_seletivo-<?= $processo->getIdProcesso(); ?></a> <button class="btn btn-outline-dark ml-2" id="brnCopiar"><i class="far fa-copy"></i> Copiar</button></h4>
+      </div>
+      <hr class="my-2 my-md-4">
+
+      <div class="form-row">
+        <div class="col text-center">
+          <a href="recrutador.php" class="btn btn-primary btn-lg float-right">Retornar</a>
         </div>
+      </div>
     </div>
-  </section>
+  </div>
+</section>
 
 <?php include 'footer.php'; ?>

@@ -23,7 +23,7 @@ $recrutadorDAO->Listar($recrutador);
     <div class="container p-0">
       <h5 class="display-4 display-md-2"><i class="fas fa-user-tie d-none d-md-inline"> </i>Mantenha-se atualizado!</h1>
 
-        <hr class="my-2 my-md-4">
+        <hr class="my-2 my-md-3">
         <p class="lead">Gerencie aqui seus principais dados.</p>
     </div>
   </div>

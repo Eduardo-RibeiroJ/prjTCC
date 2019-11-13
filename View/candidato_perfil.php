@@ -60,7 +60,7 @@ $objetivo = $objetivoDAO->Listar($objetivo);
 
 ?>
 
-<div style="background: url(imagem/102.jpg); background-size: cover;">
+<div style="background-color:#c1ddf3">
   <div class="container">
 
     <section id="sectionCandidatoPerfil">

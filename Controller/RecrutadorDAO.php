@@ -92,6 +92,18 @@ class RecrutadorDAO
         return true;
     }
 
+    public function BuscarCnpj($recrutador, $email)
+    {
+        $sql = "SELECT * FROM tbCandidato C, tbRecrutador R WHERE cnpj = '$recrutador' OR R.email = '$email' OR C.email = '$email';";
+        $db = new Conexao();
+        $validacao = mysqli_query($db->getConection(), $sql);
+
+        if (mysqli_num_rows($validacao) != 0)
+            return true;
+        else
+            return mysqli_num_rows($validacao);
+    }
+
     public function Listar(Recrutador $recrutador) {
         $query = $this->db->getConection()->query("SELECT * FROM tbRecrutador WHERE cnpj ='".$recrutador->getCnpj()."';");
            

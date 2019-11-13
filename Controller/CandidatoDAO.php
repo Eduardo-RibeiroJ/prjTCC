@@ -162,19 +162,19 @@ class CandidatoDAO
         );
     }
 
-    public function BuscarCpf($candidato)
+     public function BuscarCpf($candidato, $email)
     {
-        $sql = "SELECT * FROM tbCandidato WHERE cpf = '$candidato';";
+        $sql = "SELECT * FROM tbCandidato C, tbRecrutador R WHERE cpf = '$candidato' OR R.email = '$email' OR C.email = '$email';";
         $db = new Conexao();
         $validacao = mysqli_query($db->getConection(), $sql);
 
-        if(mysqli_num_rows($validacao) > 0)
+        if(mysqli_num_rows($validacao) != 0)
             return true;
         else 
-            return false;
+            return mysqli_num_rows($validacao);
         
     }
-
+    
     public static function Logar(Candidato $candidato){        
     
         $sql = "SELECT * FROM tbCandidato WHERE email='".$candidato->getEmail()."' ;";
@@ -203,5 +203,3 @@ class CandidatoDAO
         return $response;
     }
 }
-
-?>

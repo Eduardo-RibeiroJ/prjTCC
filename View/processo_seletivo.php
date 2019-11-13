@@ -44,7 +44,7 @@ $processo->setIdProcesso($idProcesso);
 $processoDAO->Listar($processo);
 
 //Não encontrou processo seletivo
-if($processo->getIdProcesso() == NULL) {
+if ($processo->getIdProcesso() == NULL) {
   header('Location: index.php');
 }
 
@@ -58,106 +58,104 @@ $processoPergunta->setProcesso($processo);
 $arrayPergunta = $processoPerguntaDAO->Listar($processoPergunta);
 
 //Verificar se o candidato ja se candidatou
-if(isset($_SESSION['cpf'])) {
-  $candidatoProcesso->setCpf($_SESSION['cpf']);
-  $candidatoProcesso->setIdProcesso($idProcesso);
-  $candidatoProcessoDAO->Listar($candidatoProcesso);
-}
+$candidatoProcesso->setCpf($_SESSION['cpf']);
+$candidatoProcesso->setIdProcesso($idProcesso);
+$candidatoProcessoDAO->Listar($candidatoProcesso);
 
-if(empty($_SESSION['logado']))
+if (empty($_SESSION['logado']))
   include_once 'header.php';
-else if($_SESSION['logado'] == 1)
+else if ($_SESSION['logado'] == 1)
   include_once 'headerCand.php';
-else if($_SESSION['logado'] == 2)
+else if ($_SESSION['logado'] == 2)
   include_once 'headerRecrut.php';
 
 ?>
 
 
-<section class="masthead" id="sectionProcesso1" style="background: url(imagem/90463.jpg); background-size: cover;">
-    <div class="container">
+<section class="masthead" id="sectionProcesso1" style="background-color:#c1ddf3">
+  <div class="container">
 
-        <div class="jumbotron p-3 p-md-5" style="background-color: #FFF">
-            <div class="container p-0">
-                <h5 class="display-4 display-md-2">Vaga para <?= $processo->getCargo()->getNomeCargo() ?>!</h1>
-                <p class="lead">O processo seletivo estará aberto entre <?= $processo->getDataInicio(); ?> a <?= $processo->getDataLimiteCandidatar(); ?>.</p>
-                
-                <div class="row d-flex justify-content-center">
-                  <div class="col-12 col-md-9 border rounded p-4 mt-2 mb-5">
-                    <p class="lead"><pre class="lead-pre"><?= $processo->getResumoVaga() ?></pre></p>
-                    <div class="row">
-                      <div class="col-12">
-                        <p class="lead">Contratação: <?= $processo->getTipoContratacao() ?>, salário <?= $processo->getSalario() == 0 ? ' a combinar.' : 'de R$ '.$processo->getSalario().'.'?></p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+    <div class="jumbotron p-3 p-md-5" style="background-color: #FFF">
+      <div class="container p-0">
+        <h5 class="display-4 display-md-2">Vaga para <?= $processo->getCargo()->getNomeCargo() ?>!</h1>
+          <p class="lead">O processo seletivo estará aberto entre <?= $processo->getDataInicio(); ?> a <?= $processo->getDataLimiteCandidatar(); ?>.</p>
 
-                <?php if($arrayCompetencia): ?>
-                  <div class="row">
-                    <div class="col-12">
-                      <p class="lead mb-1"><strong>Competências necessárias:</strong></p>
-                      <ul>
-                      <?php foreach($arrayCompetencia as $reg): ?>
-
-                        <li><?= $reg->getCompetencia()->getNomeComp(); ?> nível <?= $reg->getNivel(); ?></li>
-
-                      <?php endforeach; ?>
-                      </ul>
-                    </div>
-                  </div>
-                <?php endif; ?>
-
-                <?php if($arrayTeste): ?>
-                  <div class="row">
-                    <div class="col-12">
-                      <p class="lead mb-1"><strong>Testes online necessários:</strong></p>
-                      <ul>
-                      <?php foreach($arrayTeste as $reg): ?>
-
-                        <li><?= $reg->getTesteOnline()->getNomeTesteOnline(); ?></li>
-
-                      <?php endforeach; ?>
-                      </ul>
-                    </div>
-                  </div>
-                <?php endif; ?>
-
-                <?php if($arrayPergunta): ?>
-                  <div class="row">
-                    <div class="col-12">
-                      <p class="lead mb-1"><strong>Perguntas necessárias:</strong></p>
-                      <ul>
-                      <?php foreach($arrayPergunta as $reg): ?>
-
-                        <li><?= $reg->getPergunta()->getPergunta(); ?></li>
-
-                      <?php endforeach; ?>
-                      </ul>
-                    </div>
-                  </div>
-                <?php endif; ?>
-            </div>
-            <hr class="my-2 my-md-4">
-
-            <form method="POST" action="processo_seletivo_testes.php">
-              <input type="hidden" name="txtIdProcesso" id="txtIdProcesso" value="<?= $idProcesso; ?>" />
-              <div class="form-row">
-                <div class="col text-center">
-                  <?php if(isset($_SESSION['cnpj'])): ?>
-                    <a href="recrutador.php" class="btn btn-warning btn-lg float-right">Retornar</a>
-                  <?php elseif($candidatoProcesso->getCpf() == NULL): ?>
-                    <input type="submit" name="btnCandidatar" id="btnCandidatar" class="btn btn-warning btn-lg float-right" value="Candidatar-se!" />
-                  <?php else: ?>
-                    <input type="submit" name="btnTestes" id="btnTestes" class="btn btn-success btn-lg float-right" value="Visualizar Testes" />
-                  <?php endif; ?>
-
-
+          <div class="row d-flex justify-content-center">
+            <div class="col-12 col-md-9 border rounded p-4 mt-2 mb-5">
+              <p class="lead">
+                <pre class="lead-pre"><?= $processo->getResumoVaga() ?></pre>
+              </p>
+              <div class="row">
+                <div class="col-12">
+                  <p class="lead">Contratação: <?= $processo->getTipoContratacao() ?>, salário <?= $processo->getSalario() == 0 ? ' a combinar.' : 'de R$ ' . $processo->getSalario() . '.' ?></p>
                 </div>
               </div>
-            </form>
+            </div>
+          </div>
+
+          <?php if ($arrayCompetencia) : ?>
+            <div class="row">
+              <div class="col-12">
+                <p class="lead mb-1"><strong>Competências necessárias:</strong></p>
+                <ul>
+                  <?php foreach ($arrayCompetencia as $reg) : ?>
+
+                    <li><?= $reg->getCompetencia()->getNomeComp(); ?> nível <?= $reg->getNivel(); ?></li>
+
+                  <?php endforeach; ?>
+                </ul>
+              </div>
+            </div>
+          <?php endif; ?>
+
+          <?php if ($arrayTeste) : ?>
+            <div class="row">
+              <div class="col-12">
+                <p class="lead mb-1"><strong>Testes online necessários:</strong></p>
+                <ul>
+                  <?php foreach ($arrayTeste as $reg) : ?>
+
+                    <li><?= $reg->getTesteOnline()->getNomeTesteOnline(); ?></li>
+
+                  <?php endforeach; ?>
+                </ul>
+              </div>
+            </div>
+          <?php endif; ?>
+
+          <?php if ($arrayPergunta) : ?>
+            <div class="row">
+              <div class="col-12">
+                <p class="lead mb-1"><strong>Perguntas necessárias:</strong></p>
+                <ul>
+                  <?php foreach ($arrayPergunta as $reg) : ?>
+
+                    <li><?= $reg->getPergunta()->getPergunta(); ?></li>
+
+                  <?php endforeach; ?>
+                </ul>
+              </div>
+            </div>
+          <?php endif; ?>
+      </div>
+      <hr class="my-2 my-md-4">
+
+      <form method="POST" action="processo_seletivo_testes.php">
+        <input type="hidden" name="txtIdProcesso" id="txtIdProcesso" value="<?= $idProcesso; ?>" />
+        <div class="form-row">
+          <div class="col text-center">
+            <?php if ($candidatoProcesso->getCpf() == NULL) : ?>
+              <input type="submit" name="btnCandidatar" id="btnCandidatar" class="btn btn-warning btn-lg float-right" value="Candidatar-se!" />
+            <?php else : ?>
+              <input type="submit" name="btnTestes" id="btnTestes" class="btn btn-success btn-lg float-right" value="Visualizar Testes" />
+            <?php endif; ?>
+
+
+          </div>
         </div>
+      </form>
     </div>
-  </section>
+  </div>
+</section>
 
 <?php include 'footer.php'; ?>
