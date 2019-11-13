@@ -75,54 +75,113 @@ include_once 'headerRecrut.php'
 
     <!-- CARD DO CANDIDATO-->
 
-
     <?php if($arrayCandidatos): ?>
+      <?php $arrayClassifica = array() ?>
+
+      <?php foreach($arrayCandidatos as $reg): ?>
+        <?php
+
+          $candidatoCompetencia = new CandidatoCompetencia();
+          $candidatoCompetenciaDAO = new CandidatoCompetenciaDAO($conn);
+          $candidatoCompetencia->setCpf($reg->getCpf());
+          $arrayCompetencias = $candidatoCompetenciaDAO->Listar($candidatoCompetencia);
+
+          $processoCandTeste = new ProcessoCandTeste();
+          $processoCandTesteDAO = new ProcessoCandTesteDAO($conn);
+          $processoCandTeste->setCpf($reg->getCpf());
+          $processoCandTeste->setIdProcesso($processo->getIdProcesso());
+          $arrayTestes = $processoCandTesteDAO->Listar($processoCandTeste);
+
+          $mediaTestes = 0.0;
+
+          foreach($arrayTestes as $teste) {
+            $resTeste = $processoCandTesteDAO->ListarResultado($teste, $processo);
+            $mediaTestes += $resTeste;
+          }
+
+          $retornoComp = $candidatoCompetenciaDAO->ListarQuantComp($candidatoCompetencia, $processoCompetencia);
+          
+          $arrayClassifica[] = ["candidato" => $reg,
+            "quantComp" => $retornoComp['quantComp'],
+            "pontosNivel" => $retornoComp['pontosNivel'],
+            "mediaTestes" => $mediaTestes];
+
+        ?>
+
+      <?php endforeach; ?>
+      <?php
+        //Ordenando a array
+
+        function comparar($a, $b) {
+          if($a['quantComp'] > $b['quantComp'])
+            return -1;
+          else if ($a['quantComp'] < $b['quantComp'])
+            return 1;
+          else
+            if($a['pontosNivel'] > $b['pontosNivel'])
+              return -1;
+            else if ($a['pontosNivel'] < $b['pontosNivel'])
+              return 1;
+            else
+              if($a['mediaTestes'] > $b['mediaTestes'])
+                return -1;
+              else if ($a['mediaTestes'] < $b['mediaTestes'])
+                return 1;
+                  else
+                    return 0;
+        }
+          
+          usort($arrayClassifica, "comparar");
+      ?>
+
+    <?php endif; ?>
+
+
+    <?php if($arrayClassifica): ?>
       <div id="accordion">
               
-        <?php foreach($arrayCandidatos as $reg): ?>
+        <?php foreach($arrayClassifica as $cand): ?>
           <div class="card">
-            <div class="card-header" id="heading<?= $reg->getCpf() ?>">
-              <h5 class="d-inline"><?= $reg->getNome() ?> <?= $reg->getSobrenome() ?></h5>
-              <button class="btn btn-outline-primary float-right d-inline" data-toggle="collapse" data-target="#collapse<?= $reg->getCpf() ?>" aria-expanded="true" aria-controls="collapse<?= $reg->getCpf() ?>">
+            <div class="card-header" id="heading<?= $cand['candidato']->getCpf() ?>">
+              <h5 class="d-inline"><?= $cand['candidato']->getNome() ?> <?= $cand['candidato']->getSobrenome() ?></h5>
+              <button class="btn btn-outline-primary float-right d-inline" data-toggle="collapse" data-target="#collapse<?= $cand['candidato']->getCpf() ?>" aria-expanded="true" aria-controls="collapse<?= $cand['candidato']->getCpf() ?>">
                 <i class="fas fa-search"></i>
               </button>
             </div>
 
-            <div id="collapse<?= $reg->getCpf() ?>" class="collapse" aria-labelledby="heading<?= $reg->getCpf() ?>" data-parent="#accordion">
+            <div id="collapse<?= $cand['candidato']->getCpf() ?>" class="collapse" aria-labelledby="heading<?= $cand['candidato']->getCpf() ?>" data-parent="#accordion">
               <div class="card-body">
                 <div class="card-text">
                   <form method="POST" action="candidato_cv.php">
-                    <input type="hidden" id="txtCpf" name="txtCpf" value="<?= $reg->getCpf() ?>" />
+                    <input type="hidden" id="txtCpf" name="txtCpf" value="<?= $cand['candidato']->getCpf() ?>" />
                     <input type="hidden" id="txtIdProcesso" name="txtIdProcesso" value="<?= $idProcesso ?>" />
 
                       <?php
 
                         $candidatoCompetencia = new CandidatoCompetencia();
                         $candidatoCompetenciaDAO = new CandidatoCompetenciaDAO($conn);
-                        $candidatoCompetencia->setCpf($reg->getCpf());
-                        $arrayCompetencias = $candidatoCompetenciaDAO->Listar($candidatoCompetencia);
+                        $candidatoCompetencia->setCpf($cand['candidato']->getCpf());
+                        $arrayCompetencias = $candidatoCompetenciaDAO->ListarCompProc($candidatoCompetencia, $processo);
 
                         $processoCandTeste = new ProcessoCandTeste();
                         $processoCandTesteDAO = new ProcessoCandTesteDAO($conn);
-                        $processoCandTeste->setCpf($reg->getCpf());
+                        $processoCandTeste->setCpf($cand['candidato']->getCpf());
                         $processoCandTeste->setIdProcesso($processo->getIdProcesso());
                         $arrayTestes = $processoCandTesteDAO->Listar($processoCandTeste);
 
                         $processoCandPergunta = new ProcessoCandPergunta();
                         $processoCandPerguntaDAO = new ProcessoCandPerguntaDAO($conn);
-                        $processoCandPergunta->setCpf($reg->getCpf());
+                        $processoCandPergunta->setCpf($cand['candidato']->getCpf());
                         $processoCandPergunta->setIdProcesso($processo->getIdProcesso());
                         $arrayPerguntas = $processoCandPerguntaDAO->Listar($processoCandPergunta);
-
-                        var_dump($candidatoCompetenciaDAO->ListarQuantComp($candidatoCompetencia, $processoCompetencia));
-                      
+                        
                       ?>
 
                       <div class="row">
                         <?php if($arrayCompetencias): ?>
 
                           <div class="col-12 col-lg-6">
-                            <p class="lead mb-0"><strong>Competências</strong></p>
+                            <p class="lead mb-0"><strong>Competências Correspondentes</strong></p>
                             <ul>
                             <?php foreach($arrayCompetencias as $reg): ?>
                               <li><strong><?= $reg->getCompetencia(); ?></strong>, nível <?= $reg->getNivel(); ?></li>
@@ -131,7 +190,9 @@ include_once 'headerRecrut.php'
                           
                           </div>
                         <?php else: ?>
-                          <p class="lead">O candidato não tem competências cadastradas.</p>
+                          <div class="col-12 col-lg-6">
+                            <p class="lead">O candidato não tem competências correspondentes.</p>
+                          </div>
                         <?php endif; ?>
 
                         <?php if($arrayTestes): ?>
@@ -147,6 +208,7 @@ include_once 'headerRecrut.php'
                                   $testeOnline->setIdTesteOnline($reg->getIdTesteOnline());
                                   $testeOnline->setCnpj($processo->getCnpj());
                                   $testeOnlineDAO->Listar($testeOnline);
+
                                 ?>
 
                                 <li>Teste de <?= $testeOnline->getNomeTesteOnline()?>: <strong><?= $reg->getResultado(); ?> acertos </strong> entre <?= $testeOnline->getQuantidadeQuestoes(); ?> perguntas.</li>
@@ -154,7 +216,9 @@ include_once 'headerRecrut.php'
                               </ul>
                             </div>
                         <?php else: ?>
-                          <p class="lead">O candidato não realizou nenhum teste online.</p>
+                          <div class="col-12 col-lg-6">
+                            <p class="lead">O candidato não realizou nenhum teste online.</p>
+                          </div>
                         <?php endif; ?>
                       </div>
 
@@ -185,10 +249,14 @@ include_once 'headerRecrut.php'
                           <?php endforeach; ?>
                           
                       <?php else: ?>
-                              <p class="lead">O candidato não respondeu as perguntas.</p>
+                        <div class="row">
+                          <div class="col-12">
+                            <p class="lead">O candidato não respondeu nenhuma pergunta.</p>
+                          </div>
+                        </div>
                       <?php endif; ?>
 
-                    <button type="submit" id="btnVisualizarPerfil" name="btnVisualizarPerfil" class="btn btn-warning float-right mb-2">Visualizar Perfil</button>
+                    <button type="submit" id="btnVisualizarPerfil" name="btnVisualizarPerfil" class="btn btn-warning float-right mb-2"><i class="fas fa-user-tie"></i> Visualizar Perfil</button>
                   </form>
                 </div>
               </div>
@@ -200,107 +268,6 @@ include_once 'headerRecrut.php'
     <?php else: ?>
       <p class="lead">Não há candidatos, divulgue seu processo seletivo!</p>
     <?php endif; ?>
-
-
-    <div class="row">
-      <div class="col">
-        <div class="card">
-
-          <div class="card-header" id="">
-            <span>Arnoldo Barreto Neto</span>
-            <button name="btnAbrir" id="btnAbrir" class="btn btn-outline-primary float-right d-inline" data-toggle="collapse" data-target="#collapseCandidato">
-              <i class="fas fa-search"></i>
-            </button>
-          </div>
-
-          <div id="collapseCandidato" class="collapse">
-            <div class="card-body">
-              <div class="card-text">
-                <div class="form-row">
-
-                  <div class="col-lg-4 col-md-5">
-                    <h6 class="card-title text-uppercase text-muted mb-2">Competências</h6>
-                    <ul>
-                      <li>Desenvolvimento de pessoas</li>
-                      <li>Trabalho em equipe</li>
-                      <li>Análise de mercado financeiro</li>
-                      <li>Coaching quântico</li>
-                      <li>Mildfsdffsdfsdfk</li>
-                      <li>Msdfssdfdfsdfsilk</li>
-                      <li>Misdfsdsdfsdfsdlk</li>
-                      <li>Mifssdfdflk</li>
-                      <li>Misdfsdfsdflk</li>
-                    </ul>
-                  </div>
-
-                  <div class="col-lg-3 col-md-3 ml-3">
-                    <h6 class="card-title text-uppercase text-muted mb-1">Matemática</h6>
-                    <span class="h2 mb-0 card-title">10</span>
-                    <h6 class="card-title text-uppercase text-muted mb-1">Português</h6>
-                    <span class="h2 mb-0">10</span>
-                    <h6 class="card-title text-uppercase text-muted mb-1">Raciocínio lógico</h6>
-                    <span class="h2 mb-0">10</span>
-                    <h6 class="card-title text-uppercase text-muted mb-1">Inglês</h6>
-                    <span class="h2 mb-0 card-title">10</span>
-                  </div>
-                  <div class="col-lg-3 col-md-3 ml-3">
-                    <h6 class="card-title text-uppercase text-muted mb-1">Testes específicos 1</h6>
-                    <span class="h2 mb-0 card-title">10</span>
-                    <h6 class="card-title text-uppercase text-muted mb-1">Testes específicos 2</h6>
-                    <span class="h2 mb-0">10</span>
-                    <h6 class="card-title text-uppercase text-muted mb-1">Testes específicos 3</h6>
-                    <span class="h2 mb-0">10</span>
-                    <h6 class="card-title text-uppercase text-muted mb-1">Testes específicos 4</h6>
-                    <span class="h2 mb-0 card-title">10</span>
-                  </div>
-
-                </div> <!-- form-row -->
-
-                <div class="form-row">
-                  <h3 class="pr-5 mt-3">Perguntas</h3>
-                  <div class="row">
-                    <div class="card-body">
-                      <h5 class="card-title text-uppercase text-muted mb-2">Por quê</h5>
-                      <span class="h6 mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse sagittis elit mattis, ultricies lorem vitae, tristique ipsum. Cras facilisis euismod tortor non posuere. Duis nisl lorem, gravida eget ex et, accumsan ornare quam. Vivamus in tortor varius, bibendum enim at, imperdiet felis. Curabitur accumsan maximus velit sed sagittis. Praesent vitae placerat quam. Nunc efficitur nunc nisl, at elementum elit pharetra vitae. Morbi lacinia lobortis eros, id euismod elit vestibulum quis. Duis consectetur feugiat quam vitae sodales. Nullam bibendum eu tellus et faucibus. Vivamus posuere congue ullamcorper. Duis ac ligula lacinia, sollicitudin nunc sit amet, vulputate dolor.</span>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="card-body">
-                      <h5 class="card-title text-uppercase text-muted mb-2">Por quê</h5>
-                      <span class="h6 mb-0">Cras facilisis euismod tortor non posuere. Duis nisl lorem, gravida eget ex et, accumsan ornare quam. Vivamus in tortor varius, bibendum enim at, imperdiet felis. Curabitur accumsan maximus velit sed sagittis. Praesent vitae placerat quam. Nunc efficitur nunc nisl, at elementum elit pharetra vitae. Morbi lacinia lobortis eros, id euismod elit vestibulum quis. Duis consectetur feugiat quam vitae sodales. Nullam bibendum eu tellus et faucibus. Vivamus posuere congue ullamcorper. Duis ac ligula lacinia, sollicitudin nunc sit amet, vulputate dolor.</span>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="card-body">
-                      <h5 class="card-title text-uppercase text-muted mb-2">Por quê</h5>
-                      <span class="h6 mb-0">Curabitur accumsan maximus velit sed sagittis. Praesent vitae placerat quam. Nunc efficitur nunc nisl, at elementum elit pharetra vitae. Morbi lacinia lobortis eros, id euismod elit vestibulum quis. Duis consectetur feugiat quam vitae sodales. Nullam bibendum eu tellus et faucibus. Vivamus posuere congue ullamcorper. Duis ac ligula lacinia, sollicitudin nunc sit amet, vulputate dolor.</span>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="card-body">
-                      <h5 class="card-title text-uppercase text-muted mb-2">Por quê</h5>
-                      <span class="h6 mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. , vulputate dolor.</span>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="form-row">
-                  <div class="col">
-                    <a href="candidato_perfil.php" class="btn btn-primary float-right">Visualizar Perfil</a>
-                  </div>
-                </div>
-
-              </div><!-- card-text -->
-            </div><!-- card-body -->
-          </div>
-          <!--collapseCandidato-->
-
-        </div>
-        <!--card-->
-      </div>
-      <!--col-->
-    </div>
-    <!--row-->
 
   </div>
 </div>

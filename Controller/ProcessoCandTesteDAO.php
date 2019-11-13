@@ -65,17 +65,19 @@ class ProcessoCandTesteDAO
         }
     }
 
-    public function ListarResultado(ProcessoCandTeste $processoCandTeste) {
+    public function ListarResultado(ProcessoCandTeste $processoCandTeste, ProcessoSeletivo $processoSeletivo) {
 
-        $query = $this->db->getConection()->query("SELECT ct.resultado, count(*) as quantQuestao FROM tbprocessocandteste as ct inner join tbquestao as tq ON ct.idTesteOnline = tq.idTesteOnline WHERE ct.idProcesso = '" . $processoCandTeste->getIdProcesso() . "' AND ct.cpf = '" . $processoCandTeste->getCpf(). "' AND ct.idTesteOnline = '". $processoCandTeste->getidTesteOnline()."';");
+        $query = $this->db->getConection()->query("SELECT ct.resultado, count(*) as quantQuestao FROM tbprocessocandteste as ct inner join tbquestao as tq ON ct.idTesteOnline = tq.idTesteOnline WHERE ct.idProcesso = '" . $processoCandTeste->getIdProcesso() . "' AND ct.cpf = '" . $processoCandTeste->getCpf(). "' AND ct.idTesteOnline = '". $processoCandTeste->getidTesteOnline()."' AND tq.Cnpj = '". $processoSeletivo->getCnpj()."';");
 
         $reg = $query->fetch_array();
 
-        $porcentagem = (100 * floatval($reg['resultado'])) / floatval($reg['quantQuestao']);
-
-        
-
-        return $porcentagem;
+        if($reg['resultado'] == 0) {
+            return 0;
+        }
+        else {
+            $porcentagem = (100 * floatval($reg['resultado'])) / floatval($reg['quantQuestao']);
+            return $porcentagem;
+        }
     }
 }
 
