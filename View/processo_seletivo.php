@@ -58,9 +58,11 @@ $processoPergunta->setProcesso($processo);
 $arrayPergunta = $processoPerguntaDAO->Listar($processoPergunta);
 
 //Verificar se o candidato ja se candidatou
-$candidatoProcesso->setCpf($_SESSION['cpf']);
-$candidatoProcesso->setIdProcesso($idProcesso);
-$candidatoProcessoDAO->Listar($candidatoProcesso);
+if(isset($_SESSION['cpf'])) {
+  $candidatoProcesso->setCpf($_SESSION['cpf']);
+  $candidatoProcesso->setIdProcesso($idProcesso);
+  $candidatoProcessoDAO->Listar($candidatoProcesso);
+}
 
 if(empty($_SESSION['logado']))
   include_once 'header.php';
@@ -142,7 +144,9 @@ else if($_SESSION['logado'] == 2)
               <input type="hidden" name="txtIdProcesso" id="txtIdProcesso" value="<?= $idProcesso; ?>" />
               <div class="form-row">
                 <div class="col text-center">
-                  <?php if($candidatoProcesso->getCpf() == NULL): ?>
+                  <?php if(isset($_SESSION['cnpj'])): ?>
+                    <a href="recrutador.php" class="btn btn-warning btn-lg float-right">Retornar</a>
+                  <?php elseif($candidatoProcesso->getCpf() == NULL): ?>
                     <input type="submit" name="btnCandidatar" id="btnCandidatar" class="btn btn-warning btn-lg float-right" value="Candidatar-se!" />
                   <?php else: ?>
                     <input type="submit" name="btnTestes" id="btnTestes" class="btn btn-success btn-lg float-right" value="Visualizar Testes" />
