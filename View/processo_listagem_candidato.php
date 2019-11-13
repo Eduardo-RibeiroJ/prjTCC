@@ -68,15 +68,24 @@ include_once 'headerRecrut.php'
     <div class="row">
       <div class="col-12">
         <h5 class="display-4">Vaga para <strong><?= $processo->getCargo()->getNomeCargo(); ?></strong>, encerra em <?= $processo->getDataLimiteCandidatar(); ?>.</h4>
-      <p class="lead text-muted">49 candidatos</p>
+        <p class="lead text-muted">
+          <?php
+            $quantCand = $candidatoProcessoDAO->quantCandidatos($candidatoProcesso);
+            if($quantCand == 0)
+              echo "Nenhum candidato";
+            else if($quantCand == 1)
+              echo "1 candidato";
+            else
+              echo $quantCand." candidatos";
+            ?>
       </div>
     </div>
     <hr>
 
     <!-- CARD DO CANDIDATO-->
 
+    <?php $arrayClassifica = array() ?>
     <?php if($arrayCandidatos): ?>
-      <?php $arrayClassifica = array() ?>
 
       <?php foreach($arrayCandidatos as $reg): ?>
         <?php
@@ -267,6 +276,7 @@ include_once 'headerRecrut.php'
       </div> <!-- accordion -->
     <?php else: ?>
       <p class="lead">Não há candidatos, divulgue seu processo seletivo!</p>
+      <p class="lead"><strong>Link: <strong><a href="processo_seletivo-<?= $processo->getIdProcesso(); ?>">localhost/prjtcc/View/processo_seletivo-<?= $processo->getIdProcesso(); ?></a></p>
     <?php endif; ?>
 
   </div>

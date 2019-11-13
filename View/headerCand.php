@@ -65,7 +65,7 @@ if(!(isset($_SESSION['logado'])) || $_SESSION['logado'] != 1) {
 					</li>
 
 					<li class="nav-item">
-						<a class="nav-link" href="candidato_minhas_vagas.php">Minhas vagas</a>
+						<a class="nav-link" href="candidato_minhas_vagas.php">Processos Seletivos</a>
 					</li>
 				</ul>
 

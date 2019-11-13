@@ -72,6 +72,14 @@ class CandidatoProcessoDAO
 
         }
     }
+
+    public function quantCandidatos(CandidatoProcesso $candidatoProcesso) {
+
+        $query = $this->db->getConection()->query("SELECT * FROM tbCandidatoProcesso WHERE idProcesso ='". $candidatoProcesso->getIdProcesso()."';");
+
+        return mysqli_num_rows($query);
+
+    }
 }
 
 ?>
