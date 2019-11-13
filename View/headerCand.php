@@ -50,7 +50,7 @@ if(!(isset($_SESSION['logado'])) || $_SESSION['logado'] != 1) {
 
 	<!-- Navbar -->
 	<header id="header">
-		<nav class="navbar fixed-top navbar-expand-lg" style="background-color: rgba(20, 137, 204, 1);">
+		<nav class="navbar fixed-top navbar-expand-lg navbar-dark" style="background-color: rgba(20, 137, 204, 1);">
 			<a class="navbar-brand h1 mb-0" href="index.php"> Connection</a>
 
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsite" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">

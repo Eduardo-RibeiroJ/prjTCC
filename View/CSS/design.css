@@ -98,14 +98,14 @@
 
     /*FORMATAÇÃO DE ITENS DO BOOTSTRAP */
 
-    .nav-item .nav-link, .navbar a{
+    /* .nav-item .nav-link, .navbar a{
         color: white;
     }
 
     .nav-item .nav-link:hover, .navbar a:hover{
         color: white;
         transform: scale(1.05,1.05);
-    }
+    } */
 
     .container {
         padding-top: 7rem;
