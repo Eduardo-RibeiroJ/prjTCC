@@ -23,7 +23,7 @@ unset($_SESSION['processo_etapa1']);
 
 <?php include_once 'headerRecrut.php'; ?>
 
-<section class="masthead" id="sectionProcesso1" style="background-color:#c1ddf3">
+<section class="masthead" id="sectionProcessoConcluir" style="background-color:#c1ddf3">
   <div class="container">
 
     <div class="jumbotron p-3 p-md-5" style="background-color: #FFF">
@@ -35,7 +35,8 @@ unset($_SESSION['processo_etapa1']);
           <p class="lead">O processo seletivo estará aberto entre <?= $processo->getDataInicio(); ?> a <?= $processo->getDataLimiteCandidatar(); ?></p>
           <p class="lead"><strong>Vaga para <?= $processo->getCargo()->getNomeCargo(); ?></strong></p>
 
-          <h4 class="mt-4">Segue link do processo seletivo: <a href="processo_seletivo-<?= $processo->getIdProcesso(); ?>">localhost/processo_seletivo-<?= $processo->getIdProcesso(); ?></a> <button class="btn btn-outline-dark ml-2" id="brnCopiar"><i class="far fa-copy"></i> Copiar</button></h4>
+          <h4 class="mt-4">Segue link do processo seletivo: <a href="processo_seletivo-<?= $processo->getIdProcesso(); ?>">localhost/processo_seletivo-<?= $processo->getIdProcesso(); ?></a> <button class="btn btn-outline-dark ml-2" id="btnCopiar"><i class="far fa-copy"></i> Copiar</button></h4>
+          <input type="hidden" id="txtLinkCopiar" value="localhost/processo_seletivo-<?= $processo->getIdProcesso(); ?>">
       </div>
       <hr class="my-2 my-md-4">
 

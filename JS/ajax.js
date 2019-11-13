@@ -906,4 +906,13 @@ $(function () {
         }
     });
 
+    //BOTAO COPIAR LINK
+
+    $('#sectionProcessoConcluir').on('click', '#btnCopiar', function (e) {
+
+        document.getElementById("txtLinkCopiar").select();
+        document.execCommand('copy');
+
+    });
+
 });
