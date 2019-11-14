@@ -132,7 +132,6 @@ else if ($_SESSION['logado'] == 2)
 
             <?php endif; ?>
 
-
           <?php else: ?>
 
             <?php if ($arrayCompetencia) : ?>

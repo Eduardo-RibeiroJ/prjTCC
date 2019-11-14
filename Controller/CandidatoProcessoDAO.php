@@ -77,7 +77,7 @@ class CandidatoProcessoDAO
 
         if($candidatoProcesso->getCpf() != NULL) {
             $conn = new Conexao();
-            $query = $this->db->getConection()->query("SELECT * FROM tbCandidatoProcesso WHERE cpf ='". $candidatoProcesso->getCpf()."' ORDER BY idProcesso DESC LIMIT 5;");
+            $query = $this->db->getConection()->query("SELECT * FROM tbCandidatoProcesso WHERE cpf ='". $candidatoProcesso->getCpf()."' ORDER BY idProcesso DESC LIMIT 3;");
             $arrayQuery = array();
 
             while($reg = $query->fetch_array()) {
