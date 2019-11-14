@@ -35,7 +35,7 @@ $candObjetivoDAO->Listar($candObjetivo);
       <p class="lead"></p>
 
       <hr class="my-2 my-md-4">
-      <p>Defina a área com a qual pretende atuar.</p>
+      <p class="lead">Defina a área com a qual pretende atuar.</p>
     </div>
   </div>
 
@@ -68,7 +68,7 @@ $candObjetivoDAO->Listar($candObjetivo);
                       <div id="compList"></div>
                     </div>
 
-                    <div class="form-group col-md-5">
+                    <div class="form-group col-md-6">
                       <label for="cbbNivel">Nível</label>
                       <select class="custom-select" id="cbbNivel" name="cbbNivel" required>
                         <option value="<?= $candObjetivo->getNivel(); ?>" selected><?= $candObjetivo->getNivel(); ?></option>
@@ -123,7 +123,7 @@ $candObjetivoDAO->Listar($candObjetivo);
     });
   });
 
-  $(document).on('click', 'li', function() {
+  $(document).on('click', '.li-pesquisa', function() {
     $('#txtCargo').val($(this).text());
     $('#compList').html('');
   })

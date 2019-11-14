@@ -317,7 +317,7 @@ if (isset($_POST['btnSalvar'])) {
     });
   });
 
-  $(document).on('click', 'li', function() {
+  $(document).on('click', '.li-pesquisa', function() {
     $('#txtCargo').val($(this).text());
     $('#compList').html('');
   })

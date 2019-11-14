@@ -123,7 +123,7 @@ $arrayVagas = $processoSeletivoDAO->ListarVaga($processoSeletivo, $objetivo);
     });
   });
 
-  $(document).on('click', 'li', function() {
+  $(document).on('click', '.li-pesquisa', function() {
     $('#nomeCargo').val($(this).text());
     $('#compList').html('');
   })

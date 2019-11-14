@@ -125,7 +125,7 @@ $arrayCompetencia = $competenciaDAO->Listar($competencia);
         });
     });
 
-    $(document).on('click', 'li', function() {
+    $(document).on('click', '.li-pesquisa', function() {
         $('#txtNomeCompetencia').val($(this).text());
         $('#compList').html('');
     })

@@ -121,7 +121,7 @@ else if ($_SESSION['logado'] == 2)
                   <ul>
                     <?php foreach ($arrayCompetencias as $reg) : ?>
 
-                      <li><?= $reg->getCompetencia() ?> nível <?= $reg->getNivel(); ?> <i class="fas fa-check text-success"></i></li>
+                      <li><strong><?= $reg->getCompetencia() ?></strong> nível <?= $reg->getNivel(); ?> <i class="fas fa-check text-success"></i></li>
 
                     <?php endforeach; ?>
                   </ul>
@@ -141,7 +141,7 @@ else if ($_SESSION['logado'] == 2)
                 <ul>
                   <?php foreach ($arrayCompetencia as $reg) : ?>
 
-                    <li><?= $reg->getCompetencia()->getNomeComp(); ?> nível <?= $reg->getNivel(); ?></li>
+                    <li><strong><?= $reg->getCompetencia()->getNomeComp(); ?></strong> nível <?= $reg->getNivel(); ?></li>
 
                   <?php endforeach; ?>
                 </ul>

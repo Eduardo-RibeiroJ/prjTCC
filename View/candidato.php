@@ -89,7 +89,11 @@ $arrayVagas = $processoSeletivoDAO->ListarVagaCandidato($processoSeletivo, $obje
               <p class="mb-0">Telefone: <?= $candidato->getTel1() ?></p>
               <?php $tel2 = $candidato->getTel2() == "" ? '' : 'Celular: ' . $candidato->getTel2();
               echo $tel2 ?>
-              <a href="candidato_perfil.php" class="btn btn-sm btn-primary mt-2 float-right">Visualizar Perfil</a>
+              <div class="row">
+                <div class="col-12">
+                  <a href="candidato_perfil.php" class="btn btn-sm btn-primary mt-2 float-right">Visualizar Perfil</a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -189,7 +193,7 @@ $arrayVagas = $processoSeletivoDAO->ListarVagaCandidato($processoSeletivo, $obje
     });
   });
 
-  $(document).on('click', 'li', function() {
+  $(document).on('click', '.li-pesquisa', function() {
     $('#nomeCargo').val($(this).text());
     $('#compList').html('');
   })
