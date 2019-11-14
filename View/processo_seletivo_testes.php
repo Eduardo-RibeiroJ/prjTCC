@@ -91,7 +91,7 @@ if(isset($_POST['btnCandidatar'])) {
                 <p class="lead">Você se candidatou para a vaga de <strong><?= $processo->getCargo()->getNomeCargo() ?></strong> - Responda os testes online e perguntas até <strong><?= $processo->getDataLimiteCandidatar(); ?></strong>.</p>
               <?php else: ?>
                 <h5 class="display-4 display-md-2">Vaga para <?= $processo->getCargo()->getNomeCargo() ?></h1>
-                <p class="lead"><strong>Atenção!</strong> - Todos os testes online e perguntas devem ser respondidos até <?= $processo->getDataLimiteCandidatar(); ?>.</p>
+                <p class="lead"><strong>Atenção!</strong> - Todos os testes online e perguntas devem ser respondidos até <strong><?= $processo->getDataLimiteCandidatar(); ?></strong>.</p>
               <?php endif; ?>
 
                 <?php if($arrayTeste): ?>

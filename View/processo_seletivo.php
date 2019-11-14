@@ -43,6 +43,9 @@ $processoCompetenciaDAO = new ProcessoCompetenciaDAO($conn);
 $processoTesteDAO = new ProcessoTesteDAO($conn);
 $processoPerguntaDAO = new ProcessoPerguntaDAO($conn);
 
+//Define o fuso horário
+date_default_timezone_set('America/Sao_Paulo');
+
 //Id pegado no link
 $idProcesso = $_GET['id'];
 
@@ -88,12 +91,13 @@ else if ($_SESSION['logado'] == 2)
 
     <div class="jumbotron p-3 p-md-5" style="background-color: #FFF">
       <div class="container p-0">
-        <h5 class="display-4 display-md-2">Vaga para <?= $processo->getCargo()->getNomeCargo() ?>!</h1>
+        <h5 class="display-4 display-md-2">Vaga para <?= $processo->getCargo()->getNomeCargo() ?></h1>
           <?php if(strtotime(date("d-m-Y")) > strtotime(str_replace("/", "-", $processo->getDataLimiteCandidatar()))): ?>
+
             <h4 class="text-center"><strong>Inscrições encerradas!</strong></h4>
 
           <?php else: ?>
-            <p class="lead">Inscrições para processo seletivo estarão abertas até <strong><?= $processo->getDataLimiteCandidatar(); ?></strong>.</p>
+            <p class="lead">Inscrições para o processo seletivo estarão abertas até <strong><?= $processo->getDataLimiteCandidatar(); ?></strong>.</p>
 
           <?php endif; ?>
 
@@ -201,17 +205,34 @@ else if ($_SESSION['logado'] == 2)
         <div class="form-row">
           <div class="col text-center">
             <?php if(strtotime(date("d-m-Y")) > strtotime(str_replace("/", "-", $processo->getDataLimiteCandidatar()))): ?>
-              <p class="lead text-muted"><strong>Incrições encerradas!</strong></p>
-              <a href="index.php" class="btn btn-warning btn-lg float-right">Retornar</a>
-            <?php elseif(isset($_SESSION['cnpj'])): ?>
-              <a href="recrutador.php" class="btn btn-warning btn-lg float-right">Retornar</a>
-            <?php elseif ($candidatoProcesso->getCpf() == NULL) : ?>
-              <input type="submit" name="btnCandidatar" id="btnCandidatar" class="btn btn-warning btn-lg float-right" value="Candidatar-se!" />
-            <?php else : ?>
-              <p class="lead text-muted"><strong>Você já é candidato!</strong></p>
-              <input type="submit" name="btnTestes" id="btnTestes" class="btn btn-success btn-lg float-right" value="Visualizar Testes" />
-            <?php endif; ?>
+              
+              <?php if(isset($_SESSION['cnpj'])): ?>
+                <p class="lead text-muted"><strong>Incrições encerradas!</strong></p>
+                <a href="recrutador.php" class="btn btn-warning btn-lg float-right">Retornar</a>
+              <?php elseif (!(isset($_SESSION['cpf']))) : ?>
+                <p class="lead text-muted"><strong>Incrições encerradas!</strong></p>
+                <a href="index.php" class="btn btn-warning btn-lg float-right">Procurar mais vagas!</a>
+              <?php elseif ($candidatoProcesso->getCpf() == NULL) : ?>
+                <p class="lead text-muted"><strong>Incrições encerradas!</strong></p>
+                <a href="candidato.php" class="btn btn-warning btn-lg float-right">Retornar</a>
+              <?php else : ?>
+                <p class="lead text-muted"><strong>Você já é candidato, boa sorte!</strong></p>
+                <a href="candidato.php" class="btn btn-warning btn-lg float-right">Retornar</a>
+              <?php endif; ?>
 
+            <?php else : ?>
+
+              <?php if(isset($_SESSION['cnpj'])): ?>
+                <a href="recrutador.php" class="btn btn-warning btn-lg float-right">Retornar</a>
+              <?php elseif ($candidatoProcesso->getCpf() == NULL) : ?>
+                <input type="submit" name="btnCandidatar" id="btnCandidatar" class="btn btn-warning btn-lg float-right" value="Candidatar-se!" />
+              <?php else : ?>
+                <p class="lead text-muted"><strong>Você já é candidato!</strong></p>
+                <input type="submit" name="btnTestes" id="btnTestes" class="btn btn-success btn-lg float-right" value="Visualizar Testes" />
+              <?php endif; ?>
+
+            <?php endif; ?>
+            
 
           </div>
         </div>

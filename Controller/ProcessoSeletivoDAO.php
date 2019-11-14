@@ -75,7 +75,7 @@ class ProcessoSeletivoDAO
 
         if ($processo->getIdProcesso() == NULL) {
 
-            $query = $this->db->getConection()->query("SELECT *, DATE_FORMAT(dataLimiteCandidatar, '%d/%m/%Y') AS dataLimiteCandidatar FROM tbProcessoSeletivo WHERE cnpj ='" . $processo->getCnpj() . "' ORDER BY idProcesso DESC;");
+            $query = $this->db->getConection()->query("SELECT *, DATE_FORMAT(dataLimiteCandidatar, '%d/%m/%Y') AS dataLimiteCandidatarForm FROM tbProcessoSeletivo WHERE cnpj ='" . $processo->getCnpj() . "' ORDER BY dataLimiteCandidatar DESC;");
             $arrayQuery = array();
 
             while ($reg = $query->fetch_array()) {
@@ -92,7 +92,7 @@ class ProcessoSeletivoDAO
                     $reg['cnpj'],
                     $reg['idCargo'],
                     $reg['dataInicio'],
-                    $reg['dataLimiteCandidatar'],
+                    $reg['dataLimiteCandidatarForm'],
                     $reg['resumoVaga'],
                     $reg['tipoContratacao'],
                     $reg['salario']
@@ -105,7 +105,7 @@ class ProcessoSeletivoDAO
             return $arrayQuery;
         } else {
 
-            $query = $this->db->getConection()->query("SELECT *, DATE_FORMAT(dataLimiteCandidatar, '%d/%m/%Y') AS dataLimiteCandidatar FROM tbProcessoSeletivo WHERE idProcesso ='" . $processo->getIdProcesso() . "' ORDER BY idProcesso DESC;");
+            $query = $this->db->getConection()->query("SELECT *, DATE_FORMAT(dataLimiteCandidatar, '%d/%m/%Y') AS dataLimiteCandidatarForm FROM tbProcessoSeletivo WHERE idProcesso ='" . $processo->getIdProcesso() . "' ORDER BY dataLimiteCandidatar DESC;");
 
             $reg = $query->fetch_array();
 
@@ -121,7 +121,7 @@ class ProcessoSeletivoDAO
                 $reg['cnpj'],
                 $reg['idCargo'],
                 $reg['dataInicio'],
-                $reg['dataLimiteCandidatar'],
+                $reg['dataLimiteCandidatarForm'],
                 $reg['resumoVaga'],
                 $reg['tipoContratacao'],
                 $reg['salario']
@@ -146,7 +146,7 @@ class ProcessoSeletivoDAO
     {
         $conn = new Conexao();
 
-        $query = $this->db->getConection()->query("SELECT *, DATE_FORMAT(p.dataLimiteCandidatar, '%d/%m/%Y') AS dataLimiteCandidatar FROM tbProcessoSeletivo as p inner join tbCargo as c ON p.idCargo = c.idCargo  WHERE c.nomeCargo LIKE '%".$objetivo->getCargo()->getNomeCargo()."%' ORDER BY idProcesso DESC;");
+        $query = $this->db->getConection()->query("SELECT *, DATE_FORMAT(p.dataLimiteCandidatar, '%d/%m/%Y') AS dataLimiteCandidatar FROM tbProcessoSeletivo as p inner join tbCargo as c ON p.idCargo = c.idCargo  WHERE c.nomeCargo LIKE '%".$objetivo->getCargo()->getNomeCargo()."%' AND p.dataLimiteCandidatar >= CURDATE() ORDER BY p.dataLimiteCandidatar DESC;");
 
         $arrayQuery = array();
 
@@ -182,7 +182,7 @@ class ProcessoSeletivoDAO
     {
         $conn = new Conexao();
 
-        $query = $this->db->getConection()->query("SELECT *, DATE_FORMAT(p.dataLimiteCandidatar, '%d/%m/%Y') AS dataLimiteCandidatar FROM tbProcessoSeletivo as p inner join tbCargo as c ON p.idCargo = c.idCargo  WHERE c.nomeCargo LIKE '%".$objetivo->getCargo()->getNomeCargo()."%' ORDER BY idProcesso DESC LIMIT 5;");
+        $query = $this->db->getConection()->query("SELECT *, DATE_FORMAT(p.dataLimiteCandidatar, '%d/%m/%Y') AS dataLimiteCandidatarForm FROM tbProcessoSeletivo as p inner join tbCargo as c ON p.idCargo = c.idCargo  WHERE c.nomeCargo LIKE '%".$objetivo->getCargo()->getNomeCargo()."%' AND p.dataLimiteCandidatar >= CURDATE() ORDER BY p.dataLimiteCandidatar DESC LIMIT 5;");
 
         $arrayQuery = array();
 
@@ -200,7 +200,7 @@ class ProcessoSeletivoDAO
                 $reg['cnpj'],
                 $reg['idCargo'],
                 $reg['dataInicio'],
-                $reg['dataLimiteCandidatar'],
+                $reg['dataLimiteCandidatarForm'],
                 $reg['resumoVaga'],
                 $reg['tipoContratacao'],
                 $reg['salario']

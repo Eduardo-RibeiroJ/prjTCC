@@ -57,7 +57,7 @@ class CandidatoProcessoDAO
         }
         else if($candidatoProcesso->getCpf() != NULL) {
             $conn = new Conexao();
-            $query = $this->db->getConection()->query("SELECT * FROM tbCandidatoProcesso WHERE cpf ='". $candidatoProcesso->getCpf()."' ORDER BY idProcesso DESC;");
+            $query = $this->db->getConection()->query("SELECT * FROM tbCandidatoProcesso as cp INNER JOIN tbProcessoSeletivo as ps ON cp.idProcesso = ps.idProcesso WHERE cp.cpf ='". $candidatoProcesso->getCpf()."' ORDER BY ps.dataLimiteCandidatar DESC;");
             $arrayQuery = array();
 
             while($reg = $query->fetch_array()) {
@@ -77,7 +77,7 @@ class CandidatoProcessoDAO
 
         if($candidatoProcesso->getCpf() != NULL) {
             $conn = new Conexao();
-            $query = $this->db->getConection()->query("SELECT * FROM tbCandidatoProcesso WHERE cpf ='". $candidatoProcesso->getCpf()."' ORDER BY idProcesso DESC LIMIT 3;");
+            $query = $this->db->getConection()->query("SELECT * FROM tbCandidatoProcesso as cp INNER JOIN tbProcessoSeletivo as ps ON cp.idProcesso = ps.idProcesso WHERE cp.cpf ='". $candidatoProcesso->getCpf()."' ORDER BY ps.dataLimiteCandidatar DESC LIMIT 3;");
             $arrayQuery = array();
 
             while($reg = $query->fetch_array()) {

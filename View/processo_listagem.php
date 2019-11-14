@@ -1,6 +1,9 @@
 <?php
 session_start();
 
+//Define o fuso horário
+date_default_timezone_set('America/Sao_Paulo');
+
 include_once "../Model/Conexao.php";
 
 include_once "../Model/ProcessoSeletivo.php";
