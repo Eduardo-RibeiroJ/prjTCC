@@ -114,8 +114,8 @@ class CandidatoFormacaoDAO
                     $reg['estado'] = 'Interrompido';
                 } else if ($reg['estado'] == 'EA') {
                     $reg['estado'] = 'Em andamento';
-                } else if ($reg['estado'] == 'FI') {
-                    $reg['estado'] = 'Finalizado';
+                } else if ($reg['estado'] == 'ICT') {
+                    $reg['estado'] = 'Incompleto';
                 }
 
                 if ($reg['tipo'] == 'EF') {
