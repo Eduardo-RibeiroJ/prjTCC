@@ -26,7 +26,7 @@ include_once 'headerRecrut.php';
       <div class="col-12">
         <div class="card">
           <div class="card-header">
-            <i class="fas fa-folder-open"></i> Processos Seletivos em Andamento
+            <i class="fas fa-folder-open"></i> Processos Seletivos
           </div>
 
           <div class="card-body">
@@ -39,8 +39,13 @@ include_once 'headerRecrut.php';
                     <div class="col-12">
                       <input type="hidden" id="txtIdProcesso" name="txtIdProcesso" value="<?= $reg->getidProcesso() ?>" />
 
-                      <p class="lead d-inline">Vaga para <strong><?= $reg->getCargo()->getNomeCargo(); ?></strong>, encerra em <?= $reg->getDataLimiteCandidatar(); ?>.</p>
-                      <button type="submit" id="btnVisualizarCandidatos" name="btnVisualizarCandidatos" class="btn bnt-sm btn-outline-dark float-right mb-1"><i class='fas fa-search'></i></button>
+                      <?php if(strtotime(date("d-m-Y")) > strtotime(str_replace("/", "-", $reg->getDataLimiteCandidatar()))): ?>
+                        <p class="lead d-inline text-muted">Vaga para <strong><?= $reg->getCargo()->getNomeCargo(); ?></strong>, <span class="text-danger">inscrições encerradas.</p>
+                        <button type="submit" id="btnVisualizarCandidatos" name="btnVisualizarCandidatos" class="btn bnt-sm btn-outline-dark float-right text-muted mb-1"><i class='fas fa-search'></i></button>
+                      <?php else: ?>
+                        <p class="lead d-inline">Vaga para <strong><?= $reg->getCargo()->getNomeCargo(); ?></strong>, inscrições encerram em <?= $reg->getDataLimiteCandidatar(); ?>.</p>
+                        <button type="submit" id="btnVisualizarCandidatos" name="btnVisualizarCandidatos" class="btn bnt-sm btn-outline-dark float-right mb-1"><i class='fas fa-search'></i></button>
+                      <?php endif; ?>
                     </div>
                   </div>
                 </form>
@@ -48,41 +53,7 @@ include_once 'headerRecrut.php';
 
               <?php endforeach; ?>
             <?php else: ?>
-              <p class="lead">Não há processos seletivos em andamento.</p>
-            <?php endif; ?>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-12">
-        <div class="card mt-3">
-          <div class="card-header">
-            <i class="fas fa-archive"></i> Processos Seletivos encerrados
-          </div>
-
-          <div class="card-body">
-            <div class="card-text">
-            <?php if($arrayProcessos): ?>
-              
-              <?php foreach($arrayProcessos as $reg): ?>
-                <form method="POST" action="processo_listagem_candidato.php">
-                  <div class="row">
-                    <div class="col-12">
-                      <input type="hidden" id="txtIdProcesso" name="txtIdProcesso" value="<?= $reg->getidProcesso() ?>" />
-
-                      <p class="lead d-inline">Vaga para <strong><?= $reg->getCargo()->getNomeCargo(); ?></strong>, encerra em <?= $reg->getDataLimiteCandidatar(); ?>.</p>
-                      <button type="submit" id="btnVisualizarCandidatos" name="btnVisualizarCandidatos" class="btn bnt-sm btn-outline-dark float-right mb-1"><i class='fas fa-search'></i></button>
-                    </div>
-                  </div>
-                </form>
-                <hr>
-
-              <?php endforeach; ?>
-            <?php else: ?>
-              <p class="lead">Não há processos seletivos encerrados.</p>
+              <p class="lead">Não há processos seletivos.</p>
             <?php endif; ?>
             </div>
           </div>
