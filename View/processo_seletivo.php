@@ -89,7 +89,15 @@ else if ($_SESSION['logado'] == 2)
     <div class="jumbotron p-3 p-md-5" style="background-color: #FFF">
       <div class="container p-0">
         <h5 class="display-4 display-md-2">Vaga para <?= $processo->getCargo()->getNomeCargo() ?>!</h1>
-          <p class="lead">O processo seletivo estará aberto entre <?= $processo->getDataInicio(); ?> a <?= $processo->getDataLimiteCandidatar(); ?>.</p>
+          <?php if(strtotime(date("d-m-Y")) > strtotime(str_replace("/", "-", $processo->getDataLimiteCandidatar()))): ?>
+            <h4 class="text-center"><strong>Inscrições encerradas!</strong></h4>
+
+          <?php else: ?>
+            <p class="lead">Inscrições para processo seletivo estarão abertas até <strong><?= $processo->getDataLimiteCandidatar(); ?></strong>.</p>
+
+          <?php endif; ?>
+
+
 
           <div class="row d-flex justify-content-center">
             <div class="col-12 col-md-9 border rounded p-4 mt-2 mb-5">
@@ -192,7 +200,10 @@ else if ($_SESSION['logado'] == 2)
         <input type="hidden" name="txtIdProcesso" id="txtIdProcesso" value="<?= $idProcesso; ?>" />
         <div class="form-row">
           <div class="col text-center">
-            <?php if(isset($_SESSION['cnpj'])): ?>
+            <?php if(strtotime(date("d-m-Y")) > strtotime(str_replace("/", "-", $processo->getDataLimiteCandidatar()))): ?>
+              <p class="lead text-muted"><strong>Incrições encerradas!</strong></p>
+              <a href="index.php" class="btn btn-warning btn-lg float-right">Retornar</a>
+            <?php elseif(isset($_SESSION['cnpj'])): ?>
               <a href="recrutador.php" class="btn btn-warning btn-lg float-right">Retornar</a>
             <?php elseif ($candidatoProcesso->getCpf() == NULL) : ?>
               <input type="submit" name="btnCandidatar" id="btnCandidatar" class="btn btn-warning btn-lg float-right" value="Candidatar-se!" />
