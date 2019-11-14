@@ -110,9 +110,9 @@ if (isset($_POST['btnContinuar'])) {
                       <label for="cbbSituacaoInsti">Tipo do curso</label>
                       <select class="custom-select" id="cbbSituacaoInsti<?= $reg->getIdFormacao(); ?>" name="cmbSituacaoInsti" required>
                         <option value="<?= $reg->getEstado(); ?>" selected><?= $reg->getEstado(); ?></option>
-                        <option value="IN">Interrrompido</option>
+                        <option value="IN">Incompleto</option>
                         <option value="EA">Em andamento</option>
-                        <option value="ICT">Incompleto</option>
+                        <option value="FI">Finalizado</option>
                       </select>
                     </div>
                   </div>

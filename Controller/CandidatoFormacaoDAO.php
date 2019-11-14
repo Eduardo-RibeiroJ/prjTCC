@@ -66,12 +66,12 @@ class CandidatoFormacaoDAO
         else if ($tipo == 'Graduação - Doutorado')
             $tipo = 'GRD';
 
-        if ($estado == 'Interrompido')
+        if ($estado == 'Incompleto')
             $estado = 'IN';
         else if ($estado == 'Em andamento')
             $estado = 'EA';
-        else if ($estado == 'Incompleto')
-            $estado = 'ICT';
+        else if ($estado == 'Finalizado')
+            $estado = 'FI';
 
 
         $query = "UPDATE tbCandidatoFormacao SET nomeCurso=?, nomeInstituicao=?, dataInicio=?, dataTermino=?, tipo=?, estado=? WHERE cpf = ? AND idFormacao = ?;";
@@ -111,11 +111,11 @@ class CandidatoFormacaoDAO
             while($reg = $query->fetch_array()) {
 
                 if ($reg['estado'] == 'IN') {
-                    $reg['estado'] = 'Interrompido';
+                    $reg['estado'] = 'Incompleto';
                 } else if ($reg['estado'] == 'EA') {
                     $reg['estado'] = 'Em andamento';
-                } else if ($reg['estado'] == 'ICT') {
-                    $reg['estado'] = 'Incompleto';
+                } else if ($reg['estado'] == 'FI') {
+                    $reg['estado'] = 'Finalizado';
                 }
 
                 if ($reg['tipo'] == 'EF') {
