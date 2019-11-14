@@ -80,10 +80,6 @@ class Candidato {
     {
         $this->cpfValidar = $cpfValidar;
 
-        // Elimina possivel mascara
-        $cpfValidar = preg_replace("/[^0-9]/", "", $cpfValidar);
-        $cpfValidar = str_pad($cpfValidar, 11, '0', STR_PAD_LEFT);
-
         // Verifica se o numero de digitos informados é igual a 11 
         if (strlen($cpfValidar) != 11) {
             return false;

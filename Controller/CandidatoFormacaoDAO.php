@@ -70,8 +70,8 @@ class CandidatoFormacaoDAO
             $estado = 'IN';
         else if ($estado == 'Em andamento')
             $estado = 'EA';
-        else if ($estado == 'Finalizado')
-            $estado = 'FI';
+        else if ($estado == 'Incompleto')
+            $estado = 'ICT';
 
 
         $query = "UPDATE tbCandidatoFormacao SET nomeCurso=?, nomeInstituicao=?, dataInicio=?, dataTermino=?, tipo=?, estado=? WHERE cpf = ? AND idFormacao = ?;";

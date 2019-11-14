@@ -16,20 +16,19 @@ if (isset($_POST['btnCadastrar'])) {
 	$recrutador = new Recrutador();
 	$recrutadorDAO = new RecrutadorDAO($conn);
 
-	if ($recrutador->validaCNPJ($_POST['txtCnpj']) == false) {
+	// Elimina mascara
+	$cnpj = preg_replace("/[^0-9]/", "", $_POST['txtCnpj']);
+	$cnpj = str_pad($cnpj, 14, '0', STR_PAD_LEFT);
+
+	if ($recrutador->getValidaCNPJ($cnpj) == false) {
 		echo "<script>window.alert('CNPJ inválido'); history.go(-1); </script>";
 		die;
-
-	} else if ($recrutador->BuscarCnpj($_POST['txtCnpj'], $_POST['txtEmail']) == true) {
+	} else if ($recrutadorDAO->BuscarCnpj($cnpj, $_POST['txtEmail']) == true) {
 		echo "<script>window.alert('CPF e/ou E-mail já cadastrado!'); history.go(-1); </script>";
 		die;
-
 	} else {
 
-		$cnpjValidar = preg_replace("/[^0-9]/", "", $_POST['txtCnpj']);
-		$cnpjValidar = str_pad($cnpjValidar, 14, '0', STR_PAD_LEFT);
-
-		$_SESSION['cnpj'] = cnpjValidar;
+		$_SESSION['cnpj'] = $cnpj;
 		$_SESSION['email'] = $_POST['txtEmail'];
 		$_SESSION['senha'] = $_POST['txtSenha'];
 
@@ -47,7 +46,7 @@ include_once 'header.php';
 			<h1 class="h3 mb-3 font-weight-normal">Faça seu cadastro</h1>
 
 			<label for="txtCnpj" class="sr-only">CNPJ</label>
-			<input id="txtCnpj" name="txtCnpj" class="form-control mb-1" placeholder="Insira seu CNPJ.." autofocus="" required>
+			<input type="text" id="txtCnpj" name="txtCnpj" class="form-control mb-1 cpf-mask" data-mask="00.000.000/0000-00" data-mask-selectonfocus="true" placeholder="Insira seu CNPJ.." autofocus="" required>
 
 			<label for="txtEmail" class="sr-only">Endereço de email</label>
 			<input type="email" id="txtEmail" name="txtEmail" class="form-control mb-1" placeholder="Insira seu e-mail..." required>

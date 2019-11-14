@@ -13,7 +13,11 @@ if (isset($_POST['btnEntrarRecrutador'])) {
 	$recrutador = new Recrutador();
 	$recrutadorDAO = new RecrutadorDAO($conn);
 
-	$recrutador->setCnpj($_POST['txtCnpj']);
+	// Elimina mascara
+	$cnpj = preg_replace("/[^0-9]/", "", $_POST['txtCnpj']);
+	$cnpj = str_pad($cnpj, 14, '0', STR_PAD_LEFT);
+
+	$recrutador->setCnpj($cnpj);
 	$recrutador->setSenha($_POST['txtSenha']);
 
 	$resultado = $recrutadorDAO->Logar($recrutador);

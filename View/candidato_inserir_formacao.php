@@ -112,7 +112,7 @@ if (isset($_POST['btnContinuar'])) {
                         <option value="<?= $reg->getEstado(); ?>" selected><?= $reg->getEstado(); ?></option>
                         <option value="IN">Interrrompido</option>
                         <option value="EA">Em andamento</option>
-                        <option value="FI">Finalizado</option>
+                        <option value="ICT">Incompleto</option>
                       </select>
                     </div>
                   </div>

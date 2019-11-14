@@ -64,7 +64,7 @@ class Recrutador
         $this->siteEmpresa = $siteEmpresa;
     }
 
-    function validaCNPJ($cnpjValidar)
+    function getValidaCNPJ($cnpjValidar)
     {
         $this->cnpjValidar = $cnpjValidar;
 
@@ -72,10 +72,6 @@ class Recrutador
         if (empty($cnpjValidar)) {
             return false;
         }
-
-        // Elimina possivel mascara
-        $cnpjValidar = preg_replace("/[^0-9]/", "", $cnpjValidar);
-        $cnpjValidar = str_pad($cnpjValidar, 14, '0', STR_PAD_LEFT);
 
         // Verifica se o numero de digitos informados é igual a 11 
         if (strlen($cnpjValidar) != 14) {
@@ -112,12 +108,10 @@ class Recrutador
                 $j = $j == 1 ? 9 : $j;
                 $k = $k == 1 ? 9 : $k;
 
-                $soma2 += ($cnpjValidar{
-                    $i} * $k);
+                $soma2 += ($cnpjValidar{$i} * $k);
 
                 if ($i < 12) {
-                    $soma1 += ($cnpjValidar{
-                        $i} * $j);
+                    $soma1 += ($cnpjValidar{$i} * $j);
                 }
 
                 $k--;
@@ -127,9 +121,7 @@ class Recrutador
             $digito1 = $soma1 % 11 < 2 ? 0 : 11 - $soma1 % 11;
             $digito2 = $soma2 % 11 < 2 ? 0 : 11 - $soma2 % 11;
 
-            return (($cnpjValidar{
-                12} == $digito1) and ($cnpjValidar{
-                13} == $digito2));
+            return (($cnpjValidar{12} == $digito1) and ($cnpjValidar{13} == $digito2));
         }
     }
 
