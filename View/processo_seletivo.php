@@ -113,15 +113,16 @@ else if ($_SESSION['logado'] == 2)
               $candidatoCompetenciaDAO = new CandidatoCompetenciaDAO($conn);
               $candidatoCompetencia->setCpf($_SESSION['cpf']);
               $arrayCompetencias = $candidatoCompetenciaDAO->ListarCompProc($candidatoCompetencia, $processo);
+              
             ?>
             <?php if ($arrayCompetencias) : ?>
               <div class="row">
                 <div class="col-12">
                   <p class="lead mb-1"><strong>Competências correspondentes:</strong></p>
                   <ul>
-                    <?php foreach ($arrayCompetencias as $reg) : ?>
+                    <?php foreach ($arrayCompetencias as $comp) : ?>
 
-                      <li><strong><?= $reg->getCompetencia() ?></strong> nível <?= $reg->getNivel(); ?> <i class="fas fa-check text-success"></i></li>
+                      <li><strong><?= $comp->getCompetencia() ?></strong> nível <?= $comp->getNivel(); ?> <i class="fas fa-check text-success"></i></li>
 
                     <?php endforeach; ?>
                   </ul>

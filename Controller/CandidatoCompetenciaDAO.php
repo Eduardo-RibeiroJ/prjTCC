@@ -134,6 +134,8 @@ class CandidatoCompetenciaDAO
         
         while($reg = $query->fetch_array()) {
 
+            $candCompetencia = new CandidatoCompetencia();
+
             if($reg['nivel'] == 'B')
                 $reg['nivel'] = 'Básico';
             else if($reg['nivel'] == 'I')
