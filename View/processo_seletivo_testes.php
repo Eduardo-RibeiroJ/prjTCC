@@ -67,7 +67,7 @@ $arrayPergunta = $processoPerguntaDAO->Listar($processoPergunta);
 if(isset($_POST['btnCandidatar'])) {
 
   if(!(isset($_SESSION['cpf']))) {
-    header('Location: index.php');
+    header('Location: candidato_logar.php');
   }
   
   $candProcesso->inserirCandProcesso(
@@ -97,7 +97,7 @@ if(isset($_POST['btnCandidatar'])) {
                 <?php if($arrayTeste): ?>
                   <div class="row">
                     <div class="col-12">
-                      <p class="lead mb-1"><strong>Testes online necessários:</strong></p>
+                      <p class="lead mt-2 mb-1"><strong>Testes online necessários:</strong></p>
                       <?php foreach($arrayTeste as $reg): ?>
                         <form method="POST" action="testeonline_realizar.php">
                           <input type="hidden" id="idProcesso" name="idProcesso" value="<?= $idProcesso ?>" />
@@ -140,7 +140,7 @@ if(isset($_POST['btnCandidatar'])) {
                 <?php if($arrayPergunta): ?>
                   <div class="row">
                     <div class="col-12">
-                      <p class="lead mb-1"><strong>Perguntas necessárias:</strong></p>
+                      <p class="lead mt-3 mb-1"><strong>Perguntas necessárias:</strong></p>
                       <ul>
                       <?php foreach($arrayPergunta as $reg): ?>
 

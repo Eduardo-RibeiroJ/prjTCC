@@ -4,12 +4,14 @@ include_once 'headerCand.php';
 
 include_once "../Model/Conexao.php";
 include_once "../Model/Candidato.php";
+include_once "../Model/Recrutador.php";
 include_once "../Model/ProcessoSeletivo.php";
 include_once "../Model/CandidatoProcesso.php";
 include_once "../Model/Cargo.php";
 include_once "../Model/CandidatoObjetivo.php";
 
 include_once "../Controller/CandidatoDAO.php";
+include_once "../Controller/RecrutadorDAO.php";
 include_once "../Controller/ProcessoSeletivoDAO.php";
 include_once "../Controller/CandidatoProcessoDAO.php";
 include_once "../Controller/CargoDAO.php";
@@ -136,14 +138,23 @@ $arrayVagas = $processoSeletivoDAO->ListarVaga($processoSeletivo, $objetivo);
             <div class="card-text">
 
               <?php foreach ($arrayVagas as $reg) : ?>
+                <?php
+                  $recrutador = new Recrutador();
+                  $recrutadorDAO = new RecrutadorDAO($conn);
+
+                  $recrutador->setCnpj($reg->getCnpj());
+                  $recrutadorDAO->Listar($recrutador);
+
+                ?>
                 <div class="row">
                   <div class="col-12">
                     <div class="list-group">
-                      <input type="hidden" id="txtIdProcesso" name="txtIdProcesso" value="<?= $reg->getidProcesso() ?>" />
-                      <div class="list-group-item list-group-item-action border-top-0 border-bottom-1 border-right-0 border-left-0">
-                        <p class="lead d-inline">Vaga para <strong><?= $reg->getCargo()->getNomeCargo(); ?></strong> encerra em <?= $reg->getDataLimiteCandidatar(); ?>.</p>
-                        <a href="processo_seletivo-<?= $reg->getidProcesso() ?>" id="btnVisualizarProcesso" name="btnVisualizarProcesso" class="btn bnt-sm btn-outline-dark float-right mb-1 mt-3"><i class='fas fa-search'></i></a>
-                      </div>
+                      <a href="processo_seletivo-<?= $reg->getidProcesso() ?>">
+                        <div class="list-group-item list-group-item-action border-top-0 border-bottom-1 border-right-0 border-left-0">
+                          <p class="lead d-inline">Vaga para <strong><?= $reg->getCargo()->getNomeCargo(); ?></strong> encerra em <?= $reg->getDataLimiteCandidatar(); ?>.</p>
+                          <p class="text-muted">Empresa <?= $recrutador->getNomeEmpresa() ?>, região de <?= $recrutador->getCidade() ?>.</p>
+                        </div>
+                      </a>
                     </div>
 
                   </div>

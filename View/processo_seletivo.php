@@ -3,6 +3,7 @@ session_start();
 
 include_once "../Model/Conexao.php";
 
+include_once "../Model/Recrutador.php";
 include_once "../Model/ProcessoSeletivo.php";
 include_once "../Model/ProcessoCompetencia.php";
 include_once "../Model/ProcessoTeste.php";
@@ -13,6 +14,7 @@ include_once "../Model/TesteOnline.php";
 include_once "../Model/Pergunta.php";
 include_once "../Model/Cargo.php";
 
+include_once "../Controller/RecrutadorDAO.php";
 include_once "../Controller/ProcessoSeletivoDAO.php";
 include_once "../Controller/ProcessoCompetenciaDAO.php";
 include_once "../Controller/ProcessoTesteDAO.php";
@@ -25,12 +27,14 @@ include_once "../Controller/CargoDAO.php";
 
 $conn = new Conexao();
 
+$recrutador = new Recrutador();
 $processo = new ProcessoSeletivo();
 $candidatoProcesso = new CandidatoProcesso();
 $processoCompetencia = new ProcessoCompetencia();
 $processoTeste = new ProcessoTeste();
 $processoPergunta = new ProcessoPergunta();
 
+$recrutadorDAO = new RecrutadorDAO($conn);
 $processoDAO = new ProcessoSeletivoDAO($conn);
 $candidatoProcessoDAO = new CandidatoProcessoDAO($conn);
 $processoCompetenciaDAO = new ProcessoCompetenciaDAO($conn);
@@ -47,6 +51,9 @@ $processoDAO->Listar($processo);
 if ($processo->getIdProcesso() == NULL) {
   header('Location: index.php');
 }
+
+$recrutador->setCnpj($processo->getCnpj());
+$recrutadorDAO->Listar($recrutador);
 
 $processoCompetencia->setIdProcesso($idProcesso);
 $arrayCompetencia = $processoCompetenciaDAO->Listar($processoCompetencia);
@@ -85,6 +92,9 @@ else if ($_SESSION['logado'] == 2)
           <div class="row d-flex justify-content-center">
             <div class="col-12 col-md-9 border rounded p-4 mt-2 mb-5">
               <p class="lead">
+                <strong>Empresa <?= $recrutador->getNomeEmpresa() ?> contrata <?= $processo->getCargo()->getNomeCargo() ?> na região de <?= $recrutador->getCidade() ?></strong>
+              </p>
+              <p class="lead">
                 <pre class="lead-pre"><?= $processo->getResumoVaga() ?></pre>
               </p>
               <div class="row">
@@ -95,7 +105,31 @@ else if ($_SESSION['logado'] == 2)
             </div>
           </div>
 
-          <?php if ($arrayCompetencia) : ?>
+          <?php if (isset($_SESSION['cpf'])) : ?>
+            <?php
+              $candidatoCompetencia = new CandidatoCompetencia();
+              $candidatoCompetenciaDAO = new CandidatoCompetenciaDAO($conn);
+              $candidatoCompetencia->setCpf($cand['candidato']->getCpf());
+              $arrayCompetencias = $candidatoCompetenciaDAO->ListarCompProc($candidatoCompetencia, $processo);
+            ?>
+            <?php if ($arrayCompetencias) : ?>
+            <div class="row">
+              <div class="col-12">
+                <p class="lead mb-1"><strong>Competências correspondentes:</strong></p>
+                <ul>
+                  <?php foreach ($arrayCompetencias as $reg) : ?>
+
+                    <li><?= $reg->getCompetencia() ?> nível <?= $reg->getNivel(); ?> <i class="fas fa-check text-success"></i></li>
+
+                  <?php endforeach; ?>
+                </ul>
+              </div>
+            </div>
+
+
+          <?php else: ?>
+
+            <?php if ($arrayCompetencia) : ?>
             <div class="row">
               <div class="col-12">
                 <p class="lead mb-1"><strong>Competências necessárias:</strong></p>
@@ -109,6 +143,10 @@ else if ($_SESSION['logado'] == 2)
               </div>
             </div>
           <?php endif; ?>
+
+
+          <?php endif; ?>
+
 
           <?php if ($arrayTeste) : ?>
             <div class="row">
@@ -151,6 +189,7 @@ else if ($_SESSION['logado'] == 2)
             <?php elseif ($candidatoProcesso->getCpf() == NULL) : ?>
               <input type="submit" name="btnCandidatar" id="btnCandidatar" class="btn btn-warning btn-lg float-right" value="Candidatar-se!" />
             <?php else : ?>
+              <p class="lead text-muted"><strong>Você já é candidato!</strong></p>
               <input type="submit" name="btnTestes" id="btnTestes" class="btn btn-success btn-lg float-right" value="Visualizar Testes" />
             <?php endif; ?>
 

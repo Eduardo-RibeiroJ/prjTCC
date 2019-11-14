@@ -193,7 +193,7 @@ include_once 'headerRecrut.php'
                             <p class="lead mb-0"><strong>Competências Correspondentes</strong></p>
                             <ul>
                             <?php foreach($arrayCompetencias as $reg): ?>
-                              <li><strong><?= $reg->getCompetencia(); ?></strong>, nível <?= $reg->getNivel(); ?></li>
+                              <li><strong><?= $reg->getCompetencia(); ?></strong>, nível <?= $reg->getNivel(); ?> <i class="fas fa-check text-success"></i></li>
                             <?php endforeach; ?>
                             </ul>
                           
@@ -218,9 +218,11 @@ include_once 'headerRecrut.php'
                                   $testeOnline->setCnpj($processo->getCnpj());
                                   $testeOnlineDAO->Listar($testeOnline);
 
+                                  $resTeste = $processoCandTesteDAO->ListarResultado($reg, $processo);
+
                                 ?>
 
-                                <li>Teste de <?= $testeOnline->getNomeTesteOnline()?>: <strong><?= $reg->getResultado(); ?> acertos </strong> entre <?= $testeOnline->getQuantidadeQuestoes(); ?> perguntas.</li>
+                                <li>Teste de <?= $testeOnline->getNomeTesteOnline()?>: <strong><?= $resTeste ?>% de acerto.</strong></li>
                               <?php endforeach; ?>
                               </ul>
                             </div>
