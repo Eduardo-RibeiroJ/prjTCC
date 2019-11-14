@@ -31,7 +31,7 @@ class CandidatoProcessoDAO
 
         if($candidatoProcesso->getIdProcesso() != NULL && $candidatoProcesso->getCpf() != NULL) {
             $conn = new Conexao();
-            $query = $this->db->getConection()->query("SELECT * FROM tbCandidatoProcesso WHERE idProcesso ='". $candidatoProcesso->getIdProcesso()."' AND cpf ='". $candidatoProcesso->getCpf()."';");
+            $query = $this->db->getConection()->query("SELECT * FROM tbCandidatoProcesso WHERE idProcesso ='". $candidatoProcesso->getIdProcesso()."' AND cpf ='". $candidatoProcesso->getCpf()."' ORDER BY idProcesso DESC;");
 
             $reg = $query->fetch_array();
             $candidatoProcesso->setCpf($reg['cpf']);
@@ -41,7 +41,7 @@ class CandidatoProcessoDAO
         }
         else if($candidatoProcesso->getIdProcesso() != NULL) {
             $conn = new Conexao();
-            $query = $this->db->getConection()->query("SELECT * FROM tbCandidatoProcesso WHERE idProcesso ='". $candidatoProcesso->getIdProcesso()."';");
+            $query = $this->db->getConection()->query("SELECT * FROM tbCandidatoProcesso WHERE idProcesso ='". $candidatoProcesso->getIdProcesso()."' ORDER BY idProcesso DESC;");
             $arrayQuery = array();
 
             while($reg = $query->fetch_array()) {
@@ -57,7 +57,27 @@ class CandidatoProcessoDAO
         }
         else if($candidatoProcesso->getCpf() != NULL) {
             $conn = new Conexao();
-            $query = $this->db->getConection()->query("SELECT * FROM tbCandidatoProcesso WHERE cpf ='". $candidatoProcesso->getCpf()."';");
+            $query = $this->db->getConection()->query("SELECT * FROM tbCandidatoProcesso WHERE cpf ='". $candidatoProcesso->getCpf()."' ORDER BY idProcesso DESC;");
+            $arrayQuery = array();
+
+            while($reg = $query->fetch_array()) {
+                $processo = new ProcessoSeletivo();
+                $processoDAO = new ProcessoSeletivoDAO($conn);
+                $processo->setIdProcesso($reg['idProcesso']);
+                $processoDAO->Listar($processo);
+
+                $arrayQuery[] = $processo;
+            }
+            return $arrayQuery;
+
+        }
+    }
+
+    public function ListarProcessosCandidato(CandidatoProcesso $candidatoProcesso) {
+
+        if($candidatoProcesso->getCpf() != NULL) {
+            $conn = new Conexao();
+            $query = $this->db->getConection()->query("SELECT * FROM tbCandidatoProcesso WHERE cpf ='". $candidatoProcesso->getCpf()."' ORDER BY idProcesso DESC LIMIT 5;");
             $arrayQuery = array();
 
             while($reg = $query->fetch_array()) {

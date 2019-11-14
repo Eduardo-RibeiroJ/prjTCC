@@ -222,7 +222,7 @@ include_once 'headerRecrut.php'
 
                                 ?>
 
-                                <li>Teste de <?= $testeOnline->getNomeTesteOnline()?>: <strong><?= $resTeste ?>% de acerto.</strong></li>
+                                <li>Teste de <?= $testeOnline->getNomeTesteOnline()?>: <strong><?= $resTeste ?>% de acertos.</strong></li>
                               <?php endforeach; ?>
                               </ul>
                             </div>

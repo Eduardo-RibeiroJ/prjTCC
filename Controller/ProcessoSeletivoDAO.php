@@ -75,7 +75,7 @@ class ProcessoSeletivoDAO
 
         if ($processo->getIdProcesso() == NULL) {
 
-            $query = $this->db->getConection()->query("SELECT * FROM tbProcessoSeletivo WHERE cnpj ='" . $processo->getCnpj() . "' ORDER BY dataInicio asc;");
+            $query = $this->db->getConection()->query("SELECT * FROM tbProcessoSeletivo WHERE cnpj ='" . $processo->getCnpj() . "' ORDER BY idProcesso DESC;");
             $arrayQuery = array();
 
             while ($reg = $query->fetch_array()) {
@@ -105,7 +105,7 @@ class ProcessoSeletivoDAO
             return $arrayQuery;
         } else {
 
-            $query = $this->db->getConection()->query("SELECT * FROM tbProcessoSeletivo WHERE idProcesso ='" . $processo->getIdProcesso() . "';");
+            $query = $this->db->getConection()->query("SELECT * FROM tbProcessoSeletivo WHERE idProcesso ='" . $processo->getIdProcesso() . "' ORDER BY idProcesso DESC;");
 
             $reg = $query->fetch_array();
 
@@ -146,7 +146,43 @@ class ProcessoSeletivoDAO
     {
         $conn = new Conexao();
 
-        $query = $this->db->getConection()->query("SELECT * FROM tbProcessoSeletivo as p inner join tbCargo as c ON p.idCargo = c.idCargo  WHERE c.nomeCargo LIKE '%".$objetivo->getCargo()->getNomeCargo()."%';"); ///Não tá retornando nada, e não dá erro também
+        $query = $this->db->getConection()->query("SELECT * FROM tbProcessoSeletivo as p inner join tbCargo as c ON p.idCargo = c.idCargo  WHERE c.nomeCargo LIKE '%".$objetivo->getCargo()->getNomeCargo()."%' ORDER BY idProcesso DESC;");
+
+        $arrayQuery = array();
+
+        while($reg = $query->fetch_array()) {
+
+            $processo = new ProcessoSeletivo();
+            $cargo = new Cargo();
+            $cargoDAO = new CargoDAO($conn);
+
+            $cargo->setIdCargo($reg['idCargo']);
+            $cargoDAO->Listar($cargo);
+
+            $processo->inserirProcessoSeletivo(
+                $reg['idProcesso'],
+                $reg['cnpj'],
+                $reg['idCargo'],
+                $reg['dataInicio'],
+                $reg['dataLimiteCandidatar'],
+                $reg['resumoVaga'],
+                $reg['tipoContratacao'],
+                $reg['salario']
+            );
+
+            $processo->setCargo($cargo);
+
+            $arrayQuery[] = $processo;
+        }
+
+        return $arrayQuery;
+    }
+
+    public function ListarVagaCandidato(ProcessoSeletivo $processo, CandidatoObjetivo $objetivo)
+    {
+        $conn = new Conexao();
+
+        $query = $this->db->getConection()->query("SELECT * FROM tbProcessoSeletivo as p inner join tbCargo as c ON p.idCargo = c.idCargo  WHERE c.nomeCargo LIKE '%".$objetivo->getCargo()->getNomeCargo()."%' ORDER BY idProcesso DESC LIMIT 5;");
 
         $arrayQuery = array();
 

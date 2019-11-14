@@ -9,6 +9,7 @@ include_once "../Model/ProcessoCompetencia.php";
 include_once "../Model/ProcessoTeste.php";
 include_once "../Model/ProcessoPergunta.php";
 include_once "../Model/CandidatoProcesso.php";
+include_once "../Model/CandidatoCompetencia.php";
 include_once "../Model/Competencia.php";
 include_once "../Model/TesteOnline.php";
 include_once "../Model/Pergunta.php";
@@ -20,6 +21,7 @@ include_once "../Controller/ProcessoCompetenciaDAO.php";
 include_once "../Controller/ProcessoTesteDAO.php";
 include_once "../Controller/ProcessoPerguntaDAO.php";
 include_once "../Controller/CandidatoProcessoDAO.php";
+include_once "../Controller/CandidatoCompetenciaDAO.php";
 include_once "../Controller/CompetenciaDAO.php";
 include_once "../Controller/TesteOnlineDAO.php";
 include_once "../Controller/PerguntaDAO.php";
@@ -109,22 +111,26 @@ else if ($_SESSION['logado'] == 2)
             <?php
               $candidatoCompetencia = new CandidatoCompetencia();
               $candidatoCompetenciaDAO = new CandidatoCompetenciaDAO($conn);
-              $candidatoCompetencia->setCpf($cand['candidato']->getCpf());
+              $candidatoCompetencia->setCpf($_SESSION['cpf']);
               $arrayCompetencias = $candidatoCompetenciaDAO->ListarCompProc($candidatoCompetencia, $processo);
             ?>
             <?php if ($arrayCompetencias) : ?>
-            <div class="row">
-              <div class="col-12">
-                <p class="lead mb-1"><strong>Competências correspondentes:</strong></p>
-                <ul>
-                  <?php foreach ($arrayCompetencias as $reg) : ?>
+              <div class="row">
+                <div class="col-12">
+                  <p class="lead mb-1"><strong>Competências correspondentes:</strong></p>
+                  <ul>
+                    <?php foreach ($arrayCompetencias as $reg) : ?>
 
-                    <li><?= $reg->getCompetencia() ?> nível <?= $reg->getNivel(); ?> <i class="fas fa-check text-success"></i></li>
+                      <li><?= $reg->getCompetencia() ?> nível <?= $reg->getNivel(); ?> <i class="fas fa-check text-success"></i></li>
 
-                  <?php endforeach; ?>
-                </ul>
+                    <?php endforeach; ?>
+                  </ul>
+                </div>
               </div>
-            </div>
+            <?php else: ?>
+            <p class="lead"><strong>Você não tem competências correspondentes com a vaga.</strong></p>
+
+            <?php endif; ?>
 
 
           <?php else: ?>
@@ -142,10 +148,12 @@ else if ($_SESSION['logado'] == 2)
                 </ul>
               </div>
             </div>
+            <?php endif; ?>
+
           <?php endif; ?>
 
 
-          <?php endif; ?>
+
 
 
           <?php if ($arrayTeste) : ?>

@@ -67,6 +67,10 @@ if(!(isset($_SESSION['logado'])) || $_SESSION['logado'] != 1) {
 					<li class="nav-item">
 						<a class="nav-link" href="candidato_minhas_vagas.php">Processos Seletivos</a>
 					</li>
+
+					<li class="nav-item">
+						<a class="nav-link" href="candidato_vagas.php?nomeCargo=">Vagas</a>
+					</li>
 				</ul>
 
 				<ul class="navbar-nav ml-auto">

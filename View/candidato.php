@@ -35,12 +35,12 @@ $candidato->setCpf($_SESSION['cpf']);
 $candidatoDAO->Listar($candidato);
 
 $candidatoProcesso->setCpf($_SESSION['cpf']);
-$arrayProcessos = $candidatoProcessoDAO->Listar($candidatoProcesso);
+$arrayProcessos = $candidatoProcessoDAO->ListarProcessosCandidato($candidatoProcesso);
 
 $objetivo->setCpf($_SESSION['cpf']);
 $objetivo = $objetivoDAO->Listar($objetivo);
 
-$arrayVagas = $processoSeletivoDAO->ListarVaga($processoSeletivo, $objetivo);
+$arrayVagas = $processoSeletivoDAO->ListarVagaCandidato($processoSeletivo, $objetivo);
 
 ?>
 
@@ -129,7 +129,7 @@ $arrayVagas = $processoSeletivoDAO->ListarVaga($processoSeletivo, $objetivo);
       </div>
 
       <div class="col-lg-6">
-        <div class="card my-2" style="height: 94.5%">
+        <div class="card my-2">
           <div class="card-header">
             <i class="fas fa-briefcase"> </i> Vagas recomendadas
           </div>
