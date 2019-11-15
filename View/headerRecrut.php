@@ -18,9 +18,9 @@ if (isset($_POST['btnEntrarRecrutador'])) {
 	$cnpj = str_pad($cnpj, 14, '0', STR_PAD_LEFT);
 
 	//Tem que voltar a mascara
-	// echo "<script>alert($cnpj);</script>";
+	 echo "<script>alert($cnpj);</script>";
 
-	$recrutador->setCnpj($_POST['txtCnpj']);
+	$recrutador->setCnpj($cnpj);
 	$recrutador->setSenha($_POST['txtSenha']);
 
 	$resultado = $recrutadorDAO->Logar($recrutador);
@@ -75,65 +75,33 @@ if (!(isset($_SESSION['logado'])) || $_SESSION['logado'] != 2) {
 						<a class="nav-link" href="processo_listagem.php">Processos Seletivos</a>
 					</li>
 				</ul>
-
+				
 				<ul class="navbar-nav ml-auto">
 
-					<!-- Nav Item - Alerta -->
-					<li class="nav-item dropdown no-arrow mx-1">
-						<a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							<i><img src="imagem/sino.png"></i>
-							<!-- Counter - alerta -->
-							<span class="badge badge-danger badge-counter">3+</span>
+				<!-- Nav Item - Informação do usuário -->
+				<li class="nav-item dropdown no-arrow" style="padding-left:0.15rem">
+					<a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						<span><?= $_SESSION['nomeEmpresa']; ?></span>
+						<img class="img-profile rounded-circle" src="imagem/logo-mercedes.jpg">
+					</a>
+
+					<!-- Dropdown - User Information -->
+					<div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+						<a class="dropdown-item" href="recrutador_alterar.php">
+							<i></i>
+							Perfil
 						</a>
-
-						<div class="dropdown-list dropdown-menu dropdown-menu-right shadow" aria-labelledby="alertsDropdown">
-							<h6 class="dropdown-header">
-								Alerts Center
-							</h6>
-							<a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
-						</div>
-					</li>
-
-					<!-- Nav Item - Mensagem -->
-					<li class="nav-item dropdown no-arrow">
-						<a class="nav-link dropdown-toggle ml-1" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							<i><img src="imagem/mensagem.png"></i>
-							<!-- Counter - mensagem -->
-							<span class="badge badge-danger badge-counter">7</span>
+						<a class="dropdown-item" href="#">
+							<i></i>
+							Configurações
 						</a>
-						<!-- Dropdown - mensagem -->
-						<div class="dropdown-list dropdown-menu dropdown-menu-right" aria-labelledby="messagesDropdown">
-							<h6 class="dropdown-header">
-								Alerts Center
-							</h6>
-							<a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
-						</div>
-					</li>
-
-					<!-- Nav Item - Informação do usuário -->
-					<li class="nav-item dropdown no-arrow" style="padding-left:0.15rem">
-						<a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							<span><?= $_SESSION['nomeEmpresa']; ?></span>
-							<img class="img-profile rounded-circle" src="imagem/logo-mercedes.jpg">
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item" href="logout.php">
+							<i></i>
+							Sair
 						</a>
-
-						<!-- Dropdown - User Information -->
-						<div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-							<a class="dropdown-item" href="recrutador_alterar.php">
-								<i></i>
-								Perfil
-							</a>
-							<a class="dropdown-item" href="#">
-								<i></i>
-								Configurações
-							</a>
-							<div class="dropdown-divider"></div>
-							<a class="dropdown-item" href="logout.php">
-								<i></i>
-								Sair
-							</a>
-						</div>
-					</li>
+					</div>
+				</li>
 
 				</ul>
 

@@ -75,38 +75,6 @@ if(!(isset($_SESSION['logado'])) || $_SESSION['logado'] != 1) {
 
 				<ul class="navbar-nav ml-auto">
 
-					<!-- Nav Item - Alerta -->
-					<li class="nav-item dropdown no-arrow mx-1">
-						<a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							<i><img src="imagem/sino.png"></i>
-							<!-- Counter - alerta -->
-							<span class="badge badge-danger badge-counter">3+</span>
-						</a>
-
-						<div class="dropdown-list dropdown-menu dropdown-menu-right shadow" aria-labelledby="alertsDropdown">
-							<h6 class="dropdown-header">
-								Alerts Center
-							</h6>
-							<a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
-						</div>
-					</li>
-
-					<!-- Nav Item - Mensagem -->
-					<li class="nav-item dropdown no-arrow">
-						<a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							<i><img src="imagem/mensagem.png"></i>
-							<!-- Counter - mensagem -->
-							<span class="badge badge-danger badge-counter">7</span>
-						</a>
-						<!-- Dropdown - mensagem -->
-						<div class="dropdown-list dropdown-menu dropdown-menu-right" aria-labelledby="messagesDropdown">
-							<h6 class="dropdown-header">
-								Alerts Center
-							</h6>
-							<a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
-						</div>
-					</li>
-
 					<!-- Nav Item - Informação do usuário -->
 					<li class="nav-item dropdown no-arrow" style="padding-left:1rem">
 						<a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
