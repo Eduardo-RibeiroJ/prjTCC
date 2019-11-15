@@ -117,9 +117,8 @@ if (isset($_GET['btnCriar'])) {
                   <ul class="list-group list-group-flush">
                     <li class="list-group-item">
                       <div class="form-row">
-                        <div class="form-group col-lg text-center">
+                        <div class="form-group col-lg text-right mt-3 mb-0">
                           <button id="btnAdicionar" class="btn btn-primary btn-mg">Adicionar</button>
-                          <a href="testeOnline.php" id="btnVoltar" class="btn btn-outline-dark">Voltar</a>
                         </div>
                       </div>
                     </li>
@@ -133,15 +132,15 @@ if (isset($_GET['btnCriar'])) {
         </div>
       </div>
 
-    </section>
+      <hr class="my-2 my-md-4">
 
-    <hr class="my-2 my-md-4">
-
-    <div class="row">
-      <div class="col">
-        <a href="testeOnline.php" class="btn btn-primary float-right">Concluir</a>
+      <div class="row">
+        <div class="col">
+          <a href="testeOnline.php" class="btn btn-primary btn-lg float-right">Concluir</a>
+        </div>
       </div>
-    </div>
+      
+    </section>
 
   </div>
 </div>

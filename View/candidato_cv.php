@@ -95,13 +95,13 @@ include_once 'headerRecrut.php';
               <p class="lead mb-1 text-uppercase"><strong>Objetivo Profissional</strong></p>
               <ul>
                 <li>
-                  <p class="mb-0"><strong>Atuar como: </strong> Porteiro</p>
+                  <p class="mb-0"><strong>Atuar como: </strong><?= $objetivo->getCargo()->getNomeCargo(); ?></p>
                 </li>
                 <li>
-                  <p class="mb-0"><strong>Nível: </strong> Junior</p>
+                  <p class="mb-0"><strong>Nível: </strong><?= $objetivo->getNivel(); ?></p>
                 </li>
                 <li>
-                  <p class="mb-0"><strong>Pretenção salarial: </strong> R$2800,00</p>
+                  <p class="mb-0"><strong>Pretenção salarial:</strong> R$<?= $objetivo->getPretSal(); ?></p>
                 </li>
               </ul>
             </div>

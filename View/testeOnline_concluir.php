@@ -55,7 +55,7 @@ if (intval($_SESSION['dadosTeste']['resultado']) != 0) {
 
 unset($_SESSION['dadosTeste']);
 
-if ($acertos >= 2) {
+/*if ($acertos >= 2) {
   $resultado = 'regular';
 } else if ($acertos >= 1.66) {
   $resultado = 'bom';
@@ -63,7 +63,7 @@ if ($acertos >= 2) {
   $resultado = 'ótimo';
 } else if ($acertos == 1) {
   $resultado = 'excelente';
-}
+}*/
 
 ?>
 
@@ -78,7 +78,8 @@ if ($acertos >= 2) {
           <p class="lead">Realize todos os testes e responda todas as perguntas para efetivar sua candidatura no processo seletivo.</p>
           <hr>
 
-          <p class="lead"><strong>Você teve um <?= $resultado ?> desempenho.</strong></p>
+          <p class="lead"><strong>Teste realizado com sucesso!</strong></p>
+
       </div>
       <hr class="my-2 my-md-4">
 
