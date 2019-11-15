@@ -18,7 +18,7 @@ if (isset($_POST['btnEntrarRecrutador'])) {
 	$cnpj = str_pad($cnpj, 14, '0', STR_PAD_LEFT);
 
 	//Tem que voltar a mascara
-	 echo "<script>alert($cnpj);</script>";
+	//echo "<script>alert($cnpj);</script>";
 
 	$recrutador->setCnpj($cnpj);
 	$recrutador->setSenha($_POST['txtSenha']);

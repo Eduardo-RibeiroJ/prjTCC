@@ -7,11 +7,13 @@ include_once "../Model/Candidato.php";
 include_once "../Model/ProcessoSeletivo.php";
 include_once "../Model/CandidatoProcesso.php";
 include_once "../Model/Cargo.php";
+include_once "../Model/Recrutador.php";
 
 include_once "../Controller/CandidatoDAO.php";
 include_once "../Controller/ProcessoSeletivoDAO.php";
 include_once "../Controller/CandidatoProcessoDAO.php";
 include_once "../Controller/CargoDAO.php";
+include_once "../Controller/RecrutadorDAO.php";
 
 $conn = new Conexao();
 
@@ -37,43 +39,56 @@ $arrayProcessos = $candidatoProcessoDAO->Listar($candidatoProcesso);
 <div style="background-color:#c1ddf3">
   <div class="container">
 
-    <div class="jumbotron p-3 p-md-5" style="background-color: #FFF">
-      <div class="container p-0">
-        <h5 class="display-4 display-md-1">Vagas em que se candidatou</h1>
-          <hr class="my-2 my-md-3">
-          <p class="lead">Acompanhe os processos seletivos em que você está participando</p>
-
-      </div>
+    <div class="card-header" style="background-color:#FFFF">
+      <h5 class="mt-2">Minhas vagas</h5>
     </div>
 
-    <div class="my-3 p-3 bg-white rounded shadow-sm">
-      <h6 class="border-bottom border-gray pb-2 mb-0">Candidaturas recentes</h6>
+    <?php foreach ($arrayProcessos as $reg) : ?>
+      <form method="POST" action="processo_seletivo_testes.php">
 
-      <?php foreach ($arrayProcessos as $reg) : ?>
-        <form method="POST" action="processo_seletivo_testes.php">
-
-          <div class="media text-muted pt-3">
-            <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-              <div class="d-flex justify-content-between align-items-center w-100">
+        <!--<div class="media text-muted pt-3">
+            <div class="media-body pb-3 mb-0 border-bottom">
+              <div class="d-flex justify-content-between align-items-center">
                 <input type="hidden" id="txtIdProcesso" name="txtIdProcesso" value="<?= $reg->getidProcesso() ?>" />
-                <p class="lead d-inline p-0">Vaga para <strong><?= $reg->getCargo()->getNomeCargo(); ?></strong></p>
+                <p class="lead p-0">Vaga para <strong><?= $reg->getCargo()->getNomeCargo(); ?></strong></p>
                 <button type="submit" id="btnVisualizarProcesso" name="btnVisualizarProcesso" class="btn bnt-sm btn-outline-dark float-right mb-1"><i class='fas fa-search'></i></button>
               </div>
               <h6><strong>Contratação:</strong> <?= $reg->getTipoContratacao(); ?></h6>
               <h6><strong>Salário: </strong><?= $reg->getSalario(); ?></h6>
             </div>
           </div>
-        </form>
+        </form>-->
+
+        <?php
+          $recrutador = new Recrutador();
+          $recrutadorDAO = new RecrutadorDAO($conn);
+
+          $recrutador->setCnpj($reg->getCnpj());
+          $recrutadorDAO->Listar($recrutador);
+
+          ?>
+
+        <div class="list-group">
+          <input type="hidden" id="txtIdProcesso" name="txtIdProcesso" value="<?= $reg->getidProcesso() ?>" />
+          <a href="#" class="list-group-item list-group-item-action border-top-0 border-bottom-1 border-right-0 border-left-0">
+            <div class="d-flex w-100 justify-content-between">
+              <h5 class="mb-0">Vaga para <strong><?= $reg->getCargo()->getNomeCargo(); ?></strong></h5>
+              <button type="submit" id="btnVisualizarProcesso" name="btnVisualizarProcesso" class="btn bnt-sm btn-outline-dark float-right mb-1"><i class='fas fa-search'></i></button>
+            </div>
+            <p class="text-muted mb-0">Empresa <?= $recrutador->getNomeEmpresa() ?>, região de <?= $recrutador->getCidade() ?>.</p>
+            <p class="mb-0"><strong>Contratação:</strong> <?= $reg->getTipoContratacao(); ?></p>
+
+            <?php if ($reg->getSalario() != 0) : ?>
+              <p class="mb-1"><strong>Salário: </strong><?= $reg->getSalario(); ?></p>
+            <?php else :?>
+              <p class="mb-1"><strong>Salário: </strong> A combinar</p>
+            <?php endif; ?>
+
+          </a>
+        </div>
       <?php endforeach; ?>
 
-      <small class="d-block text-right mt-3">
-        <a href="#">subir</a>
-      </small>
-    </div>
   </div>
-
-
-
 </div>
-</div>
+
 <?php include 'footer.php'; ?>
