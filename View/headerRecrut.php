@@ -82,7 +82,7 @@ if (!(isset($_SESSION['logado'])) || $_SESSION['logado'] != 2) {
 				<li class="nav-item dropdown no-arrow" style="padding-left:0.15rem">
 					<a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						<span><?= $_SESSION['nomeEmpresa']; ?></span>
-						<img class="img-profile rounded-circle" src="imagem/logo-mercedes.jpg">
+						<img class="img-profile rounded-circle" src="imagem/company.png">
 					</a>
 
 					<!-- Dropdown - User Information -->

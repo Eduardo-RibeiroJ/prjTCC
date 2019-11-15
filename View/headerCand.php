@@ -79,7 +79,7 @@ if(!(isset($_SESSION['logado'])) || $_SESSION['logado'] != 1) {
 					<li class="nav-item dropdown no-arrow">
 						<a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 							<span><?= $_SESSION['nomeCandidato']; ?></span>
-							<img class="img-profile rounded-circle ml-2" style="width: 30px; height: 30px;" src="https://www.letradamusica.net/fotos/k/kasino/fotos/kasino-8.jpg">
+							<img class="img-profile rounded-circle ml-2" style="width: 30px; height: 30px;" src="imagem/user.png">
 						</a>
 
 						<!-- Dropdown - User Information -->

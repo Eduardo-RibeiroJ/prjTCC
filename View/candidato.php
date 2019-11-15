@@ -81,7 +81,7 @@ $arrayVagas = $processoSeletivoDAO->ListarVagaCandidato($processoSeletivo, $obje
             <div class="card-text">
               <h5>
                 <?= $candidato->getNome() ?> <?= $candidato->getSobrenome() ?>
-                <img class="img-profile rounded-circle d-none d-md-inline float-right" style="width: 4em; height: 4em;" src="https://www.letradamusica.net/fotos/k/kasino/fotos/kasino-8.jpg">
+                <img class="img-profile rounded-circle d-none d-md-inline float-right" style="width: 4em; height: 4em;" src="imagem/user.png">
               </h5>
 
               <p class="mb-0"><?= $candidato->getIdade() ?> anos</p>
