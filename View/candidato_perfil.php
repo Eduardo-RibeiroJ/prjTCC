@@ -60,7 +60,7 @@ $objetivo = $objetivoDAO->Listar($objetivo);
 
 ?>
 
-<div style="background-color:#c1ddf3">
+<div style="background-image: linear-gradient(to right, rgba(145,184,217,1), rgba(23,166,255,1));">
   <div class="container">
 
     <section id="sectionCandidatoPerfil">
@@ -109,7 +109,7 @@ $objetivo = $objetivoDAO->Listar($objetivo);
           <div class="card mb-2">
 
             <div class="card-header" id="candidatoEndereco">
-            <p class="d-inline" data-toggle="collapse" data-target="#collapseCandidatoEndereco" aria-expanded="true" aria-controls="collapseCandidatoEndereco">Endereço</p>
+              <p class="d-inline" data-toggle="collapse" data-target="#collapseCandidatoEndereco" aria-expanded="true" aria-controls="collapseCandidatoEndereco">Endereço</p>
               <a href="candidato_alterar.php" name="btnAlterarEndereco" id="btnAlterarEndereco" class="btn btn-outline-primary float-right">
                 <i class="fas fa-pencil-alt"></i>
               </a>
@@ -139,7 +139,7 @@ $objetivo = $objetivoDAO->Listar($objetivo);
           <div class="card mb-2">
 
             <div class="card-header" id="candidatoContato">
-            <p class="d-inline" data-toggle="collapse" data-target="#collapsecandidatoContato" aria-expanded="true" aria-controls="collapsecandidatoContato">Contato</p>
+              <p class="d-inline" data-toggle="collapse" data-target="#collapsecandidatoContato" aria-expanded="true" aria-controls="collapsecandidatoContato">Contato</p>
               <a href="candidato_alterar.php" name="btnAlterarContato" id="btnAlterarContato" class="btn btn-outline-primary float-right">
                 <i class="fas fa-pencil-alt"></i>
               </a>
@@ -172,7 +172,7 @@ $objetivo = $objetivoDAO->Listar($objetivo);
           <div class="card mb-2">
 
             <div class="card-header" id="candidatoObjetivo">
-            <p class="d-inline" data-toggle="collapse" data-target="#collapsecandidatoObjetivo" aria-expanded="true" aria-controls="collapsecandidatoObjetivo">Objetivo</p>
+              <p class="d-inline" data-toggle="collapse" data-target="#collapsecandidatoObjetivo" aria-expanded="true" aria-controls="collapsecandidatoObjetivo">Objetivo</p>
               <a href="candidato_alterar_objetivo.php" name="btnAlterarObjetivo" id="btnAlterarObjetivo" class="btn btn-outline-primary float-right">
                 <i class="fas fa-pencil-alt"></i>
               </a>
@@ -200,7 +200,7 @@ $objetivo = $objetivoDAO->Listar($objetivo);
           <div class="card mb-2">
 
             <div class="card-header" id="candidatoCompetencia">
-            <p class="d-inline" data-toggle="collapse" data-target="#collapsecandidatoCompetencia" aria-expanded="true" aria-controls="collapsecandidatoCompetencia">Idiomas e Competências</p>
+              <p class="d-inline" data-toggle="collapse" data-target="#collapsecandidatoCompetencia" aria-expanded="true" aria-controls="collapsecandidatoCompetencia">Idiomas e Competências</p>
               <a href="candidato_inserir_competencia.php" name="btnAlterarCompetencia" id="btnAlterarCompetencia" class="btn btn-outline-primary float-right">
                 <i class="fas fa-pencil-alt"></i>
               </a>
@@ -241,7 +241,7 @@ $objetivo = $objetivoDAO->Listar($objetivo);
           <div class="card mb-2">
 
             <div class="card-header" id="candidatoFormacao">
-            <p class="d-inline" data-toggle="collapse" data-target="#collapsecandidatoFormacao" aria-expanded="true" aria-controls="collapsecandidatoFormacao">Formação</p>
+              <p class="d-inline" data-toggle="collapse" data-target="#collapsecandidatoFormacao" aria-expanded="true" aria-controls="collapsecandidatoFormacao">Formação</p>
               <a href="candidato_inserir_formacao.php" name="btnAlterarFormacao" id="btnAlterarFormacao" class="btn btn-outline-primary float-right">
                 <i class="fas fa-pencil-alt"></i>
               </a>
@@ -288,7 +288,7 @@ $objetivo = $objetivoDAO->Listar($objetivo);
           <div class="card mb-2">
 
             <div class="card-header" id="candidatoCurso">
-            <p class="d-inline" data-toggle="collapse" data-target="#collapsecandidatoCurso" aria-expanded="true" aria-controls="collapsecandidatoCurso">Cursos Complementares</p>
+              <p class="d-inline" data-toggle="collapse" data-target="#collapsecandidatoCurso" aria-expanded="true" aria-controls="collapsecandidatoCurso">Cursos Complementares</p>
               <a href="candidato_inserir_curso.php" name="btnAlterarCurso" id="btnAlterarCurso" class="btn btn-outline-primary float-right">
                 <i class="fas fa-pencil-alt"></i>
               </a>
@@ -334,7 +334,7 @@ $objetivo = $objetivoDAO->Listar($objetivo);
           <div class="card mb-2">
 
             <div class="card-header" id="candidatoEmpresa">
-            <p class="d-inline" data-toggle="collapse" data-target="#collapsecandidatoEmpresa" aria-expanded="true" aria-controls="collapsecandidatoEmpresa">Experiência Profissional</p>
+              <p class="d-inline" data-toggle="collapse" data-target="#collapsecandidatoEmpresa" aria-expanded="true" aria-controls="collapsecandidatoEmpresa">Experiência Profissional</p>
               <a href="candidato_inserir_empresa.php" name="btnAlterarEmpresa" id="btnAlterarEmpresa" class="btn btn-outline-primary float-right">
                 <i class="fas fa-pencil-alt"></i>
               </a>

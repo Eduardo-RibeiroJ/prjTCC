@@ -33,7 +33,7 @@ if (isset($_GET['btnCriar'])) {
 
 <?php include_once 'headerRecrut.php'; ?>
 
-<div style="background-color:#c1ddf3">
+<div style="background-image: linear-gradient(to right, rgba(145,184,217,1), rgba(23,166,255,1));">
   <div class="container" id="containerPrincipal">
 
     <div class="row">
@@ -139,7 +139,7 @@ if (isset($_GET['btnCriar'])) {
           <a href="testeOnline.php" class="btn btn-primary btn-lg float-right">Concluir</a>
         </div>
       </div>
-      
+
     </section>
 
   </div>

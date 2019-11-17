@@ -66,7 +66,7 @@ $arrayPergunta = $processoPerguntaDAO->Listar($processoPergunta);
 
 <?php include_once 'headerCand.php'; ?>
 
-<section class="masthead" id="sectionRealizarTeste" style="background-color:#c1ddf3">
+<section class="masthead" id="sectionRealizarTeste" style="background-image: linear-gradient(to right, rgba(188, 216, 238, 1), rgba(145,184,217,1));">
   <div class="container">
 
     <div class="jumbotron p-3 p-md-5" style="background-color: #FFF">
@@ -79,7 +79,7 @@ $arrayPergunta = $processoPerguntaDAO->Listar($processoPergunta);
               <div class="row">
                 <div class="col-12">
                   <div class="form-group">
-                    <label class="lead" for="txtPergunta<?= $reg->getPergunta()->getIdPergunta(); ?>"><?= $reg->getPergunta()->getPergunta(); ?></label>
+                    <label class="lead mt-3" for="txtPergunta<?= $reg->getPergunta()->getIdPergunta(); ?>"><?= $reg->getPergunta()->getPergunta(); ?></label>
                     <textarea name="txtPergunta<?= $reg->getPergunta()->getIdPergunta(); ?>" id="txtPergunta<?= $reg->getPergunta()->getIdPergunta(); ?>" rows="3" class="form-control" placeholder="Responda aqui..." required></textarea>
                   </div>
                 </div>

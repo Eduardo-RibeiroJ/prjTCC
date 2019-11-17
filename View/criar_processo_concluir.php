@@ -23,7 +23,7 @@ unset($_SESSION['processo_etapa1']);
 
 <?php include_once 'headerRecrut.php'; ?>
 
-<section class="masthead" id="sectionProcessoConcluir" style="background-color:#c1ddf3">
+<section class="masthead" id="sectionProcessoConcluir" style="background-image: linear-gradient(to right, rgba(188, 216, 238, 1), rgba(145,184,217,1));">
   <div class="container">
 
     <div class="jumbotron p-3 p-md-5" style="background-color: #FFF">

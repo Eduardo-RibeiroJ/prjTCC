@@ -70,7 +70,7 @@ $processoPergunta->setProcesso($processo);
 $arrayPergunta = $processoPerguntaDAO->Listar($processoPergunta);
 
 //Verificar se o candidato ja se candidatou
-if(isset($_SESSION['cpf'])) {
+if (isset($_SESSION['cpf'])) {
   $candidatoProcesso->setCpf($_SESSION['cpf']);
   $candidatoProcesso->setIdProcesso($idProcesso);
   $candidatoProcessoDAO->Listar($candidatoProcesso);
@@ -86,17 +86,17 @@ else if ($_SESSION['logado'] == 2)
 ?>
 
 
-<section class="masthead" id="sectionProcesso1" style="background-color:#c1ddf3">
+<section class="masthead" id="sectionProcesso1" style="background-image: linear-gradient(to right, rgba(188, 216, 238, 1), rgba(145,184,217,1));">
   <div class="container">
 
     <div class="jumbotron p-3 p-md-5" style="background-color: #FFF">
       <div class="container p-0">
         <h5 class="display-4 display-md-2">Vaga para <?= $processo->getCargo()->getNomeCargo() ?></h1>
-          <?php if(strtotime(date("d-m-Y")) > strtotime(str_replace("/", "-", $processo->getDataLimiteCandidatar()))): ?>
+          <?php if (strtotime(date("d-m-Y")) > strtotime(str_replace("/", "-", $processo->getDataLimiteCandidatar()))) : ?>
 
             <h4 class="text-center"><strong>Inscrições encerradas!</strong></h4>
 
-          <?php else: ?>
+          <?php else : ?>
             <p class="lead">Inscrições para o processo seletivo estarão abertas até <strong><?= $processo->getDataLimiteCandidatar(); ?></strong>.</p>
 
           <?php endif; ?>
@@ -125,8 +125,8 @@ else if ($_SESSION['logado'] == 2)
               $candidatoCompetenciaDAO = new CandidatoCompetenciaDAO($conn);
               $candidatoCompetencia->setCpf($_SESSION['cpf']);
               $arrayCompetencias = $candidatoCompetenciaDAO->ListarCompProc($candidatoCompetencia, $processo);
-              
-            ?>
+
+              ?>
             <?php if ($arrayCompetencias) : ?>
               <div class="row">
                 <div class="col-12">
@@ -140,26 +140,26 @@ else if ($_SESSION['logado'] == 2)
                   </ul>
                 </div>
               </div>
-            <?php else: ?>
-            <p class="lead"><strong>Você não tem competências correspondentes com a vaga.</strong></p>
+            <?php else : ?>
+              <p class="lead"><strong>Você não tem competências correspondentes com a vaga.</strong></p>
 
             <?php endif; ?>
 
-          <?php else: ?>
+          <?php else : ?>
 
             <?php if ($arrayCompetencia) : ?>
-            <div class="row">
-              <div class="col-12">
-                <p class="lead mb-1"><strong>Competências necessárias:</strong></p>
-                <ul>
-                  <?php foreach ($arrayCompetencia as $reg) : ?>
+              <div class="row">
+                <div class="col-12">
+                  <p class="lead mb-1"><strong>Competências necessárias:</strong></p>
+                  <ul>
+                    <?php foreach ($arrayCompetencia as $reg) : ?>
 
-                    <li><strong><?= $reg->getCompetencia()->getNomeComp(); ?></strong> nível <?= $reg->getNivel(); ?></li>
+                      <li><strong><?= $reg->getCompetencia()->getNomeComp(); ?></strong> nível <?= $reg->getNivel(); ?></li>
 
-                  <?php endforeach; ?>
-                </ul>
+                    <?php endforeach; ?>
+                  </ul>
+                </div>
               </div>
-            </div>
             <?php endif; ?>
 
           <?php endif; ?>
@@ -204,9 +204,9 @@ else if ($_SESSION['logado'] == 2)
         <input type="hidden" name="txtIdProcesso" id="txtIdProcesso" value="<?= $idProcesso; ?>" />
         <div class="form-row">
           <div class="col text-center">
-            <?php if(strtotime(date("d-m-Y")) > strtotime(str_replace("/", "-", $processo->getDataLimiteCandidatar()))): ?>
-              
-              <?php if(isset($_SESSION['cnpj'])): ?>
+            <?php if (strtotime(date("d-m-Y")) > strtotime(str_replace("/", "-", $processo->getDataLimiteCandidatar()))) : ?>
+
+              <?php if (isset($_SESSION['cnpj'])) : ?>
                 <p class="lead text-muted"><strong>Incrições encerradas!</strong></p>
                 <a href="recrutador.php" class="btn btn-warning btn-lg float-right">Retornar</a>
               <?php elseif (!(isset($_SESSION['cpf']))) : ?>
@@ -222,7 +222,7 @@ else if ($_SESSION['logado'] == 2)
 
             <?php else : ?>
 
-              <?php if(isset($_SESSION['cnpj'])): ?>
+              <?php if (isset($_SESSION['cnpj'])) : ?>
                 <a href="recrutador.php" class="btn btn-warning btn-lg float-right">Retornar</a>
               <?php elseif ($candidatoProcesso->getCpf() == NULL) : ?>
                 <input type="submit" name="btnCandidatar" id="btnCandidatar" class="btn btn-warning btn-lg float-right" value="Candidatar-se!" />
@@ -232,7 +232,7 @@ else if ($_SESSION['logado'] == 2)
               <?php endif; ?>
 
             <?php endif; ?>
-            
+
 
           </div>
         </div>

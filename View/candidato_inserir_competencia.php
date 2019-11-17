@@ -24,99 +24,101 @@ $arrayCompetencia = $competenciaDAO->Listar($competencia);
 
 ?>
 
-<div class="container" id="containerCompetencias">
+<div style="background-image: linear-gradient(to right, rgba(145,184,217,1), rgba(23,166,255,1));">
 
-    <input type="hidden" id="txtCpf" name="txtCpf" value="<?= $candidato->getCpf() ?>">
+    <div class="container" id="containerCompetencias">
 
-    <div class="jumbotron p-3 p-md-5">
-        <div class="container p-0">
-            <h5 class="display-4 display-md-2"><i class="fas fa-lightbulb d-none d-md-inline"></i> Queremos saber sobre suas competências!</h1>
-            
-            <hr class="my-2 my-md-4">
-            <p class="lead">Adicione uma nova competência sempre que quiser.</p>
+        <input type="hidden" id="txtCpf" name="txtCpf" value="<?= $candidato->getCpf() ?>">
+
+        <div class="jumbotron p-3 p-md-5">
+            <div class="container p-0">
+                <h5 class="display-4 display-md-2"><i class="fas fa-lightbulb d-none d-md-inline"></i> Queremos saber sobre suas competências!</h1>
+
+                    <hr class="my-2 my-md-4">
+                    <p class="lead">Adicione uma nova competência sempre que quiser.</p>
+            </div>
+
+            <form autocomplete="off">
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <input type="text" class="form-control" id="txtNomeCompetencia" name="txtNomeCompetencia" placeholder="Digite uma competência..." required autofocus>
+                        <div id="compList"></div>
+                    </div>
+                    <div class="form-group col-md-5">
+                        <select class="custom-select" id="cbbNivelCompetencia" name="cbbNivelCompetencia" required>
+                            <option value="Básico">Básico</option>
+                            <option value="Intermediário">Intermediário</option>
+                            <option value="Avançado">Avançado</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-1">
+                        <button class="btn btn-primary" id="btnInserirCompetencia" name="btnInserirCompetencia">Inserir</button>
+                    </div>
+                </div>
+            </form>
         </div>
 
-        <form autocomplete="off">
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <input type="text" class="form-control" id="txtNomeCompetencia" name="txtNomeCompetencia" placeholder="Digite uma competência..." required autofocus>
-                    <div id="compList"></div>
-                </div>
-                <div class="form-group col-md-5">
-                    <select class="custom-select" id="cbbNivelCompetencia" name="cbbNivelCompetencia" required>
-                        <option value="Básico">Básico</option>
-                        <option value="Intermediário">Intermediário</option>
-                        <option value="Avançado">Avançado</option>
-                    </select>
-                </div>
-                <div class="form-group col-md-1">
-                    <button class="btn btn-primary" id="btnInserirCompetencia" name="btnInserirCompetencia">Inserir</button>
+        <section id="sectionCandCompetencias">
+
+            <div class="d-flex flex-wrap" id="divCandCompetencias">
+
+                <?php foreach ($arrayCompetencia as $reg) : ?>
+
+                    <div class="div-competencia flex-fill">
+                        <p>
+                            <h5 class="d-inline"><?= $reg->getCompetencia() ?></h5>
+                            <button class="btn btn-outline-dark d-inline ml-4" id="btnExcluirCompetencia" value="<?= $reg->getIdCompetencia() ?>"><i class="fas fa-trash-alt"></i></button>
+                        </p>
+                        <p>
+                            <select class="custom-select d-inline" id="cbbNivelCompetencia<?= $reg->getIdCompetencia() ?>" name="cbbNivelCompetencia" required>
+
+                                <?php
+
+                                    $alternativas = ['Básico', 'Intermediário', 'Avançado'];
+
+                                    foreach ($alternativas as $value) {
+
+                                        if ($value == $reg->getNivel())
+                                            $selected = 'selected';
+                                        else
+                                            $selected = '';
+
+                                        echo '<option value="' . $value . '" ' . $selected . '>' . $value . '</option>';
+                                    }
+
+                                    ?>
+
+                            </select>
+                        </p>
+                    </div>
+
+                <?php endforeach; ?>
+
+            </div>
+
+            <hr class="my-2 my-md-4">
+
+            <div class="row">
+                <div class="col">
+                    <a href="candidato_perfil.php" class="btn btn-primary float-right">Visualizar Perfil</a>
                 </div>
             </div>
-        </form>
+
+        </section>
     </div>
-
-    <section id="sectionCandCompetencias">
-
-    <div class="d-flex flex-wrap" id="divCandCompetencias">
-
-    <?php foreach($arrayCompetencia as $reg): ?>
-
-        <div class="div-competencia flex-fill">
-            <p>
-                <h5 class="d-inline"><?= $reg->getCompetencia() ?></h5>
-                <button class="btn btn-outline-dark d-inline ml-4" id="btnExcluirCompetencia" value="<?= $reg->getIdCompetencia() ?>"><i class="fas fa-trash-alt"></i></button>
-            </p>
-            <p>
-                <select class="custom-select d-inline" id="cbbNivelCompetencia<?= $reg->getIdCompetencia() ?>" name="cbbNivelCompetencia" required>
-                    
-                <?php
-
-                    $alternativas = ['Básico','Intermediário','Avançado'];
-
-                    foreach ($alternativas as $value) {
-
-                        if($value == $reg->getNivel())
-                            $selected = 'selected';
-                        else
-                            $selected = '';
-
-                        echo '<option value="'.$value.'" '.$selected.'>'.$value.'</option>';
-                    }
-
-                ?>
-                    
-                </select>
-            </p>
-        </div>      
-
-    <?php endforeach; ?>
-    
-    </div>
-
-    <hr class="my-2 my-md-4">
-
-    <div class="row">
-        <div class="col">
-            <a href="candidato_perfil.php" class="btn btn-primary float-right">Visualizar Perfil</a>
-        </div>
-    </div>
-
-  </section>
 </div>
-
 
 <?php include 'footer.php'; ?>
 <script>
     $(document).ready(function() {
-        $('#txtNomeCompetencia').keyup(function (){
+        $('#txtNomeCompetencia').keyup(function() {
             var palavra = $(this).val();
-            if(palavra != '') {
+            if (palavra != '') {
                 $.post('../Controller/PesquisarCompetencia.php', {
-                palavra: palavra
-            }, function(lista) {
-                $('#compList').fadeIn();
-                $('#compList').html(lista);
+                    palavra: palavra
+                }, function(lista) {
+                    $('#compList').fadeIn();
+                    $('#compList').html(lista);
 
                 });
             } else {

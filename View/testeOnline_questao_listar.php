@@ -27,7 +27,7 @@ $arrayQuestao = $questaoDAO->Listar($questao);
 
 <?php include_once 'headerRecrut.php'; ?>
 
-<div style="background-color:#c1ddf3">
+<div style="background-image: linear-gradient(to right, rgba(188, 216, 238, 1), rgba(145,184,217,1));">
   <div class="container">
 
     <section>

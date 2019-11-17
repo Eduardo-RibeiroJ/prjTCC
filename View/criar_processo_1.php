@@ -29,7 +29,7 @@ if (isset($_POST['btnAvancar'])) {
 
 <?php include_once 'headerRecrut.php'; ?>
 
-<section class="masthead" id="sectionProcesso1" style="background-color:#c1ddf3">
+<section class="masthead" id="sectionProcesso1" style="background-image: linear-gradient(to right, rgba(188, 216, 238, 1), rgba(145,184,217,1));">
     <div class="container">
 
         <div class="row">

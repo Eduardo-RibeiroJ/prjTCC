@@ -25,7 +25,7 @@ $arrayPergunta = $perguntaDAO->Listar($pergunta);
 
 ?>
 
-<div style="background: url(imagem/90464.jpg); background-size: cover;">
+<div style="background-image: linear-gradient(to right, rgba(145,184,217,1), rgba(145,184,217,1));">
   <div class="container" id="containerPergunta">
 
     <div class="jumbotron p-3 p-md-5" style="background-color:#FFFF">

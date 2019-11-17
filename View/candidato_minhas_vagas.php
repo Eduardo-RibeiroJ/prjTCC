@@ -36,7 +36,7 @@ $arrayProcessos = $candidatoProcessoDAO->Listar($candidatoProcesso);
 
 ?>
 
-<div style="background-color:#c1ddf3">
+<div style="background-image: linear-gradient(to right, rgba(188, 216, 238, 1), rgba(145,184,217,1));">
   <div class="container">
 
     <div class="card-header" style="background-color:#FFFF">
@@ -80,7 +80,7 @@ $arrayProcessos = $candidatoProcessoDAO->Listar($candidatoProcesso);
 
             <?php if ($reg->getSalario() != 0) : ?>
               <p class="mb-1"><strong>Salário: </strong><?= $reg->getSalario(); ?></p>
-            <?php else :?>
+            <?php else : ?>
               <p class="mb-1"><strong>Salário: </strong> A combinar</p>
             <?php endif; ?>
 

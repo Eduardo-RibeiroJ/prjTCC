@@ -50,7 +50,7 @@ $arrayVagas = $processoSeletivoDAO->ListarVagaCandidato($processoSeletivo, $obje
     
     </header> -->
 
-<div style="background-color:#c1ddf3">
+<div style="background-image: linear-gradient(to right, rgba(188, 216, 238, 1), rgba(145,184,217,1));">
   <div class="container">
 
     <form action="candidato_vagas.php" method="GET" class="form-signin" autocomplete="off">
@@ -149,7 +149,7 @@ $arrayVagas = $processoSeletivoDAO->ListarVagaCandidato($processoSeletivo, $obje
                   $recrutador->setCnpj($reg->getCnpj());
                   $recrutadorDAO->Listar($recrutador);
 
-                ?>
+                  ?>
                 <div class="row">
                   <div class="col-12">
                     <div class="list-group">

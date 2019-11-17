@@ -69,7 +69,7 @@ unset($_SESSION['dadosTeste']);
 
 <?php include_once 'headerCand.php'; ?>
 
-<section class="masthead" id="sectionConcluirTeste" style="background-color:#c1ddf3">
+<section class="masthead" id="sectionConcluirTeste" style="background-image: linear-gradient(to right, rgba(145,184,217,1), rgba(23,166,255,1));">
   <div class="container">
 
     <div class="jumbotron p-3 p-md-5" style="background-color: #FFF">
