@@ -213,4 +213,30 @@ class ProcessoSeletivoDAO
 
         return $arrayQuery;
     }
+
+    public function EncerrarProcesso(ProcessoSeletivo $processo)
+    {
+        $idProcesso = $processo->getIdProcesso();
+        $idCargo = $processo->getIdCargo();
+        $dataInicio = $processo->getDataInicio();
+        $resumoVaga = $processo->getResumoVaga();
+        $tipoContratacao = $processo->getTipoContratacao();
+        $salario = $processo->getSalario();
+        
+        //Define o fuso horário
+        date_default_timezone_set('America/Sao_Paulo');
+        $dataLimite = date('Y-m-d', strtotime('-1 days'));
+
+        $query = "UPDATE tbProcessoSeletivo SET idCargo=?, dataInicio=?, dataLimiteCandidatar=?, resumoVaga=?, tipoContratacao=?, salario=? WHERE idProcesso = ?;";
+
+        $stmt = mysqli_prepare($this->db->getConection(), $query);
+
+        if ($stmt === FALSE) {
+            die(mysqli_error($this->db->getConection()));
+        }
+
+        mysqli_stmt_bind_param($stmt, 'issssii', $idCargo, $dataInicio, $dataLimite, $resumoVaga, $tipoContratacao, $salario, $idProcesso);
+        mysqli_stmt_execute($stmt);
+        mysqli_stmt_close($stmt);
+    }
 }

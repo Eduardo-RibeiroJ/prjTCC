@@ -60,7 +60,7 @@ $objetivo = $objetivoDAO->Listar($objetivo);
 
 ?>
 
-<div style="background-image: linear-gradient(to right, rgba(145,184,217,1), rgba(23,166,255,1));">
+<div style="background-image: linear-gradient(to bottom, rgba(220, 240, 255, 1), rgba(130,175,210,1));">
   <div class="container">
 
     <section id="sectionCandidatoPerfil">

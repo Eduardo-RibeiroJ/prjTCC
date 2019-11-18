@@ -902,7 +902,7 @@ $(function () {
         }
         function mudarPagina() {
             window.location.replace("criar_processo_concluir.php");
-            console.log('Trocou paginaaaaa')
+            console.log('Trocou pagina')
         }
     });
 
@@ -912,6 +912,28 @@ $(function () {
 
         document.getElementById("txtLinkCopiar").select();
         document.execCommand('copy');
+
+    });
+
+    //ENCERRAR PROCESSO SELETIVO
+
+    $('#div-processo-listagem').on('click', '#btnEncerrarProcesso', function (e) {
+
+        e.preventDefault();
+
+        $.post('../PostAjax/alterar.php', {
+            acao: "encerrarProcesso",
+            idProcesso: $(this).val()
+
+        }, function (sucesso) {
+
+            if (sucesso == true) {
+                console.log('Encerrou');
+                window.location.replace("processo_listagem.php");
+            } else {
+                alert('Erro: ' + sucesso);
+            }
+        });
 
     });
 

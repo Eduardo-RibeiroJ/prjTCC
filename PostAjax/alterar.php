@@ -306,6 +306,22 @@ if ($_POST['acao'] == "alterarRecrutadorContato") {
 	$recrutadorDAO->Alterar($recrutador);
 }
 
+if ($_POST['acao'] == "encerrarProcesso") {
+
+	include_once "../Model/ProcessoSeletivo.php";
+	include_once "../Controller/ProcessoSeletivoDAO.php";
+	include_once "../Model/Cargo.php";
+	include_once "../Controller/CargoDAO.php";
+
+	$processo = new ProcessoSeletivo();
+	$processoDAO = new ProcessoSeletivoDAO($conn);
+
+	$processo->setIdProcesso($_POST['idProcesso']);
+	$processoDAO->Listar($processo);
+
+	$processoDAO->EncerrarProcesso($processo);
+}
+
 echo true;
 
 ?>

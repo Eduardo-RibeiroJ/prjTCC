@@ -24,7 +24,7 @@ include_once 'headerRecrut.php';
 ?>
 
 <div style="background: url(imagem/17209.jpg); background-size: cover;">
-  <div class="container">
+  <div class="container" id="div-processo-listagem">
     <div class="row">
       <div class="col-12">
         <div class="card">
@@ -40,14 +40,15 @@ include_once 'headerRecrut.php';
                 <form method="POST" action="processo_listagem_candidato.php">
                   <div class="row">
                     <div class="col-12">
-                      <input type="hidden" id="txtIdProcesso" name="txtIdProcesso" value="<?= $reg->getidProcesso() ?>" />
+                      <input type="hidden" id="txtIdProcesso" name="txtIdProcesso" value="<?= $reg->getIdProcesso() ?>" />
 
                       <?php if(strtotime(date("d-m-Y")) > strtotime(str_replace("/", "-", $reg->getDataLimiteCandidatar()))): ?>
                         <p class="lead d-inline text-muted">Vaga para <strong><?= $reg->getCargo()->getNomeCargo(); ?></strong>, <span class="text-danger">inscrições encerradas.</p>
-                        <button type="submit" id="btnVisualizarCandidatos" name="btnVisualizarCandidatos" class="btn bnt-sm btn-outline-dark float-right text-muted mb-1"><i class='fas fa-search'></i></button>
+                        <button type="submit" id="btnVisualizarCandidatos" name="btnVisualizarCandidatos" class="btn bnt-sm btn-outline-dark float-right mb-1"><i class='fas fa-search'></i></button>
                       <?php else: ?>
                         <p class="lead d-inline">Vaga para <strong><?= $reg->getCargo()->getNomeCargo(); ?></strong>, inscrições encerram em <?= $reg->getDataLimiteCandidatar(); ?>.</p>
                         <button type="submit" id="btnVisualizarCandidatos" name="btnVisualizarCandidatos" class="btn bnt-sm btn-outline-dark float-right mb-1"><i class='fas fa-search'></i></button>
+                        <button id="btnEncerrarProcesso" name="btnEncerrarProcesso" value="<?= $reg->getIdProcesso() ?>" class="btn bnt-sm btn-outline-danger float-right mb-1 mr-2"><i class='fas fa-times'></i></button>
                       <?php endif; ?>
                     </div>
                   </div>
