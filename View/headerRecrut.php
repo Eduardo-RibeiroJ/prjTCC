@@ -51,6 +51,8 @@ if (!(isset($_SESSION['logado'])) || $_SESSION['logado'] != 2) {
 	<link rel="stylesheet" href="css/bootstrap.css">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
 </head>
 
 <body>
@@ -75,33 +77,33 @@ if (!(isset($_SESSION['logado'])) || $_SESSION['logado'] != 2) {
 						<a class="nav-link" href="processo_listagem.php">Processos Seletivos</a>
 					</li>
 				</ul>
-				
+
 				<ul class="navbar-nav ml-auto">
 
-				<!-- Nav Item - Informação do usuário -->
-				<li class="nav-item dropdown no-arrow" style="padding-left:0.15rem">
-					<a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						<span><?= $_SESSION['nomeEmpresa']; ?></span>
-						<img class="img-profile rounded-circle" src="imagem/company.png">
-					</a>
+					<!-- Nav Item - Informação do usuário -->
+					<li class="nav-item dropdown no-arrow" style="padding-left:0.15rem">
+						<a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							<span><?= $_SESSION['nomeEmpresa']; ?></span>
+							<img class="img-profile rounded-circle" src="imagem/company.png">
+						</a>
 
-					<!-- Dropdown - User Information -->
-					<div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-						<a class="dropdown-item" href="recrutador_alterar.php">
-							<i></i>
-							Perfil
-						</a>
-						<a class="dropdown-item" href="#">
-							<i></i>
-							Configurações
-						</a>
-						<div class="dropdown-divider"></div>
-						<a class="dropdown-item" href="logout.php">
-							<i></i>
-							Sair
-						</a>
-					</div>
-				</li>
+						<!-- Dropdown - User Information -->
+						<div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+							<a class="dropdown-item" href="recrutador_alterar.php">
+								<i></i>
+								Perfil
+							</a>
+							<a class="dropdown-item" href="#">
+								<i></i>
+								Configurações
+							</a>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item" href="logout.php">
+								<i></i>
+								Sair
+							</a>
+						</div>
+					</li>
 
 				</ul>
 

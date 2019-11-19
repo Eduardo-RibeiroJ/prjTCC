@@ -58,6 +58,4 @@ include_once "../Controller/CandidatoDAO.php";
     </form>
 </header>
 
-</header>
-
 <?php include 'footer.php'; ?>
