@@ -204,12 +204,12 @@ if (isset($_POST['btnSalvar'])) {
 
                   <div class="form-row">
                     <div class="form-group col-md-6">
-                      <label for="txtTelefone1">Telefone</label>
+                      <label for="txtTelefone1">Telefone celular</label>
                       <input type="text" class="form-control" id="txtTelefone1" name="txtTelefone1" placeholder="" required>
                     </div>
 
                     <div class="form-group col-md-6">
-                      <label for="txtTelefone2">Telefone 2</label>
+                      <label for="txtTelefone2">Telefone fixo</label>
                       <input type="text" class="form-control" id="txtTelefone2" name="txtTelefone2" placeholder="">
                     </div>
 
@@ -321,4 +321,14 @@ if (isset($_POST['btnSalvar'])) {
     $('#txtCargo').val($(this).text());
     $('#compList').html('');
   })
+
+  //Máscaras
+</script>
+
+
+<script type="text/javascript">
+  $("#txtCEP").mask("00000-000");
+  $("#txtTelefone1").mask("(00)00000-0000");
+  $("#txtTelefone2").mask("(00)0000-0000");
+  $("#txtPretSal").mask("R$0000,00");
 </script>

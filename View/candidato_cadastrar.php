@@ -49,7 +49,7 @@ include_once 'header.php';
             <input type="email" id="txtEmail" name="txtEmail" class="form-control mb-1" placeholder="Insira seu e-mail..." required>
             <input type="password" id="txtSenha" name="txtSenha" class="form-control mb-1" placeholder="Insira uma senha..." required>
             <input type="password" id="txtRepetirSenha" name="txtRepetirSenha" class="form-control mb-3" placeholder="Repita a senha..." required>
-            
+
             <input type="submit" id="btnCadastrar" name="btnCadastrar" class="btn btn-warning btn-lg" value="Avançar">
         </div>
     </form>
@@ -57,7 +57,7 @@ include_once 'header.php';
 </header>
 
 <script type="text/javascript">
-    $("#txtCpf").mask("00.000.000-0");
+    $("#txtCpf").mask("000.000.000-00");
 </script>
 
 <?php include 'footer.php'; ?>
