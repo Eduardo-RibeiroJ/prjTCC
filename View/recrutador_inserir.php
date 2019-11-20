@@ -38,7 +38,7 @@ if (isset($_POST['btnSalvar'])) {
 
 <?php include_once 'header.php'; ?>
 
-<div style="background-image: linear-gradient(to right, rgba(188, 216, 238, 1), rgba(145,184,217,1));">
+<div style="background-image: linear-gradient(to left, rgba(188, 216, 238, 1), rgba(145,184,217,1));">
   <div class="container">
 
     <div class="jumbotron p-3 p-md-5">
@@ -46,7 +46,7 @@ if (isset($_POST['btnSalvar'])) {
         <h5 class="display-4 display-md-2"><i class="fas fa-building d-none d-md-inline"></i> Queremos saber sobre sua empresa!</h1>
 
           <hr class="my-2 my-md-4">
-          <p class="lead">Insira os dados da sua empresa</p>
+          <p class="lead">Insira as informações sobre a sua empresa.</p>
       </div>
     </div>
 
@@ -67,18 +67,18 @@ if (isset($_POST['btnSalvar'])) {
                 <div class="card-text">
 
                   <div class="form-row">
-                    <div class="form-group col-md-6">
+                    <div class="form-group col-md-12">
                       <label for="txtNomeEmpresa">Nome da empresa</label>
                       <input type="text" class="form-control" id="txtNomeEmpresa" name="txtNomeEmpresa" required autofocus>
                     </div>
                   </div>
 
                   <div class="form-row">
-                    <div class="form-group col-lg-6">
+                    <div class="form-group col-lg-7">
                       <label for="txtEndereco">Endereço</label>
                       <input type="text" class="form-control" id="txtEndereco" name="txtEndereco" placeholder="Rua e número" required>
                     </div>
-                    <div class="form-group col-lg-2">
+                    <div class="form-group col-lg-3">
                       <label for="txtCEP">CEP</label>
                       <input type="text" class="form-control" id="txtCEP" name="txtCEP" placeholder="" required>
                     </div>
@@ -89,11 +89,11 @@ if (isset($_POST['btnSalvar'])) {
                   </div>
 
                   <div class="form-row">
-                    <div class="form-group col-md-5">
+                    <div class="form-group col-md-6">
                       <label for="txtCidade">Cidade</label>
                       <input type="text" class="form-control" id="txtCidade" name="txtCidade" placeholder="" required>
                     </div>
-                    <div class="form-group col-md-4">
+                    <div class="form-group col-md-6">
                       <label for="txtBairro">Bairro</label>
                       <input type="text" class="form-control" id="txtBairro" name="txtBairro" placeholder="" required>
                     </div>
@@ -153,7 +153,7 @@ if (isset($_POST['btnSalvar'])) {
 
             <div class="form-row">
               <div class="col text-center">
-                <input type="submit" name="btnSalvar" id="btnSalvar" class="btn btn-warning btn-lg float-right" value="Cadastrar!">
+                <input type="submit" name="btnSalvar" id="btnSalvar" class="btn btn-primary btn-lg float-right" value="Cadastrar!">
               </div>
             </div>
           </form>

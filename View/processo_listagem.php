@@ -62,6 +62,12 @@ include_once 'headerRecrut.php';
             </div>
           </div>
         </div>
+
+        <div class="row">
+          <div class="col-12 text-right mt-2">
+            <a href="recrutador.php" class="btn btn-warning" id="btnVoltar" name="btnVoltar">Voltar</a>
+          </div>
+        </div>
       </div>
     </div>
   </div>

@@ -66,10 +66,10 @@ $arrayCompetencia = $competenciaDAO->Listar($competencia);
 include_once 'headerRecrut.php';
 ?>
 
-  <section class="masthead" id="sectionProcesso1" style="background-image: linear-gradient(to right, rgba(188, 216, 238, 1), rgba(145,184,217,1));">
-    <div class="container" style="background-color: #FFF">
+  <section class="masthead" id="sectionProcesso1" style="background-image: linear-gradient(to left, rgba(188, 216, 238, 1), rgba(145,184,217,1));">
+    <div class="container pb-2" style="background-color: #FFF">
 
-      <div class="jumbotron p-3 p-md-5" style="background-color: #FFF">
+      <div class="jumbotron p-1 px-md-5 pb-md-0" style="background-color: #FFF">
         <h5 class="display-3"><?= $candidato->getNome() ?> <?= $candidato->getSobrenome() ?></h1>
           <h6 class="lead mb-0"><?= $candidato->getEstadoCivil() ?>, <?= $candidato->getIdade() ?> anos</h6>
           <h6 class="lead mb-0"><?= $candidato->getEndereco() ?> - CEP: <?= $candidato->getCep() ?></h6>

@@ -67,7 +67,8 @@ $tempo = $questao->getTempo();
 
 <?php include_once 'headerCand.php'; ?>
 
-<section class="masthead" id="sectionRealizarTeste" style="background-image: linear-gradient(to right, rgba(145,184,217,1), rgba(23,166,255,1));">
+<section class="masthead" id="sectionRealizarTeste" style="background-image: linear-gradient(to left, rgba(188, 216, 238, 1), rgba(145,184,217,1));">
+
   <div class="container">
 
     <div class="jumbotron p-3 p-md-5" style="background-color: #FFF">
@@ -122,7 +123,7 @@ $tempo = $questao->getTempo();
 
               <div class="col-12 text-center">
                 <p class="d-inline float-left" id="p-timer"></p>
-                <input type="submit" name="btnAvancar" id="btnAvancar" class="btn btn-warning btn-lg float-right" value="Avançar" />
+                <button type="submit" name="btnAvancar" id="btnAvancar" class="btn btn-warning btn-lg float-right">Avançar <i class="fas fa-arrow-right"></i></button>
               </div>
             </div>
           </form>

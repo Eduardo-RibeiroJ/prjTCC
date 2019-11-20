@@ -114,8 +114,13 @@ $arrayVagas = $processoSeletivoDAO->ListarVagaCandidato($processoSeletivo, $obje
                         <div class="list-group">
                           <input type="hidden" id="txtIdProcesso" name="txtIdProcesso" value="<?= $reg->getidProcesso() ?>" />
                           <div class="list-group-item list-group-item-action border-top-0 border-bottom-1 border-right-0 border-left-0">
-                            <p class="lead d-inline">Vaga para <strong><?= $reg->getCargo()->getNomeCargo(); ?></strong>, encerra em <?= $reg->getDataLimiteCandidatar(); ?>.</p>
-                            <button type="submit" id="btnVisualizarProcesso" name="btnVisualizarProcesso" class="btn bnt-sm btn-outline-dark float-right mb-1 mt-3"><i class='fas fa-search'></i></button>
+                            <p class="lead d-inline">Vaga para <strong><?= $reg->getCargo()->getNomeCargo(); ?></strong></p>
+                              <?php if(strtotime(date("d-m-Y")) > strtotime(str_replace("/", "-", $reg->getDataLimiteCandidatar()))): ?>
+                                <p class="lead text-muted">Encerrado, boa sorte! <i class="far fa-thumbs-up"></i></p>
+                              <?php else: ?>
+                                <p class="lead text-muted">Encerra em <strong><?= $reg->getDataLimiteCandidatar(); ?></strong>.
+                                <button type="submit" id="btnVisualizarProcesso" name="btnVisualizarProcesso" class="btn bnt-sm btn-outline-dark float-right mb-1 mt-3"><i class='fas fa-search'></i></button>
+                              <?php endif; ?>
                           </div>
                         </div>
                       </div>

@@ -33,13 +33,13 @@ if (isset($_GET['btnCriar'])) {
 
 <?php include_once 'headerRecrut.php'; ?>
 
-<div style="background-image: linear-gradient(to right, rgba(145,184,217,1), rgba(23,166,255,1));">
+<div style="background-image: linear-gradient(to left, rgba(220, 240, 255, 1), rgba(130,175,210,1));">
   <div class="container" id="containerPrincipal">
 
     <div class="row">
       <div class="col-12 mb-4">
         <h4 class="d-inline" id="numTeste"><?= $testeOnline->getIdTesteOnline(); ?></h4>
-        <h4 class="d-inline">&nbsp;- Nome:&nbsp;</h4> <!-- &nbsp dá espaço -->
+        <h4 class="d-inline">-</h4> <!-- &nbsp dá espaço -->
         <h4 class="d-inline" id="nomeTeste"><?= $testeOnline->getNomeTesteOnline(); ?> </h4>
       </div>
     </div>
@@ -49,7 +49,7 @@ if (isset($_GET['btnCriar'])) {
       <div class="row">
         <div class="col">
 
-          <div class="card">
+          <div class="card mb-3">
             <div class="card-header" id="numQuestaoCard-Header">
               Questão <?= $testeOnline->getUltimoRegistroQuestao() ?>
             </div>
@@ -117,8 +117,8 @@ if (isset($_GET['btnCriar'])) {
                   <ul class="list-group list-group-flush">
                     <li class="list-group-item">
                       <div class="form-row">
-                        <div class="form-group col-lg text-right mt-3 mb-0">
-                          <button id="btnAdicionar" class="btn btn-primary btn-mg">Adicionar</button>
+                        <div class="form-group col-lg text-right">
+                          <button id="btnAdicionar" class="btn btn-warning"><i class="fas fa-plus"></i> Adicionar</button>
                         </div>
                       </div>
                     </li>
@@ -132,11 +132,9 @@ if (isset($_GET['btnCriar'])) {
         </div>
       </div>
 
-      <hr class="my-2 my-md-4">
-
       <div class="row">
         <div class="col">
-          <a href="testeOnline.php" class="btn btn-primary btn-lg float-right">Concluir</a>
+          <a href="testeOnline.php" class="btn btn-primary btn-lg float-right"><i class="far fa-save"></i> Concluir</a>
         </div>
       </div>
 

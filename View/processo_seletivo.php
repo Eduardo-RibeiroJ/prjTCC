@@ -109,7 +109,7 @@ else if ($_SESSION['logado'] == 2)
                 <strong>Empresa <?= $recrutador->getNomeEmpresa() ?> contrata <?= $processo->getCargo()->getNomeCargo() ?> na região de <?= $recrutador->getCidade() ?></strong>
               </p>
               <p class="lead">
-                <pre class="lead-pre"><?= $processo->getResumoVaga() ?></pre>
+                <?= $processo->getResumoVaga() ?>
               </p>
               <div class="row">
                 <div class="col-12">

@@ -60,7 +60,7 @@ include_once 'headerRecrut.php'
 
 ?>
 
-<div style="background-image: linear-gradient(to right, rgba(188, 216, 238, 1), rgba(145,184,217,1));">
+<section class="masthead" id="sectionRecrutador" style="background: url(imagem/17209.jpg); background-size: cover;">
 
   <div class="container">
 
@@ -269,7 +269,7 @@ include_once 'headerRecrut.php'
                       </div>
                     <?php endif; ?>
 
-                    <button type="submit" id="btnVisualizarPerfil" name="btnVisualizarPerfil" class="btn btn-warning float-right mb-2"><i class="fas fa-user-tie"></i> Visualizar Perfil</button>
+                    <button type="submit" id="btnVisualizarPerfil" name="btnVisualizarPerfil" class="btn btn-primary float-right mb-3"><i class="fas fa-user-tie"></i> Visualizar Perfil</button>
                   </form>
                 </div>
               </div>
@@ -279,10 +279,20 @@ include_once 'headerRecrut.php'
         <?php endforeach; ?>
       </div> <!-- accordion -->
     <?php else : ?>
-      <p class="lead">Não há candidatos, divulgue seu processo seletivo!</p>
-      <h4><strong>Link: <a href="processo_seletivo-<?= $processo->getIdProcesso(); ?>">localhost/prjtcc/View/processo_seletivo-<?= $processo->getIdProcesso(); ?></strong></a></h4>
+      <div class="row">
+        <div class="col-12">
+          <p class="lead">Não há candidatos, divulgue seu processo seletivo!</p>
+          <strong>Link: <a href="processo_seletivo-<?= $processo->getIdProcesso(); ?>">localhost/prjtcc/View/processo_seletivo-<?= $processo->getIdProcesso(); ?></strong></a>
+        </div>
+      </div>
     <?php endif; ?>
 
+    <div class="row">
+      <div class="col-12 text-right mt-2">
+        <a href="processo_listagem.php" class="btn btn-warning" id="btnVoltar" name="btnVoltar">Voltar</a>
+      </div>
+    </div>
+
   </div>
-</div>
+</section>
 <?php include 'footer.php'; ?>

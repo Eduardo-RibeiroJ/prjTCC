@@ -27,13 +27,13 @@ $questaoDAO->Listar($questao);
 
 <?php include_once 'headerRecrut.php'; ?>
 
-<div style="background-image: linear-gradient(to right, rgba(145,184,217,1), rgba(23,166,255,1));">
+<div style="background-image: linear-gradient(to left, rgba(220, 240, 255, 1), rgba(130,175,210,1));">
   <div class="container">
 
     <div class="row">
       <div class="col-12 mb-4">
         <h4 class="d-inline" id="numTeste"><?= $testeOnline->getIdTesteOnline(); ?></h4>
-        <h4 class="d-inline">&nbsp;- Nome:&nbsp;</h4> <!-- &nbsp dá espaço -->
+        <h4 class="d-inline">-</h4> <!-- &nbsp dá espaço -->
         <h4 class="d-inline" id="nomeTeste"><?= $testeOnline->getNomeTesteOnline(); ?></h4>
       </div>
     </div>
@@ -123,9 +123,9 @@ $questaoDAO->Listar($questao);
                   <ul class="list-group list-group-flush">
                     <li class="list-group-item">
                       <div class="form-row">
-                        <div class="form-group col text-center">
-                          <button class="btn btn-primary btn-mg" id="btnSalvar">Salvar</button>
-                          <a href="testeOnline_questao_listar.php?idTesteOnline=<?= $testeOnline->getIdTesteOnline(); ?>" class="btn btn-outline-dark">Voltar</a>
+                        <div class="form-group col text-right">
+                          <a href="testeOnline_questao_listar.php?idTesteOnline=<?= $testeOnline->getIdTesteOnline(); ?>" class="btn btn-warning">Cancelar</a>
+                            <button class="btn btn-primary btn-mg" id="btnSalvar"><i class="far fa-save"></i> Salvar</button>
                         </div>
                       </div>
                     </li>

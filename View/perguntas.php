@@ -25,10 +25,10 @@ $arrayPergunta = $perguntaDAO->Listar($pergunta);
 
 ?>
 
-<div style="background-image: linear-gradient(to right, rgba(145,184,217,1), rgba(145,184,217,1));">
+<div style="background-image: linear-gradient(to left, rgba(220, 240, 255, 1), rgba(130,175,210,1));">
   <div class="container" id="containerPergunta">
 
-    <div class="jumbotron p-3 p-md-5" style="background-color:#FFFF">
+    <div class="jumbotron p-3 p-md-5 bg-light">
       <div class="container p-0">
         <h5 class="display-4 display-md-2"><i class="fas fa-question-circle d-none d-md-inline"> </i>Adicione perguntas!</h1>
 
@@ -37,10 +37,13 @@ $arrayPergunta = $perguntaDAO->Listar($pergunta);
       </div>
       <form>
         <div class="form-row">
-          <div class="form-group col-md-11">
+          <div class="form-group col-12">
             <textarea type="text" class="form-control" rows="4" id="txtPergunta" name="txtPergunta" placeholder="Escreva sua pergunta..." required autofocus></textarea>
           </div>
-          <div class="form-group col-md-1">
+        </div>
+        <div class="row">
+          <div class="col-12 text-right">
+            <a href="recrutador.php" class="btn btn-warning" id="btnVoltar" name="btnVoltar">Voltar</a>
             <button class="btn btn-primary" id="btnInserirPergunta" name="btnInserirPergunta">Inserir</button>
           </div>
         </div>
@@ -58,7 +61,7 @@ $arrayPergunta = $perguntaDAO->Listar($pergunta);
         <div class="row">
           <div class="col">
 
-            <div class="card" style="background-color:#FFFF">
+            <div class="card mb-1">
               <div class="card-header" id="SalvarPergunta<?= $reg->getIdPergunta(); ?>">
                 <p id="tituloHeader<?= $reg->getIdPergunta(); ?>" class="d-inline"><?= $reg->getPergunta(); ?></p>
                 <button name="btnAlterar<?= $reg->getIdPergunta(); ?>" id="btnAlterar<?= $reg->getIdPergunta(); ?>" class="btn btn-outline-primary float-right d-inline" data-toggle="collapse" data-target="#collapseRecrutadorPergunta<?= $reg->getIdPergunta(); ?>">
@@ -71,16 +74,16 @@ $arrayPergunta = $perguntaDAO->Listar($pergunta);
                 <div class="card-body">
                   <div class="card-text">
                     <div class="form-row">
-                      <div class="form-group col-md-10">
+                      <div class="form-group col-md-12">
                         <label for="txtPergunta">Pergunta</label>
                         <textarea type="text" class="form-control" rows="4" id="txtPergunta<?= $reg->getIdPergunta(); ?>" name="txtPergunta" value="<?= $reg->getPergunta(); ?>" required><?= $reg->getPergunta(); ?></textarea>
                       </div>
                     </div>
 
                     <div class="form-row">
-                      <div class="col">
-                        <button value="<?= $reg->getIdPergunta(); ?>" name="btnAlterarSalvarPergunta" id="btnAlterarSalvarPergunta" class="btn btn-primary">Salvar</button>
-                        <button value="<?= $reg->getIdPergunta(); ?>" name="btnExcluirPergunta" id="btnExcluirPergunta" class="btn btn-secondary">Apagar</button>
+                      <div class="col text-right">
+                        <button value="<?= $reg->getIdPergunta(); ?>" name="btnExcluirPergunta" id="btnExcluirPergunta" class="btn btn-danger"><i class="far fa-trash-alt"></i> Apagar</button>
+                        <button value="<?= $reg->getIdPergunta(); ?>" name="btnAlterarSalvarPergunta" id="btnAlterarSalvarPergunta" class="btn btn-primary"><i class="far fa-save"></i> Salvar</button>
                       </div>
                     </div>
 

@@ -28,7 +28,7 @@ $arrayPergunta = $perguntaDAO->Listar($pergunta);
 
 <?php include_once 'headerRecrut.php'; ?>
 
-<section class="masthead" id="sectionProcesso2" style="background-image: linear-gradient(to right, rgba(188, 216, 238, 1), rgba(145,184,217,1));">
+<section class="masthead" id="sectionProcesso2" style="background-image: linear-gradient(to left, rgba(188, 216, 238, 1), rgba(145,184,217,1));">
     <div class="container">
 
         <div class="row">
@@ -46,19 +46,19 @@ $arrayPergunta = $perguntaDAO->Listar($pergunta);
                                 <input type="hidden" id="txtContador" name="txtContador" value="1">
 
                                 <div class="form-row">
-                                    <div class="form-group col-md-6">
+                                    <div class="form-group col-md-7">
                                         <input type="text" class="form-control" id="txtNomeCompetencia" name="txtNomeCompetencia" placeholder="Digite uma competência..." required autofocus>
                                         <div id="compList"></div>
                                     </div>
-                                    <div class="form-group col-md-5">
+                                    <div class="form-group col-md-3">
                                         <select class="custom-select" id="cbbNivelCompetencia" name="cbbNivelCompetencia" required>
                                             <option value="Básico">Básico</option>
                                             <option value="Intermediário">Intermediário</option>
                                             <option value="Avançado">Avançado</option>
                                         </select>
                                     </div>
-                                    <div class="form-group col-md-1">
-                                        <button class="btn btn-primary" id="btnInserirCompetencia" name="btnInserirCompetencia">Inserir</button>
+                                    <div class="form-group col-md-2 text-center">
+                                        <button class="btn btn-primary" id="btnInserirCompetencia" name="btnInserirCompetencia"><i class="fas fa-plus"></i> Inserir</button>
                                     </div>
                                 </div>
                             </form>
@@ -84,15 +84,17 @@ $arrayPergunta = $perguntaDAO->Listar($pergunta);
 
                     <div class="card-body" id="cardTestesOnline">
                         <div class="card-text">
-                            <h5 class="display-4 mb-4">Adicione testes online para os candidatos</h5>
+                            <h5 class="display-4 mb-4">Adicione testes online</h5>
 
                             <div>
+
+                            <?php if ($arrayTestesOnline) : ?>
 
                                 <div class="form-group">
                                     <?php foreach ($arrayTestesOnline as $reg) : ?>
 
                                         <div class="row">
-                                            <div class="col">
+                                            <div class="col ">
                                                 <div class="div-add">
                                                     <div class="form-check mt-2">
                                                         <input class="chkTeste form-check-input lead" type="checkbox" value="<?= $reg->getIdTesteOnline(); ?>" id="chkTeste<?= $reg->getIdTesteOnline(); ?>" name="chkTeste<?= $reg->getIdTesteOnline(); ?>">
@@ -105,6 +107,12 @@ $arrayPergunta = $perguntaDAO->Listar($pergunta);
 
                                     <?php endforeach; ?>
                                 </div>
+
+                            <?php else : ?>
+                                <p>
+                                    <strong>Nenhum teste online cadastrado.</strong>
+                                </p>
+                            <?php endif; ?>
 
                             </div>
                         </div>
@@ -125,7 +133,7 @@ $arrayPergunta = $perguntaDAO->Listar($pergunta);
 
                     <div class="card-body" id="cardPerguntas">
                         <div class="card-text">
-                            <h5 class="display-4 mb-4">Adicione perguntas dissertativas para os candidatos</h5>
+                            <h5 class="display-4 mb-4">Adicione perguntas dissertativas</h5>
                             <div>
 
 
@@ -136,7 +144,7 @@ $arrayPergunta = $perguntaDAO->Listar($pergunta);
 
                                             <div class="row">
                                                 <div class="col">
-                                                    <div class="div-add div-add-pergunta py-3">
+                                                    <div class="div-add py-3">
                                                         <div class="form-check">
                                                             <input class="chkPergunta form-check-input lead" type="checkbox" value="<?= $reg->getIdPergunta(); ?>" id="chkPergunta<?= $reg->getIdPergunta(); ?>" name="chkPergunta<?= $reg->getIdPergunta(); ?>">
                                                             <label class="form-check-label lead ml-2" for="chkPergunta<?= $reg->getIdPergunta(); ?>"><?= $reg->getPergunta(); ?></label>
@@ -171,7 +179,7 @@ $arrayPergunta = $perguntaDAO->Listar($pergunta);
                             <div class="form-row">
                                 <div class="col text-right">
                                     <a href="criar_processo_1.php" name="btnVoltar" id="btnVoltar" class="btn btn-warning btn-lg">Voltar</a>
-                                    <button name="btnConcluir" id="btnConcluir" class="btn btn-warning btn-lg"><i class="fas fa-plus mr-1"></i> Concluir</button>
+                                    <button name="btnConcluir" id="btnConcluir" class="btn btn-primary btn-lg"><i class="far fa-save mr-1"></i> Concluir</button>
                                 </div>
                             </div>
 

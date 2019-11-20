@@ -29,7 +29,7 @@ if (isset($_POST['btnAvancar'])) {
 
 <?php include_once 'headerRecrut.php'; ?>
 
-<section class="masthead" id="sectionProcesso1" style="background-image: linear-gradient(to right, rgba(188, 216, 238, 1), rgba(145,184,217,1));">
+<section class="masthead" id="sectionProcesso1" style="background-image: linear-gradient(to left, rgba(188, 216, 238, 1), rgba(145,184,217,1));">
     <div class="container">
 
         <div class="row">
@@ -44,7 +44,7 @@ if (isset($_POST['btnAvancar'])) {
                         <div class="card-text">
                             <form method="POST" action="criar_processo_1.php" autocomplete="off">
                                 <div class="form-row">
-                                    <div class="form-group col-12 col-md-8">
+                                    <div class="form-group col-12 col-md-6">
                                         <label for="txtCargo">Cargo</label>
                                         <input type="text" class="form-control" id="txtCargo" name="txtCargo" required autofocus>
                                         <div id="compList"></div>
@@ -104,8 +104,9 @@ if (isset($_POST['btnAvancar'])) {
                                 <hr class="my-2 my-md-4">
 
                                 <div class="form-row">
-                                    <div class="col text-center">
-                                        <input type="submit" name="btnAvancar" id="btnAvancar" class="btn btn-warning btn-lg float-right" value="Avançar">
+                                    <div class="col text-right">
+                                        <a href="recrutador.php" class="btn btn-warning btn-lg">Cancelar</i></a>
+                                        <button type="submit" name="btnAvancar" id="btnAvancar" class="btn btn-primary btn-lg">Avançar <i class="fas fa-arrow-right"></i></button>
                                     </div>
                                 </div>
                             </form>

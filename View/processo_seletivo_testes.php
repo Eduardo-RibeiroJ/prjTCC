@@ -16,6 +16,7 @@ include_once "../Model/Competencia.php";
 include_once "../Model/TesteOnline.php";
 include_once "../Model/Pergunta.php";
 include_once "../Model/Cargo.php";
+include_once "../Model/Recrutador.php";
 
 include_once "../Controller/ProcessoSeletivoDAO.php";
 include_once "../Controller/ProcessoCompetenciaDAO.php";
@@ -28,6 +29,7 @@ include_once "../Controller/CompetenciaDAO.php";
 include_once "../Controller/TesteOnlineDAO.php";
 include_once "../Controller/PerguntaDAO.php";
 include_once "../Controller/CargoDAO.php";
+include_once "../Controller/RecrutadorDAo.php";
 
 $conn = new Conexao();
 
@@ -36,12 +38,15 @@ $candProcesso = new CandidatoProcesso();
 $processoCompetencia = new ProcessoCompetencia();
 $processoTeste = new ProcessoTeste();
 $processoPergunta = new ProcessoPergunta();
+$recrutador = new Recrutador();
+
 
 $processoDAO = new ProcessoSeletivoDAO($conn);
 $candProcessoDAO = new CandidatoProcessoDAO($conn);
 $processoCompetenciaDAO = new ProcessoCompetenciaDAO($conn);
 $processoTesteDAO = new ProcessoTesteDAO($conn);
 $processoPerguntaDAO = new ProcessoPerguntaDAO($conn);
+$recrutadorDAO = new RecrutadorDAO($conn);
 
 if (isset($_POST['txtIdProcesso'])) {
   $idProcesso = $_POST['txtIdProcesso'];
@@ -54,6 +59,9 @@ if (isset($_POST['txtIdProcesso'])) {
 
 $processo->setIdProcesso($idProcesso);
 $processoDAO->Listar($processo);
+
+$recrutador->setCnpj($processo->getCnpj());
+$recrutadorDAO->Listar($recrutador);
 
 $processoCompetencia->setIdProcesso($idProcesso);
 $arrayCompetencia = $processoCompetenciaDAO->Listar($processoCompetencia);
@@ -87,10 +95,12 @@ if (isset($_POST['btnCandidatar'])) {
     <div class="jumbotron p-3 p-md-5" style="background-color: #FFF">
       <div class="container p-0">
         <?php if (isset($_POST['btnCandidatar'])) : ?>
-          <h5 class="display-4 display-md-2">Boa sorte!</h1>
-            <p class="lead">Você se candidatou para a vaga de <strong><?= $processo->getCargo()->getNomeCargo() ?></strong> - Responda os testes online e perguntas até <strong><?= $processo->getDataLimiteCandidatar(); ?></strong>.</p>
+          <h5 class="display-4 display-md-2"><i class="far fa-thumbs-up"></i> Boa sorte!</h1>
+            <p class="lead mb-0">Você se candidatou para a vaga de <strong><?= $processo->getCargo()->getNomeCargo() ?></strong></p>
+            <p class="lead text-muted">Responda os testes online e perguntas até <strong><?= $processo->getDataLimiteCandidatar(); ?></strong>.</p>
           <?php else : ?>
-            <h5 class="display-4 display-md-2">Vaga para <?= $processo->getCargo()->getNomeCargo() ?></h1>
+            <h5 class="display-4 display-md-2 mb-0">Vaga para <?= $processo->getCargo()->getNomeCargo() ?></h5>
+            <p class="lead text-muted">Empresa <?= $recrutador->getNomeEmpresa() ?>, região de <?= $recrutador->getCidade() ?>.</p>
               <p class="lead"><strong>Atenção!</strong> - Todos os testes online e perguntas devem ser respondidos até <strong><?= $processo->getDataLimiteCandidatar(); ?></strong>.</p>
             <?php endif; ?>
 
@@ -124,7 +134,7 @@ if (isset($_POST['btnCandidatar'])) {
                               <?php if ($realizouTeste->getResultado()) : ?>
                                 <input type="submit" class="btn btn-success" disabled="true" value="Teste Realizado!" />
                               <?php else : ?>
-                                <input type="submit" name="btnRealizarTeste" class="btn btn-primary" value="Realizar teste" />
+                                <button type="submit" name="btnRealizarTeste" class="btn btn-primary"><i class="fas fa-tasks"></i> Realizar teste</button>
                               <?php endif; ?>
 
                             </div>
@@ -167,7 +177,7 @@ if (isset($_POST['btnCandidatar'])) {
                     <?php if ($realizouPergunta) : ?>
                       <input type="submit" class="btn btn-success float-right" disabled="true" value="Perguntas Respondidas!" />
                     <?php else : ?>
-                      <input type="submit" name="btnResponder" class="btn btn-primary float-right mr-5" value="Responder" />
+                      <button type="submit" name="btnResponder" class="btn btn-primary float-right"><i class="far fa-comment-dots"></i> Responder</button>
                     <?php endif; ?>
                   </div>
                 </div>
