@@ -71,10 +71,10 @@ if (isset($_POST['btnSalvar'])) {
 
 <?php include_once 'header.php'; ?>
 
-<div style="background-color:#c1ddf3">
+<div style="background-image: linear-gradient(to left, rgba(188, 216, 238, 1), rgba(145,184,217,1));">
   <div class="container">
 
-    <div class="jumbotron p-3 p-md-5" style="background-color:#FFFF">
+    <div class="jumbotron p-3 p-md-5">
       <div class="container p-0">
         <h5 class="display-4 display-md-2"><i class="fas fa-user-tie d-none d-md-inline"></i> Queremos saber sobre você!</h1>
 
@@ -95,7 +95,7 @@ if (isset($_POST['btnSalvar'])) {
             <input type="hidden" id="email" name="email" value="edu@edu">
             <input type="hidden" id="senha" name="senha" value="12345">
 
-            <div class="card">
+            <div class="card mb-2">
               <div class="card-header">
                 <i class="fas fa-id-card"></i>
                 Dados Pessoais
@@ -148,7 +148,7 @@ if (isset($_POST['btnSalvar'])) {
               </div>
             </div>
 
-            <div class="card">
+            <div class="card mb-2">
 
               <div class="card-header">
                 <i class="fas fa-map-marked-alt"></i>
@@ -192,7 +192,7 @@ if (isset($_POST['btnSalvar'])) {
               </div>
             </div>
 
-            <div class="card">
+            <div class="card mb-2">
 
               <div class="card-header">
                 <i class="fas fa-phone"></i>
@@ -283,7 +283,7 @@ if (isset($_POST['btnSalvar'])) {
 
             <div class="form-row">
               <div class="col text-center">
-                <input type="submit" name="btnSalvar" id="btnSalvar" class="btn btn-warning btn-lg float-right" value="Cadastrar!">
+                <input type="submit" name="btnSalvar" id="btnSalvar" class="btn btn-primary btn-lg float-right" value="Cadastrar!">
               </div>
             </div>
 
@@ -299,7 +299,7 @@ if (isset($_POST['btnSalvar'])) {
 
 <?php include 'footer.php'; ?>
 
-<script>
+<script type="text/javascript">
   $(document).ready(function() {
     $('#txtCargo').keyup(function() {
       var palavra = $(this).val();
@@ -323,12 +323,8 @@ if (isset($_POST['btnSalvar'])) {
   })
 
   //Máscaras
-</script>
-
-
-<script type="text/javascript">
-  $("#txtCEP").mask("00000-000");
-  $("#txtTelefone1").mask("(00)00000-0000");
-  $("#txtTelefone2").mask("(00)0000-0000");
-  $("#txtPretSal").mask("R$0000,00");
+  // $("#txtCEP").mask("00000-000");
+  // $("#txtTelefone1").mask("(00)00000-0000");
+  // $("#txtTelefone2").mask("(00)0000-0000");
+  // $("#txtPretSal").mask("R$0000,00");
 </script>

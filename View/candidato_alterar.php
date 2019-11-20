@@ -17,7 +17,7 @@ $candidatoDAO->Listar($candidato);
 
 ?>
 
-<div style="background-image: linear-gradient(to right, rgba(145,184,217,1), rgba(23,166,255,1));">
+<div style="background-image: linear-gradient(to left, rgba(188, 216, 238, 1), rgba(145,184,217,1));">
   <div class="container">
 
     <div class="jumbotron p-3 p-md-5">
@@ -231,7 +231,7 @@ $candidatoDAO->Listar($candidato);
 
       <div class="row">
         <div class="col">
-          <a href="candidato_perfil.php" class="btn btn-warning float-right">Visualizar Perfil</a>
+          <a href="candidato_perfil.php" class="btn btn-primary float-right">Visualizar Perfil</a>
         </div>
       </div>
 

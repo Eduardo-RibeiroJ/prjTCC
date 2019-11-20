@@ -12,7 +12,7 @@ class CandidatoObjetivoDAO
     public function Inserir(CandidatoObjetivo $objetivo)
     {
         $cpf = $objetivo->getCpf();
-        $idObjetivo = $objetivo->getIdobjetivo();
+        $idObjetivo = $objetivo->getIdObjetivo();
         $idCargo = $objetivo->getIdCargo();
         $nivel = $objetivo->getNivel();
         $pretSal = $objetivo->getPretSal();
@@ -32,7 +32,7 @@ class CandidatoObjetivoDAO
     public function Alterar(CandidatoObjetivo $objetivo)
     {
         $cpf = $objetivo->getCpf();
-        $idObjetivo = $objetivo->getIdobjetivo();
+        $idObjetivo = $objetivo->getIdObjetivo();
         $idCargo = $objetivo->getIdCargo();
         $nivel = $objetivo->getNivel();
         $pretSal = $objetivo->getPretSal();

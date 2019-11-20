@@ -27,7 +27,7 @@ $candObjetivoDAO->Listar($candObjetivo);
 
 ?>
 
-<div style="background-image: linear-gradient(to right, rgba(145,184,217,1), rgba(23,166,255,1));">
+<div style="background-image: linear-gradient(to left, rgba(188, 216, 238, 1), rgba(145,184,217,1));">
   <div class="container">
 
     <div class="jumbotron p-3 p-md-5">
@@ -65,7 +65,7 @@ $candObjetivoDAO->Listar($candObjetivo);
 
                       <div class="form-group col-md-6">
                         <label for="txtCargo">Cargo</label>
-                        <input type="text" class="form-control" id="txtCargo" name="txtCargo" autocomplete="off" value="<?= $candObjetivo->getCargo()->getNomeCargo(); ?>" required autofocus>
+                        <input type="text" class="form-control" id="txtCargo" name="txtCargo" autocomplete="off" value="<?= $candObjetivo->getCargo()->getNomeCargo(); ?>" required>
                         <div id="compList"></div>
                       </div>
 
@@ -91,7 +91,7 @@ $candObjetivoDAO->Listar($candObjetivo);
 
                     <div class="form-row">
                       <div class="col">
-                        <button name="btnAlterarcandObjetivo" id="btnAlterarcandObjetivo" class="btn btn-primary float-right">Salvar</button>
+                        <button name="btnAlterarcandObjetivo" id="btnAlterarcandObjetivo" class="btn btn-primary float-right"><i class="far fa-save"></i> Salvar</button>
                       </div>
                     </div>
 
