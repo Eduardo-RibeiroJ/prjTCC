@@ -219,7 +219,7 @@ if (isset($_POST['btnContinuar'])) {
 
       <div class="row">
         <div class="col">
-          <a href="candidato_perfil.php" class="btn btn-primary float-right">Visualizar Perfil</a>
+          <a href="candidato_perfil.php" class="btn btn-warning float-right">Visualizar Perfil</a>
         </div>
       </div>
 

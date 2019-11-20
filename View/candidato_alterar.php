@@ -98,7 +98,7 @@ $candidatoDAO->Listar($candidato);
 
                     <div class="row">
                       <div class="col">
-                        <button name="btnAlterarSalvarDadosPessoais" id="btnAlterarSalvarDadosPessoais" class="btn btn-primary float-right">Salvar</button>
+                        <button name="btnAlterarSalvarDadosPessoais" id="btnAlterarSalvarDadosPessoais" class="btn btn-primary float-right"><i class="far fa-save"></i> Salvar</button>
                       </div>
                     </div>
 
@@ -154,7 +154,7 @@ $candidatoDAO->Listar($candidato);
 
                     <div class="row">
                       <div class="col">
-                        <button name="btnAlterarSalvarEndereco" id="btnAlterarSalvarEndereco" class="btn btn-primary float-right">Salvar</button>
+                        <button name="btnAlterarSalvarEndereco" id="btnAlterarSalvarEndereco" class="btn btn-primary float-right"><i class="far fa-save"></i> Salvar</button>
                       </div>
                     </div>
 
@@ -214,7 +214,7 @@ $candidatoDAO->Listar($candidato);
 
                     <div class="row">
                       <div class="col">
-                        <button name="btnAlterarSalvarContato" id="btnAlterarSalvarContato" class="btn btn-primary float-right">Salvar</button>
+                        <button name="btnAlterarSalvarContato" id="btnAlterarSalvarContato" class="btn btn-primary float-right"><i class="far fa-save"></i> Salvar</button>
                       </div>
                     </div>
 
@@ -231,7 +231,7 @@ $candidatoDAO->Listar($candidato);
 
       <div class="row">
         <div class="col">
-          <a href="candidato_perfil.php" class="btn btn-primary float-right">Visualizar Perfil</a>
+          <a href="candidato_perfil.php" class="btn btn-warning float-right">Visualizar Perfil</a>
         </div>
       </div>
 

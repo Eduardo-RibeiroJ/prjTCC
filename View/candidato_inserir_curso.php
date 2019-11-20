@@ -30,11 +30,8 @@ $arrayCurso = $cursoDAO->Listar($curso);
 
     <div class="jumbotron p-3 p-md-5">
       <div class="container p-0">
-        <h1 class="display-5 display-md-5"><i class="fas fa-award d-none d-md-inline"> </i>Adicione cursos!</h1>
-        <p class="lead">Aqui você poderá adicionar todos os cursos profissionalizantes que voce já fez. Poderá agregar muito na hora do processo seletivo</p>
-
-        <hr class="my-2 my-md-4">
-        <p>Gerencie aqui tudo sobre as seus cursos.</p>
+        <h1 class="display-5 display-md-5"><i class="fas fa-award d-none d-md-inline"> </i>Adicione seus cursos!</h1>
+        <p class="lead">Aqui você poderá adicionar seus cursos profissionalizantes.</p>
       </div>
     </div>
 
@@ -49,7 +46,7 @@ $arrayCurso = $cursoDAO->Listar($curso);
         <div class="row">
           <div class="col">
 
-            <div class="card">
+            <div class="card mb-1">
               <div class="card-header" id="candidatoCurso<?= $reg->getIdCurso(); ?>">
                 <p id="tituloHeader<?= $reg->getIdCurso(); ?>" class="d-inline"><?= $reg->getNomeCurso(); ?></p>
                 <button name="btnAlterar<?= $reg->getIdCurso(); ?>" id="btnAlterar<?= $reg->getIdCurso(); ?>" class="btn btn-outline-primary float-right d-inline" data-toggle="collapse" data-target="#collapseCandidatoCurso<?= $reg->getIdCurso(); ?>">
@@ -62,12 +59,12 @@ $arrayCurso = $cursoDAO->Listar($curso);
                 <div class="card-body">
                   <div class="card-text">
                     <div class="form-row">
-                      <div class="form-group col-md-4">
+                      <div class="form-group col-md-6">
                         <label for="txtNomeCurso">Nome do curso</label>
                         <input type="text" class="form-control" id="txtNomeCurso<?= $reg->getIdCurso(); ?>" name="txtNomeCurso" value="<?= $reg->getNomeCurso(); ?>" required>
                       </div>
 
-                      <div class="form-group col-md-4">
+                      <div class="form-group col-md-6">
                         <label for="txtNomeInsti">Nome da instituição</label>
                         <input type="text" class="form-control" id="txtNomeInsti<?= $reg->getIdCurso(); ?>" name="txtNomeInsti" value="<?= $reg->getNomeInstituicao(); ?>">
                       </div>
@@ -87,8 +84,8 @@ $arrayCurso = $cursoDAO->Listar($curso);
 
                     <div class="form-row float-right mb-2">
                       <div class="col">
-                        <button value="<?= $reg->getIdCurso(); ?>" name="btnAlterarSalvarCurso" id="btnAlterarSalvarCurso" class="btn btn-primary">Salvar</button>
-                        <button value="<?= $reg->getIdCurso(); ?>" name="btnExcluirCurso" id="btnExcluirCurso" class="btn btn-secondary">Apagar</button>
+                        <button value="<?= $reg->getIdCurso(); ?>" name="btnExcluirCurso" id="btnExcluirCurso" class="btn btn-danger"><i class="far fa-trash-alt"></i> Apagar</button>
+                        <button value="<?= $reg->getIdCurso(); ?>" name="btnAlterarSalvarCurso" id="btnAlterarSalvarCurso" class="btn btn-primary"><i class="far fa-save"></i> Salvar</button>
                       </div>
                     </div>
 
@@ -154,7 +151,7 @@ $arrayCurso = $cursoDAO->Listar($curso);
 
       <div class="row">
         <div class="col">
-          <a href="candidato_perfil.php" class="btn btn-primary float-right">Visualizar Perfil</a>
+          <a href="candidato_perfil.php" class="btn btn-warning float-right">Visualizar Perfil</a>
         </div>
       </div>
 

@@ -39,11 +39,13 @@ $arrayProcessos = $candidatoProcessoDAO->Listar($candidatoProcesso);
 <div style="background-image: linear-gradient(to right, rgba(188, 216, 238, 1), rgba(145,184,217,1));">
   <div class="container">
 
-    <div class="card-header" style="background-color:#FFFF">
-      <h5 class="mt-2">Minhas vagas</h5>
-    </div>
+  <?php if($arrayProcessos): ?>
+
 
     <?php foreach ($arrayProcessos as $reg) : ?>
+      <div class="card-header" style="background-color:#FFFF">
+        <h5 class="mt-2">Minhas vagas</h5>
+      </div>
       <form method="POST" action="processo_seletivo_testes.php">
 
         <!--<div class="media text-muted pt-3">
@@ -66,7 +68,7 @@ $arrayProcessos = $candidatoProcessoDAO->Listar($candidatoProcesso);
           $recrutador->setCnpj($reg->getCnpj());
           $recrutadorDAO->Listar($recrutador);
 
-          ?>
+        ?>
 
         <div class="list-group">
           <input type="hidden" id="txtIdProcesso" name="txtIdProcesso" value="<?= $reg->getidProcesso() ?>" />
@@ -87,6 +89,21 @@ $arrayProcessos = $candidatoProcessoDAO->Listar($candidatoProcesso);
           </a>
         </div>
       <?php endforeach; ?>
+    <?php else: ?>
+
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="lead">Você não se candidatou para nenhum processo seletivo, não perca tempo e veja todas as vagas!</h4>
+            <a href="candidato_vagas.php?nomeCargo=" class="btn btn-primary mt-3 float-right"><i class="fas fa-search"></i> Visualizar Todas</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <?php endif; ?>
+  
 
   </div>
 </div>

@@ -100,7 +100,6 @@ $objetivo = $objetivoDAO->Listar($objetivo);
 
                     </div>
                   </div>
-
                 </div>
               </div>
             </div>

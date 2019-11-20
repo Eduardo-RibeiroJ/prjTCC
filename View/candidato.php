@@ -141,6 +141,8 @@ $arrayVagas = $processoSeletivoDAO->ListarVagaCandidato($processoSeletivo, $obje
           <div class="card-body">
             <div class="card-text">
 
+            <?php if ($arrayVagas) : ?>
+
               <?php foreach ($arrayVagas as $reg) : ?>
                 <?php
                   $recrutador = new Recrutador();
@@ -165,7 +167,9 @@ $arrayVagas = $processoSeletivoDAO->ListarVagaCandidato($processoSeletivo, $obje
                 </div>
               <?php endforeach; ?>
               <a href="candidato_vagas.php?nomeCargo=<?= $reg->getCargo()->getNomeCargo(); ?>" class="btn btn-sm btn-primary mt-3 float-right">Visualizar mais</a>
-
+            <?php else : ?>
+              <p class="lead">No momento não há vagas recomendadas.</p>
+            <?php endif; ?>
             </div>
           </div>
         </div>

@@ -96,7 +96,7 @@ $arrayVagas = $processoSeletivoDAO->ListarVaga($processoSeletivo, $objetivo);
       </div><!-- d-flex flex-wrap justify-content-center-->
     <?php else : ?>
 
-      <h4 class="mt-3">Sem resultados para <?= $objetivo->getCargo()->getNomeCargo() ?>.</h4>
+      <h4 class="mt-3">Sem resultados para <?= $objetivo->getCargo()->getNomeCargo() ?></h4>
 
     <?php endif; ?>
 
