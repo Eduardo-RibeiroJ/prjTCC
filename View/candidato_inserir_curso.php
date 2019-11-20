@@ -25,12 +25,13 @@ $arrayCurso = $cursoDAO->Listar($curso);
 
 ?>
 
-<div style="background-image: linear-gradient(to right, rgba(145,184,217,1), rgba(23,166,255,1));">
+<div style="background-image: linear-gradient(to left, rgba(220, 240, 255, 1), rgba(130,175,210,1));">
   <div class="container">
 
     <div class="jumbotron p-3 p-md-5">
       <div class="container p-0">
         <h1 class="display-5 display-md-5"><i class="fas fa-award d-none d-md-inline"> </i>Adicione seus cursos!</h1>
+        <hr class="my-2 my-md-3">
         <p class="lead">Aqui você poderá adicionar seus cursos profissionalizantes.</p>
       </div>
     </div>
@@ -147,11 +148,11 @@ $arrayCurso = $cursoDAO->Listar($curso);
         </div>
       </div>
 
-      <hr class="my-2 my-md-4">
+      <hr class="my-2 my-md-3">
 
       <div class="row">
         <div class="col">
-          <a href="candidato_perfil.php" class="btn btn-warning float-right">Visualizar Perfil</a>
+          <a href="candidato_perfil.php" class="btn btn-primary float-right">Voltar</a>
         </div>
       </div>
 

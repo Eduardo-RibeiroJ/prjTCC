@@ -24,7 +24,7 @@ $arrayCompetencia = $competenciaDAO->Listar($competencia);
 
 ?>
 
-<div style="background-image: linear-gradient(to bottom, rgba(220, 240, 255, 1), rgba(130,175,210,1));">
+<div style="background-image: linear-gradient(to left, rgba(220, 240, 255, 1), rgba(130,175,210,1));">
 
     <div class="container" id="containerCompetencias">
 
@@ -100,7 +100,7 @@ $arrayCompetencia = $competenciaDAO->Listar($competencia);
 
             <div class="row">
                 <div class="col">
-                    <a href="candidato_perfil.php" class="btn btn-warning float-right">Visualizar Perfil</a>
+                    <a href="candidato_perfil.php" class="btn btn-primary float-right">Voltar</a>
                 </div>
             </div>
 

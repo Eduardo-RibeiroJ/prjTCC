@@ -101,32 +101,41 @@ $candObjetivoDAO->Listar($candObjetivo);
 
             </div>
           </div>
+
+          <hr class="my-2 my-md-3">
+
+          <div class="row">
+            <div class="col">
+              <a href="candidato_perfil.php" class="btn btn-primary float-right">Voltar</a>
+            </div>
+          </div>
+
     </section>
   </div>
 </div>
 
-  <?php include 'footer.php'; ?>
+<?php include 'footer.php'; ?>
 
-  <script>
-    $(document).ready(function() {
-      $('#txtCargo').keyup(function() {
-        var palavra = $(this).val();
-        if (palavra != '') {
-          $.post('../Controller/PesquisarCargo.php', {
-            palavra: palavra
-          }, function(lista) {
-            $('#compList').fadeIn();
-            $('#compList').html(lista);
+<script>
+  $(document).ready(function() {
+    $('#txtCargo').keyup(function() {
+      var palavra = $(this).val();
+      if (palavra != '') {
+        $.post('../Controller/PesquisarCargo.php', {
+          palavra: palavra
+        }, function(lista) {
+          $('#compList').fadeIn();
+          $('#compList').html(lista);
 
-          });
-        } else {
-          $('#compList').html('');
-        }
-      });
+        });
+      } else {
+        $('#compList').html('');
+      }
     });
+  });
 
-    $(document).on('click', '.li-pesquisa', function() {
-      $('#txtCargo').val($(this).text());
-      $('#compList').html('');
-    })
-  </script>
+  $(document).on('click', '.li-pesquisa', function() {
+    $('#txtCargo').val($(this).text());
+    $('#compList').html('');
+  })
+</script>
