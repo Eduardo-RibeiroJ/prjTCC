@@ -26,14 +26,14 @@ $arrayEmpresa = $empresaDAO->Listar($empresa);
 
 ?>
 
-<div style="background-image: linear-gradient(to right, rgba(145,184,217,1), rgba(23,166,255,1));">
+<div style="background-image: linear-gradient(to left, rgba(220, 240, 255, 1), rgba(130,175,210,1));">
   <div class="container">
 
     <div class="jumbotron p-3 p-md-5">
       <div class="container p-0">
         <h5 class="display-4 display-md-2"><i class="fas fa-briefcase d-none d-md-inline"> </i>Queremos saber sobre suas ultimas experiências profissionais!</h1>
 
-          <hr class="my-2 my-md-4">
+          <hr class="my-2 my-md-3">
           <p class="lead">Gerencie aqui tudo sobre as suas experiências profissionais.</p>
       </div>
     </div>
@@ -48,7 +48,7 @@ $arrayEmpresa = $empresaDAO->Listar($empresa);
         <div class="row">
           <div class="col">
 
-            <div class="card">
+            <div class="card mb-1">
               <div class="card-header" id="candidatoEmpresa<?= $reg->getIdEmpresa(); ?>">
                 <p id="tituloHeader<?= $reg->getIdEmpresa(); ?>" class="d-inline"><?= $reg->getNomeEmpresa(); ?></p>
                 <button name="btnAlterar<?= $reg->getIdEmpresa(); ?>" id="btnAlterar<?= $reg->getIdEmpresa(); ?>" class="btn btn-outline-primary float-right d-inline" data-toggle="collapse" data-target="#collapseCandidatoEmpresa<?= $reg->getIdEmpresa(); ?>">
@@ -92,8 +92,8 @@ $arrayEmpresa = $empresaDAO->Listar($empresa);
 
                     <div class="form-row float-right mb-2">
                       <div class="col">
-                        <button value="<?= $reg->getIdEmpresa(); ?>" name="btnAlterarSalvarEmpresa" id="btnAlterarSalvarEmpresa" class="btn btn-primary">Salvar</button>
-                        <button value="<?= $reg->getIdEmpresa(); ?>" name="btnExcluirEmpresa" id="btnExcluirEmpresa" class="btn btn-secondary">Apagar</button>
+                        <button value="<?= $reg->getIdEmpresa(); ?>" name="btnExcluirEmpresa" id="btnExcluirEmpresa" class="btn btn-danger"><i class="far fa-trash-alt"></i> Apagar</button>
+                        <button value="<?= $reg->getIdEmpresa(); ?>" name="btnAlterarSalvarEmpresa" id="btnAlterarSalvarEmpresa" class="btn btn-primary"><i class="far fa-save"></i> Salvar</button>
                       </div>
                     </div>
 
@@ -109,7 +109,7 @@ $arrayEmpresa = $empresaDAO->Listar($empresa);
 
       <div class="row">
         <div class="col">
-          <div class="card">
+          <div class="card mb-1">
             <div class="card-header" id="candidatoEmpresa<?= $ultimoRegistro ?>">
               <p class="d-inline">Insira aqui uma empresa em que trabalhou!</p>
               <button name="btnAlterar<?= $ultimoRegistro ?>" id="btnAlterar<?= $ultimoRegistro ?>" class="btn btn-outline-primary float-right d-inline" data-toggle="collapse" data-target="#collapseCandidatoEmpresa<?= $ultimoRegistro ?>">
@@ -163,11 +163,11 @@ $arrayEmpresa = $empresaDAO->Listar($empresa);
         </div>
       </div>
 
-      <hr class="my-2 my-md-4">
+      <hr class="my-2 my-md-3">
 
       <div class="row">
         <div class="col">
-          <a href="candidato_perfil.php" class="btn btn-primary float-right">Visualizar Perfil</a>
+          <a href="candidato_perfil.php" class="btn btn-primary float-right">Voltar</a>
         </div>
       </div>
 

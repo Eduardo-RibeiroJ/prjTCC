@@ -31,7 +31,7 @@ if (isset($_POST['btnContinuar'])) {
 
 ?>
 
-<div style="background-image: linear-gradient(to right, rgba(145,184,217,1), rgba(23,166,255,1));">
+<div style="background-image: linear-gradient(to left, rgba(220, 240, 255, 1), rgba(130,175,210,1));">
 
   <div class="container">
 
@@ -39,7 +39,7 @@ if (isset($_POST['btnContinuar'])) {
       <div class="container p-0">
         <h5 class="display-4 display-md-2"><i class="fas fa-graduation-cap d-none d-md-inline"> </i>Queremos saber sobre suas formações acadêmicas!</h1>
 
-          <hr class="my-2 my-md-4">
+          <hr class="my-2 my-md-3">
           <p class="lead">Gerencie aqui tudo sobre as suas formações.</p>
       </div>
     </div>
@@ -54,7 +54,7 @@ if (isset($_POST['btnContinuar'])) {
         <div class="row">
           <div class="col">
 
-            <div class="card">
+            <div class="card mb-1">
               <div class="card-header" id="candidatoFormacao<?= $reg->getIdFormacao(); ?>">
                 <p id="tituloHeader<?= $reg->getIdFormacao(); ?>" class="d-inline"><?= $reg->getNomeCurso(); ?></p>
                 <button name="btnAlterar<?= $reg->getIdFormacao(); ?>" id="btnAlterar<?= $reg->getIdFormacao(); ?>" class="btn btn-outline-primary float-right d-inline" data-toggle="collapse" data-target="#collapseCandidatoFormacao<?= $reg->getIdFormacao(); ?>">
@@ -121,8 +121,8 @@ if (isset($_POST['btnContinuar'])) {
 
                     <div class="form-row float-right">
                       <div class="col">
-                        <button value="<?= $reg->getIdFormacao(); ?>" name="btnAlterarSalvarFormacao" id="btnAlterarSalvarFormacao" class="btn btn-primary mb-3">Salvar</button>
-                        <button value="<?= $reg->getIdFormacao(); ?>" name="btnExcluirFormacao" id="btnExcluirFormacao" class="btn btn-secondary mb-3">Apagar</button>
+                        <button value="<?= $reg->getIdFormacao(); ?>" name="btnExcluirFormacao" id="btnExcluirFormacao" class="btn btn-danger mb-3"><i class="far fa-trash-alt"></i> Apagar</button>
+                        <button value="<?= $reg->getIdFormacao(); ?>" name="btnAlterarSalvarFormacao" id="btnAlterarSalvarFormacao" class="btn btn-primary mb-3"><i class="far fa-save"></i> Salvar</button>
                       </div>
                     </div>
 
@@ -215,11 +215,11 @@ if (isset($_POST['btnContinuar'])) {
         </div>
       </div>
 
-      <hr class="my-2 my-md-4">
+      <hr class="my-2 my-md-3">
 
       <div class="row">
         <div class="col">
-          <a href="candidato_perfil.php" class="btn btn-warning float-right">Visualizar Perfil</a>
+          <a href="candidato_perfil.php" class="btn btn-primary float-right">Voltar</a>
         </div>
       </div>
 

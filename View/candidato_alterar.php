@@ -227,11 +227,11 @@ $candidatoDAO->Listar($candidato);
         </div>
       </div>
 
-      <hr class="my-2 my-md-4">
+      <hr class="my-2 my-md-3">
 
       <div class="row">
         <div class="col">
-          <a href="candidato_perfil.php" class="btn btn-primary float-right">Visualizar Perfil</a>
+          <a href="candidato_perfil.php" class="btn btn-primary float-right">Voltar</a>
         </div>
       </div>
 
