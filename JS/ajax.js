@@ -47,6 +47,8 @@ $(function () {
 
                 window.location.href = '#containerPrincipal';
 
+                alerta('Questão adicionada!', '<i class="fas fa-exclamation-circle"></i>');
+
             } else {
                 alert('Erro: ' + sucesso);
             }
@@ -936,5 +938,16 @@ $(function () {
         });
 
     });
+
+    function alerta(msg, icon) {
+
+        $('nav').append(`
+                        <div class="div-alerta">
+                            <p class="lead"><strong>`+ msg+` ` + icon +`</strong></p>
+                        </div>
+                        `                  
+        );
+        setTimeout(function(){ $(".div-alerta").fadeOut(700, function() { $(".div-alerta").remove(); }); }, 3000);
+    }
 
 });
