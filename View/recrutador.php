@@ -55,7 +55,7 @@
             </div>
             <div class="px-2 pb-2">
               <h5>
-                <p>Gerenciar testes onlines</p>
+                <p>Gerenciar testes online</p>
               </h5>
             </div>
           </a>

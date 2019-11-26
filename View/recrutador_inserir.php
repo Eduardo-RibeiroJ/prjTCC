@@ -45,7 +45,7 @@ if (isset($_POST['btnSalvar'])) {
       <div class="container p-0">
         <h5 class="display-4 display-md-2"><i class="fas fa-building d-none d-md-inline"></i> Queremos saber sobre sua empresa!</h1>
 
-          <hr class="my-2 my-md-4">
+          <hr class="my-2 my-md-3">
           <p class="lead">Insira as informações sobre a sua empresa.</p>
       </div>
     </div>

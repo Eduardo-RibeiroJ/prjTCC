@@ -19,7 +19,7 @@
 
   <!-- Navbar -->
   <header id="header">
-    <nav class="navbar fixed-top navbar-expand-lg navbar-dark" style="background-image: linear-gradient(to right, rgba(10, 100, 180, 0), rgba(23,166,255,0));">
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark" style="background-color: rgba(20, 137, 204, 1);">
       <a class="navbar-brand h1 mb-0" href="index.php"> Connection</a>
 
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsite" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
