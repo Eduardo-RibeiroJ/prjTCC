@@ -444,6 +444,22 @@ $(function () {
         });
     });
 
+        //ETAPAS DO PROCESSO SELETIVO
+
+        $('#sectionCardsEmpresa').on('change', '.chkAtual', function (e) {
+
+            var idEmpresa = $(this).val();
+            var txtData = $('#dtaTermino' + idEmpresa);
+    
+            if(this.checked) {
+                txtData.val('0000-00-00');
+                txtData.attr('readonly', true);
+            } else {
+                txtData.val('');
+                txtData.attr('readonly', false);
+    
+            }
+        });
     
 
     //********** INSERIR, ALTERAR E APAGAR PERGUNTA
@@ -762,7 +778,6 @@ $(function () {
             txtSal.attr('readonly', false);
 
         }
-
     });
 
     $('#cardProcessoCompetencias').on('click', '#btnInserirCompetencia', function (e) {
@@ -968,7 +983,7 @@ $(function () {
                         </div>
                         `                  
         );
-        setTimeout(function(){ $(".div-alerta").fadeOut(700, function() { $(".div-alerta").remove(); }); }, 3000);
+        setTimeout(function(){ $(".div-alerta").fadeOut(700, function() { $(".div-alerta").remove(); }); }, 2000);
     }
 
 });

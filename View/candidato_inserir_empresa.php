@@ -79,10 +79,10 @@ $arrayEmpresa = $empresaDAO->Listar($empresa);
                       </div>
                       <div class="form-group col-md-3">
                         <label for="dtaTermino">Data de saída</label>
-                        <input type="date" class="form-control" id="dtaTermino<?= $reg->getIdEmpresa(); ?>" name="dtaTermino" value="<?= $reg->getDataSaida(); ?>" required>
+                        <input type="date" class="form-control" id="dtaTermino<?= $reg->getIdEmpresa(); ?>" name="dtaTermino" value="<?= $reg->getDataSaida(); ?>" required <?= $reg->getDataSaida() == "0000-00-00" ? "readonly" : "" ?>>
                         <div class="form-check mt-2">
-                          <input class="form-check-input" type="checkbox" value="chkAtual" id="chkAtual">
-                          <label class="form-check-label" for="chkAtual">Emprego atual</label>
+                          <input class="chkAtual form-check-input" type="checkbox" value="<?= $reg->getIdEmpresa(); ?>" id="chkAtual<?= $reg->getIdEmpresa(); ?>" name="chkAtual<?= $reg->getIdEmpresa(); ?>" <?= $reg->getDataSaida() == "0000-00-00" ? "checked" : "" ?>>
+                          <label class="form-check-label" for="chkAtual<?= $reg->getIdEmpresa(); ?>">Emprego atual</label>
                         </div>
                       </div>
                     </div>
@@ -144,8 +144,8 @@ $arrayEmpresa = $empresaDAO->Listar($empresa);
                       <label for="dtaTermino">Data de saída</label>
                       <input type="date" class="form-control" id="dtaTermino<?= $ultimoRegistro ?>" name="dtaTermino" placeholder="" required>
                       <div class="form-check mt-2">
-                        <input class="form-check-input" type="checkbox" value="chkAtual" id="chkAtual">
-                        <label class="form-check-label" for="chkAtual">Emprego atual</label>
+                        <input class="chkAtual form-check-input" type="checkbox" value="<?= $ultimoRegistro ?>" id="chkAtual<?= $ultimoRegistro ?>" name="chkAtual<?= $ultimoRegistro ?>">
+                        <label class="form-check-label" for="chkAtual<?= $ultimoRegistro ?>">Emprego atual</label>
                       </div>
                     </div>
                   </div>
