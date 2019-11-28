@@ -47,7 +47,7 @@ $(function () {
 
                 window.location.href = '#containerPrincipal';
 
-                alerta('Questão adicionada!', '<i class="fas fa-exclamation-circle"></i>');
+                alerta('Questão adicionada', '<i class="fas fa-exclamation-circle"></i>');
 
             } else {
                 alert('Erro: ' + sucesso);
@@ -60,7 +60,7 @@ $(function () {
     $('#formAlterarQuestao').on('click', '#btnSalvar', function (e) {
 
         var numTesteOnline = $('#numTeste').html();
-
+        var btn = $(this);
         // Cancela o envio do formulário
         e.preventDefault();
 
@@ -82,7 +82,13 @@ $(function () {
             // Valida a resposta
             if (sucesso == true) {
 
-                window.location.replace('TesteOnline_questao_listar.php?idTesteOnline=' + numTesteOnline);
+                btn.attr("disabled", true);
+                alerta('Questão alterada', '<i class="fas fa-pencil-alt"></i>');
+                setTimeout(function(){ 
+                    window.location.replace('TesteOnline_questao_listar.php?idTesteOnline=' + numTesteOnline);
+                
+                }, 3000);
+
 
             } else {
                 alert('Erro: ' + sucesso);
@@ -104,6 +110,8 @@ $(function () {
         }, function (sucesso) {
 
             if (sucesso == true) {
+
+                alerta('Teste online removido', '<i class="fas fa-trash-alt"></i>');
 
                 cardAlvo.fadeOut(500, function () {
                     cardAlvo.remove();
@@ -130,11 +138,15 @@ $(function () {
 
             if (sucesso == true) {
 
+                alerta('Questão removida', '<i class="fas fa-trash-alt"></i>');
                 cardAlvo.fadeOut(500, function () {
                     cardAlvo.remove();
                 });
-                window.location.reload();
-
+                setTimeout(function(){ 
+                    window.location.reload();
+                
+            }, 1500);
+                
             } else {
                 alert('Erro: ' + sucesso);
             }
@@ -160,6 +172,7 @@ $(function () {
         }, function (sucesso) {
 
             if (sucesso == true) {
+                alerta('Alteração realizada', '<i class="fas fa-pencil-alt"></i>');
                 $("#btnAlterarDadosPessoais").click();
             } else {
                 alert('Erro: ' + sucesso);
@@ -183,6 +196,7 @@ $(function () {
         }, function (sucesso) {
 
             if (sucesso == true) {
+                alerta('Alteração realizada', '<i class="fas fa-pencil-alt"></i>');
                 $("#btnAlterarEndereco").click();
             } else {
                 alert('Erro: ' + sucesso);
@@ -207,6 +221,7 @@ $(function () {
         }, function (sucesso) {
 
             if (sucesso == true) {
+                alerta('Alteração realizada', '<i class="fas fa-pencil-alt"></i>');
                 $("#btnAlterarContato").click();
             } else {
                 alert('Erro: ' + sucesso);
@@ -230,7 +245,7 @@ $(function () {
             salvarAlterar = '../PostAjax/alterar.php';
 
         if (button.html() == "Alterar") {
-            button.html("Salvar");
+            button.html('<i class="far fa-save"></i> Salvar');
 
         } else {
 
@@ -248,7 +263,8 @@ $(function () {
             }, function (sucesso) {
 
                 if (sucesso == true) {
-                    if (button.html() == "Salvar") {
+                    if (button.html() == '<i class="far fa-save"></i> Salvar') {
+                        alerta('Formação alterada', '<i class="far fa-save"></i>');
                         $('#tituloHeader' + idFormacao).html($('#txtNomeCurso' + idFormacao).val());
                         $("#btnAlterar" + idFormacao).click();
                     }
@@ -275,6 +291,7 @@ $(function () {
 
             if (sucesso == true) {
 
+                alerta('Formação removida', '<i class="fas fa-trash-alt"></i>');
                 cardAlvo.fadeOut(500, function () {
                     cardAlvo.remove();
                 });
@@ -316,7 +333,8 @@ $(function () {
             }, function (sucesso) {
 
                 if (sucesso == true) {
-                    if (button.html() == "Salvar") {
+                    if (button.html() == '<i class="far fa-save"></i> Salvar') {
+                        alerta('Curso alterado', '<i class="far fa-save"></i>');
                         $('#tituloHeader' + idCurso).html($('#txtNomeCurso' + idCurso).val());
                         $("#btnAlterar" + idCurso).click();
                     }
@@ -343,6 +361,7 @@ $(function () {
 
             if (sucesso == true) {
 
+                alerta('Curso removido', '<i class="fas fa-trash-alt"></i>');
                 cardAlvo.fadeOut(500, function () {
                     cardAlvo.remove();
                 });
@@ -386,7 +405,8 @@ $(function () {
             }, function (sucesso) {
 
                 if (sucesso == true) {
-                    if (button.html() == "Salvar") {
+                    if (button.html() == '<i class="far fa-save"></i> Salvar') {
+                        alerta('Experiência profissional alterada', '<i class="far fa-save"></i>');
                         $('#tituloHeader' + idEmpresa).html($('#txtNomeEmpresa' + idEmpresa).val());
                         $("#btnAlterar" + idEmpresa).click();
                     }
@@ -413,6 +433,7 @@ $(function () {
 
             if (sucesso == true) {
 
+                alerta('Experiência profissional removida', '<i class="fas fa-trash-alt"></i>');
                 cardAlvo.fadeOut(500, function () {
                     cardAlvo.remove();
                 });
@@ -448,7 +469,7 @@ $(function () {
                                                     <div class="row">
                                                     <div class="col">
 
-                                                        <div class="card">
+                                                        <div class="card mb-1">
                                                         <div class="card-header" id="SalvarPergunta`+idPergunta+`">
                                                             <p id="tituloHeader`+ idPergunta +`" class="d-inline">`+ pergunta +`</p>
                                                             <button name="btnAlterar`+ idPergunta +`" id="btnAlterar`+ idPergunta +`" class="btn btn-outline-primary float-right d-inline" data-toggle="collapse" data-target="#collapseRecrutadorPergunta`+ idPergunta +`">
@@ -461,16 +482,16 @@ $(function () {
                                                             <div class="card-body">
                                                             <div class="card-text">
                                                                 <div class="form-row">
-                                                                <div class="form-group col-md-10">
+                                                                <div class="form-group col-md-12">
                                                                     <label for="txtPergunta">Pergunta</label>
                                                                     <textarea type="text" class="form-control" rows="4" id="txtPergunta`+idPergunta+`" name="txtPergunta" value="`+idPergunta+`" required>`+ pergunta +`</textarea>
                                                                 </div>
                                                                 </div>
 
                                                                 <div class="form-row">
-                                                                <div class="col">
-                                                                    <button value="`+ idPergunta + `" name="btnAlterarSalvarPergunta" id="btnAlterarSalvarPergunta" class="btn btn-primary">Salvar</button>
-                                                                    <button value="`+ idPergunta + `" name="btnExcluirPergunta" id="btnExcluirPergunta" class="btn btn-secondary">Apagar</button>
+                                                                <div class="col text-right">
+                                                                    <button value="`+ idPergunta + `" name="btnExcluirPergunta" id="btnExcluirPergunta" class="btn btn-danger"><i class="far fa-trash-alt"></i> Apagar</button>
+                                                                    <button value="`+ idPergunta + `" name="btnAlterarSalvarPergunta" id="btnAlterarSalvarPergunta" class="btn btn-primary"><i class="far fa-save"></i> Salvar</button>
                                                                 </div>
                                                                 </div>
                                                             </div> <!-- CardText -->
@@ -481,6 +502,7 @@ $(function () {
                                                     </div>`                  
                 );
 
+                alerta('Pergunta adicionada', '<i class="far fa-save"></i>');
                 $('#txtPergunta').val('');
                 $('#txtPergunta').focus();
                 $('#txtUltimoRegistro').val(parseInt(idPergunta) + 1);
@@ -504,8 +526,7 @@ $(function () {
         }, function (sucesso) {
 
             if (sucesso == true) {
-                console.log('ALTEROU');
-                console.log($('#txtPergunta' + idPergunta).val());
+                alerta('Pergunta alterada', '<i class="fas fa-pencil-alt"></i>');
                 $('#btnAlterar'+idPergunta).click();
                 $('#tituloHeader' + idPergunta).html($('#txtPergunta' + idPergunta).val());
 
@@ -528,6 +549,7 @@ $(function () {
 
             if (sucesso == true) {
 
+                alerta('Pergunta removida', '<i class="fas fa-trash-alt"></i>');
                 cardAlvo.fadeOut(500, function () {
                     cardAlvo.remove();
                 });
@@ -583,6 +605,7 @@ $(function () {
         }, function (sucesso) {
 
             if (sucesso == true) {
+                alerta('Alteração realizada', '<i class="far fa-save"></i>');
                 $("#btnAlterarEndereco").click();
             } else {
                 alert('Erro: ' + sucesso);
@@ -607,6 +630,7 @@ $(function () {
         }, function (sucesso) {
 
             if (sucesso == true) {
+                alerta('Alteração realizada', '<i class="far fa-save"></i>');
                 $("#btnAlterarContato").click();
             } else {
                 alert('Erro: ' + sucesso);
@@ -623,10 +647,7 @@ $(function () {
 
         e.preventDefault();
         var btn = $(this);
-
         window.location.href = "candidato_alterar.php";
-
-        //$('#btnAlterarDadosPessoais').click();
 
     });
 
@@ -665,7 +686,7 @@ $(function () {
                                                 </div>`
                 );
 
-
+                alerta('Competência adicionada', '<i class="far fa-save"></i>');
                 $('#cbbNivelCompetencia' + idCompetencia).val(nivelCompetencia);
                 $('#txtNomeCompetencia').val('');
                 $('#cbbNivelCompetencia').val('Básico');
@@ -692,6 +713,7 @@ $(function () {
 
             if (sucesso == true) {
 
+                alerta('Competência removida', '<i class="fas fa-trash-alt"></i>');
                 cardAlvo.fadeOut(500, function () {
                     cardAlvo.remove();
                 });
@@ -718,7 +740,7 @@ $(function () {
         }, function (sucesso) {
 
             if (sucesso == true) {
-                console.log('ALTEROU');
+                alerta('Alteração realizada', '<i class="far fa-save"></i>');
 
             } else {
                 alert('Erro: ' + sucesso);
@@ -750,7 +772,6 @@ $(function () {
         var nivelCompetencia = $('#cbbNivelCompetencia').val();
         var ultimoRegistro = $('#txtContador').val();
 
-
         $('#divProcessoCompetencias').prepend(`<div class="div-competencia flex-fill">
                                             <p>
                                                 <h5 class="d-inline">`+ nomeCompetencia +`</h5>
@@ -766,7 +787,7 @@ $(function () {
                                         </div>`
                                     );
             
-                                            
+        alerta('Competência adicionada', '<i class="fas fa-exclamation-circle"></i>');
         $('#cbbNivelCompetencia' + ultimoRegistro).val(nivelCompetencia);
         $('#txtContador').val(parseInt(ultimoRegistro) + 1);
         $('#txtNomeCompetencia').val('');
@@ -779,7 +800,8 @@ $(function () {
     $('#cardProcessoCompetencias').on('click', '#btnExcluirCompetencia', function (e) {
 
         var cardAlvo = $(this).closest('.div-competencia');
-
+        
+        alerta('Competência removida', '<i class="fas fa-trash-alt"></i>');
         cardAlvo.fadeOut(500, function () {
             cardAlvo.remove();
         });

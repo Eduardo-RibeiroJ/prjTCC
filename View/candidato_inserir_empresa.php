@@ -31,7 +31,7 @@ $arrayEmpresa = $empresaDAO->Listar($empresa);
 
     <div class="jumbotron p-3 p-md-5">
       <div class="container p-0">
-        <h5 class="display-4 display-md-2"><i class="fas fa-briefcase d-none d-md-inline"> </i>Queremos saber sobre suas ultimas experiências profissionais!</h1>
+        <h5 class="display-4 display-md-2"><i class="fas fa-briefcase d-none d-md-inline"> </i>Queremos saber sobre suas experiências profissionais!</h1>
 
           <hr class="my-2 my-md-3">
           <p class="lead">Gerencie aqui tudo sobre as suas experiências profissionais.</p>
@@ -62,7 +62,7 @@ $arrayEmpresa = $empresaDAO->Listar($empresa);
                   <div class="card-text">
 
                     <div class="form-row">
-                      <div class="form-group col-md-5">
+                      <div class="form-group col-md-7">
                         <label for="txtNomeEmpresa">Nome da empresa</label>
                         <input type="text" class="form-control" id="txtNomeEmpresa<?= $reg->getIdEmpresa(); ?>" name="txtNomeEmpresa" value="<?= $reg->getNomeEmpresa(); ?>" required>
                       </div>
@@ -73,11 +73,11 @@ $arrayEmpresa = $empresaDAO->Listar($empresa);
                     </div>
 
                     <div class="form-row">
-                      <div class="form-group col-md-4">
+                      <div class="form-group col-md-3">
                         <label for="dtaInicio">Data início</label>
                         <input type="date" class="form-control" id="dtaInicio<?= $reg->getIdEmpresa(); ?>" name="dtaInicio" value="<?= $reg->getDataInicio(); ?>" required>
                       </div>
-                      <div class="form-group col-md-4">
+                      <div class="form-group col-md-3">
                         <label for="dtaTermino">Data de saída</label>
                         <input type="date" class="form-control" id="dtaTermino<?= $reg->getIdEmpresa(); ?>" name="dtaTermino" value="<?= $reg->getDataSaida(); ?>" required>
                       </div>
@@ -121,7 +121,7 @@ $arrayEmpresa = $empresaDAO->Listar($empresa);
                 <div class="card-text">
 
                   <div class="form-row">
-                    <div class="form-group col-md-5">
+                    <div class="form-group col-md-7">
                       <label for="txtNomeEmpresa">Nome da empresa</label>
                       <input type="text" class="form-control" id="txtNomeEmpresa<?= $ultimoRegistro ?>" name="txtNomeEmpresa" placeholder="" required>
                     </div>
@@ -132,11 +132,11 @@ $arrayEmpresa = $empresaDAO->Listar($empresa);
                   </div>
 
                   <div class="form-row">
-                    <div class="form-group col-md-4">
+                    <div class="form-group col-md-3">
                       <label for="dtaInicio">Data início</label>
                       <input type="date" class="form-control" id="dtaInicio<?= $ultimoRegistro ?>" name="dtaInicio" placeholder="" required>
                     </div>
-                    <div class="form-group col-md-4">
+                    <div class="form-group col-md-3">
                       <label for="dtaTermino">Data de saída</label>
                       <input type="date" class="form-control" id="dtaTermino<?= $ultimoRegistro ?>" name="dtaTermino" placeholder="" required>
                     </div>

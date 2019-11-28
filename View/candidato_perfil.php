@@ -171,7 +171,7 @@ $objetivo = $objetivoDAO->Listar($objetivo);
           <div class="card mb-2">
 
             <div class="card-header" id="candidatoObjetivo">
-              <p class="d-inline" data-toggle="collapse" data-target="#collapsecandidatoObjetivo" aria-expanded="true" aria-controls="collapsecandidatoObjetivo">Objetivo</p>
+              <p class="d-inline" data-toggle="collapse" data-target="#collapsecandidatoObjetivo" aria-expanded="true" aria-controls="collapsecandidatoObjetivo">Objetivo Profissional</p>
               <a href="candidato_alterar_objetivo.php" name="btnAlterarObjetivo" id="btnAlterarObjetivo" class="btn btn-outline-primary float-right">
                 <i class="fas fa-pencil-alt"></i>
               </a>
@@ -377,6 +377,11 @@ $objetivo = $objetivoDAO->Listar($objetivo);
             </div>
           </div>
 
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <a href="candidato.php" class="btn btn-primary float-right">Voltar</a>
         </div>
       </div>
 

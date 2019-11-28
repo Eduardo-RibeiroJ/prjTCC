@@ -102,14 +102,14 @@ if (isset($_POST['btnContinuar'])) {
                         <input type="date" class="form-control" id="dtaInicioInsti<?= $reg->getIdFormacao(); ?>" name="dtaInicioInsti" value="<?= $reg->getDataInicio(); ?>" required>
                       </div>
                       <div class="form-group col-md-4">
-                        <label for="dtaTermInsti">Data término (previsão)</label>
+                        <label for="dtaTermInsti">Data término</label>
                         <input type="date" class="form-control" id="dtaTermInsti<?= $reg->getIdFormacao(); ?>" name="dtaTermInsti" value="<?= $reg->getDataTermino(); ?>" required>
                       </div>
                     </div>
 
                     <div class="form-row">
                       <div class="form-group col-md-6">
-                        <label for="cbbSituacaoInsti">Tipo do curso</label>
+                        <label for="cbbSituacaoInsti">Situação do curso</label>
                         <select class="custom-select" id="cbbSituacaoInsti<?= $reg->getIdFormacao(); ?>" name="cmbSituacaoInsti" required>
                           <option value="<?= $reg->getEstado(); ?>" selected><?= $reg->getEstado(); ?></option>
                           <option value="IN">Incompleto</option>
@@ -184,14 +184,14 @@ if (isset($_POST['btnContinuar'])) {
                       <input type="date" class="form-control" id="dtaInicioInsti<?= $ultimoRegistro ?>" name="dtaInicioInsti" placeholder="" required>
                     </div>
                     <div class="form-group col-md-4">
-                      <label for="dtaTermInsti">Data término (previsão)</label>
+                      <label for="dtaTermInsti">Data término</label>
                       <input type="date" class="form-control" id="dtaTermInsti<?= $ultimoRegistro ?>" name="dtaTermInsti" placeholder="" required>
                     </div>
                   </div>
 
                   <div class="form-row">
                     <div class="form-group col-md-6">
-                      <label for="cbbSituacaoInsti">Tipo do curso</label>
+                      <label for="cbbSituacaoInsti">Situação do curso</label>
                       <select class="custom-select" id="cbbSituacaoInsti<?= $ultimoRegistro ?>" name="cmbSituacaoInsti" required>
                         <option value="" selected>Selecione</option>
                         <option value="IN">Interrrompido</option>

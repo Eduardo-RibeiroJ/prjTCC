@@ -113,7 +113,7 @@ $arrayCurso = $cursoDAO->Listar($curso);
               <div class="card-body">
                 <div class="card-text">
                   <div class="form-row">
-                    <div class="form-group col-md-4">
+                    <div class="form-group col-md-6">
                       <label for="txtNomeCurso">Nome do curso</label>
                       <input type="text" class="form-control" id="txtNomeCurso<?= $ultimoRegistro ?>" name="txtNomeCurso" placeholder="" required>
                     </div>
