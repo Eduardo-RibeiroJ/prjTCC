@@ -9,7 +9,7 @@ $db = new Conexao();
     $palavra = $_POST['palavra'];
     $output = '';
 
-    $query = "SELECT nomeCargo from tbCargo WHERE nomeCargo LIKE '%".$palavra."%' LIMIT 5;";
+    $query = "SELECT nomeCargo from tbCargo WHERE nomeCargo LIKE '%".$palavra."%' ORDER BY nomeCargo LIMIT 5;";
     $result = $db->getConection()->query($query);
 
     if(mysqli_num_rows($result) > 0) {
