@@ -56,7 +56,7 @@ $candidatoDAO->Listar($candidato);
                     <div class="form-row">
                       <div class="form-group col-md-6">
                         <label for="txtNome">Nome</label>
-                        <input type="text" class="form-control" id="txtNome" name="txtNome" value="<?= $candidato->getNome(); ?>" required autofocus>
+                        <input type="text" class="form-control" id="txtNome" name="txtNome" value="<?= $candidato->getNome(); ?>" required>
                       </div>
 
                       <div class="form-group col-md-6">

@@ -72,7 +72,7 @@ class CandidatoEmpresaDAO
         
         if ($empresa->getIdEmpresa() == NULL) {
 
-            $query = $this->db->getConection()->query("SELECT * FROM tbCandidatoEmpresa WHERE cpf ='".$empresa->getCpf()."' ORDER BY dataSaida desc;");
+            $query = $this->db->getConection()->query("SELECT * FROM tbCandidatoEmpresa WHERE cpf ='".$empresa->getCpf()."' ORDER BY dataInicio desc;");
             $arrayQuery = array();
 
             while($reg = $query->fetch_array()) {

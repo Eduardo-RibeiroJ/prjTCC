@@ -1,5 +1,6 @@
 <?php
 session_start();
+date_default_timezone_set('America/Sao_Paulo');
 
 include_once "../Model/Conexao.php";
 include_once "../Model/ProcessoSeletivo.php";
@@ -7,6 +8,8 @@ include_once "../Controller/ProcessoSeletivoDAO.php";
 
 $conn = new Conexao();
 $processo = new ProcessoSeletivo();
+
+$hoje = date("Y-m-d");
 
 if (isset($_POST['btnAvancar'])) {
 
@@ -65,8 +68,8 @@ if (isset($_POST['btnAvancar'])) {
                                 <div class="form-row">
 
                                     <div class="form-group col-md-6">
-                                        <label for="txtDataInicio">Data para início do processo seletivo</label>
-                                        <input type="date" class="form-control" id="txtDataInicio" name="txtDataInicio" value="" required>
+                                        <label for="txtDataInicio">Data início</label>
+                                        <input type="date" class="form-control" id="txtDataInicio" name="txtDataInicio" value="<?= $hoje ?>" readonly="true" required>
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="txtDataLimite">Data limite para candidatar-se</label>
@@ -83,7 +86,6 @@ if (isset($_POST['btnAvancar'])) {
                                         <div class="form-check mt-2">
                                             <input class="form-check-input" type="checkbox" value="chkAc" id="chkAc">
                                             <label class="form-check-label" for="chkAc">A combinar</label>
-
                                         </div>
 
                                     </div>

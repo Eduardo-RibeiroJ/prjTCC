@@ -94,7 +94,7 @@ $objetivo = $objetivoDAO->Listar($objetivo);
 
                   <div class="row">
                     <div class="col">
-                      <p><strong>Data de Nascimento: </strong><?= $candidato->getDataNasc(); ?></p>
+                      <p><strong>Data de Nascimento: </strong><?= date("d/m/Y", strtotime($candidato->getDataNasc())); ?></p>
                       <p><strong>Estado Civil: </strong><?= $candidato->getEstadoCivil(); ?></p>
                       <p><strong>Sexo: </strong><?= $candidato->getSexo(); ?></p>
 
@@ -260,7 +260,7 @@ $objetivo = $objetivoDAO->Listar($objetivo);
 
                           <h5><?= $reg->getTipo(); ?></h5>
                           <p><strong><?= $reg->getNomeCurso(); ?></strong>, <?= $reg->getNomeInstituicao(); ?></p>
-                          <p><?= $reg->getDataInicio(); ?> - <?= $reg->getDataTermino(); ?></p>
+                          <p>De <?= date("d/m/Y", strtotime($reg->getDataInicio())); ?> a <?= date("d/m/Y", strtotime($reg->getDataTermino())); ?></p>
                           <p><?= $reg->getEstado(); ?></p>
                           <hr />
 
@@ -306,7 +306,7 @@ $objetivo = $objetivoDAO->Listar($objetivo);
                         <div class="col">
 
                           <p><strong><?= $reg->getNomeCurso(); ?></strong>, <?= $reg->getNomeInstituicao(); ?></p>
-                          <p>Concluído em <?= $reg->getAnoConclusao(); ?></p>
+                          <p>Concluído em <?= date("d/m/Y", strtotime($reg->getAnoConclusao())); ?></p>
                           <p><?= $reg->getCargaHoraria(); ?> horas de curso</p>
                           <hr />
 
@@ -354,7 +354,7 @@ $objetivo = $objetivoDAO->Listar($objetivo);
                           <h5><?= $reg->getNomeEmpresa(); ?></h5>
                           <p><strong><?= $reg->getCargo(); ?></strong></p>
                           <p><?= $reg->getAtividades(); ?></p>
-                          <p>De <?= $reg->getDataInicio(); ?> a <?= $reg->getDataSaida(); ?></p>
+                          <p>De <?= date("d/m/Y", strtotime($reg->getDataInicio())); ?> <?= $reg->getDataSaida() == 0000-00-00 ? 'até agora': 'a '. date("d/m/Y", strtotime($reg->getDataSaida())) ?></p>
                           <hr />
 
                         </div>

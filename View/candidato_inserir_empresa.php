@@ -80,6 +80,10 @@ $arrayEmpresa = $empresaDAO->Listar($empresa);
                       <div class="form-group col-md-3">
                         <label for="dtaTermino">Data de saída</label>
                         <input type="date" class="form-control" id="dtaTermino<?= $reg->getIdEmpresa(); ?>" name="dtaTermino" value="<?= $reg->getDataSaida(); ?>" required>
+                        <div class="form-check mt-2">
+                          <input class="form-check-input" type="checkbox" value="chkAtual" id="chkAtual">
+                          <label class="form-check-label" for="chkAtual">Emprego atual</label>
+                        </div>
                       </div>
                     </div>
 
@@ -139,6 +143,10 @@ $arrayEmpresa = $empresaDAO->Listar($empresa);
                     <div class="form-group col-md-3">
                       <label for="dtaTermino">Data de saída</label>
                       <input type="date" class="form-control" id="dtaTermino<?= $ultimoRegistro ?>" name="dtaTermino" placeholder="" required>
+                      <div class="form-check mt-2">
+                        <input class="form-check-input" type="checkbox" value="chkAtual" id="chkAtual">
+                        <label class="form-check-label" for="chkAtual">Emprego atual</label>
+                      </div>
                     </div>
                   </div>
 

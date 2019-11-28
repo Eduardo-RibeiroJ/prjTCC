@@ -129,27 +129,30 @@ class CandidatoCompetenciaDAO
     
     public function ListarCompProc(CandidatoCompetencia $candCompetencia, ProcessoSeletivo $processo) {
         
-        $query = $this->db->getConection()->query("SELECT cc.cpf, cc.idcompetencia, cc.competencia, cc.nivel FROM tbcandidatocompetencia as cc inner join tbprocessocompetencia as pc ON cc.idCompetencia = pc.idCompetencia WHERE cc.idCompetencia = pc.idCompetencia AND cc.cpf = '".$candCompetencia->getCpf()."' AND pc.idProcesso = '".$processo->getIdProcesso()."';");
+        $query = $this->db->getConection()->query("SELECT cc.cpf, cc.idcompetencia, cc.competencia, cc.nivel as candNivel, pc.nivel as procNivel FROM tbcandidatocompetencia as cc inner join tbprocessocompetencia as pc ON cc.idCompetencia = pc.idCompetencia WHERE cc.idCompetencia = pc.idCompetencia AND cc.cpf = '".$candCompetencia->getCpf()."' AND pc.idProcesso = '".$processo->getIdProcesso()."';");
         $arrayQuery = array();
         
         while($reg = $query->fetch_array()) {
 
             $candCompetencia = new CandidatoCompetencia();
 
-            if($reg['nivel'] == 'B')
-                $reg['nivel'] = 'Básico';
-            else if($reg['nivel'] == 'I')
-                $reg['nivel'] = 'Intermediário';
-            else if($reg['nivel'] == 'A')
-                $reg['nivel'] = 'Avançado';
+            if(($reg['procNivel'] == 'B') || ($reg['procNivel'] == 'I' AND $reg['candNivel'] == 'I') || ($reg['candNivel'] == 'A')){
 
-            $candCompetencia->InserirCompetencia(         
-                $reg['cpf'],
-                $reg['idcompetencia'],
-                $reg['competencia'],
-                $reg['nivel']
-            );
-            $arrayQuery[] = $candCompetencia;
+                if($reg['procNivel'] == 'B')
+                    $reg['procNivel'] = 'Básico';
+                else if($reg['procNivel'] == 'I')
+                    $reg['procNivel'] = 'Intermediário';
+                else if($reg['procNivel'] == 'A')
+                    $reg['procNivel'] = 'Avançado';
+
+                $candCompetencia->InserirCompetencia(         
+                    $reg['cpf'],
+                    $reg['idcompetencia'],
+                    $reg['competencia'],
+                    $reg['procNivel']
+                );
+                $arrayQuery[] = $candCompetencia;
+            }
         }
         
         return $arrayQuery;

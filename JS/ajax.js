@@ -800,7 +800,7 @@ $(function () {
     $('#cardProcessoCompetencias').on('click', '#btnExcluirCompetencia', function (e) {
 
         var cardAlvo = $(this).closest('.div-competencia');
-        
+
         alerta('Competência removida', '<i class="fas fa-trash-alt"></i>');
         cardAlvo.fadeOut(500, function () {
             cardAlvo.remove();
@@ -952,7 +952,6 @@ $(function () {
         }, function (sucesso) {
 
             if (sucesso == true) {
-                console.log('Encerrou');
                 window.location.replace("processo_listagem.php");
             } else {
                 alert('Erro: ' + sucesso);

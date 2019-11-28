@@ -93,13 +93,13 @@ include_once 'headerRecrut.php';
               <p class="lead mb-1 text-uppercase"><strong>Objetivo Profissional</strong></p>
               <ul>
                 <li>
-                  <p class="mb-0"><strong>Atuar como: </strong><?= $objetivo->getCargo()->getNomeCargo(); ?></p>
+                  <p class="mb-0">Atuar como: <strong><?= $objetivo->getCargo()->getNomeCargo(); ?></strong></p>
                 </li>
                 <li>
-                  <p class="mb-0"><strong>Nível: </strong><?= $objetivo->getNivel(); ?></p>
+                  <p class="mb-0">Nível: <strong><?= $objetivo->getNivel(); ?></strong></p>
                 </li>
                 <li>
-                  <p class="mb-0"><strong>Pretenção salarial:</strong> R$<?= $objetivo->getPretSal(); ?></p>
+                  <p class="mb-0">Pretenção salarial: <strong>R$ <?= $objetivo->getPretSal(); ?></strong></p>
                 </li>
               </ul>
             </div>
@@ -130,7 +130,8 @@ include_once 'headerRecrut.php';
                 <?php foreach ($arrayFormacao as $reg) : ?>
                   <h5><?= $reg->getTipo(); ?></h5>
                   <p class="mb-0"><strong><?= $reg->getNomeCurso(); ?></strong>, <?= $reg->getNomeInstituicao(); ?></p>
-                  <p class="mb-0">De <?= $reg->getDataInicio(); ?> a <?= $reg->getDataTermino(); ?></p>
+                  <p class="mb-0">De <?= date("d/m/Y", strtotime($reg->getDataInicio())); ?> a <?= date("d/m/Y", strtotime($reg->getDataTermino())); ?></p>
+
                   <p class="mb-0"><?= $reg->getEstado(); ?></p>
                   <hr>
                 <?php endforeach; ?>
@@ -144,7 +145,7 @@ include_once 'headerRecrut.php';
                 <p class="lead mb-1 text-uppercase"><strong>Cursos Complementares</strong></p>
                 <?php foreach ($arrayCurso as $reg) : ?>
                   <p class="mb-0"><strong><?= $reg->getNomeCurso(); ?></strong>, <?= $reg->getNomeInstituicao(); ?></p>
-                  <p class="mb-0">Concluído em <?= $reg->getAnoConclusao(); ?></strong> - <?= $reg->getCargaHoraria(); ?> horas de curso</p>
+                  <p class="mb-0">Concluído em <?= date("d/m/Y", strtotime($reg->getAnoConclusao())); ?></strong> - <?= $reg->getCargaHoraria(); ?> horas de curso</p>
                   <hr>
                 <?php endforeach; ?>
               </div>
@@ -159,7 +160,7 @@ include_once 'headerRecrut.php';
                   <h5><?= $reg->getNomeEmpresa(); ?></h5>
                   <p class="mb-0"><strong><?= $reg->getCargo(); ?></strong></p>
                   <p class="mb-0"><?= $reg->getAtividades(); ?></p>
-                  <p class="mb-0">De <?= $reg->getDataInicio(); ?> a <?= $reg->getDataSaida(); ?></p>
+                  <p class="mb-0">De <?= date("d/m/Y", strtotime($reg->getDataInicio())); ?> <?= $reg->getDataSaida() == 0000-00-00 ? 'até agora': 'a '. date("d/m/Y", strtotime($reg->getDataSaida())) ?></p>
                   <hr>
                 <?php endforeach; ?>
               </div>
