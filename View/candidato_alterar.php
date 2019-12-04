@@ -240,4 +240,12 @@ $candidatoDAO->Listar($candidato);
   </div>
 </div>
 
+<script type="text/javascript">
+  jQuery(function($) {
+    $("#txtCEP").mask("99999-999");
+    $("#txtTelefone1").mask("(99)99999-9999");
+    $("#txtTelefone2").mask("(99)9999-9999");
+  });
+</script>
+
 <?php include 'footer.php'; ?>

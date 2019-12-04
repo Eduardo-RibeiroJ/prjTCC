@@ -27,7 +27,7 @@ if (isset($_POST['btnEntrar'])) {
 		echo "<script> alert('E-mail não cadastrado!'); window.location.replace('candidato_cadastrar.php'); </script>";
 }
 
-if(!(isset($_SESSION['logado'])) || $_SESSION['logado'] != 1) {
+if (!(isset($_SESSION['logado'])) || $_SESSION['logado'] != 1) {
 	echo "<script>location.href='index.php'</script>";
 }
 ?>
@@ -44,9 +44,8 @@ if(!(isset($_SESSION['logado'])) || $_SESSION['logado'] != 1) {
 	<link rel="stylesheet" href="css/bootstrap.css">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
-
+	<script type="text/javascript" src="../JS/jquery-3.2.1.js"></script>
+	<script type="text/javascript" src="../JS/jquery.mask.js"></script>
 
 </head>
 

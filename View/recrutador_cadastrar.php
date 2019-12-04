@@ -17,7 +17,7 @@ if (isset($_POST['btnCadastrar'])) {
 	$recrutadorDAO = new RecrutadorDAO($conn);
 
 	// Elimina mascara
-	$cnpj = preg_replace("/[^0-9]/", "", $_POST['txtCnpj1']);
+	$cnpj = preg_replace("/[^0-9]/", "", $_POST['txtCNPJ']);
 	$cnpj = str_pad($cnpj, 14, '0', STR_PAD_LEFT);
 
 	if ($recrutador->getValidaCNPJ($cnpj) == false) {
@@ -46,7 +46,7 @@ include_once 'header.php';
 		<div class="mx-md-5">
 			<h1 class="h3 mb-3 font-weight-normal">Faça seu cadastro</h1>
 
-			<input id="txtCnpj1" name="txtCnpj1" class="form-control mb-1" placeholder="Insira seu CNPJ.." autofocus="" required>
+			<input type="text" id="txtCNPJ" name="txtCNPJ" class="form-control mb-1" placeholder="Insira seu CNPJ.." maxlength="14" autofocus="" required />
 			<input type="email" id="txtEmail" name="txtEmail" class="form-control mb-1" placeholder="Insira seu e-mail..." required>
 			<input type="password" id="txtSenha" name="txtSenha" class="form-control mb-1" placeholder="Insira uma senha..." required>
 			<input type="password" id="txtRepetirSenha" name="txtRepetirSenha" class="form-control mb-3" placeholder="Repita a senha..." required>
@@ -57,8 +57,10 @@ include_once 'header.php';
 
 </header>
 
-<script type="text/javascript">
-	$("#txtCnpj1").mask("00.000.000/0000-00");
+<script>
+	jQuery(function($) {
+		$("#txtCNPJ").mask("99.999.999/9999-99");
+	});
 </script>
 
 

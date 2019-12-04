@@ -59,6 +59,7 @@ if (isset($_POST['btnSalvar'])) {
     $idCargo,
     $_POST['cbbNivel'],
     $_POST['txtPretSal']
+
   );
 
   $candObjetivoDAO->Inserir($candObjetivo);
@@ -161,7 +162,7 @@ if (isset($_POST['btnSalvar'])) {
                   <div class="form-row">
                     <div class="form-group col-lg-6">
                       <label for="txtCEP">CEP</label>
-                      <input type="text" class="form-control" id="txtCEP" name="txtCEP" placeholder="" required>
+                      <input type="text" class="form-control" id="txtCEP" name="txtCEP" maxlength="8" placeholder="" required>
                     </div>
 
                     <div class="form-group col-lg-6">
@@ -297,8 +298,6 @@ if (isset($_POST['btnSalvar'])) {
   </div>
 </div>
 
-<?php include 'footer.php'; ?>
-
 <script type="text/javascript">
   $(document).ready(function() {
     $('#txtCargo').keyup(function() {
@@ -323,8 +322,11 @@ if (isset($_POST['btnSalvar'])) {
   })
 
   //Máscaras
-  // $("#txtCEP").mask("00000-000");
-  // $("#txtTelefone1").mask("(00)00000-0000");
-  // $("#txtTelefone2").mask("(00)0000-0000");
-  // $("#txtPretSal").mask("R$0000,00");
+  jQuery(function($) {
+    $("#txtCEP").mask("99999-999");
+    $("#txtTelefone1").mask("(99)99999-9999");
+    $("#txtTelefone2").mask("(99)9999-9999");
+  });
 </script>
+
+<?php include 'footer.php'; ?>

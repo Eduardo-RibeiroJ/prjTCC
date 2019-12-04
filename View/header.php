@@ -10,8 +10,8 @@
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
+  <script type="text/javascript" src="../JS/jquery-3.2.1.js"></script>
+  <script type="text/javascript" src="../JS/jquery.mask.js"></script>
 
 </head>
 
@@ -152,8 +152,6 @@
     </div>
   </div>
 
-  <script type="text/javascript">
-    $("#txtCnpj").mask("00.000.000/0000-00");
-  </script>
+
 
   <!-- Fim do Cabeçalho que irá em todas as páginas  -->
