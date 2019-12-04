@@ -47,8 +47,8 @@
 
         </ul>
 
-        <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#candidato">Sou candidato</button>
-        <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#recrutador">Sou empresa</button>
+        <button type="button" class="btn btn-outline-light mr-1" data-toggle="modal" data-target="#candidato">Sou candidato</button>
+        <button type="button" class="btn btn-outline-light" data-toggle="modal" data-target="#recrutador">Sou empresa</button>
 
     </nav>
   </header>

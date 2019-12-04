@@ -72,7 +72,7 @@ $arrayTestesOnline = $testeOnlineDAO->Listar($testeOnline);
                     </div>
 
                     <div class="col-12 col-lg-5 text-right">
-                      <button class="btn btn-danger" id="btnExcluir" type="button" value="<?= $reg->getIdTesteOnline(); ?>"><i class="far fa-trash-alt"></i> Excluir Teste Online</button>
+                      <button class="btn btn-danger mb-1" id="btnExcluir" type="button" value="<?= $reg->getIdTesteOnline(); ?>"><i class="far fa-trash-alt"></i> Excluir Teste Online</button>
                       <a class="btn btn-primary" href="testeOnline_questao_listar.php?idTesteOnline=<?= $reg->getIdTesteOnline(); ?>&nomeTesteOnline=<?= $reg->getNomeTesteOnline(); ?>"><i class="far fa-eye"></i> Visualizar Questões</a>
                     </div>
 
