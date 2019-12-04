@@ -108,13 +108,14 @@ include_once 'headerRecrut.php'
             }
 
             $retornoComp = $candidatoCompetenciaDAO->ListarQuantComp($candidatoCompetencia, $processoCompetencia);
-
+            
             $arrayClassifica[] = [
               "candidato" => $reg,
               "quantComp" => $retornoComp['quantComp'],
               "pontosNivel" => $retornoComp['pontosNivel'],
               "mediaTestes" => $mediaTestes
             ];
+
 
             ?>
 
