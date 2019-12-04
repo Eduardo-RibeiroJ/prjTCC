@@ -125,10 +125,9 @@ class CandidatoCompetenciaDAO
                 $contComp++;
 
             }
-            
         }
         
-        $arrayQuery = array('quantComp' => $contComp, 'pontosNivel' => $pontosNivel);
+        $arrayQuery = array('quantComp' => $contComp, 'pontosNivel' => $pontosNivel, 'quantCompAbaixo' => mysqli_num_rows($query));
         
         return $arrayQuery;
 
