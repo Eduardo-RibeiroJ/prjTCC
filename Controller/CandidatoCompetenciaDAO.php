@@ -107,21 +107,27 @@ class CandidatoCompetenciaDAO
 
     public function ListarQuantComp(CandidatoCompetencia $candCompetencia, ProcessoCompetencia $processoCompetencia) {
         
-        $query = $this->db->getConection()->query("SELECT cc.idCompetencia, cc.nivel FROM tbcandidatocompetencia as cc inner join tbprocessocompetencia as pc ON cc.idCompetencia = pc.idCompetencia WHERE cc.idCompetencia = pc.idCompetencia AND cc.cpf = '".$candCompetencia->getCpf()."' AND pc.idProcesso = '".$processoCompetencia->getIdProcesso()."';");
+        $query = $this->db->getConection()->query("SELECT cc.cpf, cc.idcompetencia, cc.competencia, cc.nivel as candNivel, pc.nivel as procNivel FROM tbcandidatocompetencia as cc inner join tbprocessocompetencia as pc ON cc.idCompetencia = pc.idCompetencia WHERE cc.idCompetencia = pc.idCompetencia AND cc.cpf = '".$candCompetencia->getCpf()."' AND pc.idProcesso = '".$processoCompetencia->getIdProcesso()."';");
+        $contComp = 0;
         $pontosNivel = 0;
         
         while($reg = $query->fetch_array()) {
 
-            if($reg['nivel'] == 'B')
-            $pontosNivel += 1;
-            else if($reg['nivel'] == 'I')
-            $pontosNivel += 2;
-            else if($reg['nivel'] == 'A')
-            $pontosNivel += 3;
-            
+            if(($reg['procNivel'] == 'B') || ($reg['procNivel'] == 'I' AND $reg['candNivel'] == 'I') || ($reg['candNivel'] == 'A')){
+
+                if($reg['candNivel'] == 'B')
+                $pontosNivel += 1;
+                else if($reg['candNivel'] == 'I')
+                $pontosNivel += 2;
+                else if($reg['candNivel'] == 'A')
+                $pontosNivel += 3;
+
+                $contComp++;
+
+            }
         }
         
-        $arrayQuery = array('quantComp' => mysqli_num_rows($query), 'pontosNivel' => $pontosNivel);
+        $arrayQuery = array('quantComp' => $contComp, 'pontosNivel' => $pontosNivel, 'quantCompAbaixo' => mysqli_num_rows($query));
         
         return $arrayQuery;
 
