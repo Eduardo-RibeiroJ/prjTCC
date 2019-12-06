@@ -108,7 +108,7 @@ include_once 'headerRecrut.php'
             }
 
             $retornoComp = $candidatoCompetenciaDAO->ListarQuantComp($candidatoCompetencia, $processoCompetencia);
-            
+
             $arrayClassifica[] = [
               "candidato" => $reg,
               "quantComp" => $retornoComp['quantComp'],
@@ -130,23 +130,24 @@ include_once 'headerRecrut.php'
             return -1;
           else if ($a['quantComp'] < $b['quantComp'])
             return 1;
+
+          else if ($a['quantCompAbaixo'] > $b['quantCompAbaixo'])
+            return -1;
+          else if ($a['quantCompAbaixo'] < $b['quantCompAbaixo'])
+            return 1;
+
+          else if ($a['mediaTestes'] > $b['mediaTestes'])
+            return -1;
+          else if ($a['mediaTestes'] < $b['mediaTestes'])
+            return 1;
+
+          else if ($a['pontosNivel'] > $b['pontosNivel'])
+            return -1;
+          else if ($a['pontosNivel'] < $b['pontosNivel'])
+            return 1;
+
           else
-            if ($a['pontosNivel'] > $b['pontosNivel'])
-              return -1;
-            else if ($a['pontosNivel'] < $b['pontosNivel'])
-              return 1;
-            else
-              if ($a['mediaTestes'] > $b['mediaTestes'])
-                return -1;
-              else if ($a['mediaTestes'] < $b['mediaTestes'])
-                return 1;
-              else
-                if ($a['quantCompAbaixo'] > $b['quantCompAbaixo'])
-                  return -1;
-                else if ($a['quantCompAbaixo'] < $b['quantCompAbaixo'])
-                  return 1;
-                else
-                  return 0;
+            return 0;
         }
 
         usort($arrayClassifica, "comparar");

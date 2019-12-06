@@ -212,7 +212,7 @@ $(function () {
         $.post('../PostAjax/alterar.php', {
             acao: "alterarCandidatoContato",
             cpf: $('#cpf').val(),
-            tel1: $('#txtTelefone').val(),
+            tel1: $('#txtTelefone1').val(),
             tel2: $('#txtTelefone2').val(),
             linkedin: $('#txtlinkedin').val(),
             facebook: $('#txtFacebook').val(),

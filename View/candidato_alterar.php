@@ -180,8 +180,8 @@ $candidatoDAO->Listar($candidato);
 
                     <div class="form-row">
                       <div class="form-group col-md-6">
-                        <label for="txtTelefone">Telefone</label>
-                        <input type="text" class="form-control" id="txtTelefone" name="txtTelefone" value="<?= $candidato->getTel1(); ?>" required>
+                        <label for="txtTelefone1">Telefone</label>
+                        <input type="text" class="form-control" id="txtTelefone1" name="txtTelefone1" value="<?= $candidato->getTel1(); ?>" required>
                       </div>
 
                       <div class="form-group col-md-6">

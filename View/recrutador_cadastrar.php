@@ -17,8 +17,7 @@ if (isset($_POST['btnCadastrar'])) {
 	$recrutadorDAO = new RecrutadorDAO($conn);
 
 	// Elimina mascara
-	$cnpj = preg_replace("/[^0-9]/", "", $_POST['txtCNPJ']);
-	$cnpj = str_pad($cnpj, 14, '0', STR_PAD_LEFT);
+	$cnpj = strval(preg_replace("/[^0-9]/", "", $_POST['txtCNPJ']));
 
 	if ($recrutador->getValidaCNPJ($cnpj) == false) {
 		echo "<script>window.alert('CNPJ inválido'); history.go(-1); </script>";
