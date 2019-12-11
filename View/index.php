@@ -18,7 +18,7 @@ else if ($_SESSION['logado'] == 2)
     <div class="row">
 
       <div class="col-md-7 px-5">
-        <h1 class="mb-2" style="color:#12181F">Seja bem-vindo a Connection, o site que conecta as empresas com os melhores candidatos!</h1>
+        <h1 class="mb-2 borda_texto" style="color:#FFFFFF">Seja bem-vindo a Connection, o site que conecta as empresas com os melhores candidatos!</h1>
       </div>
 
       <div class="col-md-6 py-4 px-5">

@@ -96,6 +96,13 @@
     }
 
 
+    /**/
+
+    .borda_texto{
+       text-shadow:#000 1.3px -1.3px, #000 -1.3px 1.3px, #000 1.3px 1.3px, #000 -1.3px -1.3px;
+    }
+
+
     /*FORMATAÇÃO DE ITENS DO BOOTSTRAP */
 
     header .navbar-dark .navbar-nav .nav-link {
