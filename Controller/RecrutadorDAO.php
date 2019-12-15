@@ -39,7 +39,7 @@ class RecrutadorDAO
 
         $senha_banco = Bcrypt::hash($senha);
 
-        mysqli_stmt_bind_param($stmt, 'isssssssssssss', $cnpj, $nomeEmpresa, $email,$senha_banco,
+        mysqli_stmt_bind_param($stmt, 'ssssssssssssss', $cnpj, $nomeEmpresa, $email,$senha_banco,
                                                             $cep, $estado, $cidade,
                                                             $endereco, $bairro, $tel1, $tel2,
                                                             $linkedin, $facebook, $siteEmpresa);
@@ -74,7 +74,7 @@ class RecrutadorDAO
             die(mysqli_error($this->db->getConection()));
         }
         
-        mysqli_stmt_bind_param($stmt, 'sssssssssssssi', $nomeEmpresa, $email, $senha, $cep, 
+        mysqli_stmt_bind_param($stmt, 'ssssssssssssss', $nomeEmpresa, $email, $senha, $cep, 
                                                         $estado, $cidade, $endereco, $bairro, $tel1, $tel2,
                                                         $linkedin,$facebook,$siteEmpresa,$cnpj );
         mysqli_stmt_execute($stmt);

@@ -17,7 +17,7 @@ if (isset($_POST['btnCadastrar'])) {
     $candidatoDAO = new CandidatoDAO($conn);
 
     // Elimina possivel mascara
-    $cpf = strval(preg_replace("/[^0-9]/", "", $_POST['txtCpf']));
+    $cpf = strval(preg_replace("/\D+/", "", $_POST['txtCpf']));
 
     if ($candidato->getValidaCPF($cpf) == false) {
         echo "<script>window.alert('CPF inválido!'); history.go(-1); </script>";

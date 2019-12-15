@@ -25,7 +25,7 @@ class CandidatoCursoDAO
             die(mysqli_error($this->db->getConection()));
         }
 
-        mysqli_stmt_bind_param($stmt, 'iisssi', $cpf, $idCurso, $nomeCurso, $nomeInstituicao, $anoConclusao, $cargaHoraria);
+        mysqli_stmt_bind_param($stmt, 'sisssi', $cpf, $idCurso, $nomeCurso, $nomeInstituicao, $anoConclusao, $cargaHoraria);
         mysqli_stmt_execute($stmt);
         mysqli_stmt_close($stmt);
 
@@ -47,7 +47,7 @@ class CandidatoCursoDAO
             die(mysqli_error($this->db->getConection()));
         } 
         
-        mysqli_stmt_bind_param($stmt, 'sssiii', $nomeCurso, $nomeInstituicao, $anoConclusao, $cargaHoraria, $cpf, $idCurso);
+        mysqli_stmt_bind_param($stmt, 'sssisi', $nomeCurso, $nomeInstituicao, $anoConclusao, $cargaHoraria, $cpf, $idCurso);
         mysqli_stmt_execute($stmt);
         mysqli_stmt_close($stmt);
 
@@ -60,7 +60,7 @@ class CandidatoCursoDAO
 
         $SQL = $this->db->getConection()->prepare("DELETE FROM tbCandidatoCurso WHERE idCurso = ? AND cpf = ?;");
 
-        $SQL->bind_param("ii", $idCurso, $cpf);
+        $SQL->bind_param("is", $idCurso, $cpf);
         $SQL->execute();
    
         return true;

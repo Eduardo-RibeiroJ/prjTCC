@@ -26,7 +26,7 @@ class CandidatoEmpresaDAO
             die(mysqli_error($this->db->getConection()));
         }
 
-        mysqli_stmt_bind_param($stmt, 'iisssss', $cpf, $idEmpresa, $nomeEmpresa, $cargo, $dataInicio, $dataSaida, $atividades);
+        mysqli_stmt_bind_param($stmt, 'sisssss', $cpf, $idEmpresa, $nomeEmpresa, $cargo, $dataInicio, $dataSaida, $atividades);
         mysqli_stmt_execute($stmt);
         mysqli_stmt_close($stmt);
 
@@ -49,7 +49,7 @@ class CandidatoEmpresaDAO
             die(mysqli_error($this->db->getConection()));
         } 
         
-        mysqli_stmt_bind_param($stmt, 'sssssii', $nomeEmpresa, $cargo, $dataInicio, $dataSaida, $atividades, $cpf, $idEmpresa);
+        mysqli_stmt_bind_param($stmt, 'ssssssi', $nomeEmpresa, $cargo, $dataInicio, $dataSaida, $atividades, $cpf, $idEmpresa);
         mysqli_stmt_execute($stmt);
         mysqli_stmt_close($stmt);
 
@@ -62,7 +62,7 @@ class CandidatoEmpresaDAO
 
         $SQL = $this->db->getConection()->prepare("DELETE FROM tbCandidatoEmpresa WHERE idEmpresa = ? AND cpf = ?;");
 
-        $SQL->bind_param("ii", $idEmpresa, $cpf);
+        $SQL->bind_param("is", $idEmpresa, $cpf);
         $SQL->execute();
 
         return true;

@@ -126,7 +126,7 @@
                 <label class="text-left">
                   <h6>Cnpj</h6>
                 </label>
-                <input type="text" id="txtCnpj" name="txtCnpj" class="form-control" placeholder="Seu cnpj" required="" autofocus="">
+                <input type="text" id="txtCNPJ" name="txtCNPJ" class="form-control" placeholder="Seu cnpj" required="" autofocus="">
               </div>
               <div class="form-group col-12">
                 <label class="text-left">
@@ -152,6 +152,8 @@
     </div>
   </div>
 
-
+  <script type="text/javascript">
+    $("#txtCNPJ").mask("99.999.999/9999-99");
+  </script>
 
   <!-- Fim do Cabeçalho que irá em todas as páginas  -->
