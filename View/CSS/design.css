@@ -52,6 +52,7 @@
     .lista-pesquisa li:hover {
         background-color: rgb(243, 243, 240);
         border: 1px solid rgb(220,220,220);
+        cursor: default;
     }
     div#compList{
         margin-top: 0.1em;
