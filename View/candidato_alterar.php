@@ -148,7 +148,7 @@ $candidatoDAO->Listar($candidato);
 
                       <div class="form-group col-md-2">
                         <label for="txtUF">Estado</label>
-                        <input type="text" class="form-control" id="txtUF" name="txtUF" value="<?= $candidato->getEstado(); ?>" required>
+                        <input type="text" class="form-control" id="txtUF" name="txtUF" maxlength="2" style="text-transform:uppercase" value="<?= $candidato->getEstado(); ?>" required>
                       </div>
                     </div>
 

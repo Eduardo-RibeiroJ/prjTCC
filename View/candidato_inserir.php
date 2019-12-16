@@ -185,7 +185,7 @@ if (isset($_POST['btnSalvar'])) {
 
                     <div class="form-group col-md-2">
                       <label for="txtUF">Estado</label>
-                      <input type="text" class="form-control" id="txtUF" name="txtUF" placeholder="" required>
+                      <input type="text" class="form-control" id="txtUF" name="txtUF" maxlength="2" style="text-transform:uppercase" placeholder="" required>
                     </div>
                   </div>
 
