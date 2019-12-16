@@ -131,14 +131,14 @@ include_once 'headerRecrut.php'
           else if ($a['quantComp'] < $b['quantComp'])
             return 1;
           else
-            if ($a['pontosNivel'] > $b['pontosNivel'])
+            if ($a['mediaTestes'] > $b['mediaTestes'])
                 return -1;
-              else if ($a['pontosNivel'] < $b['pontosNivel'])
+              else if ($a['mediaTestes'] < $b['mediaTestes'])
                 return 1;
               else
-                if ($a['mediaTestes'] > $b['mediaTestes'])
+                if ($a['pontosNivel'] > $b['pontosNivel'])
                   return -1;
-                else if ($a['mediaTestes'] < $b['mediaTestes'])
+                else if ($a['pontosNivel'] < $b['pontosNivel'])
                   return 1;
                 else
                   if ($a['quantCompAbaixo'] > $b['quantCompAbaixo'])
@@ -193,10 +193,10 @@ include_once 'headerRecrut.php'
                         $processoCandPergunta->setIdProcesso($processo->getIdProcesso());
                         $arrayPerguntas = $processoCandPerguntaDAO->Listar($processoCandPergunta);
 
-                        echo 'quantComp '.$cand['quantComp'].' - ';
-                        echo 'mediaTestes '.$cand['mediaTestes'].' - ';
-                        echo 'pontosNivel '.$cand['pontosNivel'].' - ';
-                        echo 'quantCompAbaixo '.$cand['quantCompAbaixo'];
+                        // echo 'quantComp '.$cand['quantComp'].' - ';
+                        // echo 'mediaTestes '.$cand['mediaTestes'].' - ';
+                        // echo 'pontosNivel '.$cand['pontosNivel'].' - ';
+                        // echo 'quantCompAbaixo '.$cand['quantCompAbaixo'];
 
                         ?>
 
