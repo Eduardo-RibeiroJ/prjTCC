@@ -42,6 +42,22 @@ $objetivo = $objetivoDAO->Listar($objetivo);
 
 $arrayVagas = $processoSeletivoDAO->ListarVagaCandidato($processoSeletivo, $objetivo);
 
+function mask($val, $mask)
+{
+  $maskared = '';
+  $k = 0;
+  for ($i = 0; $i <= strlen($mask) - 1; $i++) {
+    if ($mask[$i] == '#') {
+      if (isset($val[$k]))
+        $maskared .= $val[$k++];
+    } else {
+      if (isset($mask[$i]))
+        $maskared .= $mask[$i];
+    }
+  }
+  return $maskared;
+}
+
 ?>
 
 <!-- Masthead -->
@@ -86,9 +102,13 @@ $arrayVagas = $processoSeletivoDAO->ListarVagaCandidato($processoSeletivo, $obje
 
               <p class="mb-0"><?= $candidato->getIdade() ?> anos</p>
               <p class="mb-0"><?= $candidato->getEmail() ?></p>
-              <p class="mb-0">Telefone: <?= $candidato->getTel1() ?></p>
-              <?php $tel2 = $candidato->getTel2() == "" ? '' : 'Celular: ' . $candidato->getTel2();
-              echo $tel2 ?>
+
+              <p class="mb-0"> <?php $tel1 = $candidato->getTel1() == "" ? '' : 'Telefone Celular: ' . mask($candidato->getTel1(), '(##)#####-####');
+                                echo $tel1 ?></p>
+
+                              <?php $tel2 = $candidato->getTel2() == "" ? '' : 'Telefone Fixo: ' . mask($candidato->getTel2(), '(##)####-####');
+                              echo $tel2 ?>
+
               <div class="row">
                 <div class="col-12">
                   <a href="candidato_perfil.php" class="btn btn-sm btn-primary mt-2 float-right">Visualizar Perfil</a>
@@ -115,10 +135,10 @@ $arrayVagas = $processoSeletivoDAO->ListarVagaCandidato($processoSeletivo, $obje
                           <input type="hidden" id="txtIdProcesso" name="txtIdProcesso" value="<?= $reg->getidProcesso() ?>" />
                           <div class="list-group-item list-group-item-action border-top-0 border-bottom-1 border-right-0 border-left-0">
                             <p class="lead d-inline">Vaga para <strong><?= $reg->getCargo()->getNomeCargo(); ?></strong></p>
-                              <?php if(strtotime(date("d-m-Y")) > strtotime(str_replace("/", "-", $reg->getDataLimiteCandidatar()))): ?>
-                                <p class="lead text-muted">Encerrado, boa sorte! <i class="far fa-thumbs-up"></i></p>
-                              <?php else: ?>
-                                <p class="lead text-muted">Encerra em <strong><?= $reg->getDataLimiteCandidatar(); ?></strong>.
+                            <?php if (strtotime(date("d-m-Y")) > strtotime(str_replace("/", "-", $reg->getDataLimiteCandidatar()))) : ?>
+                              <p class="lead text-muted">Encerrado, boa sorte! <i class="far fa-thumbs-up"></i></p>
+                            <?php else : ?>
+                              <p class="lead text-muted">Encerra em <strong><?= $reg->getDataLimiteCandidatar(); ?></strong>.
                                 <button type="submit" id="btnVisualizarProcesso" name="btnVisualizarProcesso" class="btn bnt-sm btn-outline-dark float-right mb-1 mt-3"><i class='fas fa-search'></i></button>
                               <?php endif; ?>
                           </div>
@@ -146,35 +166,35 @@ $arrayVagas = $processoSeletivoDAO->ListarVagaCandidato($processoSeletivo, $obje
           <div class="card-body">
             <div class="card-text">
 
-            <?php if ($arrayVagas) : ?>
+              <?php if ($arrayVagas) : ?>
 
-              <?php foreach ($arrayVagas as $reg) : ?>
-                <?php
-                  $recrutador = new Recrutador();
-                  $recrutadorDAO = new RecrutadorDAO($conn);
+                <?php foreach ($arrayVagas as $reg) : ?>
+                  <?php
+                      $recrutador = new Recrutador();
+                      $recrutadorDAO = new RecrutadorDAO($conn);
 
-                  $recrutador->setCnpj($reg->getCnpj());
-                  $recrutadorDAO->Listar($recrutador);
+                      $recrutador->setCnpj($reg->getCnpj());
+                      $recrutadorDAO->Listar($recrutador);
 
-                  ?>
-                <div class="row">
-                  <div class="col-12">
-                    <div class="list-group">
-                      <a href="processo_seletivo-<?= $reg->getidProcesso() ?>">
-                        <div class="list-group-item list-group-item-action border-top-0 border-bottom-1 border-right-0 border-left-0">
-                          <p class="lead d-inline">Vaga para <strong><?= $reg->getCargo()->getNomeCargo(); ?></strong> encerra em <?= $reg->getDataLimiteCandidatar(); ?>.</p>
-                          <p class="text-muted">Empresa <?= $recrutador->getNomeEmpresa() ?>, região de <?= $recrutador->getCidade() ?>.</p>
-                        </div>
-                      </a>
+                      ?>
+                  <div class="row">
+                    <div class="col-12">
+                      <div class="list-group">
+                        <a href="processo_seletivo-<?= $reg->getidProcesso() ?>">
+                          <div class="list-group-item list-group-item-action border-top-0 border-bottom-1 border-right-0 border-left-0">
+                            <p class="lead d-inline">Vaga para <strong><?= $reg->getCargo()->getNomeCargo(); ?></strong> encerra em <?= $reg->getDataLimiteCandidatar(); ?>.</p>
+                            <p class="text-muted">Empresa <?= $recrutador->getNomeEmpresa() ?>, região de <?= $recrutador->getCidade() ?>.</p>
+                          </div>
+                        </a>
+                      </div>
+
                     </div>
-
                   </div>
-                </div>
-              <?php endforeach; ?>
-              <a href="candidato_vagas.php?nomeCargo=<?= $reg->getCargo()->getNomeCargo(); ?>" class="btn btn-sm btn-primary mt-3 float-right">Visualizar mais</a>
-            <?php else : ?>
-              <p class="lead">No momento não há vagas recomendadas.</p>
-            <?php endif; ?>
+                <?php endforeach; ?>
+                <a href="candidato_vagas.php?nomeCargo=<?= $reg->getCargo()->getNomeCargo(); ?>" class="btn btn-sm btn-primary mt-3 float-right">Visualizar mais</a>
+              <?php else : ?>
+                <p class="lead">No momento não há vagas recomendadas.</p>
+              <?php endif; ?>
             </div>
           </div>
         </div>

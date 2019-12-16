@@ -58,6 +58,23 @@ $arrayEmpresa = $empresaDAO->Listar($empresa);
 $arrayCompetencia = $competenciaDAO->Listar($competencia);
 $objetivo = $objetivoDAO->Listar($objetivo);
 
+function mask($val, $mask)
+{
+  $maskared = '';
+  $k = 0;
+  for ($i = 0; $i <= strlen($mask) - 1; $i++) {
+    if ($mask[$i] == '#') {
+      if (isset($val[$k]))
+        $maskared .= $val[$k++];
+    } else {
+      if (isset($mask[$i]))
+        $maskared .= $mask[$i];
+    }
+  }
+  return $maskared;
+}
+
+
 ?>
 
 <div style="background-image: linear-gradient(to left, rgba(220, 240, 255, 1), rgba(130,175,210,1));">
@@ -122,7 +139,10 @@ $objetivo = $objetivoDAO->Listar($objetivo);
                   <div class="row">
                     <div class="col">
 
-                      <p><strong>CEP: </strong><?= $candidato->getCep(); ?></p>
+                      <p><strong>CEP: </strong>
+                        <?php $cep = $candidato->getCep();
+                        echo mask($cep, '#####-###'); ?></p>
+                      </p>
                       <p><strong>Endereço: </strong><?= $candidato->getEndereco(); ?></p>
                       <p><strong>Bairro: </strong><?= $candidato->getBairro(); ?></p>
                       <p><strong>Cidade: </strong><?= $candidato->getCidade(); ?> - <?= $candidato->getEstado(); ?></p>
@@ -153,8 +173,14 @@ $objetivo = $objetivoDAO->Listar($objetivo);
                     <div class="col">
 
                       <p><strong>E-mail: </strong><?= $candidato->getEmail(); ?></p>
-                      <p><strong>Telefone 1: </strong><?= $candidato->getTel1(); ?></p>
-                      <p><strong>Telefone 2: </strong><?= $candidato->getTel2(); ?></p>
+                      <p><strong>Telefone Celular: </strong>
+                        <?php $tel1 = $tel1 = $candidato->getTel1() == "" ? '' : '' . mask($candidato->getTel1(), '(##)#####-####');
+                        echo $tel1 ?></p>
+                      </p>
+                      <p><strong>Telefone Fixo: </strong>
+                        <?php $tel2 = $candidato->getTel2() == "" ? '' : '' . mask($candidato->getTel2(), '(##)####-####');
+                        echo $tel2 ?>
+                      </p>
                       <p><strong>LinkedIn: </strong><?= $candidato->getLinkedin(); ?></p>
                       <p><strong>Facebook: </strong><?= $candidato->getFacebook(); ?></p>
                       <p><strong>Site Pessoal: </strong><?= $candidato->getSitePessoal(); ?></p>
@@ -354,7 +380,7 @@ $objetivo = $objetivoDAO->Listar($objetivo);
                           <h5><?= $reg->getNomeEmpresa(); ?></h5>
                           <p><strong><?= $reg->getCargo(); ?></strong></p>
                           <p><?= $reg->getAtividades(); ?></p>
-                          <p>De <?= date("d/m/Y", strtotime($reg->getDataInicio())); ?> <?= $reg->getDataSaida() == 0000-00-00 ? 'até agora': 'a '. date("d/m/Y", strtotime($reg->getDataSaida())) ?></p>
+                          <p>De <?= date("d/m/Y", strtotime($reg->getDataInicio())); ?> <?= $reg->getDataSaida() == 0000 - 00 - 00 ? 'até agora' : 'a ' . date("d/m/Y", strtotime($reg->getDataSaida())) ?></p>
                           <hr />
 
                         </div>

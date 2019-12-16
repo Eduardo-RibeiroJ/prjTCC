@@ -91,11 +91,6 @@
               </div>
             </div>
 
-            <div class="checkbox mb-3">
-              <label>
-                <input type="checkbox" value="remember-me"> Lembrar de mim
-              </label>
-            </div>
             <input type="submit" id="btnEntrar" name="btnEntrar" class="btn btn-lg btn-outline-primary btn-block" value="Logar">
           </form>
         </div>
@@ -136,11 +131,6 @@
               </div>
             </div>
 
-            <div class="checkbox mb-3">
-              <label>
-                <input type="checkbox" value="remember-me"> Lembrar de mim
-              </label>
-            </div>
             <input type="submit" id="btnEntrarRecrutador" name="btnEntrarRecrutador" class="btn btn-lg btn-outline-primary btn-block" value="Logar">
           </form>
         </div>

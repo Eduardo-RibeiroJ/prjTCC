@@ -95,10 +95,6 @@ if (!(isset($_SESSION['logado'])) || $_SESSION['logado'] != 2) {
 								<i></i>
 								Perfil
 							</a>
-							<a class="dropdown-item" href="#">
-								<i></i>
-								Configurações
-							</a>
 							<div class="dropdown-divider"></div>
 							<a class="dropdown-item" href="logout.php">
 								<i></i>
