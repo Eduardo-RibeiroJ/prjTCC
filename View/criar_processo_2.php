@@ -36,7 +36,7 @@ $arrayPergunta = $perguntaDAO->Listar($pergunta);
 
                 <div class="card mb-3">
                     <div class="card-header">
-                        Competências
+                        <i class="fas fa-lightbulb d-none d-md-inline"></i> Competências
                     </div>
 
                     <div class="card-body" id="cardProcessoCompetencias">
@@ -79,40 +79,40 @@ $arrayPergunta = $perguntaDAO->Listar($pergunta);
 
                 <div class="card mb-3">
                     <div class="card-header">
-                        Testes Online
+                        <i class="fas fa-tasks d-none d-md-inline"></i> Testes Online
                     </div>
 
                     <div class="card-body" id="cardTestesOnline">
                         <div class="card-text">
-                            <h5 class="display-4 mb-4">Adicione testes online</h5>
+                            <h5 class="display-4 mb-4">Adicione testes online <i class="fas fa-tasks d-none d-md-inline"></i></h5>
 
                             <div>
 
-                            <?php if ($arrayTestesOnline) : ?>
+                                <?php if ($arrayTestesOnline) : ?>
 
-                                <div class="form-group">
-                                    <?php foreach ($arrayTestesOnline as $reg) : ?>
+                                    <div class="form-group">
+                                        <?php foreach ($arrayTestesOnline as $reg) : ?>
 
-                                        <div class="row">
-                                            <div class="col ">
-                                                <div class="div-add">
-                                                    <div class="form-check mt-2">
-                                                        <input class="chkTeste form-check-input lead" type="checkbox" value="<?= $reg->getIdTesteOnline(); ?>" id="chkTeste<?= $reg->getIdTesteOnline(); ?>" name="chkTeste<?= $reg->getIdTesteOnline(); ?>">
-                                                        <label class="form-check-label lead ml-2" for="chkTeste<?= $reg->getIdTesteOnline(); ?>"><?= $reg->getNomeTesteOnline(); ?></label>
-                                                        <p class="ml-2">Contém <?= $reg->getQuantidadeQuestoes(); ?> questões.</p>
+                                            <div class="row">
+                                                <div class="col ">
+                                                    <div class="div-add">
+                                                        <div class="form-check mt-2">
+                                                            <input class="chkTeste form-check-input lead" type="checkbox" value="<?= $reg->getIdTesteOnline(); ?>" id="chkTeste<?= $reg->getIdTesteOnline(); ?>" name="chkTeste<?= $reg->getIdTesteOnline(); ?>">
+                                                            <label class="form-check-label lead ml-2" for="chkTeste<?= $reg->getIdTesteOnline(); ?>"><?= $reg->getNomeTesteOnline(); ?></label>
+                                                            <p class="ml-2">Contém <?= $reg->getQuantidadeQuestoes(); ?> questões.</p>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
 
-                                    <?php endforeach; ?>
-                                </div>
+                                        <?php endforeach; ?>
+                                    </div>
 
-                            <?php else : ?>
-                                <p>
-                                    <strong>Nenhum teste online cadastrado.</strong>
-                                </p>
-                            <?php endif; ?>
+                                <?php else : ?>
+                                    <p>
+                                        <strong>Nenhum teste online cadastrado.</strong>
+                                    </p>
+                                <?php endif; ?>
 
                             </div>
                         </div>
@@ -128,12 +128,12 @@ $arrayPergunta = $perguntaDAO->Listar($pergunta);
 
                 <div class="card mb-3">
                     <div class="card-header">
-                        Perguntas
+                        <i class="fas fa-comment-dots d-none d-md-inline"></i> Perguntas
                     </div>
 
                     <div class="card-body" id="cardPerguntas">
                         <div class="card-text">
-                            <h5 class="display-4 mb-4">Adicione perguntas dissertativas</h5>
+                            <h5 class="display-4 mb-4">Adicione perguntas dissertativas <i class="fas fa-comment-dots d-none d-md-inline"></i></h5>
                             <div>
 
 
