@@ -193,6 +193,11 @@ include_once 'headerRecrut.php'
                         $processoCandPergunta->setIdProcesso($processo->getIdProcesso());
                         $arrayPerguntas = $processoCandPerguntaDAO->Listar($processoCandPergunta);
 
+                        echo 'quantComp '.$cand['quantComp'].' - ';
+                        echo 'mediaTestes '.$cand['mediaTestes'].' - ';
+                        echo 'pontosNivel '.$cand['pontosNivel'].' - ';
+                        echo 'quantCompAbaixo '.$cand['quantCompAbaixo'];
+
                         ?>
 
                     <div class="row">
