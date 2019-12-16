@@ -15,7 +15,7 @@ include_once "../Controller/RecrutadorDAO.php";
             <h1 class="h3 mb-3 font-weight-normal">Entre com sua conta!</h1>
 
             <label for="txtCnpj" class="sr-only">Cnpj</label>
-            <input id="txtCnpj" name="txtCnpj" class="form-control mb-1" placeholder="Insira seu CNPJ.." autofocus="" required>
+            <input type="text" id="txtCnpj" name="txtCnpj" class="form-control mb-1" placeholder="Insira seu CNPJ.." autofocus="" required>
 
             <label for="txtSenha" class="sr-only">Senha</label>
             <input type="password" id="txtSenha" name="txtSenha" class="form-control mb-1" placeholder="Insira uma senha..." required>
@@ -25,8 +25,10 @@ include_once "../Controller/RecrutadorDAO.php";
     </form>
 </header>
 
-<script type="text/javascript">
-    $("#txtCnpj").mask("00.000.000/0000-00");
+<script>
+    jQuery(function($) {
+        $("#txtCnpj").mask("99.999.999/9999-99");
+    });
 </script>
 
 
