@@ -131,7 +131,8 @@ if (isset($_POST['btnCandidatar'])) {
                                   $realizouTeste = $processoCandTesteDAO->Listar($processoCandTeste);
 
                                   ?>
-                              <?php if ($realizouTeste->getResultado()) : ?>
+                              <?php if ($realizouTeste->getIdTesteOnline()) : ?>
+                                
                                 <input type="submit" class="btn btn-success" disabled="true" value="Teste Realizado!" />
                               <?php else : ?>
                                 <button type="submit" name="btnRealizarTeste" class="btn btn-primary"><i class="fas fa-tasks"></i> Realizar teste</button>
